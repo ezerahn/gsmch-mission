@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선지서점 | 선한목자교회</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1F4D33; --green-deep:#153824; --mint:#EAF2EB;
+  --yellow:#F6D84B; --yellow-soft:#FBF3D0;
+  --ink:#22271F; --paper:#FCFBF7; --line:#DCE4DA;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+.wrap{max-width:640px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:10;background:var(--green);color:#fff}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
+nav .logo{font-weight:700;font-size:15px}
+nav .menu{display:flex;gap:16px;font-size:14px}
+nav a{color:#fff;text-decoration:none;opacity:.85}
+nav a.on{opacity:1;font-weight:700;border-bottom:2px solid var(--yellow);padding-bottom:2px}
+
+/* 서점 히어로 — 노란 안내카드 톤 */
+.hero{background:var(--yellow);color:var(--green-deep);text-align:center;padding:44px 20px 52px}
+.hero h1{font-family:'Gowun Batang',serif;font-size:32px;font-weight:700}
+.hero p{margin-top:10px;font-size:14px;font-weight:600}
+
+section{padding:38px 0}
+.label{display:inline-block;background:var(--green);color:#fff;font-size:12px;font-weight:700;letter-spacing:.12em;padding:4px 12px;border-radius:999px;margin-bottom:14px}
+.label.yl{background:var(--yellow);color:var(--green-deep)}
+h2{font-family:'Gowun Batang',serif;font-size:23px;margin-bottom:16px}
+
+/* 책 카드 */
+.book-card{border:1px solid var(--line);background:#fff;border-radius:16px;padding:20px;margin-bottom:12px;display:flex;gap:14px}
+.book-card .cover{width:64px;height:88px;background:var(--mint);border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px}
+.book-card h3{font-size:16px}
+.book-card .author{font-size:13px;color:#8aa091;margin-top:2px}
+.book-card p{font-size:14px;color:#4a544a;margin-top:6px}
+.badge{display:inline-block;background:var(--yellow);color:var(--green-deep);font-size:11px;font-weight:800;padding:2px 9px;border-radius:999px;margin-bottom:6px}
+.badge.gr{background:var(--green);color:#fff}
+
+/* 담임목사님 저서 강조 */
+.pastor{background:var(--green);color:#fff;border-radius:18px;padding:26px 22px}
+.pastor h3{font-family:'Gowun Batang',serif;font-size:20px;margin-bottom:6px}
+.pastor .author{font-size:13px;opacity:.75;margin-bottom:10px}
+.pastor p{font-size:14px;opacity:.9}
+
+/* 선물 카테고리 */
+.gift-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.gift{background:var(--mint);border-radius:16px;padding:20px;text-align:center}
+.gift .ico{font-size:26px;margin-bottom:8px}
+.gift h3{font-size:15px;color:var(--green-deep)}
+.gift p{font-size:12px;color:#6a766a;margin-top:4px}
+
+/* 미션 문구 */
+.mission{background:var(--yellow-soft);border:2px solid var(--yellow);border-radius:18px;padding:24px 22px;text-align:center}
+.mission p{font-family:'Gowun Batang',serif;font-size:17px;color:var(--green-deep);font-weight:700}
+.mission .s{font-family:'Pretendard',sans-serif;font-size:13px;color:#8a7c2e;font-weight:400;margin-top:8px}
+
+.info-box{border:1px solid var(--line);border-radius:16px;padding:22px}
+.info-box p{font-size:14px;margin-bottom:6px}
+.info-box strong{color:var(--green)}
+
+footer{background:var(--green-deep);color:#fff;text-align:center;padding:30px 20px;font-size:13px;margin-top:20px}
+footer .m{opacity:.75;margin-top:6px}
+@media(max-width:420px){.gift-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="logo">로뎀카페 · 선지서점</span>
+    <div class="menu">
+      <a href="index.html">홈</a>
+      <a href="cafe.html">카페</a>
+      <a href="book.html" class="on">서점</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>선지서점</h1>
+  <p>좋은 책 한 권이 마음에 심는 씨앗</p>
+</div>
+
+<div class="wrap">
+
+  <!-- ✏️ 신간 소개 : 새 책이 들어오면 이 구역을 수정하세요 -->
+  <section>
+    <span class="label">NEW BOOKS</span>
+    <h2>이달의 신간</h2>
+    <div class="book-card">
+      <div class="cover">📖</div>
+      <div>
+        <span class="badge">신간</span>
+        <h3>[도서 제목을 입력하세요]</h3>
+        <div class="author">저자명 · 출판사</div>
+        <p>책에 대한 한두 줄 소개를 적어주세요.</p>
+      </div>
+    </div>
+    <div class="book-card">
+      <div class="cover">📖</div>
+      <div>
+        <span class="badge">신간</span>
+        <h3>[도서 제목을 입력하세요]</h3>
+        <div class="author">저자명 · 출판사</div>
+        <p>책에 대한 한두 줄 소개를 적어주세요.</p>
+      </div>
+    </div>
+  </section>
+  <!-- ✏️ 신간 소개 끝 -->
+
+  <!-- ✏️ 담임목사님 저서 : 새 책이 나오면 이 구역을 수정하세요 -->
+  <section>
+    <span class="label yl">PASTOR'S BOOK</span>
+    <h2>담임목사님 저서</h2>
+    <div class="pastor">
+      <h3>[저서 제목을 입력하세요]</h3>
+      <div class="author">유기성 목사 지음</div>
+      <p>책 소개 문구를 적어주세요. 서점에서 직접 구입하실 수 있습니다.</p>
+    </div>
+  </section>
+  <!-- ✏️ 담임목사님 저서 끝 -->
+
+  <section>
+    <h2>선물하기 좋은 것들</h2>
+    <div class="gift-grid">
+      <div class="gift"><div class="ico">📕</div><h3>성경</h3><p>새신자·자녀 선물용</p></div>
+      <div class="gift"><div class="ico">📚</div><h3>신앙 도서</h3><p>큐티집 · 묵상집</p></div>
+      <div class="gift"><div class="ico">✏️</div><h3>문구·소품</h3><p>카드 · 노트 · 스티커</p></div>
+      <div class="gift"><div class="ico">🎁</div><h3>선물세트</h3><p>감사 · 축하 선물</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mission">
+      <p>"선지서점의 모든 수익금은<br>선교를 위해 사용됩니다"</p>
+      <div class="s">책 한 권의 구매가 선교의 후원이 됩니다.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>운영 안내</h2>
+    <div class="info-box">
+      <p><strong>주소</strong> 성남시 수정구 성남대로1518번길 9 (1층)</p>
+      <p><strong>전화</strong> 031-750-1063</p>
+      <p><strong>운영시간</strong> 홈 화면의 운영시간표를 확인하세요.</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div>도서 재고는 서점으로 문의해 주세요.</div>
+  <div class="m">선한목자교회 선지서점</div>
+</footer>
+
+</body>
+</html>

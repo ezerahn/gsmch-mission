@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>로뎀카페 | 선한목자교회</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1F4D33; --green-deep:#153824; --mint:#EAF2EB;
+  --yellow:#F6D84B; --ink:#22271F; --paper:#FCFBF7; --line:#DCE4DA;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Pretendard',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
+.wrap{max-width:640px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:10;background:var(--green);color:#fff}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
+nav .logo{font-weight:700;font-size:15px}
+nav .menu{display:flex;gap:16px;font-size:14px}
+nav a{color:#fff;text-decoration:none;opacity:.85}
+nav a.on{opacity:1;font-weight:700;border-bottom:2px solid var(--yellow);padding-bottom:2px}
+
+.hero{background:var(--green);color:#fff;text-align:center;padding:44px 20px 52px}
+.hero h1{font-family:'Gowun Batang',serif;font-size:32px;font-weight:700}
+.hero p{margin-top:10px;font-size:14px;opacity:.85}
+
+section{padding:38px 0}
+.label{display:inline-block;background:var(--green);color:#fff;font-size:12px;font-weight:700;letter-spacing:.12em;padding:4px 12px;border-radius:999px;margin-bottom:14px}
+h2{font-family:'Gowun Batang',serif;font-size:23px;margin-bottom:16px}
+
+/* 신메뉴 */
+.new-card{background:var(--mint);border-radius:16px;padding:22px;display:flex;gap:14px;align-items:flex-start;margin-bottom:12px}
+.badge{background:var(--yellow);color:var(--green-deep);font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;flex-shrink:0;margin-top:3px}
+.new-card h3{font-size:17px}
+.new-card p{font-size:14px;color:#4a544a;margin-top:4px}
+.new-card .price{font-weight:700;color:var(--green);margin-top:6px;font-size:15px}
+
+/* 카테고리 점프 */
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.jump a{font-size:13px;background:#fff;border:1px solid var(--line);color:var(--green-deep);padding:7px 14px;border-radius:999px;text-decoration:none;font-weight:600}
+
+/* 메뉴 리스트 */
+.menu-group{margin-bottom:34px}
+.menu-group h3{font-family:'Gowun Batang',serif;font-size:18px;color:var(--green);border-bottom:2px solid var(--green);padding-bottom:8px;margin-bottom:6px;display:flex;justify-content:space-between;align-items:baseline}
+.menu-group h3 .en{font-size:11px;letter-spacing:.15em;color:#8aa091;font-family:'Pretendard',sans-serif}
+.mi{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.mi .n{flex:1}
+.mi .opt{font-size:12px;color:#8aa091;margin-left:6px}
+.mi .p{font-weight:700;color:var(--green-deep);white-space:nowrap;margin-left:12px}
+.mi.hot .n::after{content:"인기";background:var(--yellow);color:var(--green-deep);font-size:10px;font-weight:800;padding:2px 7px;border-radius:999px;margin-left:8px;vertical-align:2px}
+
+/* 특판 */
+.promo{background:var(--green);color:#fff;border-radius:18px;padding:26px 22px}
+.promo .mon{font-size:12px;letter-spacing:.2em;opacity:.7;margin-bottom:8px}
+.promo h3{font-family:'Gowun Batang',serif;font-size:20px;margin-bottom:8px}
+.promo p{font-size:14px;opacity:.9}
+
+footer{background:var(--green-deep);color:#fff;text-align:center;padding:30px 20px;font-size:13px;margin-top:20px}
+footer .m{opacity:.75;margin-top:6px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="logo">로뎀카페 · 선지서점</span>
+    <div class="menu">
+      <a href="index.html">홈</a>
+      <a href="cafe.html" class="on">카페</a>
+      <a href="book.html">서점</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>로뎀카페</h1>
+  <p>예배 후, 만남 사이 — 잠시 쉬어가는 자리</p>
+</div>
+
+<div class="wrap">
+
+  <!-- ✏️ 신메뉴 : 새 메뉴가 나오면 이 구역을 수정하세요 -->
+  <section>
+    <span class="label">NEW</span>
+    <h2>새로 나온 메뉴</h2>
+    <div class="new-card">
+      <span class="badge">NEW</span>
+      <div>
+        <h3>요거트에 빠진 딸기</h3>
+        <p>상큼한 요거트에 딸기가 듬뿍. 시원하게 즐기세요.</p>
+        <div class="price">4,500원</div>
+      </div>
+    </div>
+  </section>
+  <!-- ✏️ 신메뉴 끝 -->
+
+  <section>
+    <h2>메뉴판</h2>
+    <div class="jump">
+      <a href="#coffee">커피</a>
+      <a href="#noncoffee">논커피</a>
+      <a href="#fresh">스무디·에이드</a>
+      <a href="#tea">차</a>
+      <a href="#bread">빵·디저트</a>
+      <a href="#etc">아이스크림·기타</a>
+    </div>
+
+    <div class="menu-group" id="coffee">
+      <h3>커피 <span class="en">COFFEE</span></h3>
+      <div class="mi hot"><span class="n">아메리카노<span class="opt">HOT·ICE</span></span><span class="p">2,000</span></div>
+      <div class="mi"><span class="n">에스프레소</span><span class="p">2,000</span></div>
+      <div class="mi"><span class="n">카페라떼<span class="opt">HOT·ICE</span></span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">바닐라라떼<span class="opt">HOT·ICE</span></span><span class="p">3,500</span></div>
+      <div class="mi"><span class="n">카페모카<span class="opt">HOT·ICE</span></span><span class="p">3,500</span></div>
+      <div class="mi"><span class="n">마끼아또<span class="opt">HOT·ICE</span></span><span class="p">3,500</span></div>
+      <div class="mi"><span class="n">아샷추</span><span class="p">2,500</span></div>
+      <div class="mi"><span class="n">샷 추가</span><span class="p">+500</span></div>
+    </div>
+
+    <div class="menu-group" id="noncoffee">
+      <h3>논커피 <span class="en">NON-COFFEE</span></h3>
+      <div class="mi"><span class="n">녹차라떼<span class="opt">HOT·ICE</span></span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">오곡라떼<span class="opt">HOT·ICE</span></span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">초코라떼</span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">아이스초코</span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">자색고구마라떼<span class="opt">HOT·ICE</span></span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">쌍화라떼</span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">쌍화차</span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">진저라떼</span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">밀크티<span class="opt">HOT·ICE</span></span><span class="p">3,500</span></div>
+    </div>
+
+    <div class="menu-group" id="fresh">
+      <h3>스무디 · 에이드 <span class="en">FRESH BEVERAGE</span></h3>
+      <div class="mi"><span class="n">딸기바나나 스무디</span><span class="p">3,500</span></div>
+      <div class="mi"><span class="n">블루베리 스무디</span><span class="p">3,500</span></div>
+      <div class="mi"><span class="n">플레인요거트 스무디</span><span class="p">3,500</span></div>
+      <div class="mi"><span class="n">오곡쉐이크</span><span class="p">3,500</span></div>
+      <div class="mi"><span class="n">유자슬러쉬</span><span class="p">3,500</span></div>
+      <div class="mi"><span class="n">딸기라떼</span><span class="p">4,000</span></div>
+      <div class="mi hot"><span class="n">요거트에 빠진 딸기</span><span class="p">4,500</span></div>
+      <div class="mi"><span class="n">레몬에이드</span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">청포도에이드</span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">자몽쥬스</span><span class="p">2,000</span></div>
+      <div class="mi"><span class="n">망고쥬스</span><span class="p">2,000</span></div>
+      <div class="mi"><span class="n">깔라만시</span><span class="p">2,000</span></div>
+      <div class="mi"><span class="n">아이스티</span><span class="p">2,000</span></div>
+      <div class="mi"><span class="n">탄산수</span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">애플쥬스(병)</span><span class="p">3,000</span></div>
+    </div>
+
+    <div class="menu-group" id="tea">
+      <h3>차 <span class="en">TEA</span></h3>
+      <div class="mi"><span class="n">유자차</span><span class="p">2,000</span></div>
+      <div class="mi"><span class="n">생강차</span><span class="p">2,000</span></div>
+      <div class="mi"><span class="n">대추차</span><span class="p">2,000</span></div>
+      <div class="mi"><span class="n">캐모마일<span class="opt">HOT·ICE</span></span><span class="p">2,000</span></div>
+      <div class="mi"><span class="n">페퍼민트<span class="opt">HOT·ICE</span></span><span class="p">2,000</span></div>
+      <div class="mi"><span class="n">보이차<span class="opt">HOT·ICE</span></span><span class="p">2,000</span></div>
+      <div class="mi"><span class="n">루이보스<span class="opt">HOT·ICE</span></span><span class="p">2,000</span></div>
+    </div>
+
+    <div class="menu-group" id="bread">
+      <h3>빵 · 디저트 <span class="en">BAKERY</span></h3>
+      <div class="mi"><span class="n">샌드위치</span><span class="p">3,500</span></div>
+      <div class="mi"><span class="n">스콘</span><span class="p">2,500</span></div>
+      <div class="mi"><span class="n">카스테라</span><span class="p">2,500</span></div>
+      <div class="mi"><span class="n">호밀빵</span><span class="p">4,500</span></div>
+      <div class="mi"><span class="n">모닝빵</span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">단호박파운드</span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">롤치즈빵</span><span class="p">2,500</span></div>
+      <div class="mi"><span class="n">단팥·고구마빵</span><span class="p">2,000</span></div>
+      <div class="mi"><span class="n">소프트콘</span><span class="p">2,000</span></div>
+      <div class="mi"><span class="n">수제쿠키</span><span class="p">3,000</span></div>
+      <div class="mi"><span class="n">르뱅쿠키<span class="opt">화이트·다크</span></span><span class="p">2,500</span></div>
+      <div class="mi"><span class="n">칩쿠키</span><span class="p">2,500</span></div>
+      <div class="mi"><span class="n">오색각쿠키</span><span class="p">8,000</span></div>
+      <div class="mi"><span class="n">하루견과</span><span class="p">1,000</span></div>
+      <div class="mi"><span class="n">스낵</span><span class="p">1,000</span></div>
+    </div>
+
+    <div class="menu-group" id="etc">
+      <h3>아이스크림 · 기타 <span class="en">ETC</span></h3>
+      <div class="mi"><span class="n">아이스크림</span><span class="p">1,000</span></div>
+      <div class="mi"><span class="n">초코바</span><span class="p">1,500</span></div>
+      <div class="mi"><span class="n">캔디바</span><span class="p">500</span></div>
+      <div class="mi"><span class="n">우유<span class="opt">HOT·ICE</span></span><span class="p">1,500</span></div>
+      <div class="mi"><span class="n">음료수</span><span class="p">1,000</span></div>
+      <div class="mi"><span class="n">생수</span><span class="p">500</span></div>
+      <div class="mi"><span class="n">얼음컵</span><span class="p">500</span></div>
+    </div>
+  </section>
+
+  <!-- ✏️ 월별 특판 : 매월 이 구역을 수정하세요 -->
+  <section>
+    <div class="promo">
+      <div class="mon">JULY SPECIAL</div>
+      <h3>7월의 특판</h3>
+      <p>여름 시즌 에이드·스무디 특별 행사를 준비하고 있어요. 카페에서 직접 확인해 보세요!</p>
+    </div>
+  </section>
+  <!-- ✏️ 월별 특판 끝 -->
+
+</div>
+
+<footer>
+  <div>가격은 사정에 따라 변경될 수 있습니다.</div>
+  <div class="m">선한목자교회 로뎀카페</div>
+</footer>
+
+</body>
+</html>
