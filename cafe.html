@@ -29,16 +29,23 @@ section{padding:38px 0}
 .label{display:inline-block;background:var(--green);color:#fff;font-size:12px;font-weight:700;letter-spacing:.12em;padding:4px 12px;border-radius:999px;margin-bottom:14px}
 h2{font-family:'Gowun Batang',serif;font-size:23px;margin-bottom:16px}
 
-/* 신메뉴 */
-.new-card{background:var(--mint);border-radius:16px;padding:22px;display:flex;gap:14px;align-items:flex-start;margin-bottom:12px}
-.badge{background:var(--yellow);color:var(--green-deep);font-size:11px;font-weight:800;padding:3px 9px;border-radius:999px;flex-shrink:0;margin-top:3px}
-.new-card h3{font-size:17px}
-.new-card p{font-size:14px;color:#4a544a;margin-top:4px}
-.new-card .price{font-weight:700;color:var(--green);margin-top:6px;font-size:15px}
+/* 시즌 메뉴 — 사진 카드 */
+.season-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.season-card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.season-card .photo{position:relative;aspect-ratio:1/1;background:var(--mint);display:flex;align-items:center;justify-content:center;font-size:34px}
+.season-card .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.season-card .badge{position:absolute;top:10px;left:10px;background:var(--yellow);color:var(--green-deep);font-size:11px;font-weight:800;padding:3px 10px;border-radius:999px;z-index:1}
+.season-card .body{padding:14px 16px 16px}
+.season-card h3{font-size:15px}
+.season-card p{font-size:12px;color:#6a766a;margin-top:3px}
+.season-card .price{font-weight:800;color:var(--green);margin-top:8px;font-size:15px}
+@media(max-width:340px){.season-grid{grid-template-columns:1fr}}
 
-/* 카테고리 점프 */
-.jump{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
-.jump a{font-size:13px;background:#fff;border:1px solid var(--line);color:var(--green-deep);padding:7px 14px;border-radius:999px;text-decoration:none;font-weight:600}
+/* 카테고리 점프 — 상단 고정 + 한 줄 가로 스크롤 */
+.jump{position:sticky;top:52px;z-index:9;background:var(--paper);display:flex;flex-wrap:nowrap;gap:8px;margin:0 -20px 8px;padding:10px 20px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.jump::-webkit-scrollbar{display:none}
+.jump a{font-size:13px;background:#fff;border:1px solid var(--line);color:var(--green-deep);padding:7px 14px;border-radius:999px;text-decoration:none;font-weight:600;white-space:nowrap;flex-shrink:0}
+.menu-group{scroll-margin-top:112px}
 
 /* 메뉴 리스트 */
 .menu-group{margin-bottom:34px}
@@ -80,20 +87,37 @@ footer .m{opacity:.75;margin-top:6px}
 
 <div class="wrap">
 
-  <!-- ✏️ 신메뉴 : 새 메뉴가 나오면 이 구역을 수정하세요 -->
+  <!-- ✏️ 시즌 메뉴 : 계절이 바뀌면 이 구역을 수정하세요.
+       사진은 저장소에 img 폴더를 만들어 올리고 파일명을 맞춰주세요 (예: img/season1.jpg) -->
   <section>
-    <span class="label">NEW</span>
-    <h2>새로 나온 메뉴</h2>
-    <div class="new-card">
-      <span class="badge">NEW</span>
-      <div>
-        <h3>요거트에 빠진 딸기</h3>
-        <p>상큼한 요거트에 딸기가 듬뿍. 시원하게 즐기세요.</p>
-        <div class="price">4,500원</div>
+    <span class="label">SEASON'S PICK</span>
+    <h2>시즌 추천 메뉴</h2>
+    <div class="season-grid">
+      <div class="season-card">
+        <div class="photo">🍓
+          <span class="badge">여름 시즌</span>
+          <img src="img/season1.jpg" alt="요거트에 빠진 딸기" onerror="this.remove()">
+        </div>
+        <div class="body">
+          <h3>요거트에 빠진 딸기</h3>
+          <p>상큼한 요거트에 딸기 듬뿍</p>
+          <div class="price">4,500원</div>
+        </div>
+      </div>
+      <div class="season-card">
+        <div class="photo">🍋
+          <span class="badge">여름 시즌</span>
+          <img src="img/season2.jpg" alt="레몬에이드" onerror="this.remove()">
+        </div>
+        <div class="body">
+          <h3>레몬에이드</h3>
+          <p>탄산 가득, 시원한 여름 한 잔</p>
+          <div class="price">3,000원</div>
+        </div>
       </div>
     </div>
   </section>
-  <!-- ✏️ 신메뉴 끝 -->
+  <!-- ✏️ 시즌 메뉴 끝 -->
 
   <section>
     <h2>메뉴판</h2>
