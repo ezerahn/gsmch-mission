@@ -1,0 +1,50 @@
+{
+  "updated": "2026-07-13",
+  "news": [
+    {
+      "date": "",
+      "title": "",
+      "text": ""
+    },
+    {
+      "date": "",
+      "title": "",
+      "text": ""
+    }
+  ],
+  "season": [
+    {
+      "name": "홍시샤벳",
+      "desc": "",
+      "price": "",
+      "badge": "",
+      "emoji": "🍓",
+      "img": "img/season1.jpg"
+    },
+    {
+      "name": "",
+      "desc": "",
+      "price": "",
+      "badge": "",
+      "emoji": "🍊",
+      "img": "img/season2.jpg"
+    }
+  ],
+  "newbooks": [
+    {
+      "title": "",
+      "author": "",
+      "desc": ""
+    },
+    {
+      "title": "",
+      "author": "",
+      "desc": ""
+    }
+  ],
+  "pastorbook": {
+    "title": "",
+    "author": "",
+    "desc": ""
+  }
+}
