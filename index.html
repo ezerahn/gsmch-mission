@@ -95,7 +95,8 @@ footer .m{opacity:.75;margin-top:8px}
   <!-- ✏️ 이달의 소식 : 매월 이 구역만 수정하세요 -->
   <section>
     <span class="label">이달의 소식</span>
-    <h2>7월, 이런 소식이 있어요</h2>
+    <h2>이런 소식이 있어요</h2>
+    <div id="newsWrap">
     <div class="news-card">
       <div class="date">2026. 7.</div>
       <h3>여름 시즌 음료 특판</h3>
@@ -106,8 +107,9 @@ footer .m{opacity:.75;margin-top:8px}
       <h3>선지서점 신간 입고</h3>
       <p>이번 달 새로 들어온 도서를 서점 페이지에서 확인하세요.</p>
     </div>
+    </div>
   </section>
-  <!-- ✏️ 이달의 소식 끝 -->
+  <!-- ✏️ 이달의 소식 끝 : 이제 admin.html 관리자 페이지에서 수정하는 것을 권장합니다 -->
 
   <section>
     <span class="label yl">운영시간</span>
@@ -159,5 +161,13 @@ footer .m{opacity:.75;margin-top:8px}
   <div class="m">선한목자교회 로뎀카페 · 선지서점</div>
 </footer>
 
+<script>
+fetch('data.json?v=' + Date.now()).then(r => r.json()).then(d => {
+  if(d.news && d.news.length){
+    document.getElementById('newsWrap').innerHTML = d.news.map(n =>
+      `<div class="news-card"><div class="date">${n.date}</div><h3>${n.title}</h3><p>${n.text}</p></div>`).join('');
+  }
+}).catch(() => {});
+</script>
 </body>
 </html>

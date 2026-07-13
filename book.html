@@ -92,6 +92,7 @@ footer .m{opacity:.75;margin-top:6px}
   <section>
     <span class="label">NEW BOOKS</span>
     <h2>이달의 신간</h2>
+    <div id="newBooks">
     <div class="book-card">
       <div class="cover">📖</div>
       <div>
@@ -109,18 +110,19 @@ footer .m{opacity:.75;margin-top:6px}
         <div class="author">저자명 · 출판사</div>
         <p>책에 대한 한두 줄 소개를 적어주세요.</p>
       </div>
+    </div>
     </div>
   </section>
-  <!-- ✏️ 신간 소개 끝 -->
+  <!-- ✏️ 신간 소개 끝 : 이제 admin.html 관리자 페이지에서 수정하는 것을 권장합니다 -->
 
   <!-- ✏️ 담임목사님 저서 : 새 책이 나오면 이 구역을 수정하세요 -->
   <section>
     <span class="label yl">PASTOR'S BOOK</span>
     <h2>담임목사님 저서</h2>
     <div class="pastor">
-      <h3>[저서 제목을 입력하세요]</h3>
-      <div class="author">유기성 목사 지음</div>
-      <p>책 소개 문구를 적어주세요. 서점에서 직접 구입하실 수 있습니다.</p>
+      <h3 id="pTitle">[저서 제목을 입력하세요]</h3>
+      <div class="author" id="pAuthor">담임목사 지음</div>
+      <p id="pDesc">책 소개 문구를 적어주세요. 서점에서 직접 구입하실 수 있습니다.</p>
     </div>
   </section>
   <!-- ✏️ 담임목사님 저서 끝 -->
@@ -158,5 +160,26 @@ footer .m{opacity:.75;margin-top:6px}
   <div class="m">선한목자교회 선지서점</div>
 </footer>
 
+<script>
+fetch('data.json?v=' + Date.now()).then(r => r.json()).then(d => {
+  if(d.newbooks && d.newbooks.length){
+    document.getElementById('newBooks').innerHTML = d.newbooks.map(b =>
+      `<div class="book-card">
+        <div class="cover">📖</div>
+        <div>
+          <span class="badge">신간</span>
+          <h3>${b.title}</h3>
+          <div class="author">${b.author || ''}</div>
+          <p>${b.desc || ''}</p>
+        </div>
+      </div>`).join('');
+  }
+  if(d.pastorbook){
+    document.getElementById('pTitle').textContent = d.pastorbook.title || '';
+    document.getElementById('pAuthor').textContent = d.pastorbook.author || '';
+    document.getElementById('pDesc').textContent = d.pastorbook.desc || '';
+  }
+}).catch(() => {});
+</script>
 </body>
 </html>

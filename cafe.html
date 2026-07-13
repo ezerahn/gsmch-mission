@@ -92,7 +92,7 @@ footer .m{opacity:.75;margin-top:6px}
   <section>
     <span class="label">SEASON'S PICK</span>
     <h2>시즌 추천 메뉴</h2>
-    <div class="season-grid">
+    <div class="season-grid" id="seasonGrid">
       <div class="season-card">
         <div class="photo">🍓
           <span class="badge">여름 시즌</span>
@@ -105,14 +105,14 @@ footer .m{opacity:.75;margin-top:6px}
         </div>
       </div>
       <div class="season-card">
-        <div class="photo">🍋
-          <span class="badge">여름 시즌</span>
-          <img src="img/season2.jpg" alt="레몬에이드" onerror="this.remove()">
+        <div class="photo">🍊
+          <span class="badge">시즌 한정</span>
+          <img src="img/season2.jpg" alt="홍시스무디" onerror="this.remove()">
         </div>
         <div class="body">
-          <h3>레몬에이드</h3>
-          <p>탄산 가득, 시원한 여름 한 잔</p>
-          <div class="price">3,000원</div>
+          <h3>홍시스무디</h3>
+          <p>달콤한 홍시를 갈아 만든 진한 한 잔</p>
+          <div class="price">4,000원</div>
         </div>
       </div>
     </div>
@@ -233,5 +233,24 @@ footer .m{opacity:.75;margin-top:6px}
   <div class="m">선한목자교회 로뎀카페</div>
 </footer>
 
+<script>
+fetch('data.json?v=' + Date.now()).then(r => r.json()).then(d => {
+  if(d.season && d.season.length){
+    const v = d.updated || '';
+    document.getElementById('seasonGrid').innerHTML = d.season.map(s =>
+      `<div class="season-card">
+        <div class="photo">${s.emoji || '🍓'}
+          <span class="badge">${s.badge || '시즌 한정'}</span>
+          <img src="${s.img}?v=${v}" alt="${s.name}" onerror="this.remove()">
+        </div>
+        <div class="body">
+          <h3>${s.name}</h3>
+          <p>${s.desc || ''}</p>
+          <div class="price">${s.price || ''}</div>
+        </div>
+      </div>`).join('');
+  }
+}).catch(() => {});
+</script>
 </body>
 </html>
