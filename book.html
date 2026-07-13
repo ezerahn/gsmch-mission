@@ -22,39 +22,65 @@ nav .menu{display:flex;gap:16px;font-size:14px}
 nav a{color:#fff;text-decoration:none;opacity:.85}
 nav a.on{opacity:1;font-weight:700;border-bottom:2px solid var(--yellow);padding-bottom:2px}
 
-/* 서점 히어로 — 노란 안내카드 톤 */
-.hero{background:var(--yellow);color:var(--green-deep);text-align:center;padding:44px 20px 52px}
+.hero{background:var(--yellow);color:var(--green-deep);text-align:center;padding:44px 20px 30px}
 .hero h1{font-family:'Gowun Batang',serif;font-size:32px;font-weight:700}
 .hero p{margin-top:10px;font-size:14px;font-weight:600}
+.discount-bar{background:var(--green-deep);color:#fff;text-align:center;padding:10px 20px;font-size:14px;font-weight:700}
+.discount-bar span{color:var(--yellow)}
 
 section{padding:38px 0}
 .label{display:inline-block;background:var(--green);color:#fff;font-size:12px;font-weight:700;letter-spacing:.12em;padding:4px 12px;border-radius:999px;margin-bottom:14px}
 .label.yl{background:var(--yellow);color:var(--green-deep)}
 h2{font-family:'Gowun Batang',serif;font-size:23px;margin-bottom:16px}
+.sub{font-size:13px;color:#8aa091;margin:-10px 0 16px}
 
-/* 책 카드 */
+/* 도서 카드 */
 .book-card{border:1px solid var(--line);background:#fff;border-radius:16px;padding:20px;margin-bottom:12px;display:flex;gap:14px}
-.book-card .cover{width:64px;height:88px;background:var(--mint);border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px}
-.book-card h3{font-size:16px}
-.book-card .author{font-size:13px;color:#8aa091;margin-top:2px}
-.book-card p{font-size:14px;color:#4a544a;margin-top:6px}
-.badge{display:inline-block;background:var(--yellow);color:var(--green-deep);font-size:11px;font-weight:800;padding:2px 9px;border-radius:999px;margin-bottom:6px}
+.book-card .cover{width:72px;height:100px;background:var(--mint);border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:26px;overflow:hidden;position:relative}
+.book-card .cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.book-card h3{font-size:16px;line-height:1.4}
+.book-card .author{font-size:12px;color:#8aa091;margin-top:3px}
+.book-card p{font-size:13px;color:#4a544a;margin-top:7px}
+.badge{display:inline-block;background:var(--yellow);color:var(--green-deep);font-size:11px;font-weight:800;padding:2px 9px;border-radius:999px;margin-bottom:6px;margin-right:4px}
 .badge.gr{background:var(--green);color:#fff}
+.price-line{margin-top:8px;font-size:14px}
+.price-line .orig{color:#9aa79c;text-decoration:line-through;margin-right:8px;font-size:13px}
+.price-line .sale{color:var(--green);font-weight:800}
+.price-line .off{background:#FBE9E7;color:#C0392B;font-size:11px;font-weight:800;padding:1px 7px;border-radius:999px;margin-left:6px;vertical-align:1px}
+.price-line .ask{color:#8aa091;font-size:13px}
 
-/* 담임목사님 저서 강조 */
-.pastor{background:var(--green);color:#fff;border-radius:18px;padding:26px 22px}
-.pastor h3{font-family:'Gowun Batang',serif;font-size:20px;margin-bottom:6px}
-.pastor .author{font-size:13px;opacity:.75;margin-bottom:10px}
-.pastor p{font-size:14px;opacity:.9}
+/* 핫 코너 */
+.hot-wrap{background:var(--green);border-radius:18px;padding:22px;color:#fff}
+.hot-wrap .hd{font-family:'Gowun Batang',serif;font-size:19px;margin-bottom:14px}
+.hot-wrap .book-card{background:#fff;color:var(--ink);border:none;margin-bottom:10px}
+.hot-wrap .book-card:last-child{margin-bottom:0}
 
-/* 선물 카테고리 */
-.gift-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.gift{background:var(--mint);border-radius:16px;padding:20px;text-align:center}
-.gift .ico{font-size:26px;margin-bottom:8px}
-.gift h3{font-size:15px;color:var(--green-deep)}
-.gift p{font-size:12px;color:#6a766a;margin-top:4px}
+/* 기획전 */
+.promo{background:var(--yellow-soft);border:2px solid var(--yellow);border-radius:18px;padding:24px 22px}
+.promo .bd{display:inline-block;background:var(--yellow);color:var(--green-deep);font-size:11px;font-weight:800;letter-spacing:.15em;padding:3px 11px;border-radius:999px;margin-bottom:10px}
+.promo h3{font-family:'Gowun Batang',serif;font-size:19px;color:var(--green-deep);margin-bottom:6px}
+.promo p{font-size:14px;color:#6a6338}
 
-/* 미션 문구 */
+/* 선물 코너 */
+.gift-tabs{position:sticky;top:52px;z-index:9;background:var(--paper);display:flex;flex-wrap:nowrap;gap:8px;margin:0 -20px 14px;padding:10px 20px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.gift-tabs::-webkit-scrollbar{display:none}
+.gift-tabs a{font-size:13px;background:#fff;border:1px solid var(--line);color:var(--green-deep);padding:7px 14px;border-radius:999px;text-decoration:none;font-weight:600;white-space:nowrap;flex-shrink:0}
+.gift-group{margin-bottom:28px;scroll-margin-top:118px}
+.gift-group h3{font-family:'Gowun Batang',serif;font-size:17px;color:var(--green);border-bottom:2px solid var(--green);padding-bottom:8px;margin-bottom:6px}
+.gi{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line)}
+.gi .n{font-size:15px}
+.gi .d{font-size:12px;color:#8aa091;margin-top:2px}
+.gi .p{font-weight:700;color:var(--green-deep);white-space:nowrap;font-size:14px}
+
+/* 상품권 */
+.voucher{background:var(--green);color:#fff;border-radius:18px;padding:26px 22px;text-align:center}
+.voucher h3{font-family:'Gowun Batang',serif;font-size:20px;margin-bottom:8px}
+.voucher p{font-size:14px;opacity:.9}
+.voucher .tickets{display:flex;gap:10px;justify-content:center;margin:18px 0 12px}
+.voucher .tk{background:var(--yellow);color:var(--green-deep);border-radius:10px;padding:12px 14px;font-weight:800;font-size:15px;position:relative}
+.voucher .tk small{display:block;font-size:10px;font-weight:600;opacity:.75;letter-spacing:.1em}
+.voucher .note{font-size:12px;opacity:.75}
+
 .mission{background:var(--yellow-soft);border:2px solid var(--yellow);border-radius:18px;padding:24px 22px;text-align:center}
 .mission p{font-family:'Gowun Batang',serif;font-size:17px;color:var(--green-deep);font-weight:700}
 .mission .s{font-family:'Pretendard',sans-serif;font-size:13px;color:#8a7c2e;font-weight:400;margin-top:8px}
@@ -65,7 +91,6 @@ h2{font-family:'Gowun Batang',serif;font-size:23px;margin-bottom:16px}
 
 footer{background:var(--green-deep);color:#fff;text-align:center;padding:30px 20px;font-size:13px;margin-top:20px}
 footer .m{opacity:.75;margin-top:6px}
-@media(max-width:420px){.gift-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
@@ -83,57 +108,65 @@ footer .m{opacity:.75;margin-top:6px}
 
 <div class="hero">
   <h1>선지서점</h1>
-  <p>좋은 책 한 권이 마음에 심는 씨앗</p>
+  <p id="storeScale">좋은 책 한 권이 마음에 심는 씨앗</p>
 </div>
+<div class="discount-bar" id="discountBar">📖 <span>도서 전 품목 정가의 10% 할인</span></div>
 
 <div class="wrap">
 
-  <!-- ✏️ 신간 소개 : 새 책이 들어오면 이 구역을 수정하세요 -->
+  <section>
+    <span class="label">BEST</span>
+    <h2>지금 가장 많이 찾는 책</h2>
+    <div class="hot-wrap" id="hotBooks">
+      <div class="hd">서점 지기 강력 추천 ✨</div>
+    </div>
+  </section>
+
   <section>
     <span class="label">NEW BOOKS</span>
     <h2>이달의 신간</h2>
-    <div id="newBooks">
-    <div class="book-card">
-      <div class="cover">📖</div>
-      <div>
-        <span class="badge">신간</span>
-        <h3>[도서 제목을 입력하세요]</h3>
-        <div class="author">저자명 · 출판사</div>
-        <p>책에 대한 한두 줄 소개를 적어주세요.</p>
-      </div>
-    </div>
-    <div class="book-card">
-      <div class="cover">📖</div>
-      <div>
-        <span class="badge">신간</span>
-        <h3>[도서 제목을 입력하세요]</h3>
-        <div class="author">저자명 · 출판사</div>
-        <p>책에 대한 한두 줄 소개를 적어주세요.</p>
-      </div>
-    </div>
-    </div>
+    <p class="sub">지금 들어오고 있는 새 책들이에요</p>
+    <div id="newBooks"></div>
   </section>
-  <!-- ✏️ 신간 소개 끝 : 이제 admin.html 관리자 페이지에서 수정하는 것을 권장합니다 -->
 
-  <!-- ✏️ 담임목사님 저서 : 새 책이 나오면 이 구역을 수정하세요 -->
   <section>
-    <span class="label yl">PASTOR'S BOOK</span>
+    <span class="label yl">PASTOR'S BOOKS</span>
     <h2>담임목사님 저서</h2>
-    <div class="pastor">
-      <h3 id="pTitle">[저서 제목을 입력하세요]</h3>
-      <div class="author" id="pAuthor">담임목사 지음</div>
-      <p id="pDesc">책 소개 문구를 적어주세요. 서점에서 직접 구입하실 수 있습니다.</p>
-    </div>
+    <div id="pastorBooks"></div>
   </section>
-  <!-- ✏️ 담임목사님 저서 끝 -->
+
+  <section id="recoSection" style="display:none">
+    <span class="label">PICK</span>
+    <h2>추천 서적</h2>
+    <div id="recoBooks"></div>
+  </section>
 
   <section>
-    <h2>선물하기 좋은 것들</h2>
-    <div class="gift-grid">
-      <div class="gift"><div class="ico">📕</div><h3>성경</h3><p>새신자·자녀 선물용</p></div>
-      <div class="gift"><div class="ico">📚</div><h3>신앙 도서</h3><p>큐티집 · 묵상집</p></div>
-      <div class="gift"><div class="ico">✏️</div><h3>문구·소품</h3><p>카드 · 노트 · 스티커</p></div>
-      <div class="gift"><div class="ico">🎁</div><h3>선물세트</h3><p>감사 · 축하 선물</p></div>
+    <div class="promo" id="promoBox">
+      <span class="bd" id="promoBadge">SEASON</span>
+      <h3 id="promoTitle">시즌 기획전</h3>
+      <p id="promoText">시즌 선물을 준비하고 있어요.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="label">GIFT</span>
+    <h2>선물 코너</h2>
+    <p class="sub">종류별로 둘러보세요 · 시즌 상품은 기획전에서!</p>
+    <div class="gift-tabs" id="giftTabs"></div>
+    <div id="giftList"></div>
+  </section>
+
+  <section>
+    <div class="voucher">
+      <h3>선지서점 · 로뎀카페 상품권</h3>
+      <p>마음을 전하기 가장 쉬운 방법</p>
+      <div class="tickets">
+        <div class="tk"><small>GIFT</small>10,000원권</div>
+        <div class="tk"><small>GIFT</small>5,000원권</div>
+        <div class="tk"><small>GIFT</small>1,000원권</div>
+      </div>
+      <p class="note">서점과 카페 어디서나 사용하실 수 있어요 · 구입은 계산대에서</p>
     </div>
   </section>
 
@@ -149,6 +182,7 @@ footer .m{opacity:.75;margin-top:6px}
     <div class="info-box">
       <p><strong>주소</strong> 성남시 수정구 성남대로1518번길 9 (1층)</p>
       <p><strong>전화</strong> 031-750-1063</p>
+      <p><strong>재고 문의</strong> 원하시는 책이 있는지 전화로 확인해 드려요.</p>
       <p><strong>운영시간</strong> 홈 화면의 운영시간표를 확인하세요.</p>
     </div>
   </section>
@@ -161,25 +195,55 @@ footer .m{opacity:.75;margin-top:6px}
 </footer>
 
 <script>
-fetch('data.json?v=' + Date.now()).then(r => r.json()).then(d => {
-  if(d.newbooks && d.newbooks.length){
-    document.getElementById('newBooks').innerHTML = d.newbooks.map(b =>
-      `<div class="book-card">
-        <div class="cover">📖</div>
-        <div>
-          <span class="badge">신간</span>
-          <h3>${b.title}</h3>
-          <div class="author">${b.author || ''}</div>
-          <p>${b.desc || ''}</p>
-        </div>
-      </div>`).join('');
+const GIFT_CATS = ['머그·텀블러','액자·시계','십자가·목걸이','카드·문구','생활소품','꽃·선물세트'];
+
+function priceHTML(p){
+  const digits = (p||'').replace(/[^0-9]/g,'');
+  if(!p) return '<span class="ask">가격은 서점에 문의해 주세요</span>';
+  if(!digits || (p.includes('~')) || p.includes('문의')) return '<span class="sale">'+p+'</span>';
+  const orig = parseInt(digits,10);
+  const sale = Math.floor(orig*0.9/100)*100;
+  return '<span class="orig">'+orig.toLocaleString()+'원</span><span class="sale">'+sale.toLocaleString()+'원</span><span class="off">10%</span>';
+}
+function bookCard(b, v){
+  const tagBadge = b.tag==='신간' ? '<span class="badge">신간</span>' : b.tag==='목사님저서' ? '<span class="badge gr">담임목사님</span>' : '<span class="badge">추천</span>';
+  const hotBadge = b.hot ? '<span class="badge gr">인기</span>' : '';
+  const img = b.img ? '<img src="'+b.img+'?v='+v+'" alt="'+b.title+'" onerror="this.remove()">' : '';
+  return '<div class="book-card"><div class="cover">📖'+img+'</div><div>'+tagBadge+hotBadge+
+    '<h3>'+b.title+'</h3><div class="author">'+(b.author||'')+'</div><p>'+(b.desc||'')+'</p>'+
+    '<div class="price-line">'+priceHTML(b.price)+'</div></div></div>';
+}
+fetch('data.json?v='+Date.now()).then(r=>r.json()).then(d=>{
+  const v = d.updated || '';
+  if(d.store){
+    if(d.store.scale) document.getElementById('storeScale').textContent = d.store.scale;
+    if(d.store.discount) document.getElementById('discountBar').innerHTML = '📖 <span>'+d.store.discount+'</span>';
+    if(d.store.saleTitle) document.getElementById('promoTitle').textContent = d.store.saleTitle;
+    if(d.store.saleText) document.getElementById('promoText').textContent = d.store.saleText;
+    if(d.store.saleBadge) document.getElementById('promoBadge').textContent = d.store.saleBadge;
   }
-  if(d.pastorbook){
-    document.getElementById('pTitle').textContent = d.pastorbook.title || '';
-    document.getElementById('pAuthor').textContent = d.pastorbook.author || '';
-    document.getElementById('pDesc').textContent = d.pastorbook.desc || '';
-  }
-}).catch(() => {});
+  const books = d.books || [];
+  const hot = books.filter(b=>b.hot);
+  const news = books.filter(b=>b.tag==='신간' && !b.hot);
+  const pastor = books.filter(b=>b.tag==='목사님저서' && !b.hot);
+  const reco = books.filter(b=>b.tag==='추천' && !b.hot);
+  document.getElementById('hotBooks').innerHTML = '<div class="hd">서점 지기 강력 추천 ✨</div>' + hot.map(b=>bookCard(b,v)).join('');
+  document.getElementById('newBooks').innerHTML = news.map(b=>bookCard(b,v)).join('') || '<p class="sub">새 책이 곧 들어옵니다!</p>';
+  document.getElementById('pastorBooks').innerHTML = pastor.map(b=>bookCard(b,v)).join('');
+  if(reco.length){ document.getElementById('recoSection').style.display='block';
+    document.getElementById('recoBooks').innerHTML = reco.map(b=>bookCard(b,v)).join(''); }
+  // 선물
+  const gifts = d.gifts || [];
+  const cats = GIFT_CATS.filter(c=>gifts.some(g=>g.cat===c));
+  document.getElementById('giftTabs').innerHTML = cats.map((c,i)=>'<a href="#gc'+i+'">'+c+'</a>').join('');
+  document.getElementById('giftList').innerHTML = cats.map((c,i)=>
+    '<div class="gift-group" id="gc'+i+'"><h3>'+c+'</h3>'+
+    gifts.filter(g=>g.cat===c).map(g=>
+      '<div class="gi"><div><div class="n">'+g.name+'</div>'+(g.desc?'<div class="d">'+g.desc+'</div>':'')+'</div><div class="p">'+(g.price||'문의')+'</div></div>'
+    ).join('')+'</div>'
+  ).join('');
+}).catch(()=>{});
 </script>
+
 </body>
 </html>
