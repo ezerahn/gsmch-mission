@@ -64,6 +64,14 @@ h2{font-family:'Gowun Batang',serif;font-size:23px;margin-bottom:16px}
 .promo p{font-size:14px;opacity:.9}
 
 footer{background:var(--green-deep);color:#fff;text-align:center;padding:30px 20px;font-size:13px;margin-top:20px}
+/* PC 2단 */
+@media(min-width:900px){
+  .wrap{max-width:960px}
+  .season-grid{grid-template-columns:1fr 1fr 1fr}
+  #menuCols{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;align-items:start}
+  .jump{margin:0 -20px 8px}
+  .hero h1{font-size:38px}
+}
 footer .m{opacity:.75;margin-top:6px}
 </style>
 </head>
@@ -130,6 +138,7 @@ footer .m{opacity:.75;margin-top:6px}
       <a href="#etc">아이스크림·기타</a>
     </div>
 
+    <div id="menuCols">
     <div class="menu-group" id="coffee">
       <h3>커피 <span class="en">COFFEE</span></h3>
       <div class="mi hot"><span class="n">아메리카노<span class="opt">HOT·ICE</span></span><span class="p">2,000</span></div>
@@ -213,6 +222,7 @@ footer .m{opacity:.75;margin-top:6px}
       <div class="mi"><span class="n">음료수</span><span class="p">1,000</span></div>
       <div class="mi"><span class="n">생수</span><span class="p">500</span></div>
       <div class="mi"><span class="n">얼음컵</span><span class="p">500</span></div>
+    </div>
     </div>
   </section>
 

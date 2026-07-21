@@ -15,27 +15,36 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Pretendard',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
 .wrap{max-width:640px;margin:0 auto;padding:0 20px}
-nav{position:sticky;top:0;z-index:10;background:var(--green);color:#fff}
+nav{position:sticky;top:0;z-index:20;background:var(--green);color:#fff}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:52px}
 nav .logo{font-weight:700;font-size:15px}
 nav .menu{display:flex;gap:16px;font-size:14px}
 nav a{color:#fff;text-decoration:none;opacity:.85}
 nav a.on{opacity:1;font-weight:700;border-bottom:2px solid var(--yellow);padding-bottom:2px}
 
-.hero{background:var(--yellow);color:var(--green-deep);text-align:center;padding:44px 20px 30px}
-.hero h1{font-family:'Gowun Batang',serif;font-size:32px;font-weight:700}
-.hero p{margin-top:10px;font-size:14px;font-weight:600}
-.discount-bar{background:var(--green-deep);color:#fff;text-align:center;padding:10px 20px;font-size:14px;font-weight:700}
+.hero{background:var(--yellow);color:var(--green-deep);text-align:center;padding:34px 20px 24px}
+.hero h1{font-family:'Gowun Batang',serif;font-size:30px;font-weight:700}
+.hero p{margin-top:8px;font-size:13px;font-weight:600}
+.discount-bar{background:var(--green-deep);color:#fff;text-align:center;padding:9px 20px;font-size:13px;font-weight:700}
 .discount-bar span{color:var(--yellow)}
 
-section{padding:38px 0}
+/* 코너 탭 */
+.tabs{position:sticky;top:52px;z-index:15;background:var(--paper);border-bottom:1px solid var(--line)}
+.tabs .in{max-width:640px;margin:0 auto;display:flex;gap:6px;padding:10px 20px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tabs .in::-webkit-scrollbar{display:none}
+.tabs button{flex-shrink:0;font-family:inherit;font-size:14px;font-weight:700;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#6a766a;cursor:pointer;white-space:nowrap}
+.tabs button.on{background:var(--green);border-color:var(--green);color:#fff}
+
+.panel{display:none}
+.panel.on{display:block}
+section{padding:32px 0}
 .label{display:inline-block;background:var(--green);color:#fff;font-size:12px;font-weight:700;letter-spacing:.12em;padding:4px 12px;border-radius:999px;margin-bottom:14px}
 .label.yl{background:var(--yellow);color:var(--green-deep)}
-h2{font-family:'Gowun Batang',serif;font-size:23px;margin-bottom:16px}
-.sub{font-size:13px;color:#8aa091;margin:-10px 0 16px}
+h2{font-family:'Gowun Batang',serif;font-size:22px;margin-bottom:14px}
+.sub{font-size:13px;color:#8aa091;margin:-8px 0 16px}
 
-/* 도서 카드 */
-.book-card{border:1px solid var(--line);background:#fff;border-radius:16px;padding:20px;margin-bottom:12px;display:flex;gap:14px}
+.book-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.book-card{border:1px solid var(--line);background:#fff;border-radius:16px;padding:20px;display:flex;gap:14px}
 .book-card .cover{width:72px;height:100px;background:var(--mint);border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:26px;overflow:hidden;position:relative}
 .book-card .cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .book-card h3{font-size:16px;line-height:1.4}
@@ -49,35 +58,34 @@ h2{font-family:'Gowun Batang',serif;font-size:23px;margin-bottom:16px}
 .price-line .off{background:#FBE9E7;color:#C0392B;font-size:11px;font-weight:800;padding:1px 7px;border-radius:999px;margin-left:6px;vertical-align:1px}
 .price-line .ask{color:#8aa091;font-size:13px}
 
-/* 핫 코너 */
 .hot-wrap{background:var(--green);border-radius:18px;padding:22px;color:#fff}
 .hot-wrap .hd{font-family:'Gowun Batang',serif;font-size:19px;margin-bottom:14px}
-.hot-wrap .book-card{background:#fff;color:var(--ink);border:none;margin-bottom:10px}
-.hot-wrap .book-card:last-child{margin-bottom:0}
+.hot-wrap .book-grid{gap:10px}
+.hot-wrap .book-card{border:none}
 
-/* 기획전 */
-.promo{background:var(--yellow-soft);border:2px solid var(--yellow);border-radius:18px;padding:24px 22px}
+.more-btn{display:block;width:100%;margin-top:14px;background:#fff;border:1px solid var(--line);color:var(--green-deep);border-radius:12px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;text-align:center}
+.more-btn:hover{background:var(--mint)}
+
+.promo{background:var(--yellow-soft);border:2px solid var(--yellow);border-radius:18px;padding:22px}
 .promo .bd{display:inline-block;background:var(--yellow);color:var(--green-deep);font-size:11px;font-weight:800;letter-spacing:.15em;padding:3px 11px;border-radius:999px;margin-bottom:10px}
 .promo h3{font-family:'Gowun Batang',serif;font-size:19px;color:var(--green-deep);margin-bottom:6px}
 .promo p{font-size:14px;color:#6a6338}
 
-/* 선물 코너 */
-.gift-tabs{position:sticky;top:52px;z-index:9;background:var(--paper);display:flex;flex-wrap:nowrap;gap:8px;margin:0 -20px 14px;padding:10px 20px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.gift-tabs{display:flex;flex-wrap:nowrap;gap:8px;margin:0 -20px 14px;padding:4px 20px 10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .gift-tabs::-webkit-scrollbar{display:none}
 .gift-tabs a{font-size:13px;background:#fff;border:1px solid var(--line);color:var(--green-deep);padding:7px 14px;border-radius:999px;text-decoration:none;font-weight:600;white-space:nowrap;flex-shrink:0}
-.gift-group{margin-bottom:28px;scroll-margin-top:118px}
+.gift-group{margin-bottom:28px;scroll-margin-top:130px}
 .gift-group h3{font-family:'Gowun Batang',serif;font-size:17px;color:var(--green);border-bottom:2px solid var(--green);padding-bottom:8px;margin-bottom:6px}
 .gi{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line)}
 .gi .n{font-size:15px}
 .gi .d{font-size:12px;color:#8aa091;margin-top:2px}
 .gi .p{font-weight:700;color:var(--green-deep);white-space:nowrap;font-size:14px}
 
-/* 상품권 */
 .voucher{background:var(--green);color:#fff;border-radius:18px;padding:26px 22px;text-align:center}
 .voucher h3{font-family:'Gowun Batang',serif;font-size:20px;margin-bottom:8px}
 .voucher p{font-size:14px;opacity:.9}
-.voucher .tickets{display:flex;gap:10px;justify-content:center;margin:18px 0 12px}
-.voucher .tk{background:var(--yellow);color:var(--green-deep);border-radius:10px;padding:12px 14px;font-weight:800;font-size:15px;position:relative}
+.voucher .tickets{display:flex;gap:10px;justify-content:center;margin:18px 0 12px;flex-wrap:wrap}
+.voucher .tk{background:var(--yellow);color:var(--green-deep);border-radius:10px;padding:12px 14px;font-weight:800;font-size:15px}
 .voucher .tk small{display:block;font-size:10px;font-weight:600;opacity:.75;letter-spacing:.1em}
 .voucher .note{font-size:12px;opacity:.75}
 
@@ -91,6 +99,15 @@ h2{font-family:'Gowun Batang',serif;font-size:23px;margin-bottom:16px}
 
 footer{background:var(--green-deep);color:#fff;text-align:center;padding:30px 20px;font-size:13px;margin-top:20px}
 footer .m{opacity:.75;margin-top:6px}
+
+/* ── PC (900px 이상) : 2단 배치 ── */
+@media(min-width:900px){
+  .wrap{max-width:960px}
+  .tabs .in{max-width:960px}
+  .book-grid{grid-template-columns:1fr 1fr}
+  .gift-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;align-items:start}
+  .hero h1{font-size:36px}
+}
 </style>
 </head>
 <body>
@@ -112,80 +129,121 @@ footer .m{opacity:.75;margin-top:6px}
 </div>
 <div class="discount-bar" id="discountBar">📖 <span>도서 전 품목 정가의 10% 할인</span></div>
 
+<div class="tabs">
+  <div class="in" id="tabBar">
+    <button data-t="home" class="on" onclick="showTab('home')">✨ 추천</button>
+    <button data-t="new" onclick="showTab('new')">이달의 신간</button>
+    <button data-t="pastor" onclick="showTab('pastor')">목사님 저서</button>
+    <button data-t="gift" onclick="showTab('gift')">선물하기</button>
+    <button data-t="etc" onclick="showTab('etc')">상품권·안내</button>
+  </div>
+</div>
+
 <div class="wrap">
 
-  <section>
-    <span class="label">BEST</span>
-    <h2>지금 가장 많이 찾는 책</h2>
-    <div class="hot-wrap" id="hotBooks">
-      <div class="hd">서점 지기 강력 추천 ✨</div>
-    </div>
-  </section>
-
-  <section>
-    <span class="label">NEW BOOKS</span>
-    <h2>이달의 신간</h2>
-    <p class="sub">지금 들어오고 있는 새 책들이에요</p>
-    <div id="newBooks"></div>
-  </section>
-
-  <section>
-    <span class="label yl">PASTOR'S BOOKS</span>
-    <h2>담임목사님 저서</h2>
-    <div id="pastorBooks"></div>
-  </section>
-
-  <section id="recoSection" style="display:none">
-    <span class="label">PICK</span>
-    <h2>추천 서적</h2>
-    <div id="recoBooks"></div>
-  </section>
-
-  <section>
-    <div class="promo" id="promoBox">
-      <span class="bd" id="promoBadge">SEASON</span>
-      <h3 id="promoTitle">시즌 기획전</h3>
-      <p id="promoText">시즌 선물을 준비하고 있어요.</p>
-    </div>
-  </section>
-
-  <section>
-    <span class="label">GIFT</span>
-    <h2>선물 코너</h2>
-    <p class="sub">종류별로 둘러보세요 · 시즌 상품은 기획전에서!</p>
-    <div class="gift-tabs" id="giftTabs"></div>
-    <div id="giftList"></div>
-  </section>
-
-  <section>
-    <div class="voucher">
-      <h3>선지서점 · 로뎀카페 상품권</h3>
-      <p>마음을 전하기 가장 쉬운 방법</p>
-      <div class="tickets">
-        <div class="tk"><small>GIFT</small>10,000원권</div>
-        <div class="tk"><small>GIFT</small>5,000원권</div>
-        <div class="tk"><small>GIFT</small>1,000원권</div>
+  <!-- 탭 1 : 추천 (홈) -->
+  <div class="panel on" id="panel-home">
+    <section>
+      <span class="label">BEST</span>
+      <h2>지금 가장 많이 찾는 책</h2>
+      <div class="hot-wrap">
+        <div class="hd">서점 지기 강력 추천 ✨</div>
+        <div class="book-grid" id="hotBooks"></div>
       </div>
-      <p class="note">서점과 카페 어디서나 사용하실 수 있어요 · 구입은 계산대에서</p>
-    </div>
-  </section>
+    </section>
+    <section style="padding-top:0">
+      <div class="promo">
+        <span class="bd" id="promoBadge">SEASON</span>
+        <h3 id="promoTitle">시즌 기획전</h3>
+        <p id="promoText">시즌 선물을 준비하고 있어요.</p>
+      </div>
+    </section>
+    <section style="padding-top:0">
+      <span class="label">NEW</span>
+      <h2>새로 들어온 책</h2>
+      <div class="book-grid" id="previewNew"></div>
+      <button class="more-btn" onclick="showTab('new')">이달의 신간 전체 보기 →</button>
+    </section>
+    <section style="padding-top:0">
+      <span class="label">GIFT</span>
+      <h2>선물, 이런 것들이 있어요</h2>
+      <div class="gift-group" style="margin-bottom:0" id="previewGift"></div>
+      <button class="more-btn" onclick="showTab('gift')">선물 코너 전체 보기 →</button>
+    </section>
+    <section style="padding-top:0">
+      <div class="mission">
+        <p>"선지서점의 모든 수익금은<br>선교를 위해 사용됩니다"</p>
+        <div class="s">책 한 권의 구매가 선교의 후원이 됩니다.</div>
+      </div>
+    </section>
+  </div>
 
-  <section>
-    <div class="mission">
-      <p>"선지서점의 모든 수익금은<br>선교를 위해 사용됩니다"</p>
-      <div class="s">책 한 권의 구매가 선교의 후원이 됩니다.</div>
-    </div>
-  </section>
+  <!-- 탭 2 : 신간 -->
+  <div class="panel" id="panel-new">
+    <section>
+      <span class="label">NEW BOOKS</span>
+      <h2>이달의 신간</h2>
+      <p class="sub">지금 들어오고 있는 새 책들이에요 · 전 품목 10% 할인</p>
+      <div class="book-grid" id="newBooks"></div>
+    </section>
+    <section id="recoSection" style="display:none;padding-top:0">
+      <span class="label">PICK</span>
+      <h2>추천 서적</h2>
+      <div class="book-grid" id="recoBooks"></div>
+    </section>
+  </div>
 
-  <section>
-    <h2>운영 안내</h2>
-    <div class="info-box">
-      <p><strong>주소</strong> 성남시 수정구 성남대로1518번길 9 (1층)</p>
-      <p><strong>전화</strong> 031-750-1063</p>
-      <p><strong>재고 문의</strong> 원하시는 책이 있는지 전화로 확인해 드려요.</p>
-      <p><strong>운영시간</strong> 홈 화면의 운영시간표를 확인하세요.</p>
-    </div>
-  </section>
+  <!-- 탭 3 : 목사님 저서 -->
+  <div class="panel" id="panel-pastor">
+    <section>
+      <span class="label yl">PASTOR'S BOOKS</span>
+      <h2>담임목사님 저서</h2>
+      <p class="sub">선한목자교회 김다위 담임목사님의 책들입니다</p>
+      <div class="book-grid" id="pastorBooks"></div>
+    </section>
+  </div>
+
+  <!-- 탭 4 : 선물 -->
+  <div class="panel" id="panel-gift">
+    <section>
+      <span class="label">GIFT</span>
+      <h2>선물 코너</h2>
+      <p class="sub">종류별로 둘러보세요 · 시즌 상품은 추천 탭의 기획전에서!</p>
+      <div class="gift-tabs" id="giftTabs"></div>
+      <div class="gift-cols" id="giftList"></div>
+    </section>
+  </div>
+
+  <!-- 탭 5 : 상품권·안내 -->
+  <div class="panel" id="panel-etc">
+    <section>
+      <div class="voucher">
+        <h3>선지서점 · 로뎀카페 상품권</h3>
+        <p>마음을 전하기 가장 쉬운 방법</p>
+        <div class="tickets">
+          <div class="tk"><small>GIFT</small>10,000원권</div>
+          <div class="tk"><small>GIFT</small>5,000원권</div>
+          <div class="tk"><small>GIFT</small>1,000원권</div>
+        </div>
+        <p class="note">서점과 카페 어디서나 사용하실 수 있어요 · 구입은 계산대에서</p>
+      </div>
+    </section>
+    <section style="padding-top:0">
+      <div class="mission">
+        <p>"선지서점의 모든 수익금은<br>선교를 위해 사용됩니다"</p>
+        <div class="s">책 한 권의 구매가 선교의 후원이 됩니다.</div>
+      </div>
+    </section>
+    <section style="padding-top:0">
+      <h2>운영 안내</h2>
+      <div class="info-box">
+        <p><strong>주소</strong> 성남시 수정구 성남대로1518번길 9 (1층)</p>
+        <p><strong>전화</strong> 031-750-1063</p>
+        <p><strong>재고 문의</strong> 원하시는 책이 있는지 전화로 확인해 드려요.</p>
+        <p><strong>운영시간</strong> 홈 화면의 운영시간표를 확인하세요.</p>
+      </div>
+    </section>
+  </div>
 
 </div>
 
@@ -196,11 +254,16 @@ footer .m{opacity:.75;margin-top:6px}
 
 <script>
 const GIFT_CATS = ['머그·텀블러','액자·시계','십자가·목걸이','카드·문구','생활소품','꽃·선물세트'];
-
+function showTab(t){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.getElementById('panel-'+t).classList.add('on');
+  document.querySelectorAll('#tabBar button').forEach(b=>b.classList.toggle('on', b.dataset.t===t));
+  window.scrollTo({top:0});
+}
 function priceHTML(p){
   const digits = (p||'').replace(/[^0-9]/g,'');
   if(!p) return '<span class="ask">가격은 서점에 문의해 주세요</span>';
-  if(!digits || (p.includes('~')) || p.includes('문의')) return '<span class="sale">'+p+'</span>';
+  if(!digits || p.includes('~') || p.includes('문의')) return '<span class="sale">'+p+'</span>';
   const orig = parseInt(digits,10);
   const sale = Math.floor(orig*0.9/100)*100;
   return '<span class="orig">'+orig.toLocaleString()+'원</span><span class="sale">'+sale.toLocaleString()+'원</span><span class="off">10%</span>';
@@ -212,6 +275,9 @@ function bookCard(b, v){
   return '<div class="book-card"><div class="cover">📖'+img+'</div><div>'+tagBadge+hotBadge+
     '<h3>'+b.title+'</h3><div class="author">'+(b.author||'')+'</div><p>'+(b.desc||'')+'</p>'+
     '<div class="price-line">'+priceHTML(b.price)+'</div></div></div>';
+}
+function giftRow(g){
+  return '<div class="gi"><div><div class="n">'+g.name+'</div>'+(g.desc?'<div class="d">'+g.desc+'</div>':'')+'</div><div class="p">'+(g.price||'문의')+'</div></div>';
 }
 fetch('data.json?v='+Date.now()).then(r=>r.json()).then(d=>{
   const v = d.updated || '';
@@ -227,20 +293,19 @@ fetch('data.json?v='+Date.now()).then(r=>r.json()).then(d=>{
   const news = books.filter(b=>b.tag==='신간' && !b.hot);
   const pastor = books.filter(b=>b.tag==='목사님저서' && !b.hot);
   const reco = books.filter(b=>b.tag==='추천' && !b.hot);
-  document.getElementById('hotBooks').innerHTML = '<div class="hd">서점 지기 강력 추천 ✨</div>' + hot.map(b=>bookCard(b,v)).join('');
+  document.getElementById('hotBooks').innerHTML = hot.map(b=>bookCard(b,v)).join('');
+  document.getElementById('previewNew').innerHTML = news.slice(0,2).map(b=>bookCard(b,v)).join('');
   document.getElementById('newBooks').innerHTML = news.map(b=>bookCard(b,v)).join('') || '<p class="sub">새 책이 곧 들어옵니다!</p>';
   document.getElementById('pastorBooks').innerHTML = pastor.map(b=>bookCard(b,v)).join('');
   if(reco.length){ document.getElementById('recoSection').style.display='block';
     document.getElementById('recoBooks').innerHTML = reco.map(b=>bookCard(b,v)).join(''); }
-  // 선물
   const gifts = d.gifts || [];
+  document.getElementById('previewGift').innerHTML = gifts.slice(0,3).map(giftRow).join('');
   const cats = GIFT_CATS.filter(c=>gifts.some(g=>g.cat===c));
   document.getElementById('giftTabs').innerHTML = cats.map((c,i)=>'<a href="#gc'+i+'">'+c+'</a>').join('');
   document.getElementById('giftList').innerHTML = cats.map((c,i)=>
     '<div class="gift-group" id="gc'+i+'"><h3>'+c+'</h3>'+
-    gifts.filter(g=>g.cat===c).map(g=>
-      '<div class="gi"><div><div class="n">'+g.name+'</div>'+(g.desc?'<div class="d">'+g.desc+'</div>':'')+'</div><div class="p">'+(g.price||'문의')+'</div></div>'
-    ).join('')+'</div>'
+    gifts.filter(g=>g.cat===c).map(giftRow).join('')+'</div>'
   ).join('');
 }).catch(()=>{});
 </script>
