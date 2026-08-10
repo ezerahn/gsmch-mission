@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>선한목자교회 1층 리뉴얼 마스터플랜 v24</title>
+<title>선한목자교회 1층 리뉴얼 마스터플랜</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -151,6 +151,7 @@ tbody tr:hover td{background:#F4F0E8;}
 .st.ing{background:#FDF3DF; color:#8A6414;}
 .st.done{background:#E8F2EC; color:var(--green);}
 .st.plan{background:#F0EDE6; color:var(--soft);}
+.st.talk{background:#F3EBDD; color:var(--wood);}
 .phase{border:1px solid var(--line); border-top:3px solid var(--green); border-radius:6px; padding:15px 18px; margin:0 0 13px; background:#FEFDFB;}
 .phase.p2{border-top-color:var(--wood);} .phase.p3{border-top-color:var(--gold);}
 .phase.p4{border-top-color:var(--wood);} .phase.p5{border-top-color:var(--green);}
@@ -168,6 +169,7 @@ tbody tr:hover td{background:#F4F0E8;}
 .whorow .who{margin-bottom:12px;}
 .who-t{font-size:14.5px; font-weight:700; margin-bottom:3px; padding-bottom:6px; border-bottom:1px solid var(--line);}
 .who-t span{font-size:11.5px; color:var(--soft); font-weight:400; margin-left:6px;}
+.who-p{font-size:11.5px; color:var(--wood); font-weight:400; margin-top:2px;}
 .who ul{margin:9px 0 0; padding-left:18px;}
 .who li{margin-bottom:3px; font-size:13.5px;}
 .who li b{color:var(--wood);}
@@ -184,7 +186,7 @@ tbody tr:hover td{background:#F4F0E8;}
 .btn-print{border:1px solid var(--line); background:#fff; font-family:inherit; font-size:12px; color:var(--soft); padding:4px 12px; border-radius:14px; cursor:pointer;}
 .btn-print:hover{background:var(--panel); color:var(--ink);}
 
-@media (max-width:900px){
+@media screen and (max-width:900px){
   .dates{grid-template-columns:repeat(2,1fr);}
   .block{padding:16px 17px 18px;}
   .flow{grid-template-columns:1fr;}
@@ -198,6 +200,37 @@ tbody tr:hover td{background:#F4F0E8;}
   .orglink .dash{display:none;}
   .sheet,.hero{padding:20px 18px;}
   table{font-size:11.5px;} th,td{padding:5px 6px;}
+}
+
+/* ── 모바일: 표를 카드형으로 ── */
+@media screen and (max-width:720px){
+  body{font-size:13.5px;}
+  .wrap{padding:16px 14px 60px;}
+  .tb-top{padding:9px 14px 7px;} .tabs{padding:0 14px;}
+  .tb-doc{display:none;}
+  .tab{font-size:14px; padding:10px 13px;}
+  .sheet,.hero,.block{padding:16px 14px 17px;}
+  h1{font-size:23px;}
+  .sec-head h2{font-size:17px;}
+  .dates{grid-template-columns:1fr; gap:8px;}
+  .flow{grid-template-columns:1fr; gap:8px;}
+  .fstep{margin-right:0 !important;}
+  .fstep::after{content:none !important;}
+  .whorow{grid-template-columns:1fr;}
+  .switch{gap:6px;}
+  .sw{font-size:13px; padding:6px 13px;}
+
+  table{border:0; margin:6px 0 14px;}
+  thead{display:none;}
+  tbody,tr,td{display:block; width:auto;}
+  tbody tr{border:1px solid var(--line); border-radius:7px; margin-bottom:8px;
+    padding:7px 0; background:#fff !important;}
+  tbody tr:nth-child(even) td,tbody tr:hover td{background:transparent;}
+  td{border:0 !important; display:flex; align-items:baseline; gap:10px;
+    padding:3px 13px; font-size:13px; white-space:normal !important; text-align:left !important;}
+  td::before{content:attr(data-label); flex:0 0 68px; color:var(--soft);
+    font-size:11.5px; font-weight:600; line-height:1.6;}
+  td:first-child{font-weight:600; padding-bottom:5px;}
 }
 
 @media print{
@@ -273,6 +306,7 @@ tbody tr:hover td{background:#F4F0E8;}
   .ph-done{font-size:8.5pt; padding:5px 8px;}
   .who{padding:11px 13px; margin-bottom:9px; break-inside:avoid;}
   .who-t{font-size:10.5pt; padding-bottom:5px;}
+  .who-p{font-size:8.3pt;}
   .who li{font-size:9pt; margin-bottom:1px;}
   .whorow{grid-template-columns:1fr 1fr !important; gap:9px;}
   .mtg{padding:11px 13px; margin-bottom:9px; break-inside:avoid;}
@@ -290,7 +324,7 @@ tbody tr:hover td{background:#F4F0E8;}
 <div class="topbar">
   <div class="tb-top">
     <div class="brand" data-go="home">선한목자교회 <span>1층 리뉴얼 마스터플랜</span></div>
-    <div class="tb-doc">v24 · 2026. 8. 9. · PM 안상미</div>
+    <div class="tb-doc">2026. 8. 10. · PM 안상미</div>
   </div>
   <nav class="tb-nav">
     <div class="tabs">
@@ -312,8 +346,7 @@ tbody tr:hover td{background:#F4F0E8;}
       <span class="sub">로뎀카페 · 선지서점 · 로비 · 자모실</span>
     </h1>
     <div class="meta">
-      <span>문서 <b>v24</b></span>
-      <span>작성일 <b>2026. 8. 9.</b></span>
+      <span>작성일 <b>2026. 8. 10.</b></span>
       <span>작성 <b>1층 리뉴얼 사업단 PM 안상미</b></span>
       <span>공사 완료 목표 <b>2026. 10. 20.</b></span>
     </div>
@@ -372,13 +405,13 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="c w-mid">일자</th><th class="c" style="width:16%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>기획위원회 1층 공사 확정</td><td class="c">26.08.02</td><td class="c"><span class="st done">확정</span></td><td>건축위 보고본 수령</td></tr>
-      <tr><td>로비 시스템비계 설치</td><td class="c">26.08.24</td><td class="c"><span class="st ing">통보</span></td><td>건축위 구두 통보</td></tr>
-      <tr><td>영업 최종일</td><td class="c red">미정</td><td class="c"><span class="st wait">대기</span></td><td>반출 기한에 연동</td></tr>
-      <tr><td>기물 반출 완료 기한</td><td class="c red">미정</td><td class="c"><span class="st wait">대기</span></td><td>건축위 확인 요청 중</td></tr>
-      <tr><td>철거 착수</td><td class="c red">미정</td><td class="c"><span class="st wait">대기</span></td><td>—</td></tr>
-      <tr><td>공사 완료</td><td class="c">26.10.20</td><td class="c"><span class="st ing">목표</span></td><td>준공 · 입주 시점 구분 확인 필요</td></tr>
-      <tr><td>오픈일</td><td class="c red">미정</td><td class="c"><span class="st wait">대기</span></td><td>성도 안내 문구에 반영 필요</td></tr>
+      <tr><td data-label="항목">기획위원회 1층 공사 확정</td><td class="c" data-label="일자">26.08.02</td><td class="c" data-label="상태"><span class="st done">확정</span></td><td data-label="비고">건축위 보고본 수령</td></tr>
+      <tr><td data-label="항목">로비 시스템비계 설치</td><td class="c" data-label="일자">26.08.24</td><td class="c" data-label="상태"><span class="st ing">통보</span></td><td data-label="비고">건축위 구두 통보</td></tr>
+      <tr><td data-label="항목">영업 최종일</td><td class="c red" data-label="일자">미정</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">반출 기한에 연동</td></tr>
+      <tr><td data-label="항목">기물 반출 완료 기한</td><td class="c red" data-label="일자">미정</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">건축위 확인 요청 중</td></tr>
+      <tr><td data-label="항목">철거 착수</td><td class="c red" data-label="일자">미정</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">공사 완료</td><td class="c" data-label="일자">26.10.20</td><td class="c" data-label="상태"><span class="st ing">목표</span></td><td data-label="비고">준공 · 입주 시점 구분 확인 필요</td></tr>
+      <tr><td data-label="항목">오픈일</td><td class="c red" data-label="일자">미정</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">성도 안내 문구에 반영 필요</td></tr>
     </tbody>
   </table></div>
 <div class="sub"><h3>1.3 조직과 소통</h3>
@@ -386,18 +419,17 @@ tbody tr:hover td{background:#F4F0E8;}
     <div class="orgrow">
       <div class="orgcard">
         <div class="oc-t">건축위팀</div>
-        <div class="oc-p">정경훈 장로 · 조소은 설계사 · 시공사</div>
+        <div class="oc-p">담당 장로 · 설계사 · 시공사</div>
         <div class="oc-d">전체 구조와 방향 수립, 설계, 견적, 시공 및 감리</div>
       </div>
       <div class="orgcard mid">
         <div class="oc-t">사업단팀</div>
-        <div class="oc-p">여선교회 담당 장로 · 사업단장 · 회계 2 · 매니저 2</div>
+        <div class="oc-p">여선교회 장로 · 사업단장 및 사업단 실무단</div>
         <div class="oc-d">카페 · 서점의 설계 의견 수립, 실제 운영 및 실무 셋업</div>
       </div>
       <div class="orgcard">
         <div class="oc-t">행정간사팀</div>
-        <div class="oc-p">현성민 장로</div>
-        <div class="oc-d">업체 계약, 견적 검토, 행정 절차</div>
+        <div class="oc-d">운영 및 행정 절차 지원</div>
       </div>
     </div>
     <div class="orglink"><span class="solid"></span><span class="dash l"></span><span class="dash r"></span></div>
@@ -414,11 +446,11 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:26%">경로</th><th>내용</th><th class="c" style="width:16%">주기</th></tr></thead>
     <tbody>
-      <tr><td>사업단 내부 → PM</td><td>매니저 · 회계의 현장 정보 및 실무 의견 취합</td><td class="c">수시</td></tr>
-      <tr><td>PM → 건축위</td><td>설계 의견 제출, 도면 검토 회신, 합동 회의 참석</td><td class="c">수시 · 회의</td></tr>
-      <tr><td>PM → 행정간사팀</td><td>계약 · 견적 관련 협의, 진행 상황 공유</td><td class="c">주 1회</td></tr>
-      <tr><td>PM → 사업단장 · 여선교회</td><td>진행 보고, 결재 필요 사항 상신</td><td class="c">주 1회</td></tr>
-      <tr><td>사업단 → 성도</td><td>주보 공지, 현장 안내문</td><td class="c">단계별</td></tr>
+      <tr><td data-label="경로">사업단 내부 → PM</td><td data-label="내용">매니저 · 회계의 현장 정보 및 실무 의견 취합</td><td class="c" data-label="주기">수시</td></tr>
+      <tr><td data-label="경로">PM → 건축위</td><td data-label="내용">설계 의견 제출, 도면 검토 회신, 합동 회의 참석</td><td class="c" data-label="주기">수시 · 회의</td></tr>
+      <tr><td data-label="경로">PM → 행정간사팀</td><td data-label="내용">계약 · 견적 관련 협의, 진행 상황 공유</td><td class="c" data-label="주기">주 1회</td></tr>
+      <tr><td data-label="경로">PM → 사업단장 · 여선교회</td><td data-label="내용">진행 보고, 결재 필요 사항 상신</td><td class="c" data-label="주기">주 1회</td></tr>
+      <tr><td data-label="경로">사업단 → 성도</td><td data-label="내용">주보 공지, 현장 안내문</td><td class="c" data-label="주기">단계별</td></tr>
     </tbody>
   </table></div>
 </section>
@@ -470,7 +502,6 @@ tbody tr:hover td{background:#F4F0E8;}
       <li>매니저 고용 유지 및 처우 관리</li>
       <li>오픈 준비 착수 (브랜드 · 메뉴 · 구매 · 인력)</li>
       <li>신규 기물 · 가구 사양 확정 및 발주</li>
-      <li>운영 매뉴얼 개정 작업 착수</li>
     </ul>
     <div class="ph-done"><b>완료 기준</b> — 사업단 확인 점검표 통과</div>
   </div>
@@ -518,12 +549,12 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>실면적 수치 확인</td><td class="c">PM</td><td class="c">8/13</td><td class="c"><span class="st wait">대기</span></td><td>도면 미표기</td></tr>
-      <tr><td>현 서점 실측 (면적 · 서가 길이 · 수납 권수)</td><td class="c">서점매니저</td><td class="c">8/13</td><td class="c"><span class="st ing">진행</span></td><td>신규 면적 검토 근거</td></tr>
-      <tr><td>진열 방식 및 서가 계획</td><td class="c">서점매니저 · PM</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>면적 확정 후</td></tr>
-      <tr><td>안내데스크 통합 운영 구조 확정</td><td class="c">사업단장</td><td class="c red">미정</td><td class="c"><span class="st wait">대기</span></td><td>운영 주체 협의 필요</td></tr>
-      <tr><td>창고 · 수납 공간 위치</td><td class="c">PM</td><td class="c red">미정</td><td class="c"><span class="st wait">대기</span></td><td>현 도면 미표기</td></tr>
-      <tr><td>계산대 · POS · 금고 위치</td><td class="c">서점매니저</td><td class="c red">미정</td><td class="c"><span class="st wait">대기</span></td><td>전기 · 통신 배선 연동</td></tr>
+      <tr><td data-label="항목">실면적 수치 확인</td><td class="c" data-label="담당">PM</td><td class="c" data-label="기한">8/13</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">도면 미표기</td></tr>
+      <tr><td data-label="항목">현 서점 실측 (면적 · 서가 길이 · 수납 권수)</td><td class="c" data-label="담당">서점매니저</td><td class="c" data-label="기한">8/13</td><td class="c" data-label="상태"><span class="st ing">진행</span></td><td data-label="비고">신규 면적 검토 근거</td></tr>
+      <tr><td data-label="항목">진열 방식 및 서가 계획</td><td class="c" data-label="담당">서점매니저 · PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">면적 확정 후</td></tr>
+      <tr><td data-label="항목">안내데스크 통합 운영 구조 확정</td><td class="c" data-label="담당">사업단장</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">운영 주체 협의 필요</td></tr>
+      <tr><td data-label="항목">창고 · 수납 공간 위치</td><td class="c" data-label="담당">PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">현 도면 미표기</td></tr>
+      <tr><td data-label="항목">계산대 · POS · 금고 위치</td><td class="c" data-label="담당">서점매니저</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">전기 · 통신 배선 연동</td></tr>
     </tbody>
   </table>
 
@@ -531,22 +562,21 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>바 · 주방 위치 및 동선</td><td class="c">카페매니저 · PM</td><td class="c">8/13</td><td class="c"><span class="st ing">진행</span></td><td>합동 회의 안건</td></tr>
-      <tr><td>급배수 · 전기 · 환기(후드) 계획</td><td class="c">건축위</td><td class="c red">미정</td><td class="c"><span class="st wait">대기</span></td><td>계획 도면 요청</td></tr>
-      <tr><td>필요 설비 사양 (제빙기 · 냉장고 · 싱크)</td><td class="c">카페매니저</td><td class="c">8/13</td><td class="c"><span class="st ing">진행</span></td><td>용량 · 수량 기준 제시</td></tr>
-      <tr><td>좌석 수 및 테이블 배치</td><td class="c">카페매니저 · PM</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>피크타임 회전 근거</td></tr>
-      <tr><td>창고 · 백룸 최소 면적</td><td class="c">카페매니저</td><td class="c">8/13</td><td class="c"><span class="st ing">진행</span></td><td>현 도면 미표기</td></tr>
-      <tr><td>사인 · 간판 제작 범위</td><td class="c">PM</td><td class="c red">미정</td><td class="c"><span class="st wait">대기</span></td><td>공사 범위 포함 여부</td></tr>
-    </tbody>
+      <tr><td data-label="항목">바 · 주방 위치 및 동선</td><td class="c" data-label="담당">카페매니저 · PM</td><td class="c" data-label="기한">8/13</td><td class="c" data-label="상태"><span class="st ing">진행</span></td><td data-label="비고">합동 회의 안건</td></tr>
+      <tr><td data-label="항목">급배수 · 전기 · 환기(후드) 계획</td><td class="c" data-label="담당">건축위</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">계획 도면 요청</td></tr>
+      <tr><td data-label="항목">필요 설비 사양 (제빙기 · 냉장고 · 싱크)</td><td class="c" data-label="담당">카페매니저</td><td class="c" data-label="기한">8/13</td><td class="c" data-label="상태"><span class="st ing">진행</span></td><td data-label="비고">용량 · 수량 기준 제시</td></tr>
+      <tr><td data-label="항목">좌석 수 및 테이블 배치</td><td class="c" data-label="담당">카페매니저 · PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">피크타임 회전 근거</td></tr>
+      <tr><td data-label="항목">창고 · 백룸 최소 면적</td><td class="c" data-label="담당">카페매니저</td><td class="c" data-label="기한">8/13</td><td class="c" data-label="상태"><span class="st ing">진행</span></td><td data-label="비고">현 도면 미표기</td></tr>
+          </tbody>
   </table>
 
   <h4>로비 · 자모실 접점</h4>
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>자모실 · 카페 간 유모차 동선</td><td class="c">PM</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>인접 배치에 따른 검토</td></tr>
-      <tr><td>소음 간섭 및 완충 계획</td><td class="c">PM</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>의견 제출</td></tr>
-      <tr><td>로비 이용 흐름과 서점 진입 동선</td><td class="c">PM</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>의견 제출</td></tr>
+      <tr><td data-label="항목">자모실 · 카페 간 유모차 동선</td><td class="c" data-label="담당">PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">인접 배치에 따른 검토</td></tr>
+      <tr><td data-label="항목">소음 간섭 및 완충 계획</td><td class="c" data-label="담당">PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">의견 제출</td></tr>
+      <tr><td data-label="항목">로비 이용 흐름과 서점 진입 동선</td><td class="c" data-label="담당">PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">의견 제출</td></tr>
     </tbody>
   </table></div>
 <div class="sub"><h3>3.2 자산 · 물품 정리</h3>
@@ -554,12 +584,12 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>도서 재고 실사 목록 (권수 · 금액 · 공급처)</td><td class="c">서점매니저</td><td class="c">8/16</td><td class="c"><span class="st ing">진행</span></td><td>회계 입회 확인</td></tr>
-      <tr><td>공급처별 반품 가능 여부 및 기한</td><td class="c">서점매니저</td><td class="c">8/12</td><td class="c"><span class="st wait">긴급</span></td><td>놓칠 경우 손실 발생</td></tr>
-      <tr><td>위탁 · 수탁 도서 반환 대상 확인</td><td class="c">서점매니저</td><td class="c">8/16</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>반품 · 보관 · 처분 분류 확정</td><td class="c">사업단장</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>실사 후 결정</td></tr>
-      <tr><td>상품권 재고 수량 및 보관 현황</td><td class="c">서점매니저 · 회계</td><td class="c">8/16</td><td class="c"><span class="st plan">예정</span></td><td>판매용 · 회수용 구분</td></tr>
-      <tr><td>예약 도서 · 주문 대기 건 처리</td><td class="c">서점매니저</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>고객 안내 포함</td></tr>
+      <tr><td data-label="항목">도서 재고 실사 목록 (권수 · 금액 · 공급처)</td><td class="c" data-label="담당">서점매니저</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st wait">긴급</span></td><td data-label="비고">회계 입회 확인</td></tr>
+      <tr><td data-label="항목">공급처별 반품 가능 여부 및 기한</td><td class="c" data-label="담당">서점매니저</td><td class="c" data-label="기한">8/12</td><td class="c" data-label="상태"><span class="st wait">긴급</span></td><td data-label="비고">놓칠 경우 손실 발생</td></tr>
+      <tr><td data-label="항목">위탁 · 수탁 도서 반환 대상 확인</td><td class="c" data-label="담당">서점매니저</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st wait">긴급</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">반품 · 보관 · 처분 분류 확정</td><td class="c" data-label="담당">사업단장</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">실사 후 결정</td></tr>
+      <tr><td data-label="항목">상품권 재고 수량 및 보관 현황</td><td class="c" data-label="담당">서점매니저 · 회계</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">판매용 · 회수용 구분</td></tr>
+      <tr><td data-label="항목">예약 도서 · 주문 대기 건 처리</td><td class="c" data-label="담당">서점매니저</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">고객 안내 포함</td></tr>
     </tbody>
   </table>
 
@@ -567,11 +597,11 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>기물 목록 (제조사 · 연식 · 상태 · 연결 여부)</td><td class="c">카페매니저</td><td class="c">8/16</td><td class="c"><span class="st ing">진행</span></td><td>기존 기물현황표 갱신</td></tr>
-      <tr><td>렌탈 · 리스 계약 확인 및 통보 기한</td><td class="c">카페매니저 · 회계</td><td class="c">8/12</td><td class="c"><span class="st wait">긴급</span></td><td>정수기 · 제빙기 등</td></tr>
-      <tr><td>재사용 · 폐기 · 신규 구입 판정</td><td class="c">카페매니저 · 사업단장</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>식자재 · 소모품 소진 계획</td><td class="c">카페매니저</td><td class="c">8/16</td><td class="c"><span class="st ing">진행</span></td><td>발주 중단 시점 역산</td></tr>
-      <tr><td>거래처 납품 중단 통보</td><td class="c">카페매니저</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>영업 최종일 확정 후</td></tr>
+      <tr><td data-label="항목">기물 목록 (제조사 · 연식 · 상태 · 연결 여부)</td><td class="c" data-label="담당">카페매니저</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st wait">긴급</span></td><td data-label="비고">기존 기물현황표 갱신</td></tr>
+      <tr><td data-label="항목">렌탈 · 리스 계약 확인 및 통보 기한</td><td class="c" data-label="담당">카페매니저 · 회계</td><td class="c" data-label="기한">8/12</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">정수기 · 제빙기 등</td></tr>
+      <tr><td data-label="항목">재사용 · 폐기 · 신규 구입 판정</td><td class="c" data-label="담당">카페매니저 · 사업단장</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">식자재 · 소모품 소진 계획</td><td class="c" data-label="담당">카페매니저</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st ing">진행</span></td><td data-label="비고">발주 중단 시점 역산</td></tr>
+      <tr><td data-label="항목">거래처 납품 중단 통보</td><td class="c" data-label="담당">카페매니저</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">영업 최종일 확정 후</td></tr>
     </tbody>
   </table>
 
@@ -579,9 +609,9 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>가구 · 집기 목록 및 재사용 여부</td><td class="c">매니저 2인</td><td class="c">8/16</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>POS · 카드단말기 · 통신 회선 처리</td><td class="c">회계 2인</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>정지 또는 이전</td></tr>
-      <tr><td>금고 · 시재 · 서류 이전</td><td class="c">회계 2인</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>보안 관리 필요</td></tr>
+      <tr><td data-label="항목">가구 · 집기 목록 및 재사용 여부</td><td class="c" data-label="담당">매니저 2인</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">POS · 카드단말기 · 통신 회선 처리</td><td class="c" data-label="담당">회계 2인</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">정지 또는 이전</td></tr>
+      <tr><td data-label="항목">금고 · 시재 · 서류 이전</td><td class="c" data-label="담당">회계 2인</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">보안 관리 필요</td></tr>
     </tbody>
   </table>
 
@@ -589,36 +619,36 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>반출 완료 기한 확인</td><td class="c">PM</td><td class="c">8/12</td><td class="c"><span class="st wait">긴급</span></td><td>—</td></tr>
-      <tr><td>보관 장소 배정 요청</td><td class="c">PM</td><td class="c">8/13</td><td class="c"><span class="st wait">대기</span></td><td>도서는 분진 · 습기 취약</td></tr>
-      <tr><td>이사 업체 발주 주체 확인</td><td class="c">PM · 행정간사팀</td><td class="c">8/16</td><td class="c"><span class="st wait">대기</span></td><td>—</td></tr>
-      <tr><td>중량 · 연결 기물 철거 및 재설치 주체</td><td class="c">PM</td><td class="c">8/16</td><td class="c"><span class="st wait">대기</span></td><td>시공사 담당 여부</td></tr>
-      <tr><td>박스 분류 · 라벨링 기준 수립</td><td class="c">매니저 2인</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>오픈 시 복원 순서 고려</td></tr>
-      <tr><td>폐기 처리 비용 부담 주체</td><td class="c">행정간사팀</td><td class="c red">미정</td><td class="c"><span class="st wait">대기</span></td><td>—</td></tr>
+      <tr><td data-label="항목">반출 완료 기한 확인</td><td class="c" data-label="담당">PM</td><td class="c" data-label="기한">8/12</td><td class="c" data-label="상태"><span class="st wait">긴급</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">보관 장소 배정 요청</td><td class="c" data-label="담당">PM</td><td class="c" data-label="기한">8/13</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">도서는 분진 · 습기 취약</td></tr>
+      <tr><td data-label="항목">이사 업체 발주 주체 확인</td><td class="c" data-label="담당">PM · 행정간사팀</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">중량 · 연결 기물 철거 및 재설치 주체</td><td class="c" data-label="담당">PM</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">시공사 담당 여부</td></tr>
+      <tr><td data-label="항목">박스 분류 · 라벨링 기준 수립</td><td class="c" data-label="담당">매니저 2인</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">오픈 시 복원 순서 고려</td></tr>
+      <tr><td data-label="항목">폐기 처리 비용 부담 주체</td><td class="c" data-label="담당">행정간사팀</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">—</td></tr>
     </tbody>
   </table></div>
 <div class="sub"><h3>3.3 예산 · 회계</h3>
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>항목별 부담 주체 구분표 작성</td><td class="c">PM</td><td class="c">8/16</td><td class="c"><span class="st ing">진행</span></td><td>별도 문서로 작성 예정</td></tr>
-      <tr><td>구분표 확정 (교회 · 사업단)</td><td class="c">행정간사팀 · 건축위</td><td class="c">8/20</td><td class="c"><span class="st wait">대기</span></td><td>—</td></tr>
-      <tr><td>영업 중단 시점 정산 기준일 확정</td><td class="c">회계 2인</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>영업 최종일 연동</td></tr>
-      <tr><td>재고자산 실사 및 회계 확인</td><td class="c">회계 2인</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>매니저 실사 → 회계 검증</td></tr>
-      <tr><td>상품권 미상환 잔액 확정</td><td class="c">회계 2인</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>현금성 부채</td></tr>
-      <tr><td>공사기간 중 고정비 처리 방침</td><td class="c">회계 2인 · 사업단장</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>렌탈료 · 통신 등</td></tr>
-      <tr><td>기물 폐기 · 신규 구입 자산 처리</td><td class="c">회계 2인</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>감사 대비 기록</td></tr>
-      <tr><td>공사기간 월례회 보고 양식 조정</td><td class="c">PM · 회계</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
+      <tr><td data-label="항목">항목별 부담 주체 구분표 작성</td><td class="c" data-label="담당">PM</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st ing">진행</span></td><td data-label="비고">별도 문서로 작성 예정</td></tr>
+      <tr><td data-label="항목">구분표 확정 (교회 · 사업단)</td><td class="c" data-label="담당">행정간사팀 · 건축위</td><td class="c" data-label="기한">8/20</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">영업 중단 시점 정산 기준일 확정</td><td class="c" data-label="담당">회계 2인</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">영업 최종일 연동</td></tr>
+      <tr><td data-label="항목">재고자산 실사 및 회계 확인</td><td class="c" data-label="담당">회계 2인</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">매니저 실사 → 회계 검증</td></tr>
+      <tr><td data-label="항목">상품권 미상환 잔액 확정</td><td class="c" data-label="담당">회계 2인</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">현금성 부채</td></tr>
+      <tr><td data-label="항목">공사기간 중 고정비 처리 방침</td><td class="c" data-label="담당">회계 2인 · 사업단장</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">렌탈료 · 통신 등</td></tr>
+      <tr><td data-label="항목">기물 폐기 · 신규 구입 자산 처리</td><td class="c" data-label="담당">회계 2인</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">감사 대비 기록</td></tr>
+      <tr><td data-label="항목">공사기간 월례회 보고 양식 조정</td><td class="c" data-label="담당">PM · 회계</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
     </tbody>
   </table></div>
 <div class="sub"><h3>3.4 인력</h3>
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>매니저 고용 유지 방침 결정</td><td class="c">사업단장 · 여선교회</td><td class="c">8/16</td><td class="c"><span class="st wait">대기</span></td><td>당사자 불안 요소</td></tr>
-      <tr><td>공사기간 중 처우 및 근무 형태</td><td class="c">사업단장</td><td class="c red">미정</td><td class="c"><span class="st wait">대기</span></td><td>—</td></tr>
-      <tr><td>알바 인력 처리</td><td class="c">매니저 2인 · 회계</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>오픈 시 인력 계획</td><td class="c">사업단장 · PM</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>확장 면적 반영</td></tr>
+      <tr><td data-label="항목">매니저 고용 유지 방침 결정</td><td class="c" data-label="담당">사업단장 · 여선교회</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">당사자 불안 요소</td></tr>
+      <tr><td data-label="항목">공사기간 중 처우 및 근무 형태</td><td class="c" data-label="담당">사업단장</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">알바 인력 처리</td><td class="c" data-label="담당">매니저 2인 · 회계</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">오픈 시 인력 계획</td><td class="c" data-label="담당">사업단장 · PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">확장 면적 반영</td></tr>
     </tbody>
   </table></div>
 <div class="sub"><h3>3.5 운영 · 오픈 준비</h3>
@@ -627,10 +657,10 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>공사기간 중 임시 운영 여부 결정</td><td class="c">사업단장 · PM</td><td class="c">8/16</td><td class="c"><span class="st wait">대기</span></td><td>비전센터 무인카페 활용 검토</td></tr>
-      <tr><td>상품권 판매 · 회수 지속 여부</td><td class="c">사업단장</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>카페 휴업 신고 필요 여부 확인</td><td class="c">회계 · 행정간사팀</td><td class="c">8/16</td><td class="c"><span class="st wait">대기</span></td><td>관공서 기한 확인</td></tr>
-      <tr><td>쿠폰 · 적립 잔여분 처리 방침</td><td class="c">카페매니저</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
+      <tr><td data-label="항목">공사기간 중 임시 운영 여부 결정</td><td class="c" data-label="담당">사업단장 · PM</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">비전센터 무인카페 활용 검토</td></tr>
+      <tr><td data-label="항목">상품권 판매 · 회수 지속 여부</td><td class="c" data-label="담당">사업단장</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">카페 휴업 신고 필요 여부 확인</td><td class="c" data-label="담당">회계 · 행정간사팀</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st wait">대기</span></td><td data-label="비고">관공서 기한 확인</td></tr>
+      <tr><td data-label="항목">쿠폰 · 적립 잔여분 처리 방침</td><td class="c" data-label="담당">카페매니저</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
     </tbody>
   </table>
 
@@ -638,10 +668,10 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>사인 · 간판 디자인 및 제작 범위</td><td class="c">PM</td><td class="c red">미정</td><td class="c"><span class="st wait">대기</span></td><td>공사 범위 포함 여부 확인 필요</td></tr>
-      <tr><td>유니폼 · 앞치마</td><td class="c">매니저 2인</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>컵 · 홀더 · 포장재 등 패키지</td><td class="c">카페매니저</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>메뉴판 · 안내물 제작</td><td class="c">카페매니저 · PM</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
+      <tr><td data-label="항목">사인 · 간판 디자인 협의</td><td class="c" data-label="담당">PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">제작은 공사 범위 포함 · 디자인 협의 필요</td></tr>
+      <tr><td data-label="항목">유니폼 · 앞치마</td><td class="c" data-label="담당">매니저 2인</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">컵 · 홀더 · 포장재 등 패키지</td><td class="c" data-label="담당">카페매니저</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">메뉴판 · 안내물 제작</td><td class="c" data-label="담당">카페매니저 · PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
     </tbody>
   </table>
 
@@ -649,9 +679,9 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>메뉴 구성 재검토 및 가격 정책</td><td class="c">카페매니저 · 사업단장</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>신메뉴 도입 여부</td><td class="c">카페매니저</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>서점 도서 구성 및 진열 방식</td><td class="c">서점매니저</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>신규 면적 확정 후</td></tr>
+      <tr><td data-label="항목">메뉴 구성 재검토 및 가격 정책</td><td class="c" data-label="담당">카페매니저 · 사업단장</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">신메뉴 도입 여부</td><td class="c" data-label="담당">카페매니저</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">서점 도서 구성 및 진열 방식</td><td class="c" data-label="담당">서점매니저</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">신규 면적 확정 후</td></tr>
     </tbody>
   </table>
 
@@ -659,10 +689,10 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>신규 기물 목록 및 사양 확정</td><td class="c">매니저 2인 · PM</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>예산 범위 협의 후</td></tr>
-      <tr><td>가구 · 집기 · 식기 · 소모품</td><td class="c">매니저 2인</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>서점 진열 집기</td><td class="c">서점매니저</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>초도 발주</td><td class="c">매니저 2인</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>10월 역산</td></tr>
+      <tr><td data-label="항목">신규 기물 목록 및 사양 확정</td><td class="c" data-label="담당">매니저 2인 · PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">예산 범위 협의 후</td></tr>
+      <tr><td data-label="항목">가구 · 집기 · 식기 · 소모품</td><td class="c" data-label="담당">매니저 2인 · PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">서점 진열 집기</td><td class="c" data-label="담당">매니저 2인 · PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">초도 발주</td><td class="c" data-label="담당">매니저 2인</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">10월 역산</td></tr>
     </tbody>
   </table>
 
@@ -670,9 +700,9 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>POS · 결제 · 재고관리 재개</td><td class="c">회계 2인</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>상품권 운영 방식 정비</td><td class="c">서점매니저 · 회계</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>오픈 · 마감 절차 정비</td><td class="c">매니저 2인</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
+      <tr><td data-label="항목">POS · 결제 · 재고관리 재개</td><td class="c" data-label="담당">회계 2인</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">상품권 운영 방식 정비</td><td class="c" data-label="담당">서점매니저 · 회계</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">오픈 · 마감 절차 정비</td><td class="c" data-label="담당">매니저 2인</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
     </tbody>
   </table>
 
@@ -680,21 +710,21 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>인력 배치 계획 및 교육</td><td class="c">사업단장 · 매니저 2인</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>오픈 전 시범 운영</td><td class="c">매니저 2인</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>사역매뉴얼 Ⅲ편 작성</td><td class="c">PM</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>사업장별 운영 편</td></tr>
-      <tr><td>위생 · 안전 관리 기준 정비</td><td class="c">카페매니저</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
+      <tr><td data-label="항목">인력 배치 계획 및 교육</td><td class="c" data-label="담당">사업단장 · 매니저</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">오픈 전 시범 운영</td><td class="c" data-label="담당">매니저 2인</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">사역매뉴얼 Ⅲ편 작성</td><td class="c" data-label="담당">PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">사업장별 운영 편</td></tr>
+      <tr><td data-label="항목">위생 · 안전 관리 기준 정비</td><td class="c" data-label="담당">카페매니저</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
     </tbody>
   </table></div>
 <div class="sub"><h3>3.6 홍보 · 안내</h3>
   <table>
     <thead><tr><th style="width:38%">항목</th><th class="w-mid c">담당</th><th class="w-dt c">기한</th><th class="c" style="width:14%">상태</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>영업 중단 주보 공지 원고 작성</td><td class="c">PM</td><td class="c">8/13</td><td class="c"><span class="st wait">긴급</span></td><td>8/16 주보 게재 목표</td></tr>
-      <tr><td>공지 문안 승인</td><td class="c">사업단장</td><td class="c">8/14</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>현장 안내문 · 게시물 제작</td><td class="c">PM</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>—</td></tr>
-      <tr><td>웹사이트 · QR 안내 갱신</td><td class="c">PM</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>gsmch-mission 사이트</td></tr>
-      <tr><td>오픈 안내 공지</td><td class="c">PM</td><td class="c red">미정</td><td class="c"><span class="st plan">예정</span></td><td>오픈일 확정 후</td></tr>
+      <tr><td data-label="항목">영업 중단 주보 공지 원고 작성</td><td class="c" data-label="담당">PM</td><td class="c" data-label="기한">8/13</td><td class="c" data-label="상태"><span class="st wait">긴급</span></td><td data-label="비고">8/16 주보 게재 목표</td></tr>
+      <tr><td data-label="항목">공지 문안 승인</td><td class="c" data-label="담당">사업단장</td><td class="c" data-label="기한">8/14</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">현장 안내문 · 게시물 제작</td><td class="c" data-label="담당">PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">—</td></tr>
+      <tr><td data-label="항목">웹사이트 · QR 안내 갱신</td><td class="c" data-label="담당">PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">gsmch-mission 사이트</td></tr>
+      <tr><td data-label="항목">오픈 안내 공지</td><td class="c" data-label="담당">PM</td><td class="c red" data-label="기한">미정</td><td class="c" data-label="상태"><span class="st plan">예정</span></td><td data-label="비고">오픈일 확정 후</td></tr>
     </tbody>
   </table></div>
 
@@ -704,7 +734,7 @@ tbody tr:hover td{background:#F4F0E8;}
 <p>영역별 항목을 담당자 기준으로 다시 묶은 것이다. 각 담당자에게는 해당 부분만 전달한다. 같은 항목이므로 한쪽을 고치면 다른 쪽도 함께 갱신한다.</p>
 
   <div class="whorow"><div class="who">
-    <div class="who-t">PM <span>· 안상미</span></div>
+    <div class="who-t">PM<div class="who-p">안상미 권사</div></div>
     <ul>
       <li class="urgent"><b>건축위 합동 회의 소집 요청 및 개최</b></li>
       <li class="urgent"><b>주보 공지 원고 작성</b> — 8/16 게재 목표</li>
@@ -732,19 +762,17 @@ tbody tr:hover td{background:#F4F0E8;}
       <li><b>행정간사팀</b> — 변경 발생 시 승인 절차 및 예비비 유무</li>
     </ul>
   </div></div><div class="who">
-    <div class="who-t">사업단장 <span>· 여선교회 담당 장로 협의</span></div>
+    <div class="who-t">사업단장 · 여선교회 담당 장로 <span>협의</span><div class="who-p">김묘숙 권사 · 송은주 장로</div></div>
     <ul>
       <li class="urgent"><b>매니저 고용 유지 방침 결정</b> — 공사기간 처우 포함</li>
-      <li class="urgent"><b>PM 역할 및 위임 범위 승인</b></li>
-      <li>여선교회 보고 및 승인</li>
-      <li>사업단 예산 집행 범위 승인</li>
-      <li>공사기간 중 임시 운영 여부 결정</li>
+      <li>여선교회 협의 및 소통</li>
+      <li>사업단 예산 집행 가능 범위 결정</li>
+      <li>공사기간 중 임시 운영 여부 결정 (특히 서점)</li>
       <li>성도 안내문 최종 승인</li>
       <li>도서 반품 · 보관 · 처분 분류 최종 결정</li>
-      <li>교회 측(담임목사 · 건축위) 협의 시 사업단 대표</li>
     </ul>
   </div><div class="who">
-    <div class="who-t">서점회계 · 카페회계</div>
+    <div class="who-t">서점회계 · 카페회계<div class="who-p">박라연 권사 · 이영은 권사</div></div>
     <ul>
       <li class="urgent"><b>카페 휴업 신고 필요 여부 확인</b> — 관공서 기한 확인</li>
       <li>영업 중단 시점 정산 기준일 확정</li>
@@ -762,12 +790,12 @@ tbody tr:hover td{background:#F4F0E8;}
     <ul>
       <li class="urgent"><b>공급처별 반품 가능 여부 및 기한 확인</b> — 놓칠 경우 그대로 손실</li>
       <li class="urgent"><b>현 서점 실측</b> — 면적, 서가 총 길이, 수납 가능 권수</li>
-      <li>도서 재고 실사 목록 작성 (권수 · 금액 · 공급처별)</li>
-      <li>위탁 · 수탁 도서 및 반환 대상 확인</li>
+      <li class="urgent">도서 재고 실사 목록 작성 (권수 · 금액 · 공급처별)</li>
+      <li class="urgent">위탁 · 수탁 도서 및 반환 대상 확인</li>
       <li>상품권 재고 수량 및 보관 현황 (판매용 · 회수용 구분)</li>
       <li>진열대 · 서가 · 집기 목록 및 재사용 희망 여부</li>
       <li>예약 도서 · 주문 대기 건 처리 방안</li>
-      <li>운영상 불편했던 점과 새 공간에 필요한 것 (계산대 위치 · 수납 · 조명)</li>
+      <li class="urgent">운영상 불편했던 점과 새 공간에 필요한 것 (계산대 위치 · 수납 · 조명)</li>
       <li>반출 시 박스 분류 · 라벨링 기준</li>
     </ul>
   </div><div class="who">
@@ -781,7 +809,7 @@ tbody tr:hover td{background:#F4F0E8;}
       <li>식자재 · 소모품 재고 및 소진 계획 (발주 중단 시점 역산)</li>
       <li>거래처 목록 및 납품 중단 통보 일정</li>
       <li>좌석 수 및 피크타임 회전 현황</li>
-      <li>쿠폰 · 적립 · 다회용컵 보증금 등 미정산 건</li>
+      <li>쿠폰 · 적립 등 미정산 건</li>
     </ul>
   </div>
   </div>
@@ -802,23 +830,20 @@ tbody tr:hover td{background:#F4F0E8;}
     <div class="swlab">확인 필요 — 아직 안 정해진 것. 확인되면 결정 대장으로 옮긴다</div>
 <p>확인이 완료된 항목은 결정 대장으로 이관한다. 상태는 대기 · 확인 중 · 완료로 표기한다. 회계 자체의 확인 필요 항목(과년도 선교비 등)은 성격이 달라 별도 문서에서 관리한다.</p>
   <table>
-    <thead><tr><th class="c" style="width:52px">구분</th><th style="width:26%">내용</th><th>왜 필요한가</th><th class="c" style="width:126px">확인 대상</th><th class="c" style="width:58px">기한</th><th class="c" style="width:74px">상태</th></tr></thead>
+    <thead><tr><th class="c" style="width:52px">구분</th><th style="width:26%">내용</th><th>확인 사유</th><th class="c" style="width:126px">확인 대상</th><th class="c" style="width:58px">기한</th><th class="c" style="width:74px">상태</th></tr></thead>
     <tbody>
-      <tr><td class="c">일정</td><td>기물 반출 완료 기한</td><td>영업 최종일이 여기서 결정됨</td><td class="c">건축위</td><td class="c">8/12</td><td class="c"><span class="st wait">대기</span></td></tr>
-      <tr><td class="c">일정</td><td>철거 착수일 및 비계 설치 범위</td><td>반출 동선과 여유 기간 산정</td><td class="c">건축위</td><td class="c">8/12</td><td class="c"><span class="st wait">대기</span></td></tr>
-      <tr><td class="c">일정</td><td>10/20이 준공일인지 입주일인지</td><td>집기 반입 기간과 오픈 안내</td><td class="c">건축위</td><td class="c">8/13</td><td class="c"><span class="st wait">대기</span></td></tr>
-      <tr><td class="c">조직</td><td>PM 역할 인정 및 소통 채널 참여</td><td>의견 반영 시차 제거</td><td class="c">건축위</td><td class="c">8/13</td><td class="c"><span class="st wait">대기</span></td></tr>
-      <tr><td class="c">설계</td><td>서점 실면적 수치</td><td>도면 미표기로 서가 계획 불가</td><td class="c">조소은 설계사</td><td class="c">8/13</td><td class="c"><span class="st wait">대기</span></td></tr>
-      <tr><td class="c">설계</td><td>서점 · 안내데스크 통합 운영 여부</td><td>인력 · 동선 · 개폐 시간이 달라짐</td><td class="c">건축위 · 교회</td><td class="c">8/18</td><td class="c"><span class="st wait">대기</span></td></tr>
-      <tr><td class="c">설계</td><td>카페 급배수 · 전기 · 환기 도면</td><td>바 위치와 설비 사양의 전제</td><td class="c">조소은 설계사</td><td class="c">8/18</td><td class="c"><span class="st wait">대기</span></td></tr>
-      <tr><td class="c">설계</td><td>사인 · 간판의 공사 범위 포함 여부</td><td>사업단 예산 규모가 달라짐</td><td class="c">건축위</td><td class="c">8/20</td><td class="c"><span class="st wait">대기</span></td></tr>
-      <tr><td class="c">자산</td><td>반출 · 보관 발주 주체와 장소</td><td>도서는 분진 · 습기에 취약</td><td class="c">행정간사팀</td><td class="c">8/16</td><td class="c"><span class="st wait">대기</span></td></tr>
-      <tr><td class="c">예산</td><td>항목별 부담 주체 구분</td><td>사업단 예산 규모와 권한 범위</td><td class="c">행정간사팀</td><td class="c">8/20</td><td class="c"><span class="st wait">대기</span></td></tr>
-      <tr><td class="c">인력</td><td>매니저 고용 유지 및 처우</td><td>당사자의 가장 큰 불안 요소</td><td class="c">사업단장</td><td class="c">8/16</td><td class="c"><span class="st wait">대기</span></td></tr>
-      <tr><td class="c">운영</td><td>카페 휴업 신고 필요 여부</td><td>관공서 기한이 정해져 있을 수 있음</td><td class="c">회계 · 행정간사팀</td><td class="c">8/16</td><td class="c"><span class="st wait">대기</span></td></tr>
-      <tr><td class="c">자산</td><td>도서 공급처별 반품 기한</td><td>기한 경과 시 손실로 확정</td><td class="c">서점매니저</td><td class="c">8/12</td><td class="c"><span class="st ing">확인 중</span></td></tr>
-      <tr><td class="c">자산</td><td>카페 렌탈 · 리스 계약 통보 기한</td><td>지연 시 위약 또는 요금 발생</td><td class="c">카페매니저 · 회계</td><td class="c">8/12</td><td class="c"><span class="st ing">확인 중</span></td></tr>
-      <tr><td class="c">운영</td><td>공사기간 중 임시 운영 여부</td><td>매니저 근무 형태와 연동</td><td class="c">사업단장</td><td class="c">8/16</td><td class="c"><span class="st wait">대기</span></td></tr>
+      <tr><td class="c" data-label="구분">일정</td><td data-label="내용">기물 반출 완료 기한</td><td data-label="확인 사유">영업 최종일이 여기서 결정됨</td><td class="c" data-label="확인 대상">건축위</td><td class="c" data-label="기한">8/12</td><td class="c" data-label="상태"><span class="st wait">대기</span></td></tr>
+      <tr><td class="c" data-label="구분">일정</td><td data-label="내용">철거 착수일 및 비계 설치 범위</td><td data-label="확인 사유">반출 동선과 여유 기간 산정</td><td class="c" data-label="확인 대상">건축위</td><td class="c" data-label="기한">8/12</td><td class="c" data-label="상태"><span class="st wait">대기</span></td></tr>
+      <tr><td class="c" data-label="구분">일정</td><td data-label="내용">10/20이 준공일인지 입주일인지</td><td data-label="확인 사유">집기 반입 기간과 오픈 안내</td><td class="c" data-label="확인 대상">건축위</td><td class="c" data-label="기한">8/13</td><td class="c" data-label="상태"><span class="st wait">대기</span></td></tr>
+            <tr><td class="c" data-label="구분">설계</td><td data-label="내용"><span class="st talk">협의</span> 서점 실면적 수치</td><td data-label="확인 사유">입구 및 실 면적 조정 필요</td><td class="c" data-label="확인 대상">조소은 설계사</td><td class="c" data-label="기한">8/13</td><td class="c" data-label="상태"><span class="st wait">대기</span></td></tr>
+            <tr><td class="c" data-label="구분">설계</td><td data-label="내용"><span class="st talk">협의</span> 카페 급배수 · 전기 · 환기 도면</td><td data-label="확인 사유">현재 카페 설비 배치 시안 필요</td><td class="c" data-label="확인 대상">조소은 설계사</td><td class="c" data-label="기한">8/18</td><td class="c" data-label="상태"><span class="st wait">대기</span></td></tr>
+            <tr><td class="c" data-label="구분">자산</td><td data-label="내용">반출 · 보관 발주 주체와 장소</td><td data-label="확인 사유">도서는 분진 · 습기에 취약</td><td class="c" data-label="확인 대상">행정간사팀</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st wait">대기</span></td></tr>
+      <tr><td class="c" data-label="구분">예산</td><td data-label="내용">항목별 부담 주체 구분</td><td data-label="확인 사유">사업단 예산 규모와 권한 범위</td><td class="c" data-label="확인 대상">행정간사팀</td><td class="c" data-label="기한">8/20</td><td class="c" data-label="상태"><span class="st wait">대기</span></td></tr>
+      <tr><td class="c" data-label="구분">인력</td><td data-label="내용">매니저 고용 유지 및 처우</td><td data-label="확인 사유">인력 운영 방안 고려 필요</td><td class="c" data-label="확인 대상">사업단장</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st wait">대기</span></td></tr>
+      <tr><td class="c" data-label="구분">운영</td><td data-label="내용">카페 휴업 신고 필요 여부</td><td data-label="확인 사유">확인 필요</td><td class="c" data-label="확인 대상">회계 · 행정간사팀</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st wait">대기</span></td></tr>
+      <tr><td class="c" data-label="구분">자산</td><td data-label="내용">도서 공급처별 반품 기한</td><td data-label="확인 사유">기한 경과 시 손실 우려</td><td class="c" data-label="확인 대상">서점매니저</td><td class="c" data-label="기한">8/12</td><td class="c" data-label="상태"><span class="st ing">확인 중</span></td></tr>
+      <tr><td class="c" data-label="구분">자산</td><td data-label="내용">카페 렌탈 · 리스 계약 통보 기한</td><td data-label="확인 사유">지연 시 위약 또는 요금 발생</td><td class="c" data-label="확인 대상">카페매니저 · 회계</td><td class="c" data-label="기한">8/12</td><td class="c" data-label="상태"><span class="st ing">확인 중</span></td></tr>
+      <tr><td class="c" data-label="구분">운영</td><td data-label="내용">공사기간 중 임시 운영 여부</td><td data-label="확인 사유">매니저 근무 형태와 연동</td><td class="c" data-label="확인 대상">사업단장</td><td class="c" data-label="기한">8/16</td><td class="c" data-label="상태"><span class="st wait">대기</span></td></tr>
     </tbody>
   </table>
   </div>
@@ -828,14 +853,14 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th class="c" style="width:46px">번호</th><th class="c" style="width:72px">일자</th><th class="c" style="width:52px">구분</th><th style="width:28%">결정사항</th><th class="c" style="width:112px">결정 주체</th><th>근거 · 경위</th></tr></thead>
     <tbody>
-      <tr><td class="c">001</td><td class="c">26.08.02</td><td class="c">범위</td><td>1층 로비 · 카페 · 서점 공사 확정</td><td class="c">기획위원회</td><td>건축위 보고본 (26.08.02)</td></tr>
-      <tr><td class="c">002</td><td class="c">26.08.09</td><td class="c">일정</td><td>8/24 로비 시스템비계 설치 통보</td><td class="c">건축위</td><td>공정상 로비 선행</td></tr>
-      <tr><td class="c">003</td><td class="c">26.08.09</td><td class="c">범위</td><td>사업단 관리 범위를 1층으로 한정</td><td class="c">사업단 PM</td><td>담당 범위 명확화 · 보고 초점 확보</td></tr>
-      <tr><td class="c">004</td><td class="c red">기록 예정</td><td class="c">조직</td><td>PM 직 설치 및 위임 범위 승인</td><td class="c">사업단장</td><td>월례회 회의록</td></tr>
-      <tr><td class="c red">005</td><td class="c red">미정</td><td class="c">일정</td><td class="red">영업 최종일 확정</td><td class="c">사업단 · 건축위</td><td>반출 기한 역산</td></tr>
-      <tr><td class="c red">006</td><td class="c red">미정</td><td class="c">자산</td><td class="red">도서 반품 · 보관 · 처분 분류 확정</td><td class="c">사업단장</td><td>공급처 반품 조건</td></tr>
-      <tr><td class="c red">007</td><td class="c red">미정</td><td class="c">예산</td><td class="red">항목별 부담 주체 확정</td><td class="c">행정간사팀</td><td>구분표 기준</td></tr>
-      <tr><td class="c red">008</td><td class="c red">미정</td><td class="c">인력</td><td class="red">매니저 고용 유지 및 처우 방침</td><td class="c">사업단장</td><td>—</td></tr>
+      <tr><td class="c" data-label="번호">001</td><td class="c" data-label="일자">26.08.02</td><td class="c" data-label="구분">범위</td><td data-label="결정사항">1층 로비 · 카페 · 서점 공사 확정</td><td class="c" data-label="결정 주체">기획위원회</td><td data-label="근거 · 경위">건축위 보고본 (26.08.02)</td></tr>
+      <tr><td class="c" data-label="번호">002</td><td class="c" data-label="일자">26.08.09</td><td class="c" data-label="구분">일정</td><td data-label="결정사항">8/24 로비 시스템비계 설치 통보</td><td class="c" data-label="결정 주체">건축위</td><td data-label="근거 · 경위">공정상 로비 선행</td></tr>
+      <tr><td class="c" data-label="번호">003</td><td class="c" data-label="일자">26.08.09</td><td class="c" data-label="구분">범위</td><td data-label="결정사항">사업단 관리 범위를 1층으로 한정</td><td class="c" data-label="결정 주체">사업단 PM</td><td data-label="근거 · 경위">담당 범위 명확화 · 보고 초점 확보</td></tr>
+      <tr><td class="c" data-label="번호">004</td><td class="c red" data-label="일자">기록 예정</td><td class="c" data-label="구분">조직</td><td data-label="결정사항">PM 직 설치 및 위임 범위 승인</td><td class="c" data-label="결정 주체">사업단장</td><td data-label="근거 · 경위">월례회 회의록</td></tr>
+      <tr><td class="c red" data-label="번호">005</td><td class="c red" data-label="일자">미정</td><td class="c" data-label="구분">일정</td><td class="red" data-label="결정사항">영업 최종일 확정</td><td class="c" data-label="결정 주체">사업단 · 건축위</td><td data-label="근거 · 경위">반출 기한 역산</td></tr>
+      <tr><td class="c red" data-label="번호">006</td><td class="c red" data-label="일자">미정</td><td class="c" data-label="구분">자산</td><td class="red" data-label="결정사항">도서 반품 · 보관 · 처분 분류 확정</td><td class="c" data-label="결정 주체">사업단장</td><td data-label="근거 · 경위">공급처 반품 조건</td></tr>
+      <tr><td class="c red" data-label="번호">007</td><td class="c red" data-label="일자">미정</td><td class="c" data-label="구분">예산</td><td class="red" data-label="결정사항">항목별 부담 주체 확정</td><td class="c" data-label="결정 주체">행정간사팀</td><td data-label="근거 · 경위">구분표 기준</td></tr>
+      <tr><td class="c red" data-label="번호">008</td><td class="c red" data-label="일자">미정</td><td class="c" data-label="구분">인력</td><td class="red" data-label="결정사항">매니저 고용 유지 및 처우 방침</td><td class="c" data-label="결정 주체">사업단장</td><td data-label="근거 · 경위">—</td></tr>
     </tbody>
   </table>
   <p class="note">※ 구분은 범위 · 일정 · 설계 · 자산 · 예산 · 인력 · 조직으로 표기한다. 결정 주체는 개인명이 아닌 직책 또는 기구로 기재한다.</p>
@@ -881,12 +906,12 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th class="c w-nar">번호</th><th class="c w-dt">발송일</th><th class="c" style="width:12%">대상</th><th style="width:34%">질문</th><th class="c w-dt">회신일</th><th>회신 내용</th></tr></thead>
     <tbody>
-      <tr><td class="c">Q01</td><td class="c red">발송 예정</td><td class="c">건축위</td><td>기물 반출 완료 기한 및 비계 이후 진입 가능 여부</td><td class="c">—</td><td>—</td></tr>
-      <tr><td class="c">Q02</td><td class="c red">발송 예정</td><td class="c">건축위</td><td>비계 설치 범위 (로비 전체 여부)</td><td class="c">—</td><td>—</td></tr>
-      <tr><td class="c">Q03</td><td class="c red">발송 예정</td><td class="c">건축위</td><td>철거 착수일</td><td class="c">—</td><td>—</td></tr>
-      <tr><td class="c">Q04</td><td class="c red">발송 예정</td><td class="c">건축위</td><td>10/20의 성격 (준공 · 입주) 및 오픈 목표일</td><td class="c">—</td><td>—</td></tr>
-      <tr><td class="c">Q05</td><td class="c red">발송 예정</td><td class="c">건축위</td><td>설계 의견 제출 마감일 및 예산 확정 시점</td><td class="c">—</td><td>—</td></tr>
-      <tr><td class="c">Q06</td><td class="c red">발송 예정</td><td class="c">건축위</td><td>합동 회의 개최, 소통 채널 참여, 담임목사 미팅 배석 요청</td><td class="c">—</td><td>—</td></tr>
+      <tr><td class="c" data-label="번호">Q01</td><td class="c red" data-label="발송일">발송 예정</td><td class="c" data-label="대상">건축위</td><td data-label="질문">기물 반출 완료 기한 및 비계 이후 진입 가능 여부</td><td class="c" data-label="회신일">—</td><td data-label="회신 내용">—</td></tr>
+      <tr><td class="c" data-label="번호">Q02</td><td class="c red" data-label="발송일">발송 예정</td><td class="c" data-label="대상">건축위</td><td data-label="질문">비계 설치 범위 (로비 전체 여부)</td><td class="c" data-label="회신일">—</td><td data-label="회신 내용">—</td></tr>
+      <tr><td class="c" data-label="번호">Q03</td><td class="c red" data-label="발송일">발송 예정</td><td class="c" data-label="대상">건축위</td><td data-label="질문">철거 착수일</td><td class="c" data-label="회신일">—</td><td data-label="회신 내용">—</td></tr>
+      <tr><td class="c" data-label="번호">Q04</td><td class="c red" data-label="발송일">발송 예정</td><td class="c" data-label="대상">건축위</td><td data-label="질문">10/20의 성격 (준공 · 입주) 및 오픈 목표일</td><td class="c" data-label="회신일">—</td><td data-label="회신 내용">—</td></tr>
+      <tr><td class="c" data-label="번호">Q05</td><td class="c red" data-label="발송일">발송 예정</td><td class="c" data-label="대상">건축위</td><td data-label="질문">설계 의견 제출 마감일 및 예산 확정 시점</td><td class="c" data-label="회신일">—</td><td data-label="회신 내용">—</td></tr>
+      <tr><td class="c" data-label="번호">Q06</td><td class="c red" data-label="발송일">발송 예정</td><td class="c" data-label="대상">건축위</td><td data-label="질문">합동 회의 개최, 소통 채널 참여, 담임목사 미팅 배석 요청</td><td class="c" data-label="회신일">—</td><td data-label="회신 내용">—</td></tr>
     </tbody>
   </table>
   <p class="note">※ 발송일과 회신일을 남겨 회신 지연 여부를 추적한다.</p></div>
@@ -894,12 +919,12 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:20%">사안</th><th style="width:24%">1차 문의</th><th>비고</th></tr></thead>
     <tbody>
-      <tr><td>공사 일정 · 시공 · 도면</td><td>건축위 총괄</td><td>설계 세부는 설계사</td></tr>
-      <tr><td>계약 · 견적 · 업체 발주</td><td>행정간사팀</td><td>—</td></tr>
-      <tr><td>예산 집행 · 인력 · 대외 약속</td><td>사업단장</td><td>결재 필요</td></tr>
-      <tr><td>서점 실무</td><td>서점매니저</td><td>회계 연동 시 서점회계</td></tr>
-      <tr><td>카페 실무</td><td>카페매니저</td><td>회계 연동 시 카페회계</td></tr>
-      <tr><td>전체 조정 · 문서 · 일정</td><td>PM</td><td>—</td></tr>
+      <tr><td data-label="사안">공사 일정 · 시공 · 도면</td><td data-label="1차 문의">건축위 총괄</td><td data-label="비고">설계 세부는 설계사</td></tr>
+      <tr><td data-label="사안">계약 · 견적 · 업체 발주</td><td data-label="1차 문의">행정간사팀</td><td data-label="비고">—</td></tr>
+      <tr><td data-label="사안">예산 집행 · 인력 · 대외 약속</td><td data-label="1차 문의">사업단장</td><td data-label="비고">결재 필요</td></tr>
+      <tr><td data-label="사안">서점 실무</td><td data-label="1차 문의">서점매니저</td><td data-label="비고">회계 연동 시 서점회계</td></tr>
+      <tr><td data-label="사안">카페 실무</td><td data-label="1차 문의">카페매니저</td><td data-label="비고">회계 연동 시 카페회계</td></tr>
+      <tr><td data-label="사안">전체 조정 · 문서 · 일정</td><td data-label="1차 문의">PM</td><td data-label="비고">—</td></tr>
     </tbody>
   </table>
   <p class="note"><span class="red">※ 연락처는 보안상 본 문서에 기재하지 않으며 별도 파일로 관리한다.</span></p></div>
@@ -907,23 +932,23 @@ tbody tr:hover td{background:#F4F0E8;}
   <table>
     <thead><tr><th style="width:36%">자료명</th><th class="c w-dt">작성일</th><th class="c w-dt">수령일</th><th>내용</th></tr></thead>
     <tbody>
-      <tr><td>다음세대를 위한 개선공사 (건축위 보고본)</td><td class="c">26.08.02</td><td class="c">26.08.09</td><td><b>1층 현재 · 대안 평면</b>, 카페 · 서점 · 자모실 조감, 지하 및 지상 화장실 대안</td></tr>
-      <tr><td>선한목자교회 화장실 부속실 개선공사</td><td class="c">26.06.08</td><td class="c">—</td><td>층별 평면도, 공간별 개선사항 주기 <span style="color:var(--soft);">(참고)</span></td></tr>
-      <tr><td>화장실개선공사 (담임목사 보고본)</td><td class="c">26.06.13</td><td class="c">—</td><td>층별 도면 <span style="color:var(--soft);">(참고)</span></td></tr>
-      <tr><td>A09 지상1층 평면도</td><td class="c">—</td><td class="c">—</td><td>1층 기존 평면</td></tr>
-      <tr><td>공공시설 친환경 위생도기 가이드</td><td class="c">—</td><td class="c">—</td><td>화장실 사양 참고 <span style="color:var(--soft);">(참고)</span></td></tr>
-      <tr><td class="red">갱신 도면</td><td class="c red">수령 시 추가</td><td class="c red">—</td><td class="red">버전과 수령일을 반드시 기록한다</td></tr>
+      <tr><td data-label="자료명">다음세대를 위한 개선공사 (건축위 보고본)</td><td class="c" data-label="작성일">26.08.02</td><td class="c" data-label="수령일">26.08.09</td><td data-label="내용"><b>1층 현재 · 대안 평면</b>, 카페 · 서점 · 자모실 조감, 지하 및 지상 화장실 대안</td></tr>
+      <tr><td data-label="자료명">선한목자교회 화장실 부속실 개선공사</td><td class="c" data-label="작성일">26.06.08</td><td class="c" data-label="수령일">—</td><td data-label="내용">층별 평면도, 공간별 개선사항 주기 <span style="color:var(--soft);">(참고)</span></td></tr>
+      <tr><td data-label="자료명">화장실개선공사 (담임목사 보고본)</td><td class="c" data-label="작성일">26.06.13</td><td class="c" data-label="수령일">—</td><td data-label="내용">층별 도면 <span style="color:var(--soft);">(참고)</span></td></tr>
+      <tr><td data-label="자료명">A09 지상1층 평면도</td><td class="c" data-label="작성일">—</td><td class="c" data-label="수령일">—</td><td data-label="내용">1층 기존 평면</td></tr>
+      <tr><td data-label="자료명">공공시설 친환경 위생도기 가이드</td><td class="c" data-label="작성일">—</td><td class="c" data-label="수령일">—</td><td data-label="내용">화장실 사양 참고 <span style="color:var(--soft);">(참고)</span></td></tr>
+      <tr><td class="red" data-label="자료명">갱신 도면</td><td class="c red" data-label="작성일">수령 시 추가</td><td class="c red" data-label="수령일">—</td><td class="red" data-label="내용">버전과 수령일을 반드시 기록한다</td></tr>
     </tbody>
   </table></div>
 <div class="sub"><h3>5.4 관련 문서</h3>
   <table>
     <thead><tr><th style="width:36%">문서명</th><th>용도</th></tr></thead>
     <tbody>
-      <tr><td>gsmch_1F리뉴얼_마스터플랜 (본 문서)</td><td>전체 관리 및 보고</td></tr>
-      <tr><td class="red">예산 항목별 부담 주체 구분표 (작성 예정)</td><td>교회 · 사업단 부담 경계 확정</td></tr>
-      <tr><td class="red">담당자별 요청서 (작성 예정)</td><td>매니저 · 회계 전달용</td></tr>
-      <tr><td>카페 기물현황표</td><td>기물 재사용 · 이전 판정 기준</td></tr>
-      <tr><td>총여선교회 사업단 사역매뉴얼</td><td>오픈 후 Ⅲ편 반영</td></tr>
+      <tr><td data-label="문서명">gsmch_1F리뉴얼_마스터플랜 (본 문서)</td><td data-label="용도">전체 관리 및 보고</td></tr>
+      <tr><td class="red" data-label="문서명">예산 항목별 부담 주체 구분표 (작성 예정)</td><td data-label="용도">교회 · 사업단 부담 경계 확정</td></tr>
+      <tr><td class="red" data-label="문서명">담당자별 요청서 (작성 예정)</td><td data-label="용도">매니저 · 회계 전달용</td></tr>
+      <tr><td data-label="문서명">카페 기물현황표</td><td data-label="용도">기물 재사용 · 이전 판정 기준</td></tr>
+      <tr><td data-label="문서명">총여선교회 사업단 사역매뉴얼</td><td data-label="용도">오픈 후 Ⅲ편 반영</td></tr>
     </tbody>
   </table></div>
 </section>
