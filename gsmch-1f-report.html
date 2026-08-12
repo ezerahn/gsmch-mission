@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>선한목자교회 · 1층 리뉴얼 진행 보고</title>
+<title>선한목자교회 · 1층 성전보수 진행 보고</title>
 <style>
   :root{
     --bg:#faf9f7; --card:#ffffff; --line:#e8e5df;
@@ -19,10 +19,15 @@
   }
   .top{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line)}
   .top-in{max-width:720px;margin:0 auto;padding:16px 20px 0}
-  .crumb{display:flex;align-items:center;gap:6px;margin-bottom:9px}
-  .crumb a{font-size:12.5px;color:var(--muted);text-decoration:none}
-  .crumb a:hover{color:var(--accent)}
-  .crumb span{font-size:12.5px;color:var(--line)}
+  .navrow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+  .pill{
+    display:inline-flex;align-items:center;gap:4px;
+    font-size:12.5px;color:var(--muted);text-decoration:none;
+    padding:6px 13px;border:1px solid var(--line);border-radius:18px;
+    background:var(--bg);transition:.15s;white-space:nowrap;
+  }
+  .pill:hover{background:var(--accent-light);border-color:var(--accent);color:var(--accent)}
+  .meta{margin-left:auto;font-size:11.5px;color:var(--muted);white-space:nowrap}
   h1{font-size:19px;font-weight:600;letter-spacing:-0.02em;margin-bottom:12px}
 
   .dtabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none}
@@ -78,6 +83,7 @@
 
   @media(max-width:520px){
     body{font-size:14px}
+    .meta{margin-left:0;flex-basis:100%;white-space:normal}
     .top-in{padding:14px 14px 0}
     .wrap{padding:16px 14px 50px}
     .doc{padding:19px 17px}
@@ -89,10 +95,12 @@
 
 <div class="top">
   <div class="top-in">
-    <div class="crumb">
-      <a href="gsmch-1f.html">1층 리뉴얼</a><span>›</span><a href="#" style="color:var(--text)">진행 보고</a>
+    <div class="navrow">
+      <a class="pill" href="gsmch-1f.html">← 1층 성전보수</a>
+      <a class="pill" href="https://claude.ai/chat/f79f7909-7d3f-460c-8667-ed107a377bae" target="_blank" rel="noopener">💬 작업 대화</a>
+      <div class="meta">1층 성전보수 › 진행 보고 &nbsp;|&nbsp; 업데이트 2026.08.12</div>
     </div>
-    <h1>1층 리뉴얼 진행 보고</h1>
+    <h1>1층 성전보수 진행 보고</h1>
     <div class="dtabs" id="dtabs">
       <button class="dtab on" data-d="0811">8/11(화)<span class="new">최신</span></button>
     </div>
