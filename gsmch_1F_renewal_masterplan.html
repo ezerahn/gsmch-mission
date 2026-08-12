@@ -393,6 +393,7 @@ tbody tr:hover td{background:#F4F0E8;}
 
 /* 주요 일정 — 예정 상태 */
 .dates.d3{grid-template-columns:repeat(3,1fr);}
+.dt-val{white-space:nowrap;}
 .dtcell.plan{border-top-color:var(--gold); background:#FDFBF5;}
 .dt-lab i.plan{background:var(--gold);}
 
@@ -420,6 +421,9 @@ tbody tr:hover td{background:#F4F0E8;}
 .matcard span{font-size:11.5px; color:var(--soft); line-height:1.5;}
 
 @media screen and (max-width:720px){
+  .dates.d3{grid-template-columns:1fr !important;}
+  .dtcell{padding:11px 15px 12px;}
+  .dt-val .dd{display:inline;}
   .gal{grid-template-columns:1fr;}
   .stagebar .switch{padding:8px 14px 9px;}
   .grpnav{padding:6px 14px 7px;}
@@ -545,7 +549,7 @@ tbody tr:hover td{background:#F4F0E8;}
         <div class="oc-d">카페 · 서점의 설계 의견 수립, 실제 운영 및 실무 셋업</div>
       </div>
       <div class="orgcard">
-        <div class="oc-t">행정간사팀</div>
+        <div class="oc-t">사무국</div>
         <div class="oc-d">운영 및 행정 절차 지원</div>
       </div>
     </div>
@@ -553,7 +557,7 @@ tbody tr:hover td{background:#F4F0E8;}
     <div class="orgpmrow">
       <div class="orgpm">
         <b>1층 리뉴얼 사업단 PM</b>
-        <span>사업단 실무 총괄 · 건축위 · 행정간사팀과의 협의 창구</span>
+        <span>사업단 실무 총괄 · 건축위 · 사무국과의 협의 창구</span>
       </div>
     </div>
     <div class="orglegend"><em></em>소속 · 실무 총괄<em class="d"></em>협의</div>
