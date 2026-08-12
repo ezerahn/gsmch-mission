@@ -79,7 +79,7 @@ h1 .sub{display:block; font-size:14px; color:var(--soft); font-weight:400; margi
 
 /* 진행 단계 */
 .flow{display:grid; grid-template-columns:repeat(6,1fr); gap:0;}
-.fstep{border:1px solid var(--line); border-radius:6px; padding:13px 14px 14px; background:#FCFAF6;
+.fstep{border:1px solid var(--line); border-radius:6px; padding:13px 14px 13px; background:#FCFAF6;
   position:relative; margin-right:16px;}
 .fstep:last-child{margin-right:0;}
 .fstep::after{content:"›"; position:absolute; right:-13px; top:50%; transform:translateY(-50%);
@@ -517,8 +517,8 @@ tbody tr:hover td{background:#F4F0E8;}
 
   <div class="block">
     <div class="blk-t">진행 단계</div>
-    <div class="blk-c">각 단계는 완료 기준을 충족한 후 다음 단계로 이행한다. 단계별 할 일 · 안건 · 자료는 상단 메뉴 「2 진행 단계」 참조.</div>
-    <div class="flow"><div class="fstep now"><div class="now-badge">진행 중</div><div class="fn">①</div><div class="ft">설계 · 소통</div><div class="fw">8. 9. ~ 영업 최종일</div></div><div class="fstep"><div class="fn">②</div><div class="ft">자산 · 물품 정리</div><div class="fw">영업 최종일 전후</div></div><div class="fstep"><div class="fn">③</div><div class="ft">영업중단 · 반출</div><div class="fw">8/17(월) ~ 8/24(월)</div></div><div class="fstep"><div class="fn">④</div><div class="ft">오픈 준비</div><div class="fw">공사 기간 · 8월 말 ~ 10월</div></div><div class="fstep"><div class="fn">⑤</div><div class="ft">집기 반입 · 세팅</div><div class="fw">10월</div></div><div class="fstep"><div class="fn">⑥</div><div class="ft">오픈 · 안정화</div><div class="fw">10. 20. 이후</div></div></div>
+    <div class="blk-c">각 단계는 완료 기준을 충족한 후 다음 단계로 이행한다. 카드를 누르면 해당 단계로 이동한다.</div>
+    <div class="flow"><div class="fstep now" data-jump="st1" role="button" tabindex="0"><div class="now-badge">진행 중</div><div class="fn">①</div><div class="ft">설계 · 소통</div><div class="fw">8. 9. ~ 영업 최종일</div><span class="go">보기 ›</span></div><div class="fstep" data-jump="st2" role="button" tabindex="0"><div class="fn">②</div><div class="ft">자산 · 물품 정리</div><div class="fw">영업 최종일 전후</div><span class="go">보기 ›</span></div><div class="fstep" data-jump="st3" role="button" tabindex="0"><div class="fn">③</div><div class="ft">영업중단 · 반출</div><div class="fw">8/17(월) ~ 8/24(월)</div><span class="go">보기 ›</span></div><div class="fstep" data-jump="st4" role="button" tabindex="0"><div class="fn">④</div><div class="ft">오픈 준비</div><div class="fw">공사 기간 · 8월 말 ~ 10월</div><span class="go">보기 ›</span></div><div class="fstep" data-jump="st5" role="button" tabindex="0"><div class="fn">⑤</div><div class="ft">집기 반입 · 세팅</div><div class="fw">10월</div><span class="go">보기 ›</span></div><div class="fstep" data-jump="st6" role="button" tabindex="0"><div class="fn">⑥</div><div class="ft">오픈 · 안정화</div><div class="fw">10. 20. 이후</div><span class="go">보기 ›</span></div></div>
   </div>
 
   <div class="sheet">
@@ -892,7 +892,34 @@ function go(id){
     if(cur) syncGrp(cur.dataset.sw);
   }
   window.scrollTo({top:0, behavior:'instant'});
-  if(history.replaceState) history.replaceState(null,'', id==='home' ? location.pathname : '#'+id);
+  syncHash();
+}
+function syncHash(){
+  if(!history.replaceState) return;
+  var v = document.querySelector('.tab.on');
+  var id = v ? v.dataset.go : 'home';
+  if(id==='home'){ history.replaceState(null,'', location.pathname); return; }
+  var parts = [id];
+  if(id==='v2'){
+    var st = document.querySelector('.sw[data-group="stage"].on');
+    if(st) parts.push(st.dataset.sw);
+  } else if(id==='v4'){
+    var g = document.querySelector('.sw[data-group="gal"].on');
+    if(g) parts.push(g.dataset.sw);
+  }
+  history.replaceState(null,'', '#'+parts.join('/'));
+}
+function applyHash(){
+  var h = location.hash.slice(1);
+  if(!h) return;
+  var parts = h.split('/');
+  var t = document.getElementById(parts[0]);
+  if(!(t && t.classList.contains('view'))) return;
+  go(parts[0]);
+  if(parts[1]){
+    var sub = document.querySelector('.sw[data-sw="'+parts[1]+'"]');
+    if(sub) sw(sub.dataset.group, parts[1]);
+  }
 }
 function syncGrp(stageId){
   document.querySelectorAll('.grpnav').forEach(function(n){
@@ -907,9 +934,12 @@ function sw(group, target){
     b.classList.toggle('on', b.dataset.sw===target);
   });
   if(group==='stage') syncGrp(target);
+  syncHash();
 }
 var lb = document.getElementById('lightbox');
 document.addEventListener('click', function(e){
+  var jp = e.target.closest('[data-jump]');
+  if(jp){ go('v2'); sw('stage', jp.dataset.jump); return; }
   var z = e.target.closest('img[data-zoom]');
   if(z){ lb.querySelector('img').src = z.src; lb.classList.add('on'); return; }
   if(e.target.closest('#lightbox')){ lb.classList.remove('on'); return; }
@@ -919,11 +949,8 @@ document.addEventListener('click', function(e){
   if(el){ go(el.dataset.go); }
 });
 (function(){ var sb=document.getElementById('stagebar'); if(sb) sb.classList.remove('on'); })();
-if(location.hash){
-  var h = location.hash.slice(1);
-  var t = document.getElementById(h);
-  if(t && t.classList.contains('view')) go(h);
-}
+applyHash();
+window.addEventListener('hashchange', applyHash);
 window.addEventListener('afterprint', function(){
   var cur = document.querySelector('.tab.on');
   go(cur ? cur.dataset.go : 'home');
