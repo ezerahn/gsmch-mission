@@ -70,6 +70,11 @@
   .ok{color:var(--accent);font-weight:600}
   .bad{color:var(--red);font-weight:600}
 
+  .lead3{list-style:none;margin:0}
+  .lead3 li{font-size:14px;color:var(--soft);line-height:1.7;margin-bottom:14px;
+    padding-left:14px;border-left:2px solid var(--line)}
+  .lead3 li:last-child{margin-bottom:0}
+  .lead3 li b{color:var(--text);font-weight:600}
   .note{border-left:3px solid var(--gold);background:#fdfaf4;padding:12px 16px;
     border-radius:0 8px 8px 0;margin:14px 0}
   .note p{margin:0;font-size:13.5px}
@@ -167,12 +172,15 @@
     .head{border-top:0;padding-top:0;margin-bottom:14px}
     h1{font-size:22px}
     .lead{font-size:12px}
-    .stats{margin-bottom:16px;border-radius:8px}
-    .stat{padding:9px 10px}
+    .stats{margin-bottom:14px;border-radius:8px;grid-template-columns:repeat(4,1fr)}
+    .stat{padding:8px 10px;border-right:1px solid var(--line2);border-top:0}
+    .stat:last-child{border-right:0}
     .stat-v{font-size:16px}
-    .sec{margin:14px 0 9px}
+    .sec{margin:26px 0 11px}
+    .sec:first-of-type{margin-top:16px}
+    .sec.brk{margin-top:0}
     .sec h2{font-size:15px}
-    .card{border-radius:8px;padding:10px 12px;margin-bottom:7px}
+    .card{border-radius:8px;padding:12px 14px;margin-bottom:8px}
     table,.ask,.glist,.legend,.note{break-inside:avoid;page-break-inside:avoid}
     svg{break-inside:avoid;page-break-inside:avoid}
     .sec.brk{break-before:page;page-break-before:always}
@@ -180,17 +188,27 @@
     .sec,.sec h2{break-after:avoid;page-break-after:avoid}
     h3{break-after:avoid;page-break-after:avoid}
     p,li{font-size:11px;margin-bottom:5px}
+    .lead3 li{font-size:11px;line-height:1.6;margin-bottom:7px;padding-left:10px}
     th,td{font-size:10px;padding:4px 6px}
     table{break-inside:avoid;page-break-inside:avoid}
-    svg{max-width:120mm;margin:1px auto}
-    svg.tall{max-width:72mm}
-    svg.wide{max-width:96mm}
+    svg{max-width:120mm;margin:2px auto}
+    svg.plan{max-width:178mm}
+    svg.planm{max-width:126mm}
+    svg.tall{max-width:142mm}
+    svg.wide{max-width:150mm}
+    svg.back{max-width:132mm}
+    #p-subj,#p-pub{float:left;width:49%}
+    #p-pub{margin-left:2%}
+    #bayOut{clear:both;padding-top:4px}
+    #p-subj th,#p-subj td,#p-pub th,#p-pub td{font-size:8.8px;padding:2.2px 4px}
+    .bar2{display:none}
+    #p-subj th:last-child,#p-subj td:last-child,#p-pub th:last-child,#p-pub td:last-child{display:none}
     .note{padding:8px 11px;margin:7px 0}
     .note p{font-size:11px}
     .tabs{display:none}
     .pane{display:block !important}
     .pane+.pane{margin-top:10px}
-    .ctrl{background:#fff;border-style:dashed;padding:7px 10px;margin:7px 0}
+    .ctrl{background:#fff;border-style:dashed;padding:5px 9px;margin:5px 0}
     .ctrl .hint{font-size:10px}
     .ask{margin-top:11px;padding-top:9px;break-inside:avoid;page-break-inside:avoid}
     .card.keep{break-inside:avoid;page-break-inside:avoid}
@@ -240,11 +258,22 @@
     </div>
   </div>
 
-  <div class="sec"><h2>1 전제</h2><span class="cap">배치를 정하는 기준</span><div class="rule"></div></div>
+  <div class="sec"><h2>1 전제</h2><span class="cap">배치를 볼 때 고려할 점</span><div class="rule"></div></div>
   <div class="card">
-    <p><b>선지서점은 일반 서점이 아니라 행사 대응 매장입니다.</b> 제직훈련 수료식·임직식 당일에 사람이 몰리고, 다들 시간이 없어 빠른 처리를 원하십니다. 줄이 길게 늘어서고, 미리 포장해 두지 않으면 감당이 되지 않습니다.</p>
-    <p>이 전제가 배치의 모든 판단 기준입니다. <b>평소 한 명이 여유롭게 쓰는 매장이 아니라, 행사 때 수십 명이 한꺼번에 몰리는 매장</b>으로 짜야 합니다.</p>
-    <p>동시에 면적이 크게 줄었습니다. 7,560 × 4,680mm, <b>10.7평</b>입니다. 구조를 잘 짜면 예산도 아끼고 운영도 편해집니다.</p>
+    <ul class="lead3">
+      <li><b>행사 때 이용이 집중됩니다.</b><br>
+        제직훈련 수료식 · 임직식 당일에는 이용이 몰립니다.<br>
+        시간이 넉넉하지 않아 대기가 길어지고, 미리 포장해 두지 않으면 응대가 어렵습니다.</li>
+      <li><b>평상시와 편차가 커서 함께 고려가 필요합니다.</b><br>
+        평상시 기준으로만 보면 여유가 있어 보이지만,<br>
+        집중되는 때에는 동선과 대기 자리가 부족해집니다.</li>
+      <li><b>한두 명이 빠르게 대응할 수 있어야 합니다.</b><br>
+        상주 인원이 많지 않아 움직이는 거리가 짧아야 합니다.<br>
+        꺼내고 채우는 일이 매일 반복되므로 진열과 수납이 한자리에서 이뤄져야 합니다.</li>
+      <li><b>면적은 10.7평입니다.</b><br>
+        7,560 × 4,680mm로 이전보다 줄었습니다.<br>
+        구조를 잘 짜면 예산도 아끼고 운영도 편해집니다.</li>
+    </ul>
   </div>
 
   <div class="sec"><h2>2 실측</h2><span class="cap">A08 도면 기준</span><div class="rule"></div></div>
@@ -258,7 +287,7 @@
       <tr><td>A면 우측 남는 길이</td><td class="n">2,150</td><td>좁은 쪽 · 안내데스크 접함</td></tr>
     </table>
     <div class="note">
-      <p><b>출입구가 오른쪽으로 치우쳐 좌우 벽이 비대칭입니다.</b> 이것이 계산대 위치를 결정하는 핵심 변수입니다. 원본 도면에는 우측 벽이 2,180으로 적혀 있으나 3,610 + 1,800 + 2,180 = 7,590으로 내부 가로 7,560과 30mm 어긋납니다. 여기서는 계산값 2,150을 썼으며, 현장 실측 때 확인이 필요합니다.</p>
+      <p><b>출입구가 오른쪽으로 치우쳐 좌우 벽이 비대칭입니다.</b> 이것이 계산대 위치를 결정하는 핵심 변수입니다. 원본 도면의 2,180을 쓰면 합계가 7,590으로 내부 가로 7,560과 30mm 어긋나, 여기서는 계산값 2,150을 썼습니다.</p>
     </div>
     <p>C면은 외벽이지만 <b>창이 없습니다.</b> 서점은 먼지가 상당해 환기 계획이 반드시 필요하며, 현재 도면에 반영돼 있는지 확인해야 합니다.</p>
     <div class="ask">
@@ -268,7 +297,7 @@
     </div>
   </div>
 
-  <div class="sec"><h2>3 벽면 명칭</h2><span class="cap">문서 · 도면 공통</span><div class="rule"></div></div>
+  <div class="sec brk"><h2>3 벽면 명칭</h2><span class="cap">문서 · 도면 공통</span><div class="rule"></div></div>
   <div class="card">
     <p>「상단 벽」은 책장 위쪽으로, 「좌측 벽」은 서 있는 위치에 따라 달리 읽힙니다. 실내건축 전개도 표기에 맞춰 <b>출입구가 있는 벽을 A면으로 하고 시계 방향</b>으로 정합니다. 계산대가 어느 쪽으로 가든 벽 이름은 바뀌지 않습니다.</p>
     <svg class="sv" viewBox="0 0 680 340" role="img" aria-label="벽면 명칭">
@@ -326,7 +355,7 @@
   <div class="card">
     <h3>A안 — 계산대 우측 <span class="tag warn">550 부족</span></h3>
     <div class="sub">좁은 쪽(2,150)에 카운터 구역을 넣는 안</div>
-    <svg class="sv" viewBox="0 0 680 470" role="img" aria-label="A안 평면도">
+    <svg class="sv plan" viewBox="0 0 680 470" role="img" aria-label="A안 평면도">
       <text class="dm" x="490" y="28" text-anchor="middle">카운터 구역 2,700 — 우측 2,150에서 550 부족</text>
       <line class="dl" x1="410" y1="48" x2="604" y2="48"/>
       <line class="dl" x1="410" y1="44" x2="410" y2="52"/><line class="dl" x1="475" y1="44" x2="475" y2="52"/>
@@ -444,10 +473,10 @@
     <p><b>걸리는 점</b> — 카운터 구역 2,700이 우측 2,150에 들어가지 않아 <b class="bad">대기 줄이 출입구 앞으로 550 밀려납니다.</b> 행사 때 들어오는 사람과 줄이 문 앞에서 만납니다. 카운터도 ㄱ자로 꺾을 폭이 없어 일자가 되며, 두 명이 두 변에서 동시에 작업할 수 없습니다. B면 양면 서가의 안쪽 5칸이 직원 통로 뒤에 갇혀 고객이 쓰지 못합니다.</p>
   </div>
 
-  <div class="card">
+  <div class="card brk">
     <h3>B안 — 계산대 좌측 <span class="tag">910 여유</span></h3>
     <div class="sub">넓은 쪽(3,610)에 카운터 구역을 넣는 안</div>
-    <svg class="sv" viewBox="0 0 680 470" role="img" aria-label="B안 평면도">
+    <svg class="sv plan" viewBox="0 0 680 470" role="img" aria-label="B안 평면도">
       <text class="dm" x="180" y="28" text-anchor="middle">카운터 구역 2,700 — 좌측 3,610에서 910 여유</text>
       <line class="dl" x1="60" y1="48" x2="254" y2="48"/>
       <line class="dl" x1="60" y1="44" x2="60" y2="52"/><line class="dl" x1="82" y1="44" x2="82" y2="52"/>
@@ -566,19 +595,7 @@
     <p><b>걸리는 점</b> — 계산을 마친 손님이 나가려면 줄 옆을 지납니다. 출입구에서 대각선 반대편이라 들어와서 바로 눈에 띄지 않아, 사인이나 조명으로 보완이 필요합니다.</p>
   </div>
 
-  <div class="card">
-    <div class="ask">
-      <h4>결정 항목</h4>
-      <div class="item"><span class="tagk c">건축위 확인</span><span class="tx"><b>5-1 · B면 양면 서가 두께 700</b><br>바깥면 300 + 벽체 100 + 안쪽면 300입니다. 바깥면은 안내데스크 영역으로 나갑니다. <b>이 두께를 확보할 수 있는지 확인 부탁드립니다.</b><span class="why">→ 벽체 위치가 정해지면 바꿀 수 없습니다</span></span></div>
-      <div class="item"><span class="tagk c">건축위 확인</span><span class="tx"><b>5-2 · B면 바깥면 디스플레이 관리 주체</b><br>로비 쪽 5칸을 서점이 채울지, 교회가 채울지에 따라 재고 귀속이 달라집니다. <b>사무국과 함께 정해 주시기 바랍니다.</b></span></div>
-      <div class="item"><span class="tagk c">건축위 확인</span><span class="tx"><b>5-3 · 출입구 유리 + 블라인드 병행</b><br>안이 보이면 들어오기 쉽고, 가릴 수 있어야 정리 시간을 확보합니다. <b>병행이 가능한지 확인 부탁드립니다.</b></span></div>
-      <div class="item"><span class="tagk d">사업단 논의</span><span class="tx"><b>5-4 · A안 · B안 방향 선택</b><br>계산대를 어느 쪽에 둘지 정합니다.</span></div>
-      <div class="item"><span class="tagk d">사업단 논의</span><span class="tx"><b>5-5 · 키오스크 자리</b><br>A안은 A면 자투리 610에 넣으면 서가 손실이 없습니다. B안은 계산대 통합과 A면 1칸 매립 중 선택해야 합니다.<span class="why">→ A면 1칸을 쓰면 191권이 갈 곳을 잃습니다</span></span></div>
-      <div class="item"><span class="tagk f">사업단 추후</span><span class="tx"><b>5-6 · 창고 내부 구성</b><br>선반 단수와 잠금 범위를 정해 전달드립니다.</span></div>
-    </div>
-  </div>
-
-  <div class="card">
+  <div class="card brk">
     <h3>키오스크 자리</h3>
     <div class="sub">두 안 공통 · 미정</div>
     <p>자리를 정하는 기준은 셋입니다. <b>출입구에서 보이되 걸어 들어오는 길을 막지 않아야 하고, 벽에 붙어야 전원·통신을 벽으로 뺄 수 있습니다.</b> 바닥에 세우면 바닥 매립 배선이 필요해 공사가 커집니다.</p>
@@ -590,6 +607,18 @@
       <tr><td>B안</td><td>계산대 결제부 통합</td><td>없음</td><td>대각선 반대편</td></tr>
       <tr><td>B안 대안</td><td>A면 1칸 매립</td><td>1칸 · 191권</td><td>진입 직후 정면</td></tr>
     </table>
+  </div>
+
+  <div class="card">
+    <div class="ask">
+      <h4>결정 항목</h4>
+      <div class="item"><span class="tagk c">건축위 확인</span><span class="tx"><b>5-1 · B면 양면 서가 두께 700</b><br>바깥면 300 + 벽체 100 + 안쪽면 300입니다. 바깥면은 안내데스크 영역으로 나갑니다. <b>이 두께를 확보할 수 있는지 확인 부탁드립니다.</b><span class="why">→ 벽체 위치가 정해지면 바꿀 수 없습니다</span></span></div>
+      <div class="item"><span class="tagk c">건축위 확인</span><span class="tx"><b>5-2 · B면 바깥면 디스플레이 관리 주체</b><br>로비 쪽 5칸을 서점이 채울지, 교회가 채울지에 따라 재고 귀속이 달라집니다. <b>사무국과 함께 정해 주시기 바랍니다.</b></span></div>
+      <div class="item"><span class="tagk c">건축위 확인</span><span class="tx"><b>5-3 · 출입구 유리 + 블라인드 병행</b><br>안이 보이면 들어오기 쉽고, 가릴 수 있어야 정리 시간을 확보합니다. <b>병행이 가능한지 확인 부탁드립니다.</b></span></div>
+      <div class="item"><span class="tagk d">사업단 논의</span><span class="tx"><b>5-4 · A안 · B안 방향 선택</b><br>계산대를 어느 쪽에 둘지 정합니다.</span></div>
+      <div class="item"><span class="tagk d">사업단 논의</span><span class="tx"><b>5-5 · 키오스크 자리</b><br>A안은 A면 자투리 610에 넣으면 서가 손실이 없습니다. B안은 계산대 통합과 A면 1칸 매립 중 선택해야 합니다.<span class="why">→ A면 1칸을 쓰면 191권이 갈 곳을 잃습니다</span></span></div>
+      <div class="item"><span class="tagk f">사업단 추후</span><span class="tx"><b>5-6 · 창고 내부 구성</b><br>선반 단수와 잠금 범위를 정해 전달드립니다.</span></div>
+    </div>
   </div>
 
   <div class="sec brk"><h2>6 서가 구성</h2><span class="cap">1칸 사양과 용량</span><div class="rule"></div></div>
@@ -641,7 +670,10 @@
     <div class="note">
       <p><b>하부 수납은 두 층으로 나뉩니다.</b> 오픈 칸에는 미리 포장해 둔 완료품과 구입용 도서 4~5권을 두어 고객이 직접 집어 갑니다. 그 아래 미닫이 칸에는 재고를 넣습니다. 「수납장 필요」라고만 전달하면 전부 문 달린 장으로 그려지므로 반드시 구분해야 합니다.</p>
     </div>
-    <h3 style="margin-top:26px">네임택 밴드</h3>
+  </div>
+
+  <div class="card brk">
+    <h3>네임택 밴드</h3>
     <div class="sub">칸 최상부 이름표 · 끼워 넣는 방식</div>
     <p>주제 구획과 베스트셀러 순위는 계속 바뀝니다. <b>각인이나 실사 부착으로 만들면 바꿀 수 없으므로</b>, 인쇄한 판을 옆에서 밀어 넣는 <b>슬롯 방식</b>으로 요청합니다. 끼우면 테두리가 보이지 않아 벽 전체가 하나로 읽힙니다.</p>
     <svg class="sv wide" viewBox="0 0 680 250" role="img" aria-label="네임택 밴드 슬롯 구조">
@@ -701,13 +733,13 @@
     </div>
   </div>
 
-  <div class="sec"><h2>7 직원 구역</h2><span class="cap">뒷벽 서가 · 계산대 · 포장대</span><div class="rule"></div></div>
+  <div class="sec brk"><h2>7 직원 구역</h2><span class="cap">뒷벽 서가 · 계산대 · 포장대</span><div class="rule"></div></div>
   <div class="card">
     <h3>직원 뒷벽 서가</h3>
     <div class="sub">하부장만 수납 · 그 위는 전부 오픈</div>
     <p>창고가 따로 있으므로 뒷벽은 <b>오픈으로 갑니다.</b> 행사 때 문을 열고 닫는 시간이 그대로 줄로 쌓입니다. 뒷벽은 오늘 나갈 것과 자주 꺼내는 것을 두고, 박스 재고와 반품 대기는 창고가 맡습니다.</p>
     <p>다만 <b>하부장 750은 미닫이를 유지합니다.</b> 카운터 높이 900에 가려 어차피 보이지 않고, 숙여야 꺼낼 수 있어 급한 물건 자리가 아니며, 시재·서류·상품권은 잠글 문이 필요합니다.</p>
-    <svg class="sv" viewBox="0 0 680 400" role="img" aria-label="직원 뒷벽 서가 1칸 구성">
+    <svg class="sv back" viewBox="0 0 680 400" role="img" aria-label="직원 뒷벽 서가 1칸 구성">
       <rect class="front" x="200" y="26" width="120" height="26" rx="2"/>
       <rect class="sell" x="200" y="52" width="120" height="228" rx="2"/>
       <line class="dl" x1="200" y1="90" x2="320" y2="90"/><line class="dl" x1="200" y1="128" x2="320" y2="128"/>
@@ -751,7 +783,7 @@
     <p class="sub" style="margin-top:6px">A안 기준 B면 5칸입니다. B안은 D면 3칸이므로 B1 · B2 · B3만 두고 나머지는 창고가 맡습니다.</p>
   </div>
 
-  <div class="card">
+  <div class="card brk">
     <h3>계산대 상판</h3>
     <div class="sub">전원 · 통신이 상판 안으로</div>
     <table>
@@ -805,14 +837,8 @@
       <tr><td>훈련교재</td><td class="n">1,395</td><td>직원 뒷벽 · 창고</td></tr>
       <tr><td>용품 · 소품</td><td class="n">4,413</td><td>용품 진열대 · 스페이스 월</td></tr>
     </table>
-    <table style="margin-top:14px">
-      <tr><th>서가 용량</th><th class="n">값</th></tr>
-      <tr><td>판매 서가 14칸 × 5.4 선반미터</td><td class="n">75.6</td></tr>
-      <tr><td>필요 (3,701권 × 20mm)</td><td class="n">74.0</td></tr>
-      <tr class="tot"><td>여유</td><td class="n">1.6 (2%)</td></tr>
-    </table>
     <div class="note">
-      <p><b>여유가 2%뿐입니다.</b> 표지를 보이게 세우는 전면 진열은 권당 폭이 책등의 5~7배라, 한 칸만 전면으로 바꿔도 200권이 갈 곳을 잃습니다. 면적이 줄어든 만큼 서가는 최대로 확보해야 한다는 근거가 됩니다.</p>
+      <p><b>판매 서가 14칸 × 5.4 선반미터 = 75.6, 필요 74.0, 여유 1.6 (2%)입니다.</b> 표지를 보이게 세우는 전면 진열은 권당 폭이 책등의 5~7배라, 한 칸만 전면으로 바꿔도 200권이 갈 곳을 잃습니다. 면적이 줄어든 만큼 서가는 최대로 확보해야 한다는 근거가 됩니다.</p>
     </div>
   </div>
 
@@ -838,11 +864,13 @@
     <div class="note">
       <p><b>미분류 532권(431종)은 매니저 검수가 필요합니다.</b> 도서명만으로 자동 분류해 제목에 단서가 없는 책이 남았습니다. 재고 파일의 도서목록 시트에서 「기타 · 미분류」로 걸러 함께 넘겨보면 대부분 정리됩니다.</p>
     </div>
-    <p style="margin-top:14px"><b>판매 서가는 주제별, 직원 뒷벽과 창고는 출판사별</b>로 나누는 것을 제안합니다. 교인은 「기도에 관한 책 있나요」라고 묻지 「규장 책 어디 있나요」라고 하지 않습니다. 서가 상단 네임택이 출판사명이면 고객에게 아무 정보가 되지 않습니다. 반면 반품·발주·재고는 출판사 단위로 돌아가므로, 그 관리는 직원 구역 뒤에서 하면 됩니다.</p>
+    <p style="margin-top:12px"><b>판매 서가는 주제별, 직원 뒷벽과 창고는 출판사별</b>로 나누는 것을 제안합니다. 교인은 「기도에 관한 책 있나요」라고 묻지 「규장 책 어디 있나요」라고 하지 않습니다. 반품·발주·재고만 출판사 단위로 돌아가므로 그 관리는 직원 구역 뒤에서 합니다.</p>
+  </div>
 
-    <h3 style="margin-top:26px">A안 기준 14칸 배분</h3>
+  <div class="card brk">
+    <h3>A안 기준 14칸 배분</h3>
     <div class="sub">키오스크 자립형 전제 · 동선은 입구에서 왼쪽으로 A3→A1 → D5→D1 → C1→C6 → 계산대</div>
-    <svg class="sv" viewBox="0 0 680 450" role="img" aria-label="A안 서가 칸 배분 평면">
+    <svg class="sv planm" viewBox="0 0 680 450" role="img" aria-label="A안 서가 칸 배분 평면">
       <text class="dm" x="190" y="40" text-anchor="middle">3,610</text>
       <text class="dm" x="385" y="40" text-anchor="middle">출입구 1,800</text>
       <text class="dm" x="527" y="40" text-anchor="middle">2,150</text>
@@ -922,10 +950,8 @@
     <div class="note">
       <p><b>여유 611권은 미분류 532권 자리입니다.</b> 검수 후 각 주제로 흩어지면 맞아떨어집니다. A1만 281권으로 4% 넘치므로 필사·쓰기성경 일부를 A2로 옮기면 해소됩니다.</p>
     </div>
-    <p style="margin-top:14px"><b>C면에 영성과 성경공부를 몰았습니다.</b> 가장 길고 입구에서 정면으로 보이는 벽입니다. 두 주제가 1,612권으로 전체의 44%이고 가장 많이 찾는 책입니다.</p>
-    <p><b>D면은 목적을 갖고 찾는 주제입니다.</b> 기도·설교·신학·가정은 그 주제 책을 사러 온 분들이 봅니다. 그 앞에 서서 오래 훑어야 하니 통행이 적은 안쪽이 낫습니다.</p>
-    <p><b>A면은 지나가며 집는 자리입니다.</b> 입구 옆이라 오래 머물 수 없어 소책자·월간지처럼 짧게 집어 가는 품목을 놓았습니다.</p>
-    <p><b>성경 438권은 판매 서가에 칸을 두지 않습니다.</b> 책등으로는 역본·크기·재질을 고를 수 없고, 두께가 30~50mm로 일반 도서의 두 배 이상이라 서가에 넣으면 3칸이 필요합니다. 고가품이라 관리도 카운터 뒤가 맞습니다. 전면 진열대에서 만져보고 고르면 B면 직원 서가에서 꺼내드리는 방식으로 갑니다.</p>
+    <p style="margin-top:12px"><b>C면에 영성과 성경공부를 몰았습니다.</b> 가장 길고 입구에서 정면으로 보이는 벽이며, 두 주제가 1,612권으로 전체의 44%입니다. <b>D면은 목적을 갖고 찾는 주제</b>라 통행이 적은 안쪽이 낫고, <b>A면은 지나가며 집는 자리</b>라 소책자·월간지를 놓았습니다.</p>
+    <p><b>성경 438권은 판매 서가에 칸을 두지 않습니다.</b> 책등으로는 역본·크기·재질을 고를 수 없고 두께가 일반 도서의 두 배 이상이라 서가에 넣으면 3칸이 필요합니다. 전면 진열대에서 고르면 B면 직원 서가에서 꺼내드립니다.</p>
 
     <div class="ask">
       <h4>결정 항목</h4>
