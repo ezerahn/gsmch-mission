@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선한목자교회 · 로뎀카페 배치 검토</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf8f3; --card:#ffffff; --line:#e6e1d7; --line2:#f0ece4;
+    --text:#2c2a26; --muted:#8a847a; --soft:#6e6860;
+    --accent:#3d6b4f; --accent-light:#eef4ef;
+    --gold:#b8956a; --wood:#8a6a45; --red:#c0392b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:'IBM Plex Sans KR',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.65; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:22px 28px 70px}
+  .mono{font-family:'IBM Plex Mono','IBM Plex Sans KR',monospace}
+
+  .navrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+  .pill{display:inline-flex;align-items:center;gap:5px;font-size:13px;color:var(--soft);
+    text-decoration:none;padding:8px 15px;border:1px solid var(--line);border-radius:20px;
+    background:var(--card);transition:.15s;white-space:nowrap}
+  .pill:hover{background:var(--accent-light);border-color:var(--accent);color:var(--accent)}
+  .meta{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+
+  .head{border-top:1px solid var(--line);padding-top:26px;margin-bottom:24px}
+  h1{font-size:32px;font-weight:700;letter-spacing:-0.03em;margin-bottom:7px}
+  .lead{font-size:14.5px;color:var(--soft)}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:34px}
+  .stat{padding:17px 18px;border-right:1px solid var(--line2)}
+  .stat:last-child{border-right:0}
+  .stat-v{font-size:22px;font-weight:600;letter-spacing:-0.02em;line-height:1.25}
+  .stat-v small{font-size:12.5px;font-weight:400;color:var(--muted);margin-left:3px}
+  .stat-l{font-size:12px;color:var(--muted);margin-top:3px}
+
+  .sec{display:flex;align-items:center;gap:11px;margin:38px 0 15px}
+  .sec h2{font-size:19px;font-weight:600;letter-spacing:-0.02em;white-space:nowrap}
+  .sec .cap{font-size:12.5px;color:var(--muted);white-space:nowrap}
+  .sec .rule{flex:1;height:1px;background:var(--text);opacity:.85}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:13px;
+    padding:22px 24px;margin-bottom:16px}
+  .card h3{font-size:17px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px}
+  .card h3 .tag{font-size:11.5px;font-weight:500;color:var(--accent);
+    background:var(--accent-light);padding:3px 10px;border-radius:10px;margin-left:8px;
+    vertical-align:middle}
+  .card h3 .tag.warn{color:#9d4b2e;background:#f8ece6}
+  .card .sub{font-size:13px;color:var(--muted);margin-bottom:16px}
+  p{font-size:14px;color:var(--soft);margin-bottom:10px}
+  p b{color:var(--text);font-weight:600}
+  ul{margin:0 0 10px 18px}
+  li{font-size:14px;color:var(--soft);margin-bottom:5px}
+  li b{color:var(--text);font-weight:600}
+
+  table{width:100%;border-collapse:collapse;margin:6px 0 4px}
+  th,td{font-size:13px;padding:9px 10px;border-bottom:1px solid var(--line2);text-align:left}
+  th{font-weight:600;color:var(--text);background:var(--bg);border-bottom:1px solid var(--line)}
+  td{color:var(--soft)}
+  td.n,th.n{text-align:right;font-family:'IBM Plex Mono',monospace}
+  td b{color:var(--text);font-weight:600}
+  tr.tot td{border-top:1px solid var(--line);border-bottom:0;font-weight:600;color:var(--text)}
+  .ok{color:var(--accent);font-weight:600}
+  .bad{color:var(--red);font-weight:600}
+
+  .lead3{list-style:none;margin:0}
+  .lead3 li{font-size:14px;color:var(--soft);line-height:1.7;margin-bottom:14px;
+    padding-left:14px;border-left:2px solid var(--line)}
+  .lead3 li:last-child{margin-bottom:0}
+  .lead3 li b{color:var(--text);font-weight:600}
+  .note{border-left:3px solid var(--gold);background:#fdfaf4;padding:12px 16px;
+    border-radius:0 8px 8px 0;margin:14px 0}
+  .note p{margin:0;font-size:13.5px}
+
+  svg{display:block;width:100%;height:auto;margin:4px 0 2px}
+  .sv text{font-family:'IBM Plex Sans KR',sans-serif}
+  .t14{font-size:11.5px;fill:#2c2a26;font-weight:600}
+  .t12{font-size:10.5px;fill:#6e6860}
+  .dm{font-size:10px;fill:#8a847a}
+  .bn{font-size:8.5px;fill:#2f5b41;font-weight:600}
+  .wall{fill:none;stroke:#2c2a26;stroke-width:.9}
+  .sell{fill:#eef4ef;stroke:#3d6b4f;stroke-width:.6}
+  .back{fill:#f1efe9;stroke:#8a847a;stroke-width:.6}
+  .disp{fill:#faf3e6;stroke:#b8956a;stroke-width:.6}
+  .front{fill:#f5efe6;stroke:#8a6a45;stroke-width:.6}
+  .cnt{fill:#f8ece6;stroke:#a9603f;stroke-width:.6}
+  .arr2{stroke:#8a847a;stroke-width:1;marker-end:url(#ar2)}
+  .kio{fill:#eef2f5;stroke:#5b7386;stroke-width:.6}
+  .zone{fill:none;stroke:#8a847a;stroke-width:.6;stroke-dasharray:4 4;opacity:.6}
+  .bay{stroke:#3d6b4f;stroke-width:.5;opacity:.55}
+  .bay2{stroke:#8a847a;stroke-width:.5;opacity:.55}
+  .bay3{stroke:#b8956a;stroke-width:.5;opacity:.55}
+  .dl{stroke:#8a847a;stroke-width:.5;opacity:.6}
+  .ld{stroke:#8a847a;stroke-width:.5;stroke-dasharray:2 2;opacity:.8}
+  .stf{fill:#3d6b4f}
+  .cus{fill:#a9603f}
+  .warnline{stroke:#c0392b;stroke-width:3}
+
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+  .tab{font-size:13px;color:var(--soft);background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:7px 15px;cursor:pointer;font-family:inherit;transition:.15s}
+  .tab:hover{background:var(--accent-light);color:var(--accent)}
+  .tab.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  .pane{display:none}
+  .pane.on{display:block}
+  .ctrl{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--bg);
+    border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:10px 0 14px}
+  .ctrl label{font-size:13px;color:var(--soft)}
+  .ctrl input{width:84px;font-family:'IBM Plex Mono',monospace;font-size:13px;
+    padding:6px 9px;border:1px solid var(--line);border-radius:7px;background:var(--card);
+    color:var(--text);text-align:right}
+  .ctrl .hint{font-size:12px;color:var(--muted);margin-left:auto}
+  .bar2{height:7px;background:var(--line2);border-radius:4px;overflow:hidden;min-width:60px}
+  .bar2 i{display:block;height:100%;background:var(--accent);border-radius:4px}
+  .out{font-size:14px;color:var(--soft);margin-top:4px}
+  .out b{color:var(--text)}
+  .out .hl{color:var(--red);font-weight:600}
+  .ask{margin-top:20px;border-top:1px solid var(--line);padding-top:14px}
+  .ask h4{font-size:12.5px;font-weight:600;color:var(--muted);margin-bottom:11px}
+  .item{display:flex;gap:10px;margin-bottom:11px;align-items:flex-start}
+  .tagk{flex:none;font-size:11px;font-weight:600;padding:3px 9px;border-radius:9px;white-space:nowrap;margin-top:2px}
+  .tagk.c{color:#2f5b41;background:#eef4ef}
+  .tagk.d{color:#8a6a3c;background:#f7f0e4}
+  .tagk.f{color:#6e6860;background:#f0ece4}
+  .item .tx{font-size:13.5px;color:var(--soft);line-height:1.6}
+  .item .tx b{color:var(--text);font-weight:600}
+  .item .why{display:block;font-size:12.5px;color:var(--muted);margin-top:1px}
+  .glist{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+  .gcol h4{font-size:13px;font-weight:600;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .gcol.c h4{color:#2f5b41} .gcol.d h4{color:#8a6a3c} .gcol.f h4{color:#6e6860}
+  .gcol ul{margin:0}
+  .gcol li{font-size:13px;margin-bottom:8px;list-style:none;color:var(--soft)}
+  .gcol .no{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);margin-right:5px}
+  @media(max-width:760px){ .glist{grid-template-columns:1fr} }
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;
+    padding-top:12px;border-top:1px solid var(--line2)}
+  .lg{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+  .sw{width:13px;height:13px;border-radius:3px;border:1px solid}
+  .sw.a{background:#eef4ef;border-color:#3d6b4f}
+  .sw.b{background:#f1efe9;border-color:#8a847a}
+  .sw.c{background:#faf3e6;border-color:#b8956a}
+  .sw.d{background:#f5efe6;border-color:#8a6a45}
+  .sw.e{background:#f8ece6;border-color:#a9603f}
+  .sw.f{background:#eef2f5;border-color:#5b7386}
+  .dot{width:11px;height:11px;border-radius:50%}
+  .dot.s{background:#3d6b4f} .dot.c{background:#a9603f}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
+    font-size:12px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  @media(max-width:760px){
+    .wrap{padding:16px 16px 50px}
+    h1{font-size:25px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .stat{border-right:1px solid var(--line2)}
+    .stat:nth-child(2n){border-right:0}
+    .stat:nth-child(n+3){border-top:1px solid var(--line2)}
+    .meta{margin-left:0;flex-basis:100%;white-space:normal}
+    table{display:block;overflow-x:auto}
+  }
+  @media print{
+    @page{ size:A4 portrait; margin:14mm 12mm; }
+    body{background:#fff;font-size:11px;line-height:1.5}
+    .wrap{max-width:none;padding:0}
+    .navrow{display:none}
+    .head{border-top:0;padding-top:0;margin-bottom:14px}
+    h1{font-size:22px}
+    .lead{font-size:12px}
+    .stats{margin-bottom:14px;border-radius:8px;grid-template-columns:repeat(4,1fr)}
+    .stat{padding:8px 10px;border-right:1px solid var(--line2);border-top:0}
+    .stat:last-child{border-right:0}
+    .stat-v{font-size:16px}
+    .sec{margin:26px 0 11px}
+    .sec:first-of-type{margin-top:16px}
+    .sec.brk{margin-top:0}
+    .sec h2{font-size:15px}
+    .card{border-radius:8px;padding:12px 14px;margin-bottom:8px}
+    table,.ask,.glist,.legend,.note{break-inside:avoid;page-break-inside:avoid}
+    svg{break-inside:avoid;page-break-inside:avoid}
+    .sec.brk{break-before:page;page-break-before:always}
+    .card.brk{break-before:page;page-break-before:always}
+    .sec,.sec h2{break-after:avoid;page-break-after:avoid}
+    h3{break-after:avoid;page-break-after:avoid}
+    p,li{font-size:11px;margin-bottom:5px}
+    .lead3 li{font-size:11px;line-height:1.6;margin-bottom:7px;padding-left:10px}
+    th,td{font-size:10px;padding:4px 6px}
+    table{break-inside:avoid;page-break-inside:avoid}
+    svg{max-width:120mm;margin:2px auto}
+    svg.plan{max-width:178mm}
+    svg.planm{max-width:126mm}
+    svg.tall{max-width:142mm}
+    svg.wide{max-width:150mm}
+    svg.back{max-width:132mm}
+    #p-subj,#p-pub{float:left;width:49%}
+    #p-pub{margin-left:2%}
+    #bayOut{clear:both;padding-top:4px}
+    #p-subj th,#p-subj td,#p-pub th,#p-pub td{font-size:8.8px;padding:2.2px 4px}
+    .bar2{display:none}
+    #p-subj th:last-child,#p-subj td:last-child,#p-pub th:last-child,#p-pub td:last-child{display:none}
+    .note{padding:8px 11px;margin:7px 0}
+    .note p{font-size:11px}
+    .tabs{display:none}
+    .pane{display:block !important}
+    .pane+.pane{margin-top:10px}
+    .ctrl{background:#fff;border-style:dashed;padding:5px 9px;margin:5px 0}
+    .ctrl .hint{font-size:10px}
+    .ask{margin-top:11px;padding-top:9px;break-inside:avoid;page-break-inside:avoid}
+    .card.keep{break-inside:avoid;page-break-inside:avoid}
+    .gcol li{font-size:10.5px;margin-bottom:6px}
+    .gcol h4{font-size:11.5px;margin-bottom:8px;padding-bottom:6px}
+    .item{margin-bottom:7px}
+    .item .tx{font-size:11px}
+    .item .why{font-size:10.5px}
+    .legend{gap:9px;margin-top:7px;padding-top:8px}
+    .lg{font-size:10px}
+    .glist{gap:11px}
+    .foot{margin-top:16px;font-size:10px}
+  }
+  .sv .t12{font-size:13.6px}
+  .sv .t14{font-size:14.8px}
+  .sv .dm{font-size:12.6px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<marker id="ar2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="#8a847a" stroke-width="1.5" stroke-linecap="round"/></marker>
+</defs></svg>
+<div class="wrap">
+
+  <div class="navrow">
+    <a class="pill" href="gsmch-1f.html">← 1층 성전보수 홈</a>
+    <a class="pill" href="https://claude.ai/chat/b56c9e76-083f-4493-b0bc-edf2b00b7782" target="_blank" rel="noopener">💬 작업 대화</a>
+    <button class="pill" onclick="window.print()" style="cursor:pointer;font-family:inherit">🖨 인쇄 · A4</button>
+    <div class="meta">로뎀카페 배치 검토 &nbsp;|&nbsp; 작성 2026.08.14 · PM 안상미</div>
+  </div>
+
+  <div class="head">
+    <h1>로뎀카페 배치 검토</h1>
+    <div class="lead">설비 배치 시안 A · B 비교 · 기물 폭 기준 축척 · 급배수에 따른 선택 기준</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-v mono">145<small>㎡ · 44PY</small></div><div class="stat-l">카페 면적 · 확인 필요</div></div>
+    <div class="stat"><div class="stat-v mono">2<small>안</small></div><div class="stat-l">설비 배치 시안</div></div>
+    <div class="stat"><div class="stat-v mono">21<small>점</small></div><div class="stat-l">배치 기물</div></div>
+    <div class="stat"><div class="stat-v mono">9.6<small>kw</small></div><div class="stat-l">커피머신 2대 · 3상</div></div>
+  </div>
+
+  <div class="sec"><h2>1 전제</h2><span class="cap">배치를 볼 때 고려할 점</span><div class="rule"></div></div>
+  <div class="card">
+    <ul class="lead3">
+      <li><b>개수대 위치가 나머지를 결정합니다.</b><br>
+        급배수는 아래층 천장으로 배관이 지나가야 하고, 바닥을 뚫어야 합니다.<br>
+        개수대가 정해지면 커피존과 베버리지존의 자리가 따라 정해집니다.</li>
+      <li><b>뚫어봐야 알 수 있는 부분이 있습니다.</b><br>
+        아래층 보와 기존 배관 때문에 도면상 자리에 관통이 안 될 수 있습니다.<br>
+        그래서 한 안으로 좁히지 않고 두 안을 함께 준비했습니다.</li>
+      <li><b>행사 때 이용이 집중됩니다.</b><br>
+        서점과 마찬가지로 제직훈련 수료식 · 임직식 당일에 이용이 몰립니다.<br>
+        한두 명이 빠르게 대응할 수 있도록 동선이 짧아야 합니다.</li>
+    </ul>
+  </div>
+
+  <div class="sec"><h2>2 공간과 치수</h2><span class="cap">확인이 필요한 부분</span><div class="rule"></div></div>
+  <div class="card">
+    <p><b>카페 면적이 도면마다 다르게 적혀 있습니다.</b></p>
+    <table>
+      <tr><th>출처</th><th class="n">면적</th><th>비고</th></tr>
+      <tr><td>A08 지상1층 평면도 본문</td><td class="n">160㎡ / 48PY</td><td>마스터플랜에 기록된 값</td></tr>
+      <tr><td>A08 Note · 화장실 개선공사 층별도면</td><td class="n">145㎡ / 44PY</td><td>개선 후로 추정</td></tr>
+    </table>
+    <div class="note">
+      <p><b>설비 배치 시안은 A08로 검증할 수 없습니다.</b> 시안에서 바 뒤쪽 벽에 변기 · 소변기 · D.S가 붙어 있는데, A08에서 카페 북측은 외부 조경입니다. 시안은 화장실 개선 후 평면 위에 그려진 것으로 보이며, 벽 구성 자체가 다릅니다. 서점은 위치와 형상이 그대로여서 A08로 실측할 수 있었지만 카페는 그럴 수 없습니다.</p>
+    </div>
+    <p>따라서 이 문서의 도면은 <b>기물 폭 합계를 자로 삼아 축척을 맞춘 것</b>입니다. 벽 길이 · 통로 폭 · 급배수 위치가 확인되면 다시 그려야 합니다.</p>
+    <div class="ask">
+      <h4>결정 항목</h4>
+      <div class="item"><span class="tagk c">건축위 확인</span><span class="tx"><b>2-1 · 카페 면적 표기</b><br>본문 160㎡와 Note 145㎡가 다릅니다. <b>어느 쪽이 개선 후 확정 면적인지 확인 부탁드립니다.</b><span class="why">→ 마스터플랜 기록을 바로잡아야 합니다</span></span></div>
+      <div class="item"><span class="tagk c">건축위 확인</span><span class="tx"><b>2-2 · 카페 부분 확대 도면</b><br>설비 배치 시안이 그려진 평면의 <b>치수 기입본을 전달 부탁드립니다.</b> 벽 쪽 바 길이, 고객 쪽 바 길이, 두 바 사이 통로 폭 세 가지가 필요합니다.<span class="why">→ 기물이 들어가는지 계산할 수 없습니다</span></span></div>
+    </div>
+  </div>
+
+  <div class="sec brk"><h2>3 배치안</h2><span class="cap">설비 시안 A · B</span><div class="rule"></div></div>
+
+  <div class="card">
+    <h3>A안 — beverage zone이 벽 쪽</h3>
+    <div class="sub">커피머신이 고객 쪽 바에 놓이는 안</div>
+    <svg class="sv plan" viewBox="46 24 824 588" role="img" aria-label="beverage zone 배치">
+      <rect x="60" y="34" width="800" height="76" fill="none" stroke="#2c2a26" stroke-width="1"/>
+      <line x1="150" y1="34" x2="150" y2="110" stroke="#2c2a26" stroke-width="1"/>
+      <text class="t12" x="105" y="76" text-anchor="middle">창고</text>
+      <text class="t12" x="500" y="76" text-anchor="middle">화장실 · D.S · 수납</text>
+      <rect class="sell" x="120.0" y="118" width="82.5" height="52" rx="2"/><rect class="sell" x="202.5" y="118" width="45.8" height="52" rx="2"/><rect class="sell" x="248.3" y="118" width="39.3" height="52" rx="2"/><rect class="sell" x="287.6" y="118" width="78.5" height="52" rx="2"/><rect class="sell" x="366.1" y="118" width="39.3" height="52" rx="2"/><rect class="sell" x="405.4" y="118" width="98.2" height="52" rx="2"/><rect class="sell" x="503.6" y="118" width="39.3" height="52" rx="2"/><rect class="sell" x="542.8" y="118" width="78.5" height="52" rx="2"/><rect class="sell" x="621.4" y="118" width="52.4" height="52" rx="2"/><rect class="sell" x="673.7" y="118" width="58.9" height="52" rx="2"/><text class="ts" x="161.2" y="144.0" text-anchor="middle" dominant-baseline="central">B1</text><text class="ts" x="225.4" y="144.0" text-anchor="middle" dominant-baseline="central">B2</text><text class="ts" x="267.9" y="144.0" text-anchor="middle" dominant-baseline="central">B3</text><text class="ts" x="326.8" y="144.0" text-anchor="middle" dominant-baseline="central">B4</text><text class="ts" x="385.7" y="144.0" text-anchor="middle" dominant-baseline="central">B5</text><text class="ts" x="454.5" y="144.0" text-anchor="middle" dominant-baseline="central">B6</text><text class="ts" x="523.2" y="144.0" text-anchor="middle" dominant-baseline="central">B7</text><text class="th" x="582.1" y="144.0" text-anchor="middle" dominant-baseline="central">B8 싱크</text><text class="ts" x="647.6" y="144.0" text-anchor="middle" dominant-baseline="central">B9</text><text class="ts" x="703.2" y="144.0" text-anchor="middle" dominant-baseline="central">B10</text>
+      <line class="dl" x1="120" y1="182" x2="732.7" y2="182"/>
+      <line class="dl" x1="120" y1="178" x2="120" y2="186"/>
+      <line class="dl" x1="732.7" y1="178" x2="732.7" y2="186"/>
+      <text class="t12" x="426" y="198" text-anchor="middle">beverage zone · 기물 폭 합계 9,360</text>
+      <rect class="zone" x="120" y="212" width="612.7" height="42"/>
+      <text class="t12" x="426" y="237" text-anchor="middle">직원 통로 · 폭 미확인</text>
+      <circle cx="292" cy="233" r="7" fill="#3d6b4f"/>
+      <circle cx="561" cy="233" r="7" fill="#3d6b4f"/>
+      <rect class="front" x="200.0" y="264" width="39.3" height="52" rx="2"/><rect class="front" x="239.3" y="264" width="98.2" height="52" rx="2"/><rect class="front" x="337.5" y="264" width="26.2" height="52" rx="2"/><rect class="front" x="363.6" y="264" width="50.5" height="52" rx="2"/><rect class="front" x="414.1" y="264" width="26.2" height="52" rx="2"/><rect class="front" x="440.3" y="264" width="32.7" height="52" rx="2"/><rect class="front" x="473.0" y="264" width="50.5" height="52" rx="2"/><rect class="front" x="523.5" y="264" width="98.2" height="52" rx="2"/><rect class="front" x="621.7" y="264" width="58.9" height="52" rx="2"/><text class="ts" x="219.6" y="290.0" text-anchor="middle" dominant-baseline="central">C1</text><text class="ts" x="288.4" y="290.0" text-anchor="middle" dominant-baseline="central">C2</text><text class="ts" x="350.5" y="290.0" text-anchor="middle" dominant-baseline="central">C3</text><text class="th" x="388.9" y="290.0" text-anchor="middle" dominant-baseline="central">C4</text><text class="ts" x="427.2" y="290.0" text-anchor="middle" dominant-baseline="central">C5</text><text class="ts" x="456.6" y="290.0" text-anchor="middle" dominant-baseline="central">C6</text><text class="th" x="498.2" y="290.0" text-anchor="middle" dominant-baseline="central">C7</text><text class="ts" x="572.6" y="290.0" text-anchor="middle" dominant-baseline="central">C8</text><text class="ts" x="651.1" y="290.0" text-anchor="middle" dominant-baseline="central">C9</text>
+      <line class="dl" x1="200" y1="328" x2="680.6" y2="328"/>
+      <line class="dl" x1="200" y1="324" x2="200" y2="332"/>
+      <line class="dl" x1="680.6" y1="324" x2="680.6" y2="332"/>
+      <text class="t12" x="440" y="344" text-anchor="middle">coffee zone · 기물 폭 합계 7,342</text>
+      <rect x="60" y="258" width="130" height="64" fill="none" stroke="#2c2a26" stroke-width="0.7"/>
+      <text class="t12" x="125" y="286" text-anchor="middle">대기 및</text>
+      <text class="t12" x="125" y="304" text-anchor="middle">행사용 테이블</text>
+      <text class="t12" x="170" y="368" text-anchor="middle">키오스크 ORDER</text>
+      <text class="t12" x="320" y="368" text-anchor="middle">ORDER</text>
+      <text class="t12" x="641" y="368" text-anchor="middle">PICK UP</text>
+      <rect x="60" y="380" width="800" height="140" fill="none" stroke="#8a847a" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.4"/>
+      <text class="t12" x="140" y="414" text-anchor="middle">고객 홀</text>
+      <rect class="cnt" x="330" y="448" width="290" height="52" rx="3"/>
+      <text class="t14" x="475" y="470" text-anchor="middle">SERVICE BAR</text>
+      <text class="t12" x="475" y="488" text-anchor="middle">S1 아이스제빙기 1,300 × 630 × 900</text>
+      <line class="dl" x1="70" y1="540" x2="150" y2="540"/>
+      <path d="M144 536 L152 540 L144 544" fill="none" stroke="#8a847a" stroke-width="1"/>
+      <text class="t12" x="160" y="544">로비에서 진입</text>
+      <text class="t12" x="860" y="582" text-anchor="end">싱크 · 제빙기는 벽 쪽 / 커피머신 2대는 고객 쪽 — 급배수 두 줄 필요</text>
+      <text class="dm" x="860" y="602" text-anchor="end">축척은 기물 폭 기준 · 벽 길이와 통로 폭은 확인 필요</text>
+    </svg>
+    <p style="margin-top:12px"><b>좋은 점</b> — 커피머신이 고객을 향해 있어 내리는 모습이 보이고 픽업이 짧습니다. 벽 쪽에 냉장 · 제빙이 모여 재료 보관이 한곳입니다.</p>
+    <p><b>걸리는 점</b> — 싱크가 벽 쪽 한 곳뿐이라 커피 작업자가 헹굴 때마다 바를 건넙니다. 커피머신도 급배수가 필요하므로 <b class="bad">바닥 배관을 두 줄 다 뽑아야 합니다.</b></p>
+  </div>
+
+  <div class="card brk">
+    <h3>B안 — coffee zone이 벽 쪽</h3>
+    <div class="sub">커피 기물과 싱크를 한 줄로 모으는 안</div>
+    <svg class="sv plan" viewBox="46 24 824 588" role="img" aria-label="coffee zone 배치">
+      <rect x="60" y="34" width="800" height="76" fill="none" stroke="#2c2a26" stroke-width="1"/>
+      <line x1="150" y1="34" x2="150" y2="110" stroke="#2c2a26" stroke-width="1"/>
+      <text class="t12" x="105" y="76" text-anchor="middle">창고</text>
+      <text class="t12" x="500" y="76" text-anchor="middle">화장실 · D.S · 수납</text>
+      <rect class="front" x="120.0" y="118" width="82.5" height="52" rx="2"/><rect class="front" x="202.5" y="118" width="39.3" height="52" rx="2"/><rect class="front" x="241.7" y="118" width="50.5" height="52" rx="2"/><rect class="front" x="292.2" y="118" width="98.2" height="52" rx="2"/><rect class="front" x="390.4" y="118" width="32.7" height="52" rx="2"/><rect class="front" x="423.1" y="118" width="19.6" height="52" rx="2"/><rect class="front" x="442.8" y="118" width="78.5" height="52" rx="2"/><rect class="front" x="521.3" y="118" width="50.5" height="52" rx="2"/><rect class="front" x="571.8" y="118" width="39.3" height="52" rx="2"/><rect class="front" x="611.0" y="118" width="39.3" height="52" rx="2"/><rect class="front" x="650.3" y="118" width="52.4" height="52" rx="2"/><rect class="front" x="702.7" y="118" width="78.5" height="52" rx="2"/><text class="ts" x="161.2" y="144.0" text-anchor="middle" dominant-baseline="central">C1</text><text class="ts" x="222.1" y="144.0" text-anchor="middle" dominant-baseline="central">C2</text><text class="th" x="267.0" y="144.0" text-anchor="middle" dominant-baseline="central">C3</text><text class="ts" x="341.3" y="144.0" text-anchor="middle" dominant-baseline="central">C4</text><text class="ts" x="406.8" y="144.0" text-anchor="middle" dominant-baseline="central">C5</text><text class="ts" x="432.9" y="144.0" text-anchor="middle" dominant-baseline="central">C6</text><text class="ts" x="482.0" y="144.0" text-anchor="middle" dominant-baseline="central">C7</text><text class="th" x="546.5" y="144.0" text-anchor="middle" dominant-baseline="central">C8</text><text class="ts" x="591.4" y="144.0" text-anchor="middle" dominant-baseline="central">C9</text><text class="ts" x="630.7" y="144.0" text-anchor="middle" dominant-baseline="central">C10</text><text class="ts" x="676.5" y="144.0" text-anchor="middle" dominant-baseline="central">C11</text><text class="th" x="741.9" y="144.0" text-anchor="middle" dominant-baseline="central">C12 싱크</text>
+      <line class="dl" x1="120" y1="182" x2="781.2" y2="182"/>
+      <line class="dl" x1="120" y1="178" x2="120" y2="186"/>
+      <line class="dl" x1="781.2" y1="178" x2="781.2" y2="186"/>
+      <text class="t12" x="451" y="198" text-anchor="middle">coffee zone · 기물 폭 합계 10,102</text>
+      <rect class="zone" x="120" y="212" width="661.2" height="42"/>
+      <text class="t12" x="451" y="237" text-anchor="middle">직원 통로 · 폭 미확인</text>
+      <circle cx="305" cy="233" r="7" fill="#3d6b4f"/>
+      <circle cx="596" cy="233" r="7" fill="#3d6b4f"/>
+      <rect class="sell" x="240.0" y="264" width="98.2" height="52" rx="2"/><rect class="sell" x="338.2" y="264" width="39.3" height="52" rx="2"/><rect class="sell" x="377.5" y="264" width="98.2" height="52" rx="2"/><rect class="sell" x="475.6" y="264" width="98.2" height="52" rx="2"/><text class="ts" x="289.1" y="290.0" text-anchor="middle" dominant-baseline="central">B1 쇼케이스</text><text class="ts" x="357.8" y="290.0" text-anchor="middle" dominant-baseline="central">B2</text><text class="ts" x="426.5" y="290.0" text-anchor="middle" dominant-baseline="central">B3 냉장고</text><text class="ts" x="524.7" y="290.0" text-anchor="middle" dominant-baseline="central">B4 냉장고</text>
+      <line class="dl" x1="240" y1="328" x2="573.8" y2="328"/>
+      <line class="dl" x1="240" y1="324" x2="240" y2="332"/>
+      <line class="dl" x1="573.8" y1="324" x2="573.8" y2="332"/>
+      <text class="t12" x="407" y="344" text-anchor="middle">beverage zone · 기물 폭 합계 5,100</text>
+      <rect x="60" y="258" width="130" height="64" fill="none" stroke="#2c2a26" stroke-width="0.7"/>
+      <text class="t12" x="125" y="286" text-anchor="middle">대기 및</text>
+      <text class="t12" x="125" y="304" text-anchor="middle">행사용 테이블</text>
+      <text class="t12" x="170" y="368" text-anchor="middle">키오스크 ORDER</text>
+      <text class="t12" x="360" y="368" text-anchor="middle">ORDER</text>
+      <text class="t12" x="534" y="368" text-anchor="middle">PICK UP</text>
+      <rect x="60" y="380" width="800" height="140" fill="none" stroke="#8a847a" stroke-width="0.5" stroke-dasharray="3 3" opacity="0.4"/>
+      <text class="t12" x="140" y="414" text-anchor="middle">고객 홀</text>
+      <rect class="cnt" x="330" y="448" width="290" height="52" rx="3"/>
+      <text class="t14" x="475" y="470" text-anchor="middle">SERVICE BAR</text>
+      <text class="t12" x="475" y="488" text-anchor="middle">S1 아이스제빙기 1,300 × 630 × 900</text>
+      <line class="dl" x1="70" y1="540" x2="150" y2="540"/>
+      <path d="M144 536 L152 540 L144 544" fill="none" stroke="#8a847a" stroke-width="1"/>
+      <text class="t12" x="160" y="544">로비에서 진입</text>
+      <text class="t12" x="860" y="582" text-anchor="end">싱크 · 제빙기 · 커피머신이 벽 쪽 한 줄 — 급배수가 한 줄로 모임</text>
+      <text class="dm" x="860" y="602" text-anchor="end">축척은 기물 폭 기준 · 벽 길이와 통로 폭은 확인 필요</text>
+    </svg>
+    <p style="margin-top:12px"><b>좋은 점</b> — 싱크 · 제빙기 · 커피머신이 한 줄이라 <b>급배수가 벽 쪽 한 줄로 모입니다.</b> 커피 작업자가 제자리에서 헹굽니다. 고객 쪽 바가 짧아 홀이 넓어집니다.</p>
+    <p><b>걸리는 점</b> — 바리스타가 벽을 보고 작업해 추출이 보이지 않고, 행사 때 픽업 호명이 어렵습니다. 벽 쪽 기물 폭이 10,102로 A안보다 740 깁니다.</p>
+  </div>
+
+  <div class="card brk">
+    <h3>급배수 위치에 따른 선택 기준</h3>
+    <div class="sub">한 안을 고르지 않고 조건별로 정해둡니다</div>
+    <p>배수를 어디서 뽑을 수 있는지는 <b>아래층 천장을 열어봐야 알 수 있습니다.</b> 그래서 지금 하나를 확정하기보다, 조건이 나왔을 때 어느 쪽으로 갈지를 미리 정해두는 편이 낫습니다.</p>
+    <table>
+      <tr><th>배수를 뽑을 수 있는 자리</th><th>가는 안</th><th>근거</th></tr>
+      <tr><td>벽 쪽 한 줄로 모을 수 있음</td><td><b>B안</b></td><td>커피 기물과 싱크가 한 줄 · 배관 한 줄</td></tr>
+      <tr><td>벽 쪽 · 고객 쪽 모두 가능</td><td>A안도 성립</td><td>추출이 보이고 픽업이 짧음</td></tr>
+      <tr><td>어느 한쪽만 가능</td><td>가능한 쪽에 싱크</td><td>그 존을 그쪽으로 배치</td></tr>
+    </table>
+    <div class="note">
+      <p><b>이렇게 정해두면 현장에서 뚫어본 뒤 그 자리에서 판단할 수 있습니다.</b> 회의를 다시 잡지 않아도 됩니다.</p>
+    </div>
+    <div class="ask">
+      <h4>결정 항목</h4>
+      <div class="item"><span class="tagk c">건축위 확인</span><span class="tx"><b>3-1 · 급배수 관통 가능 위치</b><br>아래층 천장 안의 보와 기존 배관을 확인해 <b>슬래브 관통이 가능한 구간을 알려주시기 바랍니다.</b> 커피머신도 급배수가 필요하므로 A안은 두 줄이 필요합니다.<span class="why">→ 공사 단계에서만 가능하며 이후 옮길 수 없습니다</span></span></div>
+      <div class="item"><span class="tagk c">건축위 확인</span><span class="tx"><b>3-2 · 3상 전원 인입</b><br>커피머신 두 대가 각각 4.8kw 3상4선이고 단독차단기 직결입니다. <b>카페까지 3상 전원이 들어오는지 확인 부탁드립니다.</b><span class="why">→ 분전반 용량과 배선 경로가 달라집니다</span></span></div>
+      <div class="item"><span class="tagk c">건축위 확인</span><span class="tx"><b>3-3 · 환기 · 후드 계획</b><br>냉장 · 냉동 기기가 네 대이고 모두 발열합니다. <b>환기 계획이 도면에 반영돼 있는지 확인 부탁드립니다.</b></span></div>
+      <div class="item"><span class="tagk d">사업단 논의</span><span class="tx"><b>3-4 · A안 · B안 방향</b><br>급배수 확인 전이라도 선호 방향을 정해두면 설계 협의가 빨라집니다.</span></div>
+      <div class="item"><span class="tagk d">사업단 논의</span><span class="tx"><b>3-5 · 커피존 핸드싱크 추가</b><br>A안으로 갈 경우 커피 작업자가 쓸 작은 싱크를 하나 더 둘지 정합니다.</span></div>
+    </div>
+  </div>
+
+  <div class="sec brk"><h2>4 기물 목록</h2><span class="cap">두 안 대조</span><div class="rule"></div></div>
+  <div class="card">
+    <p>두 안에 들어가는 기물은 같습니다. <b>배치 자리만 달라집니다.</b> 같은 기물이 A안에서 어디로 가고 B안에서 어디로 가는지 나란히 놓았습니다.</p>
+    <table>
+      <tr><th>품목</th><th>치수 (W × D × H)</th><th>전기</th><th>A안</th><th>B안</th><th>비고</th></tr>
+      <tr><td>커피머신 ①</td><td>771 × 539 × H520</td><td>4.8kw 3상4선</td><td>C4</td><td>C3</td><td>급배수</td></tr>
+      <tr><td>커피머신 ②</td><td>771 × 539 × H520</td><td>4.8kw 3상4선</td><td>C7</td><td>C8</td><td>급배수</td></tr>
+      <tr><td>그라인더 2대</td><td>500*</td><td>0.5kw ×2</td><td>C6</td><td>C5</td><td>치수 미표기</td></tr>
+      <tr><td>온수기 · 수납</td><td>400*</td><td>2kw</td><td>C5</td><td>C6</td><td>치수 미표기</td></tr>
+      <tr><td>테이블냉장고 (커피)</td><td>1,500 × 700 × 850</td><td>—</td><td>C8</td><td>C4</td><td></td></tr>
+      <tr><td>컵박스 · 시럽 토핑대</td><td>600*</td><td>—</td><td>—</td><td>C2</td><td>치수 미표기</td></tr>
+      <tr><td>시럽 &amp; 토핑대</td><td>600*</td><td>—</td><td>—</td><td>C9</td><td>치수 미표기</td></tr>
+      <tr><td>사용후컵함</td><td>400*</td><td>—</td><td>C3</td><td>—</td><td>치수 미표기</td></tr>
+      <tr><td>수납장 (커피존)</td><td>900*</td><td>—</td><td>C9</td><td>—</td><td>치수 미표기</td></tr>
+      <tr><td>4도어 냉동고</td><td>1,260 × 750(800) × 1,910</td><td>0.77kw</td><td>B1</td><td>C1</td><td></td></tr>
+      <tr><td>토핑냉장고</td><td>1,200 × 700 × 850</td><td>0.18kw</td><td>B4</td><td>C7</td><td></td></tr>
+      <tr><td>테이블냉장고 (음료)</td><td>1,500 × 700 × 850</td><td>0.2kw</td><td>B6</td><td>B3</td><td></td></tr>
+      <tr><td>테이블냉장고 (추가)</td><td>1,500 × 700 × 850</td><td>0.2kw</td><td>—</td><td>B4</td><td></td></tr>
+      <tr><td>제빙기 30KG</td><td>600*</td><td>430w</td><td>B3</td><td><b class="bad">확인 필요</b></td><td>급배수 · B안 도면에 없음</td></tr>
+      <tr><td>제빙기 (대형)</td><td>800*</td><td>1.1kw</td><td>B9</td><td>C11</td><td>급배수 · 치수 미표기</td></tr>
+      <tr><td>싱크대</td><td>1,200*</td><td>—</td><td>B8</td><td>C12</td><td>급배수 · 치수 미표기</td></tr>
+      <tr><td>제작 작업대</td><td>700*</td><td>—</td><td>B2</td><td>C10</td><td>치수 미표기</td></tr>
+      <tr><td>작업대</td><td>600*</td><td>—</td><td>B5 · B7</td><td>—</td><td>치수 미표기</td></tr>
+      <tr><td>수납장 (음료존)</td><td>900*</td><td>—</td><td>B10</td><td>—</td><td>치수 미표기</td></tr>
+      <tr><td>POS</td><td>600*</td><td>—</td><td>C1</td><td>B2</td><td>치수 미표기</td></tr>
+      <tr><td>쇼케이스</td><td>1,500 × 650 × 1,200</td><td>—</td><td>C2</td><td>B1</td><td></td></tr>
+      <tr><td>아이스제빙기 (서비스바)</td><td>1,300 × 630 × 900</td><td>—</td><td>S1</td><td>S1</td><td>급배수</td></tr>
+      <tr class="tot"><td colspan="3">기물 폭 합계 · 벽 쪽 / 고객 쪽</td><td class="n">9,360 / 7,342</td><td class="n">10,102 / 5,100</td><td></td></tr>
+    </table>
+    <div class="note">
+      <p><b>별표(*)는 시안에 치수가 없어 일반 규격으로 가정한 값입니다.</b> 위 22품목은 도면에 그려진 것이고, 카드단말기 · 진동벨 · 키오스크 · 정수기 · 소도구 · 창고 선반 · 메뉴판 · 테이블 · 의자 등 <b>24품목은 도면에 없으나 발주 대상</b>입니다. 전체 46품목은 별도 자산조사 파일에 정리했습니다.</p>
+    </div>
+    <div class="ask">
+      <h4>결정 항목</h4>
+      <div class="item"><span class="tagk d">사업단 논의</span><span class="tx"><b>4-1 · 가정값 치수 대조</b><br>별표 항목의 실제 치수를 확인해 합계를 확정합니다.</span></div>
+      <div class="item"><span class="tagk d">사업단 논의</span><span class="tx"><b>4-2 · 제빙기 대수</b><br>A안 기준 제빙기가 30KG · 대형 · 서비스바까지 세 대입니다. 실제 필요 대수를 정합니다.<span class="why">→ 대수만큼 급배수 관통이 늘어납니다</span></span></div>
+      <div class="item"><span class="tagk d">사업단 논의</span><span class="tx"><b>4-3 · 커피머신 두 대 여부</b><br>두 안 모두 커피머신이 두 대로 그려져 있습니다. 맞는지 확인합니다.</span></div>
+      <div class="item"><span class="tagk f">사업단 추후</span><span class="tx"><b>4-4 · 재사용 · 신규 구입 구분</b><br>자산조사 파일의 처리 열을 채워 옮겨 쓸 것과 새로 살 것을 나눠 전달드립니다.</span></div>
+    </div>
+  </div>
+
+  <div class="sec brk"><h2>5 정리</h2><span class="cap">확인 · 논의 · 추후</span><div class="rule"></div></div>
+  <div class="card keep">
+    <div class="glist">
+      <div class="gcol c"><h4>건축위 확인 요청 · 5건</h4><p class="sub" style="margin-bottom:10px">주일 브리핑에서 함께 정합니다</p><ul>
+        <li><span class="no">2-1</span>카페 면적 표기 160 / 145</li>
+        <li><span class="no">2-2</span>카페 부분 확대 도면</li>
+        <li><span class="no">3-1</span>급배수 관통 가능 위치</li>
+        <li><span class="no">3-2</span>3상 전원 인입</li>
+        <li><span class="no">3-3</span>환기 · 후드 계획</li>
+      </ul></div>
+      <div class="gcol d"><h4>사업단 논의 필요 · 5건</h4><p class="sub" style="margin-bottom:10px">오늘 · 내일 회의에서 정합니다</p><ul>
+        <li><span class="no">3-4</span>A안 · B안 방향</li>
+        <li><span class="no">3-5</span>커피존 핸드싱크 추가</li>
+        <li><span class="no">4-1</span>가정값 치수 대조</li>
+        <li><span class="no">4-2</span>제빙기 대수</li>
+        <li><span class="no">4-3</span>커피머신 두 대 여부</li>
+      </ul></div>
+      <div class="gcol f"><h4>사업단 추후 전달 · 1건</h4><p class="sub" style="margin-bottom:10px">차주까지 정리해 전달합니다</p><ul>
+        <li><span class="no">4-4</span>재사용 · 신규 구입 구분</li>
+      </ul></div>
+    </div>
+    <div class="note">
+      <p><b>급배수와 전기는 공사 단계에서만 가능합니다.</b> 슬래브 관통, 3상 배선, 환기 덕트는 나중에 추가할 수 없습니다. 기물 발주와 운영 방식은 뒤로 미룰 수 있으므로, 건축위 협의에서는 확인 요청 항목을 먼저 다룹니다.</p>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>선한목자교회 총여선교회 사업단</span>
+    <span>1층 성전보수 사업단 PM 안상미 · 2026. 8. 14.</span>
+  </div>
+</div>
+</body>
+</html>
