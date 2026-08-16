@@ -92,42 +92,42 @@
         font-size:10.5px;color:#6b6358;letter-spacing:.14em}
   .ceil .bar{flex:1;height:3px;background:linear-gradient(90deg,#3a342c,#544a3c,#3a342c);border-radius:2px}
 
-  .board{display:grid;gap:8px}
+  .board{display:grid;gap:8px;align-items:stretch}
   .board.c5{grid-template-columns:repeat(5,1fr)}
   .board.c6{grid-template-columns:repeat(6,1fr)}
   .panel{
     background:linear-gradient(180deg,var(--board2),var(--board));
     border:1px solid #3a342c;border-radius:5px;
-    aspect-ratio:9/16;padding:14px 11px 12px;display:flex;flex-direction:column;
+    padding:14px 8px 13px;display:flex;flex-direction:column;
     box-shadow:inset 0 0 40px rgba(0,0,0,.45); overflow:hidden;
   }
   .ph{border-bottom:1px solid #4a4238;padding-bottom:7px;margin-bottom:8px}
-  .ph .en{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.15em}
-  .ph .ko{font-size:9px;color:var(--dim);margin-top:2px;letter-spacing:.04em}
+  .ph .en{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.14em}
+  .ph .ko{font-size:10px;color:var(--dim);margin-top:2px;letter-spacing:.04em}
 
   .items{flex:1;display:flex;flex-direction:column;gap:0}
-  .it{display:flex;align-items:center;gap:4px;padding:2.5px 0}
-  .it .nm{font-size:10px;color:var(--cream);letter-spacing:-.01em;white-space:nowrap}
+  .it{display:flex;align-items:center;gap:4px;padding:3.2px 0;min-width:0}
+  .it .nm{font-size:11.5px;font-weight:500;color:#f7f3ea;letter-spacing:-.035em;white-space:nowrap}
   .it .dot{flex:1;border-bottom:1px dotted #4a4238}
-  .it .pr{font-size:10px;color:var(--cream);font-weight:600;flex:none}
+  .it .pr{font-size:12px;color:#f7f3ea;font-weight:700;flex:none}
 
   /* HOT · ICE 아이콘 */
   .tags{display:inline-flex;gap:2.5px;flex:none}
   .tg{display:inline-flex;align-items:center;
-      font-size:6.5px;font-weight:600;letter-spacing:.1em;
-      padding:1px 3.5px 1.5px;border-radius:2px;line-height:1.3;white-space:nowrap;
-      border:.7px solid currentColor}
-  .tg.hot{color:#e07a55}
-  .tg.ice{color:#6bb4de}
+      font-size:6px;font-weight:600;letter-spacing:.06em;
+      padding:.5px 3px 1px;border-radius:2px;line-height:1.3;white-space:nowrap;
+      border:.6px solid currentColor;opacity:.62}
+  .tg.hot{color:#b08a72}
+  .tg.ice{color:#8298a6}
 
   .msub{margin-top:9px;padding-top:7px;border-top:1px solid #4a4238}
-  .msub .lb{font-size:8.5px;color:var(--gold);letter-spacing:.16em;font-weight:700;margin-bottom:4px}
+  .msub .lb{font-size:9px;color:var(--gold);letter-spacing:.16em;font-weight:700;margin-bottom:5px}
 
   .season{margin-top:auto;background:rgba(201,160,102,.11);border:1px solid rgba(201,160,102,.4);
     border-radius:4px;padding:8px;text-align:center}
   .season .lb{font-size:8px;color:var(--gold);letter-spacing:.2em;font-weight:700}
-  .season .nm{font-size:11.5px;color:#fff;font-weight:700;margin-top:3px;letter-spacing:-.02em}
-  .season .pr{font-size:10.5px;color:var(--gold);font-weight:600;margin-top:1px}
+  .season .nm{font-size:13px;color:#fff;font-weight:700;margin-top:3px;letter-spacing:-.02em}
+  .season .pr{font-size:12px;color:var(--gold);font-weight:700;margin-top:2px}
 
   /* 6칸 시즌 이미지 패널 */
   .panel.sp{padding:0;background:#1e1a16}
@@ -142,9 +142,9 @@
   .spimg .ph2{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     font-size:9px;color:#6b6358;letter-spacing:.1em}
   .spinfo{padding:8px 10px 10px;text-align:center}
-  .spinfo .nm{font-size:12px;color:#fff;font-weight:700;letter-spacing:-.02em;line-height:1.3}
+  .spinfo .nm{font-size:13px;color:#fff;font-weight:700;letter-spacing:-.02em;line-height:1.3}
   .spinfo .ds{font-size:8.5px;color:var(--dim);margin-top:2px}
-  .spinfo .pr{font-size:12px;color:var(--gold);font-weight:700;margin-top:3px}
+  .spinfo .pr{font-size:13.5px;color:var(--gold);font-weight:700;margin-top:3px}
 
   .pn{display:grid;gap:8px;margin-top:7px;text-align:center;font-size:9.5px;color:var(--muted)}
   .pn.c5{grid-template-columns:repeat(5,1fr)}
@@ -176,6 +176,10 @@
   .subpane{display:none}
   .subpane.on{display:block}
 
+  .rs{font-size:11.5px;line-height:1.55}
+  .rs.wait{color:#a9a294;font-style:italic}
+  .rs.done{color:#2f7a4f;font-weight:600;font-style:normal}
+  .rs .d{display:block;font-size:10.5px;color:#8a847a;font-weight:400}
   .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
@@ -243,7 +247,7 @@
     <button class="tb" data-tab="2">실측 평면</button>
     <button class="tb" data-tab="3">사업단 안<span class="c">3</span></button>
     <button class="tb" data-tab="4">메뉴판</button>
-    <button class="tb" data-tab="5">정리<span class="c">28</span></button>
+    <button class="tb" data-tab="5">논의 안건<span class="c">28</span></button>
   </div>
 
   <div class="pane on" data-pane="1">
@@ -1253,10 +1257,9 @@
     <h3>온도 표기</h3>
     <div class="sub">색으로 먼저 읽히고 글자로 확인됩니다</div>
   <div class="legend">
-    <span class="lg"><b>온도 표기</b></span>
-    <span class="lg"><span class="tg hot">HOT</span> 따뜻한 음료 · 붉은색</span>
-    <span class="lg"><span class="tg ice">ICE</span> 차가운 음료 · 파란색</span>
-    <span class="lg" style="color:var(--muted)">색으로 먼저 읽히고 글자로 확인됩니다</span>
+        <span class="lg"><span class="tg hot">HOT</span> 따뜻한 음료</span>
+    <span class="lg"><span class="tg ice">ICE</span> 차가운 음료 &nbsp;·&nbsp; 메뉴명이 먼저 읽히도록 표기는 작게 두었습니다</span>
+    
   </div>
 
   </div>
@@ -1515,53 +1518,58 @@
   </div>
 
   <div class="pane" data-pane="5">
-    <div class="psec"><span class="n">5</span><h2>정리</h2><span class="cap">확인 · 논의 · 추후</span><div class="rule"></div></div>
-    <div class="ptitle">확인 · 논의 · 추후</div>
+    <div class="psec"><span class="n">5</span><h2>논의 안건</h2><span class="cap">건축위 확인 · 사업단 논의 · 추후 전달</span><div class="rule"></div></div>
+    <div class="ptitle">건축위 확인 · 사업단 논의 · 추후 전달</div>
 <div class="card">
     <h3>건축위 확인 요청 · 16건</h3>
     <div class="sub">구조 · 설비는 공사 단계에서만 가능합니다</div>
     <table>
-      <tr><th>번호</th><th>항목</th><th>급함</th></tr>
-      <tr><td>2-1</td><td>치수 기입본 (벽 길이 · 통로 폭)</td><td class="red">최우선</td></tr>
-      <tr><td>2-2</td><td>카페 면적 표기 160㎡ / 145㎡</td><td></td></tr>
-      <tr><td>2-3</td><td>뒤 바 끝 구간 — 상판 없이 바닥 마감이 이어지는지</td><td></td></tr>
-      <tr><td>3-1</td><td>창고 선반 제작</td><td></td></tr>
-      <tr><td>3-3</td><td><b>보조주방 싱크 설치</b> — 뒤 바와 별개로 한 자리 더</td><td class="red">내일 논의</td></tr>
-      <tr><td>3-4</td><td><b>급배수 관통 가능 위치</b> — 뒤 바 1 · 2 · 3안이 여기서 갈림</td><td class="red">최우선</td></tr>
-      <tr><td>3-5</td><td>3상 전원 인입</td><td></td></tr>
-      <tr><td>3-6</td><td>환기 · 후드 계획</td><td></td></tr>
-      <tr><td>3-9</td><td>앞 바 온수 — 커피머신 온수로 부족 시 소형 온수기</td><td></td></tr>
-      <tr><td>3-10</td><td>계산대 전기 · 통신</td><td></td></tr>
-      <tr><td>3-12</td><td>싱크 · 건조 구간 일체 설계</td><td></td></tr>
-      <tr><td>3-14</td><td><b>리프트업 상판</b> — 계산대 좌측 개폐형</td><td class="red">설계 전</td></tr>
-      <tr><td>3-20</td><td>뒤 바 B1 하부 전원 — 나중에 냉장고 전환 대비</td><td></td></tr>
-      <tr><td>3-16</td><td>하부 마감 구분 — 앞 오픈 · 뒤 문 · 싱크 통풍 · 계산대 잠금</td><td></td></tr>
-      <tr><td>4-1</td><td>메뉴판 천장 매달림 구조</td><td></td></tr>
-      <tr><td>4-2</td><td>메뉴판 전원 · 통신</td><td></td></tr>
-      <tr><td>4-3</td><td>메뉴판 화면 하단 높이 — 층고 확인</td><td></td></tr>
+      <tr><th>번호</th><th>항목</th><th>급함</th><th style="width:150px">협의 결과</th></tr>
+      <tr><td>2-1</td><td>치수 기입본 (벽 길이 · 통로 폭)</td><td class="red">최우선</td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>2-2</td><td>카페 면적 표기 160㎡ / 145㎡</td><td></td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>2-3</td><td>뒤 바 끝 구간 — 상판 없이 바닥 마감이 이어지는지</td><td></td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>3-1</td><td>창고 선반 제작</td><td></td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>3-3</td><td><b>보조주방 싱크 설치</b> — 뒤 바와 별개로 한 자리 더</td><td class="red">내일 논의</td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>3-4</td><td><b>급배수 관통 가능 위치</b> — 뒤 바 1 · 2 · 3안이 여기서 갈림</td><td class="red">최우선</td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>3-5</td><td>3상 전원 인입</td><td></td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>3-6</td><td>환기 · 후드 계획</td><td></td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>3-9</td><td>앞 바 온수 — 커피머신 온수로 부족 시 소형 온수기</td><td></td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>3-10</td><td>계산대 전기 · 통신</td><td></td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>3-12</td><td>싱크 · 건조 구간 일체 설계</td><td></td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>3-14</td><td><b>리프트업 상판</b> — 계산대 좌측 개폐형</td><td class="red">설계 전</td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>3-20</td><td>뒤 바 B1 하부 전원 — 나중에 냉장고 전환 대비</td><td></td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>3-16</td><td>하부 마감 구분 — 앞 오픈 · 뒤 문 · 싱크 통풍 · 계산대 잠금</td><td></td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>4-1</td><td>메뉴판 천장 매달림 구조</td><td></td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>4-2</td><td>메뉴판 전원 · 통신</td><td></td><td class="rs wait">협의 예정</td></tr>
+      <tr><td>4-3</td><td>메뉴판 화면 하단 높이 — 층고 확인</td><td></td><td class="rs wait">협의 예정</td></tr>
     </table>
   </div><div class="card">
     <h3>사업단 논의 필요 · 5건</h3>
     <table>
-      <tr><th>번호</th><th>항목</th></tr>
-      <tr><td>3-7</td><td>소형 제빙기 추가 여부 — 스무디용 얼음 왕복 1,800</td></tr>
-      <tr><td>3-8</td><td>B2 · B3 물막이 (1안 선택 시)</td></tr>
-      <tr><td>3-11</td><td>가루통 배치 방식 — 2단 계단식 · 상부 선반 · 상판 매립</td></tr>
-      <tr><td>3-15</td><td>직원 출입구 ① 개폐 방식</td></tr>
-      <tr><td>4-4</td><td>메뉴판 5칸 · 6칸 선택</td></tr>
+      <tr><th>번호</th><th>항목</th><th style="width:150px">협의 결과</th></tr>
+      <tr><td>3-7</td><td>소형 제빙기 추가 여부 — 스무디용 얼음 왕복 1,800</td><td class="rs wait">논의 예정</td></tr>
+      <tr><td>3-8</td><td>B2 · B3 물막이 (1안 선택 시)</td><td class="rs wait">논의 예정</td></tr>
+      <tr><td>3-11</td><td>가루통 배치 방식 — 2단 계단식 · 상부 선반 · 상판 매립</td><td class="rs wait">논의 예정</td></tr>
+      <tr><td>3-15</td><td>직원 출입구 ① 개폐 방식</td><td class="rs wait">논의 예정</td></tr>
+      <tr><td>4-4</td><td>메뉴판 5칸 · 6칸 선택</td><td class="rs wait">논의 예정</td></tr>
     </table>
   </div><div class="card">
     <h3>사업단 추후 전달 · 7건</h3>
     <table>
-      <tr><th>번호</th><th>항목</th></tr>
-      <tr><td>3-2</td><td><b>창고 수납 품목 리스트</b> → 선반 단수와 높이 산출</td></tr>
-      <tr><td>3-13</td><td>믹서기 실측 — 지름 · 높이 → 건조 선반 간격</td></tr>
-      <tr><td>3-17</td><td>뒤 바 하부 문 색 · 재질</td></tr>
-      <tr><td>3-18</td><td><b>기물 실측표</b> — 실제 폭 → 배치 합계 확정</td></tr>
-      <tr><td>3-19</td><td>재사용 · 신규 구입 구분</td></tr>
-      <tr><td>4-5</td><td>메뉴판 콘텐츠 운영과 예비본</td></tr>
-      <tr><td>—</td><td>좌석 수 · 테이블 배치 (고객 홀 미착수)</td></tr>
+      <tr><th>번호</th><th>항목</th><th style="width:150px">협의 결과</th></tr>
+      <tr><td>3-2</td><td><b>창고 수납 품목 리스트</b> → 선반 단수와 높이 산출</td><td class="rs wait">작성 예정</td></tr>
+      <tr><td>3-13</td><td>믹서기 실측 — 지름 · 높이 → 건조 선반 간격</td><td class="rs wait">작성 예정</td></tr>
+      <tr><td>3-17</td><td>뒤 바 하부 문 색 · 재질</td><td class="rs wait">작성 예정</td></tr>
+      <tr><td>3-18</td><td><b>기물 실측표</b> — 실제 폭 → 배치 합계 확정</td><td class="rs wait">작성 예정</td></tr>
+      <tr><td>3-19</td><td>재사용 · 신규 구입 구분</td><td class="rs wait">작성 예정</td></tr>
+      <tr><td>4-5</td><td>메뉴판 콘텐츠 운영과 예비본</td><td class="rs wait">작성 예정</td></tr>
+      <tr><td>—</td><td>좌석 수 · 테이블 배치 (고객 홀 미착수)</td><td class="rs wait">작성 예정</td></tr>
     </table>
+    <div class="note">
+      <b>「협의 결과」 칸은 회의에서 나온 내용을 그대로 채워 나갑니다.</b>
+      확정된 것은 진한 글씨와 날짜로, 아직인 것은 「협의 예정」으로 남겨 둡니다.
+      이 문서 주소는 바뀌지 않으므로 같은 링크에서 늘 최신 상태를 보실 수 있습니다.
+    </div>
     <div class="note warn">
       <b>내일 회의에서 먼저 정할 것은 두 가지입니다.</b>
       <b>급배수 관통 가능 위치(3-4)</b>가 나와야 뒤 바 1 · 2 · 3안 중 하나가 정해지고,
