@@ -38,7 +38,7 @@
   .lead{font-size:14.5px;color:var(--soft)}
 
   .stats{
-    display:grid;grid-template-columns:repeat(5,1fr);
+    display:grid;grid-template-columns:repeat(4,1fr);
     background:var(--card);border:1px solid var(--line);border-radius:12px;
     overflow:hidden;margin-bottom:34px;
   }
@@ -56,7 +56,7 @@
   .sec .cap{font-size:12.5px;color:var(--muted);white-space:nowrap}
   .sec .rule{flex:1;height:1px;background:var(--text);opacity:.85}
 
-  .docs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:36px}
+  .docs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:36px}
   .doc{
     display:block;background:var(--card);border:1px solid var(--line);
     border-radius:13px;padding:22px 24px 20px;text-decoration:none;color:var(--text);
@@ -119,9 +119,9 @@
     font-size:12px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
   @media(max-width:860px){
-    .stats{grid-template-columns:repeat(3,1fr)}
-    .stat:nth-child(3){border-right:0}
-    .stat:nth-child(n+4){border-top:1px solid var(--line2)}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(2n){border-right:0}
+    .stat:nth-child(n+3){border-top:1px solid var(--line2)}
     .flow{grid-template-columns:repeat(3,1fr)}
     .docs{grid-template-columns:1fr}
     .dates,.org{grid-template-columns:1fr}
@@ -143,8 +143,7 @@
 
   <div class="navrow">
     <a class="pill" href="index.html">← 사업단 홈</a>
-    <a class="pill" href="https://claude.ai/chat/9dbbdb70-77a1-437d-9f96-1cbd504a520c" target="_blank" rel="noopener">💬 작업 대화</a>
-    <div class="meta">총여선교회 사업단 › 1층 성전보수 &nbsp;|&nbsp; 업데이트 2026.08.14</div>
+    <div class="meta">총여선교회 사업단 › 1층 성전보수 &nbsp;|&nbsp; 업데이트 2026.08.16</div>
   </div>
 
   <div class="head">
@@ -164,10 +163,6 @@
     <div class="stat">
       <div class="stat-v mono">1<small>/6</small></div>
       <div class="stat-l">진행 단계</div>
-    </div>
-    <div class="stat">
-      <div class="stat-v green mono">2</div>
-      <div class="stat-l">보고 회차</div>
     </div>
     <div class="stat">
       <div class="stat-v mono">14</div>
@@ -193,21 +188,6 @@
       </div>
       <span class="doc-go">›</span>
     </a>
-    <a class="doc" href="gsmch-1f-report.html">
-      <div class="doc-top">
-        <div class="doc-ico">📝</div>
-        <span class="doc-tag gold">8/13 최신</span>
-      </div>
-      <h3>진행 보고</h3>
-      <p>일자별 진행 상황을 대상에 맞춘 문안으로 정리합니다. 복사해서 바로 전달할 수 있습니다.</p>
-      <div class="doc-list">
-        <span class="chip">건축위 · 사무국</span>
-        <span class="chip">사업단</span>
-        <span class="chip">담임사모님</span>
-        <span class="chip">중보기도팀</span>
-      </div>
-      <span class="doc-go">›</span>
-    </a>
     <a class="doc" href="gsmch-1f-book-layout.html">
       <div class="doc-top">
         <div class="doc-ico">📚</div>
@@ -225,14 +205,14 @@
     <a class="doc" href="gsmch-1f-cafe-layout.html">
       <div class="doc-top">
         <div class="doc-ico">☕</div>
-        <span class="doc-tag">A · B안 비교</span>
+        <span class="doc-tag gold">사업단 안</span>
       </div>
       <h3>카페 배치 검토</h3>
-      <p>로뎀카페 설비 배치 두 안을 비교합니다. 기물 폭과 급배수 조건에 따른 선택 기준까지 정리했습니다.</p>
+      <p>건축위 1차안을 실측으로 검증하고 사업단 배치 · 운영안을 담았습니다. 메뉴판 시안도 함께 있습니다.</p>
       <div class="doc-list">
-        <span class="chip">시안 A · B</span>
-        <span class="chip">기물 21점</span>
-        <span class="chip">급배수 · 전기</span>
+        <span class="chip">건축위 1차안</span>
+        <span class="chip">뒤 바 3안</span>
+        <span class="chip">메뉴판</span>
       </div>
       <span class="doc-go">›</span>
     </a>
@@ -273,45 +253,6 @@
       <div class="step-t">오픈 · 안정화</div>
       <div class="step-d">10/20 이후</div>
     </a>
-  </div>
-
-  <div class="sec">
-    <h2>주요 일정</h2><span class="cap">확정 전 · 변경 가능</span><div class="rule"></div>
-  </div>
-  <div class="dates">
-    <div class="date">
-      <div class="date-l">영업 최종일</div>
-      <div class="date-v mono">8. 16.<span>주일 · 예정</span></div>
-      <div class="date-s">주보 게재 여부는 8/14(금) 오전 결정</div>
-    </div>
-    <div class="date">
-      <div class="date-l">반출 완료</div>
-      <div class="date-v mono">8. 24.<span>월 · 예정</span></div>
-      <div class="date-s">8/25(화)까지 하루 연장될 수 있음</div>
-    </div>
-    <div class="date">
-      <div class="date-l">공사 완료</div>
-      <div class="date-v mono">10. 20.<span>화 · 예정</span></div>
-      <div class="date-s">건축위 최종 협의 결정 후 반영</div>
-    </div>
-  </div>
-
-  <div class="sec">
-    <h2>추진 체계</h2><span class="cap">3팀 협업</span><div class="rule"></div>
-  </div>
-  <div class="org">
-    <div class="team">
-      <div class="team-n">건축위팀</div>
-      <div class="team-d">전체 구조와 방향 수립, 설계, 견적, 시공 및 감리</div>
-    </div>
-    <div class="team mid">
-      <div class="team-n">사업단팀</div>
-      <div class="team-d">카페 · 서점의 설계 의견 수립, 실제 운영 및 실무 셋업</div>
-    </div>
-    <div class="team">
-      <div class="team-n">사무국</div>
-      <div class="team-d">운영 및 행정 절차 지원</div>
-    </div>
   </div>
 
   <div class="foot">
