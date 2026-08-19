@@ -154,16 +154,16 @@
 
 
   /* ── 탭 ── */
-  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:26px 0 18px;
-    border-bottom:2px solid var(--line);padding-bottom:0}
-  .tb{font-family:inherit;font-size:14px;font-weight:600;letter-spacing:-.02em;
-    color:var(--muted);background:none;border:0;border-bottom:3px solid transparent;
-    padding:10px 16px 11px;cursor:pointer;transition:.15s;margin-bottom:-2px;border-radius:6px 6px 0 0}
+  .tabs{display:block;border-bottom:2px solid var(--line);padding-bottom:6px;margin:22px 0 16px}
+  .trow{display:flex;align-items:center;gap:5px;flex-wrap:wrap;padding:2px 0 2px 38px;position:relative}
+  .trow.last{border-top:1px solid var(--line2);margin-top:4px;padding-top:6px}
+  .tgl{position:absolute;left:0;top:11px;font-size:11px;font-weight:700;color:#a9a294;letter-spacing:.08em}
+  .tb{font-family:inherit;font-size:13.5px;font-weight:600;letter-spacing:-.02em;
+    color:var(--muted);background:none;border:1px solid transparent;border-radius:8px;
+    padding:8px 14px;cursor:pointer;transition:.15s}
   .tb:hover{color:var(--text);background:#f4f1ea}
-  .tb.on{color:var(--accent);border-bottom-color:var(--accent);background:var(--accentL)}
-  .tb .c{display:inline-block;font-size:11px;font-weight:600;color:#fff;background:#c3bdb1;
-    border-radius:9px;padding:1px 7px;margin-left:6px;vertical-align:1px}
-  .tb.on .c{background:var(--accent)}
+  .tb.on{color:var(--accent);background:var(--accentL);border-color:#cfe0d5}
+  @media(max-width:560px){ .tb{font-size:12.5px;padding:7px 10px} .trow{padding-left:34px;gap:3px} }
   .pane{display:none}
   .pane.on{display:block}
   .ptitle{font-size:12.5px;color:var(--muted);margin:-6px 0 14px}
@@ -243,14 +243,21 @@
   </div>
 
   <div class="tabs">
-    <button class="tb on" data-tab="1">건축위 1차안<span class="c">2</span></button>
-    <button class="tb" data-tab="2">실측 평면</button>
-    <button class="tb" data-tab="3">사업단 안<span class="c">3</span></button>
-    <button class="tb" data-tab="4">메뉴판</button>
-    <button class="tb" data-tab="5">논의 안건<span class="c">28</span></button>
+    <div class="trow"><span class="tgl">기준</span>
+      <button class="tb" data-tab="1">건축위 1차안</button>
+      <button class="tb" data-tab="2">실측 평면</button>
+      <button class="tb" data-tab="6">용어 · 치수 기준</button>
+    </div>
+    <div class="trow"><span class="tgl">배치</span>
+      <button class="tb on" data-tab="3">카페 전체 배치안</button>
+      <button class="tb" data-tab="4">메뉴판</button>
+    </div>
+    <div class="trow last"><span class="tgl">안건</span>
+      <button class="tb" data-tab="5">논의 안건</button>
+    </div>
   </div>
 
-  <div class="pane on" data-pane="1">
+  <div class="pane" data-pane="1">
     <div class="psec"><span class="n">1</span><h2>건축위 1차 배치안</h2><span class="cap">받은 자료 · 원본 그대로</span><div class="rule"></div></div>
     <div class="ptitle">받은 자료 · 원본 그대로</div>
 <div class="card">
@@ -473,79 +480,18 @@
     </div>
   </div>  </div>
 
-  <div class="pane" data-pane="3">
-    <div class="psec"><span class="n">3</span><h2>사업단 배치 · 운영안</h2><span class="cap">회의 결과</span><div class="rule"></div></div>
-    <div class="ptitle">회의 결과</div>
+    <div class="pane on" data-pane="3">
+    <div class="psec"><span class="n">3</span><h2>카페 전체 배치안</h2><span class="cap">사업단 안</span><div class="rule"></div></div>
+    <div class="ptitle">사업단 안 · 회의 결과</div>
 <div class="card">
-    <h3>3-1 · 명칭</h3>
-    <div class="sub">이 문서 전체에서 같은 이름으로 부릅니다</div>
-    <table>
-      <tr><th>구분</th><th>이름</th><th>코드</th><th>설명</th></tr>
-      <tr><td>벽 쪽 · 창가</td><td><b>뒤 바</b></td><td>B1 · B2 · B3 …</td><td>베버리지존 — 스무디 · 에이드 · 차 · 커피 서브</td></tr>
-      <tr><td>고객 쪽</td><td><b>앞 바</b></td><td>C1 · C2 · C3 …</td><td>커피존 — 계산 · 쇼케이스 · 커피 · 픽업</td></tr>
-      <tr><td>뒤 바 우측</td><td><b>뒤 바 끝</b></td><td>—</td><td>상판이 끊긴 구간 · 제빙기가 바닥에 섬</td></tr>
-      <tr><td>층위</td><td><b>상부 · 상판 · 하부</b></td><td>「B3 상판」</td><td>상판 850 기준 위 · 면 · 아래</td></tr>
-      <tr><td>붙어야 하는 덩어리</td><td><b>스무디존</b></td><td>—</td><td>스무디머신 + 스무디 작업대. 떨어뜨리지 않음</td></tr>
-      <tr><td>좌우</td><td>—</td><td>—</td><td>창고 쪽이 좌 · 로비 진입 쪽이 우. 번호는 좌에서 우로</td></tr>
-    </table>
-    <div class="note">
-      <b>B는 beverage, C는 coffee의 약자로 도면 원본 표기를 그대로 썼습니다.</b>
-      건축위 1차안은 존 배치가 반대인 안도 있으므로, 이 코드는 <b>사업단 안에서만</b> 통용됩니다.
-    </div>
-  </div><div class="card">
-    <h3>3-2 · 왜 베버리지를 뒤로 두는가</h3>
-    <div class="sub">건축위 1차안 ②의 방향을 택한 이유</div>
-    <table>
-      <tr><th>이유</th><th>내용</th></tr>
-      <tr><td>픽업 동선</td><td>음료는 뒤 바에서 만들어 <b>바로 우측 픽업존으로 나갑니다.</b> 앞 바를 가로지르지 않습니다</td></tr>
-      <tr><td>얼음</td><td>아이스가 붙는 메뉴가 20종이 넘습니다. <b>제빙기가 뒤 바 끝</b>에 있어 음료 라인과 같은 쪽입니다</td></tr>
-      <tr><td>싱크</td><td>믹서기를 한 잔마다 씻습니다. <b>세척이 음료 제조와 같은 줄</b>에 있어야 합니다</td></tr>
-      <tr><td>메뉴 비중</td><td>음료 계열 30종 · 커피 8종. <b>손이 더 가는 쪽을 뒤로</b> 두어 앞 바를 응대에 씁니다</td></tr>
-    </table>
-  </div><div class="card">
-    <h3>3-3 · 창고</h3>
-    <div class="sub">1,215 × 1,785 · 약 2.2㎡</div>
-    <table>
-      <tr><th>항목</th><th>내용</th></tr>
-      <tr><td>내부</td><td><b>선반 제작</b> — 각종 물품을 효율적으로 수납할 수 있도록</td></tr>
-      <tr><td>선반 단수 · 높낮이</td><td><b>2차 전달</b> — 수납 품목을 먼저 정하고 그에 맞춰 산출</td></tr>
-      <tr><td>출입</td><td>하부 벽에 문 약 885 · 보조주방에서 진입</td></tr>
-    </table>
-    <div class="dec">
-      <div class="dh">결정 항목</div>
-      <div class="row"><span class="bd a">건축위 확인</span><span class="tx">
-        <b>3-1 · 창고 선반 제작</b> — 붙박이 선반 제작을 공사 범위에 포함해 주시기 바랍니다. 단수와 높이는 추후 전달드립니다.
-        <span class="why">→ 규격은 뒤에 채우더라도 제작 여부는 지금 정해야 합니다</span></span></div>
-      <div class="row"><span class="bd c">사업단 추후</span><span class="tx">
-        <b>3-2 · 창고 수납 품목 리스트</b> — 무엇을 넣고 쌓고 정리할지 종류를 정해 선반 높이를 최적화합니다.</span></div>
-    </div>
-  </div><div class="card">
-    <h3>3-4 · 보조주방</h3>
-    <div class="sub">2,150 × 1,955 · 약 4.2㎡ · 냉장 저장 + 소분 작업</div>
-    <table>
-      <tr><th>항목</th><th>내용</th></tr>
-      <tr><td>메인 기물</td><td><b>업소용 냉장 · 냉동 겸용 1대 (온도 조절식) · 신규 구입</b></td></tr>
-      <tr><td>도입 배경</td><td>그동안 냉동고가 없어 <b>홍시 · 딸기바나나처럼 미리 썰어 소분해 냉동해 둘 곳이 없었습니다</b></td></tr>
-      <tr><td>작업 공간</td><td>냉장고 앞에 테이블 · 의자 — 직원이 앉아 소분 · 손질</td></tr>
-      <tr><td>추후</td><td>뒤 바 · 앞 바를 정리하며 필요한 작업이나 수납이 생기면 이쪽으로 편입</td></tr>
-    </table>
-    <div class="dec">
-      <div class="dh">결정 항목</div>
-      <div class="row"><span class="bd a">건축위 확인</span><span class="tx">
-        <b class="red">3-3 · 보조주방 싱크 설치</b> — 소분 · 손질 작업 중 도마 · 칼 · 용기를 그 자리에서 세척해야 합니다.
-        <b>급배수 관통이 가능한지 확인 부탁드립니다. 뒤 바 싱크와 별개로 한 자리 더입니다.</b>
-        <span class="why">→ 슬래브 관통은 공사 단계에서만 가능하며 나중에 추가할 수 없습니다</span></span></div>
-    </div>
-  </div>  <div class="card">
-    <h3>3-5 · 전체 배치도</h3>
+    <h3>전체 배치도</h3>
     <div class="sub">뒤 바 · 직원 통로 · 앞 바를 한 장에 · 급배수 조건에 따른 세 안</div>
     <div class="subtabs">
       <button class="stb on" data-go="1">1안 · 싱크 좌측</button>
       <button class="stb" data-go="2">2안 · 싱크 우측</button>
       <button class="stb" data-go="3">3안 · 싱크 최우측</button>
     </div>
-  </div>
-  <div class="subpane on" data-sp="1">
+  </div><div class="subpane on" data-sp="1">
     <div class="card">
       <h3>1안 · 싱크 좌측</h3>
       <div class="sub">급배수를 좌측에서 뽑을 수 있을 때 — 세척이 스무디존 바로 옆</div>
@@ -698,7 +644,7 @@
     </div>
       </div>
   </div>
-  <div class="subpane" data-sp="2">
+<div class="subpane" data-sp="2">
     <div class="card">
       <h3>2안 · 싱크 우측</h3>
       <div class="sub">중앙~우측에서 뽑을 수 있을 때 — 싱크와 제빙기가 같은 쪽</div>
@@ -850,7 +796,7 @@
     </div>
       </div>
   </div>
-  <div class="subpane" data-sp="3">
+<div class="subpane" data-sp="3">
     <div class="card">
       <h3>3안 · 싱크 최우측</h3>
       <div class="sub">우측 끝에서만 뽑을 수 있을 때 — 관통이 한 구역</div>
@@ -1001,8 +947,7 @@
       <b>급배수가 우측 한 구역에서 끝납니다.</b> 좌측을 못 뚫을 때의 최종안입니다.
     </div>
       </div>
-  </div>
-<div class="card">
+  </div><div class="card">
     <h3>3-8 · 세 안 비교와 선택 기준</h3>
     <div class="sub">지금 하나로 좁히지 않고, 뚫어본 뒤 그 자리에서 정합니다</div>
     <table>
@@ -1115,6 +1060,50 @@
         <span class="why">→ 노출 배선은 나중에 정리할 수 없습니다</span></span></div>
       <div class="row"><span class="bd b">사업단 논의</span><span class="tx">
         <b>3-11 · 가루통 배치 방식</b> — 2단 계단식 선반 · 상부 선반 · 상판 매립 중 선택합니다.</span></div>
+    </div>
+  </div><div class="card">
+    <h3>3-2 · 왜 베버리지를 뒤로 두는가</h3>
+    <div class="sub">건축위 1차안 ②의 방향을 택한 이유</div>
+    <table>
+      <tr><th>이유</th><th>내용</th></tr>
+      <tr><td>픽업 동선</td><td>음료는 뒤 바에서 만들어 <b>바로 우측 픽업존으로 나갑니다.</b> 앞 바를 가로지르지 않습니다</td></tr>
+      <tr><td>얼음</td><td>아이스가 붙는 메뉴가 20종이 넘습니다. <b>제빙기가 뒤 바 끝</b>에 있어 음료 라인과 같은 쪽입니다</td></tr>
+      <tr><td>싱크</td><td>믹서기를 한 잔마다 씻습니다. <b>세척이 음료 제조와 같은 줄</b>에 있어야 합니다</td></tr>
+      <tr><td>메뉴 비중</td><td>음료 계열 30종 · 커피 8종. <b>손이 더 가는 쪽을 뒤로</b> 두어 앞 바를 응대에 씁니다</td></tr>
+    </table>
+  </div><div class="card">
+    <h3>3-3 · 창고</h3>
+    <div class="sub">1,215 × 1,785 · 약 2.2㎡</div>
+    <table>
+      <tr><th>항목</th><th>내용</th></tr>
+      <tr><td>내부</td><td><b>선반 제작</b> — 각종 물품을 효율적으로 수납할 수 있도록</td></tr>
+      <tr><td>선반 단수 · 높낮이</td><td><b>2차 전달</b> — 수납 품목을 먼저 정하고 그에 맞춰 산출</td></tr>
+      <tr><td>출입</td><td>하부 벽에 문 약 885 · 보조주방에서 진입</td></tr>
+    </table>
+    <div class="dec">
+      <div class="dh">결정 항목</div>
+      <div class="row"><span class="bd a">건축위 확인</span><span class="tx">
+        <b>3-1 · 창고 선반 제작</b> — 붙박이 선반 제작을 공사 범위에 포함해 주시기 바랍니다. 단수와 높이는 추후 전달드립니다.
+        <span class="why">→ 규격은 뒤에 채우더라도 제작 여부는 지금 정해야 합니다</span></span></div>
+      <div class="row"><span class="bd c">사업단 추후</span><span class="tx">
+        <b>3-2 · 창고 수납 품목 리스트</b> — 무엇을 넣고 쌓고 정리할지 종류를 정해 선반 높이를 최적화합니다.</span></div>
+    </div>
+  </div><div class="card">
+    <h3>3-4 · 보조주방</h3>
+    <div class="sub">2,150 × 1,955 · 약 4.2㎡ · 냉장 저장 + 소분 작업</div>
+    <table>
+      <tr><th>항목</th><th>내용</th></tr>
+      <tr><td>메인 기물</td><td><b>업소용 냉장 · 냉동 겸용 1대 (온도 조절식) · 신규 구입</b></td></tr>
+      <tr><td>도입 배경</td><td>그동안 냉동고가 없어 <b>홍시 · 딸기바나나처럼 미리 썰어 소분해 냉동해 둘 곳이 없었습니다</b></td></tr>
+      <tr><td>작업 공간</td><td>냉장고 앞에 테이블 · 의자 — 직원이 앉아 소분 · 손질</td></tr>
+      <tr><td>추후</td><td>뒤 바 · 앞 바를 정리하며 필요한 작업이나 수납이 생기면 이쪽으로 편입</td></tr>
+    </table>
+    <div class="dec">
+      <div class="dh">결정 항목</div>
+      <div class="row"><span class="bd a">건축위 확인</span><span class="tx">
+        <b class="red">3-3 · 보조주방 싱크 설치</b> — 소분 · 손질 작업 중 도마 · 칼 · 용기를 그 자리에서 세척해야 합니다.
+        <b>급배수 관통이 가능한지 확인 부탁드립니다. 뒤 바 싱크와 별개로 한 자리 더입니다.</b>
+        <span class="why">→ 슬래브 관통은 공사 단계에서만 가능하며 나중에 추가할 수 없습니다</span></span></div>
     </div>
   </div><div class="card">
     <h3>3-10 · 제조 흐름</h3>
@@ -1248,9 +1237,48 @@
       <div class="row"><span class="bd c">사업단 추후</span><span class="tx">
         <b>3-19 · 재사용 · 신규 구입 구분</b> — 자산조사 파일의 처리 열을 채워 전달합니다.</span></div>
     </div>
-  </div>  </div>
-
-  <div class="pane" data-pane="4">
+  </div>
+  </div>
+  <div class="pane" data-pane="6">
+    <div class="psec"><span class="n">기준</span><h2>용어 · 치수 기준</h2><span class="cap">이름 · 코드 · 층위</span><div class="rule"></div></div>
+    <div class="ptitle">이름 · 코드 · 층위 · 주요 치수</div>
+<div class="card">
+    <h3>명칭 체계</h3>
+    <div class="sub">이 문서 전체에서 같은 이름으로 부릅니다</div>
+    <table>
+      <tr><th>구분</th><th>이름</th><th>코드</th><th>설명</th></tr>
+      <tr><td>벽 쪽 · 창가</td><td><b>뒤 바</b></td><td>B1 · B2 · B3 …</td><td>베버리지존 — 스무디 · 에이드 · 차 · 커피 서브</td></tr>
+      <tr><td>고객 쪽</td><td><b>앞 바</b></td><td>C1 · C2 · C3 …</td><td>커피존 — 계산 · 쇼케이스 · 커피 · 픽업</td></tr>
+      <tr><td>뒤 바 우측</td><td><b>뒤 바 끝</b></td><td>—</td><td>상판이 끊긴 구간 · 제빙기가 바닥에 섬</td></tr>
+      <tr><td>층위</td><td><b>상부 · 상판 · 하부</b></td><td>「B3 상판」</td><td>상판 850 기준 위 · 면 · 아래</td></tr>
+      <tr><td>붙어야 하는 덩어리</td><td><b>스무디존</b></td><td>—</td><td>스무디머신 + 스무디 작업대. 떨어뜨리지 않음</td></tr>
+      <tr><td>좌우</td><td>—</td><td>—</td><td>창고 쪽이 좌 · 로비 진입 쪽이 우. 번호는 좌에서 우로</td></tr>
+    </table>
+    <div class="note">
+      <b>B는 beverage, C는 coffee의 약자로 도면 원본 표기를 그대로 썼습니다.</b>
+      건축위 1차안은 존 배치가 반대인 안도 있으므로, 이 코드는 <b>사업단 안에서만</b> 통용됩니다.
+    </div>
+  </div>  <div class="card">
+    <h3>주요 치수</h3>
+    <div class="sub">실측 환산값 · 치수 기입본 수령 후 확정</div>
+    <table>
+      <tr><th>항목</th><th style="text-align:right">치수</th><th>비고</th></tr>
+      <tr><td>좌측 외벽 ~ 우측 벽</td><td class="num">9,860</td><td>전체 폭</td></tr>
+      <tr><td>뒤 바 상판</td><td class="num">5,220</td><td>× 780</td></tr>
+      <tr><td>뒤 바 끝</td><td class="num">1,330</td><td>상판 없음 · 제빙기 바닥 설치</td></tr>
+      <tr><td>앞 바 상판</td><td class="num">6,010</td><td>× 745</td></tr>
+      <tr><td>직원 통로</td><td class="num">1,220</td><td>두 바 사이</td></tr>
+      <tr><td>서비스바</td><td class="num">4,400</td><td>× 702</td></tr>
+      <tr><td>창고</td><td class="num">1,215 × 1,785</td><td>약 2.2㎡</td></tr>
+      <tr><td>보조주방</td><td class="num">2,150 × 1,955</td><td>약 4.2㎡</td></tr>
+      <tr><td>격벽</td><td class="num">두께 150</td><td>개구부 905</td></tr>
+      <tr><td>상판 높이</td><td class="num">850</td><td>상부 · 상판 · 하부 기준</td></tr>
+    </table>
+    <div class="note">치수선이 없는 도면이라 <b>기물 폭으로 축척을 역산</b>했습니다(1px = 2.95mm).
+      별표(*)가 붙은 값은 일반 규격으로 가정한 것이며, 치수 기입본을 받아 다시 맞춰야 합니다.</div>
+  </div>
+  </div>
+<div class="pane" data-pane="4">
     <div class="psec"><span class="n">4</span><h2>디지털 메뉴판</h2><span class="cap">뒤 바 상부 천장 · 음료 45종</span><div class="rule"></div></div>
     <div class="ptitle">뒤 바 상부 천장 · 음료 45종</div>
   <div class="card">
@@ -1607,7 +1635,7 @@
       sel(sps,'sp',b.dataset.go);
     });
   });
-  var m=(location.hash||'').match(/^#t([1-5])$/);
+  var m=(location.hash||'').match(/^#t([1-6])$/);
   if(m){
     var t=tbs.filter(function(x){return x.dataset.tab===m[1];})[0];
     if(t){ tbs.forEach(function(x){x.classList.toggle('on',x===t);}); sel(panes,'pane',m[1]); }
