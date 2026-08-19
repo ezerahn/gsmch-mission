@@ -389,6 +389,7 @@ tbody tr:hover td{background:#F4F0E8;}
 
 /* ── 할 일 ── */
 .tasks{border:1px solid var(--line); border-radius:6px; padding:2px 15px; background:#FEFDFB; margin-bottom:14px;}
+.tasks:has(.mtabs){padding-top:0;}
 .task{border-bottom:1px solid #EFE9DC; padding:9px 0;}
 .task:last-child{border-bottom:0;}
 .task-t{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;}
@@ -592,6 +593,22 @@ tbody tr:hover td{background:#F4F0E8;}
   #ovgal .galcard:first-child{grid-column:1 / -1;}
   @media(max-width:760px){ #ovgal{grid-template-columns:1fr;} }
   @media(max-width:760px){ .ovdocs{grid-template-columns:1fr;} }
+
+.mtabs{display:flex; gap:6px; flex-wrap:wrap;
+  position:sticky; top:var(--barh, 132px); z-index:20;
+  margin:0 -16px 12px; padding:10px 16px 9px;
+  background:#FEFDFB; border-bottom:1px solid #EFE9DC;
+  border-radius:6px 6px 0 0;
+  box-shadow:0 8px 10px -9px rgba(43,39,34,.22);}
+.mtabs::before{content:''; position:absolute; left:-1px; right:-1px; top:-3px; height:4px; background:#FEFDFB;}
+.mtb{font-family:inherit; font-size:12.5px; font-weight:600; color:#6e6860; background:#fff;
+  border:1px solid #e6e1d7; border-radius:16px; padding:6px 14px; cursor:pointer; transition:.15s;}
+.mtb:hover{border-color:#3d6b4f; color:#3d6b4f;}
+.mtb.on{background:#3d6b4f; border-color:#3d6b4f; color:#fff;}
+.mv{display:none}
+.mv > .task:first-child{padding-top:2px}
+.mv.on{display:block}
+@media print{ .mtabs{display:none} .mv{display:block !important} }
 </style>
 </head>
 <body>
@@ -604,7 +621,7 @@ tbody tr:hover td{background:#F4F0E8;}
   <nav class="tb-nav">
     <div class="tabs"><button class="tab on" data-go="home"><span class="tn">1</span>개요</button><button class="tab" data-go="v2"><span class="tn">2</span>실행 계획</button><button class="tab" data-go="v3"><span class="tn">3</span>기록</button><button class="tab" data-go="v4"><span class="tn">4</span>참고자료</button></div>
   </nav>
-  <div class="stagebar" id="stagebar"><div class="switch subswitch"><button class="sw sm on" data-sw="st1" data-group="stage">① 설계 · 소통</button><button class="sw sm" data-sw="st2" data-group="stage">② 자산 · 물품 정리</button><button class="sw sm now" data-sw="st3" data-group="stage"><i class="dot"></i>③ 영업중단 · 반출</button><button class="sw sm" data-sw="st4" data-group="stage">④ 오픈 준비</button><button class="sw sm" data-sw="st5" data-group="stage">⑤ 집기 반입 · 세팅</button><button class="sw sm" data-sw="st6" data-group="stage">⑥ 오픈 · 안정화</button></div><div class="grpbar"><div class="grpnav" data-stage="st1"><button class="sw sm on" data-sw="gst1_1" data-group="gst1">공통</button><button class="sw sm" data-sw="gst1_2" data-group="gst1">서점</button><button class="sw sm" data-sw="gst1_3" data-group="gst1">카페</button></div><div class="grpnav" data-stage="st2"><button class="sw sm on" data-sw="gst2_1" data-group="gst2">공통</button><button class="sw sm" data-sw="gst2_2" data-group="gst2">서점</button><button class="sw sm" data-sw="gst2_3" data-group="gst2">카페</button></div><div class="grpnav" data-stage="st3"><button class="sw sm on" data-sw="gst3_1" data-group="gst3">공통</button><button class="sw sm" data-sw="gst3_2" data-group="gst3">서점</button><button class="sw sm" data-sw="gst3_3" data-group="gst3">카페</button></div><div class="grpnav" data-stage="st4"><button class="sw sm on" data-sw="gst4_1" data-group="gst4">공통</button><button class="sw sm" data-sw="gst4_2" data-group="gst4">서점</button><button class="sw sm" data-sw="gst4_3" data-group="gst4">카페</button></div><div class="grpnav" data-stage="st5"><button class="sw sm on" data-sw="gst5_1" data-group="gst5">공통</button><button class="sw sm" data-sw="gst5_2" data-group="gst5">서점</button><button class="sw sm" data-sw="gst5_3" data-group="gst5">카페</button></div><div class="grpnav" data-stage="st6"><button class="sw sm on" data-sw="gst6_1" data-group="gst6">공통</button></div></div></div>
+  <div class="stagebar" id="stagebar"><div class="switch subswitch"><button class="sw sm on" data-sw="st1" data-group="stage">① 설계 · 소통</button><button class="sw sm" data-sw="st2" data-group="stage">② 자산 · 물품 정리</button><button class="sw sm now" data-sw="st3" data-group="stage"><i class="dot"></i>③ 영업중단 · 반출 (이사)</button><button class="sw sm" data-sw="st4" data-group="stage">④ 오픈 준비</button><button class="sw sm" data-sw="st5" data-group="stage">⑤ 집기 반입 · 세팅</button><button class="sw sm" data-sw="st6" data-group="stage">⑥ 오픈 · 안정화</button></div><div class="grpbar"><div class="grpnav" data-stage="st1"><button class="sw sm on" data-sw="gst1_1" data-group="gst1">공통</button><button class="sw sm" data-sw="gst1_2" data-group="gst1">서점</button><button class="sw sm" data-sw="gst1_3" data-group="gst1">카페</button></div><div class="grpnav" data-stage="st2"><button class="sw sm on" data-sw="gst2_1" data-group="gst2">공통</button><button class="sw sm" data-sw="gst2_2" data-group="gst2">서점</button><button class="sw sm" data-sw="gst2_3" data-group="gst2">카페</button></div><div class="grpnav" data-stage="st3"><button class="sw sm on" data-sw="gst3_1" data-group="gst3">공통</button><button class="sw sm" data-sw="gst3_2" data-group="gst3">서점</button><button class="sw sm" data-sw="gst3_3" data-group="gst3">카페</button></div><div class="grpnav" data-stage="st4"><button class="sw sm on" data-sw="gst4_1" data-group="gst4">공통</button><button class="sw sm" data-sw="gst4_2" data-group="gst4">서점</button><button class="sw sm" data-sw="gst4_3" data-group="gst4">카페</button></div><div class="grpnav" data-stage="st5"><button class="sw sm on" data-sw="gst5_1" data-group="gst5">공통</button><button class="sw sm" data-sw="gst5_2" data-group="gst5">서점</button><button class="sw sm" data-sw="gst5_3" data-group="gst5">카페</button></div><div class="grpnav" data-stage="st6"><button class="sw sm on" data-sw="gst6_1" data-group="gst6">공통</button></div></div></div>
 </div>
 
 <div class="wrap">
@@ -621,10 +638,10 @@ tbody tr:hover td{background:#F4F0E8;}
 
   <div class="block" style="padding:0;border:0;background:none">
 <div class="tlx">
-  <div class="tlx-hd"><b>진행 공정</b><span class="sub">6단계 · 현재 ③ 영업중단 · 반출</span><span class="rt">오늘 2026. 8. 19.</span></div>
+  <div class="tlx-hd"><b>진행 공정</b><span class="sub">6단계 · 현재 ② 자산 정리 · ③ 반출</span><span class="rt">오늘 2026. 8. 19.</span></div>
   <div class="tlx-g tlx-steps">
     <a class="tlx-s done" href="#v2/st1"><span class="n">①</span><span class="t">설계 · 소통</span><span class="st">완료</span></a>
-    <a class="tlx-s done" href="#v2/st2"><span class="n">②</span><span class="t">자산 · 물품 정리</span><span class="st">완료</span></a>
+    <a class="tlx-s now" href="#v2/st2"><span class="n">②</span><span class="t">자산 · 물품 정리</span><span class="st">진행 중</span></a>
     <a class="tlx-s now" href="#v2/st3"><span class="n">③</span><span class="t">영업중단 · 반출</span><span class="st">진행 중</span></a>
     <a class="tlx-s todo" href="#v2/st4"><span class="n">④</span><span class="t">오픈 준비</span><span class="st">예정</span></a>
     <a class="tlx-s todo" href="#v2/st5"><span class="n">⑤</span><span class="t">집기 반입 · 세팅</span><span class="st">예정</span></a>
@@ -633,7 +650,7 @@ tbody tr:hover td{background:#F4F0E8;}
   <div class="tlx-track"><div class="tlx-bar"><span class="tlx-fill" style="width:41.7%"></span></div>
     <div class="tlx-g tlx-dots">
       <i class="done"></i>
-      <i class="done"></i>
+      <i class="now"></i>
       <i class="now"></i>
       <i class=""></i>
       <i class=""></i>
@@ -734,46 +751,42 @@ tbody tr:hover td{background:#F4F0E8;}
 
 <div class="swview on" id="gst1_1" data-group="gst1"><div class="grptitle">공통</div><div class="tasks"><div class="task">
   <div class="task-t"><b>사업단 내부 실무 미팅</b><em>─ 담당전도사 · 여선교회 장로 · 사업단장 · 총무(PM)</em></div>
-  <div class="task-h"><div><em>8/10(월)</em><span class="stwrap"><span class="st done">완료</span></span><span>1차 — 현안 및 일정 논의</span></div><div><em>8/11(화)</em><span class="stwrap"><span class="st done">완료</span></span><span>영업 8/16(주일)까지 후 마감 컨펌 — 목회기획 논의 필요</span></div><div><em>8/14(금)</em><span class="stwrap"><span class="st plan">예정</span></span><span>2차 — 설계도면(서점 · 카페) 및 반출 계획 확정</span></div><div><em></em><span class="stwrap"><span class="st talk">최종 확인</span></span><span>최종 영업일(8/16) 및 반출 완료 기한(8/24) → 현장 안내문과 연동</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>예산 항목 범위 — 항목별 검토 필요</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>공사 기간 중 서점 임시 운영 여부</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>카페 휴업 신고 대상 여부 확인</span></div></div>
+  <div class="task-h"><div><em>8/10(월)</em><span class="stwrap"><span class="st done">완료</span></span><span>1차 — 현안 및 일정 논의</span></div><div><em>8/11(화)</em><span class="stwrap"><span class="st done">완료</span></span><span>영업 8/16(주일)까지 후 마감 컨펌 — 목회기획 논의 필요</span></div><div><em>8/14(금)</em><span class="stwrap"><span class="st done">완료</span></span><span>2차 — 설계도면(서점 · 카페) 및 반출 계획 확정</span></div><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>최종 영업일(8/16) 및 반출 완료 기한(8/24) → 현장 안내문과 연동</span></div><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>공사 기간 중 서점 임시 운영 — 8월 마지막 주부터 시행</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>카페 휴업 신고 대상 여부 확인</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>예산 항목 범위 — 항목별 검토 필요</span></div></div>
 </div><div class="task">
   <div class="task-t"><b>건축위 소통 미팅</b></div>
-  <div class="task-h"><div><em>8/10(월)</em><span class="stwrap"><span class="st done">완료</span></span><span>건축위 담당 장로 통화 — 현 진행 일정 공유 받음</span></div><div><em>8/11(화)</em><span class="stwrap"><span class="st done">완료</span></span><span>건축위 감독 대면 미팅 — 비계 설치일 확인 및 서점 · 카페 반출 일정 협의</span></div><div><em>8/13(목)</em><span class="stwrap"><span class="st done">완료</span></span><span>건축위 담당 장로 앞 금주 진행 사항 전달 — 설명 자리 방식(별도 미팅 / 주일 건축위 미팅) 회신 요청</span></div><div><em></em><span class="stwrap"><span class="st wait">대기</span></span><span>설계 정리 자료 전달 — 8/15(토)까지 마무리 예정</span></div></div>
+  <div class="task-h"><div><em>8/10(월)</em><span class="stwrap"><span class="st done">완료</span></span><span>건축위 담당 장로 통화 — 현 진행 일정 공유 받음</span></div><div><em>8/11(화)</em><span class="stwrap"><span class="st done">완료</span></span><span>건축위 감독 대면 미팅 — 비계 설치일 확인 및 서점 · 카페 반출 일정 협의</span></div><div><em>8/13(목)</em><span class="stwrap"><span class="st done">완료</span></span><span>건축위 담당 장로 앞 금주 진행 사항 전달 — 설명 자리 방식 회신 요청</span></div><div><em>8/16(주일)</em><span class="stwrap"><span class="st done">완료</span></span><span>사업단 · 건축위 미팅 — 서점 · 카페 배치 설계안 자료 전달</span></div><div><em></em><span class="stwrap"><span class="st wait">대기</span></span><span>건축위 1차 반영안 회신 — 사업단 배치안을 적용한 서점 · 카페 설계 시안</span></div></div>
 </div><div class="task">
-  <div class="task-t"><b>성도 안내 공지</b><em>─ 주보 게재</em></div>
-  <div class="task-h"><div><em>8/14(금)</em><span class="stwrap"><span class="st plan">예정</span></span><span>부목사 · 건축위원장 회의 후 광고 및 주보 게재 여부 최종 결정</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>서점 · 카페 앞 영업 중단 현장 안내문(또는 배너) 게시</span></div></div>
+  <div class="task-t"><b>성도 안내 공지</b><em>─ 주보 게재 · 현장 안내문</em></div>
+  <div class="task-h"><div><em>8/14(금)</em><span class="stwrap"><span class="st done">완료</span></span><span>부목사 · 건축위원장 회의 후 광고 및 주보 게재 결정</span></div><div><em>8/16(주일)</em><span class="stwrap"><span class="st done">완료</span></span><span>서점 · 카페 · 엘리베이터 앞 영업 중단 현장 안내문 게시</span></div></div>
 </div><div class="task">
   <div class="task-t"><b>반출 계획 및 보관 장소</b></div>
-  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>보관 장소 배정 요청 — 도서는 분진 · 습기에 취약</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>사업단 반출 방법 및 운용 인력 계획</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>이사 업체 발주 주체 확인 및 방법</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>박스 분류 · 라벨링 기준 — 오픈 시 복원 순서 고려</span></div></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>보관 장소 배정 — <b>지하 5층</b> (도서는 분진 · 습기에 취약)</span></div><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>사업단 반출 방법 및 운용 인력 — 사업단 아르바이트 등 인력 구성</span></div><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>이사 업체 발주 주체 — 사무국 협조 완료</span></div><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>박스 분류 · 라벨링 기준 — 제습제 · 박스 구매 완료 (사무국 협조)</span></div></div>
 </div><div class="task">
   <div class="task-t"><b>매니저 고용 및 근무 방침</b></div>
-  <div class="task-h"><div><em>8/11(화)</em><span class="stwrap"><span class="st done">완료</span></span><span>카페 현매니저 11월 말까지 근무 조정 — 선목 주식회사 내규 검토 후 교회 확인 완료</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>공사 기간 중 근무 형태 및 소통 방식</span></div></div>
-</div></div></div>
+  <div class="task-h"><div><em>8/11(화)</em><span class="stwrap"><span class="st done">완료</span></span><span>카페 현매니저 11월 말까지 근무 조정 — 선목 주식회사 내규 검토 후 교회 확인 완료</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>공사 기간 중 근무 형태 및 소통 방식</span></div></div></div></div></div>
 <div class="swview" id="gst1_2" data-group="gst1"><div class="grptitle">서점</div><div class="tasks"><div class="task">
   <div class="task-t"><b>서점매니저 소통 미팅</b></div>
-  <div class="task-h"><div><em>8/11(화)</em><span class="stwrap"><span class="st done">완료</span></span><span>영업 운영일 · 반출일 전달 및 향후 진행 방향 공유</span></div></div>
+  <div class="task-h"><div><em>8/11(화)</em><span class="stwrap"><span class="st done">완료</span></span><span>영업 운영일 · 반출일 전달 및 향후 진행 방향 공유</span></div><div><em>8/16(주일)</em><span class="stwrap"><span class="st done">완료</span></span><span>배치안 확정 — 건축위 전달</span></div></div>
 </div><div class="task">
-  <div class="task-t"><b>내부 배치 방식</b><em>─ 도면 설계를 위한 논의 항목</em></div>
-  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>입구</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>캐시어 자리 (계산대)</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>선물 포장 자리</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>창고 여부</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>도서장 형태 (슬라이드형) 및 위치</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>물품 보관 캐비닛 (선물 등) 및 동선 효율성</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>선물 진열대 형태</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>액자 · 십자가 등 벽면 활용 여부</span></div></div>
+  <div class="task-t"><b>내부 배치 방식</b><em>─ 사업단 안 확정 · 건축위 반영 대기</em></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">확정</span></span><span>입구</span></div><div><em></em><span class="stwrap"><span class="st done">확정</span></span><span>캐시어 자리 (계산대)</span></div><div><em></em><span class="stwrap"><span class="st done">확정</span></span><span>선물 포장 자리</span></div><div><em></em><span class="stwrap"><span class="st done">확정</span></span><span>창고 여부</span></div><div><em></em><span class="stwrap"><span class="st done">확정</span></span><span>도서장 형태 (슬라이드형) 및 위치</span></div><div><em></em><span class="stwrap"><span class="st done">확정</span></span><span>물품 보관 캐비닛 (선물 등) 및 동선 효율성</span></div><div><em></em><span class="stwrap"><span class="st done">확정</span></span><span>선물 진열대 형태</span></div><div><em></em><span class="stwrap"><span class="st done">확정</span></span><span>액자 · 십자가 등 벽면 활용 여부</span></div><div><em></em><span class="stwrap"><span class="st wait">대기</span></span><span>건축위 1차 반영 시안 회신 — 사업단 배치안 적용본</span></div></div>
 </div><div class="task">
   <div class="task-t"><b>반출을 위한 업무</b><em>─ 방식 결정 후 ③단계에서 실행</em></div>
-  <div class="task-h"><div><em>8/12(수)</em><span class="stwrap"><span class="st wait">긴급</span></span><span>공급처별 반품 가능 여부 및 기한 확인</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>재고 현황 파악 및 분류 방식</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>도서 및 상품 포장 방식</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>상품권 · 보관 물품 처리 방식</span></div></div>
+  <div class="task-h"><div><em>8/12(수)</em><span class="stwrap"><span class="st done">완료</span></span><span>공급처별 반품 가능 여부 및 기한 확인</span></div><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>재고 현황 파악 및 분류 방식 — 도서 15 · 상품 11 분류 확정</span></div><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>도서 및 상품 포장 방식 — 라벨 분류 97종 확정</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>상품권 · 보관 물품 처리 방식</span></div></div>
 </div></div></div>
 <div class="swview" id="gst1_3" data-group="gst1"><div class="grptitle">카페</div><div class="tasks"><div class="task">
   <div class="task-t"><b>카페매니저 소통 미팅</b></div>
-  <div class="task-h"><div><em>8/11(화)</em><span class="stwrap"><span class="st done">완료</span></span><span>영업 운영일 · 반출일 전달 및 향후 진행 방향 공유</span></div></div>
+  <div class="task-h"><div><em>8/11(화)</em><span class="stwrap"><span class="st done">완료</span></span><span>영업 운영일 · 반출일 전달 및 향후 진행 방향 공유</span></div><div><em>8/16(주일)</em><span class="stwrap"><span class="st done">완료</span></span><span>배치안 확정 — 건축위 전달</span></div></div>
 </div><div class="task">
-  <div class="task-t"><b>내부 배치 방식</b><em>─ 도면 설계를 위한 논의 항목</em></div>
-  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>바(카운터) 위치</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>키오스크 · ORDER · PICK UP 동선</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>coffee zone · beverage zone 배치</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>창고 · 백룸 위치 및 최소 면적</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>좌석 및 테이블 배치 · 피크타임 회전</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>데스크 및 휴식용 테이블</span></div></div>
+  <div class="task-t"><b>내부 배치 방식</b><em>─ 사업단 안 확정 · 건축위 반영 대기</em></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">확정</span></span><span>바(카운터) 위치 — 뒤 바 베버리지 · 앞 바 커피</span></div><div><em></em><span class="stwrap"><span class="st done">확정</span></span><span>키오스크 · ORDER · PICK UP 동선</span></div><div><em></em><span class="stwrap"><span class="st done">확정</span></span><span>coffee zone · beverage zone 배치</span></div><div><em></em><span class="stwrap"><span class="st done">확정</span></span><span>창고 · 백룸 위치 및 최소 면적</span></div><div><em></em><span class="stwrap"><span class="st done">확정</span></span><span>좌석 및 테이블 배치 · 피크타임 회전</span></div><div><em></em><span class="stwrap"><span class="st done">확정</span></span><span>데스크 및 휴식용 테이블</span></div><div><em></em><span class="stwrap"><span class="st wait">대기</span></span><span>건축위 1차 반영 시안 회신 — 사업단 배치안 적용본</span></div></div>
 </div><div class="task">
   <div class="task-t"><b>급배수 · 전기 · 환기 계획</b><em>─ 설계사 협의</em></div>
-  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>현재 카페 설비 배치 시안 필요 — 바 위치와 설비 사양의 전제</span></div></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>급배수 관통 가능 위치 — 뒤 바 1 · 2 · 3안이 여기서 갈림</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>보조주방 싱크 — 뒤 바와 별개로 한 자리 더</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>3상 전원 인입 · 환기 · 후드 계획</span></div></div>
 </div><div class="task">
   <div class="task-t"><b>반출을 위한 업무</b><em>─ 방식 결정 후 ③단계에서 실행</em></div>
-  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>렌탈 · 리스 계약 물품이 있는지 확인</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>기물 분류 및 포장 방식</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>식자재 · 소모품 소진 계획</span></div></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>렌탈 · 리스 계약 물품 없음 — 확인 완료</span></div><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>기물 분류 및 포장 방식 결정 — 라벨 분류 9종 확정</span></div><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>식자재 · 소모품 소진 — 영업 최종일 할인 프로모션으로 소진 완료</span></div></div>
 </div></div></div>
-
-  <div class="blk">자료 <span>도면 · 사진 · 참고 이미지</span></div>
-<div class="mat"><div class="matcard"><b>다음세대를 위한 개선공사</b><span>건축위 보고본 · 26.08.02 — 1층 현재 · 대안 평면, 카페 · 서점 · 자모실 조감</span></div><div class="matcard"><b>A09 지상1층 평면도</b><span>1층 기존 평면</span></div><div class="matcard"><b>카페 설비 배치 시안 A · B</b><span>26.08.11 — 참고자료 탭 참조</span></div></div>
 </div>
 <div class="swview" id="st2" data-group="stage">
   <div class="stg-title">② 자산 · 물품 정리</div>
@@ -785,46 +798,58 @@ tbody tr:hover td{background:#F4F0E8;}
 
 <div class="swview on" id="gst2_1" data-group="gst2"><div class="grptitle">공통</div><div class="tasks"><div class="task">
   <div class="task-t"><b>목록 양식 통일</b><em>─ 품목 · 수량 · 상태 · 처리 방식</em></div>
-  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>서점 · 카페 공통 양식 확정</span></div></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>서점 · 카페 공통 양식 확정</span></div></div>
 </div><div class="task">
-  <div class="task-t"><b>작성된 목록 보관</b><em>─ 참고자료 탭에 첨부</em></div>
-  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>제출된 목록을 참고자료에 등록하고 이 단계에 링크</span></div></div>
+  <div class="task-t"><b>분류 기준 확정</b><em>─ 이사 라벨과 연동</em></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>서점 도서 15 · 상품 11 · 집기 6 · 카페 9 — 총 97종</span></div><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>라벨 규격 99.1 × 140mm · A4 4칸 · 투명 방수</span></div></div>
 </div></div></div>
-<div class="swview" id="gst2_2" data-group="gst2"><div class="grptitle">서점</div><div class="tasks"><div class="task">
-  <div class="task-t"><b>도서 재고 목록</b><em>─ 권수 · 금액 · 공급처별</em></div>
-  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>반품 · 보관 · 처분 구분 표기</span></div></div>
+<div class="swview" id="gst2_2" data-group="gst2"><div class="grptitle">서점</div><div class="tasks"><div class="mtabs"><button class="mtb on" data-mv="gst2_2_0">도서 재고</button><button class="mtb" data-mv="gst2_2_1">상품 재고</button><button class="mtb" data-mv="gst2_2_2">집기 · 기타</button></div><div class="mv on" data-mvid="gst2_2_0"><div class="task">
+  <div class="task-t"><b>도서 재고</b><em>─ 재고 26.08.02 · 훈련교재 소진 반영</em></div>
+  <table><thead><tr><th>분류</th><th class="n">권수</th><th class="n">박스당</th><th class="n">박스</th></tr></thead><tbody><tr><td data-label="분류">영성 · 제자훈련</td><td class="n" data-label="권수">940</td><td class="n" data-label="박스당">45</td><td class="n" data-label="박스">21</td></tr><tr><td data-label="분류">성경공부 · 주석</td><td class="n" data-label="권수">672</td><td class="n" data-label="박스당">45</td><td class="n" data-label="박스">15</td></tr><tr><td data-label="분류">기타</td><td class="n" data-label="권수">532</td><td class="n" data-label="박스당">45</td><td class="n" data-label="박스">12</td></tr><tr><td data-label="분류">기도</td><td class="n" data-label="권수">381</td><td class="n" data-label="박스당">45</td><td class="n" data-label="박스">9</td></tr><tr><td data-label="분류">소책자 · 전도지</td><td class="n" data-label="권수">203</td><td class="n" data-label="박스당">60</td><td class="n" data-label="박스">4</td></tr><tr><td data-label="분류">설교 · 목회 · 교회</td><td class="n" data-label="권수">161</td><td class="n" data-label="박스당">45</td><td class="n" data-label="박스">4</td></tr><tr><td data-label="분류">필사 · 쓰기성경</td><td class="n" data-label="권수">149</td><td class="n" data-label="박스당">30</td><td class="n" data-label="박스">5</td></tr><tr><td data-label="분류">어린이 · 청소년</td><td class="n" data-label="권수">132</td><td class="n" data-label="박스당">45</td><td class="n" data-label="박스">3</td></tr><tr><td data-label="분류">신학 · 교리</td><td class="n" data-label="권수">83</td><td class="n" data-label="박스당">45</td><td class="n" data-label="박스">2</td></tr><tr><td data-label="분류">정기간행물</td><td class="n" data-label="권수">82</td><td class="n" data-label="박스당">60</td><td class="n" data-label="박스">2</td></tr><tr><td data-label="분류">상담 · 치유 · 마음</td><td class="n" data-label="권수">79</td><td class="n" data-label="박스당">45</td><td class="n" data-label="박스">2</td></tr><tr><td data-label="분류">가정 · 결혼</td><td class="n" data-label="권수">79</td><td class="n" data-label="박스당">45</td><td class="n" data-label="박스">2</td></tr><tr><td data-label="분류">자녀 · 양육</td><td class="n" data-label="권수">72</td><td class="n" data-label="박스당">45</td><td class="n" data-label="박스">2</td></tr><tr><td data-label="분류">성구집 · 암송</td><td class="n" data-label="권수">43</td><td class="n" data-label="박스당">60</td><td class="n" data-label="박스">1</td></tr><tr><td data-label="분류">간증 · 에세이</td><td class="n" data-label="권수">42</td><td class="n" data-label="박스당">45</td><td class="n" data-label="박스">1</td></tr><tr><td data-label="분류">일 · 직장 · 재정</td><td class="n" data-label="권수">26</td><td class="n" data-label="박스당">45</td><td class="n" data-label="박스">1</td></tr><tr><td data-label="분류">전도 · 선교</td><td class="n" data-label="권수">25</td><td class="n" data-label="박스당">45</td><td class="n" data-label="박스">1</td></tr><tr><td data-label="분류">성경 · 찬송가</td><td class="n" data-label="권수">438</td><td class="n" data-label="박스당">25</td><td class="n" data-label="박스">18</td></tr><tr class="tot"><td data-label="분류">합계</td><td class="n" data-label="권수">4,139</td><td class="n" data-label="박스당"></td><td class="n" data-label="박스">105</td></tr></tbody></table>
 </div><div class="task">
-  <div class="task-t"><b>위탁 · 수탁 도서 목록</b><em>─ 반환 대상 구분</em></div>
-  
+  <div class="task-t"><b>도서 세부 분류</b><em>─ 이사 라벨 · 서가 배치 기준</em></div>
+  <div class="box"><p><b>출판사 10</b> — 규장 · 두란노 · 복있는사람 · 브니엘 · 생명의말씀사 · 성서유니온 · 죠이북스 · 토기장이 · IVP · 국제제자훈련원 · 그 외 가나다순</p><p><b>저자 11</b> — 마틴 로이드 존스 · 존 스토트 · 팀 켈러 · C.S. 루이스 · 앤드류 머레이 · 유진 피터슨 · 존 비비어 · 존 파이퍼 · 헨리 나우웬 · A.W. 토저 · 오스왈드 챔버스</p><p><b>성경 13</b> — 합본 · 단본 · 개역개정 · 새번역 · 쉬운성경 · 현대인의성경 · 우리말성경 · 새한글성경 · 메시지성경 · 맥체인성경 · 성경통독 가이드 · 히브리서 원문 · 한중성경</p><p><b>신규 7</b> — 가정/결혼 · 자녀양육/청소년 · 유아/어린이성경 · 만화성경 · 천로역정/데일리기도문 · 묵상달력 · 마더와이즈/MIP교재</p><p><b>가나다 14</b> — 가 · 나 · 다 · 라 · 마 · 바 · 사 · 아 · 자 · 차 · 카 · 타 · 파 · 하</p></div>
+</div></div><div class="mv" data-mvid="gst2_2_1"><div class="task">
+  <div class="task-t"><b>상품 재고</b><em>─ 693종 · 4,413개</em></div>
+  <table><thead><tr><th>분류</th><th class="n">종수</th><th class="n">수량</th><th class="n">박스</th></tr></thead><tbody><tr><td data-label="분류">카드 · 봉투 · 엽서</td><td class="n" data-label="종수">112</td><td class="n" data-label="수량">1,303</td><td class="n" data-label="박스">3</td></tr><tr><td data-label="분류">노트 · 문구 · 펜</td><td class="n" data-label="종수">122</td><td class="n" data-label="수량">587</td><td class="n" data-label="박스">4</td></tr><tr><td data-label="분류">스티커 · 책갈피</td><td class="n" data-label="종수">68</td><td class="n" data-label="수량">490</td><td class="n" data-label="박스">2</td></tr><tr><td data-label="분류">십자가 · 액자</td><td class="n" data-label="종수">126</td><td class="n" data-label="수량">431</td><td class="n" data-label="박스">10</td></tr><tr><td data-label="분류">머그 · 텀블러 · 보틀</td><td class="n" data-label="종수">34</td><td class="n" data-label="수량">322</td><td class="n" data-label="박스">9</td></tr><tr><td data-label="분류">기타 소품</td><td class="n" data-label="종수">33</td><td class="n" data-label="수량">313</td><td class="n" data-label="박스">4</td></tr><tr><td data-label="분류">키링 · 목걸이 · 차량용</td><td class="n" data-label="종수">74</td><td class="n" data-label="수량">306</td><td class="n" data-label="박스">2</td></tr><tr><td data-label="분류">생활 · 주방 · 기타</td><td class="n" data-label="종수">43</td><td class="n" data-label="수량">246</td><td class="n" data-label="박스">8</td></tr><tr><td data-label="분류">말씀카드 · 액자소품</td><td class="n" data-label="종수">69</td><td class="n" data-label="수량">222</td><td class="n" data-label="박스">2</td></tr><tr><td data-label="분류">가방 · 쇼핑백 · 파우치</td><td class="n" data-label="종수">12</td><td class="n" data-label="수량">193</td><td class="n" data-label="박스">7</td></tr><tr><td data-label="분류">말씀함께</td><td class="n" data-label="종수">—</td><td class="n" data-label="수량">—</td><td class="n" data-label="박스">2</td></tr><tr class="tot"><td data-label="분류">합계</td><td class="n" data-label="종수">693</td><td class="n" data-label="수량">4,413</td><td class="n" data-label="박스">53</td></tr></tbody></table>
+</div></div><div class="mv" data-mvid="gst2_2_2"><div class="task">
+  <div class="task-t"><b>집기 · 진열대</b></div>
+  <table><thead><tr><th>분류</th><th class="n">주요 품목</th><th class="n">박스</th><th class="n">처리</th></tr></thead><tbody><tr><td data-label="분류">서가 · 진열대 부속</td><td class="n" data-label="주요 품목">선반 · 브래킷 · 지지대 · 네임택 · 조명 부속</td><td class="n" data-label="박스">3</td><td class="n" data-label="처리">재사용 여부 확인 필요</td></tr><tr><td data-label="분류">POS · 단말기</td><td class="n" data-label="주요 품목">POS · 카드단말기 · 영수증프린터 · 바코드스캐너 · 키오스크</td><td class="n" data-label="박스">1</td><td class="n" data-label="처리">재사용</td></tr><tr><td data-label="분류">계산대 비품</td><td class="n" data-label="주요 품목">시재함 · 계산기 · 문구 · 스탬프 · 사무용품</td><td class="n" data-label="박스">2</td><td class="n" data-label="처리">재사용</td></tr><tr><td data-label="분류">포장 자재</td><td class="n" data-label="주요 품목">쇼핑백 · 포장지 · 리본 · 봉투 · 테이프 · 라벨</td><td class="n" data-label="박스">3</td><td class="n" data-label="처리">재사용</td></tr><tr><td data-label="분류">청소 · 소모품</td><td class="n" data-label="주요 품목">청소도구 · 세제 · 걸레 · 쓰레기통</td><td class="n" data-label="박스">2</td><td class="n" data-label="처리">일부 폐기</td></tr><tr><td data-label="분류">서류 · 장부 · 상품권</td><td class="n" data-label="주요 품목">장부 · 계약서 · 상품권 · 인수인계 자료</td><td class="n" data-label="박스">2</td><td class="n" data-label="처리">사업단 직접 이동</td></tr></tbody></table>
 </div><div class="task">
-  <div class="task-t"><b>상품권 재고 목록</b><em>─ 판매용 · 회수용 구분</em></div>
-  
+  <div class="task-t"><b>별도 관리 품목</b><em>─ 박스 포장 대상 아님</em></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>상품권 — 잔량 확인 후 총무 보관</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>시재 · 장부 · 서류 — 사업단 직접 이동</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>위탁 · 수탁 도서 — 반환 대상 확인</span></div></div>
+</div></div></div></div>
+<div class="swview" id="gst2_3" data-group="gst2"><div class="grptitle">카페</div><div class="tasks"><div class="mtabs"><button class="mtb on" data-mv="gst2_3_0">기물</button><button class="mtb" data-mv="gst2_3_1">식기 · 식자재</button><button class="mtb" data-mv="gst2_3_2">소모품 · 집기 · POS</button></div><div class="mv on" data-mvid="gst2_3_0"><div class="task">
+  <div class="task-t"><b>기물 · 커피</b><em>─ 앞 바 · 뒤 바</em></div>
+  <table><thead><tr><th>품목</th><th class="n">수량</th><th>비고 · 처리</th></tr></thead><tbody><tr><td data-label="품목">커피머신</td><td class="n" data-label="수량">2</td><td data-label="비고 · 처리">앞 바 1 · 뒤 바 1 · 재사용</td></tr><tr><td data-label="품목">그라인더</td><td class="n" data-label="수량">2 → 3</td><td data-label="비고 · 처리">일반 2 · 디카페인 1 · 1대 신규</td></tr><tr><td data-label="품목">넉박스</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">탬퍼 · 탬핑매트</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">포터필터 · 바스켓</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">샷글라스 · 계량스푼</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">스팀피처</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">전자저울 · 온도계</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">원두 보관통</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">청소 브러시 · 백플러싱 세제</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr></tbody></table>
 </div><div class="task">
-  <div class="task-t"><b>선물 · 소품 재고 목록</b></div>
-  
+  <div class="task-t"><b>기물 · 베버리지</b><em>─ 뒤 바</em></div>
+  <table><thead><tr><th>품목</th><th class="n">수량</th><th>비고 · 처리</th></tr></thead><tbody><tr><td data-label="품목">스무디머신</td><td class="n" data-label="수량">3</td><td data-label="비고 · 처리">재사용 · 실측 필요</td></tr><tr><td data-label="품목">믹서기 용기</td><td class="n" data-label="수량">4~5</td><td data-label="비고 · 처리">메뉴별 개별 사용</td></tr><tr><td data-label="품목">온수기</td><td class="n" data-label="수량">1</td><td data-label="비고 · 처리">순간식 · 저탕식 확인 필요</td></tr><tr><td data-label="품목">제빙기</td><td class="n" data-label="수량">1</td><td data-label="비고 · 처리">뒤 바 끝 바닥 설치</td></tr><tr><td data-label="품목">아이스 스쿱 · 아이스빈</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">계량컵 · 계량스푼</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">티 서버 · 티포트</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">시럽 펌프 · 디스펜서</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">블렌더 세척 브러시</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr></tbody></table>
 </div><div class="task">
-  <div class="task-t"><b>집기 · 진열대 목록</b><em>─ 재사용 · 폐기 구분</em></div>
-  
-</div></div></div>
-<div class="swview" id="gst2_3" data-group="gst2"><div class="grptitle">카페</div><div class="tasks"><div class="task">
-  <div class="task-t"><b>기물 목록</b><em>─ 제조사 · 연식 · 상태 · 급배수 · 전기 연결 여부</em></div>
-  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>재사용 · 폐기 · 신규 구입 구분 표기</span></div></div>
+  <div class="task-t"><b>기물 · 냉장 · 냉동</b></div>
+  <table><thead><tr><th>품목</th><th class="n">수량</th><th>비고 · 처리</th></tr></thead><tbody><tr><td data-label="품목">하부 냉장고</td><td class="n" data-label="수량">2 → 3</td><td data-label="비고 · 처리">앞 바 우유 · 뒤 바 재료 · 1대 신규</td></tr><tr><td data-label="품목">보조주방 냉장 · 냉동 겸용</td><td class="n" data-label="수량">0 → 1</td><td data-label="비고 · 처리">신규 구입 · 온도 조절식</td></tr><tr><td data-label="품목">쇼케이스</td><td class="n" data-label="수량">1</td><td data-label="비고 · 처리">1,500 × 650 × 1,200 · 바닥 직치</td></tr><tr><td data-label="품목">아이스크림 냉동고</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">외부 별도 기기 · 확인 필요</td></tr><tr><td data-label="품목">제빙기 저장고</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">제빙기 일체형 여부 확인</td></tr></tbody></table>
+</div></div><div class="mv" data-mvid="gst2_3_1"><div class="task">
+  <div class="task-t"><b>식기 · 컵 · 텀블러</b></div>
+  <table><thead><tr><th>품목</th><th class="n">수량</th><th>비고 · 처리</th></tr></thead><tbody><tr><td data-label="품목">머그컵</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">유리컵</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">텀블러 · 보틀</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">판매용은 상품 분류</td></tr><tr><td data-label="품목">일회용 핫컵 · 뚜껑</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">사이즈별 확인 필요</td></tr><tr><td data-label="품목">일회용 아이스컵 · 뚜껑</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">사이즈별 확인 필요</td></tr><tr><td data-label="품목">컵홀더 · 캐리어</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">빨대 · 스틱</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">트레이 · 서빙쟁반</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">접시 · 포크 · 집게</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">빵 · 아이스크림용</td></tr></tbody></table>
 </div><div class="task">
-  <div class="task-t"><b>식자재 · 소모품 재고 목록</b><em>─ 소진 계획 포함</em></div>
-  
+  <div class="task-t"><b>식자재</b><em>─ 영업 최종일 프로모션으로 대부분 소진</em></div>
+  <table><thead><tr><th>품목</th><th class="n">수량</th><th>비고 · 처리</th></tr></thead><tbody><tr><td data-label="품목">원두 — 일반 · 디카페인</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">잔량 확인 필요</td></tr><tr><td data-label="품목">우유</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">소진 완료</td></tr><tr><td data-label="품목">가루 9종</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">녹차 · 오곡 · 초코 · 자색고구마 · 쌍화 · 진저 · 밀크티 · 딸기 · 플레인요거트</td></tr><tr><td data-label="품목">원액 4종</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">레몬 · 청포도 · 자몽 · 깔라만시 등 · 상온/냉장 확인 필요</td></tr><tr><td data-label="품목">티백 4종</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">캐모마일 · 페퍼민트 · 보이차 · 루이보스</td></tr><tr><td data-label="품목">청 3종</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">유자 · 생강 · 대추 · 냉장</td></tr><tr><td data-label="품목">시럽 · 소스</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">바닐라 · 초코 등</td></tr><tr><td data-label="품목">냉동 과일</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">딸기 · 바나나 · 블루베리 · 홍시</td></tr><tr><td data-label="품목">탄산수 · 생수 · 음료수</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">소진 완료</td></tr><tr><td data-label="품목">아이스크림</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">소진 완료</td></tr><tr><td data-label="품목">빵 · 쿠키</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">소진 완료</td></tr></tbody></table>
+</div></div><div class="mv" data-mvid="gst2_3_2"><div class="task">
+  <div class="task-t"><b>소모품</b></div>
+  <table><thead><tr><th>품목</th><th class="n">수량</th><th>비고 · 처리</th></tr></thead><tbody><tr><td data-label="품목">냅킨 · 물티슈</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">세제 · 수세미 · 행주</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">위생장갑 · 앞치마</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">랩 · 지퍼백 · 소분용기</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">보조주방 소분용</td></tr><tr><td data-label="품목">영수증 롤</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">쓰레기봉투</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">종이 포장재 · 봉투</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr></tbody></table>
 </div><div class="task">
-  <div class="task-t"><b>가구 · 집기 목록</b><em>─ 재사용 · 폐기 구분</em></div>
-  
+  <div class="task-t"><b>집기 · 가구</b></div>
+  <table><thead><tr><th>품목</th><th class="n">수량</th><th>비고 · 처리</th></tr></thead><tbody><tr><td data-label="품목">테이블</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">좌석 배치 미확정</td></tr><tr><td data-label="품목">의자</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">좌석 배치 미확정</td></tr><tr><td data-label="품목">서비스바</td><td class="n" data-label="수량">1</td><td data-label="비고 · 처리">4,400 × 702</td></tr><tr><td data-label="품목">선반 · 수납장</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">정수기</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">급배수 연결 확인 필요</td></tr><tr><td data-label="품목">청소도구 · 쓰레기통</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">확인 필요</td></tr><tr><td data-label="품목">데스크 · 휴식용 테이블</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">로비 인접</td></tr></tbody></table>
 </div><div class="task">
-  <div class="task-t"><b>렌탈 · 리스 물품 목록</b><em>─ 계약 조건 확인</em></div>
-  
-</div></div></div>
-
-  <div class="blk">자료 <span>도면 · 사진 · 참고 이미지</span></div>
-<div class="empty">해당 단계 자료는 확보 시 추가한다.</div>
+  <div class="task-t"><b>POS · 서류</b></div>
+  <table><thead><tr><th>품목</th><th class="n">수량</th><th>비고 · 처리</th></tr></thead><tbody><tr><td data-label="품목">POS · 카드단말기</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">재사용</td></tr><tr><td data-label="품목">키오스크</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">재사용</td></tr><tr><td data-label="품목">메뉴판 — 인쇄본</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">디지털 전환 예정</td></tr><tr><td data-label="품목">장부 · 서류</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">사업단 직접 이동</td></tr><tr><td data-label="품목">시재함</td><td class="n" data-label="수량"></td><td data-label="비고 · 처리">사업단 직접 이동</td></tr><tr><td data-label="품목">노트북</td><td class="n" data-label="수량">1</td><td data-label="비고 · 처리">공유 MS 계정 · Office Home 2024</td></tr></tbody></table>
+</div><div class="task">
+  <div class="task-t"><b>확인 완료 항목</b></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>렌탈 · 리스 계약 물품 — <b>없음</b></span></div><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>식자재 · 소모품 — 영업 최종일 할인 프로모션으로 소진 · 일부 반품</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>기물 실측표 — 폭 · 깊이 · 높이 (창고 선반 설계용)</span></div></div>
+</div></div></div></div>
 </div>
 <div class="swview" id="st3" data-group="stage">
-  <div class="stg-title">③ 영업중단 · 반출</div>
+  <div class="stg-title">③ 영업중단 · 반출 (이사)</div>
   <div class="stg-head"><span class="stg-when">8/17(월) ~ 8/24(월)</span></div>
   <div class="stg-meta">
     <div><b>목표</b> — 자산을 손실 없이 옮기고 재고와 시재를 확정한다</div>
@@ -833,52 +858,49 @@ tbody tr:hover td{background:#F4F0E8;}
 
 <div class="swview on" id="gst3_1" data-group="gst3"><div class="grptitle">공통</div><div class="tasks"><div class="task">
   <div class="task-t"><b>일자별 진행</b><em>─ 사업단 전체 진행 확인</em></div>
-  <div class="task-h"><div><em>8/17(월)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/18(화)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/19(수)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/20(목)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/21(금)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/22(토)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/23(주일)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/24(월)</em><span class="stwrap"><span class="st plan">예정</span></span><span>반출 완료</span></div></div>
+  <div class="task-h"><div><em>8/17(월)</em><span class="stwrap"><span class="st done">완료</span></span><span>영업 중단 · 현장 안내문 게시</span></div><div><em>8/18(화)</em><span class="stwrap"><span class="st done">완료</span></span><span>포장 자재 준비 · 분류 작업 시작</span></div><div><em>8/19(수)</em><span class="stwrap"><span class="st wait">진행 중</span></span><span>라벨 분류 확정 · 포장 진행</span></div><div><em>8/20(목)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/21(금)</em><span class="stwrap"><span class="st plan">예정</span></span><span>이사 — 포장 · 반출 · 보관처 이동</span></div><div><em>8/22(토)</em><span class="stwrap"><span class="st plan">예정</span></span><span>이사 — 포장 · 반출 · 보관처 이동</span></div><div><em>8/23(주일)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/24(월)</em><span class="stwrap"><span class="st plan">예정</span></span><span>최종 반출 완료</span></div></div>
+</div><div class="task">
+  <div class="task-t"><b>포장 자재 준비</b><em>─ 수량은 재고 기준 산출값</em></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>제습제 · 박스 구매 완료 (사무국 협조)</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>이사 박스 3호 약 215개 — 실제 소요 확인</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>에어캡 · 박스테이프 25개 · 라벨 30시트</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>장갑 · 마스크 · 커터 · 유성매직</span></div></div>
+</div><div class="task">
+  <div class="task-t"><b>라벨링 기준</b><em>─ 오픈 시 복원 순서 고려</em></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>분류 97종 확정 — 서점 도서 · 상품 · 집기 · 카페</span></div><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>라벨 항목 — 분류 · 박스 ○/○ · 먼저 열기 · 파손 · 습기 · 무거움</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>인쇄형 · 기재형 중 선택 또는 병행</span></div></div>
+</div><div class="task">
+  <div class="task-t"><b>인력 · 장비</b></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>사업단 아르바이트 등 인력 구성</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>일자별 투입 인원 · 시간대</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>손수레 · 엘리베이터 사용 협조</span></div></div>
+</div><div class="task">
+  <div class="task-t"><b>반출 동선 · 보관</b></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>보관 장소 — 지하 5층</span></div><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>이사 업체 발주 주체 — 사무국 협조</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>적재 방식 — 분류별 구역 · 통로 확보</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>습기 대비 — 팔레트 · 제습제 배치</span></div></div>
 </div><div class="task">
   <div class="task-t"><b>정산</b></div>
-  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>영업 중단 시점 정산 — 기준일은 영업 최종일 연동</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>재고 실사 — 매니저 작성 후 회계 확인</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>POS · 카드단말기 정지 또는 이전</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>금고 · 시재 · 서류 이전</span></div></div>
-</div><div class="task">
-  <div class="task-t"><b>폐기</b></div>
-  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>폐기 대상 처분 및 기록</span></div><div><em></em><span class="stwrap"><span class="st talk">논의 필요</span></span><span>폐기 처리 비용 부담 주체</span></div></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>영업 중단 시점 정산 — 기준일은 영업 최종일 연동</span></div></div>
 </div></div></div>
 <div class="swview" id="gst3_2" data-group="gst3"><div class="grptitle">서점</div><div class="tasks"><div class="task">
-  <div class="task-t"><b>일자별 진행</b><em>─ 서점 반출 진행 확인</em></div>
-  <div class="task-h"><div><em>8/17(월)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/18(화)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/19(수)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/20(목)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/21(금)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/22(토)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/23(주일)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/24(월)</em><span class="stwrap"><span class="st plan">예정</span></span><span>반출 완료</span></div></div>
+  <div class="task-t"><b>도서 포장</b><em>─ 박스당 무게 15kg 이내</em></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>기준 — 단행본 45권 · 성경 25권 · 교재 50권</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>샘플 1박스 실측 — 실제 권수와 무게 확인</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>포장 기준 선택 — 주제별 · 출판사별 · 가나다 중</span></div></div>
 </div><div class="task">
-  <div class="task-t"><b>도서 반품 실행</b><em>─ 공급처별 기한 내</em></div>
-  
+  <div class="task-t"><b>분류별 박스 수</b><em>─ 재고 기준 추정</em></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>도서 105 · 상품 53 · 집기 13 — 총 171박스</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>실제 포장 후 수량 확정</span></div></div>
 </div><div class="task">
-  <div class="task-t"><b>잔여 재고 포장 · 보관</b><em>─ 종류 · 권수 목록화, 박스 라벨링</em></div>
-  
+  <div class="task-t"><b>별도 관리 품목</b></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>상품권 — 잔량 확인 후 총무 보관</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>시재 · 장부 · 서류 — 사업단 직접 이동</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>위탁 · 수탁 도서 반환 완료 확인</span></div></div>
 </div><div class="task">
-  <div class="task-t"><b>상품권 · 보관 물품 이전</b></div>
-  
-</div><div class="task">
-  <div class="task-t"><b>예약 도서 · 주문 대기 건 처리</b><em>─ 고객 안내 포함</em></div>
-  
-</div><div class="task">
-  <div class="task-t"><b>집기 · 진열대 반출</b><em>─ 재사용 · 폐기 구분에 따라</em></div>
-  
+  <div class="task-t"><b>반품 처리</b></div>
+  <div class="task-h"><div><em>8/12(수)</em><span class="stwrap"><span class="st done">완료</span></span><span>공급처별 반품 가능 여부 및 기한 확인</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>반품 실행 및 정산</span></div></div>
 </div></div></div>
 <div class="swview" id="gst3_3" data-group="gst3"><div class="grptitle">카페</div><div class="tasks"><div class="task">
-  <div class="task-t"><b>일자별 진행</b><em>─ 카페 반출 진행 확인</em></div>
-  <div class="task-h"><div><em>8/17(월)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/18(화)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/19(수)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/20(목)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/21(금)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/22(토)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/23(주일)</em><span class="stwrap"><span class="st plan">예정</span></span><span></span></div><div><em>8/24(월)</em><span class="stwrap"><span class="st plan">예정</span></span><span>반출 완료</span></div></div>
+  <div class="task-t"><b>기물 포장</b><em>─ 파손 주의 품목 우선</em></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>9분류 확정</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>유리 · 도자기 · 전자 기기 개별 완충 포장</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>커피머신 · 제빙기 — 급배수 분리 후 이동</span></div></div>
 </div><div class="task">
-  <div class="task-t"><b>기물 반출 및 렌탈 물품 처리</b></div>
-  
+  <div class="task-t"><b>냉장 · 냉동 기물</b><em>─ 이동 전 처리</em></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>내용물 비우기 · 해동 · 세척 · 건조</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>이동 후 일정 시간 세워두기 (압축기 보호)</span></div></div>
 </div><div class="task">
-  <div class="task-t"><b>식자재 · 소모품 소진 마감</b></div>
-  
+  <div class="task-t"><b>식자재 · 소모품</b></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>영업 최종일 할인 프로모션으로 소진 완료</span></div><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>잔여분 폐기 · 이관 구분</span></div></div>
 </div><div class="task">
-  <div class="task-t"><b>거래처 납품 중단 통보</b><em>─ 영업 최종일 확정 후</em></div>
-  
-</div><div class="task">
-  <div class="task-t"><b>가구 · 집기 반출</b><em>─ 재사용 · 폐기 구분에 따라</em></div>
-  
+  <div class="task-t"><b>렌탈 · 리스 물품</b></div>
+  <div class="task-h"><div><em></em><span class="stwrap"><span class="st done">완료</span></span><span>해당 없음 — 렌탈 · 리스 계약 물품 없음</span></div></div>
 </div></div></div>
-
-  <div class="blk">자료 <span>도면 · 사진 · 참고 이미지</span></div>
-<div class="empty">해당 단계 자료는 확보 시 추가한다.</div>
 </div>
 <div class="swview" id="st4" data-group="stage">
   <div class="stg-title">④ 오픈 준비</div>
@@ -924,9 +946,6 @@ tbody tr:hover td{background:#F4F0E8;}
   <div class="task-t"><b>초도 발주 계획</b><em>─ 10월 역산</em></div>
   
 </div></div></div>
-
-  <div class="blk">자료 <span>도면 · 사진 · 참고 이미지</span></div>
-<div class="empty">해당 단계 자료는 확보 시 추가한다.</div>
 </div>
 <div class="swview" id="st5" data-group="stage">
   <div class="stg-title">⑤ 집기 반입 · 세팅</div>
@@ -969,9 +988,6 @@ tbody tr:hover td{background:#F4F0E8;}
   <div class="task-t"><b>시범 운영</b><em>─ 메뉴 시연 · 동선 점검</em></div>
   
 </div></div></div>
-
-  <div class="blk">자료 <span>도면 · 사진 · 참고 이미지</span></div>
-<div class="empty">해당 단계 자료는 확보 시 추가한다.</div>
 </div>
 <div class="swview" id="st6" data-group="stage">
   <div class="stg-title">⑥ 오픈 · 안정화</div>
@@ -1003,9 +1019,6 @@ tbody tr:hover td{background:#F4F0E8;}
   <div class="task-t"><b>사역매뉴얼 Ⅲ편 반영</b></div>
   
 </div></div></div>
-
-  <div class="blk">자료 <span>도면 · 사진 · 참고 이미지</span></div>
-<div class="empty">해당 단계 자료는 확보 시 추가한다.</div>
 </div>
 </section>
 </div></div>
@@ -1123,6 +1136,27 @@ window.addEventListener('afterprint', function(){
   var pick=[cards[0], cards[3], cards[4]].filter(Boolean);   // A08 · 로비 조감 · 천장 계획
   pick.forEach(function(c){ dst.appendChild(c.cloneNode(true)); });
   dst.querySelectorAll('figcaption .galnote').forEach(function(n){ n.remove(); });
+})();
+</script>
+
+<script>
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.mtb'); if(!b) return;
+  var wrap=b.closest('.tasks');
+  wrap.querySelectorAll('.mtb').forEach(function(x){x.classList.toggle('on',x===b);});
+  wrap.querySelectorAll('.mv').forEach(function(v){v.classList.toggle('on', v.dataset.mvid===b.dataset.mv);});
+});
+</script>
+
+<script>
+(function(){
+  function setH(){
+    var tb=document.querySelector('.topbar');
+    if(tb) document.documentElement.style.setProperty('--barh', tb.offsetHeight+'px');
+  }
+  setH();
+  window.addEventListener('resize', setH);
+  document.addEventListener('click', function(){ setTimeout(setH, 60); });
 })();
 </script>
 </body>
