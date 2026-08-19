@@ -51,6 +51,13 @@
   .stat-v small{font-size:12.5px;font-weight:400;color:var(--muted);margin-left:3px}
   .stat-l{font-size:12px;color:var(--muted);margin-top:3px}
 
+  .prog{display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+    background:var(--card);border:1px solid var(--line);border-radius:11px;
+    padding:13px 18px;margin-bottom:30px;font-size:13px;color:var(--soft)}
+  .prog .pi b{color:var(--text);font-weight:600;margin-right:5px}
+  .prog .pn{margin-left:auto;font-size:12px;color:var(--muted)}
+  @media(max-width:700px){.prog .pn{margin-left:0;flex-basis:100%}}
+
   .sec{display:flex;align-items:center;gap:11px;margin:0 0 15px}
   .sec h2{font-size:19px;font-weight:600;letter-spacing:-0.02em;white-space:nowrap}
   .sec .cap{font-size:12.5px;color:var(--muted);white-space:nowrap}
@@ -142,7 +149,6 @@
 <div class="wrap">
 
   <div class="navrow">
-    <a class="pill" href="index.html">← 사업단 홈</a>
     <div class="meta">총여선교회 사업단 › 1층 성전보수 &nbsp;|&nbsp; 업데이트 2026.08.16</div>
   </div>
 
@@ -154,11 +160,11 @@
   <div class="stats">
     <div class="stat">
       <div class="stat-v red mono" id="d1">D-4</div>
-      <div class="stat-l">영업 최종일까지</div>
+      <div class="stat-l">영업 최종일 · 8월 16일 (주일)</div>
     </div>
     <div class="stat">
       <div class="stat-v gold mono" id="d2">D-12</div>
-      <div class="stat-l">반출 완료까지</div>
+      <div class="stat-l">반출 완료 · 8월 24일 (월)</div>
     </div>
     <div class="stat">
       <div class="stat-v mono">1<small>/6</small></div>
@@ -168,6 +174,13 @@
       <div class="stat-v mono">14</div>
       <div class="stat-l">도면 · 시안</div>
     </div>
+  </div>
+
+  <div class="prog">
+    <span class="pi"><b>확정</b> 0건</span>
+    <span class="pi"><b>협의 중</b> 27건</span>
+    <span class="pi"><b>사업단 검토</b> 12건</span>
+    <span class="pn">협의 결과는 각 문서의 「논의 안건」에 계속 채워 나갑니다</span>
   </div>
 
   <div class="sec">
@@ -269,7 +282,7 @@
     var a = new Date(today.getFullYear(), today.getMonth(), today.getDate());
     return Math.round((t - a) / 86400000);
   }
-  function fmt(n){ return n > 0 ? 'D-' + n : (n === 0 ? 'D-DAY' : '완료'); }
+  function fmt(n){ return n > 0 ? 'D-' + n : (n === 0 ? 'D-DAY' : '영업 종료'); }
   document.getElementById('d1').textContent = fmt(dday(8, 16));
   document.getElementById('d2').textContent = fmt(dday(8, 24));
 })();
