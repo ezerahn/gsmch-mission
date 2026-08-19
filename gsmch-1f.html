@@ -51,6 +51,47 @@
   .stat-v small{font-size:12.5px;font-weight:400;color:var(--muted);margin-left:3px}
   .stat-l{font-size:12px;color:var(--muted);margin-top:3px}
 
+
+  /* ── 진행 공정 타임라인 ── */
+  .tlx{background:#fff;border:1px solid #e6e1d7;border-radius:13px;padding:16px 18px 14px;margin-bottom:30px}
+  .tlx-hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:13px}
+  .tlx-hd b{font-size:14px;font-weight:700;letter-spacing:-.02em;color:#2c2a26}
+  .tlx-hd .sub{font-size:12px;color:#8a847a}
+  .tlx-hd .rt{margin-left:auto;font-size:12px;color:#3d6b4f;font-weight:600}
+  .tlx-g{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+  .tlx-s{display:block;text-decoration:none;color:inherit;text-align:center;padding:2px 2px 0}
+  .tlx-s .n{display:block;font-size:11px;color:#a9a294;font-family:'IBM Plex Mono',monospace}
+  .tlx-s .t{display:block;font-size:12.5px;font-weight:600;letter-spacing:-.03em;margin-top:2px;line-height:1.35;color:#8a847a}
+  .tlx-s .st{display:inline-block;font-size:10.5px;margin-top:3px;color:#a9a294}
+  .tlx-s.done .t{color:#6e6860}
+  .tlx-s.done .st{color:#8a847a}
+  .tlx-s.now .n{color:#3d6b4f}
+  .tlx-s.now .t{color:#2c2a26;font-weight:700}
+  .tlx-s.now .st{color:#fff;background:#3d6b4f;border-radius:9px;padding:1px 8px;font-weight:600}
+  .tlx-s:hover .t{color:#3d6b4f}
+  .tlx-track{position:relative;margin:9px 0 7px}
+  .tlx-bar{height:3px;background:#ece7dd;border-radius:2px}
+  .tlx-fill{display:block;height:3px;background:#3d6b4f;border-radius:2px}
+  .tlx-dots{position:absolute;left:0;right:0;top:-3.5px}
+  .tlx-dots i{display:block;width:10px;height:10px;border-radius:50%;margin:0 auto;
+    background:#ece7dd;border:2px solid #fff;box-shadow:0 0 0 1px #ddd6c9}
+  .tlx-dots i.done{background:#3d6b4f;box-shadow:0 0 0 1px #3d6b4f}
+  .tlx-dots i.now{background:#fff;border:3px solid #3d6b4f;width:13px;height:13px;margin-top:-1.5px;box-shadow:0 0 0 3px #eef4ef}
+  .tlx-dates span{display:block;text-align:center;font-size:11px;color:#8a847a;
+    font-family:'IBM Plex Mono','IBM Plex Sans KR',monospace}
+  .tlx-foot{margin-top:11px;padding-top:10px;border-top:1px solid #f0ece4;
+    display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:#8a847a}
+  .tlx-foot b{color:#2c2a26;font-weight:600}
+  @media(max-width:760px){
+    .tlx-hd b{flex:none}
+    .tlx-hd .sub{font-size:11.5px}
+    .tlx-hd .rt{margin-left:0;flex-basis:100%;font-size:11.5px}
+    .tlx-g{grid-template-columns:repeat(3,1fr);gap:10px 6px}
+    .tlx-track,.tlx-dates{display:none}
+    .tlx-s{border:1px solid #f0ece4;border-radius:9px;padding:8px 4px}
+    .tlx-s.now{border-color:#3d6b4f;background:#eef4ef}
+  }
+
   .prog{display:flex;align-items:center;gap:18px;flex-wrap:wrap;
     background:var(--card);border:1px solid var(--line);border-radius:11px;
     padding:13px 18px;margin-bottom:30px;font-size:13px;color:var(--soft)}
@@ -149,32 +190,44 @@
 <div class="wrap">
 
   <div class="navrow">
-    <div class="meta">총여선교회 사업단 › 1층 성전보수 &nbsp;|&nbsp; 업데이트 2026.08.16</div>
+    <div class="meta">총여선교회 사업단 › 1층 성전보수 &nbsp;|&nbsp; 업데이트 2026.08.19</div>
   </div>
 
   <div class="head">
     <h1>1층 성전보수</h1>
-    <div class="lead">로뎀카페 · 선지서점 · 로비 · 자모실 — 설계부터 오픈까지 한곳에서 관리합니다.</div>
+    <div class="lead">로뎀카페 · 선지서점 — 설계부터 오픈까지 한곳에서 관리합니다.</div>
   </div>
 
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-v red mono" id="d1">D-4</div>
-      <div class="stat-l">영업 최종일 · 8월 16일 (주일)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-v gold mono" id="d2">D-12</div>
-      <div class="stat-l">반출 완료 · 8월 24일 (월)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-v mono">1<small>/6</small></div>
-      <div class="stat-l">진행 단계</div>
-    </div>
-    <div class="stat">
-      <div class="stat-v mono">14</div>
-      <div class="stat-l">도면 · 시안</div>
+<div class="tlx">
+  <div class="tlx-hd"><b>진행 공정</b><span class="sub">6단계 · 현재 ③ 영업중단 · 반출</span><span class="rt">오늘 2026. 8. 19.</span></div>
+  <div class="tlx-g tlx-steps">
+    <a class="tlx-s done" href="gsmch-1f-masterplan.html#v2/st1"><span class="n">①</span><span class="t">설계 · 소통</span><span class="st">완료</span></a>
+    <a class="tlx-s done" href="gsmch-1f-masterplan.html#v2/st2"><span class="n">②</span><span class="t">자산 · 물품 정리</span><span class="st">완료</span></a>
+    <a class="tlx-s now" href="gsmch-1f-masterplan.html#v2/st3"><span class="n">③</span><span class="t">영업중단 · 반출</span><span class="st">진행 중</span></a>
+    <a class="tlx-s todo" href="gsmch-1f-masterplan.html#v2/st4"><span class="n">④</span><span class="t">오픈 준비</span><span class="st">예정</span></a>
+    <a class="tlx-s todo" href="gsmch-1f-masterplan.html#v2/st5"><span class="n">⑤</span><span class="t">집기 반입 · 세팅</span><span class="st">예정</span></a>
+    <a class="tlx-s todo" href="gsmch-1f-masterplan.html#v2/st6"><span class="n">⑥</span><span class="t">오픈 · 안정화</span><span class="st">예정</span></a>
+  </div>
+  <div class="tlx-track"><div class="tlx-bar"><span class="tlx-fill" style="width:41.7%"></span></div>
+    <div class="tlx-g tlx-dots">
+      <i class="done"></i>
+      <i class="done"></i>
+      <i class="now"></i>
+      <i class=""></i>
+      <i class=""></i>
+      <i class=""></i>
     </div>
   </div>
+  <div class="tlx-g tlx-dates">
+    <span>8/9</span>
+    <span>8/16</span>
+    <span>8/17~24</span>
+    <span>8월 말~10월</span>
+    <span>10월</span>
+    <span>10월 말</span>
+  </div>
+  <div class="tlx-foot"><span>영업 종료 <b>8월 16일 (주일)</b></span><span>반출 완료 <b>8월 24일 (월)</b></span><span>공사 <b>8월 24일 ~ 10월 말</b></span><span>오픈 <b>10월 말 (예정)</b></span></div>
+</div>
 
   <div class="prog">
     <span class="pi"><b>확정</b> 0건</span>
@@ -231,61 +284,11 @@
     </a>
   </div>
 
-  <div class="sec">
-    <h2>진행 단계</h2><span class="cap">현재 ① 설계 · 소통</span><div class="rule"></div>
-  </div>
-  <div class="flow">
-    <a class="step now" href="gsmch-1f-masterplan.html#v2/st1">
-      <span class="step-badge">진행 중</span>
-      <div class="step-n mono">①</div>
-      <div class="step-t">설계 · 소통</div>
-      <div class="step-d">8/9 ~ 영업 최종일</div>
-    </a>
-    <a class="step" href="gsmch-1f-masterplan.html#v2/st2">
-      <div class="step-n mono">②</div>
-      <div class="step-t">자산 · 물품 정리</div>
-      <div class="step-d">영업 최종일 전후</div>
-    </a>
-    <a class="step" href="gsmch-1f-masterplan.html#v2/st3">
-      <div class="step-n mono">③</div>
-      <div class="step-t">영업중단 · 반출</div>
-      <div class="step-d">8/17 ~ 8/24</div>
-    </a>
-    <a class="step" href="gsmch-1f-masterplan.html#v2/st4">
-      <div class="step-n mono">④</div>
-      <div class="step-t">오픈 준비</div>
-      <div class="step-d">8월 말 ~ 10월</div>
-    </a>
-    <a class="step" href="gsmch-1f-masterplan.html#v2/st5">
-      <div class="step-n mono">⑤</div>
-      <div class="step-t">집기 반입 · 세팅</div>
-      <div class="step-d">10월</div>
-    </a>
-    <a class="step" href="gsmch-1f-masterplan.html#v2/st6">
-      <div class="step-n mono">⑥</div>
-      <div class="step-t">오픈 · 안정화</div>
-      <div class="step-d">10/20 이후</div>
-    </a>
-  </div>
-
   <div class="foot">
     <span>선한목자교회 총여선교회 사업단</span>
     <span>1층 성전보수 사업단 PM 안상미</span>
   </div>
 </div>
 
-<script>
-(function(){
-  var today = new Date();
-  function dday(m, d){
-    var t = new Date(2026, m - 1, d);
-    var a = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-    return Math.round((t - a) / 86400000);
-  }
-  function fmt(n){ return n > 0 ? 'D-' + n : (n === 0 ? 'D-DAY' : '영업 종료'); }
-  document.getElementById('d1').textContent = fmt(dday(8, 16));
-  document.getElementById('d2').textContent = fmt(dday(8, 24));
-})();
-</script>
 </body>
 </html>

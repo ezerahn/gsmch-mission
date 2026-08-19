@@ -18,7 +18,11 @@ h1,h2,h3,h4{font-family:"Gowun Batang","Noto Serif CJK KR","Noto Serif KR",serif
 
 .topbar{position:sticky; top:0; z-index:50; background:#fff;
   border-bottom:1px solid var(--line); box-shadow:0 1px 6px rgba(43,39,34,.06);}
-.tb-top{max-width:1400px; margin:0 auto; padding:10px 24px 8px; display:flex; align-items:center; gap:16px;}
+.tb-top{max-width:1400px; margin:0 auto; padding:10px 24px 8px; display:flex; align-items:center; gap:14px;}
+.homelink{flex:none; display:inline-flex; align-items:center; gap:5px; font-size:12.5px; font-weight:500;
+  color:#6e6860; text-decoration:none; padding:6px 13px; border:1px solid #e6e1d7; border-radius:20px;
+  background:#fff; white-space:nowrap; transition:.15s;}
+.homelink:hover{background:#eef4ef; border-color:#3d6b4f; color:#3d6b4f;}
 .brand{font-family:"Gowun Batang",serif; font-weight:700; font-size:15.5px; cursor:pointer; white-space:nowrap;}
 .brand span{color:var(--green);}
 .tb-doc{margin-left:auto; font-size:11.5px; color:var(--soft); white-space:nowrap;}
@@ -209,7 +213,8 @@ tbody tr:hover td{background:#F4F0E8;}
 @media screen and (max-width:720px){
   body{font-size:13.5px;}
   .wrap{padding:16px 14px 60px;}
-  .tb-top{padding:9px 14px 7px;} .tabs{padding:0 14px;}
+  .tb-top{padding:9px 14px 7px; gap:9px;} .tabs{padding:0 14px;}
+  .homelink{font-size:11.5px; padding:5px 10px;}
   .tb-doc{display:none;}
   .tab{font-size:14px; padding:10px 13px;}
   .sheet,.hero,.block{padding:16px 14px 17px;}
@@ -469,19 +474,57 @@ tbody tr:hover td{background:#F4F0E8;}
   .matcard{padding:8px 10px;} .matcard b{font-size:9pt;} .matcard span{font-size:8pt;}
   .swview[data-group="stage"] + .swview[data-group="stage"]{break-before:page;}
 }
+
+  /* ── 진행 공정 타임라인 ── */
+  .tlx{background:#fff;border:1px solid #e6e1d7;border-radius:13px;padding:16px 18px 14px;margin-bottom:0}
+  .tlx-hd{display:flex;align-items:baseline;gap:10px;margin-bottom:13px}
+  .tlx-hd b{font-size:14px;font-weight:700;letter-spacing:-.02em;color:#2c2a26}
+  .tlx-hd .sub{font-size:12px;color:#8a847a}
+  .tlx-hd .rt{margin-left:auto;font-size:12px;color:#3d6b4f;font-weight:600}
+  .tlx-g{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+  .tlx-s{display:block;text-decoration:none;color:inherit;text-align:center;padding:2px 2px 0}
+  .tlx-s .n{display:block;font-size:11px;color:#a9a294;font-family:'IBM Plex Mono',monospace}
+  .tlx-s .t{display:block;font-size:12.5px;font-weight:600;letter-spacing:-.03em;margin-top:2px;line-height:1.35;color:#8a847a}
+  .tlx-s .st{display:inline-block;font-size:10.5px;margin-top:3px;color:#a9a294}
+  .tlx-s.done .t{color:#6e6860}
+  .tlx-s.done .st{color:#8a847a}
+  .tlx-s.now .n{color:#3d6b4f}
+  .tlx-s.now .t{color:#2c2a26;font-weight:700}
+  .tlx-s.now .st{color:#fff;background:#3d6b4f;border-radius:9px;padding:1px 8px;font-weight:600}
+  .tlx-s:hover .t{color:#3d6b4f}
+  .tlx-track{position:relative;margin:9px 0 7px}
+  .tlx-bar{height:3px;background:#ece7dd;border-radius:2px}
+  .tlx-fill{display:block;height:3px;background:#3d6b4f;border-radius:2px}
+  .tlx-dots{position:absolute;left:0;right:0;top:-3.5px}
+  .tlx-dots i{display:block;width:10px;height:10px;border-radius:50%;margin:0 auto;
+    background:#ece7dd;border:2px solid #fff;box-shadow:0 0 0 1px #ddd6c9}
+  .tlx-dots i.done{background:#3d6b4f;box-shadow:0 0 0 1px #3d6b4f}
+  .tlx-dots i.now{background:#fff;border:3px solid #3d6b4f;width:13px;height:13px;margin-top:-1.5px;box-shadow:0 0 0 3px #eef4ef}
+  .tlx-dates span{display:block;text-align:center;font-size:11px;color:#8a847a;
+    font-family:'IBM Plex Mono','IBM Plex Sans KR',monospace}
+  .tlx-foot{margin-top:11px;padding-top:10px;border-top:1px solid #f0ece4;
+    display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:#8a847a}
+  .tlx-foot b{color:#2c2a26;font-weight:600}
+  @media(max-width:760px){
+    .tlx-g{grid-template-columns:repeat(3,1fr);gap:10px 6px}
+    .tlx-track,.tlx-dates{display:none}
+    .tlx-s{border:1px solid #f0ece4;border-radius:9px;padding:8px 4px}
+    .tlx-s.now{border-color:#3d6b4f;background:#eef4ef}
+  }
+
 </style>
 </head>
 <body>
 
 <div class="topbar">
   <div class="tb-top">
-    <a class="homelink" href="gsmch-1f.html">‹</a><div class="brand" data-go="home">선한목자교회 <span>1층 성전보수 마스터플랜</span></div>
+    <a class="homelink" href="gsmch-1f.html">← 1층 성전보수 홈</a><div class="brand" data-go="home">선한목자교회 <span>1층 성전보수 마스터플랜</span></div>
     <div class="tb-doc">2026. 8. 10. · PM 안상미</div>
   </div>
   <nav class="tb-nav">
     <div class="tabs"><button class="tab on" data-go="home"><span class="tn">1</span>개요</button><button class="tab" data-go="v2"><span class="tn">2</span>진행 단계</button><button class="tab" data-go="v3"><span class="tn">3</span>기록</button><button class="tab" data-go="v4"><span class="tn">4</span>참고자료</button></div>
   </nav>
-  <div class="stagebar" id="stagebar"><div class="switch subswitch"><button class="sw sm on now" data-sw="st1" data-group="stage"><i class="dot"></i>① 설계 · 소통</button><button class="sw sm" data-sw="st2" data-group="stage">② 자산 · 물품 정리</button><button class="sw sm" data-sw="st3" data-group="stage">③ 영업중단 · 반출</button><button class="sw sm" data-sw="st4" data-group="stage">④ 오픈 준비</button><button class="sw sm" data-sw="st5" data-group="stage">⑤ 집기 반입 · 세팅</button><button class="sw sm" data-sw="st6" data-group="stage">⑥ 오픈 · 안정화</button></div><div class="grpbar"><div class="grpnav" data-stage="st1"><button class="sw sm on" data-sw="gst1_1" data-group="gst1">공통</button><button class="sw sm" data-sw="gst1_2" data-group="gst1">서점</button><button class="sw sm" data-sw="gst1_3" data-group="gst1">카페</button></div><div class="grpnav" data-stage="st2"><button class="sw sm on" data-sw="gst2_1" data-group="gst2">공통</button><button class="sw sm" data-sw="gst2_2" data-group="gst2">서점</button><button class="sw sm" data-sw="gst2_3" data-group="gst2">카페</button></div><div class="grpnav" data-stage="st3"><button class="sw sm on" data-sw="gst3_1" data-group="gst3">공통</button><button class="sw sm" data-sw="gst3_2" data-group="gst3">서점</button><button class="sw sm" data-sw="gst3_3" data-group="gst3">카페</button></div><div class="grpnav" data-stage="st4"><button class="sw sm on" data-sw="gst4_1" data-group="gst4">공통</button><button class="sw sm" data-sw="gst4_2" data-group="gst4">서점</button><button class="sw sm" data-sw="gst4_3" data-group="gst4">카페</button></div><div class="grpnav" data-stage="st5"><button class="sw sm on" data-sw="gst5_1" data-group="gst5">공통</button><button class="sw sm" data-sw="gst5_2" data-group="gst5">서점</button><button class="sw sm" data-sw="gst5_3" data-group="gst5">카페</button></div><div class="grpnav" data-stage="st6"><button class="sw sm on" data-sw="gst6_1" data-group="gst6">공통</button></div></div></div>
+  <div class="stagebar" id="stagebar"><div class="switch subswitch"><button class="sw sm on" data-sw="st1" data-group="stage">① 설계 · 소통</button><button class="sw sm" data-sw="st2" data-group="stage">② 자산 · 물품 정리</button><button class="sw sm now" data-sw="st3" data-group="stage"><i class="dot"></i>③ 영업중단 · 반출</button><button class="sw sm" data-sw="st4" data-group="stage">④ 오픈 준비</button><button class="sw sm" data-sw="st5" data-group="stage">⑤ 집기 반입 · 세팅</button><button class="sw sm" data-sw="st6" data-group="stage">⑥ 오픈 · 안정화</button></div><div class="grpbar"><div class="grpnav" data-stage="st1"><button class="sw sm on" data-sw="gst1_1" data-group="gst1">공통</button><button class="sw sm" data-sw="gst1_2" data-group="gst1">서점</button><button class="sw sm" data-sw="gst1_3" data-group="gst1">카페</button></div><div class="grpnav" data-stage="st2"><button class="sw sm on" data-sw="gst2_1" data-group="gst2">공통</button><button class="sw sm" data-sw="gst2_2" data-group="gst2">서점</button><button class="sw sm" data-sw="gst2_3" data-group="gst2">카페</button></div><div class="grpnav" data-stage="st3"><button class="sw sm on" data-sw="gst3_1" data-group="gst3">공통</button><button class="sw sm" data-sw="gst3_2" data-group="gst3">서점</button><button class="sw sm" data-sw="gst3_3" data-group="gst3">카페</button></div><div class="grpnav" data-stage="st4"><button class="sw sm on" data-sw="gst4_1" data-group="gst4">공통</button><button class="sw sm" data-sw="gst4_2" data-group="gst4">서점</button><button class="sw sm" data-sw="gst4_3" data-group="gst4">카페</button></div><div class="grpnav" data-stage="st5"><button class="sw sm on" data-sw="gst5_1" data-group="gst5">공통</button><button class="sw sm" data-sw="gst5_2" data-group="gst5">서점</button><button class="sw sm" data-sw="gst5_3" data-group="gst5">카페</button></div><div class="grpnav" data-stage="st6"><button class="sw sm on" data-sw="gst6_1" data-group="gst6">공통</button></div></div></div>
 </div>
 
 <div class="wrap">
@@ -490,12 +533,45 @@ tbody tr:hover td{background:#F4F0E8;}
   <div class="hero">
     <div class="eyebrow">선한목자교회 · 총여선교회 사업단</div>
     <h1>교회 1층 성전보수 마스터플랜
-      <span class="sub">로뎀카페 · 선지서점 · 로비 · 자모실</span>
+      <span class="sub">로뎀카페 · 선지서점</span>
     </h1>
     <div class="meta">
       <span>작성일 <b>2026. 8. 10.</b></span>
       <span>작성 <b>1층 성전보수 사업단 PM 안상미</b></span>
     </div>
+  </div>
+
+  <div class="block" style="padding:0;border:0;background:none">
+<div class="tlx">
+  <div class="tlx-hd"><b>진행 공정</b><span class="sub">6단계 · 현재 ③ 영업중단 · 반출</span><span class="rt">오늘 2026. 8. 19.</span></div>
+  <div class="tlx-g tlx-steps">
+    <a class="tlx-s done" href="#v2/st1"><span class="n">①</span><span class="t">설계 · 소통</span><span class="st">완료</span></a>
+    <a class="tlx-s done" href="#v2/st2"><span class="n">②</span><span class="t">자산 · 물품 정리</span><span class="st">완료</span></a>
+    <a class="tlx-s now" href="#v2/st3"><span class="n">③</span><span class="t">영업중단 · 반출</span><span class="st">진행 중</span></a>
+    <a class="tlx-s todo" href="#v2/st4"><span class="n">④</span><span class="t">오픈 준비</span><span class="st">예정</span></a>
+    <a class="tlx-s todo" href="#v2/st5"><span class="n">⑤</span><span class="t">집기 반입 · 세팅</span><span class="st">예정</span></a>
+    <a class="tlx-s todo" href="#v2/st6"><span class="n">⑥</span><span class="t">오픈 · 안정화</span><span class="st">예정</span></a>
+  </div>
+  <div class="tlx-track"><div class="tlx-bar"><span class="tlx-fill" style="width:41.7%"></span></div>
+    <div class="tlx-g tlx-dots">
+      <i class="done"></i>
+      <i class="done"></i>
+      <i class="now"></i>
+      <i class=""></i>
+      <i class=""></i>
+      <i class=""></i>
+    </div>
+  </div>
+  <div class="tlx-g tlx-dates">
+    <span>8/9</span>
+    <span>8/16</span>
+    <span>8/17~24</span>
+    <span>8월 말~10월</span>
+    <span>10월</span>
+    <span>10월 말</span>
+  </div>
+  <div class="tlx-foot"><span>영업 종료 <b>8월 16일 (주일)</b></span><span>반출 완료 <b>8월 24일 (월)</b></span><span>공사 <b>8월 24일 ~ 10월 말</b></span><span>오픈 <b>10월 말 (예정)</b></span></div>
+</div>
   </div>
 
   <div class="block">
@@ -513,7 +589,7 @@ tbody tr:hover td{background:#F4F0E8;}
       </div>
       <div class="dtcell plan">
         <div class="dt-lab"><i class="plan"></i>공사 완료</div>
-        <div class="dt-val">10. 20.<span class="dd">화 · 예정</span></div>
+        <div class="dt-val">10월 말<span class="dd">예정</span></div>
         <div class="dt-sub">건축위 최종 협의 결정 후 반영</div>
       </div>
     </div>
@@ -522,7 +598,7 @@ tbody tr:hover td{background:#F4F0E8;}
   <div class="block">
     <div class="blk-t">진행 단계</div>
     <div class="blk-c">각 단계는 완료 기준을 충족한 후 다음 단계로 이행한다. 카드를 누르면 해당 단계로 이동한다.</div>
-    <div class="flow"><div class="fstep now" data-jump="st1" role="button" tabindex="0"><div class="now-badge">진행 중</div><div class="fn">①</div><div class="ft">설계 · 소통</div><div class="fw">8. 9. ~ 영업 최종일</div><span class="go">보기 ›</span></div><div class="fstep" data-jump="st2" role="button" tabindex="0"><div class="fn">②</div><div class="ft">자산 · 물품 정리</div><div class="fw">영업 최종일 전후</div><span class="go">보기 ›</span></div><div class="fstep" data-jump="st3" role="button" tabindex="0"><div class="fn">③</div><div class="ft">영업중단 · 반출</div><div class="fw">8/17(월) ~ 8/24(월)</div><span class="go">보기 ›</span></div><div class="fstep" data-jump="st4" role="button" tabindex="0"><div class="fn">④</div><div class="ft">오픈 준비</div><div class="fw">공사 기간 · 8월 말 ~ 10월</div><span class="go">보기 ›</span></div><div class="fstep" data-jump="st5" role="button" tabindex="0"><div class="fn">⑤</div><div class="ft">집기 반입 · 세팅</div><div class="fw">10월</div><span class="go">보기 ›</span></div><div class="fstep" data-jump="st6" role="button" tabindex="0"><div class="fn">⑥</div><div class="ft">오픈 · 안정화</div><div class="fw">10. 20. 이후</div><span class="go">보기 ›</span></div></div>
+    <div class="flow"><div class="fstep" data-jump="st1" role="button" tabindex="0"><div class="fn">①</div><div class="ft">설계 · 소통</div><div class="fw">8. 9. ~ 영업 최종일</div><span class="go">보기 ›</span></div><div class="fstep" data-jump="st2" role="button" tabindex="0"><div class="fn">②</div><div class="ft">자산 · 물품 정리</div><div class="fw">영업 최종일 전후</div><span class="go">보기 ›</span></div><div class="fstep now" data-jump="st3" role="button" tabindex="0"><div class="now-badge">진행 중</div><div class="fn">③</div><div class="ft">영업중단 · 반출</div><div class="fw">8/17(월) ~ 8/24(월)</div><span class="go">보기 ›</span></div><div class="fstep" data-jump="st4" role="button" tabindex="0"><div class="fn">④</div><div class="ft">오픈 준비</div><div class="fw">공사 기간 · 8월 말 ~ 10월</div><span class="go">보기 ›</span></div><div class="fstep" data-jump="st5" role="button" tabindex="0"><div class="fn">⑤</div><div class="ft">집기 반입 · 세팅</div><div class="fw">10월</div><span class="go">보기 ›</span></div><div class="fstep" data-jump="st6" role="button" tabindex="0"><div class="fn">⑥</div><div class="ft">오픈 · 안정화</div><div class="fw">10월 말 (예정)</div><span class="go">보기 ›</span></div></div>
   </div>
 
   <div class="sheet">
