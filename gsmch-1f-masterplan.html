@@ -58,10 +58,21 @@ h1,h2,h3,h4{font-family:"Gowun Batang","Noto Serif CJK KR","Noto Serif KR",serif
 .hero{background:#fff; border:1px solid var(--line); border-radius:8px; padding:24px 30px 22px; margin-bottom:16px;}
 .eyebrow{font-size:11.5px; letter-spacing:.10em; color:var(--green); font-weight:600; margin-bottom:8px;}
 h1{font-size:28px; margin:0 0 6px; line-height:1.32; font-weight:700;}
-h1 .sub{display:block; font-size:21px; color:#3d6b4f; font-weight:700; letter-spacing:-.02em;
-  margin-top:9px; font-family:"IBM Plex Sans KR",sans-serif;}
-@media(max-width:640px){ h1 .sub{font-size:17px; margin-top:7px;} }
+h1 .sub{font-size:21px; color:#3d6b4f; font-weight:700; letter-spacing:-.02em;
+  margin-left:11px; white-space:nowrap; vertical-align:2px;
+  font-family:"IBM Plex Sans KR",sans-serif;}
+@media(max-width:640px){
+  h1{font-size:17px; letter-spacing:-.05em; white-space:nowrap;}
+  h1 .sub{font-size:11.5px; margin-left:6px; vertical-align:1px; letter-spacing:-.03em;}
+  .hero{padding:16px 14px;}
+}
+@media(max-width:400px){ h1{font-size:15px;} h1 .sub{font-size:10.5px; margin-left:5px;} }
 .meta{display:flex; flex-wrap:wrap; gap:6px 24px; font-size:12px; color:var(--soft); margin-top:14px; padding-top:12px; border-top:1px solid var(--line);}
+.meta .upd{display:inline-flex; align-items:center; gap:6px; color:#e0705a; font-weight:600;}
+.meta .upd b{color:#e0705a;}
+.meta .upd i{width:7px; height:7px; border-radius:50%; background:#e0705a;
+  box-shadow:0 0 0 3px #fdeeea; display:inline-block; flex:none;}
+@media(max-width:640px){ .meta .upd{flex-basis:100%;} }
 .meta b{color:var(--ink); font-weight:600;}
 
 /* 공통 블록 */
@@ -226,7 +237,7 @@ tbody tr:hover td{background:#F4F0E8;}
   .tb-doc{display:none;}
   .tab{font-size:14px; padding:10px 13px;}
   .sheet,.hero,.block{padding:16px 14px 17px;}
-  h1{font-size:23px;}
+  
   .sec-head h2{font-size:17px;}
   .dates{grid-template-columns:1fr; gap:8px;}
   .flow{grid-template-columns:1fr; gap:8px;}
@@ -588,7 +599,7 @@ tbody tr:hover td{background:#F4F0E8;}
 <div class="topbar">
   <div class="tb-top">
     <a class="homelink" href="gsmch-1f.html">← 1층 성전보수 홈</a><div class="brand" data-go="home">선한목자교회 <span>1층 성전보수 마스터플랜</span></div>
-    <div class="tb-doc">2026. 8. 10. · PM 안상미</div>
+    <div class="tb-doc">2026. 8. 19. · PM 안상미</div>
   </div>
   <nav class="tb-nav">
     <div class="tabs"><button class="tab on" data-go="home"><span class="tn">1</span>개요</button><button class="tab" data-go="v2"><span class="tn">2</span>실행 계획</button><button class="tab" data-go="v3"><span class="tn">3</span>기록</button><button class="tab" data-go="v4"><span class="tn">4</span>참고자료</button></div>
@@ -601,12 +612,10 @@ tbody tr:hover td{background:#F4F0E8;}
 <div class="view on" id="home">
   <div class="hero">
     <div class="eyebrow">선한목자교회 · 총여선교회 사업단</div>
-    <h1>교회 1층 성전보수 마스터플랜
-      <span class="sub">로뎀카페 · 선지서점</span>
-    </h1>
+    <h1>1층 성전보수 마스터플랜<span class="sub">로뎀카페 · 선지서점</span></h1>
     <div class="meta">
-      <span>작성일 <b>2026. 8. 10.</b></span>
       <span>작성 <b>1층 성전보수 사업단 PM 안상미</b></span>
+      <span class="upd"><i></i>업데이트 <b>2026. 8. 19.</b></span>
     </div>
   </div>
 
