@@ -164,6 +164,17 @@
   .tb:hover{color:var(--text);background:#f4f1ea}
   .tb.on{color:var(--accent);background:var(--accentL);border-color:#cfe0d5}
   @media(max-width:560px){ .tb{font-size:12.5px;padding:7px 10px} .trow{padding-left:34px;gap:3px} }
+
+  @media(max-width:640px){
+    .trow{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
+      scrollbar-width:none;padding-right:4px}
+    .trow::-webkit-scrollbar{display:none}
+    .tb{white-space:nowrap;flex:none;font-size:12.5px;padding:7px 11px}
+    table{font-size:11.5px}
+    th,td{padding:5px 7px;word-break:keep-all}
+    th:first-child,td:first-child{white-space:nowrap}
+    .flow{grid-template-columns:repeat(2,1fr)}
+  }
   .pane{display:none}
   .pane.on{display:block}
   .ptitle{font-size:12.5px;color:var(--muted);margin:-6px 0 14px}
@@ -173,6 +184,21 @@
     background:#fff;border:1px solid var(--line);border-radius:20px;padding:7px 15px;cursor:pointer;transition:.15s}
   .stb:hover{border-color:var(--accent);color:var(--accent)}
   .stb.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .stb2{font-family:inherit;font-size:12.5px;font-weight:600;color:var(--soft);background:#fff;
+    border:1px solid var(--line);border-radius:20px;padding:7px 15px;cursor:pointer;transition:.15s}
+  .stb2:hover{border-color:var(--accent);color:var(--accent)}
+  .stb2.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .subpane2{display:none}
+  .subpane2.on{display:block}
+
+  @media(max-width:560px){
+    .stb .sd, .stb2 .sd{display:none}
+    .subtabs{flex-wrap:nowrap;gap:5px}
+    .stb,.stb2{padding:7px 14px;font-size:13px;white-space:nowrap}
+    .card{padding:16px 15px 17px}
+    .card h3{font-size:16px}
+    .card .sub{font-size:12px}
+  }
   .subpane{display:none}
   .subpane.on{display:block}
 
@@ -180,6 +206,34 @@
   .rs.wait{color:#a9a294;font-style:italic}
   .rs.done{color:#2f7a4f;font-weight:600;font-style:normal}
   .rs .d{display:block;font-size:10.5px;color:#8a847a;font-weight:400}
+
+  @media(max-width:640px){
+    .board{grid-template-columns:1fr !important;gap:10px}
+    .panel{padding:14px 14px 13px}
+    .it .nm{font-size:14px}
+    .it .pr{font-size:14px}
+    .it{padding:5px 0}
+    .ph .en{font-size:13px}
+    .ph .ko{font-size:11px}
+    .tg{font-size:8px;padding:1px 4px 1.5px}
+    .season .nm{font-size:15px}
+    .season .pr{font-size:13px}
+    .pn{display:none}
+    .dimrow{font-size:11px;gap:4px 10px}
+    .ceil{font-size:10px}
+    .sp .cap .en{font-size:13px}
+    .spinfo .nm{font-size:14px}
+    .spinfo .pr{font-size:14px}
+    .spimg{min-height:70px}
+  }
+
+  @media(max-width:640px){
+    .subtabs{margin-bottom:14px}
+    .board{grid-template-columns:1fr !important;gap:16px}
+    .panel{padding:16px 15px 15px;border:1px solid #4a4238;border-radius:8px;
+      box-shadow:0 3px 10px rgba(0,0,0,.35)}
+    .boardwrap{padding:16px 12px 14px}
+  }
   .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);
     font-size:11.5px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
@@ -208,7 +262,7 @@
     .dec .tx{font-size:9.5px}
     .pb{break-before:page}
     .tabs,.subtabs{display:none}
-    .pane,.subpane{display:block !important}
+    .pane,.subpane,.subpane2{display:block !important}
     .ptitle{display:none}
     .psec{display:flex !important;align-items:center;gap:10px;margin:10px 0 6px;break-before:page}
     .psec .n{font-size:15px;font-weight:700;color:var(--accent)}
@@ -250,6 +304,7 @@
     </div>
     <div class="trow"><span class="tgl">배치</span>
       <button class="tb on" data-tab="3">카페 전체 배치안</button>
+      <button class="tb" data-tab="7">공통</button>
       <button class="tb" data-tab="4">메뉴판</button>
     </div>
     <div class="trow last"><span class="tgl">안건</span>
@@ -484,17 +539,18 @@
     <div class="psec"><span class="n">3</span><h2>카페 전체 배치안</h2><span class="cap">사업단 안</span><div class="rule"></div></div>
     <div class="ptitle">사업단 안 · 회의 결과</div>
 <div class="card">
-    <h3>전체 배치도</h3>
-    <div class="sub">뒤 바 · 직원 통로 · 앞 바를 한 장에 · 급배수 조건에 따른 세 안</div>
+    <h3>안 선택</h3>
+    <div class="sub">급배수 관통 위치에 따라 갈립니다</div>
     <div class="subtabs">
-      <button class="stb on" data-go="1">1안 · 싱크 좌측</button>
-      <button class="stb" data-go="2">2안 · 싱크 우측</button>
-      <button class="stb" data-go="3">3안 · 싱크 최우측</button>
+      <button class="stb on" data-go="1">1안<span class="sd"> · 싱크 좌측</span></button>
+      <button class="stb" data-go="2">2안<span class="sd"> · 싱크 우측</span></button>
+      <button class="stb" data-go="3">3안<span class="sd"> · 싱크 최우측</span></button>
     </div>
-  </div><div class="subpane on" data-sp="1">
+  </div>
+  <div class="subpane on" data-sp="1">
     <div class="card">
-      <h3>1안 · 싱크 좌측</h3>
-      <div class="sub">급배수를 좌측에서 뽑을 수 있을 때 — 세척이 스무디존 바로 옆</div>
+      <h3>전체 배치도</h3>
+      <div class="sub">1안 · 싱크 좌측 — 좌측(보조주방 인근)에서 배수를 뽑을 수 있을 때</div>
 <svg class="full" viewBox="-1900 -560 9500 4380" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans KR, sans-serif"><defs>
  <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a847a"/></marker>
  <marker id="arS" markerWidth="9" markerHeight="9" refX="1" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 z" fill="#8a847a"/></marker>
@@ -578,11 +634,9 @@
 <text x="2610" y="20" font-size="130" fill="#6e6860" text-anchor="middle">5,220</text>
 <line x1="0" y1="3375" x2="6010" y2="3375" stroke="#8a847a" stroke-width="14" marker-end="url(#ar)" marker-start="url(#arS)"/>
 <text x="3005" y="3335" font-size="130" fill="#6e6860" text-anchor="middle">6,010</text></svg>
-      <div class="note">앞 바는 <b>세 안 모두 같습니다.</b> 바뀌는 것은 뒤 바의 싱크 위치뿐이며 급배수 관통 결과로 정해집니다.
-      하부는 냉장고처럼 중요한 것만 <b class="red">붉은 글씨</b>로 표시했습니다.</div>
     </div>
     <div class="card">
-      <h3>1안 · 싱크 좌측 · 뒤 바 상세</h3>
+      <h3>뒤 바</h3>
       <div class="sub">상판 · 하부 · 폭</div>
 <svg class="bar" viewBox="-1000 -420 8120 2100" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans KR, sans-serif"><defs>
  <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a847a"/></marker>
@@ -637,17 +691,83 @@
 <text x="-150" y="1075.0" font-size="135" font-weight="600" fill="#8a847a" text-anchor="end">하부</text>
 <text x="0" y="1660" font-size="130" fill="#8a847a">◀ 창고 · 보조주방 쪽</text>
 <text x="6220" y="1660" font-size="130" fill="#8a847a" text-anchor="end">픽업 쪽 ▶</text></svg>
-    <div class="note">
-      <b>씻은 믹서기를 손만 뻗어 스무디머신에 겁니다.</b> 세척과 제조가 붙어 한 잔당 이동이 없습니다.
-      다만 싱크 물이 머신 쪽으로 튈 수 있어 <b>B2 · B3 사이에 물막이</b>가 필요합니다.
-      커피머신 · 싱크가 좌측에 모이고 그 왼쪽이 보조주방이라 <b>관통을 한 구역으로 묶을 수 있습니다.</b>
     </div>
-      </div>
-  </div>
-<div class="subpane" data-sp="2">
     <div class="card">
-      <h3>2안 · 싱크 우측</h3>
-      <div class="sub">중앙~우측에서 뽑을 수 있을 때 — 싱크와 제빙기가 같은 쪽</div>
+      <h3>앞 바</h3>
+      <div class="sub">계산대 → 쇼케이스 → 커피 → 제조 → 픽업 · 세 안 동일</div>
+<svg class="bar" viewBox="-1000 -420 7910 2100" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans KR, sans-serif"><defs>
+ <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a847a"/></marker>
+ <marker id="arS" markerWidth="9" markerHeight="9" refX="1" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 z" fill="#8a847a"/></marker>
+</defs><rect x="0" y="300" width="1000" height="560" fill="#eaf2ec" stroke="#2c2a26" stroke-width="16"/>
+<rect x="0" y="860" width="1000" height="340" fill="#faf8f3" stroke="#2c2a26" stroke-width="16"/>
+<text x="500.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">C1</text>
+<text x="500.0" y="531.4" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">계산대 · POS</text>
+<text x="500.0" y="727.15" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">키오스크</text>
+<text x="500.0" y="986.8" font-size="120" fill="#6e6860" text-anchor="middle">시재 · 서류</text>
+<text x="500.0" y="1154.8" font-size="120" fill="#6e6860" text-anchor="middle">잠금</text>
+<text x="500.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">1,000*</text>
+<line x1="1000" y1="300" x2="1000" y2="1200" stroke="#2c2a26" stroke-width="16"/>
+<rect x="1000" y="300" width="1500" height="560" fill="#f5f9f6" stroke="#2c2a26" stroke-width="16"/>
+<rect x="1000" y="860" width="1500" height="340" fill="#faf8f3" stroke="#2c2a26" stroke-width="16"/>
+<text x="1750.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">C2</text>
+<text x="1750.0" y="628.6" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">쇼케이스</text>
+<text x="1750.0" y="1070.8" font-size="120" fill="#6e6860" text-anchor="middle">바닥형 · 하부 없음</text>
+<text x="1750.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">1,500*</text>
+<line x1="2500" y1="300" x2="2500" y2="1200" stroke="#2c2a26" stroke-width="16"/>
+<rect x="2500" y="300" width="700" height="560" fill="#eaf2ec" stroke="#2c2a26" stroke-width="16"/>
+<rect x="2500" y="860" width="700" height="340" fill="#faf8f3" stroke="#2c2a26" stroke-width="16"/>
+<text x="2850.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">C3</text>
+<text x="2850.0" y="455.79999999999995" font-size="115" font-weight="600" fill="#2c2a26" text-anchor="middle">그라인더 2</text>
+<text x="2850.0" y="622.55" font-size="115" font-weight="600" fill="#2c2a26" text-anchor="middle">일반</text>
+<text x="2850.0" y="789.3" font-size="115" font-weight="600" fill="#2c2a26" text-anchor="middle">디카페인</text>
+<text x="2850.0" y="1070.8" font-size="120" fill="#6e6860" text-anchor="middle">원두 재고</text>
+<text x="2850.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">700*</text>
+<line x1="3200" y1="300" x2="3200" y2="1200" stroke="#2c2a26" stroke-width="16"/>
+<rect x="3200" y="300" width="900" height="560" fill="#f5f9f6" stroke="#2c2a26" stroke-width="16"/>
+<rect x="3200" y="860" width="900" height="340" fill="#faf8f3" stroke="#2c2a26" stroke-width="16"/>
+<text x="3650.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">C4</text>
+<text x="3650.0" y="531.4" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">커피머신</text>
+<text x="3650.0" y="727.15" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">넉박스</text>
+<text x="3650.0" y="1070.8" font-size="120" fill="#6e6860" text-anchor="middle">우유 냉장고</text>
+<text x="3650.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">900*</text>
+<line x1="4100" y1="300" x2="4100" y2="1200" stroke="#2c2a26" stroke-width="16"/>
+<rect x="4100" y="300" width="1200" height="560" fill="#eaf2ec" stroke="#2c2a26" stroke-width="16"/>
+<rect x="4100" y="860" width="1200" height="340" fill="#faf8f3" stroke="#2c2a26" stroke-width="16"/>
+<text x="4700.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">C5</text>
+<text x="4700.0" y="531.4" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">제조대</text>
+<text x="4700.0" y="727.15" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">가루통 2단 · 컵</text>
+<text x="4700.0" y="986.8" font-size="120" fill="#6e6860" text-anchor="middle">컵 재고</text>
+<text x="4700.0" y="1154.8" font-size="120" fill="#6e6860" text-anchor="middle">가루 여분</text>
+<text x="4700.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">1,200*</text>
+<line x1="5300" y1="300" x2="5300" y2="1200" stroke="#2c2a26" stroke-width="16"/>
+<rect x="5300" y="300" width="700" height="560" fill="#f5f9f6" stroke="#2c2a26" stroke-width="16"/>
+<rect x="5300" y="860" width="700" height="340" fill="#faf8f3" stroke="#2c2a26" stroke-width="16"/>
+<text x="5650.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">C6</text>
+<text x="5650.0" y="628.6" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">픽업대</text>
+<text x="5650.0" y="986.8" font-size="120" fill="#6e6860" text-anchor="middle">캐리어</text>
+<text x="5650.0" y="1154.8" font-size="120" fill="#6e6860" text-anchor="middle">홀더</text>
+<text x="5650.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">700*</text>
+<rect x="6000" y="300" width="10" height="900" fill="#fff" stroke="#cfc8bb" stroke-width="14" stroke-dasharray="55 40"/>
+<line x1="0" y1="70" x2="6010" y2="70" stroke="#8a847a" stroke-width="16" marker-end="url(#ar)" marker-start="url(#arS)"/>
+<text x="3005.0" y="-10" font-size="155" font-weight="600" fill="#6e6860" text-anchor="middle">앞 바 6,010</text>
+<text x="-150" y="630.0" font-size="135" font-weight="600" fill="#8a847a" text-anchor="end">상판</text>
+<text x="-150" y="1075.0" font-size="135" font-weight="600" fill="#8a847a" text-anchor="end">하부</text>
+<text x="0" y="1660" font-size="130" fill="#8a847a">◀ 진입 · 계산대</text>
+<text x="6010" y="1660" font-size="130" fill="#8a847a" text-anchor="end">픽업 ▶</text></svg>
+    </div>
+<div class="card">
+      <h3>체크리스트</h3>
+      <div class="sub">이 조건이 되면 이 안으로 갑니다</div>
+      <div class="dec">
+<div class="row"><span class="bd a">확인</span><span class="tx">□ 좌측 구간 슬래브 관통 가능</span></div><div class="row"><span class="bd a">확인</span><span class="tx">□ B2 · B3 사이 물막이(사이드 가드) 시공 가능</span></div>
+      </div>
+      <div class="note">세척과 제조가 붙어 한 잔당 이동이 없습니다. 관통은 좌 · 우 두 구역.</div>
+    </div>
+  </div>
+  <div class="subpane" data-sp="2">
+    <div class="card">
+      <h3>전체 배치도</h3>
+      <div class="sub">2안 · 싱크 우측 — 중앙~우측에서 배수를 뽑을 수 있을 때</div>
 <svg class="full" viewBox="-1900 -560 9500 4380" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans KR, sans-serif"><defs>
  <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a847a"/></marker>
  <marker id="arS" markerWidth="9" markerHeight="9" refX="1" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 z" fill="#8a847a"/></marker>
@@ -731,11 +851,9 @@
 <text x="2610" y="20" font-size="130" fill="#6e6860" text-anchor="middle">5,220</text>
 <line x1="0" y1="3375" x2="6010" y2="3375" stroke="#8a847a" stroke-width="14" marker-end="url(#ar)" marker-start="url(#arS)"/>
 <text x="3005" y="3335" font-size="130" fill="#6e6860" text-anchor="middle">6,010</text></svg>
-      <div class="note">앞 바는 <b>세 안 모두 같습니다.</b> 바뀌는 것은 뒤 바의 싱크 위치뿐이며 급배수 관통 결과로 정해집니다.
-      하부는 냉장고처럼 중요한 것만 <b class="red">붉은 글씨</b>로 표시했습니다.</div>
     </div>
     <div class="card">
-      <h3>2안 · 싱크 우측 · 뒤 바 상세</h3>
+      <h3>뒤 바</h3>
       <div class="sub">상판 · 하부 · 폭</div>
 <svg class="bar" viewBox="-1000 -420 8120 2100" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans KR, sans-serif"><defs>
  <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a847a"/></marker>
@@ -790,16 +908,83 @@
 <text x="-150" y="1075.0" font-size="135" font-weight="600" fill="#8a847a" text-anchor="end">하부</text>
 <text x="0" y="1660" font-size="130" fill="#8a847a">◀ 창고 · 보조주방 쪽</text>
 <text x="6220" y="1660" font-size="130" fill="#8a847a" text-anchor="end">픽업 쪽 ▶</text></svg>
-    <div class="note">
-      싱크가 스무디존 바로 오른쪽이라 <b>세척 동선이 700</b>으로 짧고, 제조 라인에서 떨어져 <b>물이 튀지 않습니다.</b>
-      대신 차 · 원액이 좌측으로 밀려 <b>픽업에서 멀어집니다.</b>
     </div>
-      </div>
-  </div>
-<div class="subpane" data-sp="3">
     <div class="card">
-      <h3>3안 · 싱크 최우측</h3>
-      <div class="sub">우측 끝에서만 뽑을 수 있을 때 — 관통이 한 구역</div>
+      <h3>앞 바</h3>
+      <div class="sub">계산대 → 쇼케이스 → 커피 → 제조 → 픽업 · 세 안 동일</div>
+<svg class="bar" viewBox="-1000 -420 7910 2100" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans KR, sans-serif"><defs>
+ <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a847a"/></marker>
+ <marker id="arS" markerWidth="9" markerHeight="9" refX="1" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 z" fill="#8a847a"/></marker>
+</defs><rect x="0" y="300" width="1000" height="560" fill="#eaf2ec" stroke="#2c2a26" stroke-width="16"/>
+<rect x="0" y="860" width="1000" height="340" fill="#faf8f3" stroke="#2c2a26" stroke-width="16"/>
+<text x="500.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">C1</text>
+<text x="500.0" y="531.4" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">계산대 · POS</text>
+<text x="500.0" y="727.15" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">키오스크</text>
+<text x="500.0" y="986.8" font-size="120" fill="#6e6860" text-anchor="middle">시재 · 서류</text>
+<text x="500.0" y="1154.8" font-size="120" fill="#6e6860" text-anchor="middle">잠금</text>
+<text x="500.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">1,000*</text>
+<line x1="1000" y1="300" x2="1000" y2="1200" stroke="#2c2a26" stroke-width="16"/>
+<rect x="1000" y="300" width="1500" height="560" fill="#f5f9f6" stroke="#2c2a26" stroke-width="16"/>
+<rect x="1000" y="860" width="1500" height="340" fill="#faf8f3" stroke="#2c2a26" stroke-width="16"/>
+<text x="1750.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">C2</text>
+<text x="1750.0" y="628.6" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">쇼케이스</text>
+<text x="1750.0" y="1070.8" font-size="120" fill="#6e6860" text-anchor="middle">바닥형 · 하부 없음</text>
+<text x="1750.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">1,500*</text>
+<line x1="2500" y1="300" x2="2500" y2="1200" stroke="#2c2a26" stroke-width="16"/>
+<rect x="2500" y="300" width="700" height="560" fill="#eaf2ec" stroke="#2c2a26" stroke-width="16"/>
+<rect x="2500" y="860" width="700" height="340" fill="#faf8f3" stroke="#2c2a26" stroke-width="16"/>
+<text x="2850.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">C3</text>
+<text x="2850.0" y="455.79999999999995" font-size="115" font-weight="600" fill="#2c2a26" text-anchor="middle">그라인더 2</text>
+<text x="2850.0" y="622.55" font-size="115" font-weight="600" fill="#2c2a26" text-anchor="middle">일반</text>
+<text x="2850.0" y="789.3" font-size="115" font-weight="600" fill="#2c2a26" text-anchor="middle">디카페인</text>
+<text x="2850.0" y="1070.8" font-size="120" fill="#6e6860" text-anchor="middle">원두 재고</text>
+<text x="2850.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">700*</text>
+<line x1="3200" y1="300" x2="3200" y2="1200" stroke="#2c2a26" stroke-width="16"/>
+<rect x="3200" y="300" width="900" height="560" fill="#f5f9f6" stroke="#2c2a26" stroke-width="16"/>
+<rect x="3200" y="860" width="900" height="340" fill="#faf8f3" stroke="#2c2a26" stroke-width="16"/>
+<text x="3650.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">C4</text>
+<text x="3650.0" y="531.4" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">커피머신</text>
+<text x="3650.0" y="727.15" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">넉박스</text>
+<text x="3650.0" y="1070.8" font-size="120" fill="#6e6860" text-anchor="middle">우유 냉장고</text>
+<text x="3650.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">900*</text>
+<line x1="4100" y1="300" x2="4100" y2="1200" stroke="#2c2a26" stroke-width="16"/>
+<rect x="4100" y="300" width="1200" height="560" fill="#eaf2ec" stroke="#2c2a26" stroke-width="16"/>
+<rect x="4100" y="860" width="1200" height="340" fill="#faf8f3" stroke="#2c2a26" stroke-width="16"/>
+<text x="4700.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">C5</text>
+<text x="4700.0" y="531.4" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">제조대</text>
+<text x="4700.0" y="727.15" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">가루통 2단 · 컵</text>
+<text x="4700.0" y="986.8" font-size="120" fill="#6e6860" text-anchor="middle">컵 재고</text>
+<text x="4700.0" y="1154.8" font-size="120" fill="#6e6860" text-anchor="middle">가루 여분</text>
+<text x="4700.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">1,200*</text>
+<line x1="5300" y1="300" x2="5300" y2="1200" stroke="#2c2a26" stroke-width="16"/>
+<rect x="5300" y="300" width="700" height="560" fill="#f5f9f6" stroke="#2c2a26" stroke-width="16"/>
+<rect x="5300" y="860" width="700" height="340" fill="#faf8f3" stroke="#2c2a26" stroke-width="16"/>
+<text x="5650.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">C6</text>
+<text x="5650.0" y="628.6" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">픽업대</text>
+<text x="5650.0" y="986.8" font-size="120" fill="#6e6860" text-anchor="middle">캐리어</text>
+<text x="5650.0" y="1154.8" font-size="120" fill="#6e6860" text-anchor="middle">홀더</text>
+<text x="5650.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">700*</text>
+<rect x="6000" y="300" width="10" height="900" fill="#fff" stroke="#cfc8bb" stroke-width="14" stroke-dasharray="55 40"/>
+<line x1="0" y1="70" x2="6010" y2="70" stroke="#8a847a" stroke-width="16" marker-end="url(#ar)" marker-start="url(#arS)"/>
+<text x="3005.0" y="-10" font-size="155" font-weight="600" fill="#6e6860" text-anchor="middle">앞 바 6,010</text>
+<text x="-150" y="630.0" font-size="135" font-weight="600" fill="#8a847a" text-anchor="end">상판</text>
+<text x="-150" y="1075.0" font-size="135" font-weight="600" fill="#8a847a" text-anchor="end">하부</text>
+<text x="0" y="1660" font-size="130" fill="#8a847a">◀ 진입 · 계산대</text>
+<text x="6010" y="1660" font-size="130" fill="#8a847a" text-anchor="end">픽업 ▶</text></svg>
+    </div>
+<div class="card">
+      <h3>체크리스트</h3>
+      <div class="sub">이 조건이 되면 이 안으로 갑니다</div>
+      <div class="dec">
+<div class="row"><span class="bd a">확인</span><span class="tx">□ 좌측 관통 불가 · 중앙~우측 관통 가능</span></div><div class="row"><span class="bd a">확인</span><span class="tx">□ 싱크와 제빙기를 나란히 둘 수 있음</span></div>
+      </div>
+      <div class="note">세척 동선 700. 물이 제조 라인에 튀지 않습니다. 차 · 원액이 픽업에서 멀어집니다.</div>
+    </div>
+  </div>
+  <div class="subpane" data-sp="3">
+    <div class="card">
+      <h3>전체 배치도</h3>
+      <div class="sub">3안 · 싱크 최우측 — 우측 끝에서만 배수를 뽑을 수 있을 때</div>
 <svg class="full" viewBox="-1900 -560 9500 4380" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans KR, sans-serif"><defs>
  <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a847a"/></marker>
  <marker id="arS" markerWidth="9" markerHeight="9" refX="1" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 z" fill="#8a847a"/></marker>
@@ -883,11 +1068,9 @@
 <text x="2610" y="20" font-size="130" fill="#6e6860" text-anchor="middle">5,220</text>
 <line x1="0" y1="3375" x2="6010" y2="3375" stroke="#8a847a" stroke-width="14" marker-end="url(#ar)" marker-start="url(#arS)"/>
 <text x="3005" y="3335" font-size="130" fill="#6e6860" text-anchor="middle">6,010</text></svg>
-      <div class="note">앞 바는 <b>세 안 모두 같습니다.</b> 바뀌는 것은 뒤 바의 싱크 위치뿐이며 급배수 관통 결과로 정해집니다.
-      하부는 냉장고처럼 중요한 것만 <b class="red">붉은 글씨</b>로 표시했습니다.</div>
     </div>
     <div class="card">
-      <h3>3안 · 싱크 최우측 · 뒤 바 상세</h3>
+      <h3>뒤 바</h3>
       <div class="sub">상판 · 하부 · 폭</div>
 <svg class="bar" viewBox="-1000 -420 8120 2100" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans KR, sans-serif"><defs>
  <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a847a"/></marker>
@@ -942,47 +1125,10 @@
 <text x="-150" y="1075.0" font-size="135" font-weight="600" fill="#8a847a" text-anchor="end">하부</text>
 <text x="0" y="1660" font-size="130" fill="#8a847a">◀ 창고 · 보조주방 쪽</text>
 <text x="6220" y="1660" font-size="130" fill="#8a847a" text-anchor="end">픽업 쪽 ▶</text></svg>
-    <div class="note warn">
-      <b>세척 동선이 스무디존에서 2,000으로 가장 깁니다.</b> 대신 싱크와 제빙기가 붙어
-      <b>급배수가 우측 한 구역에서 끝납니다.</b> 좌측을 못 뚫을 때의 최종안입니다.
     </div>
-      </div>
-  </div><div class="card">
-    <h3>3-8 · 세 안 비교와 선택 기준</h3>
-    <div class="sub">지금 하나로 좁히지 않고, 뚫어본 뒤 그 자리에서 정합니다</div>
-    <table>
-      <tr><th>항목</th><th>1안</th><th>2안</th><th>3안</th></tr>
-      <tr><td>싱크 위치</td><td>좌 (B2)</td><td>우 (B5)</td><td>최우 (B5)</td></tr>
-      <tr><td>세척 → 스무디머신</td><td class="gr">0</td><td>700</td><td class="red">2,000</td></tr>
-      <tr><td>차 → 픽업</td><td class="gr">가까움</td><td>멂</td><td class="gr">가까움</td></tr>
-      <tr><td>관통 구역</td><td>좌 · 우</td><td>좌 · 우</td><td class="gr">우측만</td></tr>
-      <tr><td>물 튐</td><td class="red">물막이 필요</td><td>적음</td><td class="gr">없음</td></tr>
-    </table>
-    <table style="margin-top:14px">
-      <tr><th>배수를 뽑을 수 있는 자리</th><th>가는 안</th><th>근거</th></tr>
-      <tr><td>좌측(보조주방 인근)에서 가능</td><td class="gr">1안</td><td>세척과 제조가 붙음</td></tr>
-      <tr><td>좌측 불가 · 중앙~우측 가능</td><td class="gr">2안</td><td>세척 동선 700 유지</td></tr>
-      <tr><td>우측 끝에서만 가능</td><td class="gr">3안</td><td>관통이 우측 한 구역</td></tr>
-      <tr><td>바 안 어디도 불가</td><td class="red">보조주방 싱크로만 운영</td><td>바에는 핸드싱크만</td></tr>
-    </table>
-    <div class="dec">
-      <div class="dh">결정 항목</div>
-      <div class="row"><span class="bd a">건축위 확인</span><span class="tx">
-        <b class="red">3-4 · 급배수 관통 가능 위치</b> — 아래층 천장 안의 보와 기존 배관을 확인해 슬래브 관통이 가능한 구간을 알려주시기 바랍니다.
-        <span class="why">→ 그 결과로 1 · 2 · 3안 중 하나가 정해집니다</span></span></div>
-      <div class="row"><span class="bd a">건축위 확인</span><span class="tx">
-        <b>3-5 · 3상 전원 인입</b> — 커피머신 두 대가 각각 4.8kw 3상4선 단독차단기 직결입니다. 카페까지 3상 전원이 들어오는지 확인 부탁드립니다.</span></div>
-      <div class="row"><span class="bd a">건축위 확인</span><span class="tx">
-        <b>3-6 · 환기 · 후드 계획</b> — 냉장 · 냉동 기기가 여러 대이고 모두 발열합니다. 환기 계획이 도면에 반영돼 있는지 확인 부탁드립니다.</span></div>
-      <div class="row"><span class="bd b">사업단 논의</span><span class="tx">
-        <b>3-7 · 소형 제빙기 추가 여부</b> — 스무디용 얼음이 제빙기에서 1,800 왕복입니다. 얼음 사용량을 보고 정합니다.
-        <span class="why">→ 추가하면 관통이 한 자리 늘어납니다</span></span></div>
-      <div class="row"><span class="bd b">사업단 논의</span><span class="tx">
-        <b>3-8 · B2 · B3 물막이</b> — 1안으로 갈 경우 싱크와 스무디머신 사이 사이드 가드가 필요합니다.</span></div>
-    </div>
-  </div><div class="card">
-    <h3>3-9 · 앞 바</h3>
-    <div class="sub">계산대 → 쇼케이스 → 커피 → 제조 → 픽업 · 좌에서 우로 한 방향</div>
+    <div class="card">
+      <h3>앞 바</h3>
+      <div class="sub">계산대 → 쇼케이스 → 커피 → 제조 → 픽업 · 세 안 동일</div>
 <svg class="bar" viewBox="-1000 -420 7910 2100" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans KR, sans-serif"><defs>
  <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#8a847a"/></marker>
  <marker id="arS" markerWidth="9" markerHeight="9" refX="1" refY="4.5" orient="auto"><path d="M9,0 L0,4.5 L9,9 z" fill="#8a847a"/></marker>
@@ -1042,54 +1188,29 @@
 <text x="-150" y="1075.0" font-size="135" font-weight="600" fill="#8a847a" text-anchor="end">하부</text>
 <text x="0" y="1660" font-size="130" fill="#8a847a">◀ 진입 · 계산대</text>
 <text x="6010" y="1660" font-size="130" fill="#8a847a" text-anchor="end">픽업 ▶</text></svg>
-    <div class="note">
-      <b>C5가 이 안의 핵심입니다.</b> 아이스컵을 미리 담아 두었다가 샷을 붓고, 같은 자리에서 가루를 풉니다.
-      바로 오른쪽이 픽업이라 완성되면 그 자리에서 나갑니다.
-      <br><br>
-      가루가 <b>9종</b>입니다(녹차 · 오곡 · 초코 · 자색고구마 · 쌍화 · 진저 · 밀크티 · 딸기 · 플레인요거트).
-      한 줄로 늘어놓으면 1,200~1,350을 먹으므로 <b>2단 계단식 선반</b>에 올려 폭을 절반으로 줄입니다.
-      뒷줄을 한 단 높이면 앞뒤가 다 보이고 상판이 작업면으로 남습니다.
     </div>
-    <div class="dec">
-      <div class="dh">결정 항목</div>
-      <div class="row"><span class="bd a">건축위 확인</span><span class="tx">
-        <b>3-9 · 앞 바 온수</b> — 가루 라떼 9종이 모두 온수 또는 스팀을 씁니다. 커피머신 온수로 부족하면 C5에 소형 온수기가 필요합니다.
-        <span class="why">→ 급배수 한 자리가 늘어날 수 있습니다</span></span></div>
-      <div class="row"><span class="bd a">건축위 확인</span><span class="tx">
-        <b>3-10 · 계산대 전기 · 통신</b> — 매입 콘센트 4구 이상, 유선 랜 2포트, 상판 하부 배선 트레이를 공사 범위에 포함해 주시기 바랍니다.
-        <span class="why">→ 노출 배선은 나중에 정리할 수 없습니다</span></span></div>
-      <div class="row"><span class="bd b">사업단 논의</span><span class="tx">
-        <b>3-11 · 가루통 배치 방식</b> — 2단 계단식 선반 · 상부 선반 · 상판 매립 중 선택합니다.</span></div>
+<div class="card">
+      <h3>체크리스트</h3>
+      <div class="sub">이 조건이 되면 이 안으로 갑니다</div>
+      <div class="dec">
+<div class="row"><span class="bd a">확인</span><span class="tx">□ 좌측 · 중앙 관통 불가</span></div><div class="row"><span class="bd a">확인</span><span class="tx">□ 우측 끝 한 구역만 관통 가능</span></div>
+      </div>
+      <div class="note">관통이 우측 한 구역으로 끝납니다. 세척 동선이 2,000으로 가장 깁니다.</div>
     </div>
-  </div><div class="card">
-    <h3>3-2 · 왜 베버리지를 뒤로 두는가</h3>
-    <div class="sub">건축위 1차안 ②의 방향을 택한 이유</div>
-    <table>
-      <tr><th>이유</th><th>내용</th></tr>
-      <tr><td>픽업 동선</td><td>음료는 뒤 바에서 만들어 <b>바로 우측 픽업존으로 나갑니다.</b> 앞 바를 가로지르지 않습니다</td></tr>
-      <tr><td>얼음</td><td>아이스가 붙는 메뉴가 20종이 넘습니다. <b>제빙기가 뒤 바 끝</b>에 있어 음료 라인과 같은 쪽입니다</td></tr>
-      <tr><td>싱크</td><td>믹서기를 한 잔마다 씻습니다. <b>세척이 음료 제조와 같은 줄</b>에 있어야 합니다</td></tr>
-      <tr><td>메뉴 비중</td><td>음료 계열 30종 · 커피 8종. <b>손이 더 가는 쪽을 뒤로</b> 두어 앞 바를 응대에 씁니다</td></tr>
-    </table>
-  </div><div class="card">
-    <h3>3-3 · 창고</h3>
-    <div class="sub">1,215 × 1,785 · 약 2.2㎡</div>
-    <table>
-      <tr><th>항목</th><th>내용</th></tr>
-      <tr><td>내부</td><td><b>선반 제작</b> — 각종 물품을 효율적으로 수납할 수 있도록</td></tr>
-      <tr><td>선반 단수 · 높낮이</td><td><b>2차 전달</b> — 수납 품목을 먼저 정하고 그에 맞춰 산출</td></tr>
-      <tr><td>출입</td><td>하부 벽에 문 약 885 · 보조주방에서 진입</td></tr>
-    </table>
-    <div class="dec">
-      <div class="dh">결정 항목</div>
-      <div class="row"><span class="bd a">건축위 확인</span><span class="tx">
-        <b>3-1 · 창고 선반 제작</b> — 붙박이 선반 제작을 공사 범위에 포함해 주시기 바랍니다. 단수와 높이는 추후 전달드립니다.
-        <span class="why">→ 규격은 뒤에 채우더라도 제작 여부는 지금 정해야 합니다</span></span></div>
-      <div class="row"><span class="bd c">사업단 추후</span><span class="tx">
-        <b>3-2 · 창고 수납 품목 리스트</b> — 무엇을 넣고 쌓고 정리할지 종류를 정해 선반 높이를 최적화합니다.</span></div>
-    </div>
-  </div><div class="card">
-    <h3>3-4 · 보조주방</h3>
+  </div>
+  </div>
+
+  <div class="pane" data-pane="7">
+    <div class="psec"><span class="n">배치</span><h2>공통</h2><span class="cap">세 안 공통 · 보조주방 · 창고</span><div class="rule"></div></div>
+    <div class="ptitle">급배수 조건과 무관하게 동일합니다</div>
+  <div class="subtabs">
+    <button class="stb2 on" data-go2="k1">보조주방</button>
+    <button class="stb2" data-go2="k2">창고</button>
+    <button class="stb2" data-go2="k3">운영 · 설계 공통</button>
+  </div>
+  <div class="subpane2 on" data-sp2="k1">
+<div class="card">
+    <h3>보조주방</h3>
     <div class="sub">2,150 × 1,955 · 약 4.2㎡ · 냉장 저장 + 소분 작업</div>
     <table>
       <tr><th>항목</th><th>내용</th></tr>
@@ -1105,8 +1226,39 @@
         <b>급배수 관통이 가능한지 확인 부탁드립니다. 뒤 바 싱크와 별개로 한 자리 더입니다.</b>
         <span class="why">→ 슬래브 관통은 공사 단계에서만 가능하며 나중에 추가할 수 없습니다</span></span></div>
     </div>
+  </div>  </div>
+  <div class="subpane2" data-sp2="k2">
+<div class="card">
+    <h3>창고</h3>
+    <div class="sub">1,215 × 1,785 · 약 2.2㎡</div>
+    <table>
+      <tr><th>항목</th><th>내용</th></tr>
+      <tr><td>내부</td><td><b>선반 제작</b> — 각종 물품을 효율적으로 수납할 수 있도록</td></tr>
+      <tr><td>선반 단수 · 높낮이</td><td><b>2차 전달</b> — 수납 품목을 먼저 정하고 그에 맞춰 산출</td></tr>
+      <tr><td>출입</td><td>하부 벽에 문 약 885 · 보조주방에서 진입</td></tr>
+    </table>
+    <div class="dec">
+      <div class="dh">결정 항목</div>
+      <div class="row"><span class="bd a">건축위 확인</span><span class="tx">
+        <b>3-1 · 창고 선반 제작</b> — 붙박이 선반 제작을 공사 범위에 포함해 주시기 바랍니다. 단수와 높이는 추후 전달드립니다.
+        <span class="why">→ 규격은 뒤에 채우더라도 제작 여부는 지금 정해야 합니다</span></span></div>
+      <div class="row"><span class="bd c">사업단 추후</span><span class="tx">
+        <b>3-2 · 창고 수납 품목 리스트</b> — 무엇을 넣고 쌓고 정리할지 종류를 정해 선반 높이를 최적화합니다.</span></div>
+    </div>
+  </div>  </div>
+    <div class="subpane2" data-sp2="k3">
+<div class="card">
+    <h3>왜 베버리지를 뒤로 두는가</h3>
+    <div class="sub">건축위 1차안 ②의 방향을 택한 이유</div>
+    <table>
+      <tr><th>이유</th><th>내용</th></tr>
+      <tr><td>픽업 동선</td><td>음료는 뒤 바에서 만들어 <b>바로 우측 픽업존으로 나갑니다.</b> 앞 바를 가로지르지 않습니다</td></tr>
+      <tr><td>얼음</td><td>아이스가 붙는 메뉴가 20종이 넘습니다. <b>제빙기가 뒤 바 끝</b>에 있어 음료 라인과 같은 쪽입니다</td></tr>
+      <tr><td>싱크</td><td>믹서기를 한 잔마다 씻습니다. <b>세척이 음료 제조와 같은 줄</b>에 있어야 합니다</td></tr>
+      <tr><td>메뉴 비중</td><td>음료 계열 30종 · 커피 8종. <b>손이 더 가는 쪽을 뒤로</b> 두어 앞 바를 응대에 씁니다</td></tr>
+    </table>
   </div><div class="card">
-    <h3>3-10 · 제조 흐름</h3>
+    <h3>제조 흐름</h3>
     <div class="sub">설계에 반영되려면 무엇을 어떻게 만드는지가 먼저 읽혀야 합니다</div>
 
     <table>
@@ -1136,7 +1288,7 @@
       세척과 건조가 제조 라인 안에 있어야 합니다.
     </div>
   </div><div class="card">
-    <h3>3-11 · 싱크 주변 · 믹서기 건조</h3>
+    <h3>싱크 주변 · 믹서기 건조</h3>
     <div class="sub">보관대를 두는 문제가 아니라 물이 어디로 가는지의 문제입니다</div>
     <table>
       <tr><th>층위</th><th>내용</th></tr>
@@ -1158,7 +1310,7 @@
         <b>3-13 · 믹서기 실측</b> — 지름과 높이를 재어 선반 간격을 확정해 전달드립니다.</span></div>
     </div>
   </div><div class="card">
-    <h3>3-12 · 직원 출입구</h3>
+    <h3>직원 출입구</h3>
     <div class="sub">2개소 · ②는 설계 단계에서만 가능합니다</div>
     <table>
       <tr><th></th><th>위치</th><th>형식</th><th>용도</th></tr>
@@ -1179,7 +1331,7 @@
         <span class="why">→ 주일에 아이들이 들어올 수 있는 자리입니다</span></span></div>
     </div>
   </div><div class="card">
-    <h3>3-13 · 하부 마감</h3>
+    <h3>하부 마감</h3>
     <div class="sub">고객 시선에 들어오는 것은 뒤 바입니다</div>
     <table>
       <tr><th>구간</th><th>방식</th><th>이유</th></tr>
@@ -1196,7 +1348,7 @@
         <b>3-17 · 뒤 바 하부 문 색 · 재질</b> — 고객 정면에 보이는 면이라 카페 배경이 됩니다. 정해 전달드립니다.</span></div>
     </div>
   </div><div class="card">
-    <h3>3-14 · 커피 운영</h3>
+    <h3>커피 운영</h3>
     <div class="sub">앞 바 메인 · 뒤 바 서브</div>
     <table>
       <tr><th></th><th>커피머신</th><th>그라인더</th><th>취급</th></tr>
@@ -1209,7 +1361,7 @@
       디카페인 몇 잔 때문에 그라인더를 한 대 더 두고 뒤 바 폭을 500 더 쓰지 않습니다.
     </div>
   </div><div class="card">
-    <h3>3-15 · 기물 구입</h3>
+    <h3>기물 구입</h3>
     <div class="sub">현재 보유 대비 추가 필요분</div>
     <table>
       <tr><th>기물</th><th style="text-align:right">현재</th><th style="text-align:right">필요</th><th style="text-align:right">신규</th><th>비고</th></tr>
@@ -1237,62 +1389,18 @@
       <div class="row"><span class="bd c">사업단 추후</span><span class="tx">
         <b>3-19 · 재사용 · 신규 구입 구분</b> — 자산조사 파일의 처리 열을 채워 전달합니다.</span></div>
     </div>
-  </div>
-  </div>
-  <div class="pane" data-pane="6">
-    <div class="psec"><span class="n">기준</span><h2>용어 · 치수 기준</h2><span class="cap">이름 · 코드 · 층위</span><div class="rule"></div></div>
-    <div class="ptitle">이름 · 코드 · 층위 · 주요 치수</div>
-<div class="card">
-    <h3>명칭 체계</h3>
-    <div class="sub">이 문서 전체에서 같은 이름으로 부릅니다</div>
-    <table>
-      <tr><th>구분</th><th>이름</th><th>코드</th><th>설명</th></tr>
-      <tr><td>벽 쪽 · 창가</td><td><b>뒤 바</b></td><td>B1 · B2 · B3 …</td><td>베버리지존 — 스무디 · 에이드 · 차 · 커피 서브</td></tr>
-      <tr><td>고객 쪽</td><td><b>앞 바</b></td><td>C1 · C2 · C3 …</td><td>커피존 — 계산 · 쇼케이스 · 커피 · 픽업</td></tr>
-      <tr><td>뒤 바 우측</td><td><b>뒤 바 끝</b></td><td>—</td><td>상판이 끊긴 구간 · 제빙기가 바닥에 섬</td></tr>
-      <tr><td>층위</td><td><b>상부 · 상판 · 하부</b></td><td>「B3 상판」</td><td>상판 850 기준 위 · 면 · 아래</td></tr>
-      <tr><td>붙어야 하는 덩어리</td><td><b>스무디존</b></td><td>—</td><td>스무디머신 + 스무디 작업대. 떨어뜨리지 않음</td></tr>
-      <tr><td>좌우</td><td>—</td><td>—</td><td>창고 쪽이 좌 · 로비 진입 쪽이 우. 번호는 좌에서 우로</td></tr>
-    </table>
-    <div class="note">
-      <b>B는 beverage, C는 coffee의 약자로 도면 원본 표기를 그대로 썼습니다.</b>
-      건축위 1차안은 존 배치가 반대인 안도 있으므로, 이 코드는 <b>사업단 안에서만</b> 통용됩니다.
-    </div>
-  </div>  <div class="card">
-    <h3>주요 치수</h3>
-    <div class="sub">실측 환산값 · 치수 기입본 수령 후 확정</div>
-    <table>
-      <tr><th>항목</th><th style="text-align:right">치수</th><th>비고</th></tr>
-      <tr><td>좌측 외벽 ~ 우측 벽</td><td class="num">9,860</td><td>전체 폭</td></tr>
-      <tr><td>뒤 바 상판</td><td class="num">5,220</td><td>× 780</td></tr>
-      <tr><td>뒤 바 끝</td><td class="num">1,330</td><td>상판 없음 · 제빙기 바닥 설치</td></tr>
-      <tr><td>앞 바 상판</td><td class="num">6,010</td><td>× 745</td></tr>
-      <tr><td>직원 통로</td><td class="num">1,220</td><td>두 바 사이</td></tr>
-      <tr><td>서비스바</td><td class="num">4,400</td><td>× 702</td></tr>
-      <tr><td>창고</td><td class="num">1,215 × 1,785</td><td>약 2.2㎡</td></tr>
-      <tr><td>보조주방</td><td class="num">2,150 × 1,955</td><td>약 4.2㎡</td></tr>
-      <tr><td>격벽</td><td class="num">두께 150</td><td>개구부 905</td></tr>
-      <tr><td>상판 높이</td><td class="num">850</td><td>상부 · 상판 · 하부 기준</td></tr>
-    </table>
-    <div class="note">치수선이 없는 도면이라 <b>기물 폭으로 축척을 역산</b>했습니다(1px = 2.95mm).
-      별표(*)가 붙은 값은 일반 규격으로 가정한 것이며, 치수 기입본을 받아 다시 맞춰야 합니다.</div>
-  </div>
-  </div>
+  </div>  </div>
+</div>
 <div class="pane" data-pane="4">
     <div class="psec"><span class="n">4</span><h2>디지털 메뉴판</h2><span class="cap">뒤 바 상부 천장 · 음료 45종</span><div class="rule"></div></div>
     <div class="ptitle">뒤 바 상부 천장 · 음료 45종</div>
-  <div class="card">
-    <h3>온도 표기</h3>
-    <div class="sub">색으로 먼저 읽히고 글자로 확인됩니다</div>
-  <div class="legend">
-        <span class="lg"><span class="tg hot">HOT</span> 따뜻한 음료</span>
-    <span class="lg"><span class="tg ice">ICE</span> 차가운 음료 &nbsp;·&nbsp; 메뉴명이 먼저 읽히도록 표기는 작게 두었습니다</span>
-    
+    <div class="subtabs">
+    <button class="stb2 on" data-go2="m5">5칸 안</button>
+    <button class="stb2" data-go2="m6">6칸 안</button>
+    <button class="stb2" data-go2="mc">비교 · 결정</button>
   </div>
-
-  </div>
-
-  <div class="card">
+  <div class="subpane2 on" data-sp2="m5">
+<div class="card">
     <h3>5칸 안<span class="tag">화면 5대</span></h3>
     <div class="sub">시즌 메뉴를 ③ · ⑤ 하단에 글자로 · 필요 폭 약 3,000</div>
   <div class="boardwrap">
@@ -1395,9 +1503,9 @@
     <div class="dimrow"><span>화면 5대 · 세로형</span><span>시즌 메뉴는 ③ · ⑤ 하단에 글자로</span><span>뒤 바 상부 폭 5,220 이내</span></div>
   </div>
 
-  </div>
-
-  <div class="card">
+  </div>  </div>
+  <div class="subpane2" data-sp2="m6">
+<div class="card">
     <h3>6칸 안<span class="tag w">화면 6대</span></h3>
     <div class="sub">시즌 메뉴를 사진과 함께 별도 칸으로 · 필요 폭 약 3,600</div>
   <div class="boardwrap">
@@ -1518,9 +1626,9 @@
     <div class="dimrow"><span>화면 6대 · 세로형</span><span>⑥번은 사진 중심 · 계절마다 이 칸만 교체</span><span>뒤 바 상부 폭 5,220 이내</span></div>
   </div>
 
-  </div>
-
-  <div class="card">
+  </div>  </div>
+  <div class="subpane2" data-sp2="mc">
+<div class="card">
     <h3>두 안 비교</h3>
     <table>
       <tr><th>항목</th><th>5칸</th><th>6칸</th></tr>
@@ -1542,8 +1650,9 @@
       <div class="row"><span class="bd b">사업단 논의</span><span class="tx"><b>4-4 · 5칸 · 6칸 선택</b></span></div>
       <div class="row"><span class="bd c">사업단 추후</span><span class="tx"><b>4-5 · 콘텐츠 운영과 예비본</b></span></div>
     </div>
+  </div>  </div>
   </div>
-  </div>
+
 
   <div class="pane" data-pane="5">
     <div class="psec"><span class="n">5</span><h2>논의 안건</h2><span class="cap">건축위 확인 · 사업단 논의 · 추후 전달</span><div class="rule"></div></div>
@@ -1635,7 +1744,13 @@
       sel(sps,'sp',b.dataset.go);
     });
   });
-  var m=(location.hash||'').match(/^#t([1-6])$/);
+  var s2=[].slice.call(document.querySelectorAll('.stb2')),
+      p2=[].slice.call(document.querySelectorAll('.subpane2'));
+  s2.forEach(function(b){b.addEventListener('click',function(){
+    s2.forEach(function(x){x.classList.toggle('on',x===b);});
+    sel(p2,'sp2',b.dataset.go2);
+  });});
+  var m=(location.hash||'').match(/^#t([1-7])$/);
   if(m){
     var t=tbs.filter(function(x){return x.dataset.tab===m[1];})[0];
     if(t){ tbs.forEach(function(x){x.classList.toggle('on',x===t);}); sel(panes,'pane',m[1]); }
