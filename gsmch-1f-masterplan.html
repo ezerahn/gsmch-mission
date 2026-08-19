@@ -58,7 +58,9 @@ h1,h2,h3,h4{font-family:"Gowun Batang","Noto Serif CJK KR","Noto Serif KR",serif
 .hero{background:#fff; border:1px solid var(--line); border-radius:8px; padding:24px 30px 22px; margin-bottom:16px;}
 .eyebrow{font-size:11.5px; letter-spacing:.10em; color:var(--green); font-weight:600; margin-bottom:8px;}
 h1{font-size:28px; margin:0 0 6px; line-height:1.32; font-weight:700;}
-h1 .sub{display:block; font-size:14px; color:var(--soft); font-weight:400; margin-top:6px; font-family:"IBM Plex Sans KR",sans-serif;}
+h1 .sub{display:block; font-size:21px; color:#3d6b4f; font-weight:700; letter-spacing:-.02em;
+  margin-top:9px; font-family:"IBM Plex Sans KR",sans-serif;}
+@media(max-width:640px){ h1 .sub{font-size:17px; margin-top:7px;} }
 .meta{display:flex; flex-wrap:wrap; gap:6px 24px; font-size:12px; color:var(--soft); margin-top:14px; padding-top:12px; border-top:1px solid var(--line);}
 .meta b{color:var(--ink); font-weight:600;}
 
@@ -488,9 +490,9 @@ tbody tr:hover td{background:#F4F0E8;}
   .tlx-s .st{display:inline-block;font-size:10.5px;margin-top:3px;color:#a9a294}
   .tlx-s.done .t{color:#6e6860}
   .tlx-s.done .st{color:#8a847a}
-  .tlx-s.now .n{color:#3d6b4f}
-  .tlx-s.now .t{color:#2c2a26;font-weight:700}
-  .tlx-s.now .st{color:#fff;background:#3d6b4f;border-radius:9px;padding:1px 8px;font-weight:600}
+  .tlx-s.now .n{color:#e0705a}
+  .tlx-s.now .t{color:#e0705a;font-weight:700}
+  .tlx-s.now .st{color:#fff;background:#e0705a;border-radius:9px;padding:1px 8px;font-weight:600}
   .tlx-s:hover .t{color:#3d6b4f}
   .tlx-track{position:relative;margin:9px 0 7px}
   .tlx-bar{height:3px;background:#ece7dd;border-radius:2px}
@@ -499,7 +501,7 @@ tbody tr:hover td{background:#F4F0E8;}
   .tlx-dots i{display:block;width:10px;height:10px;border-radius:50%;margin:0 auto;
     background:#ece7dd;border:2px solid #fff;box-shadow:0 0 0 1px #ddd6c9}
   .tlx-dots i.done{background:#3d6b4f;box-shadow:0 0 0 1px #3d6b4f}
-  .tlx-dots i.now{background:#fff;border:3px solid #3d6b4f;width:13px;height:13px;margin-top:-1.5px;box-shadow:0 0 0 3px #eef4ef}
+  .tlx-dots i.now{background:#fff;border:3px solid #e0705a;width:13px;height:13px;margin-top:-1.5px;box-shadow:0 0 0 3px #fdeeea}
   .tlx-dates span{display:block;text-align:center;font-size:11px;color:#8a847a;
     font-family:'IBM Plex Mono','IBM Plex Sans KR',monospace}
   .tlx-foot{margin-top:11px;padding-top:10px;border-top:1px solid #f0ece4;
@@ -511,6 +513,30 @@ tbody tr:hover td{background:#F4F0E8;}
     .tlx-s{border:1px solid #f0ece4;border-radius:9px;padding:8px 4px}
     .tlx-s.now{border-color:#3d6b4f;background:#eef4ef}
   }
+
+
+  /* ── 이번 주 할 일 ── */
+  .wk{background:#fff;border:1px solid #e6e1d7;border-radius:13px;padding:16px 18px 14px;margin-bottom:0}
+  .wk-hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+  .wk-hd b{font-size:14px;font-weight:700;letter-spacing:-.02em;color:#2c2a26}
+  .wk-hd .sub{font-size:12px;color:#8a847a}
+  .wk-hd .rt{margin-left:auto;font-size:11.5px;color:#a9a294}
+  .wk-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .wk-i{border:1px solid #f0ece4;border-radius:10px;padding:12px 14px 13px;background:#fdfcfa}
+  .wk-i.done{background:#f6f5f1;border-color:#ece7dd}
+  .wk-i.now{background:#fdeeea;border-color:#e0705a}
+  .wk-i .n{font-size:11px;font-family:'IBM Plex Mono',monospace;color:#a9a294}
+  .wk-i .t{font-size:14px;font-weight:700;letter-spacing:-.02em;margin:3px 0 2px;line-height:1.35}
+  .wk-i.done .t{color:#8a847a}
+  .wk-i.now .t{color:#2c2a26}
+  .wk-i .d{font-size:12px;font-weight:600;color:#6e6860}
+  .wk-i.now .d{color:#e0705a}
+  .wk-i.done .d{color:#a9a294}
+  .wk-i .s{font-size:11.5px;color:#8a847a;line-height:1.6;margin-top:5px}
+  .wk-i .bd{display:inline-block;font-size:10px;font-weight:600;border-radius:9px;padding:1px 8px;margin-bottom:4px}
+  .wk-i.done .bd{color:#8a847a;background:#ece7dd}
+  .wk-i.now .bd{color:#fff;background:#e0705a}
+  @media(max-width:760px){ .wk-g{grid-template-columns:1fr} }
 
 </style>
 </head>
@@ -574,25 +600,33 @@ tbody tr:hover td{background:#F4F0E8;}
 </div>
   </div>
 
-  <div class="block">
-    <div class="blk-t">주요 일정</div>
-    <div class="dates d3">
-      <div class="dtcell plan">
-        <div class="dt-lab"><i class="plan"></i>영업 최종일</div>
-        <div class="dt-val">8. 16.<span class="dd">주일 · 예정</span></div>
-        <div class="dt-sub">주보 게재 여부는 8/14(금) 오전 결정</div>
-      </div>
-      <div class="dtcell plan">
-        <div class="dt-lab"><i class="plan"></i>반출 완료</div>
-        <div class="dt-val">8. 24.<span class="dd">월 · 예정</span></div>
-        <div class="dt-sub">8/25(화)까지 하루 연장될 수 있음</div>
-      </div>
-      <div class="dtcell plan">
-        <div class="dt-lab"><i class="plan"></i>공사 완료</div>
-        <div class="dt-val">10월 말<span class="dd">예정</span></div>
-        <div class="dt-sub">건축위 최종 협의 결정 후 반영</div>
-      </div>
+  <div class="block" style="padding:0;border:0;background:none">
+<div class="wk">
+  <div class="wk-hd"><b>이번 주 할 일</b><span class="sub">8월 셋째 주</span><span class="rt">8. 19. 기준</span></div>
+  <div class="wk-g">
+    <div class="wk-i done">
+      <span class="bd">완료</span>
+      <div class="n">1</div>
+      <div class="t">영업 중단</div>
+      <div class="d">~ 8. 16. (주일)</div>
+      <div class="s">로뎀카페 · 선지서점 영업 종료</div>
     </div>
+    <div class="wk-i now">
+      <span class="bd">진행 중</span>
+      <div class="n">2</div>
+      <div class="t">이사</div>
+      <div class="d">8. 21. ~ 22. (금 · 토)</div>
+      <div class="s">포장 · 반출 · 보관처 이동<br>8. 24. (월) 최종 반출 완료 예정</div>
+    </div>
+    <div class="wk-i now">
+      <span class="bd">진행 중</span>
+      <div class="n">3</div>
+      <div class="t">서점 임시 운영 공간 준비</div>
+      <div class="d">비전센터 1층 입구 (예정)</div>
+      <div class="s">필수 서적(말씀함께 등)만 판매하는 임시 영업 장소 오픈 준비</div>
+    </div>
+  </div>
+</div>
   </div>
 
   <div class="block">
