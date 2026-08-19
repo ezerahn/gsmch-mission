@@ -36,6 +36,9 @@
   .head{border-top:1px solid var(--line);padding-top:26px;margin-bottom:26px}
   h1{font-size:34px;font-weight:700;letter-spacing:-0.03em;margin-bottom:7px}
   .lead{font-size:14.5px;color:var(--soft)}
+  h1 .sp{font-size:22px;font-weight:700;color:var(--accent);letter-spacing:-0.02em;margin-left:10px;
+    white-space:nowrap;vertical-align:2px}
+  @media(max-width:640px){ h1{font-size:23px} h1 .sp{font-size:15.5px;margin-left:8px;vertical-align:1px} }
 
   .stats{
     display:grid;grid-template-columns:repeat(4,1fr);
@@ -65,9 +68,9 @@
   .tlx-s .st{display:inline-block;font-size:10.5px;margin-top:3px;color:#a9a294}
   .tlx-s.done .t{color:#6e6860}
   .tlx-s.done .st{color:#8a847a}
-  .tlx-s.now .n{color:#3d6b4f}
-  .tlx-s.now .t{color:#2c2a26;font-weight:700}
-  .tlx-s.now .st{color:#fff;background:#3d6b4f;border-radius:9px;padding:1px 8px;font-weight:600}
+  .tlx-s.now .n{color:#e0705a}
+  .tlx-s.now .t{color:#e0705a;font-weight:700}
+  .tlx-s.now .st{color:#fff;background:#e0705a;border-radius:9px;padding:1px 8px;font-weight:600}
   .tlx-s:hover .t{color:#3d6b4f}
   .tlx-track{position:relative;margin:9px 0 7px}
   .tlx-bar{height:3px;background:#ece7dd;border-radius:2px}
@@ -76,28 +79,76 @@
   .tlx-dots i{display:block;width:10px;height:10px;border-radius:50%;margin:0 auto;
     background:#ece7dd;border:2px solid #fff;box-shadow:0 0 0 1px #ddd6c9}
   .tlx-dots i.done{background:#3d6b4f;box-shadow:0 0 0 1px #3d6b4f}
-  .tlx-dots i.now{background:#fff;border:3px solid #3d6b4f;width:13px;height:13px;margin-top:-1.5px;box-shadow:0 0 0 3px #eef4ef}
+  .tlx-dots i.now{background:#fff;border:3px solid #e0705a;width:13px;height:13px;margin-top:-1.5px;box-shadow:0 0 0 3px #fdeeea}
   .tlx-dates span{display:block;text-align:center;font-size:11px;color:#8a847a;
     font-family:'IBM Plex Mono','IBM Plex Sans KR',monospace}
   .tlx-foot{margin-top:11px;padding-top:10px;border-top:1px solid #f0ece4;
     display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12px;color:#8a847a}
   .tlx-foot b{color:#2c2a26;font-weight:600}
   @media(max-width:760px){
-    .tlx-hd b{flex:none}
-    .tlx-hd .sub{font-size:11.5px}
-    .tlx-hd .rt{margin-left:0;flex-basis:100%;font-size:11.5px}
-    .tlx-g{grid-template-columns:repeat(3,1fr);gap:10px 6px}
-    .tlx-track,.tlx-dates{display:none}
-    .tlx-s{border:1px solid #f0ece4;border-radius:9px;padding:8px 4px}
-    .tlx-s.now{border-color:#3d6b4f;background:#eef4ef}
+    .tlx{padding:15px 14px 14px}
+    .tlx-hd{margin-bottom:14px}
+    .tlx-hd b{flex:none;font-size:16.5px}
+    .tlx-hd .sub{font-size:12px}
+    .tlx-hd .rt{margin-left:0;flex-basis:100%;font-size:12px;color:#3d6b4f;font-weight:600}
+    .tlx-track,.tlx-dates,.tlx-foot{display:none}
+    .tlx-steps{overflow:hidden;grid-template-columns:repeat(3,1fr);column-gap:0;row-gap:18px}
+    .tlx-s{position:relative;padding:20px 2px 0}
+    .tlx-s::before{content:'';position:absolute;top:5px;left:-50%;width:100%;height:2px;background:#ece7dd}
+    .tlx-s.done::before,.tlx-s.now::before{background:#3d6b4f}
+    .tlx-s::after{content:'';position:absolute;top:0;left:50%;margin-left:-6px;
+      width:12px;height:12px;border-radius:50%;background:#ece7dd;border:2px solid #fff;
+      box-shadow:0 0 0 1px #ddd6c9}
+    .tlx-s.done::after{background:#3d6b4f;box-shadow:0 0 0 1px #3d6b4f}
+    .tlx-s.now::after{background:#fff;border:3px solid #e0705a;box-shadow:0 0 0 3px #fdeeea}
+    /* 줄 끝 · 줄 시작에서 선이 이어지는 느낌 */
+    .tlx-s:nth-child(3){background-image:linear-gradient(90deg,#ece7dd,rgba(236,231,221,0));
+      background-size:60% 2px;background-position:100% 5px;background-repeat:no-repeat}
+    .tlx-s:nth-child(4)::before{background:linear-gradient(90deg,rgba(236,231,221,0),#ece7dd)}
+    .tlx-s .n{font-size:11px}
+    .tlx-s .t{font-size:12.5px;letter-spacing:-.04em;line-height:1.3;word-break:keep-all;margin-top:3px}
+    .tlx-s .st{font-size:11px;margin-top:4px}
+    .tlx-s.now .t{color:#e0705a}
   }
 
-  .prog{display:flex;align-items:center;gap:18px;flex-wrap:wrap;
-    background:var(--card);border:1px solid var(--line);border-radius:11px;
-    padding:13px 18px;margin-bottom:30px;font-size:13px;color:var(--soft)}
-  .prog .pi b{color:var(--text);font-weight:600;margin-right:5px}
-  .prog .pn{margin-left:auto;font-size:12px;color:var(--muted)}
-  @media(max-width:700px){.prog .pn{margin-left:0;flex-basis:100%}}
+
+
+  /* ── 이번 주 할 일 ── */
+  .wk{background:#fff;border:1px solid #e6e1d7;border-radius:13px;padding:16px 18px 14px;margin-bottom:30px}
+  .wk-hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+  .wk-hd b{font-size:14px;font-weight:700;letter-spacing:-.02em;color:#2c2a26}
+  .wk-hd .sub{font-size:12px;color:#8a847a}
+  .wk-hd .rt{margin-left:auto;font-size:11.5px;color:#a9a294}
+  .wk-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .wk-i{border:1px solid #f0ece4;border-radius:10px;padding:12px 14px 13px;background:#fdfcfa}
+  .wk-i.done{background:#f6f5f1;border-color:#ece7dd}
+  .wk-i.now{background:#fdeeea;border-color:#e0705a}
+  .wk-i .n{font-size:11px;font-family:'IBM Plex Mono',monospace;color:#a9a294}
+  .wk-i .t{font-size:14px;font-weight:700;letter-spacing:-.02em;margin:3px 0 2px;line-height:1.35}
+  .wk-i.done .t{color:#8a847a}
+  .wk-i.now .t{color:#2c2a26}
+  .wk-i .d{font-size:12px;font-weight:600;color:#6e6860}
+  .wk-i.done .d{color:#a9a294}
+  .wk-i .s{font-size:11.5px;color:#8a847a;line-height:1.6;margin-top:5px}
+  .wk-i.now .d{color:#e0705a}
+  .wk-i .bd{display:inline-block;font-size:10px;font-weight:600;border-radius:9px;padding:1px 8px;margin-bottom:4px}
+  .wk-i.done .bd{color:#8a847a;background:#ece7dd}
+  .wk-i.now .bd{color:#fff;background:#e0705a}
+  @media(max-width:760px){
+    .wk{padding:15px 14px 14px}
+    .wk-hd{margin-bottom:13px}
+    .wk-hd b{font-size:16.5px}
+    .wk-hd .sub{font-size:12px}
+    .wk-hd .rt{margin-left:0;flex-basis:100%;font-size:11.5px}
+    .wk-g{grid-template-columns:1fr;gap:9px}
+    .wk-i{padding:13px 14px 14px;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:baseline}
+    .wk-i .n{display:none}
+    .wk-i .bd{grid-row:1;grid-column:1;margin:0;font-size:11px;padding:2px 9px}
+    .wk-i .t{grid-row:1;grid-column:2;margin:0;font-size:15px}
+    .wk-i .d{grid-row:2;grid-column:2;font-size:13px}
+    .wk-i .s{grid-row:3;grid-column:2;margin-top:2px;font-size:12.5px}
+  }
+
 
   .sec{display:flex;align-items:center;gap:11px;margin:0 0 15px}
   .sec h2{font-size:19px;font-weight:600;letter-spacing:-0.02em;white-space:nowrap}
@@ -174,9 +225,18 @@
     .docs{grid-template-columns:1fr}
     .dates,.org{grid-template-columns:1fr}
   }
+  @media(max-width:640px){
+    .doc{padding:15px 16px 14px}
+    .doc-ico{width:30px;height:30px;font-size:14px;border-radius:8px}
+    .doc h3{font-size:16px}
+    .doc p{font-size:12.5px;margin-bottom:0}
+    .doc-list{display:none}
+    .doc-go{right:16px;bottom:14px}
+  }
   @media(max-width:560px){
-    .wrap{padding:16px 16px 50px}
-    h1{font-size:27px}
+    .wrap{padding:16px 14px 50px}
+    h1{font-size:22px;letter-spacing:-0.04em}
+    h1 .sp{font-size:15px;margin-left:7px}
     .stats{grid-template-columns:repeat(2,1fr)}
     .stat{border-right:1px solid var(--line2)}
     .stat:nth-child(2n){border-right:0}
@@ -194,8 +254,8 @@
   </div>
 
   <div class="head">
-    <h1>1층 성전보수</h1>
-    <div class="lead">로뎀카페 · 선지서점 — 설계부터 오픈까지 한곳에서 관리합니다.</div>
+    <h1>1층 성전보수 <b class="sp">로뎀카페 · 선지서점</b></h1>
+    <div class="lead">설계부터 오픈까지 한곳에서 관리합니다.</div>
   </div>
 
 <div class="tlx">
@@ -229,12 +289,32 @@
   <div class="tlx-foot"><span>영업 종료 <b>8월 16일 (주일)</b></span><span>반출 완료 <b>8월 24일 (월)</b></span><span>공사 <b>8월 24일 ~ 10월 말</b></span><span>오픈 <b>10월 말 (예정)</b></span></div>
 </div>
 
-  <div class="prog">
-    <span class="pi"><b>확정</b> 0건</span>
-    <span class="pi"><b>협의 중</b> 27건</span>
-    <span class="pi"><b>사업단 검토</b> 12건</span>
-    <span class="pn">협의 결과는 각 문서의 「논의 안건」에 계속 채워 나갑니다</span>
+<div class="wk">
+  <div class="wk-hd"><b>이번 주 할 일</b><span class="sub">8월 셋째 주</span><span class="rt">8. 19. 기준</span></div>
+  <div class="wk-g">
+    <div class="wk-i done">
+      <span class="bd">완료</span>
+      <div class="n">1</div>
+      <div class="t">영업 중단</div>
+      <div class="d">~ 8. 16. (주일)</div>
+      <div class="s">로뎀카페 · 선지서점 영업 종료</div>
+    </div>
+    <div class="wk-i now">
+      <span class="bd">진행 중</span>
+      <div class="n">2</div>
+      <div class="t">이사</div>
+      <div class="d">8. 21. ~ 22. (금 · 토)</div>
+      <div class="s">포장 · 반출 · 보관처 이동</div>
+    </div>
+    <div class="wk-i now">
+      <span class="bd">진행 중</span>
+      <div class="n">3</div>
+      <div class="t">서점 임시 운영 공간 준비</div>
+      <div class="d">비전센터 1층 입구 (예정)</div>
+      <div class="s">매월 꼭 필요한 일부 서적만 판매하는 임시 영업 장소 오픈 준비</div>
+    </div>
   </div>
+</div>
 
   <div class="sec">
     <h2>문서</h2><span class="cap">계획 · 보고</span><div class="rule"></div>
@@ -259,7 +339,7 @@
         <div class="doc-ico">📚</div>
         <span class="doc-tag">A · B안 비교</span>
       </div>
-      <h3>서점 배치 검토</h3>
+      <h3>선지서점 배치 · 운영안</h3>
       <p>선지서점 배치 두 안을 치수와 함께 비교합니다. 서가 칸 분할과 사람 서는 자리까지 표기했습니다.</p>
       <div class="doc-list">
         <span class="chip">시안 A · B</span>
@@ -273,7 +353,7 @@
         <div class="doc-ico">☕</div>
         <span class="doc-tag gold">사업단 안</span>
       </div>
-      <h3>카페 배치 검토</h3>
+      <h3>로뎀카페 배치 · 운영안</h3>
       <p>건축위 1차안을 실측으로 검증하고 사업단 배치 · 운영안을 담았습니다. 메뉴판 시안도 함께 있습니다.</p>
       <div class="doc-list">
         <span class="chip">건축위 1차안</span>
