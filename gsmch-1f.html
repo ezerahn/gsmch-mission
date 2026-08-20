@@ -245,6 +245,10 @@
     .flow{grid-template-columns:repeat(2,1fr)}
     .meta{margin-left:0;flex-basis:100%;white-space:normal}
   }
+
+.doc-tag.now{background:#fdeeea; color:#c0492f; border-color:#f3cfc5; font-weight:700;}
+.chip.live{background:#fdeeea; color:#c0492f; border-color:#f3cfc5; font-weight:600;}
+.chip.live::before{content:'●'; font-size:7px; vertical-align:2px; margin-right:4px;}
 </style>
 </head>
 <body>
@@ -324,12 +328,12 @@
     <a class="doc" href="gsmch-1f-masterplan.html">
       <div class="doc-top">
         <div class="doc-ico">📐</div>
-        <span class="doc-tag">6단계 관리</span>
+        <span class="doc-tag now">③ 반출 진행 중</span>
       </div>
       <h3>마스터플랜</h3>
       <p>설계 협의부터 오픈까지 단계별 할 일과 진행 기록을 관리합니다. 도면과 시안도 함께 봅니다.</p>
       <div class="doc-list">
-        <span class="chip">진행 단계</span>
+        <span class="chip live">진행 단계</span>
         <span class="chip">결정 기록</span>
         <span class="chip">참고자료</span>
       </div>
