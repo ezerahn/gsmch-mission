@@ -621,10 +621,15 @@ tbody tr:hover td{background:#F4F0E8;}
   .dl .g{font-size:11.5px; font-weight:700; color:#3d6b4f; flex:none;}
   .dlwrap.stk{grid-template-columns:repeat(3,1fr);}
   .dlwrap.stk4{grid-template-columns:repeat(4,1fr);}
+  .dlwrap.stk5{display:grid;gap:8px;grid-template-columns:repeat(5,1fr);}
+  .dlwrap.stk5 .dl{padding:10px 9px;}
+  .dlwrap.stk5 .dl .t{font-size:12.5px;}
+  .dlwrap.stk5 .dl .d{font-size:10.5px;}
+  .dlwrap.stk5 .dl .g{font-size:10.5px;}
   .dlwrap.stk4 .dl{padding:10px 11px;}
   .dlwrap.stk4 .dl .t{font-size:13px;}
   .dlwrap.stk4 .dl .d{font-size:11px;}
-  @media(max-width:760px){ .dlwrap,.dlwrap.stk,.dlwrap.stk4{grid-template-columns:1fr;}
+  @media(max-width:760px){ .dlwrap,.dlwrap.stk,.dlwrap.stk4,.dlwrap.stk5{grid-template-columns:1fr;}
     .dl{flex-wrap:wrap; gap:4px 10px;} .dl .d{flex-basis:100%;} }
 
   .notice{background:#FDF3EF; border:1px solid #F0C9BC; border-left:4px solid #e0705a;
@@ -644,6 +649,7 @@ tbody tr:hover td{background:#F4F0E8;}
   .bigdl .bb a{display:block; font-size:13px; font-weight:700; text-decoration:none;
     color:#fff; background:#3d6b4f; border-radius:7px; padding:9px 15px; transition:.15s;}
   .bigdl .bb a:last-child{background:#8a6a45;}
+  .bigdl .bb a.wb{background:#e0705a;}
   .bigdl .bb a:hover{opacity:.85;}
   @media(max-width:760px){ .bigwrap{grid-template-columns:1fr;} }
 
@@ -917,10 +923,10 @@ tbody tr:hover td{background:#F4F0E8;}
   <div class="task-h"><div><em></em><span class="stwrap"><span class="st talk">확인 필요</span></span><span>영업 중단 시점 정산 — 사업단 월말 보고서에 기록 (익월 초 정리)</span></div></div>
 </div></div></div>
 <div class="swview" id="gst3_2" data-group="gst3"><div class="grptitle">서점</div><div class="tasks"><div class="task">
-  <div class="task-t"><b>박싱 체크리스트</b><em>─ A3 가로 · 실제 크기 100%</em></div><div class="bigwrap"><div class="bigdl"><div class="bi"><b>서점 체크리스트 · 4칸</b><span>모든 분류 4칸 · 110종</span></div><div class="bb"><a href="gsmch-1f-boxing-check-book-4.pdf" download>PDF</a><a href="gsmch-1f-boxing-check-book-4.jpg" download>JPG</a></div></div><div class="bigdl"><div class="bi"><b>서점 체크리스트 · 요청 수량</b><span>매니저 요청 수량 · 110종</span></div><div class="bb"><a href="gsmch-1f-boxing-check-book-qty.pdf" download>PDF</a><a href="gsmch-1f-boxing-check-book-qty.jpg" download>JPG</a></div></div></div>
+  <div class="task-t"><b>박싱 체크리스트</b><em>─ A3 가로 · 실제 크기 100%</em></div><div class="bigwrap"><div class="bigdl"><div class="bi"><b>서점 체크리스트 · 4칸</b><span>모든 분류 4칸 · 110종</span></div><div class="bb"><a class="wb" target="_blank" rel="noopener" href="gsmch-1f-boxing-check-book-web.html">웹에서 체크</a><a target="_blank" rel="noopener" href="gsmch-1f-boxing-check-book-4.pdf">PDF</a><a target="_blank" rel="noopener" href="gsmch-1f-boxing-check-book-4.jpg">JPG</a></div></div><div class="bigdl"><div class="bi"><b>서점 체크리스트 · 요청 수량</b><span>매니저 요청 수량 · 110종</span></div><div class="bb"><a target="_blank" rel="noopener" href="gsmch-1f-boxing-check-book-qty.pdf">PDF</a><a target="_blank" rel="noopener" href="gsmch-1f-boxing-check-book-qty.jpg">JPG</a></div></div></div>
 </div>
 <div class="task">
-  <div class="task-t"><b>이사 라벨</b><em>─ A4 4칸 · 99.1 × 140mm · 투명 방수</em></div><div class="dlwrap top"><a class="dl" href="gsmch-1f-movelabel-book.pdf" download><span class="t">서점 이사 라벨</span><span class="d">328장 · A4 82매</span><span class="g">PDF ↓</span></a></div><div class="dlwrap stk"><a class="dl" href="gsmch-1f-movelabel-fragile.jpg" download><span class="t">파손주의</span><span class="d">유리 · 도자기 · 액자</span><span class="g">JPG ↓</span></a><a class="dl" href="gsmch-1f-movelabel-tempshop.jpg" download><span class="t">임시서점</span><span class="d">지하 5층 아님 · 즉시 사용</span><span class="g">JPG ↓</span></a></div>
+  <div class="task-t"><b>이사 라벨</b><em>─ A4 4칸 · 99.1 × 140mm · 투명 방수</em></div><div class="dlwrap top"><a class="dl" target="_blank" rel="noopener" href="gsmch-1f-movelabel-book.pdf"><span class="t">서점 이사 라벨</span><span class="d">328장 · A4 82매</span><span class="g">PDF ↓</span></a></div><div class="dlwrap stk"><a class="dl" target="_blank" rel="noopener" href="gsmch-1f-movelabel-b5.jpg"><span class="t">지하 5층</span><span class="d">보관 · 이동</span><span class="g">JPG ↓</span></a><a class="dl" target="_blank" rel="noopener" href="gsmch-1f-movelabel-fragile.jpg"><span class="t">파손주의</span><span class="d">유리 · 도자기 · 액자</span><span class="g">JPG ↓</span></a><a class="dl" target="_blank" rel="noopener" href="gsmch-1f-movelabel-tempshop.jpg"><span class="t">임시서점</span><span class="d">지하 5층 아님 · 즉시 사용</span><span class="g">JPG ↓</span></a></div>
 </div>
 <div class="task">
   <div class="task-t"><b>이사 결과</b><em>─ 반출 완료 후 기재</em></div><div class="task-h"><div><em></em><span class="stwrap"><span class="st plan">예정</span></span><span>박스 종류 · 개수 최종 정리 — 8/24 반출 완료 후 업데이트</span></div></div>
@@ -929,10 +935,10 @@ tbody tr:hover td{background:#F4F0E8;}
 
 </div></div>
 <div class="swview" id="gst3_3" data-group="gst3"><div class="grptitle">카페</div><div class="tasks"><div class="task">
-  <div class="task-t"><b>박싱 체크리스트</b><em>─ A3 가로 · 실제 크기 100%</em></div><div class="bigwrap one"><div class="bigdl"><div class="bi"><b>카페 체크리스트</b><span>41종 · 보관 · 무인카페 · 폐기 · 나눔 표시</span></div><div class="bb"><a href="gsmch-1f-boxing-check-cafe.pdf" download>PDF</a><a href="gsmch-1f-boxing-check-cafe.jpg" download>JPG</a></div></div></div>
+  <div class="task-t"><b>박싱 체크리스트</b><em>─ A3 가로 · 실제 크기 100%</em></div><div class="bigwrap one"><div class="bigdl"><div class="bi"><b>카페 체크리스트</b><span>41종 · 보관 · 무인카페 · 폐기 · 나눔 표시</span></div><div class="bb"><a class="wb" target="_blank" rel="noopener" href="gsmch-1f-boxing-check-cafe-web.html">웹에서 체크</a><a target="_blank" rel="noopener" href="gsmch-1f-boxing-check-cafe.pdf">PDF</a><a target="_blank" rel="noopener" href="gsmch-1f-boxing-check-cafe.jpg">JPG</a></div></div></div>
 </div>
 <div class="task">
-  <div class="task-t"><b>이사 라벨</b><em>─ A4 4칸 · 99.1 × 140mm · 투명 방수</em></div><div class="dlwrap top"><a class="dl" href="gsmch-1f-movelabel-cafe.pdf" download><span class="t">카페 이사 라벨</span><span class="d">44장 · A4 11매</span><span class="g">PDF ↓</span></a></div><div class="dlwrap stk4"><a class="dl" href="gsmch-1f-movelabel-fragile.jpg" download><span class="t">파손주의</span><span class="d">유리 · 도자기 · 기기</span><span class="g">JPG ↓</span></a><a class="dl" href="gsmch-1f-movelabel-cafe-dest-1-mucafe.jpg" download><span class="t">무인카페</span><span class="d">비전센터</span><span class="g">JPG ↓</span></a><a class="dl" href="gsmch-1f-movelabel-cafe-dest-2-discard.jpg" download><span class="t">폐기</span><span class="d">폐기 대상</span><span class="g">JPG ↓</span></a><a class="dl" href="gsmch-1f-movelabel-cafe-dest-3-share.jpg" download><span class="t">나눔</span><span class="d">나눔 · 반납</span><span class="g">JPG ↓</span></a></div>
+  <div class="task-t"><b>이사 라벨</b><em>─ A4 4칸 · 99.1 × 140mm · 투명 방수</em></div><div class="dlwrap top"><a class="dl" target="_blank" rel="noopener" href="gsmch-1f-movelabel-cafe.pdf"><span class="t">카페 이사 라벨</span><span class="d">44장 · A4 11매</span><span class="g">PDF ↓</span></a></div><div class="dlwrap stk5"><a class="dl" target="_blank" rel="noopener" href="gsmch-1f-movelabel-b5.jpg"><span class="t">지하 5층</span><span class="d">보관 · 이동</span><span class="g">JPG ↓</span></a><a class="dl" target="_blank" rel="noopener" href="gsmch-1f-movelabel-fragile.jpg"><span class="t">파손주의</span><span class="d">유리 · 도자기 · 기기</span><span class="g">JPG ↓</span></a><a class="dl" target="_blank" rel="noopener" href="gsmch-1f-movelabel-cafe-dest-1-mucafe.jpg"><span class="t">무인카페</span><span class="d">비전센터</span><span class="g">JPG ↓</span></a><a class="dl" target="_blank" rel="noopener" href="gsmch-1f-movelabel-cafe-dest-2-discard.jpg"><span class="t">폐기</span><span class="d">폐기 대상</span><span class="g">JPG ↓</span></a><a class="dl" target="_blank" rel="noopener" href="gsmch-1f-movelabel-cafe-dest-3-share.jpg"><span class="t">나눔</span><span class="d">나눔 · 반납</span><span class="g">JPG ↓</span></a></div>
 </div>
 <div class="task">
   <div class="task-t"><b>이사 결과</b><em>─ 반출 완료 후 기재</em></div><div class="task-h"><div><em></em><span class="stwrap"><span class="st plan">예정</span></span><span>박스 종류 · 개수 · 행선지 최종 정리 — 8/24 반출 완료 후 업데이트</span></div></div>
