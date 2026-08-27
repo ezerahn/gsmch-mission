@@ -139,14 +139,14 @@
     .wk-hd{margin-bottom:13px}
     .wk-hd b{font-size:16.5px}
     .wk-hd .sub{font-size:12px}
-    .wk-hd .rt{margin-left:0;flex-basis:100%;font-size:11.5px}
+    .wk-hd .rt{margin-left:auto;flex-basis:auto;font-size:11.5px}
     .wk-g{grid-template-columns:1fr;gap:9px}
-    .wk-i{padding:13px 14px 14px;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:baseline}
+    .wk-i{padding:14px 15px 15px;display:block}
     .wk-i .n{display:none}
-    .wk-i .bd{grid-row:1;grid-column:1;margin:0;font-size:11px;padding:2px 9px}
-    .wk-i .t{grid-row:1;grid-column:2;margin:0;font-size:15px}
-    .wk-i .d{grid-row:2;grid-column:2;font-size:13px}
-    .wk-i .s{grid-row:3;grid-column:2;margin-top:2px;font-size:12.5px}
+    .wk-i .bd{margin:0 0 7px;font-size:11px;padding:2px 10px}
+    .wk-i .t{margin:0 0 3px;font-size:16px;line-height:1.32}
+    .wk-i .d{font-size:13px}
+    .wk-i .s{margin-top:7px;font-size:12.5px;line-height:1.62}
   }
 
 
@@ -258,6 +258,18 @@
 .stk .sd{display:block;font-size:11.5px;color:var(--soft);margin-top:3px}
 @media(max-width:860px){.stks{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:520px){.stks{grid-template-columns:repeat(2,1fr)}}
+
+  /* ── 7단계 · 4칸 대응 ── */
+  .tlx-g.tl7{grid-template-columns:repeat(7,1fr)}
+  .wk-g.wk4{grid-template-columns:repeat(4,1fr)}
+  .wk-i .d.nowrap{white-space:nowrap}
+  @media(max-width:1080px){ .wk-g.wk4{grid-template-columns:repeat(2,1fr)} }
+  @media(max-width:760px){
+    .tlx-g.tl7{grid-template-columns:repeat(4,1fr)}
+    .wk-g.wk4{grid-template-columns:1fr}
+    .wk-i .d.nowrap{white-space:normal}
+  }
+  @media(max-width:420px){ .tlx-g.tl7{grid-template-columns:repeat(3,1fr)} }
 </style>
 </head>
 <body>
@@ -274,7 +286,7 @@
 
 <div class="tlx">
   <div class="tlx-hd"><b>진행 공정</b><span class="sub">7단계 · 현재 ③-1 임시서점 운영</span><span class="rt">오늘 2026. 8. 25.</span></div>
-  <div class="tlx-g tlx-steps" style="grid-template-columns:repeat(7,1fr)">
+  <div class="tlx-g tlx-steps tl7">
     <a class="tlx-s done" href="gsmch-1f-masterplan.html#v2/st1"><span class="n">①</span><span class="t">설계 · 소통</span><span class="st">완료</span></a>
     <a class="tlx-s done" href="gsmch-1f-masterplan.html#v2/st2"><span class="n">②</span><span class="t">자산 · 물품 정리</span><span class="st">완료</span></a>
     <a class="tlx-s done" href="gsmch-1f-masterplan.html#v2/st3"><span class="n">③</span><span class="t">영업중단 · 반출</span><span class="st">완료</span></a>
@@ -284,11 +296,11 @@
     <a class="tlx-s todo" href="gsmch-1f-masterplan.html#v2/st6"><span class="n">⑥</span><span class="t">오픈 · 안정화</span><span class="st">예정</span></a>
   </div>
   <div class="tlx-track"><div class="tlx-bar"><span class="tlx-fill" style="width:50%"></span></div>
-    <div class="tlx-g tlx-dots" style="grid-template-columns:repeat(7,1fr)">
+    <div class="tlx-g tlx-dots tl7">
       <i class="done"></i><i class="done"></i><i class="done"></i><i class="now"></i><i class=""></i><i class=""></i><i class=""></i>
     </div>
   </div>
-  <div class="tlx-g tlx-dates" style="grid-template-columns:repeat(7,1fr)">
+  <div class="tlx-g tlx-dates tl7">
     <span>8/9</span><span>8/16</span><span>8/17~24</span><span>8/30~</span><span>8월말~11월</span><span>11월 초</span><span>11/14</span>
   </div>
   <div class="tlx-foot"><span>영업 종료 <b>8월 16일 (주일)</b></span><span>반출 완료 <b>8월 24일 (월)</b></span><span>임시서점 개점 <b>8월 30일 (주일)</b></span><span>공사 <b>8월 24일 ~ 11월 14일</b></span><span>오픈 <b>11월 14일 (예정)</b></span></div>
@@ -296,7 +308,7 @@
 
 <div class="wk">
   <div class="wk-hd"><b>이번 주 할 일</b><span class="sub">8월 마지막 주</span><span class="rt">8. 25. 기준</span></div>
-  <div class="wk-g" style="grid-template-columns:repeat(4,1fr)">
+  <div class="wk-g wk4">
     <div class="wk-i done">
       <span class="bd">완료</span>
       <div class="n">1</div>
@@ -308,15 +320,15 @@
       <span class="bd">진행 중</span>
       <div class="n">2</div>
       <div class="t">임시서점<br>컨테이너 사이니지</div>
-      <div class="d" style="white-space:nowrap">8. 24.(월) ~ 26.(수) 견적 · 발주</div>
-      <div class="s">앞면 · 좌우 측면 시안 확정<br>PE 배너지 4장 · 자석시트 1장</div>
+      <div class="d nowrap">8. 24.(월) ~ 26.(수) 견적 · 발주</div>
+      <div class="s">앞면 · 좌우 측면 시안 확정<br>PE 배너지 3장 · 자석시트 2장</div>
     </div>
     <div class="wk-i now">
       <span class="bd">진행 중</span>
       <div class="n">3</div>
       <div class="t">임시서점 개점 준비</div>
       <div class="d">8. 30. (주일) 개점</div>
-      <div class="s">1층 지상주차장 컨테이너<br>진열대 · POS · 도서 셋팅<br>주일 8:00~17:00 · 화 · 수 10:00~15:00</div>
+      <div class="s">1층 지상주차장 컨테이너<br>진열대 · POS · 도서 셋팅<br>주일 8:00~17:00<br>화 · 수 10:00~15:00<br>금 18:00~20:00</div>
     </div>
     <div class="wk-i now">
       <span class="bd">진행 중</span>
