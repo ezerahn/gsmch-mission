@@ -436,6 +436,42 @@
     border-radius:5px;padding:10px 13px;font-size:12.5px;color:var(--soft);line-height:1.75}
   .whytwo b{color:var(--accent);font-weight:600}
 
+  .warnbox{margin-top:12px;background:#FDF3F0;border-left:3px solid #C2652F;border-radius:5px;
+    padding:11px 14px;font-size:12.5px;color:var(--soft);line-height:1.8}
+  .warnbox b{color:#93381A;font-weight:700}
+  .warnbox .ttl{display:block;font-size:13px;font-weight:700;color:#93381A;margin-bottom:5px}
+  .cmp{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:12px}
+  .cmp th{background:var(--accentL);color:var(--accent);font-weight:600;font-size:11px;
+    padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+  .cmp td{padding:9px 10px;border-bottom:1px solid var(--line2);line-height:1.55}
+  .cmp .n{font-family:'IBM Plex Mono',monospace;text-align:right;white-space:nowrap}
+  .cmp .bad{color:#93381A;font-weight:700}
+  .cmp tr td:first-child{font-weight:600}
+
+  .bwrap{margin-top:18px}
+  .btitle{font-size:13.5px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+  .btitle span{font-weight:400;font-size:11.5px;color:var(--muted);margin-left:6px;
+    font-family:'IBM Plex Mono',monospace}
+  .bgrid{display:grid;gap:0}
+  .bcn{font-size:12px;font-weight:700;color:var(--accent);text-align:center;padding-bottom:5px}
+  .bcell{border:1px solid var(--line);border-right:0;background:var(--card);
+    padding:13px 6px;text-align:center;min-height:52px;display:flex;flex-direction:column;
+    justify-content:center;gap:3px}
+  .bgrid .bcell:last-of-type{border-right:1px solid var(--line)}
+  .bcell.wet{background:#FAE7DE;border-color:#EBCDB6}
+  .bcell.gap{background:#FDF3F0;border-color:#EBCDB6;border-style:dashed}
+  .bcell.gap b{color:#93381A}
+  .bcell.wall{background:repeating-linear-gradient(45deg,#F1EFEA,#F1EFEA 3px,#E6E3DC 3px,#E6E3DC 6px)}
+  .bcell.wall b,.bcell.wall i{color:var(--muted)}
+  .bcell.void{background:transparent;border-style:dashed}
+  .bcell.void b,.bcell.void i{color:var(--muted)}
+  .bcell b{font-size:12.5px;font-weight:600;letter-spacing:-.02em;line-height:1.3}
+  .bcell i{font-style:normal;font-size:10.5px;color:var(--muted);line-height:1.3}
+  .bdim{font-size:10.5px;color:var(--soft);text-align:center;padding-top:6px;
+    font-family:'IBM Plex Mono',monospace}
+  .bfoot{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);
+    margin-top:7px}
+
   .rec{display:inline-block;margin-left:6px;background:var(--accent);color:#fff;
     font-size:10px;font-weight:700;border-radius:9px;padding:2px 7px;letter-spacing:.02em;
     vertical-align:middle}
@@ -730,11 +766,12 @@
     <div class="ptitle">사업단 안 · 회의 결과</div>
 <div class="card">
     <h3>안 선택</h3>
-    <div class="sub">두 안은 <b>싱크 위치만</b> 다릅니다</div>
+    <div class="sub">1안 · 2안은 <b>싱크 위치만</b> 다릅니다 · 최종안은 업체 제안</div>
     <div class="whytwo">바닥을 뚫어 배수를 내려야 하는데, <b>관통 시 아래층에 문제가 생기면 바로 다른 안으로 바꿀 수 있도록</b> 건축위에서 두 안을 요청했습니다.<br>나머지 구간과 앞 바는 두 안이 같습니다. 싱크가 <b>1안은 B3(좌측)</b>, <b>2안은 B5(우측)</b>에 놓이고, 그에 따라 옆 칸의 폭이 조금씩 달라집니다.</div>
     <div class="subtabs">
       <button class="stb on" data-go="1">1안<span class="sd"> · 싱크 좌측</span></button>
       <button class="stb" data-go="2">2안<span class="sd"> · 싱크 우측</span></button>
+      <button class="stb" data-go="3">최종안<span class="sd"> · 업체 제안</span></button>
     </div>
   </div>
   <div class="subpane on" data-sp="1">
@@ -1513,6 +1550,307 @@
 <text x="6010" y="1660" font-size="130" fill="#8a847a" text-anchor="end">픽업 ▶</text><rect x="0" y="300" width="600" height="560" fill="#F1EFEA" stroke="#2c2a26" stroke-width="26"/><rect x="0" y="860" width="600" height="340" fill="#fbfaf7" stroke="#2c2a26" stroke-width="26"/><text x="300.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">출입</text><text x="300.0" y="531" font-size="135" font-weight="600" fill="#8a847a" text-anchor="middle">리프트업</text><text x="300.0" y="727" font-size="135" font-weight="600" fill="#8a847a" text-anchor="middle">상판</text><text x="300.0" y="1075" font-size="120" fill="#6e6860" text-anchor="middle">직원 출입</text><text x="300.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">600*</text><rect x="600" y="300" width="1300" height="560" fill="#fff" stroke="#2c2a26" stroke-width="26"/><rect x="600" y="860" width="1300" height="340" fill="#fbfaf7" stroke="#2c2a26" stroke-width="26"/><text x="1250.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">A1</text><text x="1250.0" y="630" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">쇼케이스</text><text x="1250.0" y="1075" font-size="120" fill="#6e6860" text-anchor="middle">바닥형 · 하부 없음</text><text x="1250.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">1,300*</text><rect x="1900" y="300" width="850" height="560" fill="#fff" stroke="#2c2a26" stroke-width="26"/><rect x="1900" y="860" width="850" height="340" fill="#fbfaf7" stroke="#2c2a26" stroke-width="26"/><text x="2325.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">A2</text><text x="2325.0" y="531" font-size="127" font-weight="600" fill="#2c2a26" text-anchor="middle">계산대 · POS</text><text x="2325.0" y="727" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">카드단말기</text><text x="2325.0" y="1075" font-size="99" fill="#6e6860" text-anchor="middle">시재 · 서류 잠금</text><text x="2325.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">850*</text><rect x="2750" y="300" width="600" height="560" fill="#fff" stroke="#2c2a26" stroke-width="26"/><rect x="2750" y="860" width="600" height="340" fill="#fbfaf7" stroke="#2c2a26" stroke-width="26"/><text x="3050.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">A3</text><text x="3050.0" y="531" font-size="108" font-weight="600" fill="#2c2a26" text-anchor="middle">그라인더 2</text><text x="3050.0" y="727" font-size="74" font-weight="600" fill="#2c2a26" text-anchor="middle">일반 · 디카페인</text><text x="3050.0" y="1075" font-size="120" fill="#6e6860" text-anchor="middle">원두 재고</text><text x="3050.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">600*</text><rect x="3350" y="300" width="1150" height="560" fill="#fff" stroke="#2c2a26" stroke-width="26"/><rect x="3350" y="860" width="1150" height="340" fill="#fbfaf7" stroke="#2c2a26" stroke-width="26"/><text x="3925.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">A4</text><text x="3925.0" y="531" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">커피머신</text><text x="3925.0" y="727" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">넉박스</text><text x="3925.0" y="1075" font-size="120" fill="#6e6860" text-anchor="middle">우유 냉장고</text><text x="3925.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">1,150*</text><rect x="4500" y="300" width="600" height="560" fill="#fff" stroke="#2c2a26" stroke-width="26"/><rect x="4500" y="860" width="600" height="340" fill="#fbfaf7" stroke="#2c2a26" stroke-width="26"/><text x="4800.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">A5</text><text x="4800.0" y="531" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">온수기</text><text x="4800.0" y="727" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">핫 음료</text><text x="4800.0" y="1075" font-size="120" fill="#6e6860" text-anchor="middle">수납</text><text x="4800.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">600*</text><rect x="5100" y="300" width="850" height="560" fill="#fff" stroke="#2c2a26" stroke-width="26"/><rect x="5100" y="860" width="850" height="340" fill="#fbfaf7" stroke="#2c2a26" stroke-width="26"/><text x="5525.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">A6</text><text x="5525.0" y="531" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">제조대</text><text x="5525.0" y="727" font-size="105" font-weight="600" fill="#2c2a26" text-anchor="middle">가루통 2단 · 컵</text><text x="5525.0" y="1075" font-size="84" fill="#6e6860" text-anchor="middle">컵 재고 · 가루 여분</text><text x="5525.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">850*</text><rect x="5950" y="300" width="605" height="560" fill="#fff" stroke="#2c2a26" stroke-width="26"/><rect x="5950" y="860" width="605" height="340" fill="#fbfaf7" stroke="#2c2a26" stroke-width="26"/><text x="6252.5" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">A7</text><text x="6252.5" y="630" font-size="135" font-weight="600" fill="#2c2a26" text-anchor="middle">픽업대</text><text x="6252.5" y="1075" font-size="86" fill="#6e6860" text-anchor="middle">캐리어 · 홀더</text><text x="6252.5" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">605*</text><rect x="6555" y="300" width="1000" height="560" fill="#F1EFEA" stroke="#2c2a26" stroke-width="26"/><rect x="6555" y="860" width="1000" height="340" fill="#fbfaf7" stroke="#2c2a26" stroke-width="26"/><text x="7055.0" y="230" font-size="155" font-weight="700" fill="#3d6b4f" text-anchor="middle">출입</text><text x="7055.0" y="531" font-size="135" font-weight="600" fill="#8a847a" text-anchor="middle">통로</text><text x="7055.0" y="727" font-size="135" font-weight="600" fill="#8a847a" text-anchor="middle">문 없음</text><text x="7055.0" y="1075" font-size="120" fill="#6e6860" text-anchor="middle">반입 · 출입</text><text x="7055.0" y="1390" font-size="125" font-weight="600" fill="#8a847a" text-anchor="middle">1,000*</text><line x1="600" y1="300" x2="600" y2="1200" stroke="#2c2a26" stroke-width="16"/><line x1="1900" y1="300" x2="1900" y2="1200" stroke="#2c2a26" stroke-width="16"/><line x1="2750" y1="300" x2="2750" y2="1200" stroke="#2c2a26" stroke-width="16"/><line x1="3350" y1="300" x2="3350" y2="1200" stroke="#2c2a26" stroke-width="16"/><line x1="4500" y1="300" x2="4500" y2="1200" stroke="#2c2a26" stroke-width="16"/><line x1="5100" y1="300" x2="5100" y2="1200" stroke="#2c2a26" stroke-width="16"/><line x1="5950" y1="300" x2="5950" y2="1200" stroke="#2c2a26" stroke-width="16"/><line x1="6555" y1="300" x2="6555" y2="1200" stroke="#2c2a26" stroke-width="16"/><line x1="0" y1="70" x2="7555" y2="70" stroke="#8a847a" stroke-width="16" marker-end="url(#ar)" marker-start="url(#arS)"/><text x="3777" y="10" font-size="150" font-weight="600" fill="#6e6860" text-anchor="middle">앞 바 7,555</text></svg><div class="specswrap"><div class="specs" style="grid-template-columns:1000fr 600fr 1300fr 850fr 600fr 1150fr 600fr 850fr 605fr 1000fr 910fr"><div class="splb"></div><div class="spcn">출입</div><div class="spcn">A1</div><div class="spcn">A2</div><div class="spcn">A3</div><div class="spcn">A4</div><div class="spcn">A5</div><div class="spcn">A6</div><div class="spcn">A7</div><div class="spcn">출입</div><div></div><div class="sprl sptop">상판 위</div><div class="spcell sptop"><div class="eq none"><div class="nm">리프트업 상판</div><div class="sb">공사 범위 · 직원 출입</div><div class="dim">W × D × H</div></div></div><div class="spcell sptop"><div class="eq new"><div class="nm">쇼케이스</div><div class="sb">신규 구입 · 지오테크 1,200 × 650 × 1,180</div><div class="dim">W × D × H</div><div class="ut">220V</div></div></div><div class="spcell sptop"><div class="eq unk"><div class="nm">계산대 · POS</div><div class="dim">W × D × H</div><div class="ut">220V · 랜</div></div><div class="eq unk"><div class="nm">카드단말기</div><div class="dim">W × D × H</div></div></div><div class="spcell sptop"><div class="eq have"><div class="nm">그라인더 2</div><div class="sb">기존 보유 · 일반 · 디카페인</div><div class="dim">W × D × H</div><div class="ut">220V ×2</div></div></div><div class="spcell sptop"><div class="eq unk"><div class="nm">커피머신</div><div class="sb">1,020~1,045 · 여유 105</div><div class="dim">W × D × H</div><div class="ut">220V 전용 · 정수</div></div><div class="eq unk"><div class="nm">넉박스</div><div class="sb">매립형이면 지금 결정</div><div class="dim">W × D × H</div></div></div><div class="spcell sptop"><div class="eq have"><div class="nm">온수기</div><div class="sb">기존 보유 · 핫 음료용 · 실측 필요</div><div class="dim">W × D × H</div><div class="ut">220V 전용 · 급수</div></div></div><div class="spcell sptop"><div class="eq none"><div class="nm">제조대</div><div class="sb">공사 범위</div><div class="dim">W × D × H</div></div><div class="eq have"><div class="nm">가루통 2단 · 컵</div><div class="sb">수량 확인</div><div class="dim">W × D × H</div></div></div><div class="spcell sptop"><div class="eq none"><div class="nm">픽업대</div><div class="sb">공사 범위</div><div class="dim">W × D × H</div></div></div><div class="spcell sptop"><div class="eq none"><div class="nm">통로</div><div class="sb">문 없음 · 반입 · 출입</div><div class="dim">W × D × H</div></div></div><div class="sptop"></div><div class="sprl spbot">하부장 안</div><div class="spcell spbot"><div class="eq none"><div class="nm">통로</div><div class="dim">W × D × H</div></div></div><div class="spcell spbot"><div class="eq none"><div class="nm">하부 없음</div><div class="sb">바닥형</div><div class="dim">W × D × H</div></div></div><div class="spcell spbot"><div class="eq none"><div class="nm">시재 · 서류 잠금</div><div class="dim">W × D × H</div></div></div><div class="spcell spbot"><div class="eq none"><div class="nm">원두 재고</div><div class="dim">W × D × H</div></div></div><div class="spcell spbot"><div class="eq have"><div class="nm">냉장고 (우유)</div><div class="sb">방열 방향 확인</div><div class="dim">W × D × H</div><div class="ut">220V</div></div></div><div class="spcell spbot"><div class="eq none"><div class="nm">수납</div><div class="dim">W × D × H</div></div></div><div class="spcell spbot"><div class="eq none"><div class="nm">컵 재고</div><div class="dim">W × D × H</div></div><div class="eq none"><div class="nm">가루 여분</div><div class="dim">W × D × H</div></div></div><div class="spcell spbot"><div class="eq none"><div class="nm">캐리어 · 홀더</div><div class="dim">W × D × H</div></div></div><div class="spcell spbot"><div class="eq none"><div class="nm">—</div><div class="dim">W × D × H</div></div></div><div></div></div><div class="speclg"><i><b class="sw-have"></b>보유</i><i><b class="sw-new"></b>신규 구입</i><i><b class="sw-unk"></b>보유 여부 확인</i><i><b class="sw-none"></b>공사 · 수납 (구입 대상 아님)</i><span style="margin-left:auto;color:var(--muted)">치수는 실측 후 채웁니다 · 폭 *는 잠정치</span></div></div>
     </div>
 </div>
+
+  <div class="subpane" data-sp="3">
+  <div class="card"><h3>전체 배치도</h3><div class="cardtools"><button class="ct" onclick="cardPrint(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg><span class="tip">인쇄</span></button><button class="ct" onclick="cardSave(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span class="tip">JPG 저장</span></button></div><div class="sub">업체 3D 제안 · 치수는 업체 원본 그대로</div><svg class="plan" viewBox="-1250 -1450 12200 9900" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="hallP3" width="300" height="300" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+          <line x1="0" y1="0" x2="0" y2="300" stroke="#d8d2c6" stroke-width="26"/>
+        </pattern>
+        <pattern id="wallhP3" width="120" height="120" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="120" stroke="#b8b1a3" stroke-width="34"/>
+        </pattern>
+        <marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 z" fill="#8a847a"/>
+        </marker>
+        <marker id="arS" markerWidth="9" markerHeight="9" refX="1" refY="4.5" orient="auto">
+          <path d="M9,0 L0,4.5 L9,9 z" fill="#8a847a"/>
+        </marker>
+      </defs>
+
+      <g font-family="IBM Plex Sans KR, sans-serif">
+
+        <!-- ===== 고객 홀 ===== -->
+        <rect x="-180" y="4702" width="10338" height="2900" fill="url(#hallP3)" opacity=".55"/>
+        <line x1="-180" y1="4702" x2="10158" y2="4702" stroke="#2c2a26" stroke-width="34"/>
+        <text x="380" y="5700" font-size="185" fill="#6e6860">고객 홀</text>
+
+        <!-- SERVICE BAR -->
+        <rect x="3631" y="6363" width="4399" height="702" fill="#fff" stroke="#2c2a26"
+              stroke-width="26" stroke-dasharray="130 80"/>
+        <rect x="6688" y="6363" width="1342" height="702" fill="#FBEDE4" stroke="#C2652F"
+              stroke-width="22" stroke-dasharray="90 60"/>
+        <text x="5830" y="6210" font-size="83" font-weight="600" fill="#8a6a45" text-anchor="middle">SERVICE BAR</text>
+        <text x="7359" y="6630" font-size="54" font-weight="600" fill="#93381A" text-anchor="middle">반납함 · 텀블러 세척기</text>
+        <text x="7359" y="6790" font-size="66" fill="#93381A" text-anchor="middle">급배수 · 전원 필요</text>
+        <text x="4900" y="6720" font-size="120" fill="#8a847a" text-anchor="middle">셀프 코너 · 정리대</text>
+
+        <!-- ORDER / PICK UP -->
+        
+        <text x="2835" y="4990" font-size="165" fill="#c0392b" letter-spacing="12">ORDER</text>
+        <text x="7420" y="4990" font-size="148" fill="#c0392b" letter-spacing="12">PICK UP</text>
+
+        <!-- ===== 상부 : 화장실 · D.S · 수납 ===== -->
+        <rect x="1458" y="1599" width="8400" height="236" fill="url(#wallhP3)" stroke="#2c2a26" stroke-width="22"/>
+        <rect x="1458" y="600" width="8400" height="999" fill="#f4f1ea" stroke="#cfc8bb" stroke-width="20" stroke-dasharray="120 90"/>
+        <text x="5658" y="1230" font-size="19" fill="#8a847a" text-anchor="middle">화장실 · D.S · 수납  (별도 개선공사 · 본 도면 범위 밖)</text>
+
+        <!-- ===== 창고 ===== -->
+        <rect x="0" y="0" width="1215" height="1785" fill="#fff" stroke="none"/>
+        <!-- 창고 벽 -->
+        <rect x="-180" y="-120" width="180" height="4822" fill="url(#wallhP3)" stroke="#2c2a26" stroke-width="22"/>
+        <rect x="-180" y="-120" width="1638" height="120" fill="url(#wallhP3)" stroke="#2c2a26" stroke-width="22"/>
+        <rect x="1215" y="-120" width="243" height="1955" fill="url(#wallhP3)" stroke="#2c2a26" stroke-width="22"/>
+        <rect x="885" y="1785" width="330" height="120" fill="url(#wallhP3)" stroke="#2c2a26" stroke-width="22"/>
+        <!-- 창고 문 -->
+        <line x1="0" y1="1845" x2="885" y2="1845" stroke="#c0392b" stroke-width="30" stroke-dasharray="110 80"/><text x="442" y="2010" font-size="130" font-weight="600" fill="#c0392b" text-anchor="middle">입구 885</text>
+        <text x="608" y="820" font-size="215" font-weight="600" fill="#3d6b4f" text-anchor="middle">창고</text>
+        <text x="608" y="1060" font-size="130" fill="#8a847a" text-anchor="middle">1,215 × 1,785</text>
+
+        <!-- ===== 보조주방 ===== -->
+        <rect x="0" y="1835" width="2149" height="1956" fill="#f7faf8" stroke="none"/>
+        <text x="1075" y="3350" font-size="215" font-weight="600" fill="#3d6b4f" text-anchor="middle">보조주방</text>
+        <text x="1075" y="3570" font-size="130" fill="#8a847a" text-anchor="middle">2,150 × 1,960 · 싱크 없음</text>
+        <!-- 4도어 냉동(장)고 (현 시안 위치) -->
+        <rect x="829" y="1891" width="1263" height="729" fill="#fff" stroke="#8a6a45"
+              stroke-width="24" stroke-dasharray="100 65"/>
+        <text x="1460" y="2200" font-size="132" fill="#8a6a45" text-anchor="middle">4도어 냉동(장)고</text>
+        <text x="1460" y="2380" font-size="120" fill="#8a847a" text-anchor="middle">1,260 × 750(800) × 1,910</text>
+        <!-- 원형 표기 -->
+        <circle cx="409" cy="3620" r="244" fill="none" stroke="#8a847a" stroke-width="22" stroke-dasharray="80 60"/>
+        <text x="409" y="3960" font-size="115" fill="#8a847a" text-anchor="middle">직원 의자 (예시)</text>
+
+        <!-- ===== 격벽 ===== -->
+        <rect x="2149" y="1835" width="153" height="850" fill="url(#wallhP3)" stroke="#2c2a26" stroke-width="22"/>
+        <rect x="2149" y="3593" width="153" height="1109" fill="url(#wallhP3)" stroke="#2c2a26" stroke-width="22"/>
+        <line x1="2226" y1="2685" x2="2226" y2="3593" stroke="#c0392b" stroke-width="26" stroke-dasharray="110 80"/><rect x="2180" y="2740" width="92" height="420" fill="#fff" stroke="#c0392b" stroke-width="20"/><rect x="2180" y="3120" width="92" height="420" fill="#fff" stroke="#c0392b" stroke-width="20" opacity=".55"/><path d="M2320,2900 L2320,3380" stroke="#c0392b" stroke-width="16" marker-start="url(#ar)" marker-end="url(#ar)" opacity=".7"/>
+        <text x="2400" y="3100" font-size="125" font-weight="600" fill="#c0392b">미닫이</text><text x="2400" y="3260" font-size="125" font-weight="600" fill="#c0392b">905</text>
+
+        <!-- ===== 데스크 및 보조 테이블 ===== -->
+        <rect x="0" y="3791" width="2152" height="753" fill="#fff" stroke="#2c2a26" stroke-width="30"/>
+        <rect x="-180" y="4544" width="2482" height="158" fill="url(#wallhP3)" stroke="#2c2a26" stroke-width="22"/>
+        <text x="1076" y="4235" font-size="170" fill="#c0392b" text-anchor="middle">데스크 및 보조 테이블</text>
+
+        <!-- ===== 벽 쪽 바 (beverage zone) ===== -->
+        
+        <g stroke="#c5d6cb" stroke-width="12">
+          <line x1="2802" y1="1835" x2="2802" y2="2614"/><line x1="3302" y1="1835" x2="3302" y2="2614"/>
+          <line x1="3802" y1="1835" x2="3802" y2="2614"/><line x1="4302" y1="1835" x2="4302" y2="2614"/>
+          <line x1="4802" y1="1835" x2="4802" y2="2614"/><line x1="5302" y1="1835" x2="5302" y2="2614"/>
+          <line x1="5802" y1="1835" x2="5802" y2="2614"/><line x1="6302" y1="1835" x2="6302" y2="2614"/>
+          <line x1="6802" y1="1835" x2="6802" y2="2614"/><line x1="7302" y1="1835" x2="7302" y2="2614"/>
+        </g>
+        
+        <text x="4000" y="2430" font-size="19" fill="#6e6860" text-anchor="middle">5,220 × 780 · 시안 = beverage zone</text>
+
+        <!-- 싱크대 (제빙기 좌측) -->
+        
+        
+        <circle cx="6197" cy="2180" r="88" fill="none" stroke="#8a6a45" stroke-width="20"/>
+        
+
+        <!-- 알코브 (제빙기 자리) -->
+        
+        
+        
+        
+        <!-- 수납 -->
+        
+        
+        
+
+        <!-- 우측 외벽 -->
+        <rect x="9858" y="1599" width="300" height="3103" fill="url(#wallhP3)" stroke="#2c2a26" stroke-width="22"/>
+
+        <!-- ===== 직원 통로 ===== -->
+        <text x="5300" y="3300" font-size="185" fill="#6e6860" text-anchor="middle">직원 통로</text>
+        <line x1="4300" y1="2614" x2="4300" y2="3835" stroke="#8a847a" stroke-width="18"
+              marker-end="url(#ar)" marker-start="url(#arS)"/>
+        <text x="4180" y="3300" font-size="125" fill="#6e6860" text-anchor="end">1,220</text>
+
+        <!-- ===== 고객 쪽 바 (coffee zone) ===== -->
+        
+        <g stroke="#e6d5c1" stroke-width="12">
+          <line x1="2802" y1="3835" x2="2802" y2="4578"/><line x1="3302" y1="3835" x2="3302" y2="4578"/>
+          <line x1="3802" y1="3835" x2="3802" y2="4578"/><line x1="4302" y1="3835" x2="4302" y2="4578"/>
+          <line x1="4802" y1="3835" x2="4802" y2="4578"/><line x1="5302" y1="3835" x2="5302" y2="4578"/>
+          <line x1="5802" y1="3835" x2="5802" y2="4578"/><line x1="6302" y1="3835" x2="6302" y2="4578"/>
+          <line x1="6802" y1="3835" x2="6802" y2="4578"/><line x1="7302" y1="3835" x2="7302" y2="4578"/>
+          <line x1="7802" y1="3835" x2="7802" y2="4578"/>
+        </g>
+        
+        <text x="5304" y="4390" font-size="46" fill="#6e6860" text-anchor="middle">6,010 × 745 &nbsp;·&nbsp; 시안 = coffee zone</text>
+
+        <!-- ===== 치수선 : 상단 ===== -->
+        <g stroke="#8a847a" stroke-width="16" fill="none">
+          <line x1="0" y1="-560" x2="1215" y2="-560" marker-end="url(#ar)" marker-start="url(#arS)"/>
+          <line x1="2302" y1="-560" x2="7525" y2="-560" marker-end="url(#ar)" marker-start="url(#arS)"/>
+          <line x1="7525" y1="-560" x2="8855" y2="-560" marker-end="url(#ar)" marker-start="url(#arS)"/>
+          <line x1="8855" y1="-560" x2="9858" y2="-560" marker-end="url(#ar)" marker-start="url(#arS)"/>
+          <line x1="0" y1="-1080" x2="9858" y2="-1080" marker-end="url(#ar)" marker-start="url(#arS)"/>
+        </g>
+        <g font-size="150" fill="#6e6860" text-anchor="middle">
+          <text x="608" y="-640">1,215</text>
+          <text x="4913" y="-640">5,220</text>
+          <text x="8190" y="-640">1,330</text>
+          <text x="9356" y="-640">1,005</text>
+          <text x="4929" y="-1200" font-size="83" font-weight="600">9,860 · 좌측 외벽 ~ 우측 벽</text>
+        </g>
+
+        <!-- ===== 치수선 : 좌측 ===== -->
+        <g stroke="#8a847a" stroke-width="16" fill="none">
+          <line x1="-620" y1="0" x2="-620" y2="1785" marker-end="url(#ar)" marker-start="url(#arS)"/>
+          <line x1="-620" y1="1835" x2="-620" y2="3791" marker-end="url(#ar)" marker-start="url(#arS)"/>
+          <line x1="-620" y1="3791" x2="-620" y2="4544" marker-end="url(#ar)" marker-start="url(#arS)"/>
+        </g>
+        <g font-size="150" fill="#6e6860" text-anchor="middle">
+          <text x="-700" y="900" transform="rotate(-90 -700 900)">창고 1,785</text>
+          <text x="-700" y="2810" transform="rotate(-90 -700 2810)">보조주방 1,955</text>
+          <text x="-700" y="4170" transform="rotate(-90 -700 4170)">데스크 755</text>
+        </g>
+
+        <!-- ===== 치수선 : 우측 ===== -->
+        <g stroke="#8a847a" stroke-width="16" fill="none">
+          <line x1="10500" y1="1835" x2="10500" y2="2614" marker-end="url(#ar)" marker-start="url(#arS)"/>
+          <line x1="10500" y1="2614" x2="10500" y2="3835" marker-end="url(#ar)" marker-start="url(#arS)"/>
+          <line x1="10500" y1="3835" x2="10500" y2="4578" marker-end="url(#ar)" marker-start="url(#arS)"/>
+          <line x1="10880" y1="1835" x2="10880" y2="4578" marker-end="url(#ar)" marker-start="url(#arS)"/>
+        </g>
+        <g font-size="150" fill="#6e6860" text-anchor="middle">
+          <text x="10420" y="2225" transform="rotate(-90 10420 2225)">780</text>
+          <text x="10420" y="3225" transform="rotate(-90 10420 3225)">1,220</text>
+          <text x="10420" y="4210" transform="rotate(-90 10420 4210)">745</text>
+          <text x="10800" y="3210" transform="rotate(-90 10800 3210)" font-weight="600">2,745</text>
+        </g>
+
+        <!-- 진입 -->
+        <line x1="9300" y1="5400" x2="8200" y2="5400" stroke="#6e6860" stroke-width="20" marker-end="url(#ar)"/>
+        <text x="9400" y="5450" font-size="139" fill="#6e6860">로비에서 진입</text>
+      </g>
+    <rect x="2302" y="1835" width="600" height="779" fill="url(#wallhP3)" stroke="#8a847a" stroke-width="18"/>
+<rect x="2432.0" y="1610" width="340" height="180" fill="#faf8f3"/>
+<text x="2602.0" y="1740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">벽</text>
+<text x="2602.0" y="2194.5" font-size="124" font-weight="600" fill="#8a847a" text-anchor="middle">벽 · 비움</text>
+<text x="2602.0" y="2384.5" font-size="64" fill="#8a847a" text-anchor="middle" opacity=".9">앞 바 리프트업 뒤</text>
+<text x="2602.0" y="2824" font-size="120" fill="#8a847a" text-anchor="middle">600*</text>
+<rect x="2902" y="1835" width="900" height="779" fill="#FBEDE4" stroke="#2c2a26" stroke-width="18"/>
+<rect x="3182.0" y="1610" width="340" height="180" fill="#faf8f3"/>
+<text x="3352.0" y="1740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">B1</text>
+<text x="3352.0" y="2279.5" font-size="140" font-weight="600" fill="#93381A" text-anchor="middle">싱크</text>
+<text x="3352.0" y="2824" font-size="120" fill="#8a847a" text-anchor="middle">900*</text>
+<rect x="3802" y="1835" width="387" height="779" fill="#fff" stroke="#2c2a26" stroke-width="18"/>
+<rect x="3825.5" y="1610" width="340" height="180" fill="#faf8f3"/>
+<text x="3995.5" y="1740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">B2</text>
+<text x="3995.5" y="2279.5" font-size="116" font-weight="600" fill="#2c2a26" text-anchor="middle">하부장</text>
+<text x="3995.5" y="2824" font-size="120" fill="#8a847a" text-anchor="middle">387*</text>
+<rect x="4189" y="1835" width="1250" height="779" fill="#fff" stroke="#2c2a26" stroke-width="18"/>
+<rect x="4644.0" y="1610" width="340" height="180" fill="#faf8f3"/>
+<text x="4814.0" y="1740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">B3</text>
+<text x="4814.0" y="2194.5" font-size="140" font-weight="600" fill="#2c2a26" text-anchor="middle">냉장고</text>
+<text x="4814.0" y="2384.5" font-size="125" fill="#2c2a26" text-anchor="middle" opacity=".9">커피 · 제조</text>
+<text x="4814.0" y="2824" font-size="120" fill="#8a847a" text-anchor="middle">1,250*</text>
+<rect x="5439" y="1835" width="580" height="779" fill="#fff" stroke="#2c2a26" stroke-width="18"/>
+<rect x="5559.0" y="1610" width="340" height="180" fill="#faf8f3"/>
+<text x="5729.0" y="1740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">B4</text>
+<text x="5729.0" y="2279.5" font-size="140" font-weight="600" fill="#2c2a26" text-anchor="middle">냉동고</text>
+<text x="5729.0" y="2824" font-size="120" fill="#8a847a" text-anchor="middle">580*</text>
+<rect x="6019" y="1835" width="1250" height="779" fill="#fff" stroke="#2c2a26" stroke-width="18"/>
+<rect x="6474.0" y="1610" width="340" height="180" fill="#faf8f3"/>
+<text x="6644.0" y="1740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">B5</text>
+<text x="6644.0" y="2194.5" font-size="140" font-weight="600" fill="#2c2a26" text-anchor="middle">수납장</text>
+<text x="6644.0" y="2384.5" font-size="125" fill="#2c2a26" text-anchor="middle" opacity=".9">냉동고 자리 변경</text>
+<text x="6644.0" y="2824" font-size="120" fill="#8a847a" text-anchor="middle">1,250*</text>
+<rect x="7269" y="1835" width="650" height="779" fill="#FBEDE4" stroke="#2c2a26" stroke-width="18"/>
+<rect x="7424.0" y="1610" width="340" height="180" fill="#faf8f3"/>
+<text x="7594.0" y="1740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">B6</text>
+<text x="7594.0" y="2279.5" font-size="134" font-weight="600" fill="#93381A" text-anchor="middle">싱크 (소)</text>
+<text x="7594.0" y="2824" font-size="120" fill="#8a847a" text-anchor="middle">650*</text>
+<rect x="7919" y="1835" width="938" height="779" fill="#fff" stroke="#2c2a26" stroke-width="18"/>
+<rect x="8218.0" y="1610" width="340" height="180" fill="#faf8f3"/>
+<text x="8388.0" y="1740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">B7</text>
+<text x="8388.0" y="2194.5" font-size="140" font-weight="600" fill="#2c2a26" text-anchor="middle">제빙기</text>
+<text x="8388.0" y="2384.5" font-size="86" fill="#2c2a26" text-anchor="middle" opacity=".9">실제 750 · 여유 188</text>
+<text x="8388.0" y="2824" font-size="120" fill="#8a847a" text-anchor="middle">938*</text>
+<rect x="8857" y="1835" width="1000" height="779" fill="none" stroke="#8a847a" stroke-width="18" stroke-dasharray="90 60"/>
+<rect x="9187.0" y="1610" width="340" height="180" fill="#faf8f3"/>
+<text x="9357.0" y="1740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">창가</text>
+<text x="9357.0" y="2194.5" font-size="140" font-weight="600" fill="#8a847a" text-anchor="middle">진입 공간</text>
+<text x="9357.0" y="2384.5" font-size="125" fill="#8a847a" text-anchor="middle" opacity=".9">창문 앞 비움</text>
+<text x="9357.0" y="2824" font-size="120" fill="#8a847a" text-anchor="middle">1,000*</text>
+<rect x="2302" y="3835" width="600" height="743" fill="#F1EFEA" stroke="#2c2a26" stroke-width="18"/>
+<rect x="2432.0" y="3610" width="340" height="180" fill="#faf8f3"/>
+<text x="2602.0" y="3740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">출입</text>
+<text x="2602.0" y="4176.5" font-size="135" font-weight="600" fill="#8a847a" text-anchor="middle">리프트업</text>
+<text x="2602.0" y="4366.5" font-size="125" fill="#8a847a" text-anchor="middle" opacity=".9">상판</text>
+<text x="2602.0" y="4788" font-size="120" fill="#8a847a" text-anchor="middle">600*</text>
+<rect x="2902" y="3835" width="1217" height="743" fill="#fff" stroke="#2c2a26" stroke-width="18"/>
+<rect x="3340.5" y="3610" width="340" height="180" fill="#faf8f3"/>
+<text x="3510.5" y="3740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">A1</text>
+<text x="3510.5" y="4176.5" font-size="140" font-weight="600" fill="#2c2a26" text-anchor="middle">쇼케이스</text>
+<text x="3510.5" y="4366.5" font-size="125" fill="#2c2a26" text-anchor="middle" opacity=".9">1200</text>
+<text x="3510.5" y="4788" font-size="120" fill="#8a847a" text-anchor="middle">1,217*</text>
+<rect x="4119" y="3835" width="500" height="743" fill="#fff" stroke="#2c2a26" stroke-width="18"/>
+<rect x="4199.0" y="3610" width="340" height="180" fill="#faf8f3"/>
+<text x="4369.0" y="3740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">A2</text>
+<text x="4369.0" y="4176.5" font-size="140" font-weight="600" fill="#2c2a26" text-anchor="middle">ORDER</text>
+<text x="4369.0" y="4366.5" font-size="125" fill="#2c2a26" text-anchor="middle" opacity=".9">POS</text>
+<text x="4369.0" y="4788" font-size="120" fill="#8a847a" text-anchor="middle">500*</text>
+<rect x="4619" y="3835" width="560" height="743" fill="#fff" stroke="#2c2a26" stroke-width="18"/>
+<rect x="4729.0" y="3610" width="340" height="180" fill="#faf8f3"/>
+<text x="4899.0" y="3740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">A3</text>
+<text x="4899.0" y="4261.5" font-size="140" font-weight="600" fill="#2c2a26" text-anchor="middle">가루통 2</text>
+<text x="4899.0" y="4788" font-size="120" fill="#8a847a" text-anchor="middle">560*</text>
+<rect x="5179" y="3835" width="45" height="743" fill="#fff" stroke="#2c2a26" stroke-width="18"/>
+<rect x="5031.5" y="3610" width="340" height="180" fill="#faf8f3"/>
+<text x="5201.5" y="3740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">A4</text>
+<text x="5201.5" y="4261.5" font-size="140" font-weight="600" fill="#2c2a26" text-anchor="middle"></text>
+<text x="5201.5" y="4788" font-size="120" fill="#8a847a" text-anchor="middle">45*</text>
+<rect x="5224" y="3835" width="1250" height="743" fill="#fff" stroke="#2c2a26" stroke-width="18"/>
+<rect x="5679.0" y="3610" width="340" height="180" fill="#faf8f3"/>
+<text x="5849.0" y="3740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">A5</text>
+<text x="5849.0" y="4261.5" font-size="140" font-weight="600" fill="#2c2a26" text-anchor="middle">냉장고</text>
+<text x="5849.0" y="4788" font-size="120" fill="#8a847a" text-anchor="middle">1,250*</text>
+<rect x="6474" y="3835" width="600" height="743" fill="#fff" stroke="#2c2a26" stroke-width="18"/>
+<rect x="6604.0" y="3610" width="340" height="180" fill="#faf8f3"/>
+<text x="6774.0" y="3740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">A6</text>
+<text x="6774.0" y="4176.5" font-size="140" font-weight="600" fill="#2c2a26" text-anchor="middle">제빙기</text>
+<text x="6774.0" y="4366.5" font-size="125" fill="#2c2a26" text-anchor="middle" opacity=".9">언더카운터</text>
+<text x="6774.0" y="4788" font-size="120" fill="#8a847a" text-anchor="middle">600*</text>
+<rect x="7074" y="3835" width="650" height="743" fill="#fff" stroke="#2c2a26" stroke-width="18"/>
+<rect x="7229.0" y="3610" width="340" height="180" fill="#faf8f3"/>
+<text x="7399.0" y="3740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">A7</text>
+<text x="7399.0" y="4261.5" font-size="107" font-weight="600" fill="#2c2a26" text-anchor="middle">컵 디스펜서</text>
+<text x="7399.0" y="4788" font-size="120" fill="#8a847a" text-anchor="middle">650*</text>
+<rect x="7724" y="3835" width="1133" height="743" fill="#fff" stroke="#2c2a26" stroke-width="18"/>
+<rect x="8120.5" y="3610" width="340" height="180" fill="#faf8f3"/>
+<text x="8290.5" y="3740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">A8</text>
+<text x="8290.5" y="4176.5" font-size="96" font-weight="600" fill="#2c2a26" text-anchor="middle">PICK UP · RETURN</text>
+<text x="8290.5" y="4366.5" font-size="125" fill="#2c2a26" text-anchor="middle" opacity=".9">여유 633 통합</text>
+<text x="8290.5" y="4788" font-size="120" fill="#8a847a" text-anchor="middle">1,133*</text>
+<rect x="8857" y="3835" width="1000" height="743" fill="none" stroke="#8a847a" stroke-width="18" stroke-dasharray="90 60"/>
+<rect x="9187.0" y="3610" width="340" height="180" fill="#faf8f3"/>
+<text x="9357.0" y="3740" font-size="150" font-weight="700" fill="#3d6b4f" text-anchor="middle">창가</text>
+<text x="9357.0" y="4176.5" font-size="140" font-weight="600" fill="#8a847a" text-anchor="middle">진입 공간</text>
+<text x="9357.0" y="4366.5" font-size="125" fill="#8a847a" text-anchor="middle" opacity=".9">창문 앞 비움</text>
+<text x="9357.0" y="4788" font-size="120" fill="#8a847a" text-anchor="middle">1,000*</text>
+
+<text x="608" y="1700" font-size="120" fill="#8a6a45" text-anchor="middle">원두 · 컵 · 소모품 재고</text><text x="1250" y="3120" font-size="120" fill="#8a847a" text-anchor="middle">작업대 배치 확인 필요</text><rect x="560" y="4740" width="620" height="440" fill="#EDF3EF" stroke="#3d6b4f" stroke-width="26"/><rect x="1300" y="4740" width="620" height="440" fill="#EDF3EF" stroke="#3d6b4f" stroke-width="26"/><text data-nofit="1" x="870" y="5020" font-size="120" font-weight="600" fill="#3d6b4f" text-anchor="middle">키오스크</text><text data-nofit="1" x="1610" y="5020" font-size="120" font-weight="600" fill="#3d6b4f" text-anchor="middle">키오스크</text><text data-nofit="1" x="1240" y="5400" font-size="120" font-weight="600" fill="#3d6b4f" text-anchor="middle">키오스크 ORDER · 2대</text><line x1="8858" y1="2614" x2="8858" y2="3835" stroke="#c0392b" stroke-width="30" stroke-dasharray="110 80"/><rect x="8812" y="2680" width="92" height="540" fill="#fff" stroke="#c0392b" stroke-width="22"/><rect x="8812" y="3220" width="92" height="540" fill="#fff" stroke="#c0392b" stroke-width="22" opacity=".55"/><text data-nofit="1" x="9000" y="3080" font-size="130" font-weight="600" fill="#c0392b">미닫이 1,220</text><text data-nofit="1" x="9000" y="3250" font-size="120" fill="#c0392b" opacity=".85">직원 진입</text>
+</svg></div>
+  <div class="card"><h3>구역별 구성</h3><div class="sub">업체 안 · 칸 폭은 원본 표기</div><div class="bwrap"><div class="btitle">뒤 바 · 벽 쪽 <span>업체 칸 합 5,017 · 실측 구간 7,555</span></div><div class="bgrid" style="grid-template-columns:600fr 900fr 387fr 1250fr 580fr 1250fr 650fr 938fr 1000fr"><div class="bcn">벽</div><div class="bcn">B1</div><div class="bcn">B2</div><div class="bcn">B3</div><div class="bcn">B4</div><div class="bcn">B5</div><div class="bcn">B6</div><div class="bcn">B7</div><div class="bcn">창가</div><div class="bcell wall"><b>벽 · 비움</b><i>앞 바 리프트업 뒤</i></div><div class="bcell wet"><b>싱크</b></div><div class="bcell"><b>하부장</b></div><div class="bcell"><b>냉장고</b><i>커피 · 제조</i></div><div class="bcell"><b>냉동고</b></div><div class="bcell"><b>수납장</b><i>냉동고 자리 → 변경 제안</i></div><div class="bcell wet"><b>싱크 (소)</b></div><div class="bcell"><b>제빙기</b><i>실제 750 · 여유 188</i></div><div class="bcell void"><b>진입 공간</b><i>창문 앞 비움</i></div><div class="bdim">600</div><div class="bdim">900</div><div class="bdim">387</div><div class="bdim">1,250</div><div class="bdim">580</div><div class="bdim">1,250</div><div class="bdim">650</div><div class="bdim">938</div><div class="bdim">1,000</div></div><div class="bfoot"><span>◀ 보조주방 쪽</span><span>제빙기 쪽 ▶</span></div></div><div class="bwrap"><div class="btitle">앞 바 · 고객 쪽 <span>업체 칸 합 5,322 · 실측 구간 7,555</span></div><div class="bgrid" style="grid-template-columns:600fr 1217fr 500fr 560fr 45fr 1250fr 600fr 650fr 1133fr 1000fr"><div class="bcn">출입</div><div class="bcn">A1</div><div class="bcn">A2</div><div class="bcn">A3</div><div class="bcn">A4</div><div class="bcn">A5</div><div class="bcn">A6</div><div class="bcn">A7</div><div class="bcn">A8</div><div class="bcn">창가</div><div class="bcell"><b>리프트업</b><i>상판</i></div><div class="bcell"><b>쇼케이스</b><i>1200</i></div><div class="bcell"><b>ORDER</b><i>POS</i></div><div class="bcell"><b>가루통 2</b></div><div class="bcell"><b>—</b></div><div class="bcell"><b>냉장고</b></div><div class="bcell"><b>제빙기</b><i>언더카운터</i></div><div class="bcell"><b>컵 디스펜서</b></div><div class="bcell"><b>PICK UP · RETURN</b><i>여유 633 통합</i></div><div class="bcell void"><b>진입 공간</b><i>창문 앞 비움</i></div><div class="bdim">600</div><div class="bdim">1,217</div><div class="bdim">500</div><div class="bdim">560</div><div class="bdim">45</div><div class="bdim">1,250</div><div class="bdim">600</div><div class="bdim">650</div><div class="bdim">1,133</div><div class="bdim">1,000</div></div><div class="bfoot"><span>◀ 진입 · 쇼케이스</span><span>픽업 ▶</span></div></div><div class="whytwo"><b>사업단 제안</b><br>뒤 바 B5 1,250은 냉동고 자리로 잡혀 있으나 <b>수납장으로 바꾸는 것</b>을 제안합니다. 냉장 · 냉동이 앞 바 1,250 · 뒤 바 1,250 · 뒤 바 580에 보조주방 4도어 냉동고(1,260)까지 넷이라 과한 반면, 컵과 재고를 둘 자리가 부족합니다.</div></div>
+  <div class="card"><h3>치수 검토</h3><div class="sub">업체 표기 · 사업단 실측 대조</div><table class="cmp">
+  <tr><th>구분</th><th class="n">업체 칸 합</th><th class="n">실측 구간</th><th class="n">차이</th><th>비고</th></tr>
+  <tr><td>앞 바</td><td class="n">5,322</td><td class="n">7,555</td><td class="n bad">2,233</td>
+      <td>출입 600 · 1,000 제외해도 633 부족</td></tr>
+  <tr><td>뒤 바</td><td class="n">5,017</td><td class="n">7,555</td><td class="n bad">2,538</td>
+      <td>우측 제빙기 1,000 더해도 1,538 부족</td></tr>
+  <tr><td>업체 전체 표기</td><td class="n">6,017</td><td class="n">—</td><td class="n">—</td>
+      <td>칸 합과 맞지 않음 (앞 695 · 뒤 1,000)</td></tr>
+  <tr><td>출입 제외 대조</td><td class="n">6,017</td><td class="n">5,955</td><td class="n">62</td>
+      <td>7,555 − 출입 600 − 출입 1,000 = 5,955 · 사실상 일치</td></tr>
+</table><div class="warnbox"><span class="ttl">건축위 확인 필요</span><b>①</b> 앞 바 · 뒤 바 모두 칸 합계와 전체 표기(6,017)가 맞지 않습니다. 업체 자료 안에서 이미 어긋나 있어 원본 수치를 그대로 옮겼습니다<br><b>②</b> 뒤 바 우측 끝 제빙기 폭이 치수에 없습니다 (도면에는 1,000으로 임시 표기)<br><b>③</b> 출입 600 · 1,000을 빼고 대조하면 업체 6,017과 사업단 5,955가 <b>62 차이</b>로 사실상 같습니다. 도면의 붉은 점선은 업체 칸 합이 실측 구간에 못 미치는 부분입니다<br><b>④</b> 바 길이는 아직 확정 전이며, 기물 확정 후 여유를 더 두는 방향으로 조정 필요<br><b>⑤</b> 쇼케이스 시작과 픽업 · 제빙기 끝을 앞뒤 바가 맞도록 정렬했습니다. 리프트업 뒤(600)는 벽으로 비우고, <b>제빙기와 픽업존은 우측 벽까지</b> 배치했습니다. 직원 출입은 통로(1,220) 쪽 우측 벽에 <b>미닫이문</b>으로 냅니다</div></div>
+</div>
+
+  
   <div class="card">
       <h3>보조주방</h3><div class="cardtools"><button class="ct" onclick="cardPrint(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg><span class="tip">인쇄</span></button><button class="ct" onclick="cardSave(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span class="tip">JPG 저장</span></button></div>
       <div class="sub">2,150 × 1,960 · 준비 전용 · 카페 쪽 미닫이 905 · 싱크 없음</div>
