@@ -163,6 +163,14 @@
     padding:8px 14px;cursor:pointer;transition:.15s}
   .tb:hover{color:var(--text);background:#f4f1ea}
   .tb.on{color:var(--accent);background:var(--accentL);border-color:#cfe0d5}
+  .tbgo{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:13.5px;
+    font-weight:700;letter-spacing:-.02em;text-decoration:none;
+    color:#fff;background:#C2652F;border:1px solid #C2652F;border-radius:8px;
+    padding:8px 15px;transition:.15s}
+  .tbgo:hover{filter:brightness(1.08)}
+  .tbgo .ex2{font-size:11px;opacity:.85}
+  @media(max-width:560px){ .tbgo{font-size:12.5px;padding:7px 11px;white-space:nowrap;flex:none} }
+  @media print{ .tbgo{display:none} }
   @media(max-width:560px){ .tb{font-size:12.5px;padding:7px 10px} .trow{padding-left:34px;gap:3px} }
 
   @media(max-width:640px){
@@ -533,8 +541,11 @@
       <button class="tb" data-tab="7">기물 사양 · 수량</button>
       <button class="tb" data-tab="4">메뉴판</button>
     </div>
-    <div class="trow last"><span class="tgl">안건</span>
+    <div class="trow"><span class="tgl">안건</span>
       <button class="tb" data-tab="5">논의 안건</button>
+    </div>
+    <div class="trow last"><span class="tgl">전달</span>
+      <a class="tbgo" href="gsmch-1f-cafe-committee.html">건축위 전달본 바로가기<span class="ex2">↗</span></a>
     </div>
   </div>
 
