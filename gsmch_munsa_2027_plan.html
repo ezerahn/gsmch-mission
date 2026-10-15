@@ -1,0 +1,1139 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>문사국 2027 운영계획</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* 레이아웃: 좌측 고정 목차 + 본문. 화면은 앵커 이동, 인쇄는 A4 한 줄 흐름. 교회 초록을 포인트로 */
+:root{
+  --bg:#fbfcfa; --paper:#ffffff; --fg:#1d2420; --muted:#5d6a62; --line:#dfe5e0;
+  --accent:#07913B; --accent-soft:#e7f4ec; --accent-2:#1f5f8b; --accent-2-soft:#e6eff6;
+  --warn:#c62828; --warn-soft:#fdecec;
+  --display:"Gowun Batang","Nanum Myeongjo",serif;
+  --body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121614; --paper:#191e1b; --fg:#e4ebe6; --muted:#9aa8a0; --line:#2b332e;
+  --accent:#3fc06f; --accent-soft:#1d3226; --accent-2:#6fb0e0; --accent-2-soft:#1a2833;
+  --warn:#ff7b72; --warn-soft:#3a1f1e; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121614; --paper:#191e1b; --fg:#e4ebe6; --muted:#9aa8a0; --line:#2b332e;
+  --accent:#3fc06f; --accent-soft:#1d3226; --accent-2:#6fb0e0; --accent-2-soft:#1a2833;
+  --warn:#ff7b72; --warn-soft:#3a1f1e; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.7;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0}
+.wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:190px minmax(0,1fr);gap:40px;padding-block:40px 80px}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px);align-self:start;font-size:13px;max-height:calc(100vh - 48px);overflow:auto}
+nav.toc b{display:block;font-size:11px;letter-spacing:.12em;color:var(--muted);margin-bottom:8px}
+nav.toc a{display:block;color:var(--muted);text-decoration:none;padding:3px 0 3px 10px;border-left:2px solid var(--line)}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--accent);border-left-color:var(--accent);outline:none}
+main{min-width:0}
+header.top{border-bottom:2px solid var(--fg);padding-bottom:20px}
+.eyebrow{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:700}
+h1{font-family:var(--display);font-size:clamp(28px,4vw,40px);line-height:1.25;margin:6px 0 10px;text-wrap:balance}
+.meta{color:var(--muted);font-size:13px}
+section{padding-top:40px}
+h2{font-family:var(--display);font-size:24px;margin:0 0 6px;text-wrap:balance}
+h2 small{font-family:var(--body);font-size:12px;color:var(--muted);font-weight:400;margin-left:8px}
+h3{font-size:15.5px;margin:24px 0 6px}
+p{margin:8px 0;max-width:70ch}
+main a{color:var(--accent)}
+.lead{font-family:var(--display);font-size:19px;line-height:1.7;border-left:3px solid var(--accent);padding-left:14px;margin:16px 0}
+.note{font-size:12.5px;color:var(--muted)}
+.red,.assume{color:var(--warn);font-weight:700}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0}
+.box{background:var(--paper);border:1px solid var(--line);padding:14px 16px;min-width:0}
+.box h4{margin:0 0 6px;font-size:14.5px;color:var(--accent)}
+.box p,.box ul{font-size:13.5px;margin:4px 0}
+.box ul{padding-left:18px}
+.tag{display:inline-block;font-size:11.5px;padding:1px 8px;border:1px solid var(--accent);color:var(--accent);border-radius:20px;white-space:nowrap}
+.tag.b{border-color:var(--accent-2);color:var(--accent-2)}
+.tbl{overflow-x:auto;margin:10px 0;border:1px solid var(--line);background:var(--paper)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--accent-soft);font-weight:700;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+th:first-child,td:first-child{min-width:10.5em}
+#bench td:first-child{min-width:12em;word-break:keep-all}
+#bench td:first-child b{white-space:nowrap}
+td.n,th.n{text-align:right;white-space:nowrap}
+.phase{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:14px 0;border:1px solid var(--line);background:var(--paper)}
+.phase div{padding:12px 14px;border-right:1px solid var(--line);min-width:0}
+.phase div:last-child{border-right:none;background:var(--accent-soft)}
+.phase b{display:block;font-size:13px;color:var(--accent)}
+.phase span{display:block;font-family:var(--display);font-size:16px;margin:2px 0 4px}
+.phase p{font-size:12.5px;margin:0}
+.ladder{display:grid;gap:8px;margin:12px 0}
+.ladder div{display:grid;grid-template-columns:120px minmax(0,1fr) 150px;gap:12px;align-items:start;background:var(--paper);border:1px solid var(--line);padding:10px 14px}
+.ladder b{color:var(--accent)}
+.ladder em{font-style:normal;font-size:12.5px;color:var(--muted)}
+/* 조직도 */
+.org{display:grid;gap:10px;margin:14px 0}
+.org .row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.node{background:var(--paper);border:1px solid var(--line);padding:8px 12px;text-align:center;font-size:13px;min-width:120px}
+.node b{display:block;font-size:13.5px}
+.node.top{border:2px solid var(--accent);background:var(--accent-soft)}
+.node.front{border-top:3px solid var(--accent)}
+.node.back{border-top:3px solid var(--accent-2)}
+.node.ext{border-style:dashed}
+.org .lbl{text-align:center;font-size:11.5px;letter-spacing:.1em;color:var(--muted)}
+/* 로드맵 */
+.road{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0}
+.road .box h4{font-family:var(--display);font-size:18px}
+.road .box .when{font-size:12px;color:var(--muted)}
+/* 계산표 */
+.calc input{width:7.5em;font:inherit;font-size:13px;padding:3px 6px;border:1px solid var(--line);background:var(--bg);color:var(--fg);text-align:right}
+.calc input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.calc tr.sum td{font-weight:700;background:var(--accent-soft)}
+.calc tr.grand td{font-weight:700;font-size:14.5px;border-top:2px solid var(--fg)}
+.bar{display:flex;height:22px;border:1px solid var(--line);margin:10px 0 4px;overflow:hidden}
+.bar span{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:5px;vertical-align:-1px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);padding:12px 16px;margin:12px 0}
+.warn li{margin:4px 0}
+ul.plain{padding-left:18px;margin:8px 0}
+ul.plain li{margin:3px 0}
+ol.plain{padding-left:20px;margin:8px 0}
+ol.plain li{margin:4px 0}
+.check li{list-style:none;position:relative;padding-left:4px}
+.check li::before{content:"";position:absolute;left:-18px;top:7px;width:10px;height:10px;border:1.5px solid var(--accent)}
+footer{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+@media (max-width:800px){.wrap{grid-template-columns:minmax(0,1fr);gap:0}nav.toc{display:none}.grid2,.grid3,.road{grid-template-columns:minmax(0,1fr)}.phase{grid-template-columns:repeat(2,minmax(0,1fr))}.ladder div{grid-template-columns:minmax(0,1fr)}}
+@media print{section:not(#sum){break-before:page;padding-top:0}.tbl{break-inside:auto !important}tr{break-inside:avoid}table.secwrap{width:100%;table-layout:fixed;border:none;background:none}.tbl{overflow:visible}th{white-space:normal}th:first-child,td:first-child{min-width:8em}#fund td:nth-child(2){min-width:8em}td.n,th.n{white-space:normal}table.secwrap>thead>tr>td,table.secwrap>tbody>tr>td{padding:0;border:none}table.secwrap>thead>tr>td{padding-bottom:10px}.cont{display:none}nav.toc{display:none}.wrap{grid-template-columns:minmax(0,1fr);padding-block:0}h2,h3{break-after:avoid}.tbl,.box,.warn,.ladder div,.phase,.org{break-inside:avoid}body{font-size:11.8px;line-height:1.6}.box{padding:10px 12px}.grid2,.grid3{gap:8px}h3{margin:14px 0 4px}table.secwrap>tbody>tr>td>:last-child{margin-bottom:0}.calc input{border:none;background:none;padding:0;width:auto}}
+
+/* 부록: 벤치마킹 자료집 */
+h2 .kind{font-family:var(--body);font-size:12px;font-weight:700;color:var(--accent-2);border:1px solid var(--accent-2);border-radius:20px;padding:1px 9px;margin-left:8px;vertical-align:4px}
+.def{font-family:var(--display);font-size:17px;color:var(--muted);margin:2px 0 12px}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);background:var(--paper);margin:10px 0}
+.facts div{padding:10px 12px;border-right:1px solid var(--line);min-width:0}
+.facts div:last-child{border-right:none}
+.facts span{display:block;font-size:11.5px;color:var(--muted);letter-spacing:.04em}
+.facts b{display:block;font-size:14px;line-height:1.45}
+.apply{background:var(--accent-soft);border-left:3px solid var(--accent);padding:10px 16px;margin:12px 0}
+.apply ul{margin:4px 0;padding-left:18px}
+.apply>b{display:block;margin-bottom:2px}
+.ask{background:var(--warn-soft);border:1px solid var(--warn);padding:10px 16px;margin:12px 0;font-size:13.5px}
+.ask b{color:var(--warn)}
+.src{font-size:12px;color:var(--muted)}
+.src a{word-break:break-all}
+.map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}
+.map div{background:var(--paper);border:1px solid var(--line);padding:12px 14px;min-width:0}
+.map b{display:block;color:var(--accent);margin-bottom:4px}
+.map p{font-size:13px;margin:0}
+@media (max-width:800px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.facts div:nth-child(2){border-right:none}.facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}.map{grid-template-columns:minmax(0,1fr)}}
+@media print{.apply,.ask,.facts{break-inside:avoid}.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* 부록 구분 */
+.appx-div{margin-top:72px;padding:36px 0 30px;border-top:6px double var(--accent-2);border-bottom:1px solid var(--line);display:grid;gap:6px}
+.appx-div .lab{font-size:12px;letter-spacing:.3em;color:var(--accent-2);font-weight:700}
+.appx-div .big{font-family:var(--display);font-size:clamp(34px,5vw,48px);line-height:1.15;color:var(--accent-2)}
+.appx-div p{margin:4px 0 0;color:var(--muted);max-width:60ch}
+section.appx{padding-left:18px;border-left:3px solid var(--accent-2-soft);margin-left:2px}
+section.appx h2{color:var(--accent-2)}
+section.appx h3{color:var(--accent-2)}
+.code{display:block;font-family:var(--body);font-size:11.5px;letter-spacing:.14em;color:var(--accent-2);font-weight:700;margin-bottom:2px}
+nav.toc b.appx-nav{margin-top:18px;padding-top:12px;border-top:2px solid var(--accent-2);color:var(--accent-2)}
+nav.toc a.ap{border-left-color:var(--accent-2-soft)}
+@media print{.appx-div{break-before:page;break-after:page;min-height:240mm;align-content:center;margin-top:0;border-top:none;border-bottom:none;text-align:left}.appx-div .big{font-size:54px}section.appx{border-left:none;padding-left:0}}
+
+.part{display:block;font-family:var(--body);font-size:11.5px;letter-spacing:.14em;color:var(--accent);font-weight:700;margin-bottom:2px}
+h2 .no{color:var(--accent);margin-right:6px;font-variant-numeric:tabular-nums}
+nav.toc b.pt{margin-top:12px;color:var(--accent)}
+nav.toc a .no{display:inline-block;min-width:1.6em;font-variant-numeric:tabular-nums}
+
+.goal{display:grid;gap:10px;margin:14px 0;background:var(--paper);border:1px solid var(--line);padding:16px}
+.goal .row{display:grid;grid-template-columns:5.5em minmax(0,1fr) 13em;gap:12px;align-items:center}
+.goal .yr{font-weight:700;font-variant-numeric:tabular-nums}
+.goal .track{position:relative;height:26px;background:var(--line)}
+.goal .fill{position:absolute;left:0;top:0;bottom:0;background:var(--accent);display:flex;align-items:center;justify-content:flex-end;padding-right:6px;color:#fff;font-size:12px;font-weight:700;min-width:2.6em}
+.goal .fill.zero{background:none;color:var(--muted);justify-content:flex-start;padding-left:6px}
+.goal .val{font-size:12.5px;font-variant-numeric:tabular-nums}
+.goal .val b{display:block;font-size:13.5px}
+.goal .ppl{display:flex;flex-wrap:wrap;gap:3px;margin-top:2px}
+.goal .ppl i{width:7px;height:7px;border-radius:50%;background:var(--accent);display:block}
+.goal .legend2{font-size:12px;color:var(--muted)}
+@media (max-width:600px){.goal .row{grid-template-columns:4.5em minmax(0,1fr)}.goal .val{grid-column:2}}
+@media print{.keep{break-inside:avoid;break-before:page}}
+
+.mix{display:grid;gap:10px;margin:14px 0;background:var(--paper);border:1px solid var(--line);padding:16px}
+.mrow{display:grid;grid-template-columns:4em minmax(0,1fr);gap:12px;align-items:center}
+.mrow .yr{font-weight:700;font-variant-numeric:tabular-nums}
+.stack{display:flex;height:30px;overflow:hidden;border:1px solid var(--line)}
+.stack span{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden}
+.c1{background:#7d8a83}.c2{background:var(--accent-2)}.c3{background:var(--accent)}.c4{background:#c9862b}
+.mleg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted)}
+.mleg i{display:inline-block;width:11px;height:11px;margin-right:5px;vertical-align:-1px}
+
+.fixedsum{background:var(--paper);border:1px solid var(--line);padding:16px;margin:14px 0;display:grid;gap:10px}
+.fs-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.fs-head span{font-weight:700}
+.fs-head b{font-family:var(--display);font-size:24px;color:var(--accent)}
+.c5{background:#5a9e9a}
+</style></head><body>
+
+<div class="wrap">
+<nav class="toc" aria-label="목차">
+  <b>목차</b>
+  <a href="#sum">한눈에 보기</a>
+  <b class="pt">Ⅰ. 진단</b>
+  <a href="#diag"><span class="no">1</span>현황 진단</a>
+  <a href="#align"><span class="no">2</span>교회 흐름과의 연결</a>
+  <a href="#bench"><span class="no">3</span>벤치마킹</a>
+  <b class="pt">Ⅱ. 방향</b>
+  <a href="#vision"><span class="no">4</span>비전·브랜딩</a>
+  <a href="#promo"><span class="no">5</span>홍보</a>
+  <a href="#give"><span class="no">6</span>후원·기부 구조</a>
+  <b class="pt">Ⅲ. 운영</b>
+  <a href="#budget"><span class="no">7</span>연간 재정 모델</a>
+  <a href="#org"><span class="no">8</span>조직도·인력</a>
+  <a href="#back"><span class="no">9</span>백오피스 체계</a>
+  <b class="pt">Ⅳ. 실행</b>
+  <a href="#road"><span class="no">10</span>2·5·10년 로드맵</a>
+  <a href="#y2027"><span class="no">11</span>2027 연간 일정</a>
+  <a href="#first90"><span class="no">12</span>첫 90일</a>
+  <a href="#decide"><span class="no">13</span>결정·확인 필요</a>
+  <a href="#src">출처</a>
+  <b class="appx-nav">부록 · 벤치마킹</b>
+  <a class="ap" href="#appx-start">자료집 보는 법</a>
+  <a class="ap" href="#febc"><span class="no">A1</span>극동방송</a>
+  <a class="ap" href="#gwangya"><span class="no">A2</span>광야아트미니스트리</a>
+  <a class="ap" href="#wv"><span class="no">A3</span>월드비전 합창단</a>
+  <a class="ap" href="#sarang"><span class="no">A4</span>사랑의교회 캔송키즈</a>
+  <a class="ap" href="#manna"><span class="no">A5</span>만나교회 유스콰이어</a>
+  <a class="ap" href="#patmos"><span class="no">A6</span>팻머스 문화선교회</a>
+  <a class="ap" href="#atri"><span class="no">A7</span>문화행동 아트리 1.1.1</a>
+  <a class="ap" href="#watoto"><span class="no">B1</span>Watoto Children's Choir</a>
+  <a class="ap" href="#acc"><span class="no">B2</span>African Children's Choir</a>
+  <a class="ap" href="#ss"><span class="no">B3</span>Sight &amp; Sound</a>
+  <a class="ap" href="#hillsong"><span class="no">B4</span>Hillsong · Bethel Kids</a>
+  <a class="ap" href="#school"><span class="no">B5</span>교회 부설 예술학교</a>
+  <a class="ap" href="#ag"><span class="no">B6</span>AG Fine Arts Festival</a>
+  <a class="ap" href="#vienna"><span class="no">B7</span>빈 소년 합창단</a>
+</nav>
+
+<main>
+<header class="top">
+  <div class="eyebrow">선한목자교회 교회학교 · 문화사역국</div>
+  <h1>문사국 2027 운영계획</h1>
+  <div class="meta">국장 취임 준비 자료 · 작성 2026년 10월 15일 · 공개 자료와 국내외 사례 조사 기반 초안 · gsmch_munsa_2027_plan_v14<br>
+  <span class="red">빨간 글씨</span>는 가정치이거나 교회 안에서 확인·결정이 필요한 항목입니다. 12월 인수인계에서 자료를 받는 대로 갱신합니다.</div>
+</header>
+
+<!-- 요약 -->
+<section id="sum">
+  <h2>한눈에 보기</h2>
+  <p class="lead">15년 동안 쌓은 '복음을 춤과 노래로 전하는 아이들'의 사역을, 2027년부터 <b>브랜드와 후원 구조를 갖춘 다음세대 문화선교 공동체</b>로 세운다.</p>
+  <div class="grid3">
+    <div class="box"><h4>하나로 보이게</h4><p>세 팀을 한 모(母)브랜드 아래 묶고, 유튜브·인스타·홈페이지 정보를 지금 체제로 정리합니다.</p></div>
+    <div class="box"><h4>함께 세우게</h4><p>교회·가정·후원·기타 4묶음 7갈래로 재원을 나누고, 365 후원선교사를 축으로 한 곳이 흔들려도 사역이 서도록 합니다.</p></div>
+    <div class="box"><h4>이어지게</h4><p>단원 → 졸업생 보조교사 → 문화선교 인재로 이어지는 흐름과 운영 매뉴얼로 사람이 바뀌어도 사역이 이어지게 합니다.</p></div>
+  </div>
+  <h3>2027 핵심과제 5가지</h3>
+  <ol class="plain">
+    <li><b>인수인계와 현황 파악</b>: 당회(2026.12.20) 다음 날부터 새 조직 시작. 2026 결산, 단원 명단·인원, 회비</li>
+    <li><b>2027 미국 문화선교 준비</b>: 예산과 준비 기간이 가장 큰 사역. 출발 전까지 국장이 직접 파악하고 준비 체계를 세움</li>
+    <li><b>조직 세우기</b>: 프론트(3팀) + 백오피스(5개 파트) + 학부모회</li>
+    <li><b>후원 체계 만들기</b>: 재정부와 지정헌금·정기후원(CMS) 항목 협의, 회비·경비와 후원금 분리</li>
+    <li><b>브랜드·채널 정리</b>: 모브랜드 결정, 유튜브 채널 정비, 교회 유튜브와 협업 코너</li>
+    <li><b>광야와의 역할 협약</b>: 질그릇 공동 운영, 광야뮤지컬캠프·아카데미와의 연계 범위를 문서로</li>
+  </ol>
+</section>
+
+<!-- 현황 -->
+<section id="diag">
+  <h2><span class="part">Ⅰ. 진단</span><span class="no">1</span>현황 진단 <small>공개 자료 기준</small></h2>
+  <h3>성장 흐름 4단계</h3>
+  <div class="phase">
+    <div><b>2011–2014</b><span>창단기</span><p>엎드림 창단(2011), 선한어린이합창단 창단(2013), 첫 해외선교(2014 인도네시아)</p></div>
+    <div><b>2015–2019</b><span>선교 확장기</span><p>기다림 합류, '다드림' 합동 선교, 합창단 일본 선교, 단원 64명(2018), 성탄전야제 대형 공연</p></div>
+    <div><b>2020–2022</b><span>전환기</span><p>코로나 온라인 사역, 광야와 뮤지컬팀(질그릇) 출범, '문화사역부'에서 '문화사역국'으로</p></div>
+    <div><b>2023–2026</b><span>재편기</span><p>선한소리합창단 개명, 엎드림·기다림을 다드림으로 통합, 3팀 체제, 일본·필리핀 선교</p></div>
+  </div>
+  <div class="grid2">
+    <div class="box"><h4>강점</h4><ul>
+      <li>15년 이어 온 대표 레퍼토리 무용극 「완전한 복음」</li>
+      <li>해마다 반복되는 운영 주기(모집 → 오디션 → 훈련 → 성탄 공연 → 겨울 선교)</li>
+      <li>해외선교 13회 이상의 현장 경험(인도네시아·일본·필리핀·태국)</li>
+      <li>전문 단체 광야아트미니스트리와 이미 연합 운영</li>
+    </ul></div>
+    <div class="box"><h4>약점</h4><ul>
+      <li>재정·단원 현황이 공개 자료로 정리되어 있지 않음</li>
+      <li>유튜브 업로드가 2024년 이후 크게 줄고, 채널 소개가 옛 4팀 체제로 남아 있음</li>
+      <li>담당 교역자 교체 때마다 문의처·운영 방식이 달라짐</li>
+      <li>극단 질그릇의 단기선교 기록이 없음</li>
+    </ul></div>
+    <div class="box"><h4>기회</h4><ul>
+      <li>담임목사님의 다음세대·문화·글로벌 관심</li>
+      <li>교회 유튜브 구독자 24.4만 명(2024.4, 국내 교회 2위권)</li>
+      <li>광야뮤지컬캠프가 2025년 1월 교회 안으로 이전(업무협약)</li>
+      <li>문화선교주간(2025)·다음세대주일 세대통합예배(2026) 같은 교회 차원의 무대</li>
+      <li>1층 카페·서점 리노베이션(2026.11 오픈 예정): 작은 공연·전시 공간 가능성</li>
+    </ul></div>
+    <div class="box"><h4>위협</h4><ul>
+      <li>해외선교 1인 경비 상승(항공·환율)과 가정 부담</li>
+      <li>학업 부담으로 중·고등학생 이탈</li>
+      <li>아동 안전·초상권·개인정보에 대한 기대 수준 상승</li>
+      <li>한 사람(교역자·리더)에게 의존하는 구조</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 교회 흐름 -->
+<section id="align">
+  <h2><span class="no">2</span>교회 흐름과의 연결</h2>
+  <p>담임목사님의 관심사 세 가지에 문사국이 바로 답할 수 있는 지점을 정리했습니다.</p>
+  <div class="tbl"><table>
+    <tr><th>담임목사님 관심</th><th>문사국이 연결할 수 있는 것</th></tr>
+    <tr><td><b>트렌디함</b></td><td>숏폼 워십·합창 영상, 신곡 일본어·영어 버전(예: 'Shine' 일본어판), 공연 비하인드 브이로그, 단원이 직접 만드는 콘텐츠</td></tr>
+    <tr><td><b>글로벌</b></td><td>해외선교지와 지속 파트너십(인도네시아 팔렘방·일본 오사카), 다국어 공연, 현지 아이들 팀과 상호 방문(필리핀 조이풀 뮤지컬 워십팀 사례)</td></tr>
+    <tr><td><b>다음세대·문화</b></td><td>다음세대주일·성탄전야제·문화선교주간의 고정 무대, 세대통합예배, 갈렙교회 온세대 페스티벌 협업, 말씀함께 앱 챌린지와 연계한 찬양 콘텐츠</td></tr>
+  </table></div>
+</section>
+
+<!-- 벤치마킹 -->
+<section id="bench">
+  <h2><span class="no">3</span>벤치마킹</h2>
+  <p class="note">단체별 상세(운영·재정·후원·홍보·적용·확인 필요·출처)는 이 문서 끝의 <a href="#appx">부록 · 벤치마킹 자료집</a>에 있습니다.</p>
+  <h3>국내</h3>
+  <div class="tbl"><table>
+    <tr><th>사례</th><th>핵심 내용</th><th>문사국에 가져올 것</th></tr>
+    <tr><td><a class="ap" href="#gwangya"><b>광야아트미니스트리</b></a><br><span class="note">질그릇 연합 단체</span></td><td>후원 참여 방식을 여러 층으로 나눠 운영: 월 정기후원자 약 900명, 후원 이사회 33명, 작품별 '300용사', 연 10만 원 '관극가족' 구독 약 300명, 극장 월세를 나누는 교회 파트너 6곳 (2026.4, 비공식 집계)</td><td>후원 참여 방식을 한 가지가 아닌 여러 층으로. 질그릇 공동 운영의 역할·재정 분담 협약</td></tr>
+    <tr><td><a class="ap" href="#febc"><b>극동방송</b></a><br><span class="note">어린이합창단 포함</span></td><td>청취자 후원으로 운영: 월 1만 원 '전파 선교사' 약 20만 명(2026), 지역 운영위원회 약 7,000명(2024). 어린이합창단 전국 약 700명(2025)은 방송사(총괄)·자모회(재정·기도)·교사진(교육) 3자 구조, 해외공연 자비량</td><td>월 1만 원 소액 정기후원, 문사국 후원회, 3자 역할 분담, 입단 서약서에 자비량 원칙</td></tr>
+    <tr><td><a class="ap" href="#wv"><b>월드비전 합창단</b></a><br><span class="note">구 선명회</span></td><td>1960년 창단. 지역반에서 오디션으로 연주반에 오르는 2단 구조. '구호 아동을 위해 노래한다'는 사명 서사. 3년마다 세계어린이합창제 주최</td><td>입문반 → 공연·선교팀 단계 구조, "누구를 위해 노래하는가"를 담은 사명 문장</td></tr>
+    <tr><td><a class="ap" href="#sarang"><b>사랑의교회 캔송키즈</b></a></td><td>초3–6 20명(2025), 주 2회 연습, 월 1회 강단, 앨범 녹음, 부모회 '캔송맘즈'</td><td>부모회 이름과 역할을 공식화</td></tr>
+    <tr><td><a class="ap" href="#manna"><b>만나교회 유스콰이어</b></a><br><span class="note">성남·감리교</span></td><td>초5–중2 40명, 단원 부모가 총무·반주 등 운영진. 단원 어머니가 만든 창작 주제곡(2025)</td><td>같은 지역·교단 비교 대상. 문사국 주제곡 제작</td></tr>
+    <tr><td><a class="ap" href="#patmos"><b>팻머스 문화선교회</b></a></td><td>홀리키즈·홀리틴즈 등 연령별 하위 브랜드, 회원교회 유료 콘텐츠로 운영</td><td>모브랜드 아래 팀별 하위 브랜드 체계</td></tr>
+    <tr><td><a class="ap" href="#atri"><b>문화행동 아트리 1.1.1</b></a><br><span class="note">광야의 전신</span></td><td>2011년 후원자 약 300명이 제작비를 내고, 교회가 공간을 대고, 관람료는 자율 헌금</td><td>초기 단계 후원 모델 그대로 적용 가능</td></tr>
+  </table></div>
+  <h3>해외</h3>
+  <div class="tbl"><table>
+    <tr><th>사례</th><th>핵심 내용</th><th>문사국에 가져올 것</th></tr>
+    <tr><td><a class="ap" href="#watoto"><b>Watoto Children's Choir</b></a><br><span class="note">우간다</span></td><td>1994년부터 120개 넘는 합창단 투어. 약 5개월 훈련 후 투어. 입장 무료, 공연 끝에 아동 후원 연결. 재정의 중심은 합창단이 아니라 아동 1:1 후원(2023 미국 법인 기준)</td><td>공연을 후원으로 이어지는 자리로 설계. 정해진 훈련·투어 주기</td></tr>
+    <tr><td><a class="ap" href="#acc"><b>African Children's Choir</b></a></td><td>수입의 99.9%가 기부(2024). 초청 교회가 예약비·숙식·장소·자원봉사자·헌금을 맡는 표준 조건. 졸업 단원이 인솔자로 돌아옴</td><td>선교지·초청 교회와의 역할 분담표, 졸업생 보조교사 제도</td></tr>
+    <tr><td><a class="ap" href="#ss"><b>Sight &amp; Sound Theatres</b></a><br><span class="note">미국</span></td><td>연 100만 명 관객의 기독 극장. 대작을 여러 해 재공연해 제작비를 회수, 공연 영상을 별도 자산으로 축적</td><td>대표작을 3–5년 다듬어 반복 공연, 모든 공연 영상 기록</td></tr>
+    <tr><td><a class="ap" href="#hillsong"><b>Hillsong Young &amp; Free</b></a><br><b>Bethel Music Kids</b></td><td>교회 안 예배에서 나온 다음세대 브랜드. Young &amp; Free는 창립 리더가 떠난 2023년 이후 사실상 활동 중단</td><td>브랜드·계정은 개인이 아닌 교회 명의, 인수인계 문서화</td></tr>
+    <tr><td><a class="ap" href="#school"><b>교회 부설 예술학교</b></a><br><span class="note">Second Baptist Houston 등</span></td><td>수강료를 받는 아카데미와 선발제 사역팀을 분리. 교회 밖 학생이 50–90%인 교회 음악학교들, 장학금 제도</td><td>장기적으로 '입문 아카데미'를 지역 아이들에게 여는 전도 통로</td></tr>
+    <tr><td><a class="ap" href="#ag"><b>AG Fine Arts Festival</b></a></td><td>청소년 예술 경연. 외부 평가위원이 점수표로 피드백. '발견–계발–파송' 구호</td><td>연 1회 평가 발표회, 1년 흐름을 발견(오디션)–계발(훈련)–파송(선교)으로</td></tr>
+    <tr><td><a class="ap" href="#vienna"><b>빈 소년 합창단</b></a></td><td>예산의 약 2/3를 공연 수입에 의존하다 코로나 후 위기, 2023년 정부 긴급지원</td><td>재원을 한 곳에 몰지 않기</td></tr>
+  </table></div>
+</section>
+
+<!-- 비전·브랜딩 -->
+<section id="vision">
+  <h2><span class="part">Ⅱ. 방향</span><span class="no">4</span>비전·브랜딩</h2>
+  <h3>비전 문장 (안)</h3>
+  <p class="lead">예수님과 하나 된 아이들이, 복음을 노래와 춤과 이야기로 열방에 전한다.</p>
+  <p>지금 홈페이지에 있는 핵심가치(예수님과 하나 됨, 공동체의 하나 됨, 탁월함 = 겸손함, 거룩함)와 '문화선교사' 정체성은 그대로 이어 갑니다. 여기에 문사국 사역을 한 문장으로 보여 주는 <b>표어 성경 구절</b>(예: 광야아트미니스트리의 이사야 40:5)을 하나 정해 단복·현수막·영상·후원 안내에 같이 씁니다. 후보로는 문사국이 이미 쓴 시편 150:6(2025 선한소리 선교), 복음 선포를 담은 로마서 1:16(2015 기다림 선교), 열방에 영광을 전하는 시편 96:3 등이 있습니다. <span class="red">선정 필요</span></p>
+  <h3>브랜드 구조</h3>
+  <div class="org">
+    <div class="row"><div class="node top"><b>모브랜드</b>선한목자교회 문화사역국</div></div>
+    <div class="row">
+      <div class="node front"><b>선한소리합창단</b>노래로</div>
+      <div class="node front"><b>극단 질그릇</b>이야기로</div>
+      <div class="node front"><b>다드림</b>몸으로</div>
+    </div>
+  </div>
+  <p>모브랜드 이름은 아래 세 가지 중에서 정하는 것을 제안합니다. <span class="red">결정 필요</span></p>
+  <div class="grid3">
+    <div class="box"><h4>A. 문화사역국 유지</h4><p>공식 명칭 그대로. 교회 안에서는 가장 분명하지만 외부·해외에는 설명이 필요합니다.</p></div>
+    <div class="box"><h4>B. 우리말 브랜드</h4><p>예: '선한목자 문화선교단'. 핵심가치의 '문화선교사'와 바로 연결됩니다.</p></div>
+    <div class="box"><h4>C. 영문 병기</h4><p>예: 'GSMCH Arts' 또는 'Good Shepherd Kids Arts'. 해외선교·SNS 표기에 유리합니다.</p></div>
+  </div>
+  <h3>아이덴티티 정리</h3>
+  <ul class="plain">
+    <li>색: 교회 초록(#07913B)을 기본으로, 팀별 보조색 1개씩</li>
+    <li>로고: 모브랜드 1개 + 팀 로고 3개를 같은 형식으로. 단복·티셔츠·현수막·영상 썸네일에 같은 규칙 적용</li>
+    <li>사진·영상: 아이 얼굴 노출 기준과 동의서 양식을 브랜드 가이드에 함께 넣기</li>
+  </ul>
+</section>
+
+<!-- 홍보 -->
+<section id="promo">
+  <h2><span class="no">5</span>홍보 <small>프론트</small></h2>
+  <div class="tbl"><table>
+    <tr><th>채널</th><th>할 일</th><th>주기 (제안)</th></tr>
+    <tr><td>문사국 유튜브</td><td>채널 소개를 3팀 체제로 수정, 문의처 갱신, 재생목록을 팀별·연도별로 정리, 공연 실황과 선교 보고 영상</td><td>월 2편</td></tr>
+    <tr><td>숏폼(유튜브 쇼츠·인스타 릴스)</td><td>연습 장면, 워십 하이라이트, 단원 한마디</td><td>주 1편</td></tr>
+    <tr><td>교회 유튜브(24.4만)</td><td>'다음세대 무대' 코너를 교회 미디어팀과 협의해 정기 편성</td><td>월 1회 (협의)</td></tr>
+    <tr><td>홈페이지</td><td>문사국 소개 오기 수정(누가예배당/실), 연간 일정, 후원 안내 페이지 추가</td><td>분기 점검</td></tr>
+    <tr><td>주보·밴드·목장 광고</td><td>모집, 공연, 단기선교 기도제목과 후원 요청</td><td>행사별</td></tr>
+    <tr><td>교회 현장</td><td>1층 카페·로비 작은 공연, 단기선교 사진전, 후원 QR</td><td>분기 1회</td></tr>
+  </table></div>
+  <p>콘텐츠의 축은 <b>'한 해의 이야기'</b>입니다. 오디션 → 훈련 → 성탄 공연 → 선교지 → 보고예배로 이어지는 한 기수의 1년을 연재하면, 같은 영상이 홍보와 후원 보고를 함께 해냅니다. 영상 인력은 2022년 모집했던 영상팀 'VIEWFINDER'를 청년·졸업생 중심으로 다시 세우는 방안을 검토합니다. <span class="red">당시 운영 여부 확인 필요</span></p>
+</section>
+
+<!-- 후원 -->
+<section id="give">
+  <h2><span class="no">6</span>후원·기부 구조</h2>
+  <h3>원칙</h3>
+  <ul class="plain">
+    <li><b>모든 돈은 교회 재정부를 거칩니다.</b> 부서가 따로 통장을 만들지 않고, 지정헌금 항목으로 들어와 교회 명의 기부금영수증을 발급합니다.</li>
+    <li><b>가정이 내는 회비와 성도의 후원금은 계정을 나눕니다.</b> 내 아이의 경비를 헌금으로 내고 영수증을 받으면 대가성 문제가 생길 수 있습니다. <span class="red">재정부·세무 확인 필요</span></li>
+    <li><b>후원자에게는 반드시 보고합니다.</b> 영상 소식, 연 1회 감사 카드, 결산 요약을 보냅니다.</li>
+  </ul>
+
+  <h3>재원 구조: 4묶음 7갈래</h3>
+  <div class="tbl"><table>
+    <tr><th>묶음</th><th>재원</th><th>성격</th><th>산식</th><th class="n">연 금액</th></tr>
+    <tr><td rowspan="2"><b>교회</b></td><td>교회 예산</td><td><span class="tag">고정</span></td><td>교육위원회 배정</td><td class="n">5,000만 원 <span class="red">가정</span></td></tr>
+    <tr><td>교회 단체 지원</td><td><span class="tag">고정</span></td><td>총여선교회 사업단 500만 + 선교회 500만</td><td class="n">1,000만 원 <span class="red">협의 필요</span></td></tr>
+    <tr><td rowspan="2"><b>가정</b></td><td>고정 회비</td><td><span class="tag">고정</span></td><td>단원 60명 × 월 3만 원 × 10개월(3–12월)</td><td class="n">1,800만 원</td></tr>
+    <tr><td>일시 회비 (자비량)</td><td><span class="tag b">사역별</span></td><td>그해 단기선교 항공료 수준, 해마다 결정</td><td class="n">그해 결정</td></tr>
+    <tr><td rowspan="2"><b>후원</b></td><td>정기후원 · 365 후원선교사</td><td><span class="tag">고정</span></td><td>365명 × 1구좌 월 1만 원 × 12개월</td><td class="n">4,380만 원</td></tr>
+    <tr><td>단기후원 · 함께 보내는 300</td><td><span class="tag b">사역별</span></td><td>단기선교 즈음 기도후원 요청과 함께 들어오는 자율 후원</td><td class="n">예산 미반영</td></tr>
+    <tr><td><b>기타</b></td><td>공연·현장 헌금 등</td><td><span class="tag b">행사별</span></td><td>공연·파송·보고예배 헌금, 외부 초청 사례</td><td class="n">예산 미반영</td></tr>
+  </table></div>
+
+  <div class="fixedsum">
+    <div class="fs-head"><span>고정 재원 합계</span><b>1억 2,180만 원</b></div>
+    <div class="stack"><span class="c1" style="width:41%">교회 예산 41%</span><span class="c5" style="width:8%">8%</span><span class="c3" style="width:36%">정기후원 36%</span><span class="c2" style="width:15%">회비 15%</span></div>
+    <div class="mleg"><span><i class="c1"></i>교회 예산 5,000만</span><span><i class="c5"></i>교회 단체 지원 1,000만</span><span><i class="c3"></i>365 후원선교사 4,380만</span><span><i class="c2"></i>고정 회비 1,800만</span></div>
+    <p class="note">매년 예측할 수 있는 돈만 모은 금액입니다. 일시 회비, 단기후원, 공연·현장 헌금은 그해 단기선교와 행사에 따라 이 위에 더해집니다. 교회 예산은 금액이 정해지면 바꿔 넣습니다.</p>
+  </div>
+
+  <h3>365 후원선교사 · 정기후원</h3>
+  <div class="grid2">
+    <div class="box"><h4>뜻</h4><ul>
+      <li>표어: 매일 먹이시고 입히시는 하나님 (마태복음 6:11, 26–30)</li>
+      <li>365명이 1년 중 하루씩 맡아 그날 문사국을 위해 기도</li>
+      <li>단원은 문화선교사, 후원자는 후원선교사</li>
+    </ul></div>
+    <div class="box"><h4>방식</h4><ul>
+      <li>1구좌 월 1만 원, 여러 구좌 가능 (CMS 지정헌금)</li>
+      <li>목표 인원은 처음부터 365명, 늘어나는 것은 구좌</li>
+      <li>약정: 매년 5월 다음세대주일 → 문화선교주간, 교회 전체 프로모션 연 1회</li>
+      <li>보고: 분기 영상 소식, 연말 감사 카드</li>
+    </ul></div>
+  </div>
+
+  <h3>함께 보내는 300 · 단기후원</h3>
+  <p>정기후원과 달리 <b>금액을 정한 모금이 아니라, 그해 단기선교 기간에 함께 기도할 기도후원자 300명을 모집</b>하는 것입니다. 재정 후원은 이를 보고 마음이 움직인 분이 일시로 해 주시면 감사히 받습니다. 아이들이 후원금을 위한 도구처럼 보이지 않게 하는 것이 원칙입니다.</p>
+  <div class="grid2">
+    <div class="box"><h4>운영</h4><ul>
+      <li>모집: 출발 전 파송 공연 등에서 QR로 신청</li>
+      <li>선교 중: 매일 아이들 소식과 기도제목을 받고 함께 기도</li>
+      <li>귀국 후: 감사기도 소식, 보고예배 초대, 감사 카드로 마무리</li>
+      <li>마음이 이어지는 분은 다음 5월 365 후원선교사로 안내</li>
+    </ul></div>
+    <div class="box"><h4>필요한 시스템과 원칙</h4><ul>
+      <li>기도후원자 신청: 이름, 연락처, 기도 약속 (QR 한 장)</li>
+      <li>자율 헌금 창구: 기도 신청과 따로, 재정부 지정헌금 계좌. 특정 아이가 아닌 사역 전체에 지정</li>
+      <li>아이들은 후원을 부탁하거나 돈을 받지 않음. 안내와 관리는 교사·재정부</li>
+      <li>예산에는 넣지 않고, 들어오면 장학·다음 선교 여유분</li>
+    </ul></div>
+  </div>
+
+  <h3>교회 단체 지원</h3>
+  <p>총여선교회 사업단과 선교회 두 곳에 연간 고정 후원으로 각 500만 원, 합계 1,000만 원을 요청하는 안입니다. 각 단체가 정한 절차로 결정하는 사항이라 <span class="red">협의 필요</span>로 둡니다. 큰 해외 선교가 있는 해에는 사역 예산에서 추가 지원을 따로 요청할 수 있습니다. 참고로 사업단은 2026년 사랑부 캠프에 500만 원을 지원한 사례가 있고, 2023–2026 회계보고서에 문사국 지원 기록은 없습니다.</p>
+
+  <h3>연간 일정</h3>
+  <ul class="plain">
+    <li><b>5월</b>: 다음세대주일 → 문화선교주간, 365 후원선교사 약정 (교회 전체 프로모션)</li>
+    <li><b>단기선교 즈음</b>: 파송 공연과 함께 보내는 300 기도후원자 모집, 선교 기간 기도 소식</li>
+    <li><b>단기선교 후</b>: 보고예배, 기도후원자 감사</li>
+    <li><b>12월</b>: 성탄전야제 공연 헌금, 365 후원선교사 연말 감사</li>
+  </ul>
+</section>
+
+<!-- 예산 -->
+<section id="budget">
+  <h2><span class="part">Ⅲ. 운영</span><span class="no">7</span>연간 재정 모델 <small>숫자를 바꿔 넣으면 자동 계산</small></h2>
+  <div class="warn">기본값은 공개 자료가 없어 넣은 <b>가정치</b>입니다. 단원 60명(2018년 64명, 2023년 약 52명 참고), 교사·스태프 15명, 교회 예산 5,000만 원, 교회 단체 지원 1,000만 원을 가정했습니다. 인수인계 자료를 받으면 바꿔 넣습니다.<br>
+  <b>수입 계산</b>은 단원 60명, <b>비용 계산</b>은 단원 60명 + 교사·스태프 15명 = 참여 75명입니다. 해외 단기선교는 해마다 규모가 달라 평년 운영과 따로 <b>그해 단기선교 사역 예산</b>으로 계산합니다.</div>
+
+  <h3>① 평년 운영 비용</h3>
+  <div class="tbl calc"><table id="cost">
+    <thead><tr><th>지출 항목</th><th class="n">단가(원)</th><th class="n">수량</th><th class="n">횟수</th><th class="n">금액(원)</th></tr></thead>
+    <tbody>
+      <tr class="sum"><td colspan="5">정기 운영</td></tr>
+      <tr><td>외부 강사·지도비 (팀별 월)</td><td class="n"><input id="c1u" type="number" value="600000"></td><td class="n"><input id="c1q" type="number" value="3"></td><td class="n"><input id="c1t" type="number" value="10"></td><td class="n" id="c1"></td></tr>
+      <tr><td>점심·간식 (참여 1인 1회)</td><td class="n"><input id="c2u" type="number" value="4000"></td><td class="n"><input id="c2q" type="number" value="75"></td><td class="n"><input id="c2t" type="number" value="40"></td><td class="n" id="c2"></td></tr>
+      <tr><td>교재·악보·음원 사용료</td><td class="n"><input id="c3u" type="number" value="2000000"></td><td class="n"><input id="c3q" type="number" value="1"></td><td class="n"><input id="c3t" type="number" value="1"></td><td class="n" id="c3"></td></tr>
+      <tr><td>의상·소품 유지 (팀별)</td><td class="n"><input id="c4u" type="number" value="1000000"></td><td class="n"><input id="c4q" type="number" value="3"></td><td class="n"><input id="c4t" type="number" value="1"></td><td class="n" id="c4"></td></tr>
+      <tr><td>수련회 (참여 1인)</td><td class="n"><input id="c5u" type="number" value="50000"></td><td class="n"><input id="c5q" type="number" value="75"></td><td class="n"><input id="c5t" type="number" value="1"></td><td class="n" id="c5"></td></tr>
+      <tr class="sum"><td colspan="5">공연</td></tr>
+      <tr><td>성탄전야제 정기공연 제작</td><td class="n"><input id="c6u" type="number" value="8000000"></td><td class="n"><input id="c6q" type="number" value="1"></td><td class="n"><input id="c6t" type="number" value="1"></td><td class="n" id="c6"></td></tr>
+      <tr><td>상반기 마무리 공연예배</td><td class="n"><input id="c7u" type="number" value="2000000"></td><td class="n"><input id="c7q" type="number" value="1"></td><td class="n"><input id="c7t" type="number" value="1"></td><td class="n" id="c7"></td></tr>
+      <tr class="sum"><td colspan="5">국내 사역</td></tr>
+      <tr><td>국내 단기선교·초청 공연 (1인)</td><td class="n"><input id="c8u" type="number" value="200000"></td><td class="n"><input id="c8q" type="number" value="30"></td><td class="n"><input id="c8t" type="number" value="1"></td><td class="n" id="c8"></td></tr>
+      <tr class="sum"><td colspan="5">콘텐츠·홍보·후원 관리</td></tr>
+      <tr><td>영상 장비·외주</td><td class="n"><input id="c9u" type="number" value="5000000"></td><td class="n"><input id="c9q" type="number" value="1"></td><td class="n"><input id="c9t" type="number" value="1"></td><td class="n" id="c9"></td></tr>
+      <tr><td>디자인·인쇄 (후원 안내물 포함)</td><td class="n"><input id="c10u" type="number" value="2000000"></td><td class="n"><input id="c10q" type="number" value="1"></td><td class="n"><input id="c10t" type="number" value="1"></td><td class="n" id="c10"></td></tr>
+      <tr><td>예비비 (위 합계의 %)</td><td class="n"><input id="c11p" type="number" value="5"></td><td class="n">%</td><td class="n"></td><td class="n" id="c11"></td></tr>
+      <tr class="grand"><td colspan="4">평년 운영 비용 합계</td><td class="n" id="ctot"></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>② 고정 재원</h3>
+  <div class="tbl calc"><table id="fund">
+    <thead><tr><th>묶음</th><th>재원</th><th>입력</th><th class="n">금액(원)</th><th class="n">비율</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="2">교회</td><td>교회 예산</td><td class="n"><input id="f1a" type="number" value="50000000"> 원</td><td class="n" id="f1"></td><td class="n" id="f1r"></td></tr>
+      <tr><td>교회 단체 지원</td><td class="n">사업단 <input id="f2a" type="number" value="5000000"> · 선교회 <input id="f2b" type="number" value="5000000"></td><td class="n" id="f2"></td><td class="n" id="f2r"></td></tr>
+      <tr><td>가정</td><td>고정 회비</td><td class="n"><input id="f3a" type="number" value="60"> 명 × <input id="f3b" type="number" value="30000"> 원 × <input id="f3c" type="number" value="10"> 개월</td><td class="n" id="f3"></td><td class="n" id="f3r"></td></tr>
+      <tr><td>후원</td><td>365 후원선교사</td><td class="n"><input id="f4a" type="number" value="365"> 구좌 × <input id="f4b" type="number" value="10000"> 원 × <input id="f4c" type="number" value="12"> 개월</td><td class="n" id="f4"></td><td class="n" id="f4r"></td></tr>
+      <tr class="grand"><td colspan="3">고정 재원 합계</td><td class="n" id="ftot"></td><td class="n">100%</td></tr>
+      <tr><td colspan="3">평년 운영 비용과의 차이 (고정 재원 − ①)</td><td class="n" id="fdiff"></td><td class="n"></td></tr>
+    </tbody>
+  </table></div>
+  <div class="bar" id="fbar" aria-label="고정 재원 구성"></div>
+  <div class="legend" id="flegend"></div>
+
+  <h3>③ 그해 단기선교 사역 예산 (별도)</h3>
+  <div class="tbl calc"><table id="mission">
+    <thead><tr><th>항목</th><th>입력</th><th class="n">금액(원)</th></tr></thead>
+    <tbody>
+      <tr><td>사역 예산 (1인 경비 × 인원)</td><td class="n"><input id="m1a" type="number" value="3500000"> 원 × <input id="m1b" type="number" value="30"> 명 <span class="red">2027 미국 가정</span></td><td class="n" id="m1"></td></tr>
+      <tr class="sum"><td colspan="3">재원</td></tr>
+      <tr><td>일시 회비 (자비량) · 그해 항공료 수준</td><td class="n"><input id="m2a" type="number" value="1800000"> 원 × 인원 <span class="red">해마다 결정</span></td><td class="n" id="m2"></td></tr>
+      <tr><td>평년 운영 여유분 투입 (②의 차이)</td><td class="n">자동</td><td class="n" id="m3"></td></tr>
+      <tr><td>교회 단체 추가 지원 (그해 요청)</td><td class="n"><input id="m4a" type="number" value="0"> 원</td><td class="n" id="m4"></td></tr>
+      <tr><td>단기후원 · 함께 보내는 300 (자율, 예산 미반영)</td><td class="n">0으로 계산</td><td class="n">0</td></tr>
+      <tr class="grand"><td colspan="2">부족(−) / 남는 금액(+)</td><td class="n" id="mgap"></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">일시 회비는 그해 단기선교 항공료 정도를 가정이 부담하는 것으로 잡았고, 선교지와 인원에 따라 해마다 정합니다. 부족분이 생기면 교회 단체 추가 지원 요청이나 사역 규모 조정으로 맞추고, 단기후원으로 들어오는 자율 헌금은 여유분으로 둡니다.</p>
+</section>
+
+<!-- 조직 -->
+<section id="org">
+  <h2><span class="no">8</span>조직도·인력 배치 <small>제안</small></h2>
+  <div class="org">
+    <div class="row"><div class="node ext"><b>교회학교 담당 목사</b>· 교육위원회</div></div>
+    <div class="row"><div class="node top"><b>국장</b>총괄·대외 대표</div><div class="node top"><b>담당 교역자</b>예배·영성·지도 총괄</div></div>
+    <div class="row"><div class="node"><b>부국장(총무)</b>국장 보좌·실무 조정</div></div>
+    <div class="lbl">프론트 · 사역팀</div>
+    <div class="row">
+      <div class="node front"><b>선한소리합창단</b>팀장 · 지휘 · 반주 · 담임교사</div>
+      <div class="node front"><b>극단 질그릇</b>팀장 · 광야 연출진 · 담임교사</div>
+      <div class="node front"><b>다드림</b>팀장 · 안무 · 담임교사</div>
+    </div>
+    <div class="lbl">백오피스 · 지원 파트</div>
+    <div class="row">
+      <div class="node back"><b>운영·행정</b>단원 명부·출결·공지</div>
+      <div class="node back"><b>회계</b>지정헌금·경비 정산</div>
+      <div class="node back"><b>후원·대외협력</b>후원자 관리·파트너</div>
+      <div class="node back"><b>미디어·홍보</b>영상·SNS·디자인</div>
+      <div class="node back"><b>선교·행사</b>단기선교·공연 운영·안전</div>
+    </div>
+    <div class="row">
+      <div class="node ext"><b>학부모회</b>팀별 대표</div>
+      <div class="node ext"><b>기도후원팀</b></div>
+      <div class="node ext"><b>광야아트미니스트리</b>협력 단체</div>
+      <div class="node ext"><b>졸업생(OB) 보조교사</b></div>
+    </div>
+  </div>
+  <div class="tbl"><table>
+    <tr><th>자리</th><th>인원 (제안)</th><th>주요 일</th><th>뽑는 곳</th></tr>
+    <tr><td>국장</td><td class="n">1</td><td>비전·예산·대외 협의, 연간 계획 결재</td><td>임명</td></tr>
+    <tr><td>부국장(총무)</td><td class="n">1</td><td>회의 운영, 파트 간 조정, 인수인계 문서 관리</td><td>교사 중</td></tr>
+    <tr><td>팀장 · 담임교사</td><td class="n">3 · 팀별 3–5</td><td>팀 운영, 분반 나눔, 학부모 소통</td><td>교사 모집</td></tr>
+    <tr><td>백오피스 파트장</td><td class="n">5</td><td>파트별 업무, 월 1회 보고</td><td>교사·학부모·청년</td></tr>
+    <tr><td>학부모회 대표</td><td class="n">팀별 1–2</td><td>간식·의상·행사 지원, 회비 안내, 기도</td><td>학부모 추천</td></tr>
+    <tr><td>OB 보조교사</td><td class="n">3–6</td><td>연습 보조, 선교 인솔 보조, 신입 멘토</td><td>졸업 단원</td></tr>
+  </table></div>
+  <p class="note">팀별 지휘·안무·연출 같은 전문 인력이 사례비를 받는 외부 강사인지 봉사자인지에 따라 예산이 크게 달라집니다. <span class="red">현재 계약 형태 확인 필요</span></p>
+</section>
+
+<!-- 백오피스 -->
+<section id="back">
+  <h2><span class="no">9</span>백오피스 체계</h2>
+  <div class="grid2">
+    <div class="box"><h4>단원·운영 관리</h4><ul>
+      <li>단원 명부(기수·팀·연락처·보호자·동의서 여부)를 한 파일로</li>
+      <li>출결과 분반 나눔 기록</li>
+      <li>연간 일정표를 학기 시작 전에 확정·공유</li>
+    </ul></div>
+    <div class="box"><h4>재정 관리</h4><ul>
+      <li>예산 대비 집행표를 월 1회 정리</li>
+      <li>회비·선교경비·후원금 계정 분리 장부</li>
+      <li>단기선교는 선교별 정산서와 보고서를 따로</li>
+    </ul></div>
+    <div class="box"><h4>안전·보호</h4><ul>
+      <li>아동보호 지침: 교사 1:1 단독 접촉 금지, 연락 채널 기준</li>
+      <li>해외선교 인솔 비율 기준(예: 성인 1명당 아동 3–4명), 여행자보험, 보호자 동의서, 비상연락망</li>
+      <li>초상권·영상 공개 동의서를 입단 서류에 포함</li>
+    </ul></div>
+    <div class="box"><h4>지식 관리</h4><ul>
+      <li>운영 매뉴얼 v1: 오디션, 연간 주기, 공연 준비, 단기선교 준비 체크리스트</li>
+      <li>유튜브·SNS 계정은 교회 공용 계정으로 소유, 담당자 교체 때 인계</li>
+      <li>공연 대본·음원·안무 영상을 레퍼토리 보관함에 정리</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 로드맵 -->
+<section id="road">
+  <h2><span class="part">Ⅳ. 실행</span><span class="no">10</span>2·5·10년 로드맵 <small>제안</small></h2>
+  <div class="road">
+    <div class="box">
+      <span class="tag">2년</span> <span class="when">2027–2028</span>
+      <h4>기초 세우기</h4>
+      <ul>
+        <li>조직·백오피스 5개 파트와 학부모회 출범</li>
+        <li>모브랜드 확정, 채널 정비, 숏폼 정례화</li>
+        <li>재원 4묶음 7갈래 정착, 365 후원선교사 제도 신설과 매년 5월 약정</li>
+        <li>광야와 역할·재정 분담 협약</li>
+        <li>OB 보조교사 제도 시작</li>
+        <li>운영 매뉴얼 v1, 아동보호·안전 기준</li>
+      </ul>
+    </div>
+    <div class="box">
+      <span class="tag">5년</span> <span class="when">~2031</span>
+      <h4>넓히기</h4>
+      <ul>
+        <li>입문반(초3–4) 신설, 교회 밖 아이도 참여하는 아카데미와 장학금</li>
+        <li>대표 레퍼토리 2편(「완전한 복음」 + 질그릇 대표작)을 국내 교회 초청 공연으로</li>
+        <li>해외 선교지 2곳과 해마다 이어지는 파트너십</li>
+        <li>365 후원선교사 365명 유지와 구좌 확대, 교회 예산 비중 축소</li>
+        <li>창작 주제곡·음원 발표</li>
+      </ul>
+    </div>
+    <div class="box">
+      <span class="tag">10년</span> <span class="when">~2036</span>
+      <h4>뿌리내리기</h4>
+      <ul>
+        <li>단원 → OB 교사 → 광야캠프·아카데미 → 문화선교사로 이어지는 인재 흐름</li>
+        <li>선교지 현지 아이들 팀 양성과 상호 방문</li>
+        <li>교회가 주최하는 어린이 문화선교 페스티벌</li>
+        <li>문사국 출신 사역자 파송</li>
+      </ul>
+    </div>
+  </div>
+  <div class="keep"><h3>재원 로드맵</h3>
+  <p>교회 예산은 매년 고정 금액으로 두고, 365 후원선교사와 교회 단체 지원이 자리 잡을수록 전체에서 교회 예산이 차지하는 비중이 자연스럽게 내려가는 구조입니다. 교회에 예산 증액을 요청하지 않아도 사역이 커질 수 있습니다.</p>
+  <div class="tbl"><table>
+    <tr><th>시점</th><th>재원 목표</th></tr>
+    <tr><td>2027</td><td>4묶음 7갈래 구조 세팅 · 5월 첫 365 후원선교사 약정 · 교회 단체 지원 협의 · 그해 단기선교에 함께 보내는 300 운영</td></tr>
+    <tr><td>2028</td><td>365 후원선교사 365명 달성 <span class="red">달성 시점 결정 필요</span> · 고정 재원으로 평년 운영 안정</td></tr>
+    <tr><td>2031</td><td>365명 유지와 구좌 확대 · 평년 운영 여유분을 단기선교·장학 적립으로</td></tr>
+  </table></div>
+  <p class="note">금액 기준: 고정 재원 합계 1억 2,180만 원 = 교회 예산 5,000만(가정) + 교회 단체 지원 1,000만 + 고정 회비 1,800만 + 365 후원선교사 4,380만. 자세한 계산은 「7 연간 재정 모델」에 있습니다.</p>
+</div>
+  <h3>점검 지표</h3>
+  <div class="tbl"><table>
+    <tr><th>지표</th><th class="n">2026 현재</th><th class="n">2028</th><th class="n">2031</th></tr>
+    <tr><td>단원 수</td><td class="n red">확인 필요</td><td class="n">+10%</td><td class="n">+30% (입문반 포함)</td></tr>
+    <tr><td>365 후원선교사</td><td class="n">제도 없음</td><td class="n">365명 (목표)</td><td class="n">365명 유지, 구좌 확대</td></tr>
+    <tr><td>교회 예산 비중</td><td class="n red">확인 필요</td><td class="n">설정 후 관리</td><td class="n">2027 대비 축소</td></tr>
+    <tr><td>유튜브 업로드</td><td class="n">최근 1년 약 10편</td><td class="n">연 24편 + 숏폼</td><td class="n">유지</td></tr>
+    <tr><td>OB 보조교사</td><td class="n">0</td><td class="n">3명</td><td class="n">6명 이상</td></tr>
+  </table></div>
+</section>
+
+<!-- 2027 일정 -->
+<section id="y2027">
+  <h2><span class="no">11</span>2027 연간 일정 <small>지금까지의 운영 주기 기준</small></h2>
+  <div class="tbl"><table>
+    <tr><th>시기</th><th>사역 (프론트)</th><th>준비 (백오피스)</th></tr>
+    <tr><td class="n">1–2월</td><td>신입 오디션, 새 조직 정착</td><td>인수인계 마무리, 예산 확정, 미국 문화선교 준비팀 구성, (제안) 교사·학부모 비전 모임 준비</td></tr>
+    <tr><td class="n">3월</td><td>새 기수 시작, (제안) 문사국 수련회·발대식</td><td>단원 명부·동의서, 학부모 설명회, 회비 안내</td></tr>
+    <tr><td class="n">4월</td><td>부활절·성금요일 무대</td><td>정기후원 안내물 제작</td></tr>
+    <tr><td class="n">5월</td><td>다음세대주일, 문화선교주간</td><td>365 후원선교사 약정 (교회 전체 프로모션)</td></tr>
+    <tr><td class="n">6–7월</td><td>상반기 마무리 공연예배</td><td>하반기 선교지 확정, 상반기 결산</td></tr>
+    <tr><td class="n">8–9월</td><td>국내 사역·외부 초청 공연</td><td>성탄 공연 기획, 선교 사전 모임</td></tr>
+    <tr><td class="n">10–11월</td><td>성탄 공연 연습</td><td>2028 예산 신청, 신입 모집 홍보물</td></tr>
+    <tr><td class="n">12월</td><td>성탄전야제 정기공연, 종강예배</td><td>신입 모집 시작, 후원자 감사, 연간 보고서</td></tr>
+  </table></div>
+  <p class="note">2027 미국 문화선교의 시기·팀·인원이 정해지면 이 표에 출발·귀국 일정과 준비 마감일을 넣습니다. <span class="red">시기 확인 필요</span></p>
+</section>
+
+<!-- 첫 90일 -->
+<section id="first90">
+  <h2><span class="no">12</span>국장 첫 90일 <small>2026년 12월 21일 – 2027년 3월 20일</small></h2>
+  <p>당회(2026년 12월 20일) 다음 날부터 새 조직이 시작되므로, 그날을 1일로 잡았습니다. 그 전 12월은 정식 임기 전이라 '준비 기간'으로 따로 둡니다.</p>
+  <div class="tbl"><table>
+    <tr><th>기간</th><th>목표</th><th>할 일</th></tr>
+    <tr><td style="white-space:nowrap">준비 기간<br><span class="note">~12/20, 비공식</span></td><td style="white-space:nowrap"><b>들을 준비</b></td><td>인수인계 때 받을 자료 목록 정리 · 전임 국장·담당 교역자와 인사 · 미국 문화선교 기본 정보(시기·팀·인원·선교지) 듣기</td></tr>
+    <tr><td style="white-space:nowrap">1–10일<br><span class="note">12/21–12/31</span></td><td style="white-space:nowrap"><b>인수인계</b></td><td>단원·교사 명단, 회비, 2026 결산, 진행 중 계약, 계정(유튜브 등) 인계 · 성탄 사역 현장 참관 · 2027 신입 모집 공지 일정 확인</td></tr>
+    <tr><td style="white-space:nowrap">11–40일<br><span class="note">1월</span></td><td style="white-space:nowrap"><b>현황 파악</b></td><td>교회학교 담당 목사와 2027 예산 확정 · 재정부와 지정헌금·정기후원 항목 협의 · 광야와 질그릇 운영 미팅 · 미국 문화선교 준비 현황 전체 점검</td></tr>
+    <tr><td style="white-space:nowrap">41–70일<br><span class="note">2월</span></td><td style="white-space:nowrap"><b>조직 세우기</b></td><td>신입 오디션 · 백오피스 파트장·학부모회 대표 세우기 · 미국 문화선교 준비팀 구성과 일정표 · 유튜브 채널 정비 · (제안) 교사·학부모 비전 모임</td></tr>
+    <tr><td style="white-space:nowrap">71–90일<br><span class="note">3/1–3/20</span></td><td style="white-space:nowrap"><b>새 기수 출발</b></td><td>새 기수 시작 · (제안) 문사국 수련회·발대식 · 미국 문화선교 모금 계획 발표</td></tr>
+  </table></div>
+  <h3>준비가 필요한 모임 <span class="note">(제안, 확정 아님)</span></h3>
+  <p>1–2월에 조직·비전·방향이 세워지면, 새 기수가 시작되기 전후로 함께 나누는 자리가 있으면 좋겠습니다. 일정과 형식은 담당 교역자·교회학교와 협의해 정하며, 아래는 준비해 둘 내용입니다.</p>
+  <div class="grid2">
+    <div class="box"><h4>교사·학부모 비전 모임 <span class="note">2월 중순 무렵</span></h4><ul>
+      <li>2027 비전·브랜드·조직, 미국 문화선교 계획 공유</li>
+      <li>백오피스 파트장·학부모회 대표 세우기</li>
+      <li>준비: 발표 자료, 역할 신청서, 질의응답</li>
+    </ul></div>
+    <div class="box"><h4>문사국 수련회·발대식 <span class="note">오디션 이후, 3월 초 무렵</span></h4><ul>
+      <li>새 단원·교사·학부모가 함께하는 1박 2일 또는 하루 일정</li>
+      <li>발대식: 새 기수 임명, 표어 성경 구절 선포, 미국 문화선교 비전 선포</li>
+      <li>준비: 장소·강사, 순서지, 단복·명찰, 사진·영상 기록</li>
+    </ul></div>
+  </div>
+  <p class="note">기록상 단원 대상 '문화사역부 영성수련회'가 2017–2019년 매년 3월 초(1박 2일)에 있었고, 2019년 이후 기록은 없습니다. 교사·학부모가 함께한 비전 모임이나 발대식 기록은 찾지 못했습니다. <span class="red">최근 운영 여부 확인 필요</span></p>
+  <h3>2027 미국 문화선교 준비 점검표</h3>
+  <p>예산이 크고 준비 기간이 길어 첫해 가장 큰 과제입니다. 인수인계 때 아래 항목이 어디까지 진행됐는지부터 확인합니다.</p>
+  <div class="grid2">
+    <div class="box"><h4>기본 정보</h4><ul>
+      <li>시기·기간, 참여 팀과 인원(단원·교사·스태프)</li>
+      <li>방문 도시·교회, 현지 연결 담당자</li>
+      <li>공연 프로그램과 언어(영어 자막·대사)</li>
+    </ul></div>
+    <div class="box"><h4>예산·모금</h4><ul>
+      <li>1인 경비와 총예산, 부모 부담 비율</li>
+      <li>교회 예산·후원·초청 교회 부담 나누기</li>
+      <li>출발 전 모금 일정과 후원자 보고 방식</li>
+    </ul></div>
+    <div class="box"><h4>서류·안전</h4><ul>
+      <li>여권과 입국 방식(ESTA 또는 비자) 확인, 공연 성격에 맞는지 점검</li>
+      <li>미성년자 보호자 동의서(영문), 여행자보험, 비상연락망</li>
+      <li>인솔 비율, 숙소 배정 원칙, 건강 정보</li>
+    </ul></div>
+    <div class="box"><h4>현지 협력</h4><ul>
+      <li>초청 교회와 숙식·장소·홈스테이·헌금 분담 조건 (부록 B2 참고)</li>
+      <li>교회와 연결된 미주 교회 네트워크 활용 검토</li>
+      <li>장비·의상 운송, 현지 음향·무대 조건</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 결정 -->
+<section id="decide">
+  <h2><span class="no">13</span>결정·확인 필요</h2>
+  <div class="warn"><ul class="plain">
+    <li><b>확인</b>: 2026 결산과 2027 예산 배정 규모, 현재 단원 수와 회비</li>
+    <li><b>확인</b>: 지도·안무·연출 인력의 계약 형태(사례비 여부)</li>
+    <li><b>확인</b>: 광야와 질그릇 공동 운영의 현재 재정·역할 분담</li>
+    <li><b>확인</b>: 부모 부담 선교 경비의 기부금영수증 처리 가능 여부(재정부·세무)</li>
+    <li><b>확인</b>: 2027 미국 문화선교의 시기·팀·인원·도시·예산과 현재 준비 단계</li>
+    <li><b>결정</b>: 모브랜드 이름(A/B/C)과 표어 성경 구절(4 비전·브랜딩 참고)</li>
+    <li><b>결정</b>: 365 후원선교사 365명 달성 시점, 단기선교 일시 회비(자비량) 기준</li>
+    <li><b>확인 → 결정</b>: 팀별 해외·국내 선교 순서에 정해진 원칙이 있는지, 해마다 새로 정하는지. 원칙이 없다면 몇 년 단위 순환표를 세울지</li>
+    <li><b>협의</b>: 총여선교회 사업단·선교회 연간 고정 후원(각 500만 원 안)과 큰 선교가 있는 해의 추가 지원</li>
+  </ul></div>
+</section>
+
+<!-- 출처 -->
+<section id="src">
+  <h2>출처</h2>
+  <ul class="plain note">
+    <li>선한목자교회 홈페이지 문화사역국 소개 및 공지·행사 게시물 (gsmch.org, 2026.10.15 조회)</li>
+    <li>선한목자교회 문화사역국 유튜브 채널 (2026.10.15 조회)</li>
+    <li>광야아트미니스트리: <a href="https://www.christiantoday.co.kr/news/367772" target="_blank" rel="noopener">크리스천투데이 관극가족(2025.4)</a>, <a href="https://www.christiantoday.co.kr/news/366846" target="_blank" rel="noopener">광야캠프 이전(2025.2)</a>, <a href="https://baptistnews.co.kr/news/article.html?no=13164" target="_blank" rel="noopener">침례신문 문화선교주일(2020.6)</a>, <a href="https://www.kmib.co.kr/article/view.asp?arcid=0013777773" target="_blank" rel="noopener">국민일보(2019)</a>, 나무위키(후원 수치, 비공식)</li>
+    <li>극동방송 어린이합창단: <a href="https://seoul.febc.net/etc/child" target="_blank" rel="noopener">극동방송 서울</a>, <a href="https://v.daum.net/v/20250819185836383" target="_blank" rel="noopener">노컷뉴스(2025.8)</a></li>
+    <li>월드비전 합창단: <a href="https://www.worldvision.or.kr/worldVisionIntro/wvchoir" target="_blank" rel="noopener">월드비전</a>, <a href="https://www.etoday.co.kr/news/view/1238786" target="_blank" rel="noopener">이투데이(2015)</a></li>
+    <li>사랑의교회 캔송키즈·만나교회 유스콰이어: <a href="https://www.kmib.co.kr/article/view.asp?arcid=1751441608" target="_blank" rel="noopener">국민일보(2025.7)</a></li>
+    <li>교회 유튜브 구독자: <a href="https://www.igoodnews.net/news/articleView.html?idxno=75974" target="_blank" rel="noopener">아이굿뉴스(2024.4)</a></li>
+    <li>팻머스 문화선교회: <a href="https://www.ipatmos.co.kr/column/?bmode=view&amp;idx=13915338" target="_blank" rel="noopener">팻머스 칼럼</a> · 아트리 1.1.1: <a href="https://www.christiantoday.co.kr/news/250513" target="_blank" rel="noopener">크리스천투데이</a></li>
+    <li>Watoto: <a href="https://www.watoto.com/choir" target="_blank" rel="noopener">watoto.com</a>, <a href="https://impala.digital/public/profiles/59-3445250/programs" target="_blank" rel="noopener">Form 990 요약</a></li>
+    <li>African Children's Choir: <a href="https://africanchildrenschoir.com/booking/" target="_blank" rel="noopener">초청 안내</a>, <a href="https://projects.propublica.org/nonprofits/organizations/311746269" target="_blank" rel="noopener">ProPublica</a></li>
+    <li>Sight &amp; Sound: <a href="https://en.wikipedia.org/wiki/Sight_%26_Sound_Theatres" target="_blank" rel="noopener">Wikipedia</a>, <a href="https://religionnews.com/2006/12/29/in-amish-country-christian-broadway-is-big-business" target="_blank" rel="noopener">Religion News(2006)</a></li>
+    <li>Hillsong Young &amp; Free: <a href="https://en.wikipedia.org/wiki/Hillsong_Young_%26_Free" target="_blank" rel="noopener">Wikipedia</a> · 교회 음악학교: <a href="https://ism.yale.edu/initiatives/parish-based-music-schools" target="_blank" rel="noopener">Yale ISM</a>, <a href="https://teach.second.org/worship-and-arts/spa/" target="_blank" rel="noopener">Second Baptist</a></li>
+    <li>AG Fine Arts: <a href="https://news.ag.org/en/articles/news/2023/10/sharing-faith-through-fine-arts" target="_blank" rel="noopener">AG News(2023)</a> · 빈 소년 합창단: <a href="https://wien.orf.at/stories/3239448/" target="_blank" rel="noopener">ORF Wien</a></li>
+    <li>필리핀 조이풀 뮤지컬 워십팀: <a href="https://v.daum.net/v/20260619111500962" target="_blank" rel="noopener">다음 뉴스(2026.6)</a></li>
+  </ul>
+</section>
+
+
+
+
+<div class="appx-div" id="appx-start">
+  <span class="lab">APPENDIX</span>
+  <span class="big">부록<br>벤치마킹 자료집</span>
+  <p>국내 7곳(A1–A7) · 해외 7곳(B1–B7)의 운영·재정·후원·홍보와 문사국 적용점. 본문 「벤치마킹」 요약표의 근거 자료입니다.</p>
+</div>
+<section id="appx" class="appx">
+  <h2>부록 · 벤치마킹 자료집 <small>국내 7 · 해외 7</small></h2>
+  <p>본문 3 「벤치마킹」의 요약표를 단체별로 자세히 풀었습니다. 수치 옆 괄호는 기준 연도이고, <span class="red">빨간 글씨</span>는 직접 문의가 필요한 항목입니다. 각 단체는 같은 순서로 정리했습니다: 기본 정보 → 운영·조직 → 재정·후원 → 브랜딩·홍보 → <b>문사국 적용</b> → 확인 필요 → 출처.</p>
+  <h3>계획서 어느 부분과 연결되는가</h3>
+  <div class="map">
+    <div><b>6 후원·기부 구조</b><p>극동방송(운영위원회·전파선교사), 광야(여러 층의 후원 방식), Watoto·African Children's Choir(공연을 후원으로 연결), 아트리(초기 후원자 300명)</p></div>
+    <div><b>8 조직도·인력</b><p>극동방송(방송사·자모회·교사진 3자 구조), 캔송키즈·만나(부모회), African Children's Choir(졸업생 인솔자)</p></div>
+    <div><b>4 비전·브랜딩 · 5 홍보</b><p>월드비전(사명 서사), 팻머스(하위 브랜드), Hillsong·Bethel(교회 브랜드와 계정 소유), Sight &amp; Sound(레퍼토리·영상 자산)</p></div>
+    <div><b>10 로드맵</b><p>월드비전(지역반 → 연주반), 교회 부설 예술학교(입문 아카데미), AG(발견–계발–파송)</p></div>
+    <div><b>7 연간 재정 모델</b><p>빈 소년 합창단(재원 쏠림의 위험), African Children's Choir(초청 측 비용 분담)</p></div>
+    <div><b>9 백오피스 체계</b><p>Watoto(인솔 비율 1:3), 극동방송(입단 서류·자비량 동의)</p></div>
+  </div>
+</section>
+
+
+<section id="febc" class="appx">
+  <h2><span class="code">부록 A1 · 국내</span>극동방송 <span class="kind">국내 · 후원 운영 모델</span></h2>
+  <p class="def">청취자 후원으로 운영되는 기독교 방송. 어린이합창단은 방송사·자모회·교사진이 나눠 맡는다.</p>
+  <div class="facts">
+    <div><span>설립</span><b>1956년 (2026 창사 70주년)</b></div>
+    <div><span>규모</span><b>지사 13곳, AM 2 · FM 13 채널</b></div>
+    <div><span>정기 후원자</span><b>'전파 선교사' 약 20만 명 (2026)</b></div>
+    <div><span>어린이합창단</span><b>전국 약 700명, 초3–중2 (2025)</b></div>
+  </div>
+  <h3>재정·후원 구조</h3>
+  <div class="tbl"><table>
+    <tr><th>층</th><th>내용</th><th>규모</th></tr>
+    <tr><td><b>전파 선교사</b></td><td>매월 1만 원을 내는 개인 정기후원자. 방송을 듣고 신청하거나 집회에서 약정</td><td>약 20만 명, 월 후원금 약 20억 원 (2026, 김장환 이사장 인터뷰)</td></tr>
+    <tr><td><b>운영위원회</b></td><td>1980년 9월 재정난 때 32명이 기도와 재정 후원을 약속하며 시작. 지역 지부 단위로 조직된 후원 네트워크. 해마다 전국 수련회</td><td>13개 지사·38개 지부 약 7,000명 (2024), 2026 수련회 참석 1,500여 명</td></tr>
+    <tr><td><b>방송 시간 후원</b></td><td>설교 방송 시간을 교회·기관이 후원하는 방식(TDP)이 언급됨</td><td><span class="red">금액 비공개</span></td></tr>
+    <tr><td><b>광고</b></td><td>서울 지역 라디오 광고 일부</td><td>월 약 7,000만 원 (2026 인터뷰)</td></tr>
+  </table></div>
+  <p class="note">2019년 뉴스앤조이는 방송통신위원회 자료에 제작비가 따로 표시되지 않는 점과 후원·설교 방송 판매가 겹치는 구조를 비판했습니다. 후원 구조를 벤치마킹할 때 <b>재정 투명성</b>을 함께 갖춰야 한다는 교훈으로 봅니다.</p>
+  <h3>어린이합창단 운영</h3>
+  <ul class="plain">
+    <li><b>3자 역할 분담</b>: 방송사(총괄·주요 결정·영상 관리), 자모회(재정 지원·관리, 기도와 물질 후원), 교사진(음악 교육)</li>
+    <li><b>선발</b>: 매년 1–3월 공개 오디션, 새해 초3–5학년 예정자. 아이와 부모 모두 신앙 경력 2년 이상</li>
+    <li><b>서류</b>: 입단원서, 담임목사 추천서, 자기소개서, 주보·출석확인서, 자유곡 악보, 전형료</li>
+    <li><b>자비량 원칙</b>: 해외 선교 공연은 자비량이며 입단 때 동의. 자모회가 기도와 물질로 뒷받침</li>
+    <li><b>무대</b>: 카네기홀(2016), 케네디센터(2024), 나라사랑축제(2025, 관객 약 7,000명), 호주 BWA 총회(2025)</li>
+  </ul>
+  <h3>브랜딩·홍보</h3>
+  <p>방송사 행사(나라사랑축제, 창사 기념 대합창제)와 해외 유명 공연장을 홍보 축으로 씁니다. 운영위원 수련회에서 선교 후원금 전달, 사진전, 어린이 집회를 함께 열어 후원자에게 사역의 열매를 직접 보여 줍니다.</p>
+  <div class="apply"><b>문사국 적용</b><ul>
+    <li><b>'문화 선교사' 소액 정기후원</b>: 월 1만 원 한 단계로 시작해 문턱을 낮춥니다. 극동방송은 1만 원 단위로 20만 명을 모았습니다.</li>
+    <li><b>문사국 운영위원회(후원회)</b>: 교구·선교회 단위로 후원회원을 묶고 연 1회 '후원자 초청 예배'를 엽니다.</li>
+    <li><b>3자 구조와 입단 서류</b>: 국(총괄)·학부모회(재정·행정)·지도교사(교육). 입단 때 자비량·출석 동의서와 담임 교사 추천을 받습니다.</li>
+    <li><b>후원자에게 열매 보이기</b>: 후원 모임에서 선교 보고 영상, 사진전, 단원 특송을 함께 합니다.</li>
+  </ul></div>
+  <div class="ask"><b>방문 때 확인할 내용</b> 자모회 회비와 해외공연 1인 부담액, 교사진이 사례를 받는지, 운영위원 회비 단계, 후원자 보고 방식(소식지·영수증), 합창단 전체 예산 중 방송사 부담 비율</div>
+  <p class="src">출처: <a href="https://www.heraldk.com/article/2026091600013486570" target="_blank" rel="noopener">헤럴드경제(2026.9)</a> · <a href="https://www.christiantoday.co.kr/news/375545" target="_blank" rel="noopener">크리스천투데이 운영위원 수련회(2026)</a> · <a href="https://www.christiandaily.co.kr/news/135993" target="_blank" rel="noopener">기독일보 운영위원(2024)</a> · <a href="https://www.newsnjoy.or.kr/news/articleView.html?idxno=222511" target="_blank" rel="noopener">뉴스앤조이(2019)</a> · <a href="https://seoul.febc.net/etc/child" target="_blank" rel="noopener">극동방송 어린이합창단 안내</a> · <a href="https://v.daum.net/v/20250819185836383" target="_blank" rel="noopener">노컷뉴스(2025)</a></p>
+</section>
+
+<section id="gwangya" class="appx">
+  <h2><span class="code">부록 A2 · 국내</span>광야아트미니스트리 <span class="kind">국내 · 질그릇 연합 단체</span></h2>
+  <p class="def">기독 뮤지컬 제작·교육·문화선교 단체. 후원 참여 방식을 여러 층으로 나눠 운영한다.</p>
+  <div class="facts">
+    <div><span>시작</span><b>2006 문화행동 아트리 → 2019 통합</b></div>
+    <div><span>대표</span><b>김관영 목사</b></div>
+    <div><span>공간</span><b>광야아트센터(강남 선릉로), 약 210석</b></div>
+    <div><span>인력</span><b>정규 사역자 35명 <span class="red">(시점 미상)</span></b></div>
+  </div>
+  <h3>재정·후원 구조 <span class="note">(2026.4 기준, 비공식 집계)</span></h3>
+  <div class="tbl"><table>
+    <tr><th>후원 방식</th><th>시작</th><th>내용</th><th>규모</th></tr>
+    <tr><td>정기후원자</td><td>2020.5</td><td>월 정기후원</td><td>약 900명</td></tr>
+    <tr><td>후원 이사회</td><td>2020.1</td><td>이사장 유기성 원로목사님</td><td>33명</td></tr>
+    <tr><td>300용사</td><td>2024</td><td>작품마다 창작 후원자를 새로 모집</td><td>매 작품</td></tr>
+    <tr><td>3만 관극가족</td><td>2025.4</td><td>연 10만 원 선납으로 신작 4편 관람, 예약·좌석·재관람 혜택</td><td>약 300명</td></tr>
+    <tr><td>12파트너</td><td>-</td><td>교회가 극장 월세를 나눠 부담</td><td>6개 교회</td></tr>
+  </table></div>
+  <p>초기에는 티켓 수입 중심이었고, 유료 객석 점유율 약 70%가 손익분기점이었습니다. 청담동 이전 후 티켓만으로는 어렵다고 보고 2020년부터 후원 참여 방식을 넓혔습니다. 홈페이지에 정기후원, 연간보고, 300용사 보고, 기부금영수증 메뉴가 있습니다.</p>
+  <h3>교육·우리 교회와의 관계</h3>
+  <ul class="plain">
+    <li><b>광야뮤지컬캠프(C.A.M.P.)</b>: 기독 대안학교. 사무엘(8–10세)·다니엘(11–13)·브살렐(14–16)·임마누엘(17–19) 과정. 2025년 1월 우리 교회와 업무협약을 맺고 교회 안으로 이전</li>
+    <li><b>총신광야 뮤지컬 아카데미</b>: 총신대 평생교육원 3년 과정, 재학생 29명(2026.3)</li>
+    <li><b>문화선교주일</b>: 2020년 5월 31일 우리 교회에서 처음 열려 정기후원 약정으로 이어짐. 2025년 문화선교주간에는 「요한계시록」이 예배로 드려짐</li>
+    <li><b>실적</b>: 「더 북」 400회 이상·관객 7만 명 이상(2017–2019), 관객 중 초중고생 비율 11%에서 30–40%로 증가(2025)</li>
+  </ul>
+  <div class="apply"><b>문사국 적용</b><ul>
+    <li>후원을 개인 정기 · 작품(선교)별 · 관람 구독 · 교회·기관 파트너로 나눕니다.</li>
+    <li>질그릇의 공동 운영 범위(연출진, 비용, 공연 수익, 단원 관리)를 서면 협약으로 정리합니다.</li>
+    <li>질그릇 단원 → 광야캠프·아카데미로 이어지는 인재 경로를 로드맵에 넣습니다.</li>
+  </ul></div>
+  <div class="ask"><b>확인 필요</b> 후원 수치의 공식 연간보고 원문, 질그릇 운영에 광야가 쓰는 인력·비용, 우리 교회의 12파트너 참여 여부</div>
+  <p class="src">출처: <a href="https://www.christiantoday.co.kr/news/367772" target="_blank" rel="noopener">크리스천투데이 관극가족(2025.4)</a> · <a href="https://www.christiantoday.co.kr/news/366846" target="_blank" rel="noopener">광야캠프 이전(2025.2)</a> · <a href="https://www.christiantoday.co.kr/news/373702" target="_blank" rel="noopener">20주년</a> · <a href="https://baptistnews.co.kr/news/article.html?no=13164" target="_blank" rel="noopener">침례신문 문화선교주일(2020)</a> · <a href="https://www.kmib.co.kr/article/view.asp?arcid=0013777773" target="_blank" rel="noopener">국민일보(2019)</a> · <a href="https://www.gospeltoday.co.kr/news/articleView.html?idxno=5057" target="_blank" rel="noopener">가스펠투데이(2019)</a> · <a href="https://pckworld.com/article.php?aid=10800618615" target="_blank" rel="noopener">한국기독공보</a> · 나무위키(비공식)</p>
+</section>
+
+<section id="wv" class="appx">
+  <h2><span class="code">부록 A3 · 국내</span>월드비전 합창단 <span class="kind">국내 · 단계형 선발</span></h2>
+  <p class="def">구호기관의 '얼굴'로 노래하는 어린이 합창단. 지역반에서 연주반으로 올라가는 2단 구조.</p>
+  <div class="facts">
+    <div><span>창단</span><b>1960 (전신 선명회어린이성가단)</b></div>
+    <div><span>운영</span><b>월드비전 음악원(강서구)</b></div>
+    <div><span>대상</span><b>초2–5 모집 (2015)</b></div>
+    <div><span>예술감독</span><b>김보미 (2018–)</b></div>
+  </div>
+  <h3>운영</h3>
+  <ul class="plain">
+    <li>지역반(강서·강남·강북·분당·일산, 2015)에서 교육 → 오디션으로 연주반 진입</li>
+    <li>방학 중 합숙 연습</li>
+    <li>창단 초기 해외 순회: 미국·캐나다 73개 도시 113일(1961–62), 14개국 104개 도시 약 7개월(1962–63)</li>
+    <li>수상: BBC 세계합창경연 최우수상(1978), 헝가리 칸테무스 3관왕(2016)</li>
+  </ul>
+  <h3>재정·브랜딩</h3>
+  <p>1964년 공연 기부금으로 김포 아동병원을 세웠습니다. '구호 아동을 위해 노래한다'는 사명이 브랜드의 중심이고, 2000년부터 3년마다 세계어린이합창제를 주최합니다. 회비·수업료와 재원 구조는 <span class="red">공개되어 있지 않습니다</span>.</p>
+  <div class="apply"><b>문사국 적용</b><ul>
+    <li>입문반(초3–4) → 공연·선교팀으로 올라가는 단계를 만들어 동기를 줍니다.</li>
+    <li>"선교지 아이들에게 복음을 노래와 춤으로"처럼 <b>누구를 위해 하는지</b>가 드러나는 사명 문장을 정합니다.</li>
+    <li>장기적으로 교회가 주최하는 어린이 문화선교 페스티벌(10년 로드맵)의 참고 모델입니다.</li>
+  </ul></div>
+  <p class="src">출처: <a href="https://www.worldvision.or.kr/worldVisionIntro/wvchoir" target="_blank" rel="noopener">월드비전</a> · <a href="https://www.wvchoir.or.kr/" target="_blank" rel="noopener">월드비전 합창단</a> · <a href="https://www.etoday.co.kr/news/view/1238786" target="_blank" rel="noopener">이투데이(2015)</a> · <a href="https://ko.wikipedia.org/wiki/선명회어린이합창단" target="_blank" rel="noopener">위키백과</a></p>
+</section>
+
+<section id="sarang" class="appx">
+  <h2><span class="code">부록 A4 · 국내</span>사랑의교회 캔송키즈 <span class="kind">국내 · 대형교회 합창단</span></h2>
+  <p class="def">문화예술사역부 아래의 어린이 합창단. 부모회 '캔송맘즈'가 운영을 돕는다.</p>
+  <div class="facts">
+    <div><span>창단</span><b>2010</b></div>
+    <div><span>규모</span><b>초3–6, 20명 (2025)</b></div>
+    <div><span>연습</span><b>수·토 주 2회, 2–4시간</b></div>
+    <div><span>상위 조직</span><b>문화예술사역부(사랑아트홀·갤러리)</b></div>
+  </div>
+  <ul class="plain">
+    <li>월 평균 1회 교회 강단에서 찬양, 앨범 녹음</li>
+    <li>오디션에 교회 제자훈련 수료 필수, 토요 새벽기도·가정 말씀·기도 요구</li>
+    <li>단복을 물려 입는 등 검소하게 운영. 금액은 <span class="red">비공개</span></li>
+    <li>문화예술사역부의 목적은 "기독교 문화예술 인재와 다음 세대 발굴·지원"</li>
+  </ul>
+  <div class="apply"><b>문사국 적용</b><ul>
+    <li>학부모회에 이름을 붙이고 역할을 공식화합니다.</li>
+    <li>신앙 훈련 요건(예배·큐티·가정예배)을 입단 서약에 명시합니다.</li>
+  </ul></div>
+  <p class="src">출처: <a href="https://www.kmib.co.kr/article/view.asp?arcid=1751441608" target="_blank" rel="noopener">국민일보(2025.7)</a> · <a href="https://www.sarang.org/ministry/ministry_info.asp" target="_blank" rel="noopener">사랑의교회 사역 안내</a></p>
+</section>
+
+<section id="manna" class="appx">
+  <h2><span class="code">부록 A5 · 국내</span>만나교회 유스콰이어 <span class="kind">국내 · 같은 지역·교단</span></h2>
+  <p class="def">성남의 감리교회 청소년 합창단. 단원 부모가 운영진을 맡는다.</p>
+  <div class="facts">
+    <div><span>창단</span><b>2019</b></div>
+    <div><span>규모</span><b>초5–중2, 40명 (2025 신입 17명)</b></div>
+    <div><span>연습</span><b>매주 토요일 3시간 + 주간 녹음 과제</b></div>
+    <div><span>지도</span><b>성악 전공 목사</b></div>
+  </div>
+  <ul class="plain">
+    <li>총무·반주 등 주요 운영진을 전·현직 단원 부모가 맡고, 학부모 약 30명이 부모기도회로 지원</li>
+    <li>2025년 5월 단원 어머니가 만들어 기증한 창작 주제곡 발표</li>
+    <li>지역 자선행사, 오케스트라 협연</li>
+    <li>교회 미디어 채널 구독자 10만 명 이상. 미디어 책임자는 설교 외에 교회만의 특화 사역 이야기를 하라고 조언</li>
+  </ul>
+  <div class="apply"><b>문사국 적용</b><ul>
+    <li>같은 지역·교단의 비교 기준으로 씁니다. 교류 연주회도 가능합니다.</li>
+    <li>문사국 주제곡을 만들고, 교회 유튜브에서 '다음세대 무대'를 특화 콘텐츠로 키웁니다.</li>
+  </ul></div>
+  <p class="src">출처: <a href="https://www.kmib.co.kr/article/view.asp?arcid=1751441608" target="_blank" rel="noopener">국민일보(2025.7)</a> · <a href="https://www.igoodnews.net/news/articleView.html?idxno=75974" target="_blank" rel="noopener">아이굿뉴스(2024.4)</a></p>
+</section>
+
+<section id="patmos" class="appx">
+  <h2><span class="code">부록 A6 · 국내</span>팻머스 문화선교회 <span class="kind">국내 · 브랜드 체계</span></h2>
+  <p class="def">교회학교 콘텐츠 단체. 연령별 하위 브랜드로 정체성을 정리했다.</p>
+  <div class="facts">
+    <div><span>설립</span><b>2005</b></div>
+    <div><span>대표</span><b>선량욱 목사</b></div>
+    <div><span>브랜드</span><b>예꼬키즈 · 홀리키즈 · 홀리틴즈</b></div>
+    <div><span>도달</span><b>회원교회 초·중생 약 7만 명</b></div>
+  </div>
+  <ul class="plain">
+    <li>회원교회 유료 콘텐츠와 교재 판매가 수익원. 콘텐츠를 유튜브에 모두 공개하지 않고 자산으로 보유</li>
+    <li>고난주간 '미디어 금식' 같은 캠페인으로 교회 연합</li>
+    <li>2018·2019년 문사국 엎드림이 홀리키즈 여름성경학교 주제곡 영상을 촬영한 인연이 있음</li>
+  </ul>
+  <div class="apply"><b>문사국 적용</b><ul>
+    <li>모브랜드 아래 합창·뮤지컬·워십 하위 브랜드를 같은 형식으로 정리합니다.</li>
+    <li>공연 영상 일부는 공개, 전체본은 후원자용으로 나누는 방안을 검토합니다.</li>
+  </ul></div>
+  <p class="src">출처: <a href="https://www.ipatmos.co.kr/column/?bmode=view&amp;idx=13915338" target="_blank" rel="noopener">팻머스 칼럼(아이굿뉴스 전재, 2023)</a> · 선한목자교회 홈페이지 문화사역부 게시물(2018)</p>
+</section>
+
+<section id="atri" class="appx">
+  <h2><span class="code">부록 A7 · 국내</span>문화행동 아트리 1.1.1 프로젝트 <span class="kind">국내 · 초기 후원 모델</span></h2>
+  <p class="def">광야의 전신. 해마다 11월 1–11일 전도 뮤지컬을 올린 프로젝트(2006–2015).</p>
+  <div class="facts">
+    <div><span>기간</span><b>2006–2015</b></div>
+    <div><span>제작비</span><b>후원자 약 300명 (2011 「Gospel」)</b></div>
+    <div><span>공간</span><b>협력 교회 연습실·공연장</b></div>
+    <div><span>관람료</span><b>자율 헌금</b></div>
+  </div>
+  <p>후원자 300명이 제작비를 내고, 교회가 공간을 대고, 관객은 형편대로 헌금하는 구조였습니다. 예산 규모가 작은 단계에서 바로 쓸 수 있는 모델입니다.</p>
+  <div class="apply"><b>문사국 적용</b><ul>
+    <li>성탄전야제나 단기선교마다 '함께 세우는 300명'처럼 기간 한정 후원자를 모읍니다.</li>
+    <li>외부 초청 공연은 자율 헌금으로 열고 헌금을 선교 경비에 씁니다.</li>
+  </ul></div>
+  <p class="src">출처: <a href="https://www.christiantoday.co.kr/news/250513" target="_blank" rel="noopener">크리스천투데이</a></p>
+</section>
+
+
+<section id="watoto" class="appx">
+  <h2><span class="code">부록 B1 · 해외</span>Watoto Children's Choir <span class="kind">해외 · 우간다</span></h2>
+  <p class="def">교회가 운영하는 고아 돌봄 사역의 합창단. 공연이 아동 1:1 후원으로 이어지게 설계했다.</p>
+  <div class="facts">
+    <div><span>시작</span><b>1994 (Watoto Church 1984)</b></div>
+    <div><span>투어</span><b>30년간 120개 이상 합창단</b></div>
+    <div><span>한 팀</span><b>아이 18–22명 + 성인 약 10명</b></div>
+    <div><span>주기</span><b>약 5개월 훈련 → 약 6개월 투어</b></div>
+  </div>
+  <h3>재정 <span class="note">(미국 법인 2023년 Form 990, 사업별 금액)</span></h3>
+  <div class="tbl"><table>
+    <tr><th>사업</th><th>금액</th></tr>
+    <tr><td>아동 후원(Sponsor A Life)</td><td>$5.8M</td></tr>
+    <tr><td>합창단</td><td>$413.7K</td></tr>
+    <tr><td>방문 선교팀</td><td>$245.2K</td></tr>
+  </table></div>
+  <p class="note">수입·지출 구분은 출처에 없습니다. 규모로 보면 합창단은 후원자를 모으는 통로이고, 재정의 중심은 아동 후원입니다(해석).</p>
+  <ul class="plain">
+    <li>입장 무료, 공연 중 교회가 헌금을 걷고 현장에서 아동 후원을 권함</li>
+    <li>인솔: 성인 1명이 아이 3명, 팀장 부부 중 한 명은 지휘·한 명은 목회 담당</li>
+    <li>투어 전 영국 사무소가 교회 섭외와 예약을 미리 처리</li>
+  </ul>
+  <div class="apply"><b>문사국 적용</b><ul>
+    <li>공연 끝에 QR로 '단원 한 명의 선교 후원'과 '선교지 아이 후원'을 안내합니다.</li>
+    <li>해외선교 인솔 비율 기준을 안전 규정에 넣습니다.</li>
+  </ul></div>
+  <p class="src">출처: <a href="https://www.watoto.com/choir" target="_blank" rel="noopener">watoto.com</a> · <a href="https://www.watoto.com/sponsor" target="_blank" rel="noopener">후원 안내</a> · <a href="https://impala.digital/public/profiles/59-3445250/programs" target="_blank" rel="noopener">Form 990 요약</a> · <a href="https://www.crossrhythms.co.uk/articles/music/Watoto_Childrens_Choir_Ugandan_singing_and_dancing_ensemble/49124/p1/" target="_blank" rel="noopener">Cross Rhythms</a> · <a href="https://www.icatholic.org/article/concert-of-hope-is-a-celebration-of-gods-love-4875874" target="_blank" rel="noopener">iCatholic</a></p>
+</section>
+
+<section id="acc" class="appx">
+  <h2><span class="code">부록 B2 · 해외</span>African Children's Choir <span class="kind">해외 · 초청 측 비용 분담</span></h2>
+  <p class="def">아프리카 아이들의 교육을 위해 모금하는 합창단. 초청 교회가 순회 비용 대부분을 맡는다.</p>
+  <div class="facts">
+    <div><span>시작</span><b>1984 (Ray Barnett)</b></div>
+    <div><span>단원</span><b>7–12세, 아프리카 6개국</b></div>
+    <div><span>재정</span><b>수입 $2.0M 중 기부 99.9% (2024.3)</b></div>
+    <div><span>교육 지원</span><b>40년간 59,000명 이상 (단체 주장)</b></div>
+  </div>
+  <h3>초청 교회 표준 조건</h3>
+  <ul class="plain">
+    <li>예약비 $500, 1–3박 숙박(홈스테이 우선)과 식사</li>
+    <li>피아노·스크린, 아이들이 옷 갈아입고 쉬고 공부할 공간</li>
+    <li>기념품 판매대 3개와 자원봉사자, 공연 중 헌금</li>
+  </ul>
+  <h3>운영</h3>
+  <ul class="plain">
+    <li>재능이 아니라 가정 형편을 기준으로 선발, 약 1년 교육 후 투어</li>
+    <li>투어 후 대학·직업교육까지 학비 지원, 졸업 단원이 인솔교사·멘토로 돌아오는 경우가 많음</li>
+    <li>이사 대부분 무보수</li>
+  </ul>
+  <div class="apply"><b>문사국 적용</b><ul>
+    <li>선교지·초청 교회에 보낼 1장짜리 '공연 초청 안내서'(숙식·장소·자원봉사·헌금 분담)를 만듭니다.</li>
+    <li>졸업 단원을 보조교사·인솔 보조로 세우는 OB 제도를 시작합니다.</li>
+  </ul></div>
+  <p class="src">출처: <a href="https://africanchildrenschoir.com/booking/" target="_blank" rel="noopener">초청 안내</a> · <a href="https://projects.propublica.org/nonprofits/organizations/311746269" target="_blank" rel="noopener">ProPublica</a> · <a href="https://en.wikipedia.org/wiki/African_Children%27s_Choir" target="_blank" rel="noopener">Wikipedia</a> · <a href="https://www.abqjournal.com/lifestyle/catalyst-of-song-the-african-childrens-choir-brings-its-lively-and-inspirational-tour-to-new-mexico/641749" target="_blank" rel="noopener">Albuquerque Journal</a></p>
+</section>
+
+<section id="ss" class="appx">
+  <h2><span class="code">부록 B3 · 해외</span>Sight &amp; Sound Theatres <span class="kind">해외 · 레퍼토리 전략</span></h2>
+  <p class="def">미국의 기독 극장. 대작을 여러 해 재공연하고 영상을 자산으로 쌓는다.</p>
+  <div class="facts">
+    <div><span>시작</span><b>1976</b></div>
+    <div><span>극장</span><b>펜실베이니아(2,000석+) · 미주리</b></div>
+    <div><span>관객</span><b>연 100만 명 이상</b></div>
+    <div><span>형태</span><b>가족 소유 영리법인, 직원 800명+</b></div>
+  </div>
+  <ul class="plain">
+    <li>티켓 수입으로 운영. 신작 제작비 100만–500만 달러라 이미 만든 작품을 다시 올려 비용을 회수(2006 보도)</li>
+    <li>배우는 해마다 오디션, 1년 계약 정규직. 미성년자 오디션 별도</li>
+    <li>2020년 Sight &amp; Sound TV로 지난 공연 스트리밍, 영화 제작으로 확장</li>
+  </ul>
+  <div class="apply"><b>문사국 적용</b><ul>
+    <li>「완전한 복음」처럼 대표작 하나를 3–5년 다듬어 국내외에서 반복 공연합니다.</li>
+    <li>모든 공연을 기록해 홍보·후원 보고·온라인 상영 자료로 씁니다.</li>
+  </ul></div>
+  <p class="src">출처: <a href="https://en.wikipedia.org/wiki/Sight_%26_Sound_Theatres" target="_blank" rel="noopener">Wikipedia</a> · <a href="https://religionnews.com/2006/12/29/in-amish-country-christian-broadway-is-big-business" target="_blank" rel="noopener">Religion News(2006)</a> · <a href="https://sight-sound.com/careers/auditions" target="_blank" rel="noopener">오디션 안내</a></p>
+</section>
+
+<section id="hillsong" class="appx">
+  <h2><span class="code">부록 B4 · 해외</span>Hillsong Young &amp; Free · Bethel Music Kids <span class="kind">해외 · 교회 브랜드</span></h2>
+  <p class="def">교회 안 예배에서 나온 다음세대 음악 브랜드. 성공과 함께 리더 의존의 위험도 보여 준다.</p>
+  <div class="facts">
+    <div><span>Young &amp; Free</span><b>2012 시작, 2023 사실상 중단</b></div>
+    <div><span>성과</span><b>빌보드 크리스천 1위, 그래미 후보 2회</b></div>
+    <div><span>Bethel Kids</span><b>2015, 교회 아이 33명 오디션</b></div>
+    <div><span>Bethel Music</span><b>교회와 분리된 비영리, 수입 $20.1M (2025)</b></div>
+  </div>
+  <ul class="plain">
+    <li>Young &amp; Free: 청소년 담당 목회자 부부가 시작, 2023년 창립자들이 떠나며 활동이 멈춤</li>
+    <li>Bethel Music Kids: 기존 곡 11곡을 신스팝 댄스 버전과 안무 뮤직비디오로 제작</li>
+    <li>Hillsong Kids: 1–12세 커리큘럼, 유튜브·앱 운영</li>
+    <li>Elevation Worship은 교회가 상표 등록한 별도 사업 단위</li>
+  </ul>
+  <div class="apply"><b>문사국 적용</b><ul>
+    <li>유튜브·인스타 계정과 브랜드는 교회 명의로 소유하고, 담당자가 바뀌면 문서로 인계합니다.</li>
+    <li>신곡을 아이들 버전 안무 영상으로 만드는 방식은 다드림 숏폼에 바로 쓸 수 있습니다.</li>
+  </ul></div>
+  <p class="src">출처: <a href="https://en.wikipedia.org/wiki/Hillsong_Young_%26_Free" target="_blank" rel="noopener">Wikipedia</a> · <a href="https://hillsong.com/kids/" target="_blank" rel="noopener">Hillsong Kids</a> · <a href="https://projects.propublica.org/nonprofits/organizations/474005681" target="_blank" rel="noopener">ProPublica Bethel Music</a> · <a href="https://roysreport.com/opinion-church-music-has-become-big-business/" target="_blank" rel="noopener">Roys Report</a></p>
+</section>
+
+<section id="school" class="appx">
+  <h2><span class="code">부록 B5 · 해외</span>교회 부설 예술학교 <span class="kind">해외 · 아카데미 모델</span></h2>
+  <p class="def">수강료를 받는 아카데미와 선발제 사역팀을 나눠, 지역 아이들에게 문을 연다.</p>
+  <div class="tbl"><table>
+    <tr><th>학교</th><th>학생</th><th>강사</th><th>교회 밖 학생</th><th>30분 레슨</th></tr>
+    <tr><td>Madison Street</td><td>180명</td><td>22명</td><td>80%</td><td>$20</td></tr>
+    <tr><td>Calvary</td><td>140명</td><td>18명</td><td>90%</td><td>$30</td></tr>
+    <tr><td>Mount Olivet</td><td>650명</td><td>50명</td><td>50–60%</td><td>$22–34</td></tr>
+  </table></div>
+  <p class="note">예일대 종교음악연구소 조사. 세 곳 모두 장학금 제도가 있습니다.</p>
+  <ul class="plain">
+    <li><b>Second Baptist Houston</b>: 개인레슨(14주 학기), 뮤지컬 2개 반(초2–4, 초5–중2), 3세부터 무용, 여름 뮤지컬·예배밴드 캠프. 교인이 아니어도 등록</li>
+    <li><b>Performing Arts Academy(콜로라도)</b>: 학비와 기부로 운영, 저소득층 학교에 무료 방과후 프로그램, 학생 1,800명 이상(2025)</li>
+  </ul>
+  <div class="apply"><b>문사국 적용</b><ul>
+    <li>5년 로드맵의 '입문 아카데미': 선발 없는 수강 과정을 지역 아이에게 열고, 수강료 일부를 장학금으로.</li>
+    <li>선발제 3팀은 그대로 사역팀으로 유지합니다.</li>
+  </ul></div>
+  <p class="src">출처: <a href="https://ism.yale.edu/initiatives/parish-based-music-schools" target="_blank" rel="noopener">Yale ISM</a> · <a href="https://teach.second.org/worship-and-arts/spa/" target="_blank" rel="noopener">Second Baptist</a> · <a href="https://www.guidestar.org/profile/45-4372479" target="_blank" rel="noopener">GuideStar</a></p>
+</section>
+
+<section id="ag" class="appx">
+  <h2><span class="code">부록 B6 · 해외</span>AG Fine Arts Festival <span class="kind">해외 · 평가와 성장</span></h2>
+  <p class="def">하나님의 성회(AG) 청소년 예술 경연. 외부 평가위원의 점수표로 성장을 돕는다.</p>
+  <div class="facts">
+    <div><span>대상</span><b>6–12학년</b></div>
+    <div><span>규모</span><b>참가 학생 약 5,000명 (2023·2026)</b></div>
+    <div><span>부문</span><b>121개 부문, 8개 분야 (2026)</b></div>
+    <div><span>구호</span><b>발견 · 계발 · 파송</b></div>
+  </div>
+  <ul class="plain">
+    <li>지역 대회 기준 점수를 넘으면 전국 대회 진출</li>
+    <li>평가위원 2–3명이 40점 만점 채점: 36점 이상 Superior, 31–35 Excellent, 30 이하 Good</li>
+    <li>공연 부문: 무용, 깃발·리본, 드라마, 무언극, 찬양 율동 인도, 성악 앙상블(대부분 2–10명)</li>
+    <li>대회 기간에 송라이팅·예배 인도 마스터클래스</li>
+  </ul>
+  <div class="apply"><b>문사국 적용</b><ul>
+    <li>연 1회 외부 평가위원이 피드백하는 '성장 발표회'를 엽니다.</li>
+    <li>1년 흐름을 발견(오디션) → 계발(훈련) → 파송(단기선교)으로 설명합니다.</li>
+  </ul></div>
+  <p class="src">출처: <a href="https://news.ag.org/en/articles/news/2023/10/sharing-faith-through-fine-arts" target="_blank" rel="noopener">AG News(2023)</a> · <a href="https://chaplaincy.ag.org/articles/agnews/article%20repository/news/2026/07/national%20youth%20conference%20convenes%20in%20st%20louis" target="_blank" rel="noopener">AG News(2026)</a> · <a href="https://www.laaog.org/_files/ugd/8fe9e5_b36406e400ce4c06ac7044869a1f3361.pdf" target="_blank" rel="noopener">지역 매뉴얼</a></p>
+</section>
+
+<section id="vienna" class="appx">
+  <h2><span class="code">부록 B7 · 해외</span>빈 소년 합창단 <span class="kind">해외 · 재원 구조의 교훈</span></h2>
+  <p class="def">세속 단체지만, 공연 수입에 기댄 구조가 위기에서 어떻게 흔들리는지 보여 준다.</p>
+  <div class="facts">
+    <div><span>단원</span><b>9–14세 약 100명, 4개 팀</b></div>
+    <div><span>공연</span><b>연 약 300회, 관객 약 50만 명</b></div>
+    <div><span>재원</span><b>예산의 약 2/3를 공연 수입으로</b></div>
+    <div><span>위기 지원</span><b>2023 연방 80만 € · 빈 시 50만 €</b></div>
+  </div>
+  <ul class="plain">
+    <li>민간 비영리 협회, 아우가르텐 궁 기숙학교</li>
+    <li>각 팀이 9–11주씩 번갈아 투어</li>
+    <li>코로나와 물가 상승으로 공연 수입과 후원이 함께 줄며 위기</li>
+  </ul>
+  <div class="apply"><b>문사국 적용</b><ul>
+    <li>교회 예산·부모 부담·정기후원·헌금·파트너로 재원을 나눠, 한 곳이 줄어도 사역이 멈추지 않게 합니다.</li>
+    <li>여러 팀이 해외·국내 선교를 번갈아 맡는 순환 구조를 씁니다.</li>
+  </ul></div>
+  <p class="src">출처: <a href="https://en.wikipedia.org/wiki/Vienna_Boys%27_Choir" target="_blank" rel="noopener">Wikipedia</a> · <a href="https://wien.orf.at/stories/3239448/" target="_blank" rel="noopener">ORF Wien</a> · <a href="https://www.bundeskanzleramt.gv.at/bundeskanzleramt/nachrichten-der-bundesregierung/2023/12/nehammer-saengerknaben-gehoeren-zur-oesterreichischen-identitaet.html" target="_blank" rel="noopener">오스트리아 총리실(2023)</a></p>
+</section>
+
+
+<footer>선한목자교회 교회학교 문화사역국 · 2027 운영계획 초안 · 교회 내부 논의용입니다. 수치와 사례는 공개 자료 기준이며, 빨간 글씨는 확인·결정이 필요한 항목입니다.</footer>
+</main>
+</div>
+
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const v=id=>{const e=$(id);if(!e)return 0;const n=parseFloat(e.value);return isFinite(n)?n:0};
+  const won=n=>Math.round(n).toLocaleString('ko-KR');
+  const sgn=n=>(n>=0?'+':'−')+won(Math.abs(n));
+  const colors=['#7d8a83','#5a9e9a','var(--accent-2)','var(--accent)'];
+  const names=['교회 예산','교회 단체 지원','고정 회비','365 후원선교사'];
+  function calc(){
+    let sub=0;
+    for(let i=1;i<=10;i++){const a=v('c'+i+'u')*v('c'+i+'q')*v('c'+i+'t');$('c'+i).textContent=won(a);sub+=a;}
+    const res=sub*v('c11p')/100; $('c11').textContent=won(res);
+    const cost=sub+res; $('ctot').textContent=won(cost);
+    const f=[v('f1a'), v('f2a')+v('f2b'), v('f3a')*v('f3b')*v('f3c'), v('f4a')*v('f4b')*v('f4c')];
+    const tot=f.reduce((x,y)=>x+y,0);
+    const bar=$('fbar'), leg=$('flegend'); bar.innerHTML=''; leg.innerHTML='';
+    f.forEach((x,i)=>{
+      $('f'+(i+1)).textContent=won(x);
+      $('f'+(i+1)+'r').textContent=tot?Math.round(x/tot*100)+'%':'-';
+      const s=document.createElement('span'); s.style.width=(tot?x/tot*100:0)+'%'; s.style.background=colors[i]; s.title=names[i]+' '+won(x)+'원'; bar.appendChild(s);
+      const l=document.createElement('span'); l.innerHTML='<i style="background:'+colors[i]+'"></i>'+names[i]; leg.appendChild(l);
+    });
+    $('ftot').textContent=won(tot);
+    const diff=tot-cost; $('fdiff').textContent=sgn(diff);
+    const need=v('m1a')*v('m1b'); $('m1').textContent=won(need);
+    const self=v('m2a')*v('m1b'); $('m2').textContent=won(self);
+    const spare=Math.max(0,diff); $('m3').textContent=won(spare);
+    const extra=v('m4a'); $('m4').textContent=won(extra);
+    $('mgap').textContent=sgn(self+spare+extra-need);
+  }
+  document.querySelectorAll('.calc input').forEach(i=>i.addEventListener('input',calc));
+  calc();
+})();
+</script>
+</body></html>
