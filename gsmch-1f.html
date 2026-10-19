@@ -135,10 +135,24 @@
   .wk-i .pgw{display:flex;align-items:center;gap:7px;margin-top:9px;font-size:11px;color:#a9a294}
   .wk-i .pgw .b{flex:1;height:5px;background:#ece7dd;border-radius:3px;overflow:hidden}
   .wk-i .pgw .b i{display:block;height:5px;background:#07913B;border-radius:3px}
+  .wk-i.s결정{background:#FDEEEA;border-color:#e0705a}
+  .wk-i.s준비{background:#F1F8F3;border-color:#9dc3a6}
+  .wk-i.s확인{background:#fdfcfa;border-color:#e2dcce}
+  .wk-i.s결정 .d{color:#B3382A}
+  .wk-i.s준비 .d{color:#056B2C}
+  .wk-i.s확인 .d{color:#8a847a}
   .wk-i.now .bd.결정{color:#fff;background:#B3382A}
   .wk-i.now .bd.준비{color:#fff;background:#07913B}
   .wk-i.now .bd.확인{color:#6e6860;background:#ece7dd}
   .wk-g{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .wk-band{grid-column:1/-1;display:flex;align-items:center;gap:9px;margin:4px 0 -2px;
+    padding:5px 14px 6px;border-radius:0 9px 9px 0;border-left:7px solid #a9a294;background:#f4f2ec}
+  .wk-band b{font-size:14.5px;font-weight:700;letter-spacing:-.02em;color:#2c2a26}
+  .wk-band em{font-style:normal;font-size:12px;color:#8a847a}
+  .wk-band span.ct{margin-left:auto;font-size:12px;font-weight:600;color:#8a847a}
+  .wk-band{border-left-color:#3d6b4f;background:#eef3ef}
+  .wk-band b{color:#2c2a26}
+  .wk-band span.ct u{text-decoration:none;color:#B3382A;font-weight:700}
   .wk-i{border:1px solid #f0ece4;border-radius:10px;padding:12px 14px 13px;background:#fdfcfa}
   .wk-i.done{background:#f6f5f1;border-color:#ece7dd}
   .wk-i.now{background:#fdeeea;border-color:#e0705a}
@@ -1335,14 +1349,33 @@
     var its=j.items.filter(function(i){return i.week===wk.id;});
     var sub=document.getElementById('wkSub');
     if(sub) sub.textContent=wk.label+' · '+wk.sub+' · 오픈까지 D-'+dd(j.open);
+    var TRACK={'공사':'현장 · 설계','서점':'매장 셋업','카페':'매장 셋업','제작':'매장 셋업',
+               '시스템':'시스템','행정':'행정 · 운영'};
+    var TORD=['현장 · 설계','매장 셋업','시스템','행정 · 운영'];
+    var TSUB={'현장 · 설계':'인테리어 · 도면 · 건축위','매장 셋업':'서점 · 카페 내부 · 제작물',
+              '시스템':'주문 · 결제 · 재고','행정 · 운영':'결재 · 매뉴얼 · 홍보'};
+    var SORD=['결정','준비','확인','완료'];
+    function tr(it){return TRACK[it.area]||'행정 · 운영';}
+    its.sort(function(a,b){
+      var d=TORD.indexOf(tr(a))-TORD.indexOf(tr(b)); if(d) return d;
+      return SORD.indexOf(a.state)-SORD.indexOf(b.state);});
+    var cur=null, n=0;
     box.innerHTML=its.map(function(it,k){
+      var band='';
+      if(tr(it)!==cur){
+        cur=tr(it);
+        var g=its.filter(function(x){return tr(x)===cur;});
+        var dec=g.filter(function(x){return x.state==='결정';}).length;
+        band='<div class="wk-band"><b>'+esc(cur)+'</b><em>'+esc(TSUB[cur]||'')+'</em>'+
+             '<span class="ct">'+(dec?'<u>정해야 할 것 '+dec+'건</u> · ':'')+g.length+'건</span></div>';
+      }
+      n++;
       var t=it.todo||[], d=t.filter(function(x){return x.done;}).length;
       var pc=t.length?Math.round(d/t.length*100):0;
       var rest=t.filter(function(x){return !x.done;}).slice(0,3)
         .map(function(x){return esc(x.t);}).join('<br>')||'할 일이 모두 끝났습니다';
-      return '<a class="wk-i now" href="gsmch-1f-plan.html#'+esc(it.id)+'">'+
-        '<span class="bd '+esc(it.state)+'">'+esc(it.state)+'</span>'+
-        '<div class="n">'+(k+1)+'<span class="ar3 '+esc(it.area)+'">'+esc(it.area)+'</span></div>'+
+      return band+'<a class="wk-i s'+esc(it.state)+'" href="gsmch-1f-plan.html#'+esc(it.id)+'">'+
+        '<div class="n">'+n+'<span class="ar3 '+esc(it.area)+'">'+esc(it.area)+'</span></div>'+
         '<div class="t">'+esc(it.title)+'</div>'+
         '<div class="d">'+(it.due?'~ '+esc(it.due):'기한 미정')+'</div>'+
         '<div class="s">'+rest+'</div>'+
