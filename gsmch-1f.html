@@ -196,7 +196,12 @@
   .sec .cap{font-size:12.5px;color:var(--muted);white-space:nowrap}
   .sec .rule{flex:1;height:1px;background:var(--text);opacity:.85}
 
-  .docs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:36px}
+  .docs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}
+  .docs.last{margin-bottom:36px}
+  .subsec{display:flex;align-items:baseline;gap:9px;margin:0 0 11px}
+  .subsec b{font-size:15px;font-weight:700;letter-spacing:-.02em;color:#2c2a26}
+  .subsec span{font-size:12px;color:#8a847a}
+  .subsec i{flex:1;height:1px;background:var(--line);font-style:normal}
   .doc{
     display:block;background:var(--card);border:1px solid var(--line);
     border-radius:13px;padding:22px 24px 20px;text-decoration:none;color:var(--text);
@@ -378,8 +383,10 @@
   <div class="sec">
     <h2>문서</h2><span class="cap">계획 · 보고</span><div class="rule"></div>
   </div>
+
+  <div class="subsec"><b>전체</b><span>사업단 전체</span><i></i></div>
   <div class="docs">
-    <a class="doc" href="gsmch-1f-masterplan.html">
+<a class="doc" href="gsmch-1f-masterplan.html">
       <div class="doc-top">
         <div class="doc-ico">📐</div>
         <span class="doc-tag now">③-1 임시서점 운영</span>
@@ -393,7 +400,26 @@
       </div>
       <span class="doc-go">›</span>
     </a>
-    <a class="doc" href="gsmch-1f-book-layout.html">
+<a class="doc" href="gsmch-1f-pos-committee.html">
+      <div class="doc-top">
+        <div class="doc-ico">🧾</div>
+        <span class="doc-tag now">사업단 의사결정</span>
+      </div>
+      <h3>주문 · 결제 시스템 도입안</h3>
+      <p>선지서점 · 로뎀카페에 들일 포스 · 키오스크 · 디스플레이 · PDA 구성과 소요 비용을 담았습니다. 업체 선정 사유와 오픈 일정도 함께 있습니다.</p>
+      <div class="doc-list">
+        <span class="chip when">10. 13. 견적 접수</span>
+        <span class="chip">업체 선정</span>
+        <span class="chip">장비 배치</span>
+        <span class="chip">소요 비용</span>
+      </div>
+      <span class="doc-go">›</span>
+    </a>
+  </div>
+
+  <div class="subsec"><b>매장별</b><span>선지서점 · 로뎀카페</span><i></i></div>
+  <div class="docs last">
+<a class="doc" href="gsmch-1f-book-layout.html">
       <div class="doc-top">
         <div class="doc-ico">📚</div>
         <span class="doc-tag">A · B안 비교</span>
@@ -408,7 +434,7 @@
       </div>
       <span class="doc-go">›</span>
     </a>
-    <a class="doc" href="gsmch-1f-cafe-layout.html">
+<a class="doc" href="gsmch-1f-cafe-layout.html">
       <div class="doc-top">
         <div class="doc-ico">☕</div>
         <span class="doc-tag gold">사업단 안</span>
@@ -420,21 +446,6 @@
         <span class="chip">건축위 1차안</span>
         <span class="chip">뒤 바 3안</span>
         <span class="chip">메뉴판</span>
-      </div>
-      <span class="doc-go">›</span>
-    </a>
-    <a class="doc" href="gsmch-1f-pos-committee.html">
-      <div class="doc-top">
-        <div class="doc-ico">🧾</div>
-        <span class="doc-tag now">사업단 의사결정</span>
-      </div>
-      <h3>주문 · 결제 시스템 도입안</h3>
-      <p>선지서점 · 로뎀카페에 들일 포스 · 키오스크 · 디스플레이 · PDA 구성과 소요 비용을 담았습니다. 업체 선정 사유와 오픈 일정도 함께 있습니다.</p>
-      <div class="doc-list">
-        <span class="chip when">10. 13. 견적 접수</span>
-        <span class="chip">업체 선정</span>
-        <span class="chip">장비 배치</span>
-        <span class="chip">소요 비용</span>
       </div>
       <span class="doc-go">›</span>
     </a>
