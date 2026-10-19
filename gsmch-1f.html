@@ -198,6 +198,9 @@
 
   .docs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}
   .docs.last{margin-bottom:36px}
+  .doc.soon{opacity:.72;cursor:default;border-style:dashed}
+  .doc.soon:hover{border-color:var(--line)}
+  .doc.soon .doc-go{display:none}
   .subsec{display:flex;align-items:baseline;gap:9px;margin:0 0 11px}
   .subsec b{font-size:15px;font-weight:700;letter-spacing:-.02em;color:#2c2a26}
   .subsec span{font-size:12px;color:#8a847a}
@@ -384,7 +387,7 @@
     <h2>문서</h2><span class="cap">계획 · 보고</span><div class="rule"></div>
   </div>
 
-  <div class="subsec"><b>전체</b><span>사업단 전체</span><i></i></div>
+  <div class="subsec"><b>공통</b><span>서점 · 카페에 함께 걸친 문서</span><i></i></div>
   <div class="docs">
 <a class="doc" href="gsmch-1f-masterplan.html">
       <div class="doc-top">
@@ -417,8 +420,8 @@
     </a>
   </div>
 
-  <div class="subsec"><b>매장별</b><span>선지서점 · 로뎀카페</span><i></i></div>
-  <div class="docs last">
+  <div class="subsec"><b>매장별</b><span>매장 한 곳에만 해당하는 문서</span><i></i></div>
+  <div class="docs">
 <a class="doc" href="gsmch-1f-book-layout.html">
       <div class="doc-top">
         <div class="doc-ico">📚</div>
@@ -449,6 +452,29 @@
       </div>
       <span class="doc-go">›</span>
     </a>
+  </div>
+
+  
+  <div class="subsec"><b>매뉴얼</b><span>오픈 후 운영 기준 · 11월 말 예정</span><i></i></div>
+  <div class="docs last">
+    <div class="doc soon">
+      <div class="doc-top">
+        <div class="doc-ico">📗</div>
+        <span class="doc-tag">11월 말 예정</span>
+      </div>
+      <h3>선지서점 운영 매뉴얼</h3>
+      <p>계산 · 도서 입력 · 재고조사 · 마감까지 서점 운영 기준을 담습니다. 포스 · 키오스크 · PDA 사용법을 포함합니다.</p>
+      <div class="doc-list"><span class="chip">하루 운영</span><span class="chip">포스 · PDA</span><span class="chip">재고 · 마감</span></div>
+    </div>
+    <div class="doc soon">
+      <div class="doc-top">
+        <div class="doc-ico">📙</div>
+        <span class="doc-tag">11월 말 예정</span>
+      </div>
+      <h3>로뎀카페 운영 매뉴얼</h3>
+      <p>주문 · 제조 · 호출 · 마감까지 카페 운영 기준을 담습니다. 키오스크 · QR · 온라인몰 주문 처리도 포함합니다.</p>
+      <div class="doc-list"><span class="chip">하루 운영</span><span class="chip">포스 · 키오스크</span><span class="chip">주문 · 마감</span></div>
+    </div>
   </div>
 
   <div class="foot">
