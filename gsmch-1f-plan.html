@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>선한목자교회 · 1층 성전보수 오픈 진도표</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --g:#07913B; --gl:#F1F8F3; --gd:#056B2C;
+    --ink:#2c2a26; --soft:#55534e; --mut:#8a847a;
+    --line:#dcd9d1; --line2:#eeece6; --bg:#faf9f5; --card:#fff;
+    --warn:#B3382A; --warnbg:#FDF3F0; --amber:#9A6414; --amberbg:#FBF3E6;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;padding:16px;background:var(--bg);color:var(--ink);
+    font-family:'IBM Plex Sans KR',sans-serif;font-size:13.5px;line-height:1.7}
+  .wrap{max-width:1000px;margin:0 auto}
+  a{color:inherit;text-decoration:none}
+
+  .navrow{font-size:11.5px;color:var(--mut);padding-bottom:8px;border-bottom:1px solid var(--line2);
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .navrow a.back{color:var(--gd);font-weight:600}
+  .head{padding:18px 0 4px}
+  h1{font-family:'Gowun Batang',serif;font-size:26px;font-weight:700;margin:0;letter-spacing:-.6px}
+  .lead{font-size:13px;color:var(--soft);margin-top:6px}
+
+  /* 요약 바 */
+  .sum{margin-top:16px;background:var(--card);border:1px solid #e6e1d7;border-radius:13px;
+    padding:15px 18px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .dday{flex:none;text-align:center;padding-right:20px;border-right:1px solid var(--line2)}
+  .dday b{display:block;font-family:'Gowun Batang',serif;font-size:34px;font-weight:700;
+    color:var(--gd);line-height:1.1;letter-spacing:-1px}
+  .dday span{font-size:11.5px;color:var(--mut)}
+  .sumg{flex:1;min-width:230px}
+  .sumg .t{font-size:12px;color:var(--soft);display:flex;justify-content:space-between;margin-bottom:6px}
+  .sumg .t b{color:var(--ink);font-weight:700}
+  .bar{height:7px;background:#ece7dd;border-radius:4px;overflow:hidden}
+  .bar i{display:block;height:7px;background:var(--g);border-radius:4px}
+  .stt{display:flex;gap:7px;flex-wrap:wrap}
+  .stt span{font-size:11.5px;font-weight:600;border-radius:9px;padding:3px 10px;background:#f2f0e9;color:#6e6860}
+
+  /* 필터 */
+  .ctl{margin:16px 0 12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .chip{font-family:inherit;font-size:12.5px;font-weight:600;color:var(--mut);background:var(--card);
+    border:1px solid var(--line);border-radius:999px;padding:5px 13px;cursor:pointer}
+  .chip:hover{color:var(--ink)}
+  .chip.on{color:#fff;background:var(--gd);border-color:var(--gd)}
+  .ctl .sp{margin-left:auto;font-size:11.5px;color:var(--mut)}
+
+  /* 주차 */
+  .wk{background:var(--card);border:1px solid #e6e1d7;border-radius:13px;margin-bottom:12px;overflow:hidden}
+  .wk.now{border-color:var(--g);box-shadow:0 0 0 2px #e4f1e8}
+  .wk.past{background:#f7f6f2}
+  .wkh{display:flex;align-items:center;gap:11px;padding:13px 17px;cursor:pointer;flex-wrap:wrap}
+  .wkh .lb{font-family:'Gowun Batang',serif;font-size:19px;font-weight:700;letter-spacing:-.5px}
+  .wk.past .wkh .lb{color:var(--mut)}
+  .wkh .sb{font-size:12px;color:var(--mut)}
+  .wkh .tag{font-size:10.5px;font-weight:700;color:#fff;background:var(--g);border-radius:9px;padding:2px 9px}
+  .wkh .tag.op{background:var(--amber)}
+  .wkh .ct{margin-left:auto;font-size:12px;color:var(--mut)}
+  .wkh .ar{font-size:14px;color:var(--mut);transition:transform .15s}
+  .wk.open .wkh .ar{transform:rotate(90deg)}
+  .wkb{display:none;padding:0 13px 13px}
+  .wk.open .wkb{display:block}
+
+  /* 항목 */
+  .it{border:1px solid var(--line2);border-radius:10px;background:#fdfcfa;margin-bottom:8px;overflow:hidden}
+  .it:last-child{margin-bottom:0}
+  .it.hit{border-color:var(--g);box-shadow:0 0 0 2px #e4f1e8}
+  .ith{display:flex;align-items:center;gap:10px;padding:11px 13px;cursor:pointer;flex-wrap:wrap}
+  .ith:hover{background:#f7f6f2}
+  .ar2{flex:none;font-size:10.5px;font-weight:700;border-radius:7px;padding:2px 8px}
+  .ar2.시스템{color:#1d5fa8;background:#e8f0fa}
+  .ar2.서점{color:var(--gd);background:#e6f2ea}
+  .ar2.카페{color:#8a5a14;background:#fbf0dd}
+  .ar2.공사{color:#6e6860;background:#eeece6}
+  .ar2.행정{color:#7a3fa0;background:#f2eafa}
+  .ith .ti{flex:1;min-width:150px;font-size:14px;font-weight:700;letter-spacing:-.02em}
+  .st{flex:none;font-size:10.5px;font-weight:700;border-radius:9px;padding:2px 9px}
+  .st.확인{color:#6e6860;background:#ece7dd}
+  .st.결정{color:#fff;background:var(--warn)}
+  .st.준비{color:#fff;background:var(--g)}
+  .st.완료{color:#8a847a;background:#f2f0e9}
+  .ith .du{flex:none;font-size:11.5px;color:var(--mut);font-variant-numeric:tabular-nums}
+  .pg{flex:none;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--mut)}
+  .pg .b{width:46px;height:5px;background:#ece7dd;border-radius:3px;overflow:hidden}
+  .pg .b i{display:block;height:5px;background:var(--g)}
+
+  .itb{display:none;padding:2px 14px 14px;border-top:1px dashed var(--line2);margin-top:-1px}
+  .it.open .itb{display:block}
+  .td{margin:11px 0 0;padding:0;list-style:none}
+  .td li{display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--soft);padding:3px 0}
+  .td li i{flex:none;width:16px;height:16px;border:1.5px solid #cfc9bd;border-radius:4px;margin-top:4px}
+  .td li.ok i{background:var(--g);border-color:var(--g);position:relative}
+  .td li.ok i::after{content:"";position:absolute;left:4.5px;top:1px;width:4px;height:9px;
+    border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+  .td li.ok{color:var(--mut);text-decoration:line-through;text-decoration-color:#d6d0c4}
+  .nt{margin-top:11px;background:var(--gl);border-left:4px solid var(--g);border-radius:0 8px 8px 0;
+    padding:9px 13px;font-size:12.5px;color:var(--soft);line-height:1.65}
+  .nt.w{background:var(--warnbg);border-color:var(--warn)}
+  .mt{margin-top:10px;display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+  .mt .ow{font-size:11.5px;color:var(--mut)}
+  .dl{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--gd);
+    background:var(--gl);border:1px solid #c8e0d0;border-radius:8px;padding:5px 12px}
+  .dl:hover{background:#e4f1e8}
+
+  .err{background:var(--warnbg);border:1px solid var(--warn);border-radius:11px;padding:14px 17px;
+    font-size:13px;color:var(--warn);line-height:1.7}
+  .foot{margin:26px 0 10px;padding-top:13px;border-top:1px solid var(--line2);
+    display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut);flex-wrap:wrap;gap:6px}
+
+  @media(max-width:760px){
+    body{padding:12px}
+    h1{font-size:22px}
+    .dday{padding-right:14px}
+    .dday b{font-size:28px}
+    .ith{gap:8px}
+    .ith .ti{font-size:14.5px;flex-basis:100%;order:3}
+    .pg{order:4;margin-left:auto}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="navrow">
+    <a class="back" href="gsmch-1f.html">← 1층 성전보수</a>
+    <span>총여선교회 사업단 &nbsp;|&nbsp; 업데이트 <b id="upd">—</b></span>
+  </div>
+
+  <div class="head">
+    <h1>오픈 진도표</h1>
+    <div class="lead">오픈까지 주차별로 무엇을 확인하고 정하고 실행할지 한곳에서 봅니다.</div>
+  </div>
+
+  <div class="sum" id="sum"></div>
+
+  <div class="ctl" id="ctl"></div>
+
+  <div id="list"></div>
+
+  <div class="foot">
+    <span>선한목자교회 총여선교회 사업단</span>
+    <span>1층 성전보수 사업단 PM 안상미</span>
+  </div>
+</div>
+
+<script>
+const AREAS = ['시스템','서점','카페','공사','행정'];
+let DATA = null, filter = '전체';
+
+function esc(s){ return (s||'').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+function dday(to){
+  const t = new Date(to+'T00:00:00+09:00');
+  const n = new Date();
+  const today = new Date(n.getFullYear(), n.getMonth(), n.getDate());
+  return Math.round((t - today) / 86400000);
+}
+function weekState(w){
+  const a = dday(w.from), b = dday(w.to);
+  if (b < 0) return 'past';
+  if (a <= 0 && b >= 0) return 'now';
+  return 'next';
+}
+function prog(it){
+  const t = it.todo || [];
+  return { d: t.filter(x => x.done).length, n: t.length };
+}
+
+function renderSum(){
+  const its = DATA.items;
+  let d = 0, n = 0;
+  its.forEach(it => { const p = prog(it); d += p.d; n += p.n; });
+  const pc = n ? Math.round(d / n * 100) : 0;
+  const cnt = {};
+  its.forEach(it => cnt[it.state] = (cnt[it.state] || 0) + 1);
+  const dd = dday(DATA.open);
+  document.getElementById('sum').innerHTML =
+    '<div class="dday"><b>D-' + dd + '</b><span>오픈 11. 22. (주일)</span></div>' +
+    '<div class="sumg"><div class="t"><span>전체 할 일 <b>' + d + ' / ' + n + '</b></span><span>' + pc + '%</span></div>' +
+    '<div class="bar"><i style="width:' + pc + '%"></i></div></div>' +
+    '<div class="stt">' + ['결정','준비','확인','완료'].filter(s => cnt[s])
+      .map(s => '<span>' + s + ' ' + cnt[s] + '</span>').join('') + '</div>';
+}
+
+function renderCtl(){
+  const c = document.getElementById('ctl');
+  c.innerHTML = ['전체'].concat(AREAS)
+    .map(a => '<button class="chip' + (a === filter ? ' on' : '') + '" data-a="' + a + '">' + a + '</button>').join('') +
+    '<span class="sp">항목을 누르면 할 일이 펼쳐집니다</span>';
+  c.querySelectorAll('.chip').forEach(b => b.onclick = () => { filter = b.dataset.a; renderCtl(); renderList(); });
+}
+
+function itemHTML(it){
+  const p = prog(it);
+  const pc = p.n ? Math.round(p.d / p.n * 100) : 0;
+  const todo = (it.todo || []).map(t =>
+    '<li class="' + (t.done ? 'ok' : '') + '"><i></i><span>' + esc(t.t) + '</span></li>').join('');
+  const note = it.note
+    ? '<div class="nt' + (/미확인|필요/.test(it.note) ? ' w' : '') + '">' + esc(it.note) + '</div>' : '';
+  const meta = (it.owner || it.doc)
+    ? '<div class="mt">' + (it.owner ? '<span class="ow">담당 ' + esc(it.owner) + '</span>' : '') +
+      (it.doc ? '<a class="dl" href="' + esc(it.doc) + '">📄 ' + esc(it.docLabel || '문서 보기') + '</a>' : '') + '</div>'
+    : '';
+  return '<div class="it" id="' + esc(it.id) + '">' +
+    '<div class="ith">' +
+      '<span class="ar2 ' + esc(it.area) + '">' + esc(it.area) + '</span>' +
+      '<span class="st ' + esc(it.state) + '">' + esc(it.state) + '</span>' +
+      '<span class="ti">' + esc(it.title) + '</span>' +
+      (it.due ? '<span class="du">~' + esc(it.due) + '</span>' : '') +
+      '<span class="pg">' + p.d + '/' + p.n + '<span class="b"><i style="width:' + pc + '%"></i></span></span>' +
+    '</div>' +
+    '<div class="itb"><ul class="td">' + todo + '</ul>' + note + meta + '</div>' +
+  '</div>';
+}
+
+function renderList(){
+  const L = document.getElementById('list');
+  L.innerHTML = DATA.weeks.map(w => {
+    const its = DATA.items.filter(i => i.week === w.id && (filter === '전체' || i.area === filter));
+    if (!its.length) return '';
+    const ws = weekState(w);
+    const open = (ws === 'now' || ws === 'next') ? ' open' : '';
+    let d = 0, n = 0;
+    its.forEach(i => { const p = prog(i); d += p.d; n += p.n; });
+    return '<div class="wk ' + ws + open + '">' +
+      '<div class="wkh"><span class="ar">›</span><span class="lb">' + w.label + '</span>' +
+        '<span class="sb">' + w.sub + '</span>' +
+        (ws === 'now' ? '<span class="tag">이번 주</span>' : '') +
+        (w.id === 'w6' ? '<span class="tag op">오픈</span>' : '') +
+        '<span class="ct">' + its.length + '건 · 할 일 ' + d + '/' + n + '</span></div>' +
+      '<div class="wkb">' + its.map(itemHTML).join('') + '</div></div>';
+  }).join('');
+
+  L.querySelectorAll('.wkh').forEach(h => h.onclick = () => h.parentElement.classList.toggle('open'));
+  L.querySelectorAll('.ith').forEach(h => h.onclick = () => h.parentElement.classList.toggle('open'));
+
+  const id = decodeURIComponent(location.hash.slice(1));
+  if (id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.classList.add('open', 'hit');
+      el.closest('.wk').classList.add('open');
+      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'center' }), 120);
+    }
+  }
+}
+
+fetch('gsmch-1f-plan.json?v=' + Date.now())
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(j => {
+    DATA = j;
+    document.getElementById('upd').textContent = j.updated.replace(/-/g, '. ') + '.';
+    renderSum(); renderCtl(); renderList();
+  })
+  .catch(() => {
+    document.getElementById('list').innerHTML =
+      '<div class="err"><b>자료를 불러오지 못했습니다.</b><br>' +
+      'gsmch-1f-plan.json 이 같은 폴더에 있어야 합니다. ' +
+      '내 컴퓨터에서 파일을 직접 열면 브라우저가 막기 때문에, 웹 주소(github.io)로 열어 주세요.</div>';
+  });
+
+window.addEventListener('hashchange', () => DATA && renderList());
+</script>
+</body>
+</html>
