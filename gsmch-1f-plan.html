@@ -335,7 +335,7 @@
       "stream": "주문 · 결제 시스템",
       "group": "공통",
       "ask": [
-        "사업단 의사결정 미팅은 언제로 예정이신지"
+        "사업단 의사결정 미팅 일정 — 사업단장 협의"
       ]
     },
     {
@@ -424,8 +424,7 @@
       "stream": "메뉴 · 기물",
       "group": "로뎀카페",
       "ask": [
-        "계약서는 언제 쓰는지 · 이미 하셨는지",
-        "입금은 기물이 들어온 뒤에 하는 것인지"
+        "계약서 작성 시점 · 입금 조건 — 사업단장 협의"
       ]
     },
     {
@@ -1738,7 +1737,7 @@ function itemHTML(it, sep){
   const note = it.note
     ? '<div class="nt' + (/미확인|필요/.test(it.note) ? ' w' : '') + '">' + esc(it.note) + '</div>' : '';
   const ask = (it.ask && it.ask.length)
-    ? '<div class="ask"><b>단장님께 여쭐 것</b><ul>' +
+    ? '<div class="ask"><b>확인할 내용</b><ul>' +
       it.ask.map(a => '<li>' + esc(a) + '</li>').join('') + '</ul></div>' : '';
   const meta = (it.owner || it.doc)
     ? '<div class="mt">' + (it.owner ? '<span class="ow">담당 ' + esc(it.owner) + '</span>' : '') +

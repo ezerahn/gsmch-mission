@@ -613,7 +613,7 @@
       "stream": "주문 · 결제 시스템",
       "group": "공통",
       "ask": [
-        "사업단 의사결정 미팅은 언제로 예정이신지"
+        "사업단 의사결정 미팅 일정 — 사업단장 협의"
       ]
     },
     {
@@ -702,8 +702,7 @@
       "stream": "메뉴 · 기물",
       "group": "로뎀카페",
       "ask": [
-        "계약서는 언제 쓰는지 · 이미 하셨는지",
-        "입금은 기물이 들어온 뒤에 하는 것인지"
+        "계약서 작성 시점 · 입금 조건 — 사업단장 협의"
       ]
     },
     {
@@ -1977,7 +1976,7 @@
     its.forEach(function(it){ (it.ask||[]).forEach(function(a){ asks.push([it.title,a]); }); });
     var ab=document.getElementById('askBox');
     if(ab){ ab.innerHTML = asks.length
-      ? '<b>단장님께 여쭐 것</b>'+asks.map(function(x){
+      ? '<b>이번 주 확인할 내용</b>'+asks.map(function(x){
           return '<div><span>'+esc(x[0])+'</span>'+esc(x[1])+'</div>'; }).join('')
       : ''; }
     box.innerHTML=its.map(function(it,k){
