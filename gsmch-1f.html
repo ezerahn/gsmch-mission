@@ -113,6 +113,24 @@
 
 
 
+
+  /* ── 인쇄 · 저장 버튼 ── */
+  .tools{display:inline-flex;gap:6px;align-items:center}
+  .tbtn{display:inline-flex;align-items:center;gap:4px;font-family:inherit;font-size:12px;
+    font-weight:600;color:#55534e;background:#fff;border:1px solid #dcd9d1;border-radius:999px;
+    padding:4px 11px;cursor:pointer;line-height:1.4}
+  .tbtn:hover{background:#f2f0e9;border-color:#c9c4b8}
+  .tbtn:disabled{opacity:.5;cursor:default}
+  .tbtn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.8;
+    stroke-linecap:round;stroke-linejoin:round}
+  @media print{.tools{display:none !important}}
+  @media print{
+    body.prwk *{visibility:hidden}
+    body.prwk .wk,body.prwk .wk *{visibility:visible}
+    body.prwk .wk{position:absolute;left:0;top:0;width:100%;border:none;margin:0;padding:0}
+    body.prwk .wk .wk-more{display:none}
+  }
+
   /* ── 이번 주 할 일 ── */
   .wk{background:#fff;border:1px solid #e6e1d7;border-radius:13px;padding:16px 18px 14px;margin-bottom:30px}
   .wk-hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
@@ -397,7 +415,7 @@
 </div>
 
 <div class="wk">
-  <div class="wk-hd"><b>이번 주 할 일</b><span class="sub" id="wkSub">오픈 진도표에서 가져옵니다</span><a class="wk-more" href="gsmch-1f-plan.html">진도표 전체 보기 →</a></div>
+  <div class="wk-hd"><b>이번 주 할 일</b><span class="sub" id="wkSub">오픈 진도표에서 가져옵니다</span><span class="tools" style="margin-left:auto"><button class="tbtn" onclick="saveJpg('.wk','gsmch_이번주할일',this)" title="JPG로 저장"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button><button class="tbtn" onclick="printWk()" title="인쇄"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>인쇄</button><a class="wk-more" href="gsmch-1f-plan.html" style="margin-left:0">진도표 전체 보기 →</a></span></div>
   <div class="wk-g wk5" id="wkNow"></div>
   <div class="askbox" id="askBox"></div>
 
@@ -625,11 +643,15 @@
           "done": true
         },
         {
-          "t": "하드웨어 비용 확정 — 카페 태블릿 2대 · 서점 노트북 1대 · 43˝ 디스플레이 2대",
+          "t": "잇다에 견적 요청서 발송 — 하드웨어 · 소프트웨어 내역",
           "done": false
         },
         {
-          "t": "소프트웨어 월 비용 확정 — 카페 포스 사용자 요금",
+          "t": "하드웨어 비용 확정 — 견적 회신 후 (카페 15˝ 카운터 모니터 · 서점 PDA 연동 휴대폰)",
+          "done": false
+        },
+        {
+          "t": "소프트웨어 월 비용 확정 — 카페 포스 3인 요금 적용 여부",
           "done": false
         },
         {
@@ -641,13 +663,15 @@
           "done": false
         }
       ],
-      "note": "10/20~21 사업단 의사결정 예정입니다. 하드웨어 세 항목과 소프트웨어 한 항목이 아직 추정가라, 확정되면 도입안의 비용 장을 갱신해야 합니다. 이 건이 먼저 결정되어야 계약 · 발주로 넘어갑니다.",
+      "note": "카페 제조대 · 픽업대 화면은 태블릿을 쓸 수 없고 PC 기반이어야 해서, 15˝ 카운터 모니터로 견적을 다시 받습니다. 43˝ 디스플레이 2대와 서점 업무용 노트북은 사업단에서 별도 구매하므로 잇다 견적에서 뺐습니다.",
       "doc": "gsmch-1f-pos-committee.html",
       "docLabel": "도입안 보기",
       "stream": "주문 · 결제 시스템",
       "group": "공통",
       "ask": [
-        "사업단 의사결정 미팅 일정 — 사업단장 협의"
+        "사업단 의사결정 미팅 일정 — 사업단장 협의",
+        "카페 15˝ 카운터 모니터에 PC 본체가 따로 필요한지 — 잇다 회신 대기",
+        "서점 외벽 디스플레이 송출 장치 · 앱 필요 여부 — 잇다 회신 대기"
       ]
     },
     {
@@ -659,6 +683,22 @@
       "due": "10/24",
       "owner": "PM",
       "todo": [
+        {
+          "t": "키오스크 장비 선택 — 카페 안드로이드 · 데스크형 (확정)",
+          "done": true
+        },
+        {
+          "t": "서점 키오스크 선택 — 윈도우 / 안드로이드 가격 차이 확인 중",
+          "done": false
+        },
+        {
+          "t": "서점 외벽 디스플레이 운영 — 사이니지 스틱 / USB 선택",
+          "done": false
+        },
+        {
+          "t": "PDA 무선 링스캐너 — 사진 · 가격 확인 중",
+          "done": false
+        },
         {
           "t": "계약서 조건 확인 (약정 없음 · 무상 A/S)",
           "done": false
@@ -676,9 +716,14 @@
           "done": false
         }
       ],
-      "note": "도입안 결정 이후 진행합니다. 견적 유효기간은 11. 12.까지입니다.",
+      "note": "10/20 잇다 확인 — 도서검색대는 온라인몰 화면을 그대로 띄우며 무상입니다. 키오스크 거치대는 데스크형 기준이고 스탠드형은 28만 원(부가세 별도)이 추가됩니다. 서점은 등록 도서가 많아 터치 키보드 입력이 불편해 윈도우형을 권장받았습니다. 윈도우형의 사이니지 기능은 키오스크 화면에 뜨는 것이라 외벽 디스플레이와는 별개입니다.",
       "stream": "주문 · 결제 시스템",
-      "group": "공통"
+      "group": "공통",
+      "ask": [
+        "서점 키오스크 윈도우 · 안드로이드 가격 차이 — 잇다 회신 대기",
+        "사이니지 스틱 1개 가격 — 잇다 회신 대기",
+        "무선 링스캐너 가격 — 잇다 회신 대기"
+      ]
     },
     {
       "id": "c-entry",
@@ -706,8 +751,8 @@
       "id": "cafe-equip",
       "week": "w1",
       "area": "로뎀카페",
-      "title": "카페 기물 선정 · 계약",
-      "state": "확인",
+      "title": "카페 기물 계약 · 납품",
+      "state": "준비",
       "due": "",
       "owner": "",
       "todo": [
@@ -716,11 +761,19 @@
           "done": true
         },
         {
-          "t": "업체 비교 및 선정",
+          "t": "업체 비교 — 견적 3곳 접수 (제이엔지니어스 · 기정인터내셔날 · 제이크리)",
+          "done": true
+        },
+        {
+          "t": "업체 선정 · 계약 체결 (10/20)",
+          "done": true
+        },
+        {
+          "t": "계약서 사본 받기 — 미수령",
           "done": false
         },
         {
-          "t": "계약서 작성",
+          "t": "납기 확인 — 집기 반입 11/13 전 입고",
           "done": false
         },
         {
@@ -728,15 +781,17 @@
           "done": false
         },
         {
-          "t": "집행 절차 확인 (견적 · 비교 · 결재 · 근거)",
+          "t": "집행 근거 보관 (견적서 3부 · 계약서 · 선정 사유)",
           "done": false
         }
       ],
-      "note": "기물 리스트는 정해졌습니다. 계약과 입금 조건이 남았습니다.",
+      "note": "같은 13품목 기준으로 세 곳에서 견적을 받아 비교했고(제이엔지니어스 26,862,000 · 기정인터내셔날 28,710,000 · 제이크리 29,238,000원, VAT 포함), 의사결정 시점에 견적이 유효했습니다. 최종 계약은 10/20 체결. 견적서 3부 · 계약서 · 선정 사유를 집행 근거로 함께 보관합니다.",
       "stream": "메뉴 · 기물",
       "group": "로뎀카페",
       "ask": [
-        "계약서 작성 시점 · 입금 조건 — 사업단장 협의"
+        "계약 업체 · 계약 금액 확인",
+        "계약서 사본 받기 — 집행 근거로 보관",
+        "납기 확인 — 집기 반입 11/13 전 입고"
       ]
     },
     {
@@ -874,6 +929,10 @@
         {
           "t": "외벽 디스플레이 위치 · 전원 · 랜",
           "done": false
+        },
+        {
+          "t": "키오스크 거치 방식 — 데스크형이면 올려 둘 상판 · 가구 반영",
+          "done": false
         }
       ],
       "note": "자리가 정해져야 발주 사양과 타공 요청이 나갑니다.",
@@ -892,7 +951,19 @@
       "owner": "PM",
       "todo": [
         {
-          "t": "메뉴판 프레임 칸 폭 · 깊이",
+          "t": "메뉴판 디지털로 확정 — 43˝ 3대 · 한 대를 반으로 나눠 6칸",
+          "done": true
+        },
+        {
+          "t": "건축위에 전달 — 거는 자리 · 보강 · 화면마다 전원 · 인터넷 · 배선 정리",
+          "done": false
+        },
+        {
+          "t": "메뉴판 프레임 칸 폭 · 깊이 (43˝ 3대 약 290cm)",
+          "done": false
+        },
+        {
+          "t": "거는 높이 · 각도 현장 확인",
           "done": false
         },
         {
@@ -902,13 +973,21 @@
         {
           "t": "픽업대 위 디스플레이 고정 · 보강",
           "done": false
+        },
+        {
+          "t": "디스플레이 모델 확정 후 크기 · 무게 · 거치 규격 건축위 전달",
+          "done": false
         }
       ],
-      "note": "메뉴판과 디스플레이는 벽·천장 작업이라 공사 중에 정해야 합니다.",
-      "doc": "gsmch-1f-cafe-layout.html",
-      "docLabel": "카페 배치안 보기",
+      "note": "메뉴판은 디지털 43˝ 3대로 정했습니다. 한 대를 둘로 나눠 6칸으로 쓰면 기존 메뉴 31가지가 모두 들어갑니다. 전원과 인터넷은 준공(11/14) 전에 되어 있어야 하고, 메뉴를 바꾸는 일은 사업단 디자인 간사님께 요청합니다.",
+      "doc": "gsmch_카페_메뉴판구성.jpg",
+      "docLabel": "메뉴판 구성안",
       "stream": "도면 · 자리",
-      "group": "로뎀카페"
+      "group": "로뎀카페",
+      "ask": [
+        "배치 · 운영안의 「5칸 · 화면 5대」를 3대 · 6칸으로 고칠 것",
+        "디스플레이 모델 확정 — 무게 · 거치 규격이 보강 설계에 필요"
+      ]
     },
     {
       "id": "cafe-cup-review",
@@ -1915,6 +1994,32 @@
       "group": "공통"
     },
     {
+      "id": "bk-plan",
+      "week": "w7",
+      "group": "공통",
+      "stream": "백서 제작",
+      "area": "행정",
+      "title": "백서 구성 · 목차 확정",
+      "state": "확인",
+      "due": "11/30",
+      "owner": "PM",
+      "todo": [
+        {
+          "t": "제목 · 편 구성 확정",
+          "done": false
+        },
+        {
+          "t": "편별 분량 · 원고 담당 정리",
+          "done": false
+        },
+        {
+          "t": "표지 · 간지 시안",
+          "done": false
+        }
+      ],
+      "note": "Ⅰ·Ⅱ편은 사역매뉴얼, Ⅲ편은 운영 매뉴얼, Ⅳ편은 1층 성전보수 기록입니다."
+    },
+    {
       "id": "a-handover1",
       "week": "w8",
       "area": "행정",
@@ -1943,6 +2048,104 @@
       "note": "운영 매뉴얼이 나와 있어야 안내가 됩니다.",
       "stream": "행정 · 매뉴얼",
       "group": "공통"
+    },
+    {
+      "id": "bk-part4",
+      "week": "w8",
+      "group": "공통",
+      "stream": "백서 제작",
+      "area": "행정",
+      "title": "Ⅳ편 성전보수 기록 정리",
+      "state": "확인",
+      "due": "12/7",
+      "owner": "PM",
+      "todo": [
+        {
+          "t": "경위 · 일정 정리 (마스터플랜 · 진도표에서)",
+          "done": false
+        },
+        {
+          "t": "결정 기록 정리",
+          "done": false
+        },
+        {
+          "t": "도면 · 배치안 · 도입안 수록본 고르기",
+          "done": false
+        },
+        {
+          "t": "공사 · 오픈 사진 고르기",
+          "done": false
+        }
+      ],
+      "note": "마스터플랜의 기록 · 참고자료와 진도표가 그대로 원고가 됩니다."
+    },
+    {
+      "id": "bk-forms",
+      "week": "w8",
+      "group": "공통",
+      "stream": "백서 제작",
+      "area": "행정",
+      "title": "부록 ① 양식집",
+      "state": "확인",
+      "due": "12/7",
+      "owner": "PM",
+      "todo": [
+        {
+          "t": "사업단 월 통합 보고서 서식",
+          "done": true
+        },
+        {
+          "t": "선지서점 회계보고서 — 시트 1 · 2 · 3 · 4",
+          "done": true
+        },
+        {
+          "t": "로뎀카페 회계보고서 — 시트 1 · 2 · 3 · 4",
+          "done": true
+        },
+        {
+          "t": "선목사업단 식사대금 청구서 서식",
+          "done": false
+        },
+        {
+          "t": "인수인계 확인서 (새로 만들기)",
+          "done": false
+        }
+      ],
+      "note": "월 통합보고서 · 서점 · 카페 회계보고서 최신본 확보(2026. 9.). 빈 서식으로 수록하고, 숫자가 채워진 실제 보고서와 통장 사본은 사업단 간 인수자료로 넘깁니다."
+    },
+    {
+      "id": "bk-fin",
+      "week": "w8",
+      "group": "공통",
+      "stream": "백서 제작",
+      "area": "행정",
+      "title": "재무 요약 정리 · 2026 집계",
+      "state": "확인",
+      "due": "12/7",
+      "owner": "PM",
+      "todo": [
+        {
+          "t": "월 통합보고서에서 2026년 집계 (1~12월)",
+          "done": false
+        },
+        {
+          "t": "표본 검증 — 서너 달치를 원본 보고서와 대조",
+          "done": false
+        },
+        {
+          "t": "연간 요약 · 선교비 집계만 백서에 수록",
+          "done": false
+        },
+        {
+          "t": "월별 매출 · 인건비 상세는 제외",
+          "done": false
+        },
+        {
+          "t": "대시보드 2026년 반영",
+          "done": false
+        }
+      ],
+      "note": "월 통합보고서(2025.12~)가 확정 근거입니다. 대시보드는 참고용이므로 백서 수치는 통합보고서를 따릅니다. 백서는 교회 3부가 나가므로 상세는 넣지 않습니다."
     },
     {
       "id": "a-handover2",
@@ -1978,6 +2181,114 @@
       "stream": "행정 · 매뉴얼",
       "weekTo": "w9",
       "group": "공통"
+    },
+    {
+      "id": "bk-typeset",
+      "week": "w9",
+      "group": "공통",
+      "stream": "백서 제작",
+      "area": "행정",
+      "title": "백서 조판 · 교정",
+      "state": "확인",
+      "due": "12/12",
+      "owner": "PM",
+      "todo": [
+        {
+          "t": "전체 조판 (A4 세로 · 쪽번호 · 머리말)",
+          "done": false
+        },
+        {
+          "t": "목차 · 쪽수 맞추기",
+          "done": false
+        },
+        {
+          "t": "교정 1차 · 2차",
+          "done": false
+        }
+      ],
+      "note": "HTML로 짜서 인쇄용 PDF와 웹판을 함께 만듭니다."
+    },
+    {
+      "id": "bk-print",
+      "week": "w9",
+      "group": "공통",
+      "stream": "백서 제작",
+      "area": "행정",
+      "title": "인쇄 · 제본 5부",
+      "state": "확인",
+      "due": "12/17",
+      "owner": "PM",
+      "todo": [
+        {
+          "t": "표지 · 책등 인쇄",
+          "done": false
+        },
+        {
+          "t": "3공 바인더 제본",
+          "done": false
+        },
+        {
+          "t": "교회 3부 · 사업단 2부",
+          "done": false
+        }
+      ],
+      "note": "바인더로 하면 바뀐 장만 갈아 끼울 수 있습니다."
+    },
+    {
+      "id": "bk-hand",
+      "week": "w9",
+      "group": "공통",
+      "stream": "백서 제작",
+      "area": "행정",
+      "title": "백서 전달 · 상세 인수자료 인계",
+      "state": "확인",
+      "due": "12/18",
+      "owner": "PM",
+      "todo": [
+        {
+          "t": "교회 3부 전달",
+          "done": false
+        },
+        {
+          "t": "사업단 2부 전달",
+          "done": false
+        },
+        {
+          "t": "상세 재무 · 원본 자료는 사업단 간 별도 인계",
+          "done": false
+        }
+      ],
+      "note": ""
+    },
+    {
+      "id": "bk-contact",
+      "week": "w8",
+      "group": "공통",
+      "stream": "백서 제작",
+      "area": "행정",
+      "title": "부록 ② 연락망",
+      "state": "확인",
+      "due": "12/7",
+      "owner": "PM",
+      "todo": [
+        {
+          "t": "거래처 연락망 — 건국우유 · 카페허브 · 경기유통 · 래그랜느 · 파블로스 · 할렐루야 · 올리버리 · 아이유통 (품목별 담당)",
+          "done": true
+        },
+        {
+          "t": "업체 A/S · 기사님 — 진동벨 · 포스기 · 머신관리 · 정수기 · 탬핑기 · 키오스크 · 벨소리",
+          "done": false
+        },
+        {
+          "t": "잇다 플랫폼 A/S 창구 추가",
+          "done": false
+        },
+        {
+          "t": "세무사 · 사무국 담당",
+          "done": false
+        }
+      ],
+      "note": "거래처 연락망 확보 완료(10/20). 개인 연락처가 들어가므로 홈페이지에는 올리지 않고, 백서도 사업단 인수본에만 수록합니다."
     }
   ],
   "streams": {
@@ -1987,6 +2298,7 @@
       "제작물 · 사인",
       "교육 · 인력",
       "행정 · 매뉴얼",
+      "백서 제작",
       "오픈"
     ],
     "선지서점": [
@@ -2007,8 +2319,7 @@
     "선지서점",
     "로뎀카페"
   ]
-}
-</script>
+}</script>
 <script>
 (function(){
   var box=document.getElementById('wkNow'); if(!box) return;
@@ -2081,6 +2392,54 @@
   var a=document.getElementById('todayS'); if(a) a.textContent=y+'.'+('0'+m).slice(-2)+'.'+('0'+d).slice(-2);
   var b=document.getElementById('todayL'); if(b) b.textContent=y+'. '+m+'. '+d+'.';
 })();
+</script>
+
+<script>
+/* ── JPG 저장 · 인쇄 ── */
+function _h2c(cb){
+  if (window.html2canvas) return cb();
+  var s=document.createElement('script');
+  s.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+  s.onload=cb;
+  s.onerror=function(){ alert('이미지 저장 기능을 불러오지 못했습니다. 인터넷 연결을 확인해 주십시오.'); };
+  document.head.appendChild(s);
+}
+function _today(){
+  var d=new Date(), p=function(n){return (n<10?'0':'')+n;};
+  return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());
+}
+function saveJpg(sel, name, btn){
+  var el=document.querySelector(sel); if(!el) return;
+  var t=btn?btn.innerHTML:null; if(btn){btn.disabled=true; btn.textContent='저장 중…';}
+  document.body.classList.add('shot');
+  _h2c(function(){
+    html2canvas(el,{backgroundColor:'#ffffff',scale:2,useCORS:true,logging:false}).then(function(cv){
+      cv.toBlob(function(b){
+        var a=document.createElement('a');
+        a.href=URL.createObjectURL(b);
+        a.download=name+'_'+_today()+'.jpg';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
+      },'image/jpeg',0.93);
+    }).catch(function(){ alert('이미지로 저장하지 못했습니다.'); })
+    .then(function(){
+      document.body.classList.remove('shot');
+      if(btn){btn.disabled=false; btn.innerHTML=t;}
+    });
+  });
+}
+</script>
+
+<script>
+function printWk(){
+  document.body.classList.add('prwk');
+  var st=document.getElementById('pgsz');
+  if(!st){st=document.createElement('style');st.id='pgsz';document.head.appendChild(st);}
+  st.textContent='@page{size:A4 portrait;margin:12mm}';
+  window.print();
+  setTimeout(function(){document.body.classList.remove('prwk');},400);
+}
+window.addEventListener('afterprint',function(){document.body.classList.remove('prwk');});
 </script>
 </body>
 </html>
