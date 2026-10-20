@@ -177,6 +177,20 @@
     background:var(--gl);border:1px solid #c8e0d0;border-radius:8px;padding:5px 12px}
   .dl:hover{background:#e4f1e8}
 
+  /* 장비 배치도 */
+  .posdwg{margin-top:26px}
+  .posdwg .hd3{display:flex;align-items:baseline;gap:11px;margin:0 0 12px;padding-bottom:9px;
+    border-bottom:2px solid var(--line)}
+  .posdwg .hd3 b{font-family:'Gowun Batang',serif;font-size:21px;font-weight:700;letter-spacing:-.5px}
+  .posdwg .hd3 em{font-style:normal;font-size:12.5px;color:var(--mut)}
+  .posdwg .hd3 a{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--gd)}
+  .posgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .posgrid a{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;
+    overflow:hidden}
+  .posgrid a:hover{border-color:var(--g)}
+  .posgrid img{width:100%;display:block}
+  @media(max-width:760px){ .posgrid{grid-template-columns:1fr} }
+
   .err{background:var(--warnbg);border:1px solid var(--warn);border-radius:11px;padding:14px 17px;
     font-size:13px;color:var(--warn);line-height:1.7}
   .foot{margin:26px 0 10px;padding-top:13px;border-top:1px solid var(--line2);
@@ -1783,6 +1797,15 @@ function itemHTML(it, sep){
 }
 
 
+const POSDWG =
+  '<div class="posdwg"><div class="hd3"><b>장비 배치도</b>' +
+  '<em>실측평면도 2026. 10. 05. 기준 · 포스 · 키오스크 · 디스플레이 자리</em>' +
+  '<a href="gsmch-1f-pos-committee.html">도입안에서 보기 →</a></div>' +
+  '<div class="posgrid">' +
+  '<a href="gsmch-1f-pos-book.jpg" target="_blank"><img src="gsmch-1f-pos-book.jpg" alt="서점 장비 배치"></a>' +
+  '<a href="gsmch-1f-pos-cafe.jpg" target="_blank"><img src="gsmch-1f-pos-cafe.jpg" alt="카페 장비 배치"></a>' +
+  '</div></div>';
+
 function renderGantt(){
   const L = document.getElementById('list');
   const W = DATA.weeks, idx = {};
@@ -1834,7 +1857,7 @@ function renderGantt(){
     });
   });
   out += '</div></div></div>';
-  L.innerHTML = out;
+  L.innerHTML = out + POSDWG;
 }
 
 function renderList(){
@@ -1875,6 +1898,7 @@ function renderList(){
       '<div class="wkb">' + its.map((it,i) => itemHTML(it, i > 0 && trk(it) !== trk(its[i-1]))).join('') + '</div></div>';
   }).join('');
 
+  L.insertAdjacentHTML('beforeend', POSDWG);
   L.querySelectorAll('.wkh').forEach(h => h.onclick = () => h.parentElement.classList.toggle('open'));
   L.querySelectorAll('.ith').forEach(h => h.onclick = () => h.parentElement.classList.toggle('open'));
 

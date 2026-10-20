@@ -362,7 +362,7 @@
 <div class="wrap">
 
   <div class="navrow">
-    <div class="meta">총여선교회 사업단 › 1층 성전보수 &nbsp;|&nbsp; 업데이트 2026.10.19</div>
+    <div class="meta">총여선교회 사업단 › 1층 성전보수 &nbsp;|&nbsp; 업데이트 <span id="todayS">2026.10.19</span></div>
   </div>
 
   <div class="head">
@@ -371,7 +371,7 @@
   </div>
 
 <div class="tlx">
-  <div class="tlx-hd"><b>진행 공정</b><span class="sub">8단계 · 현재 ③-1 임시서점 운영(5층) · ④ 도면 · 기물 확정 · ⑤ 오픈 준비</span><span class="rt">오늘 2026. 10. 19.</span></div>
+  <div class="tlx-hd"><b>진행 공정</b><span class="sub">8단계 · 현재 ③-1 임시서점 운영(5층) · ④ 도면 · 기물 확정 · ⑤ 오픈 준비</span><span class="rt">오늘 <span id="todayL"></span></span></div>
   <div class="tlx-g tlx-steps tl8">
     <a class="tlx-s done" href="gsmch-1f-masterplan.html#v2/st1"><span class="n">①</span><span class="t">설계 · 소통</span><span class="st">완료</span></a>
     <a class="tlx-s done" href="gsmch-1f-masterplan.html#v2/st2"><span class="n">②</span><span class="t">자산 · 물품 정리</span><span class="st">완료</span></a>
@@ -407,15 +407,15 @@
   <div class="dwg">
     <a class="dwgc" href="gsmch-1f-dwg-all.jpg" target="_blank">
       <div class="im"><img src="gsmch-1f-dwg-all.jpg" alt="지상1층 평면도 (A08)"></div>
-      <div class="cap"><b>지상1층 평면도 (A08)</b><em>최신</em><span>26. 08. 19. 수령 · 로비 · 서점 · 카페 · 자모실</span></div>
+      <div class="cap"><b>지상1층 평면도 (A08)</b><em>최신</em><span>26. 08. 19. 수령 · 1층 전체</span></div>
     </a>
     <a class="dwgc" href="gsmch-1f-dwg-book.jpg" target="_blank">
       <div class="im"><img src="gsmch-1f-dwg-book.jpg" alt="선지서점 · 안내 평면"></div>
-      <div class="cap"><b>선지서점 · 안내 평면</b><em>최신</em><span>26. 08. 02. 수령 · 서점 + 안내 2분할</span></div>
+      <div class="cap"><b>선지서점 실측평면도</b><em>최신</em><span>26. 10. 05. · 장비 배치 기준</span></div>
     </a>
     <a class="dwgc" href="gsmch-1f-dwg-cafe.jpg" target="_blank">
       <div class="im"><img src="gsmch-1f-dwg-cafe.jpg" alt="로뎀카페 설비 배치"></div>
-      <div class="cap"><b>로뎀카페 설비 배치</b><em>최신</em><span>26. 08. 11. 수령 · coffee · beverage zone</span></div>
+      <div class="cap"><b>로뎀카페 실측평면도</b><em>최신</em><span>26. 10. 05. · 장비 배치 기준</span></div>
     </a>
   </div>
 
@@ -2074,6 +2074,13 @@
         '<div class="t">진도표 자료를 불러오지 못했습니다</div>'+
         '<div class="s">gsmch-1f-plan.json 파일이 같은 폴더에 있어야 합니다.</div></div>';
     });
+})();
+</script>
+<script>
+(function(){
+  var n=new Date(), y=n.getFullYear(), m=n.getMonth()+1, d=n.getDate();
+  var a=document.getElementById('todayS'); if(a) a.textContent=y+'.'+('0'+m).slice(-2)+'.'+('0'+d).slice(-2);
+  var b=document.getElementById('todayL'); if(b) b.textContent=y+'. '+m+'. '+d+'.';
 })();
 </script>
 </body>
