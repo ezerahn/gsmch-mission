@@ -1566,8 +1566,8 @@ function renderCtl(){
   const c = document.getElementById('ctl');
   c.innerHTML =
     '<span class="vsw">' +
-      '<button class="vb' + (view === 'week' ? ' on' : '') + '" data-v="week">주차별</button>' +
       '<button class="vb' + (view === 'gantt' ? ' on' : '') + '" data-v="gantt">전체 일정</button>' +
+      '<button class="vb' + (view === 'week' ? ' on' : '') + '" data-v="week">주차별</button>' +
     '</span>' +
     ['전체'].concat(AREAS)
       .map(a => '<button class="chip' + (a === filter ? ' on' : '') + '" data-a="' + a + '">' + a + '</button>').join('') +
@@ -1712,7 +1712,7 @@ function start(j, offline){
   DATA = j;
   document.getElementById('upd').textContent = j.updated.replace(/-/g, '. ') + '.'
     + (offline ? ' (문서 내장본)' : '');
-  renderSum(); renderCtl(); renderList();
+  renderSum(); renderCtl(); draw();
 }
 function builtIn(){
   const el = document.getElementById('planData');
