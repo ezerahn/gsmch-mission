@@ -23,7 +23,27 @@
   .navrow{font-size:11.5px;color:var(--mut);padding-bottom:8px;border-bottom:1px solid var(--line2);
     display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
   .navrow a.back{color:var(--gd);font-weight:600}
-  .head{padding:18px 0 4px}
+
+  /* ── 인쇄 · 저장 버튼 ── */
+  .tools{display:inline-flex;gap:6px;align-items:center}
+  .tbtn{display:inline-flex;align-items:center;gap:4px;font-family:inherit;font-size:12px;
+    font-weight:600;color:#55534e;background:#fff;border:1px solid #dcd9d1;border-radius:999px;
+    padding:4px 11px;cursor:pointer;line-height:1.4}
+  .tbtn:hover{background:#f2f0e9;border-color:#c9c4b8}
+  .tbtn:disabled{opacity:.5;cursor:default}
+  .tbtn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.8;
+    stroke-linecap:round;stroke-linejoin:round}
+  @media print{.tools{display:none !important}}
+
+  @media print{
+    .navrow,.ctl,.foot{display:none !important}
+    body{background:#fff}
+    .wrap{max-width:none;padding:0}
+  }
+  body.shot .navrow,body.shot .ctl,body.shot .foot{display:none !important}
+  .head{padding:18px 0 4px;position:relative}
+  .head .tools{position:absolute;right:0;top:20px}
+
   h1{font-family:'Gowun Batang',serif;font-size:26px;font-weight:700;margin:0;letter-spacing:-.6px}
   .lead{font-size:13px;color:var(--soft);margin-top:6px}
 
@@ -218,6 +238,10 @@
   </div>
 
   <div class="head">
+    <span class="tools">
+      <button class="tbtn" onclick="saveJpg('.wrap','gsmch_진도표',this)" title="JPG로 저장"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button>
+      <button class="tbtn" onclick="printPlan()" title="인쇄"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>인쇄</button>
+    </span>
     <h1>오픈 진도표</h1>
     <div class="lead">오픈까지 주차별로 무엇을 확인하고 정하고 실행할지 한곳에서 봅니다.</div>
   </div>
@@ -2230,6 +2254,51 @@ fetch('gsmch-1f-plan.json?v=' + Date.now())
 
 function draw(){ view === 'gantt' ? renderGantt() : renderList(); }
 window.addEventListener('hashchange', () => { if (DATA) { view = 'week'; renderCtl(); renderList(); } });
+</script>
+
+<script>
+/* ── JPG 저장 · 인쇄 ── */
+function _h2c(cb){
+  if (window.html2canvas) return cb();
+  var s=document.createElement('script');
+  s.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+  s.onload=cb;
+  s.onerror=function(){ alert('이미지 저장 기능을 불러오지 못했습니다. 인터넷 연결을 확인해 주십시오.'); };
+  document.head.appendChild(s);
+}
+function _today(){
+  var d=new Date(), p=function(n){return (n<10?'0':'')+n;};
+  return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate());
+}
+function saveJpg(sel, name, btn){
+  var el=document.querySelector(sel); if(!el) return;
+  var t=btn?btn.innerHTML:null; if(btn){btn.disabled=true; btn.textContent='저장 중…';}
+  document.body.classList.add('shot');
+  _h2c(function(){
+    html2canvas(el,{backgroundColor:'#ffffff',scale:2,useCORS:true,logging:false}).then(function(cv){
+      cv.toBlob(function(b){
+        var a=document.createElement('a');
+        a.href=URL.createObjectURL(b);
+        a.download=name+'_'+_today()+'.jpg';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
+      },'image/jpeg',0.93);
+    }).catch(function(){ alert('이미지로 저장하지 못했습니다.'); })
+    .then(function(){
+      document.body.classList.remove('shot');
+      if(btn){btn.disabled=false; btn.innerHTML=t;}
+    });
+  });
+}
+</script>
+
+<script>
+function printPlan(){
+  var st=document.getElementById('pgsz');
+  if(!st){st=document.createElement('style');st.id='pgsz';document.head.appendChild(st);}
+  st.textContent='@page{size:A4 ' + ((typeof view!=='undefined' && view==='gantt')?'landscape':'portrait') + ';margin:10mm}';
+  window.print();
+}
 </script>
 </body>
 </html>
