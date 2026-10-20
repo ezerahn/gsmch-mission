@@ -119,6 +119,11 @@
   .wk-hd b{font-size:14px;font-weight:700;letter-spacing:-.02em;color:#2c2a26}
   .wk-hd .sub{font-size:12px;color:#8a847a}
   .wk-hd .rt{margin-left:auto;font-size:11.5px;color:#a9a294}
+  .askbox{margin:0 0 14px;background:#FBF3E6;border:1px solid #e3d6bb;border-radius:11px;padding:12px 16px 13px}
+  .askbox b{display:block;font-size:13px;font-weight:700;color:#9A6414;margin-bottom:6px}
+  .askbox div{font-size:13px;color:#6e6860;line-height:1.75;display:flex;gap:8px}
+  .askbox div span{flex:none;font-size:11px;font-weight:700;color:#9A6414;background:#fff;
+    border:1px solid #e3d6bb;border-radius:6px;padding:1px 8px;margin-top:3px;height:fit-content}
   .wk-hd .wk-more{margin-left:auto;font-size:12px;font-weight:600;color:#056B2C;
     background:#F1F8F3;border:1px solid #c8e0d0;border-radius:999px;padding:4px 13px;text-decoration:none}
   .wk-hd .wk-more:hover{background:#e4f1e8}
@@ -373,6 +378,7 @@
 
 <div class="wk">
   <div class="wk-hd"><b>이번 주 할 일</b><span class="sub" id="wkSub">오픈 진도표에서 가져옵니다</span><a class="wk-more" href="gsmch-1f-plan.html">진도표 전체 보기 →</a></div>
+  <div class="askbox" id="askBox"></div>
   <div class="wk-g wk5" id="wkNow"></div>
 
 </div>
@@ -605,7 +611,10 @@
       "doc": "gsmch-1f-pos-committee.html",
       "docLabel": "도입안 보기",
       "stream": "주문 · 결제 시스템",
-      "group": "공통"
+      "group": "공통",
+      "ask": [
+        "사업단 의사결정 미팅은 언제로 예정이신지"
+      ]
     },
     {
       "id": "s-contract",
@@ -663,27 +672,39 @@
       "id": "cafe-equip",
       "week": "w1",
       "area": "로뎀카페",
-      "title": "기물 업체 선정",
+      "title": "카페 기물 선정 · 계약",
       "state": "확인",
       "due": "",
       "owner": "",
       "todo": [
         {
-          "t": "후보 기종 최종 견적 접수",
-          "done": false
+          "t": "기물 리스트 확정",
+          "done": true
         },
         {
           "t": "업체 비교 및 선정",
           "done": false
         },
         {
-          "t": "집행 절차 확인",
+          "t": "계약서 작성",
+          "done": false
+        },
+        {
+          "t": "입금 조건 · 시점 확인",
+          "done": false
+        },
+        {
+          "t": "집행 절차 확인 (견적 · 비교 · 결재 · 근거)",
           "done": false
         }
       ],
-      "note": "9월 이후 현황 미확인 — 내용 갱신 필요.",
+      "note": "기물 리스트는 정해졌습니다. 계약과 입금 조건이 남았습니다.",
       "stream": "메뉴 · 기물",
-      "group": "로뎀카페"
+      "group": "로뎀카페",
+      "ask": [
+        "계약서는 언제 쓰는지 · 이미 하셨는지",
+        "입금은 기물이 들어온 뒤에 하는 것인지"
+      ]
     },
     {
       "id": "c-sign",
@@ -1952,6 +1973,13 @@
       var d=TORD.indexOf(tr(a))-TORD.indexOf(tr(b)); if(d) return d;
       return SORD.indexOf(a.state)-SORD.indexOf(b.state);});
     var cur=null, n=0;
+    var asks=[];
+    its.forEach(function(it){ (it.ask||[]).forEach(function(a){ asks.push([it.title,a]); }); });
+    var ab=document.getElementById('askBox');
+    if(ab){ ab.innerHTML = asks.length
+      ? '<b>단장님께 여쭐 것</b>'+asks.map(function(x){
+          return '<div><span>'+esc(x[0])+'</span>'+esc(x[1])+'</div>'; }).join('')
+      : ''; }
     box.innerHTML=its.map(function(it,k){
       var band='';
       if(tr(it)!==cur){

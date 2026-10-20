@@ -164,6 +164,10 @@
   .td li.ok i::after{content:"";position:absolute;left:4.5px;top:1px;width:4px;height:9px;
     border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
   .td li.ok{color:var(--mut);text-decoration:line-through;text-decoration-color:#d6d0c4}
+  .ask{margin-top:11px;background:#FBF3E6;border:1px solid #e3d6bb;border-radius:9px;padding:9px 13px}
+  .ask b{display:block;font-size:12px;font-weight:700;color:#9A6414;margin-bottom:4px}
+  .ask ul{margin:0;padding-left:16px}
+  .ask li{font-size:12.5px;color:#6e6860;line-height:1.65}
   .nt{margin-top:11px;background:var(--gl);border-left:4px solid var(--g);border-radius:0 8px 8px 0;
     padding:9px 13px;font-size:12.5px;color:var(--soft);line-height:1.65}
   .nt.w{background:var(--warnbg);border-color:var(--warn)}
@@ -329,7 +333,10 @@
       "doc": "gsmch-1f-pos-committee.html",
       "docLabel": "도입안 보기",
       "stream": "주문 · 결제 시스템",
-      "group": "공통"
+      "group": "공통",
+      "ask": [
+        "사업단 의사결정 미팅은 언제로 예정이신지"
+      ]
     },
     {
       "id": "s-contract",
@@ -387,27 +394,39 @@
       "id": "cafe-equip",
       "week": "w1",
       "area": "로뎀카페",
-      "title": "기물 업체 선정",
+      "title": "카페 기물 선정 · 계약",
       "state": "확인",
       "due": "",
       "owner": "",
       "todo": [
         {
-          "t": "후보 기종 최종 견적 접수",
-          "done": false
+          "t": "기물 리스트 확정",
+          "done": true
         },
         {
           "t": "업체 비교 및 선정",
           "done": false
         },
         {
-          "t": "집행 절차 확인",
+          "t": "계약서 작성",
+          "done": false
+        },
+        {
+          "t": "입금 조건 · 시점 확인",
+          "done": false
+        },
+        {
+          "t": "집행 절차 확인 (견적 · 비교 · 결재 · 근거)",
           "done": false
         }
       ],
-      "note": "9월 이후 현황 미확인 — 내용 갱신 필요.",
+      "note": "기물 리스트는 정해졌습니다. 계약과 입금 조건이 남았습니다.",
       "stream": "메뉴 · 기물",
-      "group": "로뎀카페"
+      "group": "로뎀카페",
+      "ask": [
+        "계약서는 언제 쓰는지 · 이미 하셨는지",
+        "입금은 기물이 들어온 뒤에 하는 것인지"
+      ]
     },
     {
       "id": "c-sign",
@@ -1718,6 +1737,9 @@ function itemHTML(it, sep){
     '<li class="' + (t.done ? 'ok' : '') + '"><i></i><span>' + esc(t.t) + '</span></li>').join('');
   const note = it.note
     ? '<div class="nt' + (/미확인|필요/.test(it.note) ? ' w' : '') + '">' + esc(it.note) + '</div>' : '';
+  const ask = (it.ask && it.ask.length)
+    ? '<div class="ask"><b>단장님께 여쭐 것</b><ul>' +
+      it.ask.map(a => '<li>' + esc(a) + '</li>').join('') + '</ul></div>' : '';
   const meta = (it.owner || it.doc)
     ? '<div class="mt">' + (it.owner ? '<span class="ow">담당 ' + esc(it.owner) + '</span>' : '') +
       (it.doc ? '<a class="dl" href="' + esc(it.doc) + '">📄 ' + esc(it.docLabel || '문서 보기') + '</a>' : '') + '</div>'
@@ -1731,7 +1753,7 @@ function itemHTML(it, sep){
       '<span class="du">' + (it.due ? '~' + esc(it.due) : '') + '</span>' +
       '<span class="pg">' + p.d + '/' + p.n + '<span class="b"><i style="width:' + pc + '%"></i></span></span>' +
     '</div>' +
-    '<div class="itb"><ul class="td">' + todo + '</ul>' + note + meta + '</div>' +
+    '<div class="itb"><ul class="td">' + todo + '</ul>' + ask + note + meta + '</div>' +
   '</div>';
 }
 
