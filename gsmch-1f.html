@@ -126,6 +126,12 @@
   a.wk-i:hover{border-color:#07913B}
   .wk-i .ar3{display:inline-block;font-size:10px;font-weight:700;border-radius:7px;
     padding:1px 7px;margin-left:5px;vertical-align:1px}
+  .wk-i .n{display:flex;align-items:center;gap:4px}
+  .wk-i .bd{margin-left:auto;font-size:10.5px;font-weight:700;border-radius:9px;padding:1px 9px 2px}
+  .wk-i.s결정 .bd{color:#fff;background:#B3382A}
+  .wk-i.s준비 .bd{color:#fff;background:#07913B}
+  .wk-i.s확인 .bd{color:#6e6860;background:#ece7dd}
+  .wk-i.s완료 .bd{color:#8a847a;background:#f2f0e9}
   .wk-i .ar3.주문결제{color:#1d5fa8;background:#e8f0fa}
   .wk-i .ar3.선지서점{color:#056B2C;background:#e6f2ea}
   .wk-i .ar3.로뎀카페{color:#8a5a14;background:#fbf0dd}
@@ -1692,6 +1698,7 @@
     var TSUB={'현장 · 설계':'인테리어 · 도면 · 건축위','매장 셋업':'서점 · 카페 내부 · 제작물',
               '시스템':'주문 · 결제 · 재고','행정 · 운영':'결재 · 매뉴얼 · 홍보'};
     var SORD=['결정','준비','확인','완료'];
+    var LABEL={'확인':'확인 중','결정':'결정 필요','준비':'진행 중','완료':'완료'};
     function tr(it){return TRACK[it.area]||'행정 · 운영';}
     its.sort(function(a,b){
       var d=TORD.indexOf(tr(a))-TORD.indexOf(tr(b)); if(d) return d;
@@ -1712,7 +1719,8 @@
       var rest=t.filter(function(x){return !x.done;}).slice(0,3)
         .map(function(x){return esc(x.t);}).join('<br>')||'할 일이 모두 끝났습니다';
       return band+'<a class="wk-i s'+esc(it.state)+'" href="gsmch-1f-plan.html#'+esc(it.id)+'">'+
-        '<div class="n">'+n+'<span class="ar3 '+esc(it.area)+'">'+esc(it.area)+'</span></div>'+
+        '<div class="n">'+n+'<span class="ar3 '+esc(it.area)+'">'+esc(it.area)+'</span>'+
+          '<span class="bd">'+esc(LABEL[it.state]||it.state)+'</span></div>'+
         '<div class="t">'+esc(it.title)+'</div>'+
         '<div class="d">'+(it.due?'~ '+esc(it.due):'기한 미정')+'</div>'+
         '<div class="s">'+rest+'</div>'+
