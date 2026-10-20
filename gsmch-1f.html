@@ -119,8 +119,9 @@
   .wk-hd b{font-size:14px;font-weight:700;letter-spacing:-.02em;color:#2c2a26}
   .wk-hd .sub{font-size:12px;color:#8a847a}
   .wk-hd .rt{margin-left:auto;font-size:11.5px;color:#a9a294}
-  .askbox{margin:0 0 14px;background:#FBF3E6;border:1px solid #e3d6bb;border-radius:11px;padding:12px 16px 13px}
-  .askbox b{display:block;font-size:13px;font-weight:700;color:#9A6414;margin-bottom:6px}
+  .askbox{margin:16px 0 0;background:#FBF3E6;border:1px solid #e3d6bb;border-radius:11px;padding:12px 16px 13px}
+  .askbox b{display:inline-block;font-size:13px;font-weight:700;color:#9A6414;margin-bottom:6px}
+  .askbox em{font-style:normal;font-size:11.5px;color:#a9a294;margin-left:8px}
   .askbox div{font-size:13px;color:#6e6860;line-height:1.75;display:flex;gap:8px}
   .askbox div span{flex:none;font-size:11px;font-weight:700;color:#9A6414;background:#fff;
     border:1px solid #e3d6bb;border-radius:6px;padding:1px 8px;margin-top:3px;height:fit-content}
@@ -378,8 +379,8 @@
 
 <div class="wk">
   <div class="wk-hd"><b>이번 주 할 일</b><span class="sub" id="wkSub">오픈 진도표에서 가져옵니다</span><a class="wk-more" href="gsmch-1f-plan.html">진도표 전체 보기 →</a></div>
-  <div class="askbox" id="askBox"></div>
   <div class="wk-g wk5" id="wkNow"></div>
+  <div class="askbox" id="askBox"></div>
 
 </div>
 
@@ -741,10 +742,6 @@
       "owner": "서점 매니저",
       "todo": [
         {
-          "t": "현재 서점 재고 리스트 확보 · 정리",
-          "done": false
-        },
-        {
           "t": "재고 리스트 근거로 배치 설계",
           "done": false
         },
@@ -761,7 +758,7 @@
           "done": false
         }
       ],
-      "note": "현재 재고가 몇 권, 어떤 분류인지를 먼저 봐야 서가 14칸에 무엇을 얼마나 둘지 정해집니다. 1차 구상을 이번 주에 잡고, 차주에 확정합니다.",
+      "note": "재고 리스트가 나와야 서가 14칸에 무엇을 얼마나 둘지 정해집니다. 1차 구상을 이번 주에 잡고, 차주에 확정합니다.",
       "doc": "gsmch-1f-book-layout.html",
       "docLabel": "배치 · 운영안 보기",
       "stream": "진열 · 도서",
@@ -943,6 +940,36 @@
         }
       ],
       "note": "원두가 정해져야 메뉴 구성과 가격 정책을 차주에 확정할 수 있습니다."
+    },
+    {
+      "id": "b-list",
+      "week": "w1",
+      "group": "선지서점",
+      "stream": "진열 · 도서",
+      "area": "선지서점",
+      "title": "재고 리스트 정리 (포스 입력용)",
+      "state": "결정",
+      "due": "10/24",
+      "owner": "서점 매니저",
+      "todo": [
+        {
+          "t": "임시서점(5층) 재고",
+          "done": false
+        },
+        {
+          "t": "지하 5층 보관 재고",
+          "done": false
+        },
+        {
+          "t": "도서 외 상품 (상품권 · 선물 등)",
+          "done": false
+        },
+        {
+          "t": "분류 체계에 맞춰 한 파일로 정리",
+          "done": false
+        }
+      ],
+      "note": "이 리스트가 진열 설계의 근거가 되고, 그대로 포스 입력 자료가 됩니다. 두 곳에 나뉜 재고를 합쳐야 합니다."
     },
     {
       "id": "cafe-menu-fix",
@@ -1976,7 +2003,7 @@
     its.forEach(function(it){ (it.ask||[]).forEach(function(a){ asks.push([it.title,a]); }); });
     var ab=document.getElementById('askBox');
     if(ab){ ab.innerHTML = asks.length
-      ? '<b>이번 주 확인할 내용</b>'+asks.map(function(x){
+      ? '<b>확인 체크리스트</b><em>답이 나오면 진도표에 반영합니다</em>'+asks.map(function(x){
           return '<div><span>'+esc(x[0])+'</span>'+esc(x[1])+'</div>'; }).join('')
       : ''; }
     box.innerHTML=its.map(function(it,k){
