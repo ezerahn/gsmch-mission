@@ -1525,7 +1525,7 @@ const GSUB = {'공통':'시스템 · 공사 · 제작물 · 행정','선지서�
               '로뎀카페':'도면 · 메뉴 · 기물 · 교육'};
 const LABEL = {'확인':'확인 중','결정':'결정 필요','준비':'진행 중','완료':'완료'};
 const trk = it => it.group || '공통';
-let view = 'week';
+let view = 'gantt';
 let DATA = null, filter = '전체';
 
 function esc(s){ return (s||'').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
