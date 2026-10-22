@@ -246,7 +246,14 @@
   @media(max-width:760px){ .dwg{grid-template-columns:1fr} }
 
   .docs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}
-  .docs.last{margin-bottom:36px}
+  .docs.last{margin-bottom:14px}
+  .vend{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);
+    border-radius:12px;padding:12px 18px;margin-bottom:36px;text-decoration:none;color:inherit;transition:.16s}
+  .vend:hover{border-color:#07913B}
+  .vend .vt{font-size:11px;font-weight:700;color:#fff;background:#8a847a;border-radius:6px;padding:2px 9px}
+  .vend b{font-size:14px;font-weight:700;color:#2c2a26}
+  .vend span.vs{font-size:12px;color:#8a847a}
+  .vend i{margin-left:auto;font-style:normal;font-size:12px;font-weight:700;color:#056B2C}
   .doc.soon{opacity:.72;cursor:default;border-style:dashed}
   .doc.soon:hover{border-color:var(--line)}
   .doc.soon .doc-go{display:none}
@@ -543,6 +550,12 @@
       <div class="doc-list"><span class="chip">하루 운영</span><span class="chip">포스 · 키오스크</span><span class="chip">주문 · 마감</span></div>
     </div>
   </div>
+  <a class="vend" href="gsmch-itda-pos-manual.pdf" target="_blank">
+    <span class="vt">업체 매뉴얼</span>
+    <b>잇다POS 빠른 사용자 매뉴얼</b>
+    <span class="vs">판매 · 결제 · 반품 · 발주 · 매입 · 13쪽 · 2026년 10월 기준</span>
+    <i>PDF 열기 ›</i>
+  </a>
 
   <div class="foot">
     <span>선한목자교회 총여선교회 사업단</span>
