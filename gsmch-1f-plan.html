@@ -324,7 +324,7 @@
 
 <!--PLANDATA-->
 <script id="planData" type="application/json">{
-  "updated": "2026-10-26 20:23",
+  "updated": "2026-10-26 20:28",
   "open": "2026-11-22",
   "weeks": [
     {
@@ -1363,93 +1363,6 @@
       "cat": 5
     },
     {
-      "id": "s-temppos",
-      "week": "w2",
-      "area": "주문결제",
-      "title": "임시서점에 포스 먼저 설치",
-      "state": "확인",
-      "due": "10/31",
-      "owner": "잇다",
-      "todo": [
-        {
-          "t": "입고 · 테스트 일정 잡기",
-          "who": "잇다",
-          "st": "todo",
-          "date": "",
-          "memo": "선금 입금 뒤 · 임시서점(5층)에서",
-          "done": false
-        },
-        {
-          "t": "전원 · 인터넷 확인",
-          "who": "총무",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        },
-        {
-          "t": "서점 기초 자료 등록",
-          "who": "매니저",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        }
-      ],
-      "note": "1층 공사 중에 임시서점에서 먼저 쓰면서 도서 입력과 익히기를 끝내는 구간입니다.",
-      "stream": "주문 · 결제 시스템",
-      "group": "공통",
-      "cat": 1
-    },
-    {
-      "id": "b-stock",
-      "week": "w2",
-      "area": "선지서점",
-      "title": "도서 입력 시작 (PDA)",
-      "state": "확인",
-      "due": "10/31",
-      "owner": "매니저",
-      "todo": [
-        {
-          "t": "서가 14칸 분류 기준 확정",
-          "who": "매니저",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        },
-        {
-          "t": "바코드 없는 도서 목록 뽑기",
-          "who": "매니저",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        },
-        {
-          "t": "아가페 반품분 분리",
-          "who": "매니저",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        },
-        {
-          "t": "PDA 입력 테스트 (10권)",
-          "who": "매니저",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        }
-      ],
-      "note": "50만 권 자료가 있어 바코드를 찍으면 책 정보가 들어옵니다. 분류 기준만 먼저 정하면 됩니다.",
-      "stream": "진열 · 도서",
-      "weekTo": "w3",
-      "group": "선지서점",
-      "cat": 4
-    },
-    {
       "id": "m-design",
       "week": "w3",
       "area": "제작물",
@@ -1536,12 +1449,171 @@
       "cat": 6
     },
     {
-      "id": "b-order",
+      "id": "s-temppos",
       "week": "w2",
+      "area": "주문결제",
+      "title": "포스 입고 확인 · 설치 (임시서점)",
+      "state": "확인",
+      "due": "10/31",
+      "owner": "잇다",
+      "todo": [
+        {
+          "t": "포스 입고 확인",
+          "who": "잇다",
+          "st": "todo",
+          "date": "",
+          "memo": "선금 입금 뒤 · 임시서점(5층)",
+          "done": false
+        },
+        {
+          "t": "포스 설치 · 테스트",
+          "who": "잇다",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        },
+        {
+          "t": "전원 · 인터넷 확인",
+          "who": "총무",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        }
+      ],
+      "note": "1층 공사 중에 임시서점에서 먼저 쓰면서 도서 입력과 익히기를 끝내는 구간입니다.",
+      "stream": "주문 · 결제 시스템",
+      "group": "선지서점",
+      "cat": 1
+    },
+    {
+      "id": "b-train",
+      "week": "w2",
+      "area": "선지서점",
+      "title": "포스 · PDA 매뉴얼 숙지 · 1차 교육",
+      "state": "확인",
+      "due": "10/31",
+      "owner": "매니저",
+      "todo": [
+        {
+          "t": "포스 매뉴얼 숙지",
+          "who": "매니저",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        },
+        {
+          "t": "PDA 사용법 숙지",
+          "who": "매니저",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        },
+        {
+          "t": "1차 교육 — 임시서점 포스로",
+          "who": "잇다",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        }
+      ],
+      "note": "별도 교육 대신 잇다 매뉴얼을 먼저 숙지하고, 1차 교육으로 확인합니다.",
+      "stream": "교육 · 준비",
+      "group": "선지서점",
+      "cat": 1
+    },
+    {
+      "id": "b-mix2",
+      "week": "w2",
+      "area": "선지서점",
+      "title": "서점 진열 방식 검토 — 도서 리스트 출력",
+      "state": "확인",
+      "due": "10/31",
+      "owner": "매니저",
+      "todo": [
+        {
+          "t": "도서 리스트 출력",
+          "who": "매니저",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        },
+        {
+          "t": "진열 방식 검토",
+          "who": "매니저",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        }
+      ],
+      "note": "도서 리스트를 뽑아 보며 진열 방식을 검토합니다. 확정 · 포스 셋업은 다음 주.",
+      "doc": "gsmch-1f-book-layout.html",
+      "docLabel": "배치 · 운영안 보기",
+      "stream": "진열 · 도서",
+      "group": "선지서점",
+      "cat": 4
+    },
+    {
+      "id": "b-stock",
+      "week": "w2",
+      "area": "선지서점",
+      "title": "도서 입력 시작 (테스트)",
+      "state": "확인",
+      "due": "10/31",
+      "owner": "매니저",
+      "todo": [
+        {
+          "t": "서가 14칸 분류 기준 확정",
+          "who": "매니저",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        },
+        {
+          "t": "바코드 없는 도서 목록 뽑기",
+          "who": "매니저",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        },
+        {
+          "t": "아가페 반품분 분리",
+          "who": "매니저",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        },
+        {
+          "t": "PDA 입력 테스트 (10권)",
+          "who": "매니저",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        }
+      ],
+      "note": "50만 권 자료가 있어 바코드를 찍으면 책 정보가 들어옵니다. 분류 기준만 먼저 정하면 됩니다.",
+      "stream": "진열 · 도서",
+      "weekTo": "w3",
+      "group": "선지서점",
+      "cat": 4
+    },
+    {
+      "id": "b-order",
+      "week": "w3",
       "area": "선지서점",
       "title": "진열 집기 · 초도 도서 발주",
       "state": "확인",
-      "due": "10/31",
+      "due": "11/7",
       "owner": "매니저",
       "todo": [
         {
@@ -1646,102 +1718,6 @@
       "cat": 3
     },
     {
-      "id": "b-train",
-      "week": "w2",
-      "area": "선지서점",
-      "title": "서점 매니저 포스 · PDA 교육",
-      "state": "확인",
-      "due": "10/31",
-      "owner": "잇다",
-      "todo": [
-        {
-          "t": "임시서점 포스로 실습",
-          "who": "잇다",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        },
-        {
-          "t": "도서 입력 · 검색 사용법",
-          "who": "잇다",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        },
-        {
-          "t": "PDA 재고조사 · 바코드 등록",
-          "who": "잇다",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        },
-        {
-          "t": "매출 조회 · 마감",
-          "who": "잇다",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        }
-      ],
-      "note": "서점 매니저님은 기존 근무자라 한 주 먼저 시작합니다. 임시서점 포스로 실습합니다.",
-      "stream": "교육 · 준비",
-      "group": "선지서점",
-      "cat": 1
-    },
-    {
-      "id": "b-mix2",
-      "week": "w2",
-      "area": "선지서점",
-      "title": "서점 진열 방식 확정 · 포스 셋업",
-      "state": "확인",
-      "due": "10/31",
-      "owner": "매니저",
-      "todo": [
-        {
-          "t": "진열 방식 최종 확정",
-          "who": "매니저",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        },
-        {
-          "t": "분류 체계를 포스에 등록",
-          "who": "매니저",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        },
-        {
-          "t": "서가 위치 정보 입력",
-          "who": "매니저",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        },
-        {
-          "t": "진열 집기 발주 사양 확정",
-          "who": "매니저",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        }
-      ],
-      "note": "진열 분류가 그대로 포스 분류가 됩니다. 서점을 한 주 먼저 끝내고 카페로 넘어갑니다.",
-      "doc": "gsmch-1f-book-layout.html",
-      "docLabel": "배치 · 운영안 보기",
-      "stream": "진열 · 도서",
-      "group": "선지서점",
-      "cat": 4
-    },
-    {
       "id": "c-fix",
       "week": "w2",
       "area": "공사현장",
@@ -1787,6 +1763,55 @@
       "stream": "공사 · 현장",
       "group": "공통",
       "cat": 2
+    },
+    {
+      "id": "b-mix3",
+      "week": "w3",
+      "area": "선지서점",
+      "title": "서점 진열 방식 확정 · 포스 셋업",
+      "state": "확인",
+      "due": "11/7",
+      "owner": "매니저",
+      "todo": [
+        {
+          "t": "진열 방식 최종 확정",
+          "who": "매니저",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        },
+        {
+          "t": "분류 체계를 포스에 등록",
+          "who": "매니저",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        },
+        {
+          "t": "서가 위치 정보 입력",
+          "who": "매니저",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        },
+        {
+          "t": "진열 집기 발주 사양 확정",
+          "who": "매니저",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        }
+      ],
+      "note": "진열 분류가 그대로 포스 분류가 됩니다. 서점을 한 주 먼저 끝내고 카페로 넘어갑니다.",
+      "doc": "gsmch-1f-book-layout.html",
+      "docLabel": "배치 · 운영안 보기",
+      "stream": "진열 · 도서",
+      "group": "선지서점",
+      "cat": 4
     },
     {
       "id": "b-stock2",
