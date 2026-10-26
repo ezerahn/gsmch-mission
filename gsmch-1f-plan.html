@@ -523,12 +523,12 @@
           "done": false
         },
         {
-          "t": "서점 외벽 디스플레이 — 사이니지 스틱 / USB 선택",
+          "t": "서점 외벽 디스플레이 — USB로 결정 (스틱 안 삼)",
           "who": "단장님",
-          "st": "todo",
-          "date": "",
-          "memo": "스틱은 POS에 연결 · 나중에 추가 구매 가능",
-          "done": false
+          "st": "done",
+          "date": "10/26",
+          "memo": "화면은 USB로 틀기",
+          "done": true
         },
         {
           "t": "무선 링스캐너 구매 여부",
@@ -3518,6 +3518,11 @@ function printPlan(){
   st.textContent='@page{size:A4 ' + ((typeof view!=='undefined' && view==='gantt')?'landscape':'portrait') + ';margin:10mm}';
   window.print();
 }
+</script>
+<div id="pvw" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:99;align-items:center;justify-content:center;padding:20px;cursor:zoom-out"><img style="max-width:100%;max-height:100%;border-radius:10px;background:#fff"></div>
+<script>
+document.addEventListener('click',function(e){var a=e.target.closest('a.tdoc,a.dl');if(!a)return;var h=a.getAttribute('href')||'';if(!/\.(jpe?g|png|webp|gif)$/i.test(h))return;e.preventDefault();var o=document.getElementById('pvw');o.querySelector('img').src=h;o.style.display='flex';});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('pvw').style.display='none';});
 </script>
 </body>
 </html>
