@@ -1,0 +1,249 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="color-scheme" content="light dark">
+<title>로뎀카페 다회용컵 계산기</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+/* 레이아웃: 기준(컵 개수 · 일회용) → 안 1·2·3 → 비교표. 결과는 「지금보다 더 드는 돈」이 가장 크게 */
+:root{
+  --bg:#f6f7f4; --card:#ffffff; --ink:#1d211e; --mut:#6c736d; --line:#dfe3dc;
+  --acc:#0b7a3b; --acc-soft:#e3f1e8; --up:#b3382a; --up-soft:#fbe9e5; --field:#f1f3ef; --base:#eef0ea;
+  --f:'Noto Sans KR','Noto Sans CJK KR','Apple SD Gothic Neo',sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141714; --card:#1d211e; --ink:#e9ece8; --mut:#9aa39b; --line:#323832;
+  --acc:#5cc787; --acc-soft:#1f3326; --up:#f08a7a; --up-soft:#3a2420; --field:#262b26; --base:#222723; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141714; --card:#1d211e; --ink:#e9ece8; --mut:#9aa39b; --line:#323832;
+  --acc:#5cc787; --acc-soft:#1f3326; --up:#f08a7a; --up-soft:#3a2420; --field:#262b26; --base:#222723; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f);font-size:15px;line-height:1.5;margin:0;
+  padding-block:20px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+h1{margin:0;font-size:22px;font-weight:900;letter-spacing:-.5px;text-wrap:balance}
+.sub{margin:4px 0 0;color:var(--mut);font-size:13px}
+.num{font-variant-numeric:tabular-nums}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.box.base{background:var(--base)}
+.box.cmpbase{background:var(--card);border-style:dashed}
+.box.cmpbase .inp{background:var(--field)}
+.lab{font-size:12px;font-weight:700;color:var(--mut);letter-spacing:.02em}
+.ttl{font-size:13px;font-weight:900;color:var(--ink);margin-bottom:10px}
+.ttl small{font-weight:500;color:var(--mut);margin-left:6px}
+.fld{display:flex;flex-direction:column;gap:4px;min-width:0}
+.inp{display:flex;align-items:center;background:var(--field);border:1px solid var(--line);border-radius:10px;padding:0 10px;min-height:44px}
+.box.base .inp{background:var(--card)}
+.inp:focus-within{border-color:var(--acc);box-shadow:0 0 0 2px var(--acc-soft)}
+.inp input{flex:1;min-width:0;width:100%;border:0;background:transparent;color:var(--ink);font:inherit;font-size:17px;font-weight:700;padding:8px 0;text-align:right;font-variant-numeric:tabular-nums;outline:none}
+.inp span{font-size:12.5px;color:var(--mut);margin-left:5px;white-space:nowrap}
+.inp.ro{background:transparent!important;border-style:dashed}
+.op{font-size:20px;font-weight:900;color:var(--mut);align-self:end;padding-bottom:11px}
+.eq{display:grid;gap:8px;align-items:end}
+.eq1{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1.1fr)}
+.eq2{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1.4fr)}
+.out{background:var(--acc-soft);border-radius:10px;padding:6px 12px;min-height:44px}
+.out b{display:block;font-size:19px;font-weight:900;color:var(--acc)}
+.out i{font-style:normal;font-size:11.5px;color:var(--mut)}
+.chips{display:flex;gap:5px;margin-top:5px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:2px 10px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.chip.on{background:var(--acc);border-color:var(--acc);color:var(--card)}
+.src{border-top:1px dashed var(--line);margin-top:12px;padding-top:9px;display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:12px;color:var(--mut)}
+.src b{color:var(--ink);font-weight:700;white-space:nowrap}
+.lossrow{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.lossrow .inp{width:110px;min-height:38px}.lossrow .inp input{font-size:15px;padding:5px 0}
+.lossrow .lab{font-size:12.5px}
+.pl3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.plan{display:flex;flex-direction:column;gap:9px}
+.plan.best{border-color:var(--acc);box-shadow:0 0 0 2px var(--acc)}
+.ph{display:flex;align-items:center;gap:8px}
+.ph h2{margin:0;font-size:17px;font-weight:900}
+.tag{font-size:11px;font-weight:700;border-radius:7px;padding:2px 8px;background:var(--acc);color:var(--card)}
+.tag[hidden]{display:none}
+.ph .clr{margin-left:auto;border:0;background:none;color:var(--mut);font:inherit;font-size:12.5px;cursor:pointer;text-decoration:underline}
+.memo{border:1px dashed var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:6px 9px;font:inherit;font-size:13px;width:100%;min-height:36px}
+.g{display:grid;gap:6px;align-items:end}
+.g2{grid-template-columns:1fr 1fr}
+.gx{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+.gx .op{font-size:16px;padding-bottom:12px}
+.seg{display:flex;background:var(--field);border:1px solid var(--line);border-radius:10px;padding:3px;gap:3px;min-height:44px;margin-top:6px}
+.seg button{flex:1;border:0;border-radius:8px;background:transparent;color:var(--mut);font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;white-space:nowrap}
+.seg button.on{background:var(--card);color:var(--acc);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.step{display:flex;flex-direction:column;gap:4px}
+.step>.lab{color:var(--ink)}
+.step>.lab em{font-style:normal;color:var(--mut);font-weight:500;margin-left:5px}
+.res{border-top:2px solid var(--line);padding-top:10px;display:flex;flex-direction:column;gap:4px;margin-top:2px}
+.hero{background:var(--acc-soft);border-radius:10px;padding:8px 12px;display:flex;flex-direction:column;margin-bottom:4px}
+.hero .k{font-size:12px;font-weight:700;color:var(--mut)}
+.hero .v{font-size:26px;font-weight:900;color:var(--acc);line-height:1.15}
+.hero .v small{font-size:13px;font-weight:700;margin-left:4px}
+.hero .y{font-size:12.5px;color:var(--mut);margin-top:1px}
+.cmpn{border-top:1px dashed var(--line);margin-top:6px;padding-top:8px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:12.5px;color:var(--mut)}
+.cmpn b{font-size:15px;font-weight:900;color:var(--up);margin-left:auto}
+.cmpn i{font-style:normal;flex-basis:100%;text-align:right;font-size:11.5px}
+.cmpn.dn b{color:var(--acc)}
+.r{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:13.5px}
+.r .k{color:var(--mut)}.r .k i{font-style:normal;font-size:11.5px;margin-left:4px}
+.r .v{font-weight:700}
+.r.tot{border-top:1px dashed var(--line);margin-top:3px;padding-top:6px}
+.r.tot .k{color:var(--ink);font-weight:700}.r.tot .v{font-size:16px;font-weight:900}
+.r.sub{font-size:12.5px}.r.sub .k{padding-left:8px}
+.empty{color:var(--mut);font-size:13px;padding:8px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-size:12px;color:var(--mut);font-weight:700}
+tr.main td{font-size:20px;font-weight:900;padding:10px}
+tr.main td:first-child{font-size:15px}
+tr.minor td{font-size:13px;color:var(--mut)}
+tr.memo-r td{border-bottom:2px solid var(--line)}
+td.bestc{background:var(--acc-soft);color:var(--acc)}
+tr.main td.bestc{box-shadow:inset 0 0 0 2px var(--acc)}
+tr.cmprow td{font-size:12.5px;color:var(--mut);border-bottom:none}
+td.memo-c{white-space:normal;font-size:12.5px;color:var(--mut);max-width:220px}
+.tw{overflow-x:auto}
+.note{font-size:12px;color:var(--mut);line-height:1.7;margin:0}
+@media (max-width:900px){.pl3{grid-template-columns:1fr}
+  .eq2{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr)}.eq2 .op:nth-of-type(3),.eq2 .op:nth-of-type(4){display:none}
+  .eq2 .fld:nth-of-type(4){grid-column:1/3}.eq2 .out{grid-column:3/-1}}
+@media (max-width:480px){.eq1{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}.eq1 .op:nth-of-type(2){display:none}.eq1 .out{grid-column:1/-1}.chips{flex-wrap:nowrap}}
+button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+</style>
+</head><body>
+
+<div class="wrap">
+  <header>
+    <h1>로뎀카페 다회용컵 계산기</h1>
+    <p class="sub">업체가 조건을 말하면 안 1 · 2 · 3에 바로 넣어 보세요. 숫자는 이 기기에 남습니다. 금액은 부가세 별도.</p>
+  </header>
+
+  <section class="box base">
+    <div class="ttl">기준 — 한 달에 컵이 몇 개 필요한가</div>
+    <div class="eq eq1">
+      <label class="fld"><span class="lab">한 달 음료 잔 수</span><span class="inp"><input id="cups" inputmode="numeric" value="9,800"><span>잔</span></span></label>
+      <span class="op">×</span>
+      <div class="fld"><span class="lab">다회용기 사용 비율</span><span class="inp"><input id="ratio" inputmode="numeric" value="70"><span>%</span></span>
+        <div class="chips"><button class="chip" data-r="50">50%</button><button class="chip" data-r="70">70%</button><button class="chip" data-r="90">90%</button></div></div>
+      <span class="op">=</span>
+      <div class="out"><span class="lab">한 달 컵 개수</span><b class="num" id="n">6,860개</b></div>
+    </div>
+    <div class="lossrow"><span class="lab">안 돌아오는 컵 (분실률) 가정</span><span class="inp"><input id="loss" inputmode="numeric" value="2"><span>%</span></span><span class="lab" style="font-weight:500">교회 안이라 낮게 봄 · 안마다 「무료 한도」를 넘는 만큼만 비용이 듭니다</span></div>
+    <div class="src">
+      <b>9,800잔</b><span>2025년 카페 매출 약 4억 1,300만 원(대시보드) × 음료 80% ÷ 메뉴 평균 2,800원 ÷ 12개월</span>
+      <b>70%</b><span>음료 중 다회용기에 담아 드리는 비율 (나머지는 매장 머그) — 가정 · 매니저님 확인</span>
+    </div>
+  </section>
+
+  <section class="pl3" id="plans"></section>
+
+  <section class="box cmpbase">
+    <div class="ttl">비교할 기준 — 지금 일회용은 한 달에 얼마인가<small>안 1 · 2 · 3의 「지금보다 더 드는 돈」은 이 금액과의 차이입니다</small></div>
+    <div class="eq eq2">
+      <label class="fld"><span class="lab">컵</span><span class="inp"><input id="dc" inputmode="numeric" value="65"><span>원</span></span></label>
+      <span class="op">+</span>
+      <label class="fld"><span class="lab">뚜껑</span><span class="inp"><input id="dl" inputmode="numeric" value="35"><span>원</span></span></label>
+      <span class="op">+</span>
+      <label class="fld"><span class="lab">홀더</span><span class="inp"><input id="dh" inputmode="numeric" value="30"><span>원</span></span></label>
+      <span class="op">=</span>
+      <div class="fld"><span class="lab">한 잔</span><span class="inp ro"><input id="dispSum" readonly tabindex="-1" value="130"><span>원</span></span></div>
+      <span class="op">→</span>
+      <div class="out" id="rNow"></div>
+    </div>
+    <div class="src">
+      <b>컵 65원</b><span>13온스 종이컵 1,000개 62,700원(카페뮤제오) → 개당 약 63원</span>
+      <b>뚜껑 35 · 홀더 30원</b><span>온라인 카페 용품몰 가격대 추정 · 빨대 · 배송비 제외 · 카페허브 실제 단가가 나오면 바꿔 넣기</span>
+      <b>참고</b><span>아이스 PET 16온스 컵 + 돔뚜껑 + 홀더 세트 1,000개 99,000원(카페어스) → 한 잔 약 99원</span>
+    </div>
+  </section>
+
+  <section class="box">
+    <div class="ttl">세 안 비교</div>
+    <div class="tw"><table class="num" id="cmp"></table></div>
+  </section>
+
+  <p class="note">한 달 합계 = ① 컵 + ② 뚜껑 + ③ 수거 + ④ 반납함 + ⑤ 분실. 더 드는 돈 = 한 달 합계 − 지금 일회용(아래 비교 기준).<br>
+  ④ 반납함을 「한 번만 낸다」로 고르면 12개월로 나눠 한 달 비용에 넣고, 처음 내는 금액은 따로 보여 줍니다. ⑤ 분실 = 컵 개수 × (분실률 − 무료 한도) × 1개 보상.<br>
+  안 1은 더그리트 견적(2026. 6. 2.)을 넣어 둔 예시 — 컵 150 · 뚜껑 50 · 물류비 사용료 포함 · 반납함 대당 5만 · 분실 1%까지 무료, 초과분 컵 700 + 뚜껑 300.</p>
+</div>
+
+<script>
+(function(){
+  var KEY='rodem-cup-calc-v5';
+  var EMPTY={memo:'',cup:'',lid:'',sn:8,sp:'',bn:10,bp:'',bm:'m',lh:1,lc:''};
+  var DEF={cups:9800,ratio:70,loss:2,dc:65,dl:35,dh:30,plans:[
+    {memo:'더그리트 6/2 견적 (물류비 포함 조건)',cup:150,lid:50,sn:8,sp:0,bn:10,bp:50000,bm:'o',lh:1,lc:1000},
+    JSON.parse(JSON.stringify(EMPTY)),JSON.parse(JSON.stringify(EMPTY))]};
+  var st;
+  try{st=JSON.parse(localStorage.getItem(KEY))||null;}catch(e){st=null;}
+  if(!st||!st.plans) st=JSON.parse(JSON.stringify(DEF));
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(st));}catch(e){}}
+  function num(v){var x=String(v==null?'':v).replace(/[^0-9.\-]/g,'');return x===''?NaN:+x;}
+  function fmt(n){return Math.round(n).toLocaleString('ko-KR');}
+  function man(n){var s=Math.round(n/1000)/10;return (n<0?'−':'')+Math.abs(s).toLocaleString('ko-KR',{maximumFractionDigits:1})+'만';}
+  function sman(n){return (n>0?'+':'')+man(n);}
+  function inp(id,v,unit){return '<span class="inp"><input id="'+id+'" inputmode="numeric" value="'+(v===''||v==null?'':fmt(v))+'" placeholder="0"><span>'+unit+'</span></span>';}
+  var plans=document.getElementById('plans');
+  plans.innerHTML=st.plans.map(function(p,i){
+    return '<article class="box plan" id="p'+i+'"><div class="ph"><h2>안 '+(i+1)+'</h2><span class="tag" hidden>가장 유리</span>'+
+      '<button class="clr" data-i="'+i+'">지우기</button></div>'+
+      '<input class="memo" id="m'+i+'" placeholder="조건 메모 (예: 반납함 무료, 컵 120원)" value="'+(p.memo||'').replace(/"/g,'&quot;')+'">'+
+      '<div class="g g2"><div class="step"><span class="lab">① 컵 1개</span>'+inp('cup'+i,p.cup,'원')+'</div>'+
+        '<div class="step"><span class="lab">② 뚜껑 1개<em>일회용이면 그 값</em></span>'+inp('lid'+i,p.lid,'원')+'</div></div>'+
+      '<div class="step"><span class="lab">③ 수거 · 배송<em>주 2회 = 한 달 8회 · 포함이면 0원</em></span><div class="g gx">'+inp('sn'+i,p.sn,'회/달')+'<span class="op">×</span>'+inp('sp'+i,p.sp,'원/회')+'</div></div>'+
+      '<div class="step"><span class="lab">④ 반납함<em>무료면 0원</em></span><div class="g gx">'+inp('bn'+i,p.bn,'대')+'<span class="op">×</span>'+inp('bp'+i,p.bp,'원/대')+'</div>'+
+        '<div class="seg" data-i="'+i+'"><button data-m="o" class="'+(p.bm==='o'?'on':'')+'">한 번만 낸다</button><button data-m="m" class="'+(p.bm!=='o'?'on':'')+'">매달 낸다</button></div></div>'+
+      '<div class="step"><span class="lab">⑤ 분실 보상<em>한도까지 무료 · 넘는 컵만 보상</em></span><div class="g gx">'+inp('lh'+i,p.lh,'% 까지 무료')+'<span class="op">·</span>'+inp('lc'+i,p.lc,'원/개')+'</div></div>'+
+      '<div class="res" id="r'+i+'"></div></article>';
+  }).join('');
+  function r(k,s,v,cls){return '<div class="r '+(cls||'')+'"><span class="k">'+k+(s?'<i>'+s+'</i>':'')+'</span><span class="v num">'+v+'</span></div>';}
+  function calc(){
+    var cups=num(st.cups)||0, ratio=num(st.ratio)||0, loss=num(st.loss)||0, disp=(num(st.dc)||0)+(num(st.dl)||0)+(num(st.dh)||0);
+    var n=cups*ratio/100, base=n*disp;
+    document.getElementById('n').textContent=fmt(n)+'개';
+    document.getElementById('dispSum').value=fmt(disp);
+    document.getElementById('rNow').innerHTML='<span class="lab">한 달 일회용 비용</span><b class="num">'+man(base)+'</b><i>'+fmt(n)+'개 × '+fmt(disp)+'원</i>';
+    document.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('on',+c.dataset.r===ratio);});
+    var out=[];
+    st.plans.forEach(function(p,i){
+      var cup=num(p.cup),lid=num(p.lid)||0,sn=num(p.sn)||0,sp=num(p.sp)||0,bn=num(p.bn)||0,bp=num(p.bp)||0,lh=num(p.lh)||0,lc=num(p.lc)||0;
+      var el=document.getElementById('r'+i);
+      if(isNaN(cup)){el.innerHTML='<div class="empty">① 컵 1개 값을 넣으면 계산됩니다.</div>';out.push(null);return;}
+      var once=p.bm==='o', a=n*cup, b=n*lid, ship=sn*sp, bAll=bn*bp, box=once?bAll/12:bAll;
+      var lossPct=Math.max(0,loss-lh), lost=n*lossPct/100*lc;
+      var tot=a+b+ship+box+lost, d=tot-base;
+      out.push({tot:tot,d:d,per:n?tot/n:0,first:once?bAll:0});
+      el.innerHTML=
+        '<div class="hero"><span class="k">한 달 합계</span><span class="v num">'+man(tot)+'<small>/ 달</small></span><span class="y num">한 잔당 '+fmt(n?tot/n:0)+'원 · 1년 '+man(tot*12)+'</span></div>'+
+        r('① 컵',fmt(n)+'개 × '+fmt(cup)+'원',man(a),'sub')+
+        r('② 뚜껑',fmt(n)+'개 × '+fmt(lid)+'원',man(b),'sub')+
+        r('③ 수거',fmt(sn)+'회 × '+fmt(sp)+'원',man(ship),'sub')+
+        r('④ 반납함',fmt(bn)+'대 × '+fmt(bp)+'원'+(once?' ÷ 12':''),man(box),'sub')+
+        r('⑤ 분실',fmt(n)+'개 × '+lossPct+'% × '+fmt(lc)+'원',man(lost),'sub')+
+        (once&&bAll?r('처음 한 번 내는 돈 (반납함)',fmt(bn)+'대 × '+fmt(bp)+'원',man(bAll),'sub'):'')+
+        '<div class="cmpn'+(d<=0?' dn':'')+'"><span>비고 · 지금 일회용 '+man(base)+'과 차이</span><b class="num">'+sman(d)+' / 달</b><i class="num">1년이면 '+sman(d*12)+'</i></div>';
+    });
+    var vals=out.filter(Boolean).map(function(o){return o.tot;}), min=vals.length?Math.min.apply(null,vals):null, cnt=vals.length;
+    out.forEach(function(o,i){var best=o&&cnt>1&&o.tot===min;document.getElementById('p'+i).classList.toggle('best',!!best);document.querySelector('#p'+i+' .tag').hidden=!best;});
+    function cell(o,f,main){if(!o)return '<td style="color:var(--mut)">—</td>';return '<td'+(main&&cnt>1&&o.tot===min?' class="bestc"':'')+'>'+f(o)+'</td>';}
+    document.getElementById('cmp').innerHTML='<thead><tr><th></th><th>안 1</th><th>안 2</th><th>안 3</th></tr></thead><tbody>'+
+      '<tr class="memo-r"><td>조건</td>'+st.plans.map(function(p){return '<td class="memo-c">'+(p.memo||'—').replace(/</g,'&lt;')+'</td>';}).join('')+'</tr>'+
+      '<tr class="main"><td>한 달 합계</td>'+out.map(function(o){return cell(o,function(o){return man(o.tot);},true);}).join('')+'</tr>'+
+      '<tr class="main"><td>한 잔당</td>'+out.map(function(o){return cell(o,function(o){return fmt(o.per)+'원';},true);}).join('')+'</tr>'+
+      '<tr class="minor"><td>1년이면</td>'+out.map(function(o){return cell(o,function(o){return man(o.tot*12);});}).join('')+'</tr>'+
+      '<tr class="minor"><td>처음 한 번 (반납함)</td>'+out.map(function(o){return cell(o,function(o){return o.first?man(o.first):'없음';});}).join('')+'</tr>'+
+      '<tr class="cmprow"><td>비고 · 지금 일회용 '+man(base)+' / '+fmt(disp)+'원과 차이</td>'+out.map(function(o){return cell(o,function(o){return sman(o.d)+' / 달 · '+(o.per-disp>0?'+':'')+fmt(o.per-disp)+'원';});}).join('')+'</tr></tbody>';
+  }
+  function bind(id,fn){var e=document.getElementById(id);e.addEventListener('input',function(){fn(e.value);save();calc();});
+    e.addEventListener('blur',function(){if(e.value!==''){var v=num(e.value);if(!isNaN(v))e.value=fmt(v);}});}
+  ['cups','ratio','loss','dc','dl','dh'].forEach(function(k){if(st[k]==null)st[k]=DEF[k];document.getElementById(k).value=fmt(st[k]);bind(k,function(v){st[k]=num(v);});});
+  var FK=['cup','lid','sn','sp','bn','bp','lh','lc'];
+  st.plans.forEach(function(p,i){
+    var m=document.getElementById('m'+i);m.addEventListener('input',function(){p.memo=m.value;save();calc();});
+    FK.forEach(function(k){bind(k+i,function(v){p[k]=v===''?'':num(v);});});
+  });
+  function setSeg(i){document.querySelectorAll('.seg[data-i="'+i+'"] button').forEach(function(x){x.classList.toggle('on',(st.plans[i].bm==='o')===(x.dataset.m==='o'));});}
+  document.querySelectorAll('.seg button').forEach(function(x){x.addEventListener('click',function(){var i=+x.parentNode.dataset.i;st.plans[i].bm=x.dataset.m;setSeg(i);save();calc();});});
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){st.ratio=+c.dataset.r;document.getElementById('ratio').value=st.ratio;save();calc();});});
+  document.querySelectorAll('.clr').forEach(function(b){b.addEventListener('click',function(){var i=+b.dataset.i;st.plans[i]=JSON.parse(JSON.stringify(EMPTY));
+    document.getElementById('m'+i).value='';FK.forEach(function(k){var v=st.plans[i][k];document.getElementById(k+i).value=v===''?'':fmt(v);});setSeg(i);save();calc();});});
+  calc();
+})();
+</script>
+</body></html>
