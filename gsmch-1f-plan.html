@@ -196,6 +196,8 @@
   .nt.w{background:var(--warnbg);border-color:var(--warn)}
   .mt{margin-top:10px;display:flex;gap:9px;flex-wrap:wrap;align-items:center}
   .mt .ow{font-size:11.5px;color:var(--mut)}
+  .tdoc{display:inline-block;margin-left:4px;font-size:12px;font-weight:700;color:var(--gd);background:#E8F4EC;border-radius:7px;padding:2px 8px;text-decoration:none;white-space:nowrap}
+  .tdoc:hover{background:#CFEBD8}
   .dl{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--gd);
     background:var(--gl);border:1px solid #c8e0d0;border-radius:8px;padding:5px 12px}
   .dl:hover{background:#e4f1e8}
@@ -429,8 +431,10 @@
           "who": "총무",
           "st": "done",
           "date": "10/21",
-          "memo": "견적서는 사업단 내부 보관",
-          "done": true
+          "memo": "10/21 수령",
+          "done": true,
+          "doc": "gsmch-itda-quote-20261021.pdf",
+          "docLabel": "잇다 확정 견적서 (10/21)"
         },
         {
           "t": "사업단 의사결정",
@@ -3439,7 +3443,7 @@ function renderTasks(){
         body += '<table class="td"><colgroup><col style="width:96px"><col><col style="width:78px"><col style="width:38%"></colgroup>' + rows.map(t =>
           '<tr class="' + (t.st === 'done' ? 'dn' : '') + '"><td class="sc"><span class="sb ' + t.st + '">' + STL[t.st] + (t.date ? ' ' + esc(t.date) : '') + '</span></td>' +
           '<td class="t">' + esc(t.t) + '</td><td class="wc"><span class="wb ' + esc(t.who) + '">' + esc(t.who) + '</span></td>' +
-          '<td class="m">' + esc(t.memo || '') + '</td></tr>').join('') + '</table>';
+          '<td class="m">' + esc(t.memo || '') + (t.doc ? ' <a class="tdoc" href="' + esc(t.doc) + '" target="_blank">📄 ' + esc(t.docLabel || '문서 보기') + '</a>' : '') + '</td></tr>').join('') + '</table>';
       }
       body += '</div>';
       shown += rows.length;

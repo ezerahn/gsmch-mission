@@ -106,8 +106,10 @@
           "who": "총무",
           "st": "done",
           "date": "10/21",
-          "memo": "견적서는 사업단 내부 보관",
-          "done": true
+          "memo": "10/21 수령",
+          "done": true,
+          "doc": "gsmch-itda-quote-20261021.pdf",
+          "docLabel": "잇다 확정 견적서 (10/21)"
         },
         {
           "t": "사업단 의사결정",
