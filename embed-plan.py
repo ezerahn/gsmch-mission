@@ -5,8 +5,12 @@ import io, json, re, os
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 src  = os.path.join(BASE, 'gsmch-1f-plan.json')
+import collections, datetime
+d = json.load(io.open(src, encoding='utf-8'), object_pairs_hook=collections.OrderedDict)
+# 업데이트 일시 자동 기록 (한국 시간)
+d['updated'] = (datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9)))).strftime('%Y-%m-%d %H:%M')
+json.dump(d, io.open(src, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
 data = io.open(src, encoding='utf-8').read()
-json.loads(data)                      # 형식 검증
 data = data.replace('</', '<\\/')     # 스크립트 조기 종료 방지
 
 TAG = '<script id="planData" type="application/json">%s</script>' % data

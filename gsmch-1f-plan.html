@@ -324,7 +324,7 @@
 
 <!--PLANDATA-->
 <script id="planData" type="application/json">{
-  "updated": "2026-10-26",
+  "updated": "2026-10-26 20:04",
   "open": "2026-11-22",
   "weeks": [
     {
@@ -3460,7 +3460,7 @@ function renderList(){
 
 function start(j, offline){
   DATA = j;
-  document.getElementById('upd').textContent = j.updated.replace(/-/g, '. ') + '.'
+  document.getElementById('upd').textContent = (function(u){var p=u.split(' ');return p[0].replace(/-/g,'. ')+'.'+(p[1]?' '+p[1]:'');})(j.updated)
     + (offline ? ' (문서 내장본)' : '');
   renderSum(); renderCtl(); draw();
 }
