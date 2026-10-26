@@ -666,6 +666,14 @@ tbody tr:hover td{background:#F4F0E8;}
   .tlx-g.tl7{grid-template-columns:repeat(7,1fr)}
   @media(max-width:760px){ .tlx-g.tl7{grid-template-columns:repeat(4,1fr)} }
   @media(max-width:420px){ .tlx-g.tl7{grid-template-columns:repeat(3,1fr)} }
+
+  /* ④⑤⑥ — 진도표로 일원화 (2026-10-26) */
+  #st4 .swview,#st5 .swview,#st6 .swview{display:none !important}
+  .grpnav[data-stage="st4"],.grpnav[data-stage="st5"],.grpnav[data-stage="st6"]{display:none !important}
+  .tolink{display:flex;flex-direction:column;gap:3px;margin:16px 0 4px;padding:16px 20px;border-radius:12px;
+    background:#EAF4ED;border:1px solid #c8e0d0;text-decoration:none;color:#056B2C}
+  .tolink b{font-size:15px}.tolink span{font-size:12.5px;color:#3d7a52}
+  .tolink:hover{border-color:#07913B}
 </style>
 </head>
 <body>
@@ -1045,6 +1053,7 @@ tbody tr:hover td{background:#F4F0E8;}
     <div><b>목표</b> — 오픈에 필요한 것을 미리 디자인하고 제작한다</div>
     <div><b>완료 기준</b> — BX · 메뉴 · 매뉴얼 확정 + 신규 기물 발주 완료</div>
   </div>
+  <a class="tolink" href="gsmch-1f-plan.html"><b>이 단계의 할 일은 오픈 진도표에서 관리합니다</b><span>담당 · 상태 · 메모를 한곳에서 체크합니다 →</span></a>
 
 <div class="swview on" id="gst4_1" data-group="gst4"><div class="grptitle">공통</div><div class="tasks"><div class="task">
   <div class="task-t"><b>공사 현장 관리</b></div>
@@ -1090,6 +1099,7 @@ tbody tr:hover td{background:#F4F0E8;}
     <div><b>목표</b> — 현장에 들여놓고 문을 열 수 있는 상태로 만든다</div>
     <div><b>완료 기준</b> — 시운전 완료 + 시범 운영 점검</div>
   </div>
+  <a class="tolink" href="gsmch-1f-plan.html"><b>이 단계의 할 일은 오픈 진도표에서 관리합니다</b><span>담당 · 상태 · 메모를 한곳에서 체크합니다 →</span></a>
 
 <div class="swview on" id="gst5_1" data-group="gst5"><div class="grptitle">공통</div><div class="tasks"><div class="task">
   <div class="task-t"><b>집기 · 재고 반입</b><em>─ 보관처에서 현장으로</em></div>
@@ -1132,6 +1142,7 @@ tbody tr:hover td{background:#F4F0E8;}
     <div><b>목표</b> — 문을 열고 운영을 정착시킨다</div>
     <div><b>완료 기준</b> — 정산 완료 + 결과 보고</div>
   </div>
+  <a class="tolink" href="gsmch-1f-plan.html"><b>이 단계의 할 일은 오픈 진도표에서 관리합니다</b><span>담당 · 상태 · 메모를 한곳에서 체크합니다 →</span></a>
 
 <div class="swview on" id="gst6_1" data-group="gst6"><div class="grptitle">공통</div><div class="tasks"><div class="task">
   <div class="task-t"><b>오픈 홍보</b></div>
