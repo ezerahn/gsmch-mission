@@ -72,10 +72,13 @@
 
 
   /* 보기 전환 */
-  .vsw{display:inline-flex;background:#ece9e1;border-radius:999px;padding:3px;margin-right:6px}
-  .vb{font-family:inherit;font-size:12.5px;font-weight:700;color:var(--mut);background:none;
-    border:none;border-radius:999px;padding:5px 14px;cursor:pointer}
-  .vb.on{color:var(--gd);background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+  .vsw{display:flex;width:100%;border-bottom:2px solid var(--line);margin:4px 0 6px;gap:4px}
+  .vb{flex:1;font-family:inherit;font-size:15px;font-weight:800;color:var(--mut);background:none;
+    border:none;border-bottom:4px solid transparent;margin-bottom:-2px;padding:12px 6px 10px;cursor:pointer;
+    white-space:nowrap}
+  .vb:hover{color:var(--ink);background:#f2f0e9;border-radius:10px 10px 0 0}
+  .vb.on{color:var(--gd);border-bottom-color:var(--g);background:var(--gl,#E8F4EC);border-radius:10px 10px 0 0}
+  @media(max-width:560px){.vb{font-size:13.5px;padding:11px 2px 9px}}
 
   /* 전체 일정 (간트) */
   .gt{background:var(--card);border:1px solid #e6e1d7;border-radius:13px;padding:0 0 10px;overflow:hidden}
@@ -3193,10 +3196,10 @@ function renderSum(){
 function renderCtl(){
   const c = document.getElementById('ctl');
   c.innerHTML =
-    '<span class="vsw">' +
+    '<div class="vsw">' +
       [['task','할 일 목록'],['gantt','전체 일정'],['week','주차별'],['dwg','도면 · 기기']].map(v =>
         '<button class="vb' + (view === v[0] ? ' on' : '') + '" data-v="' + v[0] + '">' + v[1] + '</button>').join('') +
-    '</span>' +
+    '</div>' +
     (view === 'task' || view === 'dwg' ? '' :
     ['전체'].concat(AREAS)
       .map(a => '<button class="chip' + (a === filter ? ' on' : '') + '" data-a="' + a + '">' + a + '</button>').join('') +
