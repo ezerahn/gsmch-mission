@@ -578,7 +578,7 @@
 
 <!--PLANDATA-->
 <script id="planData" type="application/json">{
-  "updated": "2026-10-26 20:04",
+  "updated": "2026-10-26 20:23",
   "open": "2026-11-22",
   "weeks": [
     {
@@ -3513,7 +3513,8 @@
     var wk=j.weeks.filter(function(w){return dd(w.from)<=0&&dd(w.to)>=0;})[0]||j.weeks[0];
     var its=j.items.filter(function(i){return i.week===wk.id;});
     var sub=document.getElementById('wkSub');
-    if(sub) sub.textContent=wk.label+' · '+wk.sub+' · 오픈까지 D-'+dd(j.open)+(j.updated?' · 업데이트 '+(function(u){var p=u.split(' '),q=p[0].split('-');return (+q[1])+'/'+(+q[2])+(p[1]?' '+p[1]:'');})(j.updated):'');
+    if(sub) sub.textContent=wk.label+' · '+wk.sub+' · 오픈까지 D-'+dd(j.open);
+    var ts=document.getElementById('todayS'); if(ts&&j.updated){var p=j.updated.split(' ');ts.textContent=p[0].replace(/-/g,'.')+(p[1]?' '+p[1]:'');}
     var TORD=['공통','선지서점','로뎀카페'];
     var TSUB={'공통':'시스템 · 공사 · 제작물 · 행정','선지서점':'도면 · 진열 · 도서 · 교육',
               '로뎀카페':'도면 · 메뉴 · 기물 · 교육'};
@@ -3560,7 +3561,7 @@
 <script>
 (function(){
   var n=new Date(), y=n.getFullYear(), m=n.getMonth()+1, d=n.getDate();
-  var a=document.getElementById('todayS'); if(a) a.textContent=y+'.'+('0'+m).slice(-2)+'.'+('0'+d).slice(-2);
+  var a=null; if(a) a.textContent=y+'.'+('0'+m).slice(-2)+'.'+('0'+d).slice(-2);
   var b=document.getElementById('todayL'); if(b) b.textContent=y+'. '+m+'. '+d+'.';
 })();
 </script>
