@@ -72,10 +72,13 @@
 
 
   /* 보기 전환 */
-  .vsw{display:inline-flex;background:#ece9e1;border-radius:999px;padding:3px;margin-right:6px}
-  .vb{font-family:inherit;font-size:12.5px;font-weight:700;color:var(--mut);background:none;
-    border:none;border-radius:999px;padding:5px 14px;cursor:pointer}
-  .vb.on{color:var(--gd);background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+  .vsw{display:flex;width:100%;border-bottom:2px solid var(--line);margin:4px 0 6px;gap:4px}
+  .vb{flex:1;font-family:inherit;font-size:15px;font-weight:800;color:var(--mut);background:none;
+    border:none;border-bottom:4px solid transparent;margin-bottom:-2px;padding:12px 6px 10px;cursor:pointer;
+    white-space:nowrap}
+  .vb:hover{color:var(--ink);background:#f2f0e9;border-radius:10px 10px 0 0}
+  .vb.on{color:var(--gd);border-bottom-color:var(--g);background:var(--gl,#E8F4EC);border-radius:10px 10px 0 0}
+  @media(max-width:560px){.vb{font-size:13.5px;padding:11px 2px 9px}}
 
   /* 전체 일정 (간트) */
   .gt{background:var(--card);border:1px solid #e6e1d7;border-radius:13px;padding:0 0 10px;overflow:hidden}
@@ -193,6 +196,8 @@
   .nt.w{background:var(--warnbg);border-color:var(--warn)}
   .mt{margin-top:10px;display:flex;gap:9px;flex-wrap:wrap;align-items:center}
   .mt .ow{font-size:11.5px;color:var(--mut)}
+  .tdoc{display:inline-block;margin-left:4px;font-size:12px;font-weight:700;color:var(--gd);background:#E8F4EC;border-radius:7px;padding:2px 8px;text-decoration:none;white-space:nowrap}
+  .tdoc:hover{background:#CFEBD8}
   .dl{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--gd);
     background:var(--gl);border:1px solid #c8e0d0;border-radius:8px;padding:5px 12px}
   .dl:hover{background:#e4f1e8}
@@ -422,11 +427,37 @@
           "done": true
         },
         {
+          "t": "키오스크 장비 선택",
+          "who": "단장님",
+          "st": "done",
+          "date": "10/20",
+          "memo": "서점 · 카페 모두 안드로이드 · 데스크형",
+          "done": true
+        },
+        {
+          "t": "카페 제조대 화면 — 태블릿 KDS로 결정",
+          "who": "단장님",
+          "st": "done",
+          "date": "10/21",
+          "memo": "1대 42만 원 · 3인 요금에 포함",
+          "done": true
+        },
+        {
           "t": "확정 견적서 받기",
           "who": "총무",
           "st": "done",
           "date": "10/21",
-          "memo": "하드웨어 6,953,100원 · 월 152,790원 (부가세 포함)",
+          "memo": "10/21 수령",
+          "done": true,
+          "doc": "gsmch-itda-quote-20261021.pdf",
+          "docLabel": "잇다 확정 견적서 (10/21)"
+        },
+        {
+          "t": "서점 외벽 디스플레이 — USB로 결정 (스틱 안 삼)",
+          "who": "단장님",
+          "st": "done",
+          "date": "10/26",
+          "memo": "화면은 USB로 틀기",
           "done": true
         },
         {
@@ -436,6 +467,46 @@
           "date": "10/26",
           "memo": "잇다 도입 진행하기로 결정",
           "done": true
+        },
+        {
+          "t": "QR 주문 알림 — 전화번호 남기면 카카오 알림톡 자동 발송",
+          "who": "잇다",
+          "st": "done",
+          "date": "10/26",
+          "memo": "직원이 주문 상태 바꾸면 접수 · 완료 알림",
+          "done": true
+        },
+        {
+          "t": "온라인 주문 ‘예약’ 탭 — 오픈 뒤 서비스 안정화되면 추가",
+          "who": "잇다",
+          "st": "done",
+          "date": "10/26",
+          "memo": "오픈 때는 연동 안 함 · 예약 화면은 잇다가 보내 주면 매뉴얼에 넣기",
+          "done": true
+        },
+        {
+          "t": "무선 링스캐너 구매 여부",
+          "who": "단장님",
+          "st": "todo",
+          "date": "",
+          "memo": "145,000원 (부가세 별도)",
+          "done": false
+        },
+        {
+          "t": "카페 메뉴판 3대 — 사이니지 스틱 · CMS 추가 필요한지 확인",
+          "who": "잇다",
+          "st": "todo",
+          "date": "",
+          "memo": "견적서 스틱 1개 · CMS 1대는 현황판용",
+          "done": false
+        },
+        {
+          "t": "카카오 알림톡 비용 — 월 이용료 포함인지 확인",
+          "who": "잇다",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
         },
         {
           "t": "결정 결과 회신 · 집행 근거 보관",
@@ -468,22 +539,6 @@
       "owner": "단장님",
       "todo": [
         {
-          "t": "키오스크 장비 선택",
-          "who": "단장님",
-          "st": "done",
-          "date": "10/20",
-          "memo": "서점 · 카페 모두 안드로이드 · 데스크형",
-          "done": true
-        },
-        {
-          "t": "카페 제조대 화면 — 태블릿 KDS로 결정",
-          "who": "단장님",
-          "st": "done",
-          "date": "10/21",
-          "memo": "1대 42만 원 · 3인 요금에 포함",
-          "done": true
-        },
-        {
           "t": "잇다에 계약 서류 보내기",
           "who": "단장님",
           "st": "done",
@@ -496,39 +551,31 @@
           "who": "단장님",
           "st": "done",
           "date": "10/26",
-          "memo": "30% 2,085,930원으로 결정",
+          "memo": "30%로 결정 · 총 금액은 아직 미정",
           "done": true
+        },
+        {
+          "t": "총 계약 금액 확정",
+          "who": "단장님",
+          "st": "todo",
+          "date": "",
+          "memo": "링스캐너 · 메뉴판 스틱 결정 뒤",
+          "done": false
         },
         {
           "t": "선금 입금",
           "who": "회계",
           "st": "todo",
           "date": "",
-          "memo": "30% 2,085,930원",
+          "memo": "총 금액 확정 뒤 30%",
           "done": false
         },
         {
-          "t": "서점 외벽 디스플레이 — 사이니지 스틱 / USB 선택",
-          "who": "단장님",
-          "st": "todo",
-          "date": "",
-          "memo": "스틱은 POS에 연결 · 나중에 추가 구매 가능",
-          "done": false
-        },
-        {
-          "t": "무선 링스캐너 구매 여부",
-          "who": "단장님",
-          "st": "todo",
-          "date": "",
-          "memo": "145,000원 (부가세 별도)",
-          "done": false
-        },
-        {
-          "t": "계약서 조건 확인 (약정 없음 · 무상 A/S)",
+          "t": "계약서 받으면 10/21 확정 견적서와 대조 · 조건 확인 (약정 없음 · 무상 A/S)",
           "who": "총무",
-          "st": "todo",
+          "st": "wait",
           "date": "",
-          "memo": "",
+          "memo": "견적서 계산은 확인 완료 · 유효기간 11/20",
           "done": false
         },
         {
@@ -546,22 +593,6 @@
           "date": "",
           "memo": "11/14 준공 이후 설치",
           "done": false
-        },
-        {
-          "t": "QR 주문 알림 — 전화번호 남기면 카카오 알림톡 자동 발송",
-          "who": "잇다",
-          "st": "done",
-          "date": "10/26",
-          "memo": "직원이 주문 상태 바꾸면 접수 · 완료 알림",
-          "done": true
-        },
-        {
-          "t": "온라인 주문 ‘예약’ 탭 — 오픈 뒤 서비스 안정화되면 추가",
-          "who": "잇다",
-          "st": "done",
-          "date": "10/26",
-          "memo": "오픈 때는 연동 안 함 · 예약 화면은 잇다가 보내 주면 매뉴얼에 넣기",
-          "done": true
         }
       ],
       "note": "순서 — 선금 결정 → 입금 → 서점 포스 먼저 입고 · 임시서점 테스트 → 11/14 준공 후 전체 설치",
@@ -931,22 +962,6 @@
           "done": false
         },
         {
-          "t": "카페 공유기 — 장비용 · 손님용 분리 (2대 또는 게스트 네트워크) · 자리 · 전원",
-          "who": "총무",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        },
-        {
-          "t": "카페까지 교회 인터넷 회선이 닿는지 건축위 확인",
-          "who": "건축위",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        },
-        {
           "t": "메뉴판 프레임 칸 폭 · 깊이 (43˝ 3대 약 290cm)",
           "who": "총무",
           "st": "todo",
@@ -963,27 +978,19 @@
           "done": false
         },
         {
-          "t": "키오스크 매립 여부 · 타공 치수",
-          "who": "건축위",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        },
-        {
-          "t": "픽업대 위 디스플레이 고정 · 보강",
-          "who": "건축위",
-          "st": "todo",
-          "date": "",
-          "memo": "",
-          "done": false
-        },
-        {
           "t": "현황판 32인치로 변경 (43인치 → 32인치)",
           "who": "단장님",
           "st": "todo",
           "date": "10/26",
           "memo": "방향 정함 · 잇다 권장 최소 32인치 · 후보 삼성 32인치 QMC",
+          "done": false
+        },
+        {
+          "t": "세로 설치 시 현황판 화면 예시 받기",
+          "who": "잇다",
+          "st": "wait",
+          "date": "",
+          "memo": "10/26 요청 — 출장 후 안내",
           "done": false
         },
         {
@@ -1003,11 +1010,11 @@
           "done": false
         },
         {
-          "t": "세로 설치 시 현황판 화면 예시 받기",
-          "who": "잇다",
-          "st": "wait",
+          "t": "픽업대 위 디스플레이 고정 · 보강",
+          "who": "건축위",
+          "st": "todo",
           "date": "",
-          "memo": "10/26 요청 — 출장 후 안내",
+          "memo": "",
           "done": false
         },
         {
@@ -1021,6 +1028,30 @@
         {
           "t": "현황판 스피커 건 건축위 전달",
           "who": "단장님",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        },
+        {
+          "t": "키오스크 매립 여부 · 타공 치수",
+          "who": "건축위",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        },
+        {
+          "t": "카페 공유기 — 장비용 · 손님용 분리 (2대 또는 게스트 네트워크) · 자리 · 전원",
+          "who": "총무",
+          "st": "todo",
+          "date": "",
+          "memo": "",
+          "done": false
+        },
+        {
+          "t": "카페까지 교회 인터넷 회선이 닿는지 건축위 확인",
+          "who": "건축위",
           "st": "todo",
           "date": "",
           "memo": "",
@@ -1467,6 +1498,22 @@
       "owner": "매니저",
       "todo": [
         {
+          "t": "디스플레이 구매 — 외벽 43인치 1대 (USB 재생)",
+          "who": "단장님",
+          "st": "todo",
+          "date": "",
+          "memo": "사업단 별도 구매",
+          "done": false
+        },
+        {
+          "t": "PDA용 휴대폰 구매",
+          "who": "단장님",
+          "st": "todo",
+          "date": "",
+          "memo": "큰 화면 · RAM 4GB 이상 · 배터리 6000mAh · IP67",
+          "done": false
+        },
+        {
           "t": "진열 집기 발주",
           "who": "매니저",
           "st": "todo",
@@ -1527,6 +1574,14 @@
           "st": "todo",
           "date": "",
           "memo": "",
+          "done": false
+        },
+        {
+          "t": "디스플레이 구매 — 메뉴판 43인치 3대 · 현황판 32인치 1대",
+          "who": "단장님",
+          "st": "todo",
+          "date": "",
+          "memo": "잇다 견적에 없음 · 사업단 별도 구매",
           "done": false
         },
         {
@@ -3193,10 +3248,10 @@ function renderSum(){
 function renderCtl(){
   const c = document.getElementById('ctl');
   c.innerHTML =
-    '<span class="vsw">' +
+    '<div class="vsw">' +
       [['task','할 일 목록'],['gantt','전체 일정'],['week','주차별'],['dwg','도면 · 기기']].map(v =>
         '<button class="vb' + (view === v[0] ? ' on' : '') + '" data-v="' + v[0] + '">' + v[1] + '</button>').join('') +
-    '</span>' +
+    '</div>' +
     (view === 'task' || view === 'dwg' ? '' :
     ['전체'].concat(AREAS)
       .map(a => '<button class="chip' + (a === filter ? ' on' : '') + '" data-a="' + a + '">' + a + '</button>').join('') +
@@ -3428,7 +3483,7 @@ function renderTasks(){
         body += '<table class="td"><colgroup><col style="width:96px"><col><col style="width:78px"><col style="width:38%"></colgroup>' + rows.map(t =>
           '<tr class="' + (t.st === 'done' ? 'dn' : '') + '"><td class="sc"><span class="sb ' + t.st + '">' + STL[t.st] + (t.date ? ' ' + esc(t.date) : '') + '</span></td>' +
           '<td class="t">' + esc(t.t) + '</td><td class="wc"><span class="wb ' + esc(t.who) + '">' + esc(t.who) + '</span></td>' +
-          '<td class="m">' + esc(t.memo || '') + '</td></tr>').join('') + '</table>';
+          '<td class="m">' + esc(t.memo || '') + (t.doc ? ' <a class="tdoc" href="' + esc(t.doc) + '" target="_blank">📄 ' + esc(t.docLabel || '문서 보기') + '</a>' : '') + '</td></tr>').join('') + '</table>';
       }
       body += '</div>';
       shown += rows.length;
@@ -3503,6 +3558,11 @@ function printPlan(){
   st.textContent='@page{size:A4 ' + ((typeof view!=='undefined' && view==='gantt')?'landscape':'portrait') + ';margin:10mm}';
   window.print();
 }
+</script>
+<div id="pvw" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:99;align-items:center;justify-content:center;padding:20px;cursor:zoom-out"><img style="max-width:100%;max-height:100%;border-radius:10px;background:#fff"></div>
+<script>
+document.addEventListener('click',function(e){var a=e.target.closest('a.tdoc,a.dl');if(!a)return;var h=a.getAttribute('href')||'';if(!/\.(jpe?g|png|webp|gif)$/i.test(h))return;e.preventDefault();var o=document.getElementById('pvw');o.querySelector('img').src=h;o.style.display='flex';});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('pvw').style.display='none';});
 </script>
 </body>
 </html>
