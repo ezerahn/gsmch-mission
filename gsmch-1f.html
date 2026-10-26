@@ -131,13 +131,26 @@
     body.prwk .wk .wk-more{display:none}
   }
 
+  /* 이번 주 — 가벼운 목록 */
+  #wkNow.wk-g{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .wl-h{font-size:12.5px;font-weight:700;color:#8a847a;padding:0 2px 6px;border-bottom:2px solid #e6e1d7;margin-bottom:2px}
+  .wl-r{display:flex;align-items:center;gap:8px;padding:8px 2px;border-bottom:1px dashed #ece7dd;text-decoration:none;color:#2c2a26}
+  .wl-r:hover .t{color:#056B2C}
+  .wl-r .t{flex:1;font-size:13.5px;font-weight:600;letter-spacing:-.02em;line-height:1.4}
+  .wl-r .c{font-size:11px;color:#a9a294}
+  .wl-r .bd{flex:none;font-size:10.5px;font-weight:700;border-radius:9px;padding:1px 8px 2px;color:#6e6860;background:#ece7dd}
+  .wl-r.s결정 .bd{color:#fff;background:#B3382A}
+  .wl-r.s준비 .bd{color:#fff;background:#07913B}
+  .askbox a{font-size:13px;color:#9A6414;text-decoration:none;font-weight:600}
+  @media(max-width:760px){#wkNow.wk-g{grid-template-columns:1fr}}
   /* ── 이번 주 할 일 ── */
   .wk{background:#fff;border:1px solid #e6e1d7;border-radius:13px;padding:16px 18px 14px;margin-bottom:30px}
   .wk-hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
   .wk-hd b{font-size:14px;font-weight:700;letter-spacing:-.02em;color:#2c2a26}
   .wk-hd .sub{font-size:12px;color:#8a847a}
   .wk-hd .rt{margin-left:auto;font-size:11.5px;color:#a9a294}
-  .askbox{margin:16px 0 0;background:#FBF3E6;border:1px solid #e3d6bb;border-radius:11px;padding:12px 16px 13px}
+  .askbox{margin:14px 0 0;background:#FBF3E6;border:1px solid #e3d6bb;border-radius:11px;padding:9px 16px}
+  .askbox:empty{display:none}
   .askbox b{display:inline-block;font-size:13px;font-weight:700;color:#9A6414;margin-bottom:6px}
   .askbox em{font-style:normal;font-size:11.5px;color:#a9a294;margin-left:8px}
   .askbox div{font-size:13px;color:#6e6860;line-height:1.75;display:flex;gap:8px}
@@ -3467,32 +3480,22 @@
     var asks=[];
     its.forEach(function(it){ (it.ask||[]).forEach(function(a){ asks.push([it.title,a]); }); });
     var ab=document.getElementById('askBox');
-    if(ab){ ab.innerHTML = asks.length
+    if(false){ ab.innerHTML = asks.length
       ? '<b>확인 체크리스트</b><em>답이 나오면 진도표에 반영합니다</em>'+asks.map(function(x){
           return '<div><span>'+esc(x[0])+'</span>'+esc(x[1])+'</div>'; }).join('')
       : ''; }
-    box.innerHTML=its.map(function(it,k){
-      var band='';
-      if(tr(it)!==cur){
-        cur=tr(it);
-        var g=its.filter(function(x){return tr(x)===cur;});
-        var dec=g.filter(function(x){return x.state==='결정';}).length;
-        band='<div class="wk-band"><b>'+esc(cur)+'</b><em>'+esc(TSUB[cur]||'')+'</em>'+
-             '<span class="ct">'+(dec?'<u>정해야 할 것 '+dec+'건</u> · ':'')+g.length+'건</span></div>';
-      }
-      n++;
-      var t=it.todo||[], d=t.filter(function(x){return x.done;}).length;
-      var pc=t.length?Math.round(d/t.length*100):0;
-      var rest=t.filter(function(x){return !x.done;}).slice(0,3)
-        .map(function(x){return esc(x.t);}).join('<br>')||'할 일이 모두 끝났습니다';
-      return band+'<a class="wk-i s'+esc(it.state)+'" href="gsmch-1f-plan.html#'+esc(it.id)+'">'+
-        '<div class="n">'+n+'<span class="ar3 '+esc(it.area)+'">'+esc(it.area)+'</span>'+
-          '<span class="bd">'+esc(LABEL[it.state]||it.state)+'</span></div>'+
-        '<div class="t">'+esc(it.title)+'</div>'+
-        '<div class="d">'+(it.due?'~ '+esc(it.due):'기한 미정')+'</div>'+
-        '<div class="s">'+rest+'</div>'+
-        '<div class="pgw"><span>'+d+'/'+t.length+'</span><span class="b"><i style="width:'+pc+'%"></i></span></div>'+
-      '</a>';
+    var wait=0; j.items.forEach(function(i){(i.todo||[]).forEach(function(t){if(t.st==='wait')wait++;});});
+    if(ab) ab.innerHTML = wait ? '<a href="gsmch-1f-plan.html">⏳ 확인 대기 <b>'+wait+'건</b> — 진도표에서 보기 →</a>' : '';
+    box.innerHTML=TORD.map(function(g){
+      var rows=its.filter(function(x){return tr(x)===g;});
+      if(!rows.length) return '';
+      return '<div class="wl"><div class="wl-h">'+esc(g)+'</div>'+rows.map(function(it){
+        var t=it.todo||[], d=t.filter(function(x){return x.done;}).length;
+        return '<a class="wl-r s'+esc(it.state)+'" href="gsmch-1f-plan.html#'+esc(it.id)+'">'+
+          '<span class="t">'+esc(it.title)+'</span>'+
+          '<span class="c">'+d+'/'+t.length+'</span>'+
+          '<span class="bd">'+esc(LABEL[it.state]||it.state)+'</span></a>';
+      }).join('')+'</div>';
     }).join('');
   }
   fetch('gsmch-1f-plan.json?v='+Date.now())
