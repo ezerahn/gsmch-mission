@@ -417,9 +417,9 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     </div>
   </section>
 
-  <p class="note">한 달 합계 = ① 컵 + ② 뚜껑(일회용 30원) + ③ 수거·배송 월 정액(주 5일 30만 / 주 3일 15만 중 선택) + ④ 반납함 렌탈(기본 54,000 / 39,000 · 큰 것 64,000 / 49,000원, 대당 한 달, 2년 / 3년 약정) + ⑤ 분실 보상. 더 드는 돈 = 한 달 합계 − 지금 일회용(기준 ②).<br>
+  <p class="note">한 달 합계 = ① 컵 + ② 뚜껑(일회용 30원) + ③ 수거·배송 월 정액(주 5일 300,000원 / 주 3일 150,000원 중 선택) + ④ 반납함 렌탈(기본 54,000 / 39,000 · 큰 것 64,000 / 49,000원, 대당 한 달, 2년 / 3년 약정) + ⑤ 분실 보상. 더 드는 돈 = 한 달 합계 − 지금 일회용(기준 ②).<br>
   ⑤ 분실 = 컵 개수 × (분실률 − 무료 한도) × 1개 보상. 1안 보상이 컵 700원인지 1,000원인지 확인 중.<br>
-  1안·2안은 10/27 미팅 조건 — 컵 150(1안) 또는 165(2안) · 뚜껑 더그리트 전용 일회용 30원 · 수거 주 3일 월 15만 / 주 5일 30만. 컵 비용만 보면 분실률 약 3.1%(보상 700원) · 2.5%(보상 1,000원)가 갈림점.</p>
+  1안·2안은 10/27 미팅 조건 — 컵 150(1안) 또는 165(2안) · 뚜껑 더그리트 전용 일회용 30원 · 수거 주 3일 월 150,000원 / 주 5일 300,000원. 컵 비용만 보면 분실률 약 3.1%(보상 700원) · 2.5%(보상 1,000원)가 갈림점.</p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -436,7 +436,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
   function save(){try{localStorage.setItem(KEY,JSON.stringify(st));}catch(e){}}
   function num(v){var x=String(v==null?'':v).replace(/[^0-9.\-]/g,'');return x===''?NaN:+x;}
   function fmt(n){return Math.round(n).toLocaleString('ko-KR');}
-  function man(n){var s=Math.round(n/1000)/10;return (n<0?'−':'')+Math.abs(s).toLocaleString('ko-KR',{maximumFractionDigits:1})+'만';}
+  function man(n){return (n<0?'−':'')+Math.round(Math.abs(n)).toLocaleString('ko-KR')+'원';}
   function sman(n){return (n>0?'+':'')+man(n);}
   function inp(id,v,unit){return '<span class="inp"><input id="'+id+'" inputmode="numeric" value="'+(v===''||v==null?'':fmt(v))+'" placeholder="0"><span>'+unit+'</span></span>';}
   var plans=document.getElementById('plans');
