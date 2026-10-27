@@ -74,6 +74,9 @@ h1{margin:0;font-size:22px;font-weight:900;letter-spacing:-.5px;text-wrap:balanc
 .g2{grid-template-columns:1fr 1fr}
 .gx{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
 .gx .op{font-size:16px;padding-bottom:12px}
+.gx3{grid-template-columns:0.7fr 1fr 1fr}
+.r.pick .k,.r.pick .v{color:var(--acc);font-weight:900}
+.yr{font-style:normal;font-size:11px;font-weight:600;color:var(--mut);margin-left:4px}
 .seg{display:flex;background:var(--field);border:1px solid var(--line);border-radius:10px;padding:3px;gap:3px;min-height:44px;margin-top:6px}
 .seg button{flex:1;border:0;border-radius:8px;background:transparent;color:var(--mut);font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;white-space:nowrap}
 .seg button.on{background:var(--card);color:var(--acc);box-shadow:0 1px 2px rgba(0,0,0,.12)}
@@ -400,20 +403,20 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     </div>
   </section>
 
-  <p class="note">한 달 합계 = ① 컵 + ② 뚜껑 + ③ 수거 + ④ 반납함 + ⑤ 분실. 더 드는 돈 = 한 달 합계 − 지금 일회용(기준 ②).<br>
-  ④ 반납함을 「한 번만 낸다」로 고르면 12개월로 나눠 한 달 비용에 넣고, 처음 내는 금액은 따로 보여 줍니다. ⑤ 분실 = 컵 개수 × (분실률 − 무료 한도) × 1개 보상.<br>
-  안 1은 더그리트 견적(2026. 6. 2.)을 넣어 둔 예시 — 컵 150 · 뚜껑 50 · 물류비 사용료 포함 · 반납함 대당 5만 · 분실 1%까지 무료, 초과분 컵 700 + 뚜껑 300.</p>
+  <p class="note">한 달 합계 = ① 컵 + ② 뚜껑(일회용 30원) + ③ 수거·배송 월 정액 + ④ 반납함 렌탈(5대 × 월 단가, 2년/3년 약정 중 선택) + ⑤ 분실. 더 드는 돈 = 한 달 합계 − 지금 일회용(기준 ②).<br>
+  ⑤ 분실 = 컵 개수 × (분실률 − 무료 한도) × 1개 보상. 3년 약정 단가는 녹취 뒷부분 확인 뒤 넣을 것.<br>
+  안 1·2·3은 10/27 미팅에서 들은 조건 — 컵 150(기본) 또는 165(분실 5% 녹임) · 수거 월 15만~30만 · 반납함 5대 렌탈 2년 월 4,000 · 분실 1% 초과 컵 700원. 분실률 2.5%가 안 1과 안 2의 갈림점.</p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 (function(){
-  var KEY='rodem-cup-calc-v6';
-  var EMPTY={memo:'',cup:'',lid:'',sn:8,sp:'',bn:10,bp:'',bm:'m',lh:1,lc:''};
+  var KEY='rodem-cup-calc-v7';
+  var EMPTY={memo:'',cup:'',lid:30,sp:'',bn:5,b2:4000,b3:'',bt:'2',lh:1,lc:''};
   var DEF={cups:9800,ratio:70,loss:2,dc:65,dl:35,dh:30,plans:[
-    {memo:'6/2 견적 그대로 (물류 0 · 반납함 5만 한 번 · 분실 1% 초과 1,000원)',cup:150,lid:50,sn:8,sp:0,bn:10,bp:50000,bm:'o',lh:1,lc:1000},
-    {memo:'10/27 미팅 — 컵 165원(분실 5% 녹임) · 수거 월 15만(횟수 줄이면) · 반납함 렌탈 월 4,000원 · 분실 청구 없음(3개월)',cup:165,lid:50,sn:1,sp:150000,bn:10,bp:4000,bm:'m',lh:5,lc:0},
-    {memo:'10/27 미팅 — 같은 조건에 수거 주 5일 월 30만',cup:165,lid:50,sn:1,sp:300000,bn:10,bp:4000,bm:'m',lh:5,lc:0}]};
+    {memo:'기본 — 컵 150원 · 분실 1% 초과 컵 700원 · 수거 줄여 월 15만',cup:150,lid:30,sp:150000,bn:5,b2:4000,b3:'',bt:'2',lh:1,lc:700},
+    {memo:'분실 녹임 — 컵 165원 · 5% 초과 청구 없음(3개월) · 수거 월 15만',cup:165,lid:30,sp:150000,bn:5,b2:4000,b3:'',bt:'2',lh:5,lc:0},
+    {memo:'기본 조건에 수거 주 5일 월 30만',cup:150,lid:30,sp:300000,bn:5,b2:4000,b3:'',bt:'2',lh:1,lc:700}]};
   var st;
   try{st=JSON.parse(localStorage.getItem(KEY))||null;}catch(e){st=null;}
   if(!st||!st.plans) st=JSON.parse(JSON.stringify(DEF));
@@ -427,12 +430,13 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
   plans.innerHTML=st.plans.map(function(p,i){
     return '<article class="box plan" id="p'+i+'"><div class="ph"><h2>안 '+(i+1)+'</h2><span class="tag" hidden>가장 유리</span>'+
       '<button class="clr" data-i="'+i+'">지우기</button></div>'+
-      '<input class="memo" id="m'+i+'" placeholder="조건 메모 (예: 반납함 무료, 컵 120원)" value="'+(p.memo||'').replace(/"/g,'&quot;')+'">'+
+      '<input class="memo" id="m'+i+'" placeholder="조건 메모" value="'+(p.memo||'').replace(/"/g,'&quot;')+'">'+
       '<div class="g g2"><div class="step"><span class="lab">① 컵 1개</span>'+inp('cup'+i,p.cup,'원')+'</div>'+
-        '<div class="step"><span class="lab">② 뚜껑 1개<em>일회용이면 그 값</em></span>'+inp('lid'+i,p.lid,'원')+'</div></div>'+
-      '<div class="step"><span class="lab">③ 수거 · 배송<em>주 2회 = 한 달 8회 · 포함이면 0원</em></span><div class="g gx">'+inp('sn'+i,p.sn,'회/달')+'<span class="op">×</span>'+inp('sp'+i,p.sp,'원/회')+'</div></div>'+
-      '<div class="step"><span class="lab">④ 반납함<em>무료면 0원</em></span><div class="g gx">'+inp('bn'+i,p.bn,'대')+'<span class="op">×</span>'+inp('bp'+i,p.bp,'원/대')+'</div>'+
-        '<div class="seg" data-i="'+i+'"><button data-m="o" class="'+(p.bm==='o'?'on':'')+'">한 번만 낸다</button><button data-m="m" class="'+(p.bm!=='o'?'on':'')+'">매달 낸다</button></div></div>'+
+        '<div class="step"><span class="lab">② 뚜껑 1개<em>일회용 30원 통일</em></span>'+inp('lid'+i,p.lid,'원')+'</div></div>'+
+      '<div class="step"><span class="lab">③ 수거 · 배송 월 정액<em>주 5일 30만 · 줄이면 15만 선</em></span>'+inp('sp'+i,p.sp,'원/달')+'</div>'+
+      '<div class="step"><span class="lab">④ 반납함 렌탈<em>대수 × 월 단가 · 약정 기간별</em></span>'+
+        '<div class="g gx3">'+inp('bn'+i,p.bn,'대')+inp('b2'+i,p.b2,'원 · 2년')+inp('b3'+i,p.b3,'원 · 3년')+'</div>'+
+        '<div class="seg" data-i="'+i+'"><button data-m="2" class="'+(p.bt!=='3'?'on':'')+'">2년 약정으로 계산</button><button data-m="3" class="'+(p.bt==='3'?'on':'')+'">3년 약정으로 계산</button></div></div>'+
       '<div class="step"><span class="lab">⑤ 분실 보상<em>한도까지 무료 · 넘는 컵만 보상</em></span><div class="g gx">'+inp('lh'+i,p.lh,'% 까지 무료')+'<span class="op">·</span>'+inp('lc'+i,p.lc,'원/개')+'</div></div>'+
       '<div class="res" id="r'+i+'"></div></article>';
   }).join('');
@@ -446,21 +450,23 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     document.querySelectorAll('.chip').forEach(function(c){c.classList.toggle('on',+c.dataset.r===ratio);});
     var out=[];
     st.plans.forEach(function(p,i){
-      var cup=num(p.cup),lid=num(p.lid)||0,sn=num(p.sn)||0,sp=num(p.sp)||0,bn=num(p.bn)||0,bp=num(p.bp)||0,lh=num(p.lh)||0,lc=num(p.lc)||0;
+      var cup=num(p.cup),lid=num(p.lid)||0,sp=num(p.sp)||0,bn=num(p.bn)||0,b2=num(p.b2)||0,b3=num(p.b3),lh=num(p.lh)||0,lc=num(p.lc)||0;
       var el=document.getElementById('r'+i);
       if(isNaN(cup)){el.innerHTML='<div class="empty">① 컵 1개 값을 넣으면 계산됩니다.</div>';out.push(null);return;}
-      var once=p.bm==='o', a=n*cup, b=n*lid, ship=sn*sp, bAll=bn*bp, box=once?bAll/12:bAll;
+      var use3=p.bt==='3', box2=bn*b2, box3=isNaN(b3)?null:bn*b3, box=use3&&box3!=null?box3:box2;
+      var a=n*cup, b=n*lid, ship=sp;
       var lossPct=Math.max(0,loss-lh), lost=n*lossPct/100*lc;
       var tot=a+b+ship+box+lost, d=tot-base;
-      out.push({tot:tot,d:d,per:n?tot/n:0,first:once?bAll:0});
+      var alt=(box3!=null)?(use3?tot-box3+box2:tot-box2+box3):null;
+      out.push({tot:tot,d:d,per:n?tot/n:0,alt:alt,use3:use3});
       el.innerHTML=
-        '<div class="hero"><span class="k">한 달 합계</span><span class="v num">'+man(tot)+'<small>/ 달</small></span><span class="y num">한 잔당 '+fmt(n?tot/n:0)+'원 · 1년 '+man(tot*12)+'</span></div>'+
+        '<div class="hero"><span class="k">한 달 합계 · '+(use3?'3년':'2년')+' 약정</span><span class="v num">'+man(tot)+'<small>/ 달</small></span><span class="y num">한 잔당 '+fmt(n?tot/n:0)+'원 · 1년 '+man(tot*12)+(alt!=null?' · '+(use3?'2년':'3년')+' 약정이면 '+man(alt):'')+'</span></div>'+
         r('① 컵',fmt(n)+'개 × '+fmt(cup)+'원',man(a),'sub')+
         r('② 뚜껑',fmt(n)+'개 × '+fmt(lid)+'원',man(b),'sub')+
-        r('③ 수거',fmt(sn)+'회 × '+fmt(sp)+'원',man(ship),'sub')+
-        r('④ 반납함',fmt(bn)+'대 × '+fmt(bp)+'원'+(once?' ÷ 12':''),man(box),'sub')+
+        r('③ 수거 · 배송','월 정액',man(ship),'sub')+
+        r('④ 반납함 2년 약정',fmt(bn)+'대 × '+fmt(b2)+'원',man(box2),'sub'+(use3?'':' pick'))+
+        r('④ 반납함 3년 약정',fmt(bn)+'대 × '+(box3!=null?fmt(b3)+'원':'?'),box3!=null?man(box3):'—','sub'+(use3?' pick':''))+
         r('⑤ 분실',fmt(n)+'개 × '+lossPct+'% × '+fmt(lc)+'원',man(lost),'sub')+
-        (once&&bAll?r('처음 한 번 내는 돈 (반납함)',fmt(bn)+'대 × '+fmt(bp)+'원',man(bAll),'sub'):'')+
         '<div class="cmpn'+(d<=0?' dn':'')+'"><span>비고 · 지금 일회용(기준 ②) '+man(base)+'과 차이</span><b class="num">'+sman(d)+' / 달</b><i class="num">1년이면 '+sman(d*12)+'</i></div>';
     });
     var vals=out.filter(Boolean).map(function(o){return o.tot;}), min=vals.length?Math.min.apply(null,vals):null, cnt=vals.length;
@@ -468,22 +474,22 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     function cell(o,f,main){if(!o)return '<td style="color:var(--mut)">—</td>';return '<td'+(main&&cnt>1&&o.tot===min?' class="bestc"':'')+'>'+f(o)+'</td>';}
     document.getElementById('cmp').innerHTML='<thead><tr><th></th><th>안 1</th><th>안 2</th><th>안 3</th></tr></thead><tbody>'+
       '<tr class="memo-r"><td>조건</td>'+st.plans.map(function(p){return '<td class="memo-c">'+(p.memo||'—').replace(/</g,'&lt;')+'</td>';}).join('')+'</tr>'+
-      '<tr class="main"><td>한 달 합계</td>'+out.map(function(o){return cell(o,function(o){return man(o.tot);},true);}).join('')+'</tr>'+
+      '<tr class="main"><td>한 달 합계</td>'+out.map(function(o){return cell(o,function(o){return man(o.tot)+'<i class="yr"> '+(o.use3?'3년':'2년')+' 약정</i>';},true);}).join('')+'</tr>'+
       '<tr class="main"><td>한 잔당</td>'+out.map(function(o){return cell(o,function(o){return fmt(o.per)+'원';},true);}).join('')+'</tr>'+
+      '<tr class="minor"><td>다른 약정이면</td>'+out.map(function(o){return cell(o,function(o){return o.alt!=null?man(o.alt)+' ('+(o.use3?'2년':'3년')+')':'3년 단가 미정';});}).join('')+'</tr>'+
       '<tr class="minor"><td>1년이면</td>'+out.map(function(o){return cell(o,function(o){return man(o.tot*12);});}).join('')+'</tr>'+
-      '<tr class="minor"><td>처음 한 번 (반납함)</td>'+out.map(function(o){return cell(o,function(o){return o.first?man(o.first):'없음';});}).join('')+'</tr>'+
       '<tr class="cmprow"><td>비고 · 지금 일회용(기준 ②) '+man(base)+' / '+fmt(disp)+'원과 차이</td>'+out.map(function(o){return cell(o,function(o){return sman(o.d)+' / 달 · '+(o.per-disp>0?'+':'')+fmt(o.per-disp)+'원';});}).join('')+'</tr></tbody>';
   }
   function bind(id,fn){var e=document.getElementById(id);e.addEventListener('input',function(){fn(e.value);save();calc();});
     e.addEventListener('blur',function(){if(e.value!==''){var v=num(e.value);if(!isNaN(v))e.value=fmt(v);}});}
   ['cups','ratio','loss','dc','dl','dh'].forEach(function(k){if(st[k]==null)st[k]=DEF[k];document.getElementById(k).value=fmt(st[k]);bind(k,function(v){st[k]=num(v);});});
-  var FK=['cup','lid','sn','sp','bn','bp','lh','lc'];
+  var FK=['cup','lid','sp','bn','b2','b3','lh','lc'];
   st.plans.forEach(function(p,i){
     var m=document.getElementById('m'+i);m.addEventListener('input',function(){p.memo=m.value;save();calc();});
     FK.forEach(function(k){bind(k+i,function(v){p[k]=v===''?'':num(v);});});
   });
-  function setSeg(i){document.querySelectorAll('.seg[data-i="'+i+'"] button').forEach(function(x){x.classList.toggle('on',(st.plans[i].bm==='o')===(x.dataset.m==='o'));});}
-  document.querySelectorAll('.seg button').forEach(function(x){x.addEventListener('click',function(){var i=+x.parentNode.dataset.i;st.plans[i].bm=x.dataset.m;setSeg(i);save();calc();});});
+  function setSeg(i){document.querySelectorAll('.seg[data-i="'+i+'"] button').forEach(function(x){x.classList.toggle('on',(st.plans[i].bt==='3')===(x.dataset.m==='3'));});}
+  document.querySelectorAll('.seg button').forEach(function(x){x.addEventListener('click',function(){var i=+x.parentNode.dataset.i;st.plans[i].bt=x.dataset.m;setSeg(i);save();calc();});});
   document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){st.ratio=+c.dataset.r;document.getElementById('ratio').value=st.ratio;save();calc();});});
   document.querySelectorAll('.clr').forEach(function(b){b.addEventListener('click',function(){var i=+b.dataset.i;st.plans[i]=JSON.parse(JSON.stringify(EMPTY));
     document.getElementById('m'+i).value='';FK.forEach(function(k){var v=st.plans[i][k];document.getElementById(k+i).value=v===''?'':fmt(v);});setSeg(i);save();calc();});});
