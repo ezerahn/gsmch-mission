@@ -116,7 +116,7 @@ td.memo-c{white-space:normal;font-size:12.5px;color:var(--mut);max-width:220px}
 .toc a{flex:none;font-size:13px;font-weight:700;color:var(--acc);background:var(--acc-soft);border-radius:999px;padding:5px 13px;text-decoration:none;white-space:nowrap}
 .toc a:hover{background:var(--acc);color:var(--card)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--bg)}
-#base,#plans-h,#cmp-h,#co,#env,#ask{scroll-margin-top:60px}
+#base,#plans-h,#cmp-h,#co,#env,#ask,#out{scroll-margin-top:60px}
 html{scroll-behavior:smooth}
 .qcnt{float:right;font-size:12px;color:var(--acc);font-weight:700}
 .qlead{font-size:12.5px;color:var(--mut);background:var(--field);border-radius:9px;padding:8px 11px;margin-bottom:12px;line-height:1.6}
@@ -135,6 +135,17 @@ html{scroll-behavior:smooth}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .qparts.env .qpart{border-color:#2f5a3c}}
 :root[data-theme="dark"] .qparts.env .qpart{border-color:#2f5a3c}
 .qparts.env .qg{padding-top:6px}
+.ogrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.og{border:2px solid var(--baseline);border-radius:14px;padding:10px 12px;background:var(--base);min-width:0}
+.og h4{margin:0 0 6px;font-size:13.5px;font-weight:900}
+.orow{display:grid;grid-template-columns:20px 1fr;gap:2px 6px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.orow:last-child{border-bottom:none}
+.orow b{font-size:12px;color:var(--mut);text-align:right;padding-top:2px}
+.orow span{font-size:13px;font-weight:700}
+.orow input{grid-column:2;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 9px;font:inherit;font-size:13.5px;width:100%}
+.orow input:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 2px var(--acc-soft)}
+.orow input.done{border-color:var(--acc);background:var(--acc-soft)}
+@media (max-width:900px){.ogrid{grid-template-columns:1fr}}
 .qg{border:1px solid var(--line);border-radius:12px;padding:0 12px 6px;overflow:hidden}
 .qg h4 em{font-style:normal;font-weight:500;color:var(--mut);font-size:12px;margin-left:8px}
 .qg label i{font-style:normal;flex:none;width:22px;font-size:12px;font-weight:900;color:var(--mut);margin-top:2px;text-align:right}
@@ -160,7 +171,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     <h1>로뎀카페 다회용컵 도입 검토</h1>
     <p class="sub">비용 계산 · 업체 정보 · 미팅 질문을 한 곳에 — 2026. 10. 27. 더그리트 미팅용. 입력한 숫자와 체크는 이 기기에 남습니다. 금액은 부가세 별도.</p>
   </header>
-  <nav class="toc" id="toc"><a href="#base">기준</a><a href="#plans-h">안 1 · 2 · 3</a><a href="#cmp-h">세 안 비교</a><a href="#co">더그리트 정보</a><a href="#env">지속환경국</a><a href="#ask">물어볼 것</a></nav>
+  <nav class="toc" id="toc"><a href="#base">기준</a><a href="#plans-h">안 1 · 2 · 3</a><a href="#cmp-h">세 안 비교</a><a href="#co">더그리트 정보</a><a href="#env">지속환경국</a><a href="#ask">물어볼 것</a><a href="#out">회의 결과</a></nav>
 
   <section class="box base" id="base">
     <div class="ttl">기준 ① 한 달에 컵이 몇 개 필요한가<small>안 1 · 2 · 3 계산에 들어가는 기준</small></div>
@@ -323,6 +334,37 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     </div>
   </section>
 
+  <section class="box" id="out">
+    <div class="ttl">회의로 도출할 결과<small>이 칸이 채워지면 오늘 회의는 끝 — 답을 들은 대로 적기</small><span class="qcnt" id="ocnt"></span></div>
+    <div class="qlead key"><b>회의 목표</b> ① 더그리트와 상시 계약 조건을 확정할 수 있는 <b>숫자</b>를 받는다 &nbsp;② 교회 안에서 <b>비용을 누가 맡을지</b> 방향을 잡는다 &nbsp;③ 오픈(11/22) 전 일정을 확정한다</div>
+    <div class="ogrid">
+      <div class="og"><h4>더그리트에서 받을 숫자 → 계산기 안 2에 입력</h4>
+        <div class="orow"><b>1</b><span>컵 1개 사용료 · 할인 구간</span><input data-o="o1" placeholder="예: 130원 · 월 5,000개 이상 120원"></div>
+        <div class="orow"><b>2</b><span>뚜껑 · 홀더</span><input data-o="o2" placeholder="예: 다회용 뚜껑 40원 · 홀더 없음(우리 구매)"></div>
+        <div class="orow"><b>3</b><span>물류비</span><input data-o="o3" placeholder="예: 사용료 포함 0원 / 회당 3만"></div>
+        <div class="orow"><b>4</b><span>반납함 10대</span><input data-o="o4" placeholder="예: 무료 / 대당 5만 한 번"></div>
+        <div class="orow"><b>5</b><span>분실 — 무료 한도 · 보상 · 집계</span><input data-o="o5" placeholder="예: 3%까지 무료 · 초과 700원 · 월 집계 공유"></div>
+        <div class="orow"><b>6</b><span>정산 방식 · 계약 기간</span><input data-o="o6" placeholder="예: 쓴 만큼 월 정산 · 1년 · 해지 1개월 전 통보"></div>
+        <div class="orow"><b>7</b><span>배송 · 수거 요일</span><input data-o="o7" placeholder="예: 목 1,500개 · 월 600개 · 월요일 수거"></div>
+        <div class="orow"><b>8</b><span>공용 / 전용 컵</span><input data-o="o8" placeholder="예: 공용으로 시작 · 전용은 개당 900원 3,000개부터"></div>
+      </div>
+      <div class="og"><h4>교회 안에서 정한 방향 (지속환경국)</h4>
+        <div class="orow"><b>9</b><span>초기 셋업 비용 (반납함 · 설치 · 안내물)</span><input data-o="o9" placeholder="예: 지속환경국 예산"></div>
+        <div class="orow"><b>10</b><span>매달 늘어나는 사용료</span><input data-o="o10" placeholder="예: 카페 부담 (가격 인상분으로)"></div>
+        <div class="orow"><b>11</b><span>분실 보상 비용</span><input data-o="o11" placeholder="예: 월 10만 원까지 카페 · 초과분 교회"></div>
+        <div class="orow"><b>12</b><span>반납함 자리 10곳 · 협의 담당</span><input data-o="o12" placeholder="예: 1층 3곳은 총무가 건축위에 · 나머지는 국장님이 사무국에"></div>
+        <div class="orow"><b>13</b><span>교인 안내 · 캠페인 담당</span><input data-o="o13" placeholder="예: 지속환경국 주보 · 사업단 현장 안내문"></div>
+      </div>
+      <div class="og"><h4>다음 단계 · 일정</h4>
+        <div class="orow"><b>14</b><span>상시 조건 재견적 받는 날</span><input data-o="o14" placeholder="예: 10/30까지 이메일"></div>
+        <div class="orow"><b>15</b><span>사업단 보고 · 결정 (단장님)</span><input data-o="o15" placeholder="예: 11/2 월례회 전 단톡"></div>
+        <div class="orow"><b>16</b><span>건축위에 1층 반납함 자리 전달 (준공 11/14 전)</span><input data-o="o16" placeholder="예: 10/31까지"></div>
+        <div class="orow"><b>17</b><span>계약 · 반납함 설치 · 컵 첫 입고 목표</span><input data-o="o17" placeholder="예: 계약 11/7 · 설치 11/17 · 입고 11/20"></div>
+        <div class="orow"><b>18</b><span>매니저님께 받을 것 — 주일 음료 잔 수</span><input data-o="o18" placeholder="예: 최근 3주 주일 매출 → 잔 수"></div>
+      </div>
+    </div>
+  </section>
+
   <p class="note">한 달 합계 = ① 컵 + ② 뚜껑 + ③ 수거 + ④ 반납함 + ⑤ 분실. 더 드는 돈 = 한 달 합계 − 지금 일회용(기준 ②).<br>
   ④ 반납함을 「한 번만 낸다」로 고르면 12개월로 나눠 한 달 비용에 넣고, 처음 내는 금액은 따로 보여 줍니다. ⑤ 분실 = 컵 개수 × (분실률 − 무료 한도) × 1개 보상.<br>
   안 1은 더그리트 견적(2026. 6. 2.)을 넣어 둔 예시 — 컵 150 · 뚜껑 50 · 물류비 사용료 포함 · 반납함 대당 5만 · 분실 1%까지 무료, 초과분 컵 700 + 뚜껑 300.</p>
@@ -419,6 +461,11 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
   function ecnt(){var d=0;eb.forEach(function(c){if(c.checked)d++;});document.getElementById('ecnt').textContent=d+' / '+eb.length+' 정함';}
   eb.forEach(function(c){c.checked=!!es[c.dataset.e];c.addEventListener('change',function(){es[c.dataset.e]=c.checked;try{localStorage.setItem(EK,JSON.stringify(es));}catch(e){}ecnt();});});
   ecnt();
+  var OK='rodem-cup-out-v1',os={};try{os=JSON.parse(localStorage.getItem(OK))||{};}catch(e){os={};}
+  var ob=document.querySelectorAll('#out input[data-o]');
+  function ocnt(){var d=0;ob.forEach(function(c){var f=c.value.trim()!=='';c.classList.toggle('done',f);if(f)d++;});document.getElementById('ocnt').textContent=d+' / '+ob.length+' 채움';}
+  ob.forEach(function(c){c.value=os[c.dataset.o]||'';c.addEventListener('input',function(){os[c.dataset.o]=c.value;try{localStorage.setItem(OK,JSON.stringify(os));}catch(e){}ocnt();});});
+  ocnt();
 })();
 </script>
 </body></html>
