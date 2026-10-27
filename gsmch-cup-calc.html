@@ -111,8 +111,29 @@ tr.cmprow td{font-size:12.5px;color:var(--mut);border-bottom:none}
 td.memo-c{white-space:normal;font-size:12.5px;color:var(--mut);max-width:220px}
 .tw{overflow-x:auto}
 .note{font-size:12px;color:var(--mut);line-height:1.7;margin:0}
-.toc{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.toc a{font-size:12.5px;font-weight:700;color:var(--acc);background:var(--acc-soft);border-radius:999px;padding:3px 11px;text-decoration:none}
+.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px))) 0 calc(-1*max(16px,env(safe-area-inset-right,0px)));padding:8px max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px));background:var(--bg);border-bottom:1px solid var(--line)}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;font-size:13px;font-weight:700;color:var(--acc);background:var(--acc-soft);border-radius:999px;padding:5px 13px;text-decoration:none;white-space:nowrap}
+.toc a:hover{background:var(--acc);color:var(--card)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--bg)}
+#base,#plans-h,#cmp-h,#co,#env,#ask,#out{scroll-margin-top:60px}
+#base-wrap{display:flex;flex-direction:column;gap:14px}
+html{scroll-behavior:smooth}
+.tools{display:inline-flex;gap:5px;margin-left:10px;vertical-align:middle}
+.ttl .tools{float:right;margin-left:0}
+.tb{border:1px solid var(--line);background:var(--card);color:var(--mut);border-radius:7px;padding:2px 8px;font:inherit;font-size:11.5px;font-weight:700;cursor:pointer;line-height:1.5}
+.tb:hover{color:var(--acc);border-color:var(--acc)}
+.sech h2 .tools .tb{font-size:11.5px}
+@media print{
+  @page{size:A4 landscape;margin:10mm}
+  body{background:#fff;padding:0}
+  .toc,.tb,.tools,header{display:none!important}
+  body.pr .wrap>*{display:none!important}
+  body.pr .wrap>.printing{display:block!important}
+  body.pr .wrap>.printing.sech{display:block!important}
+  .box,.qpart,.og,.qg{break-inside:avoid}
+  .plan{box-shadow:none}
+}
 .qcnt{float:right;font-size:12px;color:var(--acc);font-weight:700}
 .qlead{font-size:12.5px;color:var(--mut);background:var(--field);border-radius:9px;padding:8px 11px;margin-bottom:12px;line-height:1.6}
 .qlead b{color:var(--ink);margin-right:6px}
@@ -126,6 +147,21 @@ td.memo-c{white-space:normal;font-size:12.5px;color:var(--mut);max-width:220px}
 .qpart h3{margin:0;font-size:16px;font-weight:900;letter-spacing:-.3px}
 .qpart h3 em{display:block;font-style:normal;font-size:12px;font-weight:500;color:var(--mut)}
 .qpart .qg{background:var(--card)}
+.qparts.env .qpart{background:var(--acc-soft);border-color:#b9dcc5}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .qparts.env .qpart{border-color:#2f5a3c}}
+:root[data-theme="dark"] .qparts.env .qpart{border-color:#2f5a3c}
+.qparts.env .qg{padding-top:6px}
+.ogrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.og{border:2px solid var(--baseline);border-radius:14px;padding:10px 12px;background:var(--base);min-width:0}
+.og h4{margin:0 0 6px;font-size:13.5px;font-weight:900}
+.orow{display:grid;grid-template-columns:20px 1fr;gap:2px 6px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.orow:last-child{border-bottom:none}
+.orow b{font-size:12px;color:var(--mut);text-align:right;padding-top:2px}
+.orow span{font-size:13px;font-weight:700}
+.orow input{grid-column:2;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 9px;font:inherit;font-size:13.5px;width:100%}
+.orow input:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 2px var(--acc-soft)}
+.orow input.done{border-color:var(--acc);background:var(--acc-soft)}
+@media (max-width:900px){.ogrid{grid-template-columns:1fr}}
 .qg{border:1px solid var(--line);border-radius:12px;padding:0 12px 6px;overflow:hidden}
 .qg h4 em{font-style:normal;font-weight:500;color:var(--mut);font-size:12px;margin-left:8px}
 .qg label i{font-style:normal;flex:none;width:22px;font-size:12px;font-weight:900;color:var(--mut);margin-top:2px;text-align:right}
@@ -150,10 +186,12 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
   <header>
     <h1>로뎀카페 다회용컵 도입 검토</h1>
     <p class="sub">비용 계산 · 업체 정보 · 미팅 질문을 한 곳에 — 2026. 10. 27. 더그리트 미팅용. 입력한 숫자와 체크는 이 기기에 남습니다. 금액은 부가세 별도.</p>
-    <nav class="toc"><a href="#base">기준</a><a href="#plans-h">안 1 · 2 · 3</a><a href="#cmp-h">세 안 비교</a><a href="#co">더그리트 정보</a><a href="#ask">물어볼 것</a></nav>
   </header>
+  <nav class="toc" id="toc"><a href="#base">기준</a><a href="#plans-h">안 1 · 2 · 3</a><a href="#cmp-h">세 안 비교</a><a href="#co">더그리트 정보</a><a href="#env">지속환경국</a><a href="#ask">물어볼 것</a><a href="#out">회의 결과</a></nav>
 
-  <section class="box base" id="base">
+  <div class="sech" id="base"><h2>기준<span class="tools" data-for="base-wrap" data-name="기준"></span></h2><p>① 컵 개수는 안 1 · 2 · 3 계산에 들어가고, ② 지금 일회용은 결과와 견주는 기준입니다.</p></div>
+  <div id="base-wrap">
+  <section class="box base" id="base1">
     <div class="ttl">기준 ① 한 달에 컵이 몇 개 필요한가<small>안 1 · 2 · 3 계산에 들어가는 기준</small></div>
     <div class="src top">
       <b>한 달 9,800잔</b><span>2025년 카페 매출 약 4억 1,300만 원(대시보드) × 음료 80% ÷ 메뉴 평균 2,800원 ÷ 12개월</span>
@@ -173,7 +211,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     </div>
   </section>
 
-  <section class="box cmpbase">
+  <section class="box cmpbase" id="base2">
     <div class="ttl">기준 ② 지금 일회용은 한 달에 얼마인가<small>안 1 · 2 · 3과 견주는 기준 — 안 계산에는 들어가지 않습니다</small></div>
     <div class="src top">
       <b>컵 65원</b><span>13온스 종이컵 1,000개 62,700원(카페뮤제오) → 개당 약 63원</span>
@@ -194,18 +232,19 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     </div>
     </div>
   </section>
+  </div>
 
-  <div class="sech" id="plans-h"><h2>계산기 — 안 1 · 2 · 3</h2><p>업체가 조건을 말하면 ①~⑤ 칸에 바로 넣어 보세요. 한 달 합계가 바로 나오고, 안마다 다른 조건을 넣어 비교하면 가장 싼 안에 「가장 유리」가 붙습니다. 안 1은 6/2 견적 조건이 들어 있는 예시입니다.</p></div>
-  <section class="pl3" id="plans"></section>
+  <div class="sech" id="plans-h"><h2>계산기 — 안 1 · 2 · 3<span class="tools" data-for="plans-wrap" data-name="안123"></span></h2><p>업체가 조건을 말하면 ①~⑤ 칸에 바로 넣어 보세요. 한 달 합계가 바로 나오고, 안마다 다른 조건을 넣어 비교하면 가장 싼 안에 「가장 유리」가 붙습니다. 안 1은 6/2 견적 조건이 들어 있는 예시입니다.</p></div>
+  <div id="plans-wrap"><section class="pl3" id="plans"></section></div>
 
 
-  <section class="box" id="cmp-h">
+  <section class="box" id="cmp-h" data-sec="세안비교">
     <div class="ttl">세 안 비교</div>
     <div class="tw"><table class="num" id="cmp"></table></div>
   </section>
 
 
-  <section class="box" id="co">
+  <section class="box" id="co" data-sec="더그리트정보">
     <div class="ttl">더그리트는 어떤 회사인가<small>홈페이지 · 6/2 견적서 · 회사소개서에서 정리 (2026. 10. 27. 기준)</small></div>
     <div class="cogrid">
       <div><b>회사</b><span>(주)더그리트 · 대표 양우정 · 사업자번호 892-88-02405 · 서울 송파구 (홈페이지: 법원로 127 문정대명벨리온 208호 / 견적서: 법원로 128 문정역 SKV1 A동 1606호) · 02-2157-5782 · 담당 음구식 팀장</span></div>
@@ -219,26 +258,62 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     </div>
   </section>
 
-  <section class="box" id="ask">
+  <section class="box" id="env" data-sec="지속환경국">
+    <div class="ttl">지속환경국 국장님과 정할 것<small>업체와 별개로 교회 안에서 정해야 하는 것 — 미팅 뒤 바로 이야기</small><span class="qcnt" id="ecnt"></span></div>
+    <div class="qlead">다회용컵은 카페 매출로만 보면 일회용보다 돈이 더 듭니다(계산기 「지금보다 더 드는 돈」). 환경 사역이기도 하니 <b>누가 어떤 비용을 맡을지</b>를 먼저 정해야 업체와 계약 조건을 확정할 수 있습니다.</div>
+    <div class="qparts env">
+      <div class="qpart"><h3>A. 비용 분담<em>사업단(카페) / 지속환경국 / 교회</em></h3>
+        <div class="qg">
+        <label><input type="checkbox" data-e="e1"><i>1</i><span><b>초기 셋업 비용</b> — 반납함 구매·설치(10대 × 대당 값), 반납함 자리 공사·사인물, 안내물 제작 → 누가 내는지</span></label>
+        <label><input type="checkbox" data-e="e2"><i>2</i><span><b>매달 늘어나는 사용료</b> — 일회용보다 더 드는 돈(계산기 비고 줄) → 카페가 모두 흡수하는지, 일부를 지속환경국 예산으로 지원하는지, 가격 인상분(500원)으로 감당하는지</span></label>
+        <label><input type="checkbox" data-e="e3"><i>3</i><span><b>분실 보상 비용</b> — 무료 한도를 넘는 컵 보상(월 몇만~수십만 원) → 카페 부담인지, 교회 차원 부담인지 · 분실이 많아지면 보증금 도입을 검토할지</span></label>
+        <label><input type="checkbox" data-e="e4"><i>4</i><span><b>전용 컵 제작비</b>(로고 컵으로 갈 경우 처음 200만~300만 원) → 하는지, 한다면 누가 내는지</span></label>
+        </div>
+      </div>
+      <div class="qpart"><h3>B. 반납함 설치<em>자리 · 개수 · 공사</em></h3>
+        <div class="qg">
+        <label><input type="checkbox" data-e="e5"><i>5</i><span>반납함 <b>개수 확정</b> — 1층 3 · 2~5층 각 1 · 마가 · 갈렙 (9곳) + 1곳 미정 → 어디에 둘지</span></label>
+        <label><input type="checkbox" data-e="e6"><i>6</i><span>각 층 반납함 <b>자리</b> — 예배당 출구 · 엘리베이터 앞 · 모임방 층 등, 사무국·건축위와 누가 협의하는지 (1층은 준공 11/14 전에 건축위 전달)</span></label>
+        <label><input type="checkbox" data-e="e7"><i>7</i><span>반납함 옆 <b>음료 버리는 통 · 쓰레기통 · 안내문</b> — 설치와 관리 담당</span></label>
+        <label><input type="checkbox" data-e="e8"><i>8</i><span>각 층 반납함 컵을 <b>카페로 모아 오는 사람</b> — 업체가 층마다 돌지 않으면 봉사자인지, 관리 직원인지</span></label>
+        </div>
+      </div>
+      <div class="qpart"><h3>C. 교인 안내 · 운영<em>캠페인 · 책임</em></h3>
+        <div class="qg">
+        <label><input type="checkbox" data-e="e9"><i>9</i><span><b>오픈 안내</b> — 주보 · 영상 · 반납함 안내문을 지속환경국이 맡는지, 사업단 홍보와 합치는지</span></label>
+        <label><input type="checkbox" data-e="e10"><i>10</i><span><b>모임·행사 컵 반납 책임</b> — 소그룹 · 행사에서 여러 잔 가져갈 때 인솔자가 모아 반납하도록 안내할지 (분실이 가장 많이 나는 곳)</span></label>
+        <label><input type="checkbox" data-e="e11"><i>11</i><span><b>탄소중립포인트 캠페인</b> — 드림패스 앱으로 포인트 받는 것을 지속환경국 캠페인으로 안내할지</span></label>
+        <label><input type="checkbox" data-e="e12"><i>12</i><span><b>회수율 점검</b> — 매달 업체 집계를 누가 받아 보고, 회수율이 떨어지면 누가 조치하는지</span></label>
+        <label><input type="checkbox" data-e="e13"><i>13</i><span><b>계약 주체</b> — 업체 계약서에 사업단(선목선지서점 사업자)으로 서명하는지, 교회 명의인지</span></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="box" id="ask" data-sec="물어볼것">
     <div class="ttl">오늘 물어볼 것<small>번호 순서대로 · 답을 들으면 체크 · 숫자는 위 안 1 · 2 · 3에</small><span class="qcnt" id="qcnt"></span></div>
     <div class="qlead"><b>먼저 알려 줄 것</b> 카페 상시 사용 (행사 아님) · 한 달 음료 약 9,800잔, 다회용 약 70% → 한 달 약 7,000개 · 대부분 교회 안에서 마심 · <b>기본형 반납함 10곳, 손님 보증금 없음</b>으로 운영 · 6/2 견적은 받았고 상시 조건으로 다시 요청</div>
     <div class="qlead key"><b>꼭 받아 낼 것</b> ① 반납함 10대 무료 &nbsp;② 분실 보상 없음 · 무료 한도 최대 &nbsp;③ 물류비 별도 없음 &nbsp;④ 쓴 만큼 정산 &nbsp;⑤ 사용량 단가 할인 — 아래 <b class="sk">요청</b> 표시</div>
     <div class="qparts">
       <div class="qpart"><h3>1. 회사 · 컵<em>어떤 회사이고 어떤 컵인지</em></h3>
-        <div class="qg"><h4>회사 · 컵 자체<em>업체가 어떤 곳인지, 컵이 어떤 것인지</em></h4>
-        <label><input type="checkbox" data-q="q23"><i>1</i><span>교회 · 기관 카페 도입 사례 2~3곳 — 실제 회수율은 몇 %인지</span></label>
-        <label><input type="checkbox" data-q="q24"><i>2</i><span>사업자등록증 사본 — 견적서 번호(892-88-02405)와 같은지 · 주소가 홈페이지(법원로 127)와 견적서(법원로 128)가 달라 어느 쪽인지</span></label>
-        <label><input type="checkbox" data-q="q25"><i>3</i><span>공용 컵인지 전용 컵인지 — 전용이면 추가 비용과 최소 수량</span></label>
-        <label><input type="checkbox" data-q="q26"><i>4</i><span>컵에 QR · 번호가 있는지 — 없다면 몇 번 돌았는지, 분실 수량을 어떻게 아는지</span></label>
-        <label><input type="checkbox" data-q="q27"><i>5</i><span>교체 기준 — 몇 회 사용 뒤 폐기인지, 흠집 · 변색 · 냄새 컵은 세척센터에서 걸러내는지</span></label>
-        <label><input type="checkbox" data-q="q28"><i>6</i><span>컵 크기 12 · 16온스 중 무엇이 있는지, 뜨거운 음료 가능한지, 투명도 높은 PP 컵이 있는지</span></label>
-        <label><input type="checkbox" data-q="q30"><i>7</i><span>세척 공정에 탈취 단계가 있는지</span></label>
-        <label><input type="checkbox" data-q="q22"><i>8</i><span>컵에 교회 로고 · 문구를 넣을 수 있는지, 비용</span></label>
-        <label><input type="checkbox" data-q="q31"><i>9</i><span>컵 QR로 우리 쪽 출고 · 회수 수량과 세척 횟수 기록을 우리가 받아 볼 수 있는지</span></label>
-        <label><input type="checkbox" data-q="q32"><i>10</i><span>우리 컵이 가는 세척센터는 어디인지 (용인 처인구? 더 가까운 대리점?) · 센터에 문제가 생기면 대체 센터가 있는지</span></label>
-        <label><input type="checkbox" data-q="q33"><i>11</i><span>기본형 반납함 — 투입구 모양 · 크기, 일회용컵이나 쓰레기가 들어가는지</span></label>
+        <div class="qg"><h4>회사<em>믿을 만한 곳인지</em></h4>
+        <label><input type="checkbox" data-q="q24"><i>1</i><span>사업자등록증 사본 — 주소 · 위치 등 확인 (홈페이지 주소는 법원로 127)</span></label>
+        <label><input type="checkbox" data-q="q23"><i>2</i><span>교회 · 기관 카페 도입 사례 2~3곳 — 실제 회수율은 몇 %인지</span></label>
+        <label><input type="checkbox" data-q="q32"><i>3</i><span>우리 컵이 가는 세척센터는 어디인지 (용인 처인구? 더 가까운 대리점?) · 센터에 문제가 생기면 대체 센터가 있는지</span></label>
+        <label><input type="checkbox" data-q="q30"><i>4</i><span>세척 공정에 탈취 단계가 있는지 · 흠집 · 변색 · 냄새 컵은 세척센터에서 걸러내는지</span></label>
+        </div>
+        <div class="qg"><h4>컵<em>어떤 컵이고 어떻게 관리되는지</em></h4>
+        <label><input type="checkbox" data-q="q28"><i>5</i><span>컵 크기 12 · 16온스 중 무엇이 있는지, 뜨거운 음료 가능한지, 투명도 높은 PP 컵이 있는지</span></label>
+        <label><input type="checkbox" data-q="q25"><i>6</i><span>공용 컵과 전용 컵의 차이와 비용 구조는 어떻게 다른지 — 전용이면 제작비(개당) · 최소 수량 · 사용료 차이, 공용으로 시작해 나중에 전용으로 바꿀 수 있는지</span></label>
+        <label><input type="checkbox" data-q="q22"><i>7</i><span>컵에 교회 로고 · 문구를 넣을 수 있는지, 비용</span></label>
+        <label><input type="checkbox" data-q="q27"><i>8</i><span>교체 기준 — 몇 회 사용 뒤 폐기인지</span></label>
+        <label><input type="checkbox" data-q="q31"><i>9</i><span>컵 바닥 QR로 우리 쪽 출고 · 회수 수량과 세척 횟수 기록을 우리가 받아 볼 수 있는지</span></label>
+        </div>
+        <div class="qg"><h4>반납함<em>기본형 · 보증금 없음으로 운영</em></h4>
+        <label><input type="checkbox" data-q="q21"><i>10</i><span>손님 보증금 없이 · 드림패스 앱 없이 기본형 반납함만으로 운영해도 되는지 (우리 방침)</span></label>
+        <label><input type="checkbox" data-q="q33"><i>11</i><span>투입구 모양 · 크기 — 일회용컵이나 쓰레기가 들어가는지</span></label>
         <label><input type="checkbox" data-q="q34"><i>12</i><span>다른 것이 섞여 들어오면 어떻게 처리하는지, 분실로 치는지</span></label>
-        <label><input type="checkbox" data-q="q35"><i>13</i><span>음료 찌꺼기 대비 — 반납함 안 받침 · 물빠짐 구조, 안 청소는 누가 얼마나 자주 하는지</span></label>
+        <label><input type="checkbox" data-q="q35"><i>13</i><span>음료 찌꺼기 대비 — 안 받침 · 물빠짐 구조, 안 청소는 누가 얼마나 자주 하는지</span></label>
         </div>
       </div>
       <div class="qpart"><h3>2. 비용 조건<em>계산기 ①~⑤에 넣을 숫자</em></h3>
@@ -265,17 +340,46 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
         <label class="star"><input type="checkbox" data-q="q14"><i>27</i><span>교회 안에서만 쓰는 조건으로 보상을 없애거나 한도를 넓힐 수 있는지<b class="sk">요청</b></span></label>
         </div>
       </div>
-      <div class="qpart"><h3>3. 계약 · 운영<em>계약서와 손님 응대</em></h3>
-        <div class="qg"><h4>정산 · 계약 · 손님<em>계약서에 들어갈 조건</em></h4>
+      <div class="qpart"><h3>3. 계약 · 정산<em>계약서에 들어갈 조건</em></h3>
+        <div class="qg"><h4>정산 · 계약<em>조건 · 일정</em></h4>
         <label class="star"><input type="checkbox" data-q="q16"><i>28</i><span>「발주 수량대로 정산」 → 쓴 만큼 정산으로 바꿀 수 있는지<b class="sk">요청</b></span></label>
         <label><input type="checkbox" data-q="q17"><i>29</i><span>박스 단위(컵 300개) 주문 — 매주 얼마나 받아 두어야 하는지</span></label>
         <label><input type="checkbox" data-q="q18"><i>30</i><span>계약 기간, 중도 해지 조건, 위약금</span></label>
         <label><input type="checkbox" data-q="q19"><i>31</i><span>월 정산 방법과 세금계산서</span></label>
         <label><input type="checkbox" data-q="q20"><i>32</i><span>오픈 11/22 전에 컵과 반납함을 들여올 수 있는지</span></label>
-        <label><input type="checkbox" data-q="q21"><i>33</i><span>손님 보증금 없이 · 드림패스 앱 없이 기본형 반납함만으로 운영해도 되는지 (우리 방침)</span></label>
         </div>
       </div>
     </div>
+  </section>
+
+  <section class="box" id="out" data-sec="회의결과">
+    <div class="ttl">회의로 도출할 결과<small>이 칸이 채워지면 오늘 회의는 끝 — 답을 들은 대로 적기</small><span class="qcnt" id="ocnt"></span></div>
+    <div class="qlead key"><b>회의 목표</b> ① 더그리트와 상시 계약 조건을 확정할 수 있는 <b>숫자</b>를 받는다 &nbsp;② 교회 안에서 <b>비용을 누가 맡을지</b> 방향을 잡는다 &nbsp;③ 오픈(11/22) 전 일정을 확정한다</div>
+    <div class="ogrid">
+      <div class="og"><h4>더그리트에서 받을 숫자 → 계산기 안 2에 입력</h4>
+        <div class="orow"><b>1</b><span>컵 1개 사용료 · 할인 구간</span><input data-o="o1" placeholder="예: 130원 · 월 5,000개 이상 120원"></div>
+        <div class="orow"><b>2</b><span>뚜껑 · 홀더</span><input data-o="o2" placeholder="예: 다회용 뚜껑 40원 · 홀더 없음(우리 구매)"></div>
+        <div class="orow"><b>3</b><span>물류비</span><input data-o="o3" placeholder="예: 사용료 포함 0원 / 회당 3만"></div>
+        <div class="orow"><b>4</b><span>반납함 10대</span><input data-o="o4" placeholder="예: 무료 / 대당 5만 한 번"></div>
+        <div class="orow"><b>5</b><span>분실 — 무료 한도 · 보상 · 집계</span><input data-o="o5" placeholder="예: 3%까지 무료 · 초과 700원 · 월 집계 공유"></div>
+        <div class="orow"><b>6</b><span>정산 방식 · 계약 기간</span><input data-o="o6" placeholder="예: 쓴 만큼 월 정산 · 1년 · 해지 1개월 전 통보"></div>
+        <div class="orow"><b>7</b><span>배송 · 수거 요일</span><input data-o="o7" placeholder="예: 목 1,500개 · 월 600개 · 월요일 수거"></div>
+        <div class="orow"><b>8</b><span>공용 / 전용 컵</span><input data-o="o8" placeholder="예: 공용으로 시작 · 전용은 개당 900원 3,000개부터"></div>
+      </div>
+      <div class="og"><h4>교회 안에서 정한 방향 (지속환경국)</h4>
+        <div class="orow"><b>9</b><span>초기 셋업 비용 (반납함 · 설치 · 안내물)</span><input data-o="o9" placeholder="예: 지속환경국 예산"></div>
+        <div class="orow"><b>10</b><span>매달 늘어나는 사용료</span><input data-o="o10" placeholder="예: 카페 부담 (가격 인상분으로)"></div>
+        <div class="orow"><b>11</b><span>분실 보상 비용</span><input data-o="o11" placeholder="예: 월 10만 원까지 카페 · 초과분 교회"></div>
+        <div class="orow"><b>12</b><span>반납함 자리 10곳 · 협의 담당</span><input data-o="o12" placeholder="예: 1층 3곳은 총무가 건축위에 · 나머지는 국장님이 사무국에"></div>
+        <div class="orow"><b>13</b><span>교인 안내 · 캠페인 담당</span><input data-o="o13" placeholder="예: 지속환경국 주보 · 사업단 현장 안내문"></div>
+      </div>
+      <div class="og"><h4>다음 단계 · 일정</h4>
+        <div class="orow"><b>14</b><span>상시 조건 재견적 받는 날</span><input data-o="o14" placeholder="예: 10/30까지 이메일"></div>
+        <div class="orow"><b>15</b><span>사업단 보고 · 결정 (단장님)</span><input data-o="o15" placeholder="예: 11/2 월례회 전 단톡"></div>
+        <div class="orow"><b>16</b><span>건축위에 1층 반납함 자리 전달 (준공 11/14 전)</span><input data-o="o16" placeholder="예: 10/31까지"></div>
+        <div class="orow"><b>17</b><span>계약 · 반납함 설치 · 컵 첫 입고 목표</span><input data-o="o17" placeholder="예: 계약 11/7 · 설치 11/17 · 입고 11/20"></div>
+        <div class="orow"><b>18</b><span>매니저님께 받을 것 — 주일 음료 잔 수</span><input data-o="o18" placeholder="예: 최근 3주 주일 매출 → 잔 수"></div>
+      </div>
     </div>
   </section>
 
@@ -284,6 +388,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
   안 1은 더그리트 견적(2026. 6. 2.)을 넣어 둔 예시 — 컵 150 · 뚜껑 50 · 물류비 사용료 포함 · 반납함 대당 5만 · 분실 1%까지 무료, 초과분 컵 700 + 뚜껑 300.</p>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 (function(){
   var KEY='rodem-cup-calc-v5';
@@ -370,6 +475,45 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
   function qcnt(){var d=0;qb.forEach(function(c){if(c.checked)d++;});document.getElementById('qcnt').textContent=d+' / '+qb.length+' 확인';}
   qb.forEach(function(c){c.checked=!!qs[c.dataset.q];c.addEventListener('change',function(){qs[c.dataset.q]=c.checked;try{localStorage.setItem(QK,JSON.stringify(qs));}catch(e){}qcnt();});});
   qcnt();
+  var EK='rodem-cup-env-v1',es={};try{es=JSON.parse(localStorage.getItem(EK))||{};}catch(e){es={};}
+  var eb=document.querySelectorAll('#env input[type=checkbox]');
+  function ecnt(){var d=0;eb.forEach(function(c){if(c.checked)d++;});document.getElementById('ecnt').textContent=d+' / '+eb.length+' 정함';}
+  eb.forEach(function(c){c.checked=!!es[c.dataset.e];c.addEventListener('change',function(){es[c.dataset.e]=c.checked;try{localStorage.setItem(EK,JSON.stringify(es));}catch(e){}ecnt();});});
+  ecnt();
+  var OK='rodem-cup-out-v1',os={};try{os=JSON.parse(localStorage.getItem(OK))||{};}catch(e){os={};}
+  var ob=document.querySelectorAll('#out input[data-o]');
+  function ocnt(){var d=0;ob.forEach(function(c){var f=c.value.trim()!=='';c.classList.toggle('done',f);if(f)d++;});document.getElementById('ocnt').textContent=d+' / '+ob.length+' 채움';}
+  ob.forEach(function(c){c.value=os[c.dataset.o]||'';c.addEventListener('input',function(){os[c.dataset.o]=c.value;try{localStorage.setItem(OK,JSON.stringify(os));}catch(e){}ocnt();});});
+  ocnt();
+  // ── 항목별 JPG · 인쇄 ──
+  function mkTools(targetId,name){
+    var t=document.createElement('span');t.className='tools';
+    t.innerHTML='<button class="tb" type="button" data-act="jpg">JPG</button><button class="tb" type="button" data-act="print">인쇄</button>';
+    t.querySelector('[data-act=jpg]').onclick=function(){saveJpg(targetId,name,this);};
+    t.querySelector('[data-act=print]').onclick=function(){printSec(targetId);};
+    return t;
+  }
+  document.querySelectorAll('[data-sec]').forEach(function(sec){
+    var ttl=sec.querySelector('.ttl');if(!ttl)return;
+    ttl.appendChild(mkTools(sec.id,sec.dataset.sec));
+  });
+  document.querySelectorAll('.tools[data-for]').forEach(function(ph){ph.replaceWith(mkTools(ph.dataset.for,ph.dataset.name));});
+  function saveJpg(id,name,btn){
+    var el=document.getElementById(id);if(!el||!window.html2canvas){alert('JPG 저장은 파일로 열었을 때 됩니다.');return;}
+    var old=btn.textContent;btn.textContent='…';
+    var bg=getComputedStyle(document.body).backgroundColor;
+    html2canvas(el,{scale:2,backgroundColor:bg,useCORS:true,onclone:function(d){d.querySelectorAll('.tools').forEach(function(x){x.remove();});}}).then(function(c){
+      var a=document.createElement('a');a.download='로뎀카페_다회용컵_'+name+'.jpg';a.href=c.toDataURL('image/jpeg',.92);document.body.appendChild(a);a.click();a.remove();btn.textContent=old;
+    }).catch(function(){btn.textContent=old;});
+  }
+  function printSec(id){
+    var el=document.getElementById(id);if(!el)return;
+    var top=el;while(top.parentNode&&!top.parentNode.classList.contains('wrap'))top=top.parentNode;
+    document.body.classList.add('pr');top.classList.add('printing');
+    var prev=top.previousElementSibling;if(prev&&prev.classList.contains('sech'))prev.classList.add('printing');
+    setTimeout(function(){window.print();},50);
+    window.addEventListener('afterprint',function h(){document.body.classList.remove('pr');document.querySelectorAll('.printing').forEach(function(x){x.classList.remove('printing');});window.removeEventListener('afterprint',h);});
+  }
 })();
 </script>
 </body></html>
