@@ -117,7 +117,23 @@ td.memo-c{white-space:normal;font-size:12.5px;color:var(--mut);max-width:220px}
 .toc a:hover{background:var(--acc);color:var(--card)}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--bg)}
 #base,#plans-h,#cmp-h,#co,#env,#ask,#out{scroll-margin-top:60px}
+#base-wrap{display:flex;flex-direction:column;gap:14px}
 html{scroll-behavior:smooth}
+.tools{display:inline-flex;gap:5px;margin-left:10px;vertical-align:middle}
+.ttl .tools{float:right;margin-left:0}
+.tb{border:1px solid var(--line);background:var(--card);color:var(--mut);border-radius:7px;padding:2px 8px;font:inherit;font-size:11.5px;font-weight:700;cursor:pointer;line-height:1.5}
+.tb:hover{color:var(--acc);border-color:var(--acc)}
+.sech h2 .tools .tb{font-size:11.5px}
+@media print{
+  @page{size:A4 landscape;margin:10mm}
+  body{background:#fff;padding:0}
+  .toc,.tb,.tools,header{display:none!important}
+  body.pr .wrap>*{display:none!important}
+  body.pr .wrap>.printing{display:block!important}
+  body.pr .wrap>.printing.sech{display:block!important}
+  .box,.qpart,.og,.qg{break-inside:avoid}
+  .plan{box-shadow:none}
+}
 .qcnt{float:right;font-size:12px;color:var(--acc);font-weight:700}
 .qlead{font-size:12.5px;color:var(--mut);background:var(--field);border-radius:9px;padding:8px 11px;margin-bottom:12px;line-height:1.6}
 .qlead b{color:var(--ink);margin-right:6px}
@@ -173,7 +189,9 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
   </header>
   <nav class="toc" id="toc"><a href="#base">기준</a><a href="#plans-h">안 1 · 2 · 3</a><a href="#cmp-h">세 안 비교</a><a href="#co">더그리트 정보</a><a href="#env">지속환경국</a><a href="#ask">물어볼 것</a><a href="#out">회의 결과</a></nav>
 
-  <section class="box base" id="base">
+  <div class="sech" id="base"><h2>기준<span class="tools" data-for="base-wrap" data-name="기준"></span></h2><p>① 컵 개수는 안 1 · 2 · 3 계산에 들어가고, ② 지금 일회용은 결과와 견주는 기준입니다.</p></div>
+  <div id="base-wrap">
+  <section class="box base" id="base1">
     <div class="ttl">기준 ① 한 달에 컵이 몇 개 필요한가<small>안 1 · 2 · 3 계산에 들어가는 기준</small></div>
     <div class="src top">
       <b>한 달 9,800잔</b><span>2025년 카페 매출 약 4억 1,300만 원(대시보드) × 음료 80% ÷ 메뉴 평균 2,800원 ÷ 12개월</span>
@@ -193,7 +211,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     </div>
   </section>
 
-  <section class="box cmpbase">
+  <section class="box cmpbase" id="base2">
     <div class="ttl">기준 ② 지금 일회용은 한 달에 얼마인가<small>안 1 · 2 · 3과 견주는 기준 — 안 계산에는 들어가지 않습니다</small></div>
     <div class="src top">
       <b>컵 65원</b><span>13온스 종이컵 1,000개 62,700원(카페뮤제오) → 개당 약 63원</span>
@@ -214,18 +232,19 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     </div>
     </div>
   </section>
+  </div>
 
-  <div class="sech" id="plans-h"><h2>계산기 — 안 1 · 2 · 3</h2><p>업체가 조건을 말하면 ①~⑤ 칸에 바로 넣어 보세요. 한 달 합계가 바로 나오고, 안마다 다른 조건을 넣어 비교하면 가장 싼 안에 「가장 유리」가 붙습니다. 안 1은 6/2 견적 조건이 들어 있는 예시입니다.</p></div>
-  <section class="pl3" id="plans"></section>
+  <div class="sech" id="plans-h"><h2>계산기 — 안 1 · 2 · 3<span class="tools" data-for="plans-wrap" data-name="안123"></span></h2><p>업체가 조건을 말하면 ①~⑤ 칸에 바로 넣어 보세요. 한 달 합계가 바로 나오고, 안마다 다른 조건을 넣어 비교하면 가장 싼 안에 「가장 유리」가 붙습니다. 안 1은 6/2 견적 조건이 들어 있는 예시입니다.</p></div>
+  <div id="plans-wrap"><section class="pl3" id="plans"></section></div>
 
 
-  <section class="box" id="cmp-h">
+  <section class="box" id="cmp-h" data-sec="세안비교">
     <div class="ttl">세 안 비교</div>
     <div class="tw"><table class="num" id="cmp"></table></div>
   </section>
 
 
-  <section class="box" id="co">
+  <section class="box" id="co" data-sec="더그리트정보">
     <div class="ttl">더그리트는 어떤 회사인가<small>홈페이지 · 6/2 견적서 · 회사소개서에서 정리 (2026. 10. 27. 기준)</small></div>
     <div class="cogrid">
       <div><b>회사</b><span>(주)더그리트 · 대표 양우정 · 사업자번호 892-88-02405 · 서울 송파구 (홈페이지: 법원로 127 문정대명벨리온 208호 / 견적서: 법원로 128 문정역 SKV1 A동 1606호) · 02-2157-5782 · 담당 음구식 팀장</span></div>
@@ -239,7 +258,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     </div>
   </section>
 
-  <section class="box" id="env">
+  <section class="box" id="env" data-sec="지속환경국">
     <div class="ttl">지속환경국 국장님과 정할 것<small>업체와 별개로 교회 안에서 정해야 하는 것 — 미팅 뒤 바로 이야기</small><span class="qcnt" id="ecnt"></span></div>
     <div class="qlead">다회용컵은 카페 매출로만 보면 일회용보다 돈이 더 듭니다(계산기 「지금보다 더 드는 돈」). 환경 사역이기도 하니 <b>누가 어떤 비용을 맡을지</b>를 먼저 정해야 업체와 계약 조건을 확정할 수 있습니다.</div>
     <div class="qparts env">
@@ -271,7 +290,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     </div>
   </section>
 
-  <section class="box" id="ask">
+  <section class="box" id="ask" data-sec="물어볼것">
     <div class="ttl">오늘 물어볼 것<small>번호 순서대로 · 답을 들으면 체크 · 숫자는 위 안 1 · 2 · 3에</small><span class="qcnt" id="qcnt"></span></div>
     <div class="qlead"><b>먼저 알려 줄 것</b> 카페 상시 사용 (행사 아님) · 한 달 음료 약 9,800잔, 다회용 약 70% → 한 달 약 7,000개 · 대부분 교회 안에서 마심 · <b>기본형 반납함 10곳, 손님 보증금 없음</b>으로 운영 · 6/2 견적은 받았고 상시 조건으로 다시 요청</div>
     <div class="qlead key"><b>꼭 받아 낼 것</b> ① 반납함 10대 무료 &nbsp;② 분실 보상 없음 · 무료 한도 최대 &nbsp;③ 물류비 별도 없음 &nbsp;④ 쓴 만큼 정산 &nbsp;⑤ 사용량 단가 할인 — 아래 <b class="sk">요청</b> 표시</div>
@@ -334,7 +353,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     </div>
   </section>
 
-  <section class="box" id="out">
+  <section class="box" id="out" data-sec="회의결과">
     <div class="ttl">회의로 도출할 결과<small>이 칸이 채워지면 오늘 회의는 끝 — 답을 들은 대로 적기</small><span class="qcnt" id="ocnt"></span></div>
     <div class="qlead key"><b>회의 목표</b> ① 더그리트와 상시 계약 조건을 확정할 수 있는 <b>숫자</b>를 받는다 &nbsp;② 교회 안에서 <b>비용을 누가 맡을지</b> 방향을 잡는다 &nbsp;③ 오픈(11/22) 전 일정을 확정한다</div>
     <div class="ogrid">
@@ -370,6 +389,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
   안 1은 더그리트 견적(2026. 6. 2.)을 넣어 둔 예시 — 컵 150 · 뚜껑 50 · 물류비 사용료 포함 · 반납함 대당 5만 · 분실 1%까지 무료, 초과분 컵 700 + 뚜껑 300.</p>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 (function(){
   var KEY='rodem-cup-calc-v5';
@@ -466,6 +486,35 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
   function ocnt(){var d=0;ob.forEach(function(c){var f=c.value.trim()!=='';c.classList.toggle('done',f);if(f)d++;});document.getElementById('ocnt').textContent=d+' / '+ob.length+' 채움';}
   ob.forEach(function(c){c.value=os[c.dataset.o]||'';c.addEventListener('input',function(){os[c.dataset.o]=c.value;try{localStorage.setItem(OK,JSON.stringify(os));}catch(e){}ocnt();});});
   ocnt();
+  // ── 항목별 JPG · 인쇄 ──
+  function mkTools(targetId,name){
+    var t=document.createElement('span');t.className='tools';
+    t.innerHTML='<button class="tb" type="button" data-act="jpg">JPG</button><button class="tb" type="button" data-act="print">인쇄</button>';
+    t.querySelector('[data-act=jpg]').onclick=function(){saveJpg(targetId,name,this);};
+    t.querySelector('[data-act=print]').onclick=function(){printSec(targetId);};
+    return t;
+  }
+  document.querySelectorAll('[data-sec]').forEach(function(sec){
+    var ttl=sec.querySelector('.ttl');if(!ttl)return;
+    ttl.appendChild(mkTools(sec.id,sec.dataset.sec));
+  });
+  document.querySelectorAll('.tools[data-for]').forEach(function(ph){ph.replaceWith(mkTools(ph.dataset.for,ph.dataset.name));});
+  function saveJpg(id,name,btn){
+    var el=document.getElementById(id);if(!el||!window.html2canvas){alert('JPG 저장은 파일로 열었을 때 됩니다.');return;}
+    var old=btn.textContent;btn.textContent='…';
+    var bg=getComputedStyle(document.body).backgroundColor;
+    html2canvas(el,{scale:2,backgroundColor:bg,useCORS:true,onclone:function(d){d.querySelectorAll('.tools').forEach(function(x){x.remove();});}}).then(function(c){
+      var a=document.createElement('a');a.download='로뎀카페_다회용컵_'+name+'.jpg';a.href=c.toDataURL('image/jpeg',.92);document.body.appendChild(a);a.click();a.remove();btn.textContent=old;
+    }).catch(function(){btn.textContent=old;});
+  }
+  function printSec(id){
+    var el=document.getElementById(id);if(!el)return;
+    var top=el;while(top.parentNode&&!top.parentNode.classList.contains('wrap'))top=top.parentNode;
+    document.body.classList.add('pr');top.classList.add('printing');
+    var prev=top.previousElementSibling;if(prev&&prev.classList.contains('sech'))prev.classList.add('printing');
+    setTimeout(function(){window.print();},50);
+    window.addEventListener('afterprint',function h(){document.body.classList.remove('pr');document.querySelectorAll('.printing').forEach(function(x){x.classList.remove('printing');});window.removeEventListener('afterprint',h);});
+  }
 })();
 </script>
 </body></html>
