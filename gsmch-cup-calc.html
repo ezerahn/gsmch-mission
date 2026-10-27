@@ -111,8 +111,13 @@ tr.cmprow td{font-size:12.5px;color:var(--mut);border-bottom:none}
 td.memo-c{white-space:normal;font-size:12.5px;color:var(--mut);max-width:220px}
 .tw{overflow-x:auto}
 .note{font-size:12px;color:var(--mut);line-height:1.7;margin:0}
-.toc{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.toc a{font-size:12.5px;font-weight:700;color:var(--acc);background:var(--acc-soft);border-radius:999px;padding:3px 11px;text-decoration:none}
+.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px))) 0 calc(-1*max(16px,env(safe-area-inset-right,0px)));padding:8px max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px));background:var(--bg);border-bottom:1px solid var(--line)}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;font-size:13px;font-weight:700;color:var(--acc);background:var(--acc-soft);border-radius:999px;padding:5px 13px;text-decoration:none;white-space:nowrap}
+.toc a:hover{background:var(--acc);color:var(--card)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--bg)}
+#base,#plans-h,#cmp-h,#co,#ask{scroll-margin-top:60px}
+html{scroll-behavior:smooth}
 .qcnt{float:right;font-size:12px;color:var(--acc);font-weight:700}
 .qlead{font-size:12.5px;color:var(--mut);background:var(--field);border-radius:9px;padding:8px 11px;margin-bottom:12px;line-height:1.6}
 .qlead b{color:var(--ink);margin-right:6px}
@@ -150,8 +155,8 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
   <header>
     <h1>로뎀카페 다회용컵 도입 검토</h1>
     <p class="sub">비용 계산 · 업체 정보 · 미팅 질문을 한 곳에 — 2026. 10. 27. 더그리트 미팅용. 입력한 숫자와 체크는 이 기기에 남습니다. 금액은 부가세 별도.</p>
-    <nav class="toc"><a href="#base">기준</a><a href="#plans-h">안 1 · 2 · 3</a><a href="#cmp-h">세 안 비교</a><a href="#co">더그리트 정보</a><a href="#ask">물어볼 것</a></nav>
   </header>
+  <nav class="toc" id="toc"><a href="#base">기준</a><a href="#plans-h">안 1 · 2 · 3</a><a href="#cmp-h">세 안 비교</a><a href="#co">더그리트 정보</a><a href="#ask">물어볼 것</a></nav>
 
   <section class="box base" id="base">
     <div class="ttl">기준 ① 한 달에 컵이 몇 개 필요한가<small>안 1 · 2 · 3 계산에 들어가는 기준</small></div>
