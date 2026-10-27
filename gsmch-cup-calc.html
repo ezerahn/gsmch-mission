@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="color-scheme" content="light dark">
-<title>로뎀카페 다회용컵 계산기</title>
+<title>로뎀카페 다회용컵 도입 검토</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
 <style>
 /* 레이아웃: 기준(컵 개수 · 일회용) → 안 1·2·3 → 비교표. 결과는 「지금보다 더 드는 돈」이 가장 크게 */
@@ -111,7 +111,8 @@ tr.cmprow td{font-size:12.5px;color:var(--mut);border-bottom:none}
 td.memo-c{white-space:normal;font-size:12.5px;color:var(--mut);max-width:220px}
 .tw{overflow-x:auto}
 .note{font-size:12px;color:var(--mut);line-height:1.7;margin:0}
-.jump{color:var(--acc);font-weight:700;text-decoration:none;margin-left:6px}
+.toc{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.toc a{font-size:12.5px;font-weight:700;color:var(--acc);background:var(--acc-soft);border-radius:999px;padding:3px 11px;text-decoration:none}
 .qcnt{float:right;font-size:12px;color:var(--acc);font-weight:700}
 .qlead{font-size:12.5px;color:var(--mut);background:var(--field);border-radius:9px;padding:8px 11px;margin-bottom:12px;line-height:1.6}
 .qlead b{color:var(--ink);margin-right:6px}
@@ -120,7 +121,11 @@ td.memo-c{white-space:normal;font-size:12.5px;color:var(--mut);max-width:220px}
 .cogrid b{font-weight:900;color:var(--acc)}
 .cogrid span{color:var(--ink)}
 .qlead.key{background:var(--acc-soft);color:var(--ink)}
-.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px}
+.qparts{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:16px}
+.qpart{border:2px solid var(--baseline);border-radius:14px;padding:12px 12px 8px;background:var(--base);display:flex;flex-direction:column;gap:10px;min-width:0}
+.qpart h3{margin:0;font-size:16px;font-weight:900;letter-spacing:-.3px}
+.qpart h3 em{display:block;font-style:normal;font-size:12px;font-weight:500;color:var(--mut)}
+.qpart .qg{background:var(--card)}
 .qg{border:1px solid var(--line);border-radius:12px;padding:0 12px 6px;overflow:hidden}
 .qg h4 em{font-style:normal;font-weight:500;color:var(--mut);font-size:12px;margin-left:8px}
 .qg label i{font-style:normal;flex:none;width:22px;font-size:12px;font-weight:900;color:var(--mut);margin-top:2px;text-align:right}
@@ -132,7 +137,7 @@ td.memo-c{white-space:normal;font-size:12.5px;color:var(--mut);max-width:220px}
 .qg label:last-child{border-bottom:none}
 .qg input{margin:3px 0 0;flex:none;width:16px;height:16px;accent-color:var(--acc)}
 .qg input:checked+span{color:var(--mut);text-decoration:line-through}
-@media (max-width:760px){.qgrid{grid-template-columns:1fr}}
+@media (max-width:900px){.qparts{grid-template-columns:1fr}}
 @media (max-width:900px){.pl3{grid-template-columns:1fr}
   .eq2{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr)}.eq2 .op:nth-of-type(3),.eq2 .op:nth-of-type(4){display:none}
   .eq2 .fld:nth-of-type(4){grid-column:1/3}.eq2 .out{grid-column:3/-1}}
@@ -143,11 +148,12 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
 
 <div class="wrap">
   <header>
-    <h1>로뎀카페 다회용컵 계산기</h1>
-    <p class="sub">업체가 조건을 말하면 안 1 · 2 · 3에 바로 넣어 보세요. 숫자와 체크는 이 기기에 남습니다. 금액은 부가세 별도. <a class="jump" href="#co">더그리트 정보 ↓</a> <a class="jump" href="#ask">물어볼 것 ↓</a></p>
+    <h1>로뎀카페 다회용컵 도입 검토</h1>
+    <p class="sub">비용 계산 · 업체 정보 · 미팅 질문을 한 곳에 — 2026. 10. 27. 더그리트 미팅용. 입력한 숫자와 체크는 이 기기에 남습니다. 금액은 부가세 별도.</p>
+    <nav class="toc"><a href="#base">기준</a><a href="#plans-h">안 1 · 2 · 3</a><a href="#cmp-h">세 안 비교</a><a href="#co">더그리트 정보</a><a href="#ask">물어볼 것</a></nav>
   </header>
 
-  <section class="box base">
+  <section class="box base" id="base">
     <div class="ttl">기준 ① 한 달에 컵이 몇 개 필요한가<small>안 1 · 2 · 3 계산에 들어가는 기준</small></div>
     <div class="src top">
       <b>한 달 9,800잔</b><span>2025년 카페 매출 약 4억 1,300만 원(대시보드) × 음료 80% ÷ 메뉴 평균 2,800원 ÷ 12개월</span>
@@ -189,11 +195,11 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     </div>
   </section>
 
-  <div class="sech"><h2>업체 조건 넣어 보기 — 안 1 · 2 · 3</h2><p>업체가 말하는 조건을 ①~⑤ 칸에 넣으면 한 달 합계가 바로 나옵니다. 안마다 다른 조건을 넣어 비교하고, 가장 싼 안에 「가장 유리」가 붙습니다. 안 1은 6/2 견적 조건이 들어 있는 예시입니다.</p></div>
+  <div class="sech" id="plans-h"><h2>계산기 — 안 1 · 2 · 3</h2><p>업체가 조건을 말하면 ①~⑤ 칸에 바로 넣어 보세요. 한 달 합계가 바로 나오고, 안마다 다른 조건을 넣어 비교하면 가장 싼 안에 「가장 유리」가 붙습니다. 안 1은 6/2 견적 조건이 들어 있는 예시입니다.</p></div>
   <section class="pl3" id="plans"></section>
 
 
-  <section class="box">
+  <section class="box" id="cmp-h">
     <div class="ttl">세 안 비교</div>
     <div class="tw"><table class="num" id="cmp"></table></div>
   </section>
@@ -217,8 +223,9 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     <div class="ttl">오늘 물어볼 것<small>번호 순서대로 · 답을 들으면 체크 · 숫자는 위 안 1 · 2 · 3에</small><span class="qcnt" id="qcnt"></span></div>
     <div class="qlead"><b>먼저 알려 줄 것</b> 카페 상시 사용 (행사 아님) · 한 달 음료 약 9,800잔, 다회용 약 70% → 한 달 약 7,000개 · 대부분 교회 안에서 마심 · 반납함 10곳 계획 · 6/2 견적은 받았고 상시 조건으로 다시 요청</div>
     <div class="qlead key"><b>꼭 받아 낼 것</b> ① 반납함 10대 무료 &nbsp;② 분실 보상 없음 · 무료 한도 최대 &nbsp;③ 물류비 별도 없음 &nbsp;④ 쓴 만큼 정산 &nbsp;⑤ 사용량 단가 할인 — 아래 <b class="sk">요청</b> 표시</div>
-    <div class="qgrid">
-      <div class="qg"><h4>회사 · 컵 자체<em>업체가 어떤 곳인지, 컵이 어떤 것인지</em></h4>
+    <div class="qparts">
+      <div class="qpart"><h3>1. 회사 · 컵<em>어떤 회사이고 어떤 컵인지</em></h3>
+        <div class="qg"><h4>회사 · 컵 자체<em>업체가 어떤 곳인지, 컵이 어떤 것인지</em></h4>
         <label><input type="checkbox" data-q="q23"><i>1</i><span>교회 · 기관 카페 도입 사례 2~3곳 — 실제 회수율은 몇 %인지</span></label>
         <label><input type="checkbox" data-q="q24"><i>2</i><span>사업자등록증 사본 — 견적서 번호(892-88-02405)와 같은지 · 주소가 홈페이지(법원로 127)와 견적서(법원로 128)가 달라 어느 쪽인지</span></label>
         <label><input type="checkbox" data-q="q25"><i>3</i><span>공용 컵인지 전용 컵인지 — 전용이면 추가 비용과 최소 수량</span></label>
@@ -227,37 +234,43 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
         <label><input type="checkbox" data-q="q28"><i>6</i><span>컵 크기 12 · 16온스 중 무엇이 있는지, 뜨거운 음료 가능한지, 투명도 높은 PP 컵이 있는지</span></label>
         <label><input type="checkbox" data-q="q30"><i>7</i><span>세척 공정에 탈취 단계가 있는지</span></label>
         <label><input type="checkbox" data-q="q22"><i>8</i><span>컵에 교회 로고 · 문구를 넣을 수 있는지, 비용</span></label>
+        </div>
       </div>
-      <div class="qg"><h4>① 컵 · ② 뚜껑 · 홀더<em>사용료 — 계산기 ①②에 넣을 숫자</em></h4>
+      <div class="qpart"><h3>2. 비용 조건<em>계산기 ①~⑤에 넣을 숫자</em></h3>
+        <div class="qg"><h4>① 컵 · ② 뚜껑 · 홀더<em>사용료 — 계산기 ①②에 넣을 숫자</em></h4>
         <label class="star"><input type="checkbox" data-q="q1"><i>9</i><span>상시 사용 시 컵 1개 사용료 — 6/2 견적 150원에서 조정되는지<b class="sk">요청</b></span></label>
         <label class="star"><input type="checkbox" data-q="q2"><i>10</i><span>한 달 7,000개 이상이면 단가를 낮추는 구간이 있는지, 월 정액제가 있는지<b class="sk">요청</b></span></label>
         <label><input type="checkbox" data-q="q3"><i>11</i><span>뚜껑 — 다회용(50원) 말고 일회용 뚜껑을 우리가 따로 써도 되는지</span></label>
         <label><input type="checkbox" data-q="q29"><i>12</i><span>홀더 — 다회용 홀더를 같이 주는지, 로고 인쇄가 되는지 (없으면 일회용 홀더는 우리가 계속 삼)</span></label>
-      </div>
-      <div class="qg"><h4>③ 수거 · 배송<em>계산기 ③에 넣을 숫자</em></h4>
+        </div>
+        <div class="qg"><h4>③ 수거 · 배송<em>계산기 ③에 넣을 숫자</em></h4>
         <label class="star"><input type="checkbox" data-q="q5"><i>13</i><span>「사용료에 배송 · 세척 포함」인데 견적의 물류비 5만 원/회는 무엇인지 — 상시 계약이면 없는지<b class="sk">요청</b></span></label>
         <label><input type="checkbox" data-q="q6"><i>14</i><span>주 2회 수거 가능한지, 요일을 고를 수 있는지 (월요일 수거)</span></label>
         <label><input type="checkbox" data-q="q7"><i>15</i><span>각 층 반납함 컵은 누가 카페로 모아 오는지 — 업체가 층마다 도는지</span></label>
-      </div>
-      <div class="qg"><h4>④ 반납함<em>계산기 ④에 넣을 숫자</em></h4>
+        </div>
+        <div class="qg"><h4>④ 반납함<em>계산기 ④에 넣을 숫자</em></h4>
         <label><input type="checkbox" data-q="q8"><i>16</i><span>대당 5만 원 — 한 번 내는 값인지 매달인지</span></label>
         <label class="star"><input type="checkbox" data-q="q9"><i>17</i><span>10대를 두면 무료로 줄 수 있는지<b class="sk">요청</b></span></label>
         <label><input type="checkbox" data-q="q10"><i>18</i><span>반납함 크기 · 모양, 전원이나 인터넷이 필요한지</span></label>
         <label><input type="checkbox" data-q="q11"><i>19</i><span>반납함 없이 반납 통만 두는 것도 되는지</span></label>
-      </div>
-      <div class="qg"><h4>⑤ 분실<em>계산기 ⑤에 넣을 숫자</em></h4>
+        </div>
+        <div class="qg"><h4>⑤ 분실<em>계산기 ⑤에 넣을 숫자</em></h4>
         <label><input type="checkbox" data-q="q12"><i>20</i><span>분실 1% 무료 한도 — 한 달 사용량 기준인지, 1회 납품 기준인지</span></label>
         <label><input type="checkbox" data-q="q13"><i>21</i><span>분실 수량을 누가 어떻게 세는지, 집계를 우리가 볼 수 있는지</span></label>
         <label class="star"><input type="checkbox" data-q="q14"><i>22</i><span>교회 안에서만 쓰는 조건으로 보상을 없애거나 한도를 넓힐 수 있는지<b class="sk">요청</b></span></label>
+        </div>
       </div>
-      <div class="qg"><h4>정산 · 계약 · 손님<em>계약서에 들어갈 조건</em></h4>
+      <div class="qpart"><h3>3. 계약 · 운영<em>계약서와 손님 응대</em></h3>
+        <div class="qg"><h4>정산 · 계약 · 손님<em>계약서에 들어갈 조건</em></h4>
         <label class="star"><input type="checkbox" data-q="q16"><i>23</i><span>「발주 수량대로 정산」 → 쓴 만큼 정산으로 바꿀 수 있는지<b class="sk">요청</b></span></label>
         <label><input type="checkbox" data-q="q17"><i>24</i><span>박스 단위(컵 300개) 주문 — 매주 얼마나 받아 두어야 하는지</span></label>
         <label><input type="checkbox" data-q="q18"><i>25</i><span>계약 기간, 중도 해지 조건, 위약금</span></label>
         <label><input type="checkbox" data-q="q19"><i>26</i><span>월 정산 방법과 세금계산서</span></label>
         <label><input type="checkbox" data-q="q20"><i>27</i><span>오픈 11/22 전에 컵과 반납함을 들여올 수 있는지</span></label>
         <label><input type="checkbox" data-q="q21"><i>28</i><span>손님 보증금 없이 운영해도 되는지 (드림패스 앱 없이)</span></label>
+        </div>
       </div>
+    </div>
     </div>
   </section>
 
