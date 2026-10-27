@@ -198,6 +198,12 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
 .bxt input{min-width:0}
 @media (max-width:440px){.bxt{grid-template-columns:44px .65fr 1fr 1fr;gap:4px}.bxt>b{font-size:13px}
  .pl3 .inp{padding-left:6px;padding-right:6px}.pl3 .inp input{font-size:15px}.pl3 .inp>span{font-size:10.5px;margin-left:2px}}
+.sumbox{border:2px solid var(--acc);background:var(--acc-soft);border-radius:10px;padding:10px 13px;margin-top:14px;font-size:14px;line-height:1.6}
+.sumbox b{color:var(--acc)}
+.decide{margin:6px 0 6px;padding-left:20px;font-size:14px;line-height:1.7}
+#lossT td.bestc{font-weight:800}
+#lossT th{white-space:normal}
+@media (max-width:600px){#lossT th,#lossT td{padding:7px 4px;font-size:12px}#lossT td:first-child{white-space:normal;width:22%}#lossT td{font-size:12.5px}}
 </style>
 </head><body>
 
@@ -259,6 +265,13 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
   <section class="box" id="cmp-h" data-sec="세안비교">
     <div class="ttl">두 안 비교</div>
     <div class="tw"><table class="num" id="cmp"></table></div>
+    <div class="ttl" style="margin-top:18px">분실률에 따라 달라지는 1안</div>
+    <div class="tw"><table class="num" id="lossT"></table></div>
+    <p class="note" id="lossN" style="margin-top:6px"></p>
+    <div class="sumbox"><b>정리</b> — 처음엔 분실이 10% 안팎이라 <b>2안(165원)으로 시작</b>하는 것이 유리합니다. 석 달쯤 운영해 분실률이 <b>3% 아래</b>로 안정되면 1안(150원)으로 바꾸는 것을 협의합니다.</div>
+    <div class="ttl" style="margin-top:16px">내부에서 정할 것</div>
+    <ol class="decide"><li>1안 · 2안 선택 (2안으로 시작 여부)</li><li>반납함 대수와 위치, 약정 기간 (3년 단가로 1년 계약 요청)</li><li>수거 횟수 (주 3일 / 주 5일)</li><li>비용 부담 — 사업단과 지속환경국이 각각 맡을 부분 (반납함 · 분실 비용 등)</li></ol>
+    <p class="note">반납함 제작에 15~19일이 걸려 <b>11월 초 계약</b>해야 오픈(11/22)에 맞출 수 있습니다.</p>
   </section>
 
 
@@ -474,7 +487,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
       var lossPct=Math.max(0,loss-lh), lost=n*lossPct/100*lc;
       var tot=a+b+ship+box+lost, d=tot-base;
       var alt=use3?tot-box3+box2:tot-box2+box3;
-      out.push({tot:tot,d:d,per:n?tot/n:0,alt:alt,use3:use3,sm5:p.sm==='5'});
+      out.push({tot:tot,d:d,per:n?tot/n:0,alt:alt,use3:use3,sm5:p.sm==='5',fix:a+b+ship+box,lh:lh,lc:lc});
       el.innerHTML=
         '<div class="hero"><span class="k">한 달 합계 · 수거 '+(p.sm==='5'?'주 5일':'주 3일')+' · 반납함 '+(use3?'3년':'2년')+' 약정</span><span class="v num">'+man(tot)+'<small>/ 달</small></span><span class="y num">한 잔당 '+fmt(n?tot/n:0)+'원 · 1년 '+man(tot*12)+(alt!=null?' · '+(use3?'2년':'3년')+' 약정이면 '+man(alt):'')+'</span></div>'+
         r('① 컵',fmt(n)+'개 × '+fmt(cup)+'원',man(a),'sub')+
@@ -495,6 +508,21 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
       '<tr class="minor"><td>다른 약정이면</td>'+out.map(function(o){return cell(o,function(o){return man(o.alt)+' ('+(o.use3?'2년':'3년')+' 약정)';});}).join('')+'</tr>'+
       '<tr class="minor"><td>1년이면</td>'+out.map(function(o){return cell(o,function(o){return man(o.tot*12);});}).join('')+'</tr>'+
       '<tr class="cmprow"><td>비고 · 지금 일회용(기준 ②) '+man(base)+' / '+fmt(disp)+'원과 차이</td>'+out.map(function(o){return cell(o,function(o){return sman(o.d)+' / 달 · '+(o.per-disp>0?'+':'')+fmt(o.per-disp)+'원';});}).join('')+'</tr></tbody>';
+    var o1=out[0],o2=out[1],lt=document.getElementById('lossT'),ln=document.getElementById('lossN');
+    if(o1&&o2){
+      var at=function(o,L,c){return o.fix+n*Math.max(0,L-o.lh)/100*(c==null?o.lc:c);};
+      var c1=o1.lc||700, rows=[1,3,5,10];
+      if(rows.indexOf(loss)<0&&loss>0){rows.push(loss);rows.sort(function(a,b){return a-b;});}
+      var h='<thead><tr><th>분실률</th><th>1안 (보상 '+fmt(c1)+'원)</th><th>1안 (보상 1,000원)</th><th>2안</th></tr></thead><tbody>';
+      rows.forEach(function(L){
+        var v=[at(o1,L,c1),at(o1,L,1000),at(o2,L)],m=Math.min(v[0],v[2]);
+        h+='<tr><td>'+L+'%'+(L===10?' (초기 예상)':'')+(L===loss?' · 위 가정':'')+'</td>'+v.map(function(x,j){return '<td'+(j!==1&&x===m?' class="bestc"':'')+'>'+man(x)+'</td>';}).join('')+'</tr>';
+      });
+      lt.innerHTML=h+'</tbody>';
+      var be=function(c){var diff=o2.fix-o1.fix;if(diff<=0||!n||!c)return null;return Math.round((o1.lh+diff/(n*c)*100)*10)/10;};
+      var b1=be(c1),b2=be(1000);
+      ln.innerHTML='2안은 분실률과 상관없이 한 달 비용이 같습니다(5%까지 포함 · 초과 청구 없음).'+(b1!=null?'<br>두 안이 같아지는 분실률: 보상 '+fmt(c1)+'원이면 약 '+b1+'%, 보상 1,000원이면 약 '+b2+'%':'');
+    } else {lt.innerHTML='';ln.textContent='';}
   }
   function bind(id,fn){var e=document.getElementById(id);e.addEventListener('input',function(){fn(e.value);save();calc();});
     e.addEventListener('blur',function(){if(e.value!==''){var v=num(e.value);if(!isNaN(v))e.value=fmt(v);}});}
