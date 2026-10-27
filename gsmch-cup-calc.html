@@ -69,7 +69,7 @@ h1{margin:0;font-size:22px;font-weight:900;letter-spacing:-.5px;text-wrap:balanc
 .tag{font-size:11px;font-weight:700;border-radius:7px;padding:2px 8px;background:var(--acc);color:var(--card)}
 .tag[hidden]{display:none}
 .ph .clr{margin-left:auto;border:0;background:none;color:var(--mut);font:inherit;font-size:12.5px;cursor:pointer;text-decoration:underline}
-.memo{border:1px dashed var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:6px 9px;font:inherit;font-size:13px;width:100%;min-height:36px}
+.memo{resize:none;line-height:1.45;display:block;border:1px dashed var(--line);background:transparent;color:var(--ink);border-radius:8px;padding:6px 9px;font:inherit;font-size:13px;width:100%;min-height:36px}
 .g{display:grid;gap:6px;align-items:end}
 .g2{grid-template-columns:1fr 1fr}
 .gx{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
@@ -113,6 +113,10 @@ tr.main td.bestc{box-shadow:inset 0 0 0 2px var(--acc)}
 tr.cmprow td{font-size:12.5px;color:var(--mut);border-bottom:none}
 td.memo-c{white-space:normal;font-size:12.5px;color:var(--mut);max-width:220px}
 .tw{overflow-x:auto}
+#cmp td:first-child,#cmp th:first-child{white-space:normal}
+@media (max-width:600px){#cmp th,#cmp td{padding:7px 5px}#cmp td:first-child{width:28%;font-size:12px}
+ #cmp tr.main td{font-size:17px}#cmp tr.main td:first-child{font-size:13px}#cmp tr.main td small,#cmp tr.main td i{display:block}
+ #cmp tr.minor td,#cmp tr.cmprow td{font-size:11.5px;white-space:normal}#cmp td.memo-c{font-size:11.5px}}
 .note{font-size:12px;color:var(--mut);line-height:1.7;margin:0}
 .toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px))) 0 calc(-1*max(16px,env(safe-area-inset-right,0px)));padding:8px max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px));background:var(--bg);border-bottom:1px solid var(--line)}
 .toc::-webkit-scrollbar{display:none}
@@ -192,6 +196,8 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
 .bxt>span{font-size:12px;color:var(--mut,#6b7280);text-align:right;padding-right:6px}
 .bxt>b{font-size:14px;line-height:1.2}.bxt>b i{display:block;font-style:normal;font-weight:400;font-size:11px;color:var(--mut,#6b7280)}
 .bxt input{min-width:0}
+@media (max-width:440px){.bxt{grid-template-columns:44px .65fr 1fr 1fr;gap:4px}.bxt>b{font-size:13px}
+ .pl3 .inp{padding-left:6px;padding-right:6px}.pl3 .inp input{font-size:15px}.pl3 .inp>span{font-size:10.5px;margin-left:2px}}
 </style>
 </head><body>
 
@@ -437,7 +443,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
   plans.innerHTML=st.plans.map(function(p,i){
     return '<article class="box plan" id="p'+i+'"><div class="ph"><h2>'+(i+1)+'안</h2><span class="tag" hidden>가장 유리</span>'+
       '<button class="clr" data-i="'+i+'">지우기</button></div>'+
-      '<input class="memo" id="m'+i+'" placeholder="조건 메모" value="'+(p.memo||'').replace(/"/g,'&quot;')+'">'+
+      '<textarea class="memo" id="m'+i+'" rows="2" placeholder="조건 메모">'+(p.memo||'').replace(/</g,'&lt;')+'</textarea>'+
       '<div class="g g2"><div class="step"><span class="lab">① 컵 1개</span>'+inp('cup'+i,p.cup,'원')+'</div>'+
         '<div class="step"><span class="lab">② 뚜껑 1개<em>일회용 30원 통일</em></span>'+inp('lid'+i,p.lid,'원')+'</div></div>'+
       '<div class="step"><span class="lab">③ 수거 · 배송 월 정액<em>횟수 줄이면 금액 조정 가능</em></span>'+
