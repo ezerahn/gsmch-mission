@@ -25,8 +25,11 @@ h1{margin:0;font-size:22px;font-weight:900;letter-spacing:-.5px;text-wrap:balanc
 .box.base{background:var(--base)}
 .box.cmpbase{background:var(--card);border-style:dashed}
 .box.cmpbase .inp{background:var(--field)}
+.box.cmpbase .calcp{background:var(--base)}
+.box.cmpbase .calcl{background:var(--base)}
+.box.cmpbase .calcp .inp{background:var(--card)}
 .lab{font-size:12px;font-weight:700;color:var(--mut);letter-spacing:.02em}
-.ttl{font-size:13px;font-weight:900;color:var(--ink);margin-bottom:10px}
+.ttl{font-size:17px;font-weight:900;color:var(--ink);margin-bottom:8px;letter-spacing:-.3px}
 .ttl small{font-weight:500;color:var(--mut);margin-left:6px}
 .fld{display:flex;flex-direction:column;gap:4px;min-width:0}
 .inp{display:flex;align-items:center;background:var(--field);border:1px solid var(--line);border-radius:10px;padding:0 10px;min-height:44px}
@@ -46,8 +49,16 @@ h1{margin:0;font-size:22px;font-weight:900;letter-spacing:-.5px;text-wrap:balanc
 .chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:2px 10px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
 .chip.on{background:var(--acc);border-color:var(--acc);color:var(--card)}
 .src{border-top:1px dashed var(--line);margin-top:12px;padding-top:9px;display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:12px;color:var(--mut)}
+.src.top{border-top:none;border-bottom:none;margin:0 0 10px;padding:0;font-size:13.5px;color:var(--ink);gap:5px 14px;line-height:1.5}
+.src.top b{font-size:13.5px}
+.src.top span{color:#4a514b}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .src.top span{color:#c3c9c3}}
+:root[data-theme="dark"] .src.top span{color:#c3c9c3}
 .src b{color:var(--ink);font-weight:700;white-space:nowrap}
-.lossrow{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.calcp{position:relative;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:16px 14px 12px}
+.calcl{position:absolute;top:-9px;left:12px;background:var(--card);border:1.5px solid var(--line);border-radius:999px;padding:0 9px;font-size:11px;font-weight:900;color:var(--acc);line-height:16px}
+.calcp .inp{background:var(--field)}
+.lossrow{display:flex;align-items:center;gap:10px;margin-top:10px;flex-wrap:wrap}
 .lossrow .inp{width:110px;min-height:38px}.lossrow .inp input{font-size:15px;padding:5px 0}
 .lossrow .lab{font-size:12.5px}
 .pl3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -127,6 +138,12 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
 
   <section class="box base">
     <div class="ttl">기준 — 한 달에 컵이 몇 개 필요한가</div>
+    <div class="src top">
+      <b>한 달 9,800잔</b><span>2025년 카페 매출 약 4억 1,300만 원(대시보드) × 음료 80% ÷ 메뉴 평균 2,800원 ÷ 12개월</span>
+      <b>사용 비율 70%</b><span>음료 중 다회용기에 담아 드리는 비율, 나머지는 매장 머그 — 가정 · 매니저님 확인</span>
+      <b>분실률 2%</b><span>안 돌아오는 컵 비율 — 교회 안이라 낮게 가정 · 안마다 「무료 한도」를 넘는 만큼만 비용</span>
+    </div>
+    <div class="calcp"><span class="calcl">계산</span>
     <div class="eq eq1">
       <label class="fld"><span class="lab">한 달 음료 잔 수</span><span class="inp"><input id="cups" inputmode="numeric" value="9,800"><span>잔</span></span></label>
       <span class="op">×</span>
@@ -135,10 +152,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
       <span class="op">=</span>
       <div class="out"><span class="lab">한 달 컵 개수</span><b class="num" id="n">6,860개</b></div>
     </div>
-    <div class="lossrow"><span class="lab">안 돌아오는 컵 (분실률) 가정</span><span class="inp"><input id="loss" inputmode="numeric" value="2"><span>%</span></span><span class="lab" style="font-weight:500">교회 안이라 낮게 봄 · 안마다 「무료 한도」를 넘는 만큼만 비용이 듭니다</span></div>
-    <div class="src">
-      <b>9,800잔</b><span>2025년 카페 매출 약 4억 1,300만 원(대시보드) × 음료 80% ÷ 메뉴 평균 2,800원 ÷ 12개월</span>
-      <b>70%</b><span>음료 중 다회용기에 담아 드리는 비율 (나머지는 매장 머그) — 가정 · 매니저님 확인</span>
+    <div class="lossrow"><span class="lab">안 돌아오는 컵 (분실률) 가정</span><span class="inp"><input id="loss" inputmode="numeric" value="2"><span>%</span></span></div>
     </div>
   </section>
 
@@ -146,6 +160,12 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
 
   <section class="box cmpbase">
     <div class="ttl">비교할 기준 — 지금 일회용은 한 달에 얼마인가<small>안 1 · 2 · 3의 「지금보다 더 드는 돈」은 이 금액과의 차이입니다</small></div>
+    <div class="src top">
+      <b>컵 65원</b><span>13온스 종이컵 1,000개 62,700원(카페뮤제오) → 개당 약 63원</span>
+      <b>뚜껑 35 · 홀더 30원</b><span>온라인 카페 용품몰 가격대 추정 · 빨대 · 배송비 제외 · 카페허브 실제 단가가 나오면 바꿔 넣기</span>
+      <b>참고</b><span>아이스 PET 16온스 컵 + 돔뚜껑 + 홀더 세트 1,000개 99,000원(카페어스) → 한 잔 약 99원</span>
+    </div>
+    <div class="calcp"><span class="calcl">계산</span>
     <div class="eq eq2">
       <label class="fld"><span class="lab">컵</span><span class="inp"><input id="dc" inputmode="numeric" value="65"><span>원</span></span></label>
       <span class="op">+</span>
@@ -157,10 +177,6 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
       <span class="op">→</span>
       <div class="out" id="rNow"></div>
     </div>
-    <div class="src">
-      <b>컵 65원</b><span>13온스 종이컵 1,000개 62,700원(카페뮤제오) → 개당 약 63원</span>
-      <b>뚜껑 35 · 홀더 30원</b><span>온라인 카페 용품몰 가격대 추정 · 빨대 · 배송비 제외 · 카페허브 실제 단가가 나오면 바꿔 넣기</span>
-      <b>참고</b><span>아이스 PET 16온스 컵 + 돔뚜껑 + 홀더 세트 1,000개 99,000원(카페어스) → 한 잔 약 99원</span>
     </div>
   </section>
 
