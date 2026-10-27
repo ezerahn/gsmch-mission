@@ -151,6 +151,12 @@ html{scroll-behavior:smooth}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .qparts.env .qpart{border-color:#2f5a3c}}
 :root[data-theme="dark"] .qparts.env .qpart{border-color:#2f5a3c}
 .qparts.env .qg{padding-top:6px}
+.mtg{background:var(--acc-soft);border:2px solid #b9dcc5;border-radius:12px;padding:12px 14px;margin-bottom:12px}
+.mtg h4{margin:0 0 8px;font-size:15px;font-weight:900;color:var(--acc)}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px}
+.mg div{display:grid;grid-template-columns:80px 1fr;gap:8px;font-size:13px;line-height:1.55;padding:5px 0;border-bottom:1px dashed #b9dcc5}
+.mg b{font-weight:900}
+@media (max-width:760px){.mg{grid-template-columns:1fr}}
 .ogrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
 .og{border:2px solid var(--baseline);border-radius:14px;padding:10px 12px;background:var(--base);min-width:0}
 .og h4{margin:0 0 6px;font-size:13.5px;font-weight:900}
@@ -354,6 +360,17 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
 
   <section class="box" id="out" data-sec="회의결과">
     <div class="ttl">회의로 도출할 결과<small>이 칸이 채워지면 오늘 회의는 끝 — 답을 들은 대로 적기</small><span class="qcnt" id="ocnt"></span></div>
+    <div class="mtg"><h4>10/27 미팅에서 들은 것 (녹취 앞부분 기준 · 뒷부분 확인 중)</h4>
+      <div class="mg">
+        <div><b>컵</b><span>12 · 14 · 16온스 모두 있고 값은 같음. 16온스가 기존 컵보다 작게 느껴짐 → 담아 보니 12 → 14온스 권장. 스타벅스 사이즈 기준으로 만든 컵</span></div>
+        <div><b>교회 사례</b><span>이미 한 교회가 쓰고 있음(어디인지 재확인) · 온누리교회도 문의 중</span></div>
+        <div><b>수거 · 배송</b><span>주말 배송 불가(기사 추가 채용 400만 원↑). 대신 <b>일요일 밤~월요일 새벽</b> 기사 동선에 맞춰 토·일 이틀 치를 가져감 → 주일 컵은 월요일 새벽 수거. 실내 보관이라 여름에도 문제 없음</span></div>
+        <div><b>물류비</b><span>사용료에 포함 아님. 주 5일 정기 수거 <b>월 30만 원</b>. 횟수를 줄이면 <b>월 15만 원</b> 선까지 조정 가능</span></div>
+        <div><b>반납함</b><span>제작 원가 10만 원이라 판매가 아니라 <b>렌탈(월 비용)</b>. 2년 약정 기준 대당 <b>월 4,000원</b> 선 — 3년 약정이면 더 낮추는 것 요청 (뒷부분 확인)</span></div>
+        <div><b>분실</b><span>더그리트 제안: 분실 5%를 컵 단가에 녹여 <b>150원 → 165원</b>, 그 대신 <b>5% 초과분은 청구 안 함</b>. 처음 3개월(한두 분기) 개도 기간으로 보고 모니터링 뒤 조정. 그냥 두면 초과분은 개당 1,000원(컵+뚜껑)</span></div>
+        <div><b>비용 항목</b><span>컵 개당 + 뚜껑 개당 + 수거·배송 + 반납함 렌탈, 이 네 가지뿐</span></div>
+      </div>
+    </div>
     <div class="qlead key"><b>회의 목표</b> ① 더그리트와 상시 계약 조건을 확정할 수 있는 <b>숫자</b>를 받는다 &nbsp;② 교회 안에서 <b>비용을 누가 맡을지</b> 방향을 잡는다 &nbsp;③ 오픈(11/22) 전 일정을 확정한다</div>
     <div class="ogrid">
       <div class="og"><h4>더그리트에서 받을 숫자 → 계산기 안 2에 입력</h4>
@@ -391,11 +408,12 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 (function(){
-  var KEY='rodem-cup-calc-v5';
+  var KEY='rodem-cup-calc-v6';
   var EMPTY={memo:'',cup:'',lid:'',sn:8,sp:'',bn:10,bp:'',bm:'m',lh:1,lc:''};
   var DEF={cups:9800,ratio:70,loss:2,dc:65,dl:35,dh:30,plans:[
-    {memo:'더그리트 6/2 견적 (물류비 포함 조건)',cup:150,lid:50,sn:8,sp:0,bn:10,bp:50000,bm:'o',lh:1,lc:1000},
-    JSON.parse(JSON.stringify(EMPTY)),JSON.parse(JSON.stringify(EMPTY))]};
+    {memo:'6/2 견적 그대로 (물류 0 · 반납함 5만 한 번 · 분실 1% 초과 1,000원)',cup:150,lid:50,sn:8,sp:0,bn:10,bp:50000,bm:'o',lh:1,lc:1000},
+    {memo:'10/27 미팅 — 컵 165원(분실 5% 녹임) · 수거 월 15만(횟수 줄이면) · 반납함 렌탈 월 4,000원 · 분실 청구 없음(3개월)',cup:165,lid:50,sn:1,sp:150000,bn:10,bp:4000,bm:'m',lh:5,lc:0},
+    {memo:'10/27 미팅 — 같은 조건에 수거 주 5일 월 30만',cup:165,lid:50,sn:1,sp:300000,bn:10,bp:4000,bm:'m',lh:5,lc:0}]};
   var st;
   try{st=JSON.parse(localStorage.getItem(KEY))||null;}catch(e){st=null;}
   if(!st||!st.plans) st=JSON.parse(JSON.stringify(DEF));
