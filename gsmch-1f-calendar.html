@@ -86,6 +86,7 @@
   .ev.coffee{--c:#8a5a2b;--cl:#f4ebe1;--ct:#6e4520}
   .ev.cup{--c:#1f8a83;--cl:#e3f4f2;--ct:#176c66}
   .ev.build{--c:#7a756c;--cl:#efede8;--ct:#4f4b45}
+  .ev.setup{--c:#5c7a5e;--cl:#e6eee4;--ct:#3d553f}
   .ev.reg{--c:#b8956a;--cl:#f7f0e4;--ct:#7d5f36}
   .ev.open{--c:#D9644A;--cl:#D9644A;--ct:#fff;font-weight:700;font-size:15px;border-left:none}
   em{font-style:normal;font-weight:400;opacity:.85}
@@ -100,7 +101,7 @@
   .ev:not(.open):not(.sp){background:#fff;color:#2c2a26;border:1px solid #dcd8cf}
   .ev.tent:not(.open){border:2px dotted #9a948a}
   .ev.dec:not(.open){border:2px solid #b3382a}
-  .ev.sp{background:#efede8;color:#2c2a26}
+  .ev.sp{background:var(--cl);color:#2c2a26}
   .ev.sp.sps{border-left:none}
   .legend i.c{border-radius:4px}
   .k-tent{background:#fff;border:2px dotted var(--soft)}
@@ -165,7 +166,8 @@
     <span><b class="tg" style="background:#3f6fb0">포스</b>주문 · 결제 (잇다)</span>
     <span><b class="tg" style="background:#8a5a2b">커피</b></span>
     <span><b class="tg" style="background:#1f8a83">다회용기</b></span>
-    <span><b class="tg" style="background:#7a756c">공사</b>가구 · 셋업</span>
+    <span><b class="tg" style="background:#7a756c">공사</b>가구 · 준공</span>
+    <span><b class="tg" style="background:#5c7a5e">셋업</b>현장 셋업 · 테스트</span>
     <span><b class="tg" style="background:#b8956a">사업단</b>월례회 · 인력</span>
     <span><b class="tg" style="background:#D9644A">오픈</b></span>
     <span><i class="k-tent"></i>점선 = 예정</span>
@@ -197,8 +199,8 @@ const EVENTS = [
   ["2026-11-08","reg","월례회 <em>9시</em>"],
   ["2026-11-09","pos","전체 교육",1],
   ["2026-11-14","build","준공"],
-  ["2026-11-15","build","서점 · 카페 현장 셋업"],
-  ["2026-11-21","build","테스트 운영"],
+  ["2026-11-15","setup","서점 · 카페 현장 셋업"],
+  ["2026-11-21","setup","테스트 운영"],
   ["2026-11-22","open","서점 · 카페 오픈"],
   ["2026-12-07","reg","신·구 사업단 인사 모임 <em>(인수인계)</em>",1],
   ["2026-12-13","reg","월례회 <em>9시</em>"],
@@ -206,12 +208,12 @@ const EVENTS = [
 ];
 // 꼭지별로 쭉 이어지는 구간
 const BANDS = [
-  ["build","2026-11-15","2026-11-20"],
+  ["setup","2026-11-15","2026-11-21"],
 ];
-const LABEL={pos:"포스",coffee:"커피",cup:"다회용기",build:"공사",reg:"사업단",open:"오픈"};
+const LABEL={pos:"포스",coffee:"커피",cup:"다회용기",build:"공사",setup:"셋업",reg:"사업단",open:"오픈"};
 const DOW=["일","월","화","수","목","금","토"];
 const FULL=e=>(["pos","coffee","cup"].includes(e[1])&&!/잇다|더그리트|커피|다회용기/.test(e[2])?LABEL[e[1]]+" · ":"")+e[2];
-const LANES=["pos","coffee","cup","build","reg","open"];
+const LANES=["pos","coffee","cup","build","setup","reg","open"];
 const pad=n=>String(n).padStart(2,"0");
 let html="";
 for(const m of [10,11,12]){
@@ -236,7 +238,7 @@ for(const m of [10,11,12]){
     let body='';
     LANES.forEach(l=>{const out=[];
       const bd=band&&band[0]==l?band:null;
-      if(bd){out.push(`<span class="ev ${l} sp ${key==bd[1]?'sps':''} ${key==bd[2]?'spe':''}">${key==bd[1]||w==0?`<b class="tg">${LABEL[l]}</b>`+(EVENTS.find(e=>e[0]==bd[1]&&e[1]==l)||['','',''])[2]:'&nbsp;'}</span>`);}
+      if(bd){out.push(`<span class="ev ${l} sp ${key==bd[1]?'sps':''} ${key==bd[2]?'spe':''}">${(()=>{const ee=evs.find(e=>e[1]==l);return ee?`<b class="tg">${LABEL[l]}</b>`+ee[2]:(w==0?`<b class="tg">${LABEL[l]}</b>`:'&nbsp;')})()}</span>`);}
       else evs.filter(e=>e[1]==l).forEach(e=>out.push(chip(e)));
       body+=out.join('');});
     html+=`<div class="${cls}"><span class="num">${d}</span>${body}</div>`;
@@ -250,12 +252,12 @@ for(const m of [10,11,12]){
 }
 document.getElementById("cal").innerHTML=html;
 (function(){
- const st=new Date(2026,9,27),N=28,CW=100/N,Dw="일월화수목금토",FC={pos:"#3f6fb0",coffee:"#8a5a2b",cup:"#1f8a83",build:"#7a756c",open:"#D9644A"};
+ const st=new Date(2026,9,27),N=28,CW=100/N,Dw="일월화수목금토",FC={pos:"#3f6fb0",coffee:"#8a5a2b",cup:"#1f8a83",build:"#7a756c",setup:"#5c7a5e",open:"#D9644A"};
  const ix=k=>Math.round((new Date(2026,+k.slice(5,7)-1,+k.slice(8,10))-st)/864e5);
  const ti=ix(TODAY); let h='<div class="fr hd"><div class="fl"></div><div class="fc">';
  for(let i=0;i<N;i++){const d=new Date(st.getTime()+i*864e5),w=d.getDay();h+=`<div class="fd ${w==0?'s':''} ${i==ti?'td':''}" style="left:${i*CW}%;width:${CW}%">${Dw[w]}<b>${d.getDate()==1||i==0?(d.getMonth()+1)+'/':''}${d.getDate()}</b></div>`}
  h+='</div></div>';
- ["pos","coffee","cup","build","open"].forEach(l=>{const c=FC[l];
+ ["pos","coffee","cup","build","setup","open"].forEach(l=>{const c=FC[l];
   const ev=EVENTS.filter(e=>e[1]==l&&ix(e[0])>=0&&ix(e[0])<N).sort((a,b)=>a[0]<b[0]?-1:1);if(!ev.length)return;
   h+=`<div class="fr"><div class="fl"><b class="tg" style="background:${c}">${LABEL[l]}</b></div><div class="fc">`;
   for(let i=0;i<N;i++){const w=new Date(st.getTime()+i*864e5).getDay();if(w==0||i==ti)h+=`<i class="gl ${i==ti?'td':''}" style="left:${i*CW}%;width:${i==ti?CW:0}%"></i>`}
