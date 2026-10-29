@@ -297,6 +297,15 @@
     .glist{gap:11px}
     .foot{margin-top:16px;font-size:10px}
   }
+  .tbgo{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:13.5px;
+    font-weight:700;letter-spacing:-.02em;text-decoration:none;
+    color:#fff;background:#0B5D2A;border:1px solid #0B5D2A;border-radius:8px;
+    padding:8px 15px;transition:.15s}
+  .tbgo:hover{filter:brightness(1.08)}
+  .tbgo .ex2{font-size:11px;opacity:.85}
+  .tbgo .st{font-size:11px;font-weight:600;background:rgba(255,255,255,.2);border-radius:4px;padding:1px 6px}
+  @media(max-width:560px){ .tbgo{font-size:12.5px;padding:7px 11px;white-space:nowrap;flex:none} }
+  @media print{ .tbgo{display:none} }
 </style>
 </head>
 <body>
@@ -343,8 +352,11 @@
       <button class="tb" data-tab="4">서가 · 진열</button>
       <button class="tb" data-tab="5">계산대 · 직원</button>
     </div>
-    <div class="trow last"><span class="tgl">안건</span>
+    <div class="trow"><span class="tgl">안건</span>
       <button class="tb" data-tab="8">논의 안건</button>
+    </div>
+    <div class="trow last"><span class="tgl">전달</span>
+      <a class="tbgo" href="gsmch-1f-book-furniture.html">가구 · 진열 정리 (건축위 전달)<span class="st">10.29 확인 중</span><span class="ex2">↗</span></a>
     </div>
   </div>
   <div class="pane" data-pane="1">
