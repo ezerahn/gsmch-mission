@@ -159,7 +159,7 @@
 <body>
 <div class="wrap">
   <h1>사업단 일정 · 10~12월</h1>
-  <p class="lead">총여선교회 사업단 일정입니다. 색은 일의 꼭지별로 나눴습니다. 점선(····)은 예정, 빨간 테두리는 그날 결정할 일입니다.</p>
+  <p class="lead">총여선교회 사업단 일정입니다. 앞의 이름표 색으로 무슨 일인지 나눴습니다. 점선(····)은 예정, 빨간 테두리는 그날 결정할 일입니다.</p>
   <span class="upd">업데이트 2026.10.29</span>
 
   <div class="legend">
@@ -174,7 +174,7 @@
     <span><i class="k-dec"></i>빨간 테두리 = 결정</span>
   </div>
 
-  <section class="flow"><div class="fh"><b>꼭지별 흐름</b><span>10/27 ~ 11/23 · 속이 찬 동그라미 = 확정, 빈 동그라미 = 예정 · 노란 세로줄 = 오늘</span><button class="tbtn" onclick="saveFlow(this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div><div class="fsc"><div class="ft" id="flow"></div></div></section>
+  <section class="flow"><div class="fh"><b>오픈 준비 흐름</b><span>10/27 ~ 11/23 · 속이 찬 동그라미 = 확정, 빈 동그라미 = 예정 · 노란 세로줄 = 오늘</span><button class="tbtn" onclick="saveFlow(this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div><div class="fsc"><div class="ft" id="flow"></div></div></section>
   <div id="cal"></div>
   <p class="note">※ 날짜가 정해지지 않은 일정은 넣지 않았습니다.</p>
 </div>
@@ -206,7 +206,7 @@ const EVENTS = [
   ["2026-12-13","reg","월례회 <em>9시</em>"],
   ["2026-12-20","reg","사업단 사역 마무리"],
 ];
-// 꼭지별로 쭉 이어지는 구간
+// 여러 날 이어지는 구간
 const BANDS = [
   ["setup","2026-11-15","2026-11-21"],
 ];
@@ -273,7 +273,7 @@ document.getElementById("cal").innerHTML=html;
 function saveFlow(btn){var el=document.querySelector('.flow');var t=btn.innerHTML;btn.disabled=true;btn.textContent='저장 중…';
  _h2c(function(){html2canvas(el,{backgroundColor:'#ffffff',scale:2,windowWidth:1200,ignoreElements:function(n){return n.classList&&n.classList.contains('tbtn')},
   onclone:function(d){var c=d.querySelector('.flow');c.style.width='1150px';d.querySelector('.fsc').style.overflow='visible';}
- }).then(function(cv){cv.toBlob(function(b){var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='gsmch_꼭지별흐름.jpg';document.body.appendChild(a);a.click();a.remove();},'image/jpeg',0.93)})
+ }).then(function(cv){cv.toBlob(function(b){var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='gsmch_오픈준비흐름.jpg';document.body.appendChild(a);a.click();a.remove();},'image/jpeg',0.93)})
  .catch(function(){alert('이미지로 저장하지 못했습니다.')}).then(function(){btn.disabled=false;btn.innerHTML=t;});});}
 
 function _h2c(cb){
