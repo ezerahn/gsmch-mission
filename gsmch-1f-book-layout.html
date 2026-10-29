@@ -324,6 +324,17 @@
   .ftoc button.on{background:#0B5D2A;color:#fff}
   .fsp{display:none}.fsp.on{display:block}
   .tbgo.off{color:#b3aa9b;cursor:default}.tbgo.off:hover{background:transparent;color:#b3aa9b}
+  .fband{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#fff;border:1px solid #e6e0d4;border-radius:12px;padding:12px 16px;margin:0 0 22px}
+  .fband .fl{font-size:12.5px;font-weight:800;color:#0B5D2A;letter-spacing:.02em;flex:none}
+  .fband .fls{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;gap:6px;flex:1;min-width:0}
+  @media(max-width:900px){.fband .fls{grid-template-columns:repeat(2,auto)}}
+  .fband{flex-wrap:nowrap}@media(max-width:560px){.fband{flex-wrap:wrap}}
+  .fbn{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:#3a352e;text-decoration:none;background:#f8f6f1;border:1px solid #ece6da;border-radius:8px;padding:5px 9px;white-space:nowrap}
+  .fbn:hover{border-color:#3d6b4f;color:#3d6b4f}
+  .fbn .st{font-size:11px;font-weight:600;background:#f0ece4;color:#8a7d68;border-radius:4px;padding:1px 6px}
+  .fbn .ar{font-size:11px;color:#a99c86}
+  @media(max-width:560px){.fband{padding:10px;gap:8px;flex-direction:column;align-items:stretch}.fband .fls{grid-template-columns:1fr}.fbn{font-size:12px;padding:6px 9px}.fbn .ar{margin-left:auto}}
+  @media print{.fband{display:none}}
 </style>
 </head>
 <body>
@@ -359,6 +370,7 @@
     </div>
   </div>
 
+<div class="fband"><span class="fl">최종 파일</span><div class="fls"><a class="fbn" href="gsmch-1f-book-furniture.html">배치 · 가구 · 진열<span class="st">10.29 확인 중</span><span class="ar">↗</span></a><a class="fbn" href="gsmch-1f-pos-committee.html">주문 · 결제 시스템 (잇다)<span class="st">도입안</span><span class="ar">↗</span></a><a class="fbn" href="gsmch-1f-book-stock.html">재고 · 책꽂이 배치<span class="st">초안</span><span class="ar">↗</span></a><a class="fbn" href="gsmch-1f-book-promo.html">홍보 · 오픈 이벤트 · 스티커<span class="st">초안</span><span class="ar">↗</span></a></div></div>
     <div class="tabs">
     <div class="trow"><span class="tgl">기준</span>
       <button class="tb" data-tab="1">전제 · 실측</button>
@@ -370,15 +382,10 @@
       <button class="tb" data-tab="4">서가 · 진열</button>
       <button class="tb" data-tab="5">계산대 · 직원</button>
     </div>
-    <div class="trow"><span class="tgl">안건</span>
+    <div class="trow last"><span class="tgl">안건</span>
       <button class="tb" data-tab="8">논의 안건</button>
     </div>
-    <div class="trow last"><span class="tgl">최종</span>
-      <a class="tbgo" href="gsmch-1f-book-furniture.html">배치 · 가구 · 진열<span class="st">10.29 확인 중</span><span class="ex2">↗</span></a>
-      <a class="tbgo" href="gsmch-1f-pos-committee.html">주문 · 결제 시스템 (잇다)<span class="st">도입안</span><span class="ex2">↗</span></a>
-      <a class="tbgo" href="gsmch-1f-book-stock.html">재고 · 책꽂이 배치<span class="st">초안</span><span class="ex2">↗</span></a>
-      <a class="tbgo" href="gsmch-1f-book-promo.html">홍보 · 오픈 이벤트 · 스티커<span class="st">초안</span><span class="ex2">↗</span></a>
-    </div>
+
   </div>
   <div class="pane" data-pane="1">
     <div class="psec"><h2>전제</h2><span class="cap">배치를 볼 때 고려할 점</span><div class="rule"></div></div>
