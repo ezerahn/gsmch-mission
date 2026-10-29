@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>주문 · 결제 시스템</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#faf8f3;--card:#fff;--line:#e6e1d7;--line2:#f0ece4;--text:#2c2a26;--muted:#8a847a;--soft:#6e6860;
+    --g:#3d6b4f;--gl:#eef4ef;--coral:#D9644A;--coral-l:#fbeee9;--cafe:#9A6414;--cafe-l:#f7efe2;--warn:#b3382a;--warn-l:#fcf0ed}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'IBM Plex Sans KR',-apple-system,'Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);
+    line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;word-break:keep-all}
+  .wrap{max-width:1000px;margin:0 auto;padding:28px 16px 60px}
+  h1{font-size:30px;font-weight:700;letter-spacing:-.02em}
+  h1 small{font-size:17px;color:var(--g);font-weight:600;margin-left:8px}
+  .lead{font-size:16px;color:var(--soft);margin-top:6px}
+  .upd{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:var(--coral);background:var(--coral-l);padding:3px 10px;border-radius:6px}
+
+  .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:24px 0 18px;border-bottom:1px solid var(--line);padding-bottom:12px}
+  .tab{font-family:inherit;font-size:15px;font-weight:600;color:var(--soft);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 15px;cursor:pointer}
+  .tab.on{background:var(--g);border-color:var(--g);color:#fff}
+  .tab.new{border-color:var(--coral);color:var(--coral)}
+  .tab.new.on{background:var(--coral);color:#fff}
+  .tab.old{border-style:dashed}
+  .pane{display:none}.pane.on{display:block}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:16px}
+  .ch{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .ch h2{font-size:21px;font-weight:700;letter-spacing:-.02em}
+  .ch .tag{font-size:12px;font-weight:700;border-radius:5px;padding:2px 8px;background:var(--gl);color:var(--g)}
+  .ch .tag.c{background:var(--coral-l);color:var(--coral)}
+  .ch .tag.w{background:var(--warn-l);color:var(--warn)}
+  .tbtn{margin-left:auto;display:inline-flex;align-items:center;gap:4px;font-family:inherit;font-size:12.5px;font-weight:600;color:#55534e;
+    background:#fff;border:1px solid #dcd9d1;border-radius:999px;padding:4px 11px;cursor:pointer;flex:none}
+  .tbtn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .tbtn:disabled{opacity:.5}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .box{border:1px solid var(--line);border-radius:11px;overflow:hidden}
+  .box > b{display:block;padding:9px 14px;font-size:17px;background:var(--gl);color:var(--g)}
+  .box.k > b{background:var(--cafe-l);color:var(--cafe)}
+  .box ul{list-style:none;padding:6px 14px 10px}
+  .box li{display:flex;gap:8px;align-items:baseline;padding:6px 0;border-bottom:1px dashed var(--line2);font-size:16px}
+  .box li:last-child{border-bottom:none}
+  .box li .q{margin-left:auto;font-weight:700;white-space:nowrap}
+  .box li small{color:var(--muted);font-size:13px}
+  .box li.ex{color:var(--muted)}
+  .pill{font-size:11px;font-weight:700;border-radius:4px;padding:1px 6px;white-space:nowrap}
+  .pill.e{background:#f0ece4;color:#8a7d68}
+  .pill.n{background:var(--coral-l);color:var(--coral)}
+
+  .chg{list-style:none}
+  .chg li{display:flex;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line2);font-size:16px}
+  .chg li:last-child{border-bottom:none}
+  .chg .d{flex:0 0 64px;font-weight:700;color:var(--coral)}
+  .chg li b{font-weight:700}
+
+  table{width:100%;border-collapse:collapse;font-size:15.5px}
+  th{text-align:left;font-size:13px;color:var(--muted);font-weight:600;padding:7px 8px;border-bottom:1px solid var(--line)}
+  td{padding:9px 8px;border-bottom:1px dashed var(--line2);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  td.r,th.r{text-align:right;white-space:nowrap}
+  .big{font-size:24px;font-weight:700;color:var(--coral)}
+
+  .note{margin-top:12px;font-size:14px;color:var(--soft);background:#f6f4ee;border-radius:9px;padding:10px 14px}
+  .note b{color:var(--text)}
+  .ask{margin-top:12px;border-left:4px solid var(--warn);background:var(--warn-l);border-radius:0 9px 9px 0;padding:10px 14px;font-size:15px}
+  .ask b{color:var(--warn)}
+  .ask ul{margin:4px 0 0 18px}
+  .ok{border-left-color:var(--g);background:var(--gl)}
+  .ok b{color:var(--g)}
+
+  .steps{list-style:none;counter-reset:s}
+  .steps li{counter-increment:s;display:flex;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line2);font-size:16px}
+  .steps li:last-child{border-bottom:none}
+  .steps li::before{content:counter(s);flex:0 0 28px;height:28px;border-radius:50%;background:var(--text);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+
+  .mans{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .man{border:1px solid var(--line);border-radius:11px;overflow:hidden;text-decoration:none;color:var(--text);background:#fff;display:flex;flex-direction:column}
+  .man img{width:100%;aspect-ratio:210/297;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--line)}
+  .man .ph{aspect-ratio:210/297;background:#f3f1ea;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;border-bottom:1px solid var(--line)}
+  .man div.t{padding:9px 11px}
+  .man b{display:block;font-size:16px}
+  .man span{font-size:13px;color:var(--muted)}
+  a.man:hover{border-color:var(--g)}
+  .tips{margin-top:14px;list-style:none}
+  .tips li{padding:8px 0;border-bottom:1px dashed var(--line2);font-size:15.5px}
+  .tips li:last-child{border-bottom:none}
+  .tips li .lb{display:inline-block;min-width:56px;font-size:12px;font-weight:700;text-align:center;border-radius:4px;padding:1px 6px;margin-right:6px;background:var(--gl);color:var(--g)}
+  .tips li .lb.k{background:var(--cafe-l);color:var(--cafe)}
+
+  .old-link{display:flex;gap:16px;align-items:center;text-decoration:none;color:var(--text)}
+  .old-link .go{margin-left:auto;font-weight:700;color:var(--g);white-space:nowrap}
+  .ft{margin-top:26px;font-size:13px;color:var(--muted)}
+
+  @media (max-width:700px){
+    h1{font-size:24px} h1 small{display:block;margin:4px 0 0}
+    .two{grid-template-columns:1fr}
+    .mans{grid-template-columns:1fr 1fr}
+    .card{padding:16px 14px}
+    .ch h2{font-size:18px}
+    .tab{font-size:13.5px;padding:6px 11px}
+    .tbtn{font-size:11px;padding:2px 8px;gap:3px} .tbtn svg{width:11px;height:11px}
+    .chg .d{flex-basis:52px}
+    .old-link{flex-wrap:wrap}
+    .box li{flex-wrap:wrap;gap:4px 8px} .box li small{order:5;flex-basis:100%;margin-top:-2px}
+  }
+  @media print{.tabs,.tbtn{display:none}.pane{display:block}.card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>주문 · 결제 시스템<small>선지서점 · 로뎀카페 · 잇다</small></h1>
+  <p class="lead">포스 · 키오스크 · 주문현황 화면 도입의 최신 내용과 견적, 설치, 교육 · 매뉴얼을 한곳에 모았습니다.</p>
+  <span class="upd">업데이트 2026.10.29 16:40</span>
+
+  <div class="tabs">
+    <button class="tab new on" data-p="now">최신 현황</button>
+    <button class="tab" data-p="quote">견적 · 계약</button>
+    <button class="tab" data-p="net">설치 · 와이파이</button>
+    <button class="tab" data-p="edu">교육 · 매뉴얼</button>
+    <button class="tab old" data-p="plan">기획(안) 10.18</button>
+  </div>
+
+  <!-- 최신 현황 -->
+  <section class="pane on" id="now">
+    <div class="card" id="c-dev">
+      <div class="ch"><h2>들어오는 기기</h2><span class="tag c">10.29 기준</span>
+        <button class="tbtn" onclick="saveJpg('c-dev','기기',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
+      <div class="two">
+        <div class="box"><b>선지서점</b><ul>
+          <li>포스 세트 <small>금전함 · 카드단말기 · 영수증 · 스캐너</small><span class="q">1대</span></li>
+          <li>키오스크 21.5˝ <small>도서검색대 옆</small><span class="q">1대</span></li>
+          <li>바코드 출력기 <small>책값표</small><span class="q">1대</span></li>
+          <li class="ex">디스플레이 43˝ <small>외벽 · 세로</small><span class="pill e">별도 구매</span><span class="q">1대</span></li>
+          <li class="ex">PDA용 휴대폰 <small>재고조사 · 행사장</small><span class="pill e">별도 구매</span><span class="q">1대</span></li>
+        </ul></div>
+        <div class="box k"><b>로뎀카페</b><ul>
+          <li>포스 세트 <small>앞 바 주문 자리</small><span class="q">1대</span></li>
+          <li>고객 화면 10˝ <small>포스 옆</small><span class="q">1대</span></li>
+          <li>키오스크 21.5˝ <small>쇼케이스 옆 벽면</small><span class="q">1대</span></li>
+          <li>주문관리 태블릿 <small>KDS · 제조대</small><span class="pill n">10.21 확정</span><span class="q">2대</span></li>
+          <li>사이니지 스틱 <small>화면 송출</small><span class="q">1개</span></li>
+          <li class="ex">디스플레이 43˝ <small>메뉴판 3 · 현황판 1</small><span class="pill e">별도 구매</span><span class="q">4대</span></li>
+        </ul></div>
+      </div>
+      <div class="note"><b>별도 구매</b>는 잇다 견적에 들어 있지 않고 사업단이 따로 사는 기기입니다.</div>
+    </div>
+
+    <div class="card" id="c-chg">
+      <div class="ch"><h2>기획(안)에서 바뀐 점</h2><span class="tag c">최신</span>
+        <button class="tbtn" onclick="saveJpg('c-chg','바뀐점',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
+      <ul class="chg">
+        <li><span class="d">10.29</span><span><b>서점 고객 화면 10˝ 하지 않기로</b> — 서점 계산대에는 손님용 화면을 두지 않습니다.</span></li>
+        <li><span class="d">10.21</span><span><b>카페 카운터 모니터 2대 → 주문관리 태블릿 2대</b> — 잇다가 앱을 세팅해 납품합니다. 기획(안)의 "외부 구매 추정"이 아니라 잇다 견적에 들어갑니다.</span></li>
+        <li><span class="d">10.21</span><span><b>카페 43˝ 화면은 와이파이로 연결</b> — 연결선 없이 전원만 있으면 됩니다.</span></li>
+        <li><span class="d">10.22</span><span><b>카페 43˝ 화면 4대</b> — 메뉴판 3대(가로로 나란히) + 주문번호 현황판 1대.</span></li>
+      </ul>
+    </div>
+
+    <div class="card" id="c-sch">
+      <div class="ch"><h2>일정</h2>
+        <button class="tbtn" onclick="saveJpg('c-sch','일정',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
+      <table>
+        <tr><th style="width:110px">날짜</th><th>내용</th><th class="r">상태</th></tr>
+        <tr><td>10/13 (화)</td><td>잇다 미팅 · 견적 접수</td><td class="r">완료</td></tr>
+        <tr><td>11/9 (월)</td><td>주문 · 결제 시스템 교육</td><td class="r"><span class="pill e">예정</span></td></tr>
+        <tr><td>11/12 (목)</td><td>견적 유효 기한</td><td class="r">—</td></tr>
+        <tr><td>11/14 (토)</td><td>준공 → 장비 설치 · 연동</td><td class="r">확정</td></tr>
+        <tr><td><b>11/22 (주일)</b></td><td><b>서점 · 카페 동시 오픈</b></td><td class="r"><b style="color:var(--coral)">확정</b></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 견적 · 계약 -->
+  <section class="pane" id="quote">
+    <div class="card" id="c-q">
+      <div class="ch"><h2>잇다 견적 구성</h2><span class="tag">약정 없음</span>
+        <button class="tbtn" onclick="saveJpg('c-q','견적구성',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
+      <div class="two">
+        <div class="box"><b>하드웨어 · 한 번 구입</b><ul>
+          <li>서점 — 포스 세트 · 키오스크 · 바코드 출력기<span class="q">3대</span></li>
+          <li>카페 — 포스 세트 · 고객 화면 · 키오스크 · 사이니지 스틱<span class="q">4대</span></li>
+          <li>카페 — 주문관리 태블릿<span class="q">2대</span></li>
+        </ul></div>
+        <div class="box"><b>소프트웨어 · 매달</b><ul>
+          <li>서점 — 포스(1명) · 키오스크 · PDA 앱<span class="q">3종</span></li>
+          <li>카페 — 포스(3명) · 키오스크 · 사이니지 앱<span class="q">3종</span></li>
+          <li>QR 주문 · 온라인몰 · 도서검색대<span class="q">무상</span></li>
+        </ul></div>
+      </div>
+      <div class="note"><b>포함</b> — 설치 · 출장 · 교육 1회 무상, 데이터 이관, 원격 지원, 장비 자체 결함 1년 무상 A/S · <b>견적 유효</b> 2026. 11. 12.<br>
+        금액이 들어간 견적서는 사업단 내부 파일로 따로 관리합니다.</div>
+    </div>
+
+    <div class="card" id="c-fee">
+      <div class="ch"><h2>결제 수수료</h2><span class="tag">잇다 안내 · 가맹점 공통</span>
+        <button class="tbtn" onclick="saveJpg('c-fee','수수료',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
+      <table>
+        <tr><th>결제 방법</th><th>수수료</th><th class="r">1만 원 결제 때</th></tr>
+        <tr><td>매장 포스 · 키오스크 카드 결제</td><td>카드사 수수료만<br><small style="color:var(--muted)">잇다 몫 없음</small></td><td class="r">카드사 기준</td></tr>
+        <tr><td>온라인 결제<br><small style="color:var(--muted)">온라인몰 · QR 주문</small></td><td><span class="big">3.7%</span><br><small style="color:var(--muted)">PG · 카드사 2.7% + 잇다 1%</small></td><td class="r"><b>370원</b></td></tr>
+      </table>
+      <div class="ask"><b>정할 것</b><ul>
+        <li>서점 온라인몰 결제를 언제 열지 (지금은 "도서 검색만, 결제는 추후")</li>
+        <li>카페 QR 주문을 오픈 때부터 쓸지</li></ul></div>
+    </div>
+
+    <div class="card" id="c-doc">
+      <div class="ch"><h2>계약 서류</h2><span class="tag w">확인 필요</span>
+        <button class="tbtn" onclick="saveJpg('c-doc','계약서류',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
+      <table>
+        <tr><th>잇다가 요청한 서류</th><th class="r">비고</th></tr>
+        <tr><td>대표자 신분증 사본 (앞면)</td><td class="r">—</td></tr>
+        <tr><td>사업자 통장 사본</td><td class="r">—</td></tr>
+        <tr><td>주주명부 (3개월 이내)</td><td class="r"><span class="pill n">해당 여부 확인</span></td></tr>
+        <tr><td>법인 인감증명서 (3개월 이내)</td><td class="r"><span class="pill n">해당 여부 확인</span></td></tr>
+        <tr><td>법인 등기부 등본 (3개월 이내)</td><td class="r"><span class="pill n">해당 여부 확인</span></td></tr>
+      </table>
+      <div class="note">주주명부 · 법인 인감증명서 · 법인 등기부 등본은 회사(법인)용 서류입니다. 사업단 사업자에 맞는 대체 서류가 무엇인지 잇다에 확인합니다.<br>
+        서점 · 카페는 <b>같은 사업자</b>이고, 세금계산서 받는 이메일 주소만 다릅니다.</div>
+    </div>
+  </section>
+
+  <!-- 설치 · 와이파이 -->
+  <section class="pane" id="net">
+    <div class="card" id="c-wifi">
+      <div class="ch"><h2>카페 와이파이</h2><span class="tag c">10.29 단톡</span>
+        <button class="tbtn" onclick="saveJpg('c-wifi','와이파이',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
+      <div class="ask ok"><b>방향</b><ul>
+        <li><b>카페 내부 전용 공유기 1대</b>를 새로 둡니다 — 디스플레이 · 키오스크 · 태블릿 연결용</li>
+        <li>손님에게는 필요할 때 <b>카페 와이파이 이름 · 비밀번호</b>를 알려 드립니다 (일반 카페처럼)</li>
+        <li>손님은 와이파이 또는 휴대폰 데이터로 QR 주문합니다</li></ul></div>
+      <div class="note">잇다 대표 제안은 공유기 2대(① 매장 장비용 ② 손님용)였고, 위 방향에 "넵넵" 동의했습니다.</div>
+      <div class="ask"><b>확인 필요</b><ul>
+        <li><b>월 사용료</b> — 공유기는 한 번 구입. 매달 요금은 교회 인터넷 회선을 같이 쓰는지, 새로 신청하는지에 따라 다릅니다.</li>
+        <li>1층에 교회 인터넷 회선이 들어오는지 (건축위 · 전산 담당)</li>
+        <li>장비용과 손님용을 나눠 쓸 수 있는지 (보안)</li></ul></div>
+    </div>
+
+    <div class="card" id="c-site">
+      <div class="ch"><h2>설치 자리에 필요한 것</h2><span class="tag">건축위 전달 10.22</span>
+        <button class="tbtn" onclick="saveJpg('c-site','설치',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
+      <table>
+        <tr><th style="width:110px">항목</th><th>내용</th></tr>
+        <tr><td><b>전원</b></td><td>기기마다 전원이 필요합니다.</td></tr>
+        <tr><td><b>인터넷</b></td><td>포스 · 키오스크 자리에 랜 또는 와이파이. 카페 공유기 자리와 전원.</td></tr>
+        <tr><td><b>상판</b></td><td>키오스크가 데스크형이라 올려 둘 상판이 필요합니다.</td></tr>
+        <tr><td><b>배선 · 보강</b></td><td>배선은 보이지 않게. 43˝ 화면(약 96 × 56cm)은 무게를 받을 보강.</td></tr>
+        <tr><td><b>계산대 PC</b></td><td>포스는 크롬 브라우저에서 돌아갑니다. 영수증 출력 프로그램을 켜 두어야 영수증이 나옵니다.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- 교육 · 매뉴얼 -->
+  <section class="pane" id="edu">
+    <div class="card" id="c-edu">
+      <div class="ch"><h2>교육 방식</h2><span class="tag">잇다 안내</span>
+        <button class="tbtn" onclick="saveJpg('c-edu','교육',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
+      <ol class="steps">
+        <li><span><b>AI 자동 시연</b> — 화면마다 오른쪽 아래 "사용법 자동안내"를 누르면 실제 화면을 짚어 가며 음성으로 알려 줍니다 (동영상 아님).</span></li>
+        <li><span><b>매뉴얼</b> — 아래 POS · PDA 매뉴얼 (최신판)</span></li>
+        <li><span><b>원격 화면 제어 + 전화 안내</b> — 잇다 고객센터 1551-7596</span></li>
+        <li><span><b>방문 교육</b> — 그래도 안 될 때</span></li>
+      </ol>
+      <div class="ask"><b>사업단 요청</b> — 견적 조건이 "교육 1회 무상"이므로, <b>오픈 전 현장 교육 1회</b>를 꼭 받습니다. 두 매장 동시 오픈, 매니저님과 봉사자분들 함께 사용. 날짜는 준공(11/14) 이후로 잇다와 다시 맞춥니다. (달력: 11/9 예정)</div>
+    </div>
+
+    <div class="card" id="c-man">
+      <div class="ch"><h2>사용 매뉴얼</h2><span class="tag c">10.29 받음</span></div>
+      <div class="mans">
+        <a class="man" href="gsmch-1f-itda-pos-manual.pdf" target="_blank"><img src="gsmch-1f-itda-pos-cover.jpg" alt="잇다POS 매뉴얼 표지"><div class="t"><b>잇다 POS</b><span>13쪽 · 서점 · 카페 계산대</span></div></a>
+        <a class="man" href="gsmch-1f-itda-pda-manual.pdf" target="_blank"><img src="gsmch-1f-itda-pda-cover.jpg" alt="잇다PDA 매뉴얼 표지"><div class="t"><b>잇다 PDA</b><span>12쪽 · 서점 휴대폰</span></div></a>
+        <div class="man"><div class="ph">준비 중</div><div class="t"><b>키오스크</b><span>받으면 추가</span></div></div>
+        <div class="man"><div class="ph">준비 중</div><div class="t"><b>주문관리 태블릿 · 현황판</b><span>받으면 추가</span></div></div>
+      </div>
+      <ul class="tips">
+        <li><span class="lb">공통</span>판매 · 상품 수정 · 재고 반영 · 결제 취소는 <b>매니저 계정</b>만 됩니다. 직원 계정은 조회만 됩니다 — 계정을 몇 개 만들지 정합니다.</li>
+        <li><span class="lb">공통</span>카드 결제 취소는 <b>손님 카드가 있어야</b> 합니다.</li>
+        <li><span class="lb">서점</span>서점은 <b>도서/문구 모드</b>로 씁니다. 발주(웹팩스 · 북센발주) · 매입 · 매입처 반품까지 POS에서 직접 합니다.</li>
+        <li><span class="lb">서점</span>PDA 카드 결제는 휴대폰에 <b>KIS MOBILE 앱</b> + 블루투스 카드 단말기가 필요합니다. 휴대폰을 살 때 확인합니다.</li>
+        <li><span class="lb">서점</span>POS에서 카드로 결제한 건 · 온라인 결제 건은 PDA에서 취소되지 않고 POS에서 취소합니다.</li>
+        <li><span class="lb k">카페</span>카페는 <b>카페 모드</b>로 씁니다. 메뉴 · 옵션 · 음성 주문 이름은 POS 메뉴관리에서 넣습니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 기획(안) -->
+  <section class="pane" id="plan">
+    <div class="card">
+      <a class="old-link" href="gsmch-1f-pos-committee.html">
+        <div><div class="ch" style="margin-bottom:6px"><h2>주문 · 결제 시스템 도입안</h2><span class="tag" style="background:#f0ece4;color:#8a7d68">기획(안) 10.18</span></div>
+          <p style="color:var(--soft);font-size:15px">위원회 보고용 14쪽 · 도입 배경 · 업체 선정 · 기기 구성 · 소요 비용. 10.29에 서점 고객 화면 10˝ 제외만 반영했습니다.</p></div>
+        <span class="go">열기 →</span></a>
+    </div>
+  </section>
+
+  <p class="ft">총여선교회 사업단 · 1층 성전보수 · 주문 · 결제 시스템</p>
+</div>
+
+<script>
+document.querySelectorAll('.tab').forEach(function(t){t.onclick=function(){
+  document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x===t)});
+  document.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.id===t.dataset.p)});
+  try{history.replaceState(null,'','#'+t.dataset.p)}catch(e){}
+}});
+(function(){var h=location.hash.slice(1);var t=document.querySelector('.tab[data-p="'+h+'"]');if(t)t.click();})();
+function _h2c(cb){if(window.html2canvas)return cb();var s=document.createElement('script');
+  s.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';s.onload=cb;
+  s.onerror=function(){alert('이미지 저장 기능을 불러오지 못했습니다.')};document.head.appendChild(s);}
+function saveJpg(id,name,btn){var el=document.getElementById(id);var t=btn.innerHTML;btn.disabled=true;btn.textContent='저장 중…';
+  _h2c(function(){html2canvas(el,{backgroundColor:'#ffffff',scale:2,windowWidth:1000,logging:false,
+    ignoreElements:function(n){return n.classList&&n.classList.contains('tbtn')},
+    onclone:function(d){var c=d.getElementById(id);c.style.width='968px';}
+  }).then(function(cv){cv.toBlob(function(b){var a=document.createElement('a');a.href=URL.createObjectURL(b);
+    a.download='gsmch_주문결제_'+name+'.jpg';document.body.appendChild(a);a.click();a.remove();},'image/jpeg',0.93)})
+  .catch(function(){alert('이미지로 저장하지 못했습니다.')}).then(function(){btn.disabled=false;btn.innerHTML=t;});});}
+</script>
+</body>
+</html>
