@@ -52,6 +52,10 @@
   .ev{display:block;font-size:14.5px;font-weight:500;line-height:1.35;border-radius:5px;
     padding:5px 7px;margin-top:6px;word-break:keep-all}
   .ev{background:var(--cl);color:var(--ct);border-left:3px solid var(--c)}
+  .lane{height:52px;margin-top:5px}
+  .lane .ev{margin-top:0;height:100%;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .lane .ev.sp{display:block;white-space:nowrap;overflow:visible}
+  .lane .ev.sp:not(.sps){margin-left:-7px}
   .ev.pos{--c:#3f6fb0;--cl:#e9f0fa;--ct:#2f5590}
   .ev.coffee{--c:#8a5a2b;--cl:#f4ebe1;--ct:#6e4520}
   .ev.cup{--c:#1f8a83;--cl:#e3f4f2;--ct:#176c66}
@@ -102,6 +106,7 @@
   @media (max-width:640px){
     h1{font-size:25px}
     .cell{min-height:76px;padding:4px 3px}
+    .lane{height:6px;margin-top:4px}.lane .ev{height:6px}
     .num{font-size:14px}
     .ev{font-size:0;padding:0;height:6px;margin-top:4px;border:none !important;background:var(--c) !important}
     .ev.sp{margin-left:-4px;margin-right:-4px}.ev.sp.sps{margin-left:0}.ev.sp.spe{margin-right:0}
@@ -151,7 +156,7 @@ const EVENTS = [
   ["2026-11-01","coffee","카페 매니저 근무 시작"],
   ["2026-11-02","coffee","커피 시음",1],
   ["2026-11-02","pos","잇다 견적 · 발주",1],
-  ["2026-11-03","reg","사업단 운영위 미팅 <em>(커피 원두 · 다회용기 결정)</em>",1],
+  ["2026-11-03","reg","운영위 미팅 <em>(원두·다회용기)</em>",1],
   ["2026-11-04","cup","다회용기 계약 <em>(반납함 발주)</em>",1],
   ["2026-11-05","pos","서점 포스 입고 <em>(임시서점)</em>",1],
   ["2026-11-08","reg","월례회 <em>9시</em>"],
@@ -165,11 +170,14 @@ const EVENTS = [
   ["2026-12-20","reg","사업단 사역 마무리"],
 ];
 const DOW=["일","월","화","수","목","금","토"];
+const LANES=["pos","coffee","cup","build","reg","open"];
 const pad=n=>String(n).padStart(2,"0");
 let html="";
 for(const m of [10,11,12]){
   const first=new Date(2026,m-1,1).getDay();
   const days=new Date(2026,m,0).getDate();
+  const WEEKLANES=[...Array(6)].map(()=>new Set());
+  for(let d=1;d<=days;d++){const key=`2026-${pad(m)}-${pad(d)}`;EVENTS.filter(e=>e[4]?(key>=e[0]&&key<=e[4]):e[0]==key).forEach(e=>WEEKLANES[Math.floor((first+d-1)/7)].add(e[1]));}
   html+=`<section class="month" id="m${m}"><div class="mh"><b>${m}월</b><small>2026</small><span class="who">· 사업단 일정</span><button class="tbtn" onclick="saveMonth(${m},this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div><div class="grid">`;
   DOW.forEach((d,i)=>html+=`<div class="dow ${i==0?'sun':i==6?'sat':''}">${d}</div>`);
   for(let i=0;i<first;i++) html+=`<div class="cell empty"></div>`;
@@ -178,7 +186,9 @@ for(const m of [10,11,12]){
     const key=`2026-${pad(m)}-${pad(d)}`, w=(first+d-1)%7;
     const evs=EVENTS.filter(e=>e[4]?(key>=e[0]&&key<=e[4]):e[0]==key).sort((a,b)=>(b[4]?1:0)-(a[4]?1:0));const tg=e=>e[3]==='d'?'<b class="tag dd">결정</b>':(e[3]?'<b class="tag">예정</b>':'');
     const cls=["cell",w==0?"sun":w==6?"sat":"",key==TODAY?"today":"",key<TODAY?"past":""].join(" ");
-    html+=`<div class="${cls}"><span class="num">${d}</span>${evs.map(e=>{if(e[4]){const st=key==e[0]||w==0;return `<span class="ev ${e[1]} sp ${key==e[0]?'sps':''} ${key==e[4]?'spe':''}">${st?e[2]:'&nbsp;'}</span>`}return `<span class="ev ${e[1]} ${e[3]==='d'?'dec':(e[3]?'tent':'')}">${e[2]}</span>`}).join("")}</div>`;
+    const wk=Math.floor((first+d-1)/7), lanes=LANES.filter(l=>WEEKLANES[wk].has(l));
+    const evHtml=e=>{if(e[4]){const st=key==e[0]||w==0;return `<span class="ev ${e[1]} sp ${key==e[0]?'sps':''} ${key==e[4]?'spe':''}">${st?e[2]:'&nbsp;'}</span>`}return `<span class="ev ${e[1]} ${e[3]==='d'?'dec':(e[3]?'tent':'')}" title="${e[2].replace(/<[^>]+>/g,'')}">${e[2]}</span>`};
+    html+=`<div class="${cls}"><span class="num">${d}</span>${lanes.map(l=>{const le=evs.filter(e=>e[1]==l);return `<div class="lane">${le.length?le.map(evHtml).join(''):''}</div>`}).join("")}</div>`;
     evs.forEach(e=>{if(e[4]&&key!=e[0])return;const[ey,em,ed]=(e[4]||'').split('-').map(Number);rows.push({d,w,key,t:tg(e)+e[2],big:e[1]=="open",to:e[4]?`~ ${em}/${ed} (${DOW[new Date(ey,em-1,ed).getDay()]})`:''})});
   }
   const tail=(7-(first+days)%7)%7;
