@@ -46,6 +46,9 @@
   .box li .q{margin-left:auto;font-weight:700;white-space:nowrap}
   .box li small{color:var(--muted);font-size:13px}
   .box li.ex{color:var(--muted)}
+  .box .sw.e{color:#8a7d68;background:#f3f0e8}.box .sw.w{color:var(--warn);background:var(--warn-l)}
+  .box .nm{white-space:nowrap}.box li small{flex:1;min-width:0}
+  .box li.ck{display:block;font-size:14.5px;color:var(--soft)}.box li.ck b{color:var(--text)}
   .box .sw{display:block;font-style:normal;font-size:13px;font-weight:700;color:var(--soft);background:#f6f4ee;padding:5px 14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .pill{font-size:11px;font-weight:700;border-radius:4px;padding:1px 6px;white-space:nowrap}
   .pill.e{background:#f0ece4;color:#8a7d68}
@@ -120,7 +123,7 @@
 <div class="wrap">
   <h1>주문 · 결제 시스템<small>선지서점 · 로뎀카페 · 잇다</small></h1>
   <p class="lead">포스 · 키오스크 · 주문현황 화면 도입의 최신 내용과 견적, 설치, 교육 · 매뉴얼을 한곳에 모았습니다.</p>
-  <span class="upd">업데이트 2026.10.29 16:40 · 기종 결정 기록 추가</span>
+  <span class="upd">업데이트 2026.10.29 16:50</span>
 
   <div class="tabs">
     <button class="tab new on" data-p="now">최신 현황</button>
@@ -133,39 +136,56 @@
   <!-- 최신 현황 -->
   <section class="pane on" id="now">
     <div class="card" id="c-dev">
-      <div class="ch"><h2>들어오는 기기 · 프로그램</h2><span class="tag c">10.29 기준</span>
+      <div class="ch"><h2>들어오는 기기 · 프로그램</h2><span class="tag c">10.29 16:50 기준</span>
         <button class="tbtn" onclick="saveJpg('c-dev','기기',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
       <div class="two">
-        <div class="box"><b>선지서점</b><ul>
-          <li>포스 세트 <small>금전함 · 카드단말기 · 영수증 · 스캐너</small><span class="q">1대</span></li>
-          <li>키오스크 21.5˝ <small>도서검색대 옆</small><span class="q">1대</span></li>
-          <li>바코드 출력기 <small>책값표</small><span class="q">1대</span></li>
-          <li class="ex">디스플레이 43˝ <small>외벽 · 세로</small><span class="pill e">별도 구매</span><span class="q">1대</span></li>
-          <li class="ex">PDA용 휴대폰 <small>재고조사 · 행사장</small><span class="pill e">별도 구매</span><span class="q">1대</span></li>
-          <li class="ex">무선 링 스캐너 <small>손가락형 · PDA 연결</small><span class="pill e">별도 구매</span><span class="q">1대</span></li>
+        <div class="box"><b>선지서점</b>
+        <i class="sw">잇다 납품 · 기기</i><ul>
+          <li><span class="nm">포스 세트</span> <small>본체 · 금전함 · 카드단말기 · 영수증 프린터 · 바코드 스캐너</small><span class="q">1세트</span></li>
+          <li><span class="nm">키오스크 21.5˝</span> <small>안드로이드형 · 데스크형 거치대 · 도서검색대 옆</small><span class="q">1대</span></li>
+          <li><span class="nm">바코드 출력기</span> <small>책값표 · 자체 바코드</small><span class="q">1대</span></li>
+        </ul>
+        <i class="sw e">사업단 별도 구매</i><ul>
+          <li><span class="nm">업무용 노트북</span> <small>매니저님 사무 · 도서 등록</small><span class="q">1대</span></li>
+          <li><span class="nm">디스플레이 43˝</span> <small>외벽 · 세로 · 화면은 USB로 넣음</small><span class="q">1대</span></li>
+          <li><span class="nm">PDA용 휴대폰</span> <small>큰 화면 · RAM 4GB 이상 · 배터리 6000mAh · IP67</small><span class="q">1대</span></li>
+          <li><span class="nm">무선 링 스캐너</span> <small>손가락형 · PDA 연결 · 재고 작업</small><span class="q">1대</span></li>
         </ul>
         <i class="sw">프로그램 · 매달</i><ul>
-          <li>포스 프로그램 <small>1명 기준 · 재고 · 매출 자동 집계</small><span class="q">1</span></li>
-          <li>키오스크 프로그램<span class="q">1</span></li>
-          <li>PDA 앱 <small>재고조사 · 서가 · 행사장 판매</small><span class="q">1</span></li>
-          <li>온라인몰 · 도서검색대 · QR <small>결제는 추후</small><span class="pill e">무상</span></li>
+          <li><span class="nm">포스 프로그램</span> <small>1명 기준 · 재고 · 매출 자동 집계 · 발주 · 매입</small><span class="q">1</span></li>
+          <li><span class="nm">키오스크 프로그램</span><span class="q">1</span></li>
+          <li><span class="nm">PDA 앱</span> <small>재고조사 · 서가 · 행사장 판매</small><span class="q">1</span></li>
+          <li><span class="nm">온라인몰 · 도서검색대 · QR</span> <small>도서 검색만, 결제는 추후</small><span class="pill e">무상</span></li>
+        </ul>
+        <i class="sw w">확인 필요</i><ul>
+          <li class="ck">PDA 카드 결제용 <b>블루투스 카드 단말기</b> — 포함인지, 따로 사는지</li>
+          <li class="ck">도서검색대 화면을 키오스크로 쓰는지, 따로 기기를 두는지</li>
         </ul></div>
-        <div class="box k"><b>로뎀카페</b><ul>
-          <li>포스 세트 <small>앞 바 주문 자리</small><span class="q">1대</span></li>
-          <li>고객 화면 10˝ <small>포스 옆</small><span class="q">1대</span></li>
-          <li>키오스크 21.5˝ <small>쇼케이스 옆 벽면</small><span class="q">1대</span></li>
-          <li>주문관리 태블릿 <small>KDS · 제조대</small><span class="pill n">10.21 확정</span><span class="q">2대</span></li>
-          <li>사이니지 스틱 <small>화면 송출</small><span class="q">1개</span></li>
-          <li class="ex">디스플레이 43˝ <small>메뉴판 3 · 현황판 1</small><span class="pill e">별도 구매</span><span class="q">4대</span></li>
+        <div class="box k"><b>로뎀카페</b>
+        <i class="sw">잇다 납품 · 기기</i><ul>
+          <li><span class="nm">포스 세트</span> <small>본체 · 금전함 · 카드단말기 · 영수증 프린터 · 바코드 스캐너 · 앞 바</small><span class="q">1세트</span></li>
+          <li><span class="nm">고객 화면 10˝</span> <small>포스 옆 · 주문 내역 · 결제 금액</small><span class="q">1대</span></li>
+          <li><span class="nm">키오스크 21.5˝</span> <small>안드로이드형 · 데스크형 거치대 · 쇼케이스 옆 벽면</small><span class="q">1대</span></li>
+          <li><span class="nm">주문관리 태블릿</span> <small>KDS · 제조대 · 잇다 앱 세팅</small><span class="pill n">10.21 확정</span><span class="q">2대</span></li>
+          <li><span class="nm">사이니지 스틱</span> <small>디스플레이 화면 송출</small><span class="q">1개</span></li>
+        </ul>
+        <i class="sw e">사업단 별도 구매</i><ul>
+          <li><span class="nm">디스플레이 43˝</span> <small>메뉴판 3대(가로로 나란히) + 주문번호 현황판 1대 · 와이파이 연결</small><span class="q">4대</span></li>
+          <li><span class="nm">공유기</span> <small>카페 내부 장비 전용 · 신규</small><span class="q">1대</span></li>
         </ul>
         <i class="sw">프로그램 · 매달</i><ul>
-          <li>포스 프로그램 <small>3명 기준 · 포스 + 태블릿 2대 연동</small><span class="q">1</span></li>
-          <li>키오스크 프로그램<span class="q">1</span></li>
-          <li>사이니지 앱 <small>메뉴판 · 주문번호 · 공지 송출</small><span class="q">1</span></li>
-          <li>QR 주문 · 온라인몰<span class="pill e">무상</span></li>
+          <li><span class="nm">포스 프로그램</span> <small>3명 기준 · 포스 + 태블릿 2대 연동</small><span class="q">1</span></li>
+          <li><span class="nm">키오스크 프로그램</span><span class="q">1</span></li>
+          <li><span class="nm">사이니지 앱</span> <small>메뉴판 · 주문번호 · 공지 송출</small><span class="q">1</span></li>
+          <li><span class="nm">QR 주문 · 온라인몰</span><span class="pill e">무상</span></li>
+        </ul>
+        <i class="sw w">확인 필요</i><ul>
+          <li class="ck">사이니지 스틱 1개로 43˝ 화면 4대를 모두 띄우는지</li>
+          <li class="ck">공유기 월 사용료 · 1층 교회 인터넷 회선 (설치 · 와이파이 칸)</li>
         </ul></div>
       </div>
-      <div class="note"><b>별도 구매</b>는 잇다 견적에 들어 있지 않고 사업단이 따로 사는 기기입니다. 프로그램은 <b>매달 이용료</b>이고 약정이 없습니다.</div>
+      <div class="note"><b>잇다 납품</b>은 잇다 견적에 들어 있는 기기, <b>사업단 별도 구매</b>는 사업단이 따로 사는 기기입니다. 프로그램은 <b>매달 이용료</b>이고 약정이 없습니다. 설치 · 교육 1회 · 1년 A/S는 잇다 견적에 포함입니다.</div>
+
     </div>
 
     <div class="card" id="c-chg">
