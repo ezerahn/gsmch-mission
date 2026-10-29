@@ -25,7 +25,7 @@
   .lead{font-size:16px;color:var(--soft)}
   .upd{display:inline-block;margin-top:10px;font-size:13px;color:var(--coral);
     background:var(--coral-light);padding:4px 10px;border-radius:6px;font-weight:500}
-  .legend{display:flex;flex-wrap:wrap;gap:14px;margin:22px 0 8px;font-size:15px;color:var(--soft)}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin:22px 0 8px;font-size:15px;color:var(--soft)}
   .legend span{display:flex;align-items:center;gap:6px}
   .legend i{width:14px;height:14px;border-radius:4px;display:inline-block}
   .k-big{background:var(--coral)} .k-meet{background:var(--accent)}
@@ -33,29 +33,36 @@
 
   .month{background:var(--card);border:1px solid var(--line);border-radius:14px;
     margin-top:26px;overflow:hidden}
-  .mh{display:flex;align-items:baseline;gap:10px;padding:18px 20px 12px}
+  .mh{display:flex;align-items:baseline;gap:10px;padding:12px 18px 8px}
   .mh b{font-size:28px;font-weight:700}
   .mh small{font-size:15px;color:var(--muted)}
-  .grid{display:grid;grid-template-columns:repeat(7,1fr);border-top:1px solid var(--line)}
+  .grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid var(--line)}
   .dow{font-size:14px;font-weight:700;text-align:center;padding:8px 0;color:var(--soft);
     background:#fcfbf8;border-bottom:1px solid var(--line)}
   .dow.sun{color:var(--coral)} .dow.sat{color:var(--blue)}
-  .cell{min-height:150px;border-right:1px solid var(--line2);border-bottom:1px solid var(--line2);
-    padding:6px 6px 8px;position:relative}
+  .cell{min-height:92px;border-right:1px solid var(--line2);border-bottom:1px solid var(--line2);
+    padding:4px 6px 6px;position:relative}
   .cell:nth-child(7n){border-right:none}
   .cell.empty{background:#fcfbf8}
-  .num{font-size:17px;font-weight:700;color:var(--text)}
+  .num{font-size:15px;font-weight:700;color:var(--text)}
   .cell.sun .num{color:var(--coral)} .cell.sat .num{color:var(--blue)}
   .cell.today{background:#fffbea}
   .cell.today .num::after{content:"오늘";font-size:11px;font-weight:700;color:#fff;
     background:var(--text);border-radius:4px;padding:1px 5px;margin-left:5px;vertical-align:2px}
-  .ev{display:block;font-size:14.5px;font-weight:500;line-height:1.35;border-radius:5px;
-    padding:5px 7px;margin-top:6px;word-break:keep-all}
+  .ev{display:block;font-size:13px;font-weight:500;line-height:1.3;border-radius:5px;
+    padding:3px 6px;margin-top:4px;word-break:keep-all}
   .ev{background:var(--cl);color:var(--ct);border-left:3px solid var(--c)}
-  .lane{height:52px;margin-top:5px}
-  .lane .ev{margin-top:0;height:100%;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-  .lane .ev.sp{display:block;white-space:nowrap;overflow:visible}
-  .lane .ev.sp:not(.sps){margin-left:-7px}
+  .lane{height:38px;margin-top:3px}
+  .lane .ev{margin-top:0;height:100%;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;padding:2px 5px}
+  .tg{display:inline-block;font-style:normal;font-size:11.5px;font-weight:700;color:#fff;background:var(--c);border-radius:4px;padding:0 5px;margin-right:5px;vertical-align:1px;line-height:1.6}
+  .tg.pos,.tg.coffee,.tg.cup,.tg.build,.tg.reg,.tg.open{--c:inherit}
+  .row .tg.pos,.pend .tg.pos{background:#3f6fb0}.row .tg.coffee,.pend .tg.coffee{background:#8a5a2b}.row .tg.cup,.pend .tg.cup{background:#1f8a83}
+  .row .tg.build,.pend .tg.build{background:#7a756c}.row .tg.reg,.pend .tg.reg{background:#b8956a}.row .tg.open,.pend .tg.open{background:#D9644A}
+  .ev.open .tg{background:#fff;color:#D9644A}
+  .tx{border-radius:4px}
+  .tx.tent{border:2px dotted var(--c);padding:0 4px;background:rgba(255,255,255,.55)}
+  .tx.dec{border:2px solid #b3382a;padding:0 4px;background:#fff}
+  .lane .ev.sp{white-space:normal;overflow:hidden;display:-webkit-box}
   .ev.pos{--c:#3f6fb0;--cl:#e9f0fa;--ct:#2f5590}
   .ev.coffee{--c:#8a5a2b;--cl:#f4ebe1;--ct:#6e4520}
   .ev.cup{--c:#1f8a83;--cl:#e3f4f2;--ct:#176c66}
@@ -63,7 +70,7 @@
   .ev.reg{--c:#b8956a;--cl:#f7f0e4;--ct:#7d5f36}
   .ev.open{--c:#D9644A;--cl:#D9644A;--ct:#fff;font-weight:700;font-size:15px;border-left:none}
   em{font-style:normal;font-weight:400;opacity:.85}
-  .ev.tent{border:1.5px dashed var(--c)}
+  .ev.tent{border:2px dotted var(--c)}
   .ev.dec{border:2px solid #b3382a;border-left:4px solid #b3382a}
   .tag{display:inline-block;font-size:11.5px;font-weight:700;color:#fff;background:var(--soft);
     border-radius:4px;padding:0 5px;margin-right:4px;vertical-align:1px;line-height:1.6}
@@ -72,7 +79,7 @@
   .ev.sp.sps{margin-left:0;border-radius:5px 0 0 5px;border-left:3px solid var(--c)}
   .ev.sp.spe{margin-right:0;border-radius:0 5px 5px 0}
   .legend i.c{border-radius:4px}
-  .k-tent{background:#fff;border:1.5px dashed var(--soft)}
+  .k-tent{background:#fff;border:2px dotted var(--soft)}
   .k-dec{background:#fff;border:2px solid #b3382a}
   .pend{margin-top:18px;background:#fff;border:1.5px dashed var(--soft);border-radius:12px;padding:14px 18px}
   .pend h3{font-size:17px;font-weight:700;margin-bottom:6px}
@@ -105,7 +112,7 @@
 
   @media (max-width:640px){
     h1{font-size:25px}
-    .cell{min-height:76px;padding:4px 3px}
+    .cell{min-height:54px;padding:4px 3px}
     .lane{height:6px;margin-top:4px}.lane .ev{height:6px}
     .num{font-size:14px}
     .ev{font-size:0;padding:0;height:6px;margin-top:4px;border:none !important;background:var(--c) !important}
@@ -124,16 +131,16 @@
 <body>
 <div class="wrap">
   <h1>사업단 일정 · 10~12월</h1>
-  <p class="lead">총여선교회 사업단 일정입니다. 색은 일의 꼭지별로 나눴습니다. 점선은 예정, 빨간 테두리는 그날 결정할 일입니다.</p>
+  <p class="lead">총여선교회 사업단 일정입니다. 색은 일의 꼭지별로 나눴습니다. 꼭지마다 한 줄로 이어지고, 점선(····)은 예정, 빨간 테두리는 그날 결정할 일입니다.</p>
   <span class="upd">업데이트 2026.10.29</span>
 
   <div class="legend">
-    <span><i class="c" style="background:#3f6fb0"></i>주문 · 결제 (잇다)</span>
-    <span><i class="c" style="background:#8a5a2b"></i>커피</span>
-    <span><i class="c" style="background:#1f8a83"></i>다회용기</span>
-    <span><i class="c" style="background:#7a756c"></i>공사 · 가구 · 셋업</span>
-    <span><i class="c" style="background:#b8956a"></i>사업단 정기</span>
-    <span><i class="c" style="background:#D9644A"></i>오픈</span>
+    <span><b class="tg" style="background:#3f6fb0">포스</b>주문 · 결제 (잇다)</span>
+    <span><b class="tg" style="background:#8a5a2b">커피</b></span>
+    <span><b class="tg" style="background:#1f8a83">다회용기</b></span>
+    <span><b class="tg" style="background:#7a756c">공사</b>가구 · 셋업</span>
+    <span><b class="tg" style="background:#b8956a">정기</b>사업단</span>
+    <span><b class="tg" style="background:#D9644A">오픈</b></span>
     <span><i class="k-tent"></i>점선 = 예정</span>
     <span><i class="k-dec"></i>빨간 테두리 = 결정</span>
   </div>
@@ -150,26 +157,35 @@ const EVENTS = [
   ["2026-10-11","reg","월례회 <em>9시</em>"],
   ["2026-10-13","pos","잇다 미팅"],
   ["2026-10-27","cup","더그리트 미팅"],
-  ["2026-10-28","build","건축위(김성재 권사) 서점 가구 미팅 1차"],
-  ["2026-10-29","build","건축위(김성재 권사) 서점 가구 미팅 2차 <em>9시</em>"],
+  ["2026-10-28","build","서점 가구 미팅 1차 <em>(건축위)</em>"],
+  ["2026-10-29","build","서점 가구 미팅 2차 <em>9시</em>"],
   ["2026-10-30","pos","카페 메뉴판 위치 확정","d"],
   ["2026-11-01","coffee","카페 매니저 근무 시작"],
-  ["2026-11-02","coffee","커피 시음",1],
-  ["2026-11-02","pos","잇다 견적 · 발주",1],
-  ["2026-11-03","coffee","운영위 · 원두 결정",1],
-  ["2026-11-03","cup","운영위 · 다회용기 결정",1],
-  ["2026-11-04","cup","다회용기 계약 <em>(반납함 발주)</em>",1],
-  ["2026-11-05","pos","서점 포스 입고 <em>(임시서점)</em>",1],
+  ["2026-11-02","coffee","시음",1],
+  ["2026-11-02","pos","견적 · 발주",1],
+  ["2026-11-03","coffee","원두 결정 <em>(운영위)</em>",1],
+  ["2026-11-03","cup","결정 <em>(운영위)</em>",1],
+  ["2026-11-04","cup","계약 <em>(반납함 발주)</em>",1],
+  ["2026-11-05","pos","서점 입고 <em>(임시서점)</em>",1],
   ["2026-11-08","reg","월례회 <em>9시</em>"],
-  ["2026-11-09","pos","주문 · 결제 시스템 교육",1],
+  ["2026-11-09","pos","전체 교육",1],
   ["2026-11-14","build","준공"],
-  ["2026-11-15","build","서점 · 카페 현장 셋업",0,"2026-11-20"],
+  ["2026-11-15","build","서점 · 카페 현장 셋업"],
   ["2026-11-21","build","테스트 운영"],
   ["2026-11-22","open","서점 · 카페 오픈"],
   ["2026-12-07","reg","신·구 사업단 인사 모임 <em>(인수인계)</em>",1],
   ["2026-12-13","reg","월례회 <em>9시</em>"],
   ["2026-12-20","reg","사업단 사역 마무리"],
 ];
+// 꼭지별로 쭉 이어지는 구간
+const BANDS = [
+  ["cup","2026-10-27","2026-11-04"],
+  ["build","2026-10-28","2026-10-29"],
+  ["pos","2026-10-30","2026-11-09"],
+  ["coffee","2026-11-01","2026-11-03"],
+  ["build","2026-11-14","2026-11-21"],
+];
+const LABEL={pos:"포스",coffee:"커피",cup:"다회용기",build:"공사",reg:"정기",open:"오픈"};
 const DOW=["일","월","화","수","목","금","토"];
 const LANES=["pos","coffee","cup","build","reg","open"];
 const pad=n=>String(n).padStart(2,"0");
@@ -178,19 +194,21 @@ for(const m of [10,11,12]){
   const first=new Date(2026,m-1,1).getDay();
   const days=new Date(2026,m,0).getDate();
   const WEEKLANES=[...Array(6)].map(()=>new Set());
-  for(let d=1;d<=days;d++){const key=`2026-${pad(m)}-${pad(d)}`;EVENTS.filter(e=>e[4]?(key>=e[0]&&key<=e[4]):e[0]==key).forEach(e=>WEEKLANES[Math.floor((first+d-1)/7)].add(e[1]));}
+  for(let d=1;d<=days;d++){const key=`2026-${pad(m)}-${pad(d)}`,wk=Math.floor((first+d-1)/7);EVENTS.filter(e=>e[0]==key).forEach(e=>WEEKLANES[wk].add(e[1]));BANDS.filter(b=>key>=b[1]&&key<=b[2]).forEach(b=>WEEKLANES[wk].add(b[0]));}
   html+=`<section class="month" id="m${m}"><div class="mh"><b>${m}월</b><small>2026</small><span class="who">· 사업단 일정</span><button class="tbtn" onclick="saveMonth(${m},this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div><div class="grid">`;
   DOW.forEach((d,i)=>html+=`<div class="dow ${i==0?'sun':i==6?'sat':''}">${d}</div>`);
   for(let i=0;i<first;i++) html+=`<div class="cell empty"></div>`;
   const rows=[];
   for(let d=1;d<=days;d++){
     const key=`2026-${pad(m)}-${pad(d)}`, w=(first+d-1)%7;
-    const evs=EVENTS.filter(e=>e[4]?(key>=e[0]&&key<=e[4]):e[0]==key).sort((a,b)=>(b[4]?1:0)-(a[4]?1:0));const tg=e=>e[3]==='d'?'<b class="tag dd">결정</b>':(e[3]?'<b class="tag">예정</b>':'');
+    const evs=EVENTS.filter(e=>e[0]==key);const tg=e=>e[3]==='d'?'<b class="tag dd">결정</b>':(e[3]?'<b class="tag">예정</b>':'');
     const cls=["cell",w==0?"sun":w==6?"sat":"",key==TODAY?"today":"",key<TODAY?"past":""].join(" ");
     const wk=Math.floor((first+d-1)/7), lanes=LANES.filter(l=>WEEKLANES[wk].has(l));
-    const evHtml=e=>{if(e[4]){const st=key==e[0]||w==0;return `<span class="ev ${e[1]} sp ${key==e[0]?'sps':''} ${key==e[4]?'spe':''}">${st?e[2]:'&nbsp;'}</span>`}return `<span class="ev ${e[1]} ${e[3]==='d'?'dec':(e[3]?'tent':'')}" title="${e[2].replace(/<[^>]+>/g,'')}">${e[2]}</span>`};
-    html+=`<div class="${cls}"><span class="num">${d}</span>${lanes.map(l=>{const le=evs.filter(e=>e[1]==l);return `<div class="lane">${le.length?le.map(evHtml).join(''):''}</div>`}).join("")}</div>`;
-    evs.forEach(e=>{if(e[4]&&key!=e[0])return;const[ey,em,ed]=(e[4]||'').split('-').map(Number);rows.push({d,w,key,t:tg(e)+e[2],big:e[1]=="open",to:e[4]?`~ ${em}/${ed} (${DOW[new Date(ey,em-1,ed).getDay()]})`:''})});
+    const tx=e=>`<span class="tx ${e[3]==='d'?'dec':(e[3]?'tent':'')}">${e[2]}</span>`;
+    html+=`<div class="${cls}"><span class="num">${d}</span>${lanes.map(l=>{const le=evs.filter(e=>e[1]==l),band=BANDS.find(b=>b[0]==l&&key>=b[1]&&key<=b[2]),T=`<b class="tg">${LABEL[l]}</b>`;
+      if(band){const st=key==band[1]||w==0;return `<div class="lane"><span class="ev ${l} sp ${key==band[1]?'sps':''} ${key==band[2]?'spe':''}">${st?T:''}${le.map(tx).join(' ')||'&nbsp;'}</span></div>`}
+      return `<div class="lane">${le.length?`<span class="ev ${l}">${T}${le.map(tx).join(' ')}</span>`:''}</div>`}).join("")}</div>`;
+    evs.forEach(e=>rows.push({d,w,key,t:`<b class="tg ${e[1]}">${LABEL[e[1]]}</b>`+(e[3]==='d'?'<b class="tag dd">결정</b>':(e[3]?'<b class="tag">예정</b>':''))+e[2],big:e[1]=="open",to:''}));
   }
   const tail=(7-(first+days)%7)%7;
   for(let i=0;i<tail;i++) html+=`<div class="cell empty"></div>`;
@@ -200,7 +218,7 @@ for(const m of [10,11,12]){
 }
 document.getElementById("cal").innerHTML=html;
 const P=EVENTS.filter(e=>e[3]&&e[3]!=='d');
-document.getElementById("pend").innerHTML=`<h3><b class="tag">예정</b> 날짜 확인 중</h3>`+P.map(e=>{const[y,m,d]=e[0].split("-").map(Number);return `<div><b>${m}/${d} (${DOW[new Date(y,m-1,d).getDay()]})</b><span>${e[2]}</span></div>`}).join("");
+document.getElementById("pend").innerHTML=`<h3><b class="tag">예정</b> 날짜 확인 중</h3>`+P.map(e=>{const[y,m,d]=e[0].split("-").map(Number);return `<div><b>${m}/${d} (${DOW[new Date(y,m-1,d).getDay()]})</b><span><i class="tg ${e[1]}">${LABEL[e[1]]}</i> ${e[2]}</span></div>`}).join("");
 
 function _h2c(cb){
   if(window.html2canvas) return cb();
