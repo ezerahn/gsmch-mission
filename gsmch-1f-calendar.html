@@ -56,6 +56,16 @@
   .ev.reg{background:var(--gold-light);color:#7d5f36;border-left:3px solid var(--gold)}
   .ev.ch{background:var(--blue-light);color:var(--blue);border-left:3px solid var(--blue)}
   em{font-style:normal;font-weight:400;opacity:.85}
+  .ev.tent{background:#fff;border:1.5px dashed;border-left-width:1.5px}
+  .ev.meet.tent{border-color:var(--accent)} .ev.reg.tent{border-color:var(--gold)}
+  .tag{display:inline-block;font-size:11.5px;font-weight:700;color:#fff;background:var(--soft);
+    border-radius:4px;padding:0 5px;margin-right:4px;vertical-align:1px;line-height:1.6}
+  .k-tent{background:#fff;border:1.5px dashed var(--soft)}
+  .pend{margin-top:18px;background:#fff;border:1.5px dashed var(--soft);border-radius:12px;padding:14px 18px}
+  .pend h3{font-size:17px;font-weight:700;margin-bottom:6px}
+  .pend h3 .tag{font-size:13px}
+  .pend div{font-size:17px;padding:4px 0}
+  .pend div b{display:inline-block;min-width:94px}
   .cell.past .ev{opacity:.55}
   .cell.past .ev.big{opacity:.7}
 
@@ -76,6 +86,8 @@
     .ev{font-size:0;padding:0;height:6px;margin-top:4px;border-left:none !important}
     .ev.meet{background:var(--accent)} .ev.reg{background:var(--gold)} .ev.ch{background:var(--blue)}
     .ev.big{font-size:0;height:6px}
+    .ev.tent{background:#fff !important;height:7px;border:1.5px dashed !important}
+    .ev.meet.tent{border-color:var(--accent) !important} .ev.reg.tent{border-color:var(--gold) !important}
     .cell.today .num::after{display:none}
     .cell.today{outline:2px solid var(--text);outline-offset:-2px}
     .row{font-size:16px}
@@ -87,15 +99,17 @@
 <div class="wrap">
   <a class="back" href="gsmch-1f.html">← 1층 성전보수 홈</a>
   <h1>사업단 일정 · 10~12월</h1>
-  <p class="lead">총여선교회 사업단 일정 중 확정된 것만 적었습니다. 날짜가 정해지면 추가합니다.</p>
+  <p class="lead">총여선교회 사업단 일정입니다. 날짜를 확인 중인 일정은 점선과 "예정"으로 표시했습니다.</p>
   <span class="upd">업데이트 2026.10.29</span>
 
   <div class="legend">
     <span><i class="k-big"></i>준공 · 오픈</span>
     <span><i class="k-meet"></i>미팅 · 현장</span>
     <span><i class="k-reg"></i>사업단 정기</span>
+    <span><i class="k-tent"></i>점선 = 예정</span>
   </div>
 
+  <div class="pend" id="pend"></div>
   <div id="cal"></div>
   <p class="note">※ 날짜가 정해지지 않은 일정은 넣지 않았습니다.</p>
 </div>
@@ -110,12 +124,12 @@ const EVENTS = [
   ["2026-10-28","meet","건축위(김성재 권사) 서점 가구 미팅 1차"],
   ["2026-10-29","meet","건축위(김성재 권사) 서점 가구 미팅 2차 <em>9시</em>"],
   ["2026-11-01","meet","카페 매니저 근무 시작"],
-  ["2026-11-02","meet","커피 시음 <em>예정</em>"],
+  ["2026-11-02","meet","커피 시음",1],
   ["2026-11-08","reg","월례회 <em>9시</em>"],
-  ["2026-11-09","meet","주문 · 결제 시스템 교육 <em>예정</em>"],
+  ["2026-11-09","meet","주문 · 결제 시스템 교육",1],
   ["2026-11-14","big","준공"],
   ["2026-11-22","big","서점 · 카페 오픈"],
-  ["2026-12-03","reg","신·구 사업단 상견례 <em>인수인계</em>"],
+  ["2026-12-03","reg","신·구 사업단 상견례 <em>인수인계</em>",1],
   ["2026-12-13","reg","월례회 <em>9시</em>"],
   ["2026-12-20","reg","사업단 사역 마무리"],
 ];
@@ -131,10 +145,10 @@ for(const m of [10,11,12]){
   const rows=[];
   for(let d=1;d<=days;d++){
     const key=`2026-${pad(m)}-${pad(d)}`, w=(first+d-1)%7;
-    const evs=EVENTS.filter(e=>e[0]==key);
+    const evs=EVENTS.filter(e=>e[0]==key);const tg=e=>e[3]?'<b class="tag">예정</b>':'';
     const cls=["cell",w==0?"sun":w==6?"sat":"",key==TODAY?"today":"",key<TODAY?"past":""].join(" ");
-    html+=`<div class="${cls}"><span class="num">${d}</span>${evs.map(e=>`<span class="ev ${e[1]}">${e[2]}</span>`).join("")}</div>`;
-    evs.forEach(e=>rows.push({d,w,key,t:e[2],big:e[1]=="big"}));
+    html+=`<div class="${cls}"><span class="num">${d}</span>${evs.map(e=>`<span class="ev ${e[1]} ${e[3]?'tent':''}">${tg(e)}${e[2]}</span>`).join("")}</div>`;
+    evs.forEach(e=>rows.push({d,w,key,t:tg(e)+e[2],big:e[1]=="big"}));
   }
   const tail=(7-(first+days)%7)%7;
   for(let i=0;i<tail;i++) html+=`<div class="cell empty"></div>`;
@@ -143,6 +157,8 @@ for(const m of [10,11,12]){
   html+=`</div></section>`;
 }
 document.getElementById("cal").innerHTML=html;
+const P=EVENTS.filter(e=>e[3]);
+document.getElementById("pend").innerHTML=`<h3><b class="tag">예정</b> 날짜 확인 중</h3>`+P.map(e=>{const[y,m,d]=e[0].split("-").map(Number);return `<div><b>${m}/${d} (${DOW[new Date(y,m-1,d).getDay()]})</b>${e[2]}</div>`}).join("");
 </script>
 </body>
 </html>
