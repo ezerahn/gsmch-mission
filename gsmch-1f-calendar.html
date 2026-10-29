@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>1층 성전보수 일정</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf8f3; --card:#fff; --line:#e6e1d7; --line2:#f0ece4;
+    --text:#2c2a26; --muted:#8a847a; --soft:#6e6860;
+    --accent:#3d6b4f; --accent-light:#eef4ef;
+    --coral:#D9644A; --coral-light:#fbeee9;
+    --gold:#b8956a; --gold-light:#f7f0e4;
+    --blue:#4a6f9c; --blue-light:#edf2f8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'IBM Plex Sans KR',-apple-system,'Apple SD Gothic Neo',sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:28px 16px 60px}
+  .back{display:inline-block;font-size:14px;color:var(--soft);text-decoration:none;
+    padding:8px 15px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+  .back:hover{border-color:var(--accent);color:var(--accent)}
+  h1{font-size:30px;font-weight:700;letter-spacing:-.02em;margin:22px 0 6px}
+  .lead{font-size:16px;color:var(--soft)}
+  .upd{display:inline-block;margin-top:10px;font-size:13px;color:var(--coral);
+    background:var(--coral-light);padding:4px 10px;border-radius:6px;font-weight:500}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;margin:22px 0 8px;font-size:15px;color:var(--soft)}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .legend i{width:14px;height:14px;border-radius:4px;display:inline-block}
+  .k-big{background:var(--coral)} .k-meet{background:var(--accent)}
+  .k-reg{background:var(--gold)} .k-ch{background:var(--blue)}
+
+  .month{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    margin-top:26px;overflow:hidden}
+  .mh{display:flex;align-items:baseline;gap:10px;padding:18px 20px 12px}
+  .mh b{font-size:28px;font-weight:700}
+  .mh small{font-size:15px;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr);border-top:1px solid var(--line)}
+  .dow{font-size:14px;font-weight:700;text-align:center;padding:8px 0;color:var(--soft);
+    background:#fcfbf8;border-bottom:1px solid var(--line)}
+  .dow.sun{color:var(--coral)} .dow.sat{color:var(--blue)}
+  .cell{min-height:104px;border-right:1px solid var(--line2);border-bottom:1px solid var(--line2);
+    padding:6px 6px 8px;position:relative}
+  .cell:nth-child(7n){border-right:none}
+  .cell.empty{background:#fcfbf8}
+  .num{font-size:17px;font-weight:700;color:var(--text)}
+  .cell.sun .num{color:var(--coral)} .cell.sat .num{color:var(--blue)}
+  .cell.today{background:#fffbea}
+  .cell.today .num::after{content:"오늘";font-size:11px;font-weight:700;color:#fff;
+    background:var(--text);border-radius:4px;padding:1px 5px;margin-left:5px;vertical-align:2px}
+  .ev{display:block;font-size:13.5px;font-weight:500;line-height:1.3;border-radius:5px;
+    padding:4px 6px;margin-top:5px;word-break:keep-all}
+  .ev.big{background:var(--coral);color:#fff;font-weight:700;font-size:15px}
+  .ev.meet{background:var(--accent-light);color:var(--accent);border-left:3px solid var(--accent)}
+  .ev.reg{background:var(--gold-light);color:#7d5f36;border-left:3px solid var(--gold)}
+  .ev.ch{background:var(--blue-light);color:var(--blue);border-left:3px solid var(--blue)}
+  em{font-style:normal;font-weight:400;opacity:.85}
+  .cell.past .ev{opacity:.55}
+  .cell.past .ev.big{opacity:.7}
+
+  .list{padding:4px 20px 18px;border-top:1px solid var(--line)}
+  .list h4{font-size:15px;color:var(--muted);font-weight:500;margin:14px 0 6px}
+  .row{display:flex;gap:14px;font-size:17px;padding:8px 0;border-bottom:1px dashed var(--line2)}
+  .row:last-child{border-bottom:none}
+  .row .d{min-width:94px;font-weight:700}
+  .row .d.sun{color:var(--coral)} .row .d.sat{color:var(--blue)}
+  .row.big .t{color:var(--coral);font-weight:700}
+  .row.past{color:var(--muted)}
+  .note{margin-top:26px;font-size:14px;color:var(--muted)}
+
+  @media (max-width:640px){
+    h1{font-size:25px}
+    .cell{min-height:58px;padding:4px 3px}
+    .num{font-size:14px}
+    .ev{font-size:0;padding:0;height:6px;margin-top:4px;border-left:none !important}
+    .ev.meet{background:var(--accent)} .ev.reg{background:var(--gold)} .ev.ch{background:var(--blue)}
+    .ev.big{font-size:0;height:6px}
+    .cell.today .num::after{display:none}
+    .cell.today{outline:2px solid var(--text);outline-offset:-2px}
+    .row{font-size:16px}
+  }
+  @media print{ .back{display:none} .month{break-inside:avoid} body{background:#fff} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="gsmch-1f.html">← 1층 성전보수 홈</a>
+  <h1>1층 성전보수 일정 · 10~12월</h1>
+  <p class="lead">확정된 일정만 적었습니다. 날짜가 정해지면 추가합니다.</p>
+  <span class="upd">업데이트 2026.10.29</span>
+
+  <div class="legend">
+    <span><i class="k-big"></i>준공 · 오픈</span>
+    <span><i class="k-meet"></i>미팅 · 현장</span>
+    <span><i class="k-reg"></i>사업단 정기</span>
+    <span><i class="k-ch"></i>교회 일정</span>
+  </div>
+
+  <div id="cal"></div>
+  <p class="note">※ 날짜가 정해지지 않은 일정은 넣지 않았습니다.</p>
+</div>
+
+<script>
+const TODAY = "2026-10-29";
+// type: big / meet / reg / ch
+const EVENTS = [
+  ["2026-10-11","ch","말씀함께주간 마당 행사"],
+  ["2026-10-11","reg","월례회 <em>9시</em>"],
+  ["2026-10-13","meet","잇다 미팅"],
+  ["2026-10-19","ch","말씀 묵상주간 <em>~10/24</em>"],
+  ["2026-10-27","meet","더그리트 미팅"],
+  ["2026-10-28","meet","서점 가구 미팅"],
+  ["2026-10-29","meet","서점 현장 확인 <em>9시</em>"],
+  ["2026-11-01","meet","카페 매니저 근무 시작"],
+  ["2026-11-08","reg","월례회 <em>9시</em>"],
+  ["2026-11-14","big","준공"],
+  ["2026-11-22","big","서점 · 카페 오픈"],
+  ["2026-12-13","reg","월례회 <em>9시</em>"],
+  ["2026-12-20","ch","당회"],
+  ["2026-12-20","reg","사업단 사역 마무리"],
+];
+const DOW=["일","월","화","수","목","금","토"];
+const pad=n=>String(n).padStart(2,"0");
+let html="";
+for(const m of [10,11,12]){
+  const first=new Date(2026,m-1,1).getDay();
+  const days=new Date(2026,m,0).getDate();
+  html+=`<section class="month"><div class="mh"><b>${m}월</b><small>2026</small></div><div class="grid">`;
+  DOW.forEach((d,i)=>html+=`<div class="dow ${i==0?'sun':i==6?'sat':''}">${d}</div>`);
+  for(let i=0;i<first;i++) html+=`<div class="cell empty"></div>`;
+  const rows=[];
+  for(let d=1;d<=days;d++){
+    const key=`2026-${pad(m)}-${pad(d)}`, w=(first+d-1)%7;
+    const evs=EVENTS.filter(e=>e[0]==key);
+    const cls=["cell",w==0?"sun":w==6?"sat":"",key==TODAY?"today":"",key<TODAY?"past":""].join(" ");
+    html+=`<div class="${cls}"><span class="num">${d}</span>${evs.map(e=>`<span class="ev ${e[1]}">${e[2]}</span>`).join("")}</div>`;
+    evs.forEach(e=>rows.push({d,w,key,t:e[2],big:e[1]=="big"}));
+  }
+  const tail=(7-(first+days)%7)%7;
+  for(let i=0;i<tail;i++) html+=`<div class="cell empty"></div>`;
+  html+=`</div><div class="list"><h4>${m}월 일정</h4>`;
+  rows.forEach(r=>html+=`<div class="row ${r.big?'big':''} ${r.key<TODAY?'past':''}"><span class="d ${r.w==0?'sun':r.w==6?'sat':''}">${m}/${r.d} (${DOW[r.w]})</span><span class="t">${r.t}</span></div>`);
+  html+=`</div></section>`;
+}
+document.getElementById("cal").innerHTML=html;
+</script>
+</body>
+</html>
