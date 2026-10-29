@@ -60,8 +60,12 @@
   .ev.meet.tent{border-color:var(--accent)} .ev.reg.tent{border-color:var(--gold)}
   .tag{display:inline-block;font-size:11.5px;font-weight:700;color:#fff;background:var(--soft);
     border-radius:4px;padding:0 5px;margin-right:4px;vertical-align:1px;line-height:1.6}
+  .ev.sp{margin-left:-7px;margin-right:-7px;border-radius:0;white-space:nowrap;position:relative;z-index:1;background:#dcebe0!important}
+  .ev.sp.sps{margin-left:0;border-radius:5px 0 0 5px;border-left:3px solid var(--accent)}
+  .ev.sp.spe{margin-right:0;border-radius:0 5px 5px 0}
+  .ev.sp:not(.sps){border-left:none}
   .ev.dec{background:#fcf0ed;color:#b3382a;border:1.5px solid #b3382a}
-  .tag.d{background:#b3382a}
+  .tag.dd{background:#b3382a}
   .k-dec{background:#fcf0ed;border:1.5px solid #b3382a}
   .k-tent{background:#fff;border:1.5px dashed var(--soft)}
   .pend{margin-top:18px;background:#fff;border:1.5px dashed var(--soft);border-radius:12px;padding:14px 18px}
@@ -100,6 +104,7 @@
     .ev{font-size:0;padding:0;height:6px;margin-top:4px;border-left:none !important}
     .ev.meet{background:var(--accent)} .ev.reg{background:var(--gold)} .ev.ch{background:var(--blue)}
     .ev.big{font-size:0;height:6px}
+    .ev.sp{margin-left:-4px;margin-right:-4px;background:var(--accent)!important}.ev.sp.sps{margin-left:0}.ev.sp.spe{margin-right:0}
     .ev.dec{background:#b3382a !important;border:none !important;height:6px}
     .ev.tent{background:#fff !important;height:7px;border:1.5px dashed !important}
     .ev .tag{display:none}
@@ -151,6 +156,8 @@ const EVENTS = [
   ["2026-11-08","reg","월례회 <em>9시</em>"],
   ["2026-11-09","meet","주문 · 결제 시스템 교육",1],
   ["2026-11-14","big","준공"],
+  ["2026-11-15","meet","서점 · 카페 현장 셋업",0,"2026-11-20"],
+  ["2026-11-21","meet","테스트 운영"],
   ["2026-11-22","big","서점 · 카페 오픈"],
   ["2026-12-07","reg","신·구 사업단 인사 모임 <em>(인수인계)</em>",1],
   ["2026-12-13","reg","월례회 <em>9시</em>"],
@@ -168,15 +175,15 @@ for(const m of [10,11,12]){
   const rows=[];
   for(let d=1;d<=days;d++){
     const key=`2026-${pad(m)}-${pad(d)}`, w=(first+d-1)%7;
-    const evs=EVENTS.filter(e=>e[0]==key);const tg=e=>e[3]==='d'?'<b class="tag d">결정</b>':(e[3]?'<b class="tag">예정</b>':'');
+    const evs=EVENTS.filter(e=>e[4]?(key>=e[0]&&key<=e[4]):e[0]==key).sort((a,b)=>(b[4]?1:0)-(a[4]?1:0));const tg=e=>e[3]==='d'?'<b class="tag dd">결정</b>':(e[3]?'<b class="tag">예정</b>':'');
     const cls=["cell",w==0?"sun":w==6?"sat":"",key==TODAY?"today":"",key<TODAY?"past":""].join(" ");
-    html+=`<div class="${cls}"><span class="num">${d}</span>${evs.map(e=>`<span class="ev ${e[1]} ${e[3]==='d'?'dec':(e[3]?'tent':'')}">${tg(e)}${e[2]}</span>`).join("")}</div>`;
-    evs.forEach(e=>rows.push({d,w,key,t:tg(e)+e[2],big:e[1]=="big"}));
+    html+=`<div class="${cls}"><span class="num">${d}</span>${evs.map(e=>{if(e[4]){const st=key==e[0]||w==0;return `<span class="ev ${e[1]} sp ${key==e[0]?'sps':''} ${key==e[4]?'spe':''}">${st?tg(e)+e[2]:'&nbsp;'}</span>`}return `<span class="ev ${e[1]} ${e[3]==='d'?'dec':(e[3]?'tent':'')}">${tg(e)}${e[2]}</span>`}).join("")}</div>`;
+    evs.forEach(e=>{if(e[4]&&key!=e[0])return;const[ey,em,ed]=(e[4]||'').split('-').map(Number);rows.push({d,w,key,t:tg(e)+e[2],big:e[1]=="big",to:e[4]?`~ ${em}/${ed} (${DOW[new Date(ey,em-1,ed).getDay()]})`:''})});
   }
   const tail=(7-(first+days)%7)%7;
   for(let i=0;i<tail;i++) html+=`<div class="cell empty"></div>`;
   html+=`</div><div class="list"><h4>${m}월 일정</h4>`;
-  rows.forEach(r=>html+=`<div class="row ${r.big?'big':''} ${r.key<TODAY?'past':''}"><span class="d ${r.w==0?'sun':r.w==6?'sat':''}">${m}/${r.d} (${DOW[r.w]})</span><span class="t">${r.t}</span></div>`);
+  rows.forEach(r=>html+=`<div class="row ${r.big?'big':''} ${r.key<TODAY?'past':''}"><span class="d ${r.w==0?'sun':r.w==6?'sat':''}">${m}/${r.d} (${DOW[r.w]})${r.to?'<br><small>'+r.to+'</small>':''}</span><span class="t">${r.t}</span></div>`);
   html+=`</div></section>`;
 }
 document.getElementById("cal").innerHTML=html;
