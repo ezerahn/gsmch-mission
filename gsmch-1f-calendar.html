@@ -201,7 +201,7 @@ function saveMonth(m,btn){
   var el=document.getElementById('m'+m); var t=btn.innerHTML; btn.disabled=true; btn.textContent='저장 중…';
   _h2c(function(){
     html2canvas(el,{backgroundColor:'#ffffff',scale:2,useCORS:true,logging:false,windowWidth:1000,
-      ignoreElements:function(n){return n.classList&&n.classList.contains('tbtn');},
+      ignoreElements:function(n){return n.classList&&(n.classList.contains('tbtn')||n.classList.contains('list'));},
       onclone:function(d){var c=d.getElementById('m'+m); c.style.width='968px'; c.style.margin='0';}
     }).then(function(cv){
       cv.toBlob(function(b){
