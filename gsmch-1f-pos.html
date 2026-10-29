@@ -92,6 +92,16 @@
   .iq .nt div.x b{color:#9A6414}
   .iq .nt li{font-size:14px;line-height:1.7;color:var(--soft);margin-left:16px}
   .iqf{margin-top:10px;font-size:13px;color:var(--muted)}.iqf a{color:var(--g);font-weight:600}
+  .dvg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .dv{margin:0;border:1px solid var(--line);border-radius:11px;overflow:hidden;background:#fff}
+  .dv .di{aspect-ratio:4/3;background:#f3f1ea;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--line)}
+  .dv .di img{width:100%;height:100%;object-fit:contain;display:block}
+  .dv .dph{font-size:13px;color:var(--muted)}
+  .dv figcaption{padding:8px 10px}
+  .dv figcaption b{display:block;font-size:15.5px;margin-top:3px}
+  .dv figcaption span{font-size:12.5px;color:var(--muted)}
+  .dv .dt{display:inline-block;font-size:11px;font-weight:700;color:#fff;background:#07913B;border-radius:3px;padding:0 6px}
+  .dv .dt.k{background:#9A6414}
   .big{font-size:24px;font-weight:700;color:var(--coral)}
 
   .note{margin-top:12px;font-size:14px;color:var(--soft);background:#f6f4ee;border-radius:9px;padding:10px 14px}
@@ -137,6 +147,7 @@
     .iq td{font-size:14px;padding:6px 6px}.iq td small{display:block;margin-left:0}
     .iq th:first-child,.iq td:first-child{display:none}
     .iq .tot{grid-template-columns:1fr}.iq .op{display:none}.iq .nt{grid-template-columns:1fr}
+    .dvg{grid-template-columns:1fr 1fr;gap:9px}.dv figcaption b{font-size:14px}
     .old-link{flex-wrap:wrap}
     .qa tr:first-child{display:none}
     .qa tr{display:block;border-bottom:1px dashed var(--line2);padding:8px 0}
@@ -218,6 +229,30 @@
       </div>
       <div class="note"><b>잇다 납품</b>은 잇다 견적에 들어 있는 기기, <b>사업단 별도 구매</b>는 사업단이 따로 사는 기기입니다. 프로그램은 <b>매달 이용료</b>이고 약정이 없습니다. 설치 · 교육 1회 · 1년 A/S는 잇다 견적에 포함입니다.</div>
 
+    </div>
+
+    <div class="card" id="c-pic">
+      <div class="ch"><h2>기기 모습</h2><span class="tag">화면 · 설치 예시</span>
+        <button class="tbtn" onclick="saveJpg('c-pic','기기모습',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
+      <div class="dvg">
+<figure class="dv"><div class="di"><img src="img/pos-pos-book.jpg" alt="포스" loading="lazy"></div><figcaption><span class="dt">서점</span><b>포스</b><span>계산 · 재고 · 발주 · 매입</span></figcaption></figure>
+<figure class="dv"><div class="di"><img src="img/pos-kiosk-book.jpg" alt="키오스크 21.5˝" loading="lazy"></div><figcaption><span class="dt">서점</span><b>키오스크 21.5˝</b><span>손님이 책 찾기 · 결제</span></figcaption></figure>
+<figure class="dv"><div class="di"><img src="img/pos-kiosk-furniture.jpg" alt="키오스크 자리" loading="lazy"></div><figcaption><span class="dt">서점</span><b>키오스크 자리</b><span>도서검색 · 키오스크 칸 (가구 시안)</span></figcaption></figure>
+<figure class="dv"><div class="di"><img src="img/pos-disp-book.jpg" alt="외벽 디스플레이 43˝" loading="lazy"></div><figcaption><span class="dt">서점</span><b>외벽 디스플레이 43˝</b><span>세로 · 신간 · 공지 (화면 예시)</span></figcaption></figure>
+<figure class="dv"><div class="di"><img src="img/pos-pda.jpg" alt="PDA 앱" loading="lazy"></div><figcaption><span class="dt">서점</span><b>PDA 앱</b><span>휴대폰으로 재고조사 · 판매</span></figcaption></figure>
+<figure class="dv"><div class="di"><img src="img/pos-online.jpg" alt="온라인몰 · 도서검색" loading="lazy"></div><figcaption><span class="dt">서점</span><b>온라인몰 · 도서검색</b><span>무상 · 결제는 추후</span></figcaption></figure>
+<figure class="dv"><div class="di"><div class="dph">사진 요청 중</div></div><figcaption><span class="dt">서점</span><b>바코드 출력기</b><span>책값표 인쇄</span></figcaption></figure>
+<figure class="dv"><div class="di"><div class="dph">사진 요청 중</div></div><figcaption><span class="dt">서점</span><b>무선 링 스캐너</b><span>손가락형 · PDA 연결</span></figcaption></figure>
+<figure class="dv"><div class="di"><img src="img/pos-pos-cafe.jpg" alt="포스" loading="lazy"></div><figcaption><span class="dt k">카페</span><b>포스</b><span>앞 바 주문 자리</span></figcaption></figure>
+<figure class="dv"><div class="di"><img src="img/pos-cust10.jpg" alt="고객 화면 10˝" loading="lazy"></div><figcaption><span class="dt k">카페</span><b>고객 화면 10˝</b><span>포스 옆 · 주문 · 금액</span></figcaption></figure>
+<figure class="dv"><div class="di"><img src="img/pos-kiosk-cafe.jpg" alt="키오스크 21.5˝" loading="lazy"></div><figcaption><span class="dt k">카페</span><b>키오스크 21.5˝</b><span>쇼케이스 옆 벽면</span></figcaption></figure>
+<figure class="dv"><div class="di"><img src="img/pos-board.jpg" alt="주문현황판 32˝" loading="lazy"></div><figcaption><span class="dt k">카페</span><b>주문현황판 32˝</b><span>준비 중 → 픽업하세요 · 호출</span></figcaption></figure>
+<figure class="dv"><div class="di"><img src="img/pos-qr.jpg" alt="QR 주문" loading="lazy"></div><figcaption><span class="dt k">카페</span><b>QR 주문</b><span>자리에서 휴대폰 주문 (스티커)</span></figcaption></figure>
+<figure class="dv"><div class="di"><div class="dph">사진 요청 중</div></div><figcaption><span class="dt k">카페</span><b>주문관리 태블릿 ×2</b><span>제조대 · 주문 확인 · 완료</span></figcaption></figure>
+<figure class="dv"><div class="di"><div class="dph">사진 요청 중</div></div><figcaption><span class="dt k">카페</span><b>메뉴판 43˝ ×3</b><span>앞 바 위 · 가로로 나란히</span></figcaption></figure>
+<figure class="dv"><div class="di"><div class="dph">사진 요청 중</div></div><figcaption><span class="dt k">카페</span><b>사이니지 스틱</b><span>화면 송출 장치</span></figcaption></figure>
+</div>
+      <div class="note">사진은 잇다 실제 화면과 설치 예시입니다. <b>"사진 요청 중"</b>인 기기는 잇다에 제품 사진을 받으면 넣겠습니다.</div>
     </div>
 
     <div class="card" id="c-sch">
