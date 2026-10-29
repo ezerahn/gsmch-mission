@@ -46,6 +46,7 @@
   .box li .q{margin-left:auto;font-weight:700;white-space:nowrap}
   .box li small{color:var(--muted);font-size:13px}
   .box li.ex{color:var(--muted)}
+  .box .sw{display:block;font-style:normal;font-size:13px;font-weight:700;color:var(--soft);background:#f6f4ee;padding:5px 14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .pill{font-size:11px;font-weight:700;border-radius:4px;padding:1px 6px;white-space:nowrap}
   .pill.e{background:#f0ece4;color:#8a7d68}
   .pill.n{background:var(--coral-l);color:var(--coral)}
@@ -132,7 +133,7 @@
   <!-- 최신 현황 -->
   <section class="pane on" id="now">
     <div class="card" id="c-dev">
-      <div class="ch"><h2>들어오는 기기</h2><span class="tag c">10.29 기준</span>
+      <div class="ch"><h2>들어오는 기기 · 프로그램</h2><span class="tag c">10.29 기준</span>
         <button class="tbtn" onclick="saveJpg('c-dev','기기',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
       <div class="two">
         <div class="box"><b>선지서점</b><ul>
@@ -141,6 +142,13 @@
           <li>바코드 출력기 <small>책값표</small><span class="q">1대</span></li>
           <li class="ex">디스플레이 43˝ <small>외벽 · 세로</small><span class="pill e">별도 구매</span><span class="q">1대</span></li>
           <li class="ex">PDA용 휴대폰 <small>재고조사 · 행사장</small><span class="pill e">별도 구매</span><span class="q">1대</span></li>
+          <li class="ex">무선 링 스캐너 <small>손가락형 · PDA 연결</small><span class="pill e">별도 구매</span><span class="q">1대</span></li>
+        </ul>
+        <i class="sw">프로그램 · 매달</i><ul>
+          <li>포스 프로그램 <small>1명 기준 · 재고 · 매출 자동 집계</small><span class="q">1</span></li>
+          <li>키오스크 프로그램<span class="q">1</span></li>
+          <li>PDA 앱 <small>재고조사 · 서가 · 행사장 판매</small><span class="q">1</span></li>
+          <li>온라인몰 · 도서검색대 · QR <small>결제는 추후</small><span class="pill e">무상</span></li>
         </ul></div>
         <div class="box k"><b>로뎀카페</b><ul>
           <li>포스 세트 <small>앞 바 주문 자리</small><span class="q">1대</span></li>
@@ -149,9 +157,15 @@
           <li>주문관리 태블릿 <small>KDS · 제조대</small><span class="pill n">10.21 확정</span><span class="q">2대</span></li>
           <li>사이니지 스틱 <small>화면 송출</small><span class="q">1개</span></li>
           <li class="ex">디스플레이 43˝ <small>메뉴판 3 · 현황판 1</small><span class="pill e">별도 구매</span><span class="q">4대</span></li>
+        </ul>
+        <i class="sw">프로그램 · 매달</i><ul>
+          <li>포스 프로그램 <small>3명 기준 · 포스 + 태블릿 2대 연동</small><span class="q">1</span></li>
+          <li>키오스크 프로그램<span class="q">1</span></li>
+          <li>사이니지 앱 <small>메뉴판 · 주문번호 · 공지 송출</small><span class="q">1</span></li>
+          <li>QR 주문 · 온라인몰<span class="pill e">무상</span></li>
         </ul></div>
       </div>
-      <div class="note"><b>별도 구매</b>는 잇다 견적에 들어 있지 않고 사업단이 따로 사는 기기입니다.</div>
+      <div class="note"><b>별도 구매</b>는 잇다 견적에 들어 있지 않고 사업단이 따로 사는 기기입니다. 프로그램은 <b>매달 이용료</b>이고 약정이 없습니다.</div>
     </div>
 
     <div class="card" id="c-chg">
