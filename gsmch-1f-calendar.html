@@ -183,7 +183,9 @@ const EVENTS = [
   ["2026-10-28","build","서점 가구 미팅 1차 <em>(건축위)</em>"],
   ["2026-10-29","build","서점 가구 미팅 2차 <em>9시</em>"],
   ["2026-10-30","pos","카페 메뉴판 위치 확정","d"],
+  ["2026-10-30","pos","서점 노트북 구매"],
   ["2026-11-01","reg","카페 매니저 근무 시작"],
+  ["2026-11-01","build","입구 진열장 결정","d"],
   ["2026-11-02","pos","견적 · 발주",1],
   ["2026-11-03","cup","결정 <em>(운영위)</em>",1],
   ["2026-11-04","cup","계약 <em>(반납함 발주)</em>",1],
@@ -254,14 +256,14 @@ document.querySelectorAll('#mtabs button').forEach(b=>b.onclick=()=>showM(b.data
  for(let i=0;i<N;i++){const d=new Date(st.getTime()+i*864e5),w=d.getDay();h+=`<div class="fd ${w==0?'s':''} ${i==ti?'td':''}" style="left:${i*CW}%;width:${CW}%"><b>${d.getDate()==1?(d.getMonth()+1)+'/':''}${d.getDate()}</b></div>`}
  h+='</div></div>';
  ["pos","coffee","cup","build","setup","open"].forEach(l=>{const c=FC[l];
-  const ev=EVENTS.filter(e=>e[1]==l&&ix(e[0])>=0&&ix(e[0])<N&&e[0]!='2026-10-29').sort((a,b)=>a[0]<b[0]?-1:1);if(!ev.length)return;
+  const ev=EVENTS.filter(e=>e[1]==l&&ix(e[0])>=0&&ix(e[0])<N&&e[0]!='2026-10-29'&&!/노트북/.test(e[2])).sort((a,b)=>a[0]<b[0]?-1:1);if(!ev.length)return;
   h+=`<div class="fr"><div class="fl"><b class="tg" style="background:${c}">${LABEL[l]}</b></div><div class="fc">`;
   for(let i=0;i<N;i++){const w=new Date(st.getTime()+i*864e5).getDay();if(w==0||i==ti)h+=`<i class="gl ${i==ti?'td':''}" style="left:${i*CW}%;width:${i==ti?CW:0}%"></i>`}
   const a=ix(ev[0][0]),b=ix(ev[ev.length-1][0]);
   if(b>a)h+=`<span class="fline" style="left:${(a+.5)*CW}%;width:${(b-a)*CW}%;background:${c}55"></span>`;
   BANDS.filter(x=>x[0]==l).forEach(x=>{h+=`<span class="fline" style="left:${(ix(x[1])+.5)*CW}%;width:${(ix(x[2])-ix(x[1]))*CW}%;background:${c}"></span>`});
   let prev=-9,up=false;
-  ev.forEach(e=>{const xi=ix(e[0]);up=(xi-prev<3)?!up:false;prev=xi;const SH={'카페 메뉴판 위치 확정':'메뉴판','견적 · 발주':'발주','서점 입고':'입고','전체 교육':'교육','시음':'시음','원두 결정':'원두','더그리트 미팅':'업체 미팅','결정':'결정','계약':'계약','서점 가구 미팅 1차':'가구 미팅','준공':'준공','서점 · 카페 현장 셋업':'셋업','테스트 운영':'테스트','서점 · 카페 오픈':'오픈'};const raw=e[2].replace(/\s*<em>.*?<\/em>/g,'');const nm=SH[raw]||raw;
+  ev.forEach(e=>{const xi=ix(e[0]);up=(xi-prev<3)?!up:false;prev=xi;const SH={'카페 메뉴판 위치 확정':'메뉴판','견적 · 발주':'발주','서점 입고':'입고','전체 교육':'교육','시음':'시음','원두 결정':'원두','더그리트 미팅':'업체 미팅','결정':'결정','계약':'계약','서점 가구 미팅 1차':'가구 미팅','준공':'준공','입구 진열장 결정':'진열장','서점 · 카페 현장 셋업':'셋업','테스트 운영':'테스트','서점 · 카페 오픈':'오픈'};const raw=e[2].replace(/\s*<em>.*?<\/em>/g,'');const nm=SH[raw]||raw;
    h+=`<div class="fs" style="left:${ix(e[0])*CW}%;width:${CW}%"><i class="fdot ${e[3]&&e[3]!=='d'?'':'f'} ${e[3]==='d'?'dc':''}" style="border-color:${c};${e[3]&&e[3]!=='d'?'':'background:'+c}"></i><span>${nm}</span></div>`});
   h+='</div></div>';});
  document.getElementById('flow').innerHTML=h;
