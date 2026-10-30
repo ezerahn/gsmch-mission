@@ -1,0 +1,692 @@
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>장로부인회 2026 기록</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* 레이아웃: 상단 고정 탭 + 월별 세로 타임라인, 자료는 표 중심 */
+:root{
+  --ink:#1b211d;
+  --ink-2:#5c6861;
+  --ink-3:#8b958f;
+  --bg:#f7f8f6;
+  --surface:#ffffff;
+  --line:#e0e5e1;
+  --line-2:#eef1ee;
+  --pine:#1f5c42;
+  --pine-2:#2d7a58;
+  --pine-wash:#eef5f1;
+  --clay:#9c6f3e;
+  --clay-wash:#faf3e9;
+  --font-d:'Gowun Batang',serif;
+  --font-b:'IBM Plex Sans KR',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ink:#e8ece9; --ink-2:#a3aea7; --ink-3:#77827b;
+    --bg:#131815; --surface:#1b211d; --line:#2c342e; --line-2:#242b26;
+    --pine:#7fc5a0; --pine-2:#5faa84; --pine-wash:#1a2721;
+    --clay:#cfa469; --clay-wash:#262018;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#e8ece9; --ink-2:#a3aea7; --ink-3:#77827b;
+  --bg:#131815; --surface:#1b211d; --line:#2c342e; --line-2:#242b26;
+  --pine:#7fc5a0; --pine-2:#5faa84; --pine-wash:#1a2721;
+  --clay:#cfa469; --clay-wash:#262018;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font-b);font-size:15px;line-height:1.65;
+  -webkit-text-size-adjust:100%;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);}
+.wrap{max-width:900px;margin:0 auto;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));}
+
+/* ── 머리 ── */
+header{padding-block:34px 22px;}
+.eyebrow{font-size:12px;letter-spacing:.2em;color:var(--pine);font-weight:600;margin-bottom:10px;}
+h1{font-family:var(--font-d);font-size:clamp(28px,6vw,40px);font-weight:700;margin:0;line-height:1.25;text-wrap:balance;}
+h1 .yr{color:var(--pine);}
+.lede{margin-top:10px;font-size:14.5px;color:var(--ink-2);max-width:60ch;}
+
+/* ── 탭 ── */
+.tabbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--surface);border-bottom:1px solid var(--line);}
+.tabs{max-width:900px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{flex:0 0 auto;appearance:none;background:none;border:none;cursor:pointer;
+  font-family:var(--font-b);font-size:14.5px;font-weight:500;color:var(--ink-2);
+  padding:13px 16px;border-bottom:2.5px solid transparent;white-space:nowrap;}
+.tab[aria-selected="true"]{color:var(--pine);font-weight:600;border-bottom-color:var(--pine);}
+.tab:focus-visible{outline:2px solid var(--pine);outline-offset:-4px;border-radius:4px;}
+
+main{padding-block:26px 56px;}
+section[role=tabpanel]{animation:fade .22s ease;}
+@keyframes fade{from{opacity:.4}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){section[role=tabpanel]{animation:none}}
+
+h2{font-family:var(--font-d);font-size:21px;font-weight:700;margin:0 0 4px;}
+h3{font-size:15px;font-weight:600;margin:0 0 8px;}
+.sub{font-size:13.5px;color:var(--ink-2);margin:0 0 18px;}
+
+/* ── 한눈에 ── */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:28px;}
+.stat{background:var(--surface);padding:16px 18px;}
+.stat .n{font-family:var(--font-d);font-size:27px;font-weight:700;color:var(--pine);line-height:1.1;
+  font-variant-numeric:tabular-nums;}
+.stat .l{font-size:12.5px;color:var(--ink-2);margin-top:5px;}
+.flow{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:18px 20px;margin-bottom:24px;}
+.flow dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:9px 16px;align-items:baseline;}
+.flow dt{font-size:13px;font-weight:600;color:var(--pine);white-space:nowrap;font-variant-numeric:tabular-nums;}
+.flow dd{margin:0;font-size:14px;}
+.flow dd .note{color:var(--ink-3);font-size:12.5px;}
+
+/* ── 월별 ── */
+.monthnav{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:22px;}
+.mchip{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
+  font-family:var(--font-b);font-size:13px;font-weight:500;padding:5px 12px;border-radius:999px;cursor:pointer;}
+.mchip[aria-current="true"]{background:var(--pine);border-color:var(--pine);color:#fff;font-weight:600;}
+.mchip:focus-visible{outline:2px solid var(--pine);outline-offset:2px;}
+
+.mcard{border:1px solid var(--line);border-radius:14px;background:var(--surface);overflow:hidden;margin-bottom:14px;}
+.mhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:15px 20px;border-bottom:1px solid var(--line-2);}
+.mhead .mn{font-family:var(--font-d);font-size:22px;font-weight:700;color:var(--pine);line-height:1;}
+.mhead .mt{font-size:14.5px;font-weight:600;}
+.mhead .tag{margin-left:auto;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:3px 9px;border-radius:999px;
+  background:var(--pine-wash);color:var(--pine);}
+.mhead .tag.rest{background:var(--line-2);color:var(--ink-3);}
+.mbody{padding:16px 20px 18px;}
+
+.ev{display:grid;grid-template-columns:72px 1fr;gap:4px 14px;padding:9px 0;border-bottom:1px solid var(--line-2);}
+.ev:last-of-type{border-bottom:none;}
+.ev .d{font-size:13px;font-weight:600;color:var(--ink-2);font-variant-numeric:tabular-nums;padding-top:1px;}
+.ev .c strong{font-weight:600;}
+.ev .c .meta{display:block;font-size:13px;color:var(--ink-2);margin-top:2px;}
+.ev.key .d{color:var(--pine);}
+.ev.key .c strong{color:var(--pine);}
+
+.roles{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.role{font-size:12.5px;background:var(--pine-wash);color:var(--pine);border-radius:6px;padding:3px 9px;}
+.bdays{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--ink-2);}
+.bdays b{color:var(--clay);font-weight:600;}
+
+.album{margin-top:14px;padding:12px 14px;border:1px dashed var(--line);border-radius:10px;
+  background:var(--bg);font-size:13px;color:var(--ink-3);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.album .lab{font-weight:600;color:var(--ink-2);}
+.album a{color:var(--pine);font-weight:600;}
+
+/* ── 정렬 전환 ── */
+.sortbar{display:flex;gap:5px;margin-bottom:10px;}
+.sortbtn{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
+  font-family:var(--font-b);font-size:13px;font-weight:500;padding:5px 13px;border-radius:999px;cursor:pointer;}
+.sortbtn[aria-pressed="true"]{background:var(--pine);border-color:var(--pine);color:#fff;font-weight:600;}
+.sortbtn:focus-visible{outline:2px solid var(--pine);outline-offset:2px;}
+td.yrmark{color:var(--pine);font-weight:600;}
+
+/* ── 표 ── */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface);margin-bottom:22px;}
+table{border-collapse:collapse;width:100%;min-width:480px;font-size:13.5px;}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line-2);vertical-align:top;}
+thead th{background:var(--pine-wash);color:var(--pine);font-weight:600;font-size:12.5px;letter-spacing:.03em;
+  border-bottom:1px solid var(--line);position:sticky;top:0;}
+tbody tr:last-child td{border-bottom:none;}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap;}
+td.nm{font-weight:600;white-space:nowrap;}
+.badge{font-size:11.5px;font-weight:600;background:var(--clay-wash);color:var(--clay);padding:2px 8px;border-radius:5px;}
+
+/* ── 기도 ── */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-bottom:26px;}
+.pcard{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:16px 18px;min-width:0;}
+.pcard h3{color:var(--pine);font-family:var(--font-d);font-size:17px;font-weight:700;margin-bottom:10px;}
+.pcard dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:5px 12px;font-size:13.5px;}
+.pcard dt{color:var(--ink-3);font-size:12.5px;white-space:nowrap;}
+.pcard dd{margin:0;}
+
+.note-box{border-left:3px solid var(--clay);background:var(--clay-wash);border-radius:0 10px 10px 0;
+  padding:13px 16px;font-size:13.5px;margin-bottom:22px;}
+.note-box b{color:var(--clay);}
+.note-box ul{margin:7px 0 0;padding-left:17px;}
+.note-box li{margin-bottom:3px;}
+
+footer{border-top:1px solid var(--line);padding-block:20px 10px;font-size:12.5px;color:var(--ink-3);text-align:center;}
+
+@media (max-width:520px){
+  .ev{grid-template-columns:1fr;gap:2px;}
+  .ev .d{font-size:12.5px;}
+  .mhead{padding:13px 16px;}
+  .mbody{padding:14px 16px 16px;}
+}
+</style>
+
+<div class="tabbar"><div class="tabs" role="tablist" aria-label="기록 분류">
+  <button class="tab" role="tab" id="t-over" aria-controls="p-over" aria-selected="true">한눈에</button>
+  <button class="tab" role="tab" id="t-month" aria-controls="p-month" aria-selected="false">월별 기록</button>
+  <button class="tab" role="tab" id="t-pray" aria-controls="p-pray" aria-selected="false">기도</button>
+  <button class="tab" role="tab" id="t-people" aria-controls="p-people" aria-selected="false">회원명단</button>
+  <button class="tab" role="tab" id="t-data" aria-controls="p-data" aria-selected="false">자료</button>
+</div></div>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">선 한 목 자 교 회</div>
+  <h1>장로부인회 <span class="yr">2026</span> 기록</h1>
+  <p class="lede">한 해 동안 모이고 기도하고 섬긴 일을 모았습니다. 사진과 앨범 링크는 달마다 이어서 채웁니다.</p>
+</header>
+
+<main>
+
+<!-- ════════ 한눈에 ════════ -->
+<section role="tabpanel" id="p-over" aria-labelledby="t-over">
+  <div class="stats">
+    <div class="stat"><div class="n">34</div><div class="l">회원 권사</div></div>
+    <div class="stat"><div class="n">6</div><div class="l">조 편성</div></div>
+    <div class="stat"><div class="n">4</div><div class="l">정기 기도모임</div></div>
+    <div class="stat"><div class="n">6</div><div class="l">월례회 (총회 포함)</div></div>
+  </div>
+
+  <h2>한 해의 흐름</h2>
+  <p class="sub">월례회가 열린 달과, 다른 일정으로 대체된 달입니다.</p>
+  <div class="flow"><dl>
+    <dt>1월</dt><dd>신년하례식 · 월례회 <span class="note">성남지방장로회와 함께</span></dd>
+    <dt>2월</dt><dd>월례회 <span class="note">신임 장로부인 인사·간증</span></dd>
+    <dt>3월</dt><dd>월례회 · 장로아카데미 개강 · 단상기도 시작</dd>
+    <dt>4월</dt><dd>위지엠 방문 <span class="note">월례회 대체</span></dd>
+    <dt>5월</dt><dd>리트릿 — 서울 시내 땅밟기 <span class="note">월례회 대체</span></dd>
+    <dt>6월</dt><dd>형제교회 방문 <span class="note">월례회 대체</span></dd>
+    <dt>7·8월</dt><dd><span class="note">방학</span></dd>
+    <dt>9월</dt><dd>월례회 · 릴레이 금식기도 시작</dd>
+    <dt>10월</dt><dd>장로부부수련회 (제주도) <span class="note">월례회 대체</span> · 아카데미 수료식</dd>
+    <dt>11월</dt><dd>총회 겸 월례회 <span class="note">은퇴 권사 말씀</span></dd>
+    <dt>12월</dt><dd><span class="note">일정 미정</span></dd>
+  </dl></div>
+
+  <h2>2026년 임원</h2>
+  <p class="sub">2025년 12월 월례회에서 추인되었습니다.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>직분</th><th>권사</th></tr></thead>
+    <tbody>
+      <tr><td>고문</td><td class="nm">김구비 권사</td></tr>
+      <tr><td>회장</td><td class="nm">박경진 권사</td></tr>
+      <tr><td>부회장</td><td class="nm">박소영 권사 · 조은영 권사</td></tr>
+      <tr><td>감사</td><td class="nm">한미애 권사</td></tr>
+      <tr><td>총무</td><td class="nm">박규선 권사</td></tr>
+      <tr><td>부총무</td><td class="nm">안상미 권사</td></tr>
+      <tr><td>중보기도</td><td class="nm">박정서 권사</td></tr>
+      <tr><td>회계</td><td class="nm">김정임 권사</td></tr>
+      <tr><td>서기</td><td class="nm">유수연 권사</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ════════ 월별 ════════ -->
+<section role="tabpanel" id="p-month" aria-labelledby="t-month" hidden>
+  <h2>월별 기록</h2>
+  <p class="sub">달을 눌러 이동합니다. 앨범 링크와 사진은 받는 대로 채웁니다.</p>
+  <div class="monthnav" id="mnav"></div>
+  <div id="months"></div>
+</section>
+
+<!-- ════════ 기도 ════════ -->
+<section role="tabpanel" id="p-pray" aria-labelledby="t-pray" hidden>
+  <h2>정기 기도모임</h2>
+  <p class="sub">네 가지 모임이 매주 이어집니다.</p>
+  <div class="pgrid">
+    <div class="pcard"><h3>주일 기도회</h3><dl>
+      <dt>시간</dt><dd>주일 오전 8시 – 10시</dd>
+      <dt>장소</dt><dd>마가다락방 그룹 2실</dd>
+      <dt>담당</dt><dd>김순건 권사</dd>
+    </dl></div>
+    <div class="pcard"><h3>화요 Zoom 기도회</h3><dl>
+      <dt>시간</dt><dd>화요일 저녁 8시 30분</dd>
+      <dt>장소</dt><dd>온라인</dd>
+      <dt>담당</dt><dd>박정서 권사 (중보기도)<br>(순번 담당권사 진행)</dd>
+    </dl></div>
+    <div class="pcard"><h3>금요성령집회 전 기도회</h3><dl>
+      <dt>시간</dt><dd>금요일 저녁 7시부터</dd>
+      <dt>장소</dt><dd>본당 중보기도 자리 위쪽 (지하 3층)</dd>
+      <dt>담당</dt><dd>다함께</dd>
+    </dl></div>
+    <div class="pcard"><h3>정기 기획위원회 중보기도</h3><dl>
+      <dt>시간</dt><dd>주일 오후 4시 30분</dd>
+      <dt>장소</dt><dd>2층 그레이스홀</dd>
+      <dt>담당</dt><dd>박경진 회장 권사<br>(순번 담당권사 진행)</dd>
+    </dl></div>
+  </div>
+
+  <div class="note-box">
+    <b>토요 단상기도회</b>는 위 네 모임과 별도로 본당 지하 3층에서 모입니다. 상반기는 3월 7일, 2026년 첫 모임은 2월 28일 오후 5시에 시작했습니다.
+    <ul><li>시간·장소를 확인해 주시면 위 카드에 함께 넣겠습니다.</li></ul>
+  </div>
+
+  <h2>정기 기획위원회 중보기도 인도</h2>
+  <p class="sub">주일 오후, 순번으로 섬깁니다.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>날짜</th><th>인도</th><th>장소</th></tr></thead>
+    <tbody>
+      <tr><td class="num">2월 15일</td><td class="nm">조은영 권사</td><td>본당 4층 대회의실</td></tr>
+      <tr><td class="num">4월 12일</td><td class="nm">박소영 권사</td><td>2층 그레이스홀</td></tr>
+      <tr><td class="num">6월 14일</td><td class="nm">한미애 권사</td><td>2층 그레이스홀</td></tr>
+      <tr><td class="num">8월 9일</td><td class="nm">박규선 권사</td><td>2층 그레이스홀</td></tr>
+      <tr><td class="num">10월 11일</td><td class="nm">김정임 권사</td><td>2층 그레이스홀</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>하반기 화요 중보기도 인도</h2>
+  <p class="sub">9월 8일부터 12월 22일까지, 매주 화요일 저녁 8시 30분.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>날짜</th><th>인도</th><th>날짜</th><th>인도</th></tr></thead>
+    <tbody>
+      <tr><td class="num">9월 8일</td><td class="nm">이드보라 권사</td><td class="num">11월 3일</td><td class="nm">한미애 권사</td></tr>
+      <tr><td class="num">9월 15일</td><td class="nm">임행자 권사</td><td class="num">11월 10일</td><td class="nm">공성원 권사</td></tr>
+      <tr><td class="num">9월 22일</td><td class="nm">김정임 권사</td><td class="num">11월 17일</td><td class="nm">서정아 권사</td></tr>
+      <tr><td class="num">9월 29일</td><td class="nm">조은영 권사</td><td class="num">11월 24일</td><td class="nm">이혜경 권사</td></tr>
+      <tr><td class="num">10월 6일</td><td style="color:var(--ink-3)">수련회</td><td class="num">12월 1일</td><td class="nm">양춘옥 권사</td></tr>
+      <tr><td class="num">10월 13일</td><td class="nm">김묘숙 권사</td><td class="num">12월 8일</td><td class="nm">유승희 권사</td></tr>
+      <tr><td class="num">10월 20일</td><td style="color:var(--ink-3)">아카데미 수료식</td><td class="num">12월 15일</td><td class="nm">윤희주 권사</td></tr>
+      <tr><td class="num">10월 27일</td><td class="nm">최수정 권사</td><td class="num">12월 22일</td><td class="nm">유수연 권사</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>가을수련회 릴레이 금식기도</h2>
+  <p class="sub">9월 7일부터 10월 7일까지. 아침 7시 · 점심 12시 · 저녁 6시에 기도문을 올리고 금식했습니다.</p>
+  <div class="note-box">
+    금식기도 기간에는 부인회 개인기도 중보를 쉬었습니다. 추석 연휴(9월 24~25일)와 대체공휴일(10월 5일)은 건너뛰었습니다.
+  </div>
+</section>
+
+<!-- ════════ 사람 ════════ -->
+<section role="tabpanel" id="p-people" aria-labelledby="t-people" hidden>
+  <h2>회원 명단</h2>
+  <p class="sub">34명 · 2025년 12월 기준</p>
+  <div class="sortbar">
+    <button class="sortbtn" data-sort="year" aria-pressed="true">연급순</button>
+    <button class="sortbtn" data-sort="name" aria-pressed="false">가나다순</button>
+  </div>
+  <div class="tablewrap"><table id="roster">
+    <thead><tr><th>권사</th><th>생일</th><th>장로</th><th>연급</th><th>임원</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <div class="note-box">
+    <b>명단에서 확인할 두 가지</b>
+    <ul>
+      <li>하 윤 권사님은 위 34명에 없습니다. 조현정 장로님의 사모님으로 보이는데, 맞다면 명단에 추가가 필요합니다.</li>
+      <li>박성진 권사님은 나이지리아에 계셔서 국내 일정에서 빠집니다.</li>
+    </ul>
+  </div>
+
+  <h2>생일</h2>
+  <p class="sub">달마다 월례회에서 축하합니다.</p>
+  <div class="tablewrap"><table id="bday">
+    <thead><tr><th>월</th><th>권사</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <h2>가정별 기도제목</h2>
+  <p class="sub">자녀와 손주 이름을 함께 적었습니다. 기도제목은 나누어 주시는 대로 채웁니다.</p>
+  <div class="tablewrap"><table id="family">
+    <thead><tr><th>권사</th><th>장로</th><th>자녀 · 손주</th><th>기도제목</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <div class="note-box">
+    괄호 안은 배우자이고, 빗금 뒤는 손주입니다. 기도제목 칸은 비워 두었습니다.
+    조별 나눔이나 화요 기도회에서 나온 제목을 주시면 이 자리에 이어서 넣겠습니다.
+  </div>
+</section>
+
+<!-- ════════ 자료 ════════ -->
+<section role="tabpanel" id="p-data" aria-labelledby="t-data" hidden>
+  <h2>회계</h2>
+  <p class="sub">회비계좌 신한은행 110-185-823186 (예금주 김정임) · 월 1만원</p>
+
+  <div class="stats" style="margin-bottom:18px">
+    <div class="stat"><div class="n">3,327,876</div><div class="l">9월 3일 잔액 (원)</div></div>
+    <div class="stat"><div class="n">1,363,532</div><div class="l">연초 이월금 (원)</div></div>
+  </div>
+
+  <h3 style="margin-top:22px">월례회별 보고</h3>
+  <p class="sub">각 월례회는 전월 실적을 보고합니다.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>보고한 월례회</th><th>대상 기간</th><th>수입</th><th>지출</th><th>잔액</th></tr></thead>
+    <tbody>
+      <tr><td>1월</td><td>12월</td><td class="num">—</td><td class="num">—</td><td class="num">—</td></tr>
+      <tr><td>3월</td><td>2월</td><td class="num">4,447,640</td><td class="num">355,000</td><td class="num">4,092,640</td></tr>
+      <tr><td>4월</td><td>3월</td><td class="num">5,673,370</td><td class="num">1,370,000</td><td class="num">4,303,370</td></tr>
+      <tr><td>5월</td><td>4월</td><td class="num">5,733,370</td><td class="num">2,204,000</td><td class="num">3,529,370</td></tr>
+      <tr><td>9월</td><td>6~8월</td><td class="num">4,023,746</td><td class="num">695,870</td><td class="num">3,327,876</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin-top:22px">주요 지출</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>날짜</th><th>항목</th><th>내역</th><th>금액</th></tr></thead>
+    <tbody>
+      <tr><td class="num">12. 18.</td><td>월례회</td><td>간식 (샌드위치)</td><td class="num">107,000</td></tr>
+      <tr><td class="num">12. 19.</td><td>월례회</td><td>간식 (과일)</td><td class="num">30,000</td></tr>
+      <tr><td class="num">2. 21.</td><td>월례회</td><td>식대</td><td class="num">155,000</td></tr>
+      <tr><td class="num">2. 22.</td><td>헌금</td><td>젊은이교회 20주년</td><td class="num">200,000</td></tr>
+      <tr><td class="num">3. 22.</td><td>월례회</td><td>간식비 (호두과자)</td><td class="num">110,000</td></tr>
+      <tr><td class="num">4. 13.</td><td>위지엠</td><td>도시락</td><td class="num">450,000</td></tr>
+      <tr><td class="num">4. 18.</td><td>위지엠</td><td>감사헌금</td><td class="num">1,310,000</td></tr>
+      <tr><td class="num">4. 18.</td><td>축하</td><td>담임사모님 생신 상품권</td><td class="num">300,000</td></tr>
+      <tr><td class="num">4. 18.</td><td>축하</td><td>담임사모님 생신 케이크</td><td class="num">43,000</td></tr>
+      <tr><td class="num">4. 19.</td><td>축하</td><td>담임사모님 생일 꽃</td><td class="num">80,000</td></tr>
+      <tr><td class="num">6. 8.</td><td>장로부인회</td><td>간식 (쿠키, 사탕)</td><td class="num">46,230</td></tr>
+      <tr><td class="num">6. 14.</td><td>감사헌금</td><td>예안교회 방문 감사헌금</td><td class="num">300,000</td></tr>
+      <tr><td class="num">6. 22.</td><td>형제교회</td><td>예안교회 방문 티타임 (장로회·부인회)</td><td class="num">94,700</td></tr>
+      <tr><td class="num">6. 22.</td><td>금요철야기도</td><td>간식준비 다회용기 180개</td><td class="num">95,400</td></tr>
+      <tr><td class="num">8. 2.</td><td>환우심방</td><td>부인회 심방 / 박규선 권사</td><td class="num">17,000</td></tr>
+      <tr><td class="num">8. 9.</td><td>기도회</td><td>정기 기획위원회 중보기도 간식 (김밥 외)</td><td class="num">64,020</td></tr>
+      <tr><td class="num">8. 9.</td><td>기도회</td><td>정기 기획위원회 중보기도 간식 (과일)</td><td class="num">35,520</td></tr>
+      <tr><td class="num">8. 30.</td><td>임원모임</td><td>월례회 사전모임</td><td class="num">43,000</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 style="margin-top:22px">회비 외 수입</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>날짜</th><th>항목</th><th>내역</th><th>금액</th></tr></thead>
+    <tbody>
+      <tr><td class="num">12. 20.</td><td>감사헌금</td><td>최수정 권사</td><td class="num">100,000</td></tr>
+      <tr><td class="num">4. 8.</td><td>감사헌금</td><td>송은주 장로님 / 이준원 권사님</td><td class="num">200,000</td></tr>
+      <tr><td class="num">4. 17.</td><td>특별헌금</td><td>위지엠 헌금</td><td class="num">1,310,000</td></tr>
+      <tr><td class="num">5. 7.</td><td>특별헌금</td><td>하 윤 권사님</td><td class="num">120,000</td></tr>
+      <tr><td class="num">7. 26.</td><td>경조사 감사헌금</td><td>박정서 권사 가정 (손자 출산 감사)</td><td class="num">100,000</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note-box">
+    9월 3일 기준 잔액 <b>3,327,876원</b>입니다. 장로부부수련회 협찬 100만원이 9월 월례회 안건으로 올랐습니다.
+    <ul>
+      <li>1월 월례회(12월 실적) 합계가 원본에서 잘려 비워 두었습니다.</li>
+      <li>2월 월례회 자료는 PDF로 받아 아직 반영하지 않았습니다.</li>
+      <li>10월 이후 내역을 주시면 11월 총회 보고용으로 이어서 정리하겠습니다.</li>
+    </ul>
+  </div>
+
+  <h2>주목자 배식 봉사</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>시간</th><th>장소</th><th>역할</th><th>담당</th></tr></thead>
+    <tbody>
+      <tr><td>매주 수요일 오전 9시 30분<br><span style="color:var(--ink-3);font-size:12.5px">둘째 주 제외</span></td><td>본당 3층 식당</td><td>배식 및 정리</td><td class="nm">안상미 권사 (부총무)<br><span style="font-weight:400;color:var(--ink-2)">010-2770-5538</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="note-box">9월 월례회에서 <b>잠정 중단</b>을 공지했습니다. 요청이 있으면 다시 시작합니다.</div>
+
+  <h2>2027년 성지순례 (검토 중)</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>항목</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td class="nm">일정</td><td>2027년 2월 26일(금) ~ 3월 6일(토) · 8박 9일</td></tr>
+      <tr><td class="nm">순례국가</td><td>이집트, 이스라엘</td></tr>
+      <tr><td class="nm">비용</td><td class="num">398만원 <span style="color:var(--ink-3);font-size:12.5px">35명 이상 + 인솔자 1인 기준</span></td></tr>
+      <tr><td class="nm">포함</td><td>항공권, 유류할증료, 2인 1실 호텔, 전용버스, 가이드, 여행자보험, 입장료, 비자</td></tr>
+      <tr><td class="nm">불포함</td><td>공동경비(1일 $10~13), 싱글룸 차지 60만원, 개인 경비</td></tr>
+      <tr><td class="nm">기타</td><td>노쇼핑 · 노옵션</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>원본 자료</h2>
+  <p class="sub">이 기록의 출처입니다.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>자료</th><th>상태</th></tr></thead>
+    <tbody>
+      <tr><td>월례회 자료 — 2025년 12월, 2026년 1·2·3·4·5·9월</td><td><span class="badge">확보</span></td></tr>
+      <tr><td>2026 회원 명단 (가나다순)</td><td><span class="badge">확보</span></td></tr>
+      <tr><td>장로·부인회 조 편성표</td><td><span class="badge">확보</span></td></tr>
+      <tr><td>가을수련회 금식기도표 · 화요 중보기도 순서</td><td><span class="badge">확보</span></td></tr>
+      <tr><td>월별 앨범 링크</td><td style="color:var(--ink-3)">받는 대로 추가</td></tr>
+      <tr><td>행사 사진</td><td style="color:var(--ink-3)">받는 대로 추가</td></tr>
+      <tr><td>10월 이후 회계</td><td style="color:var(--ink-3)">확인 필요</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+</main>
+
+<footer>선한목자교회 장로부인회 · 2026</footer>
+</div>
+
+<script>
+/* ── 데이터 ── */
+const ROSTER=[
+ ["공성원","09.28","박광훈","2026",""],["김구비","01.30","장명대","2013","고문"],
+ ["김묘숙","06.20","이동석","2021",""],["김순건","12.21","정승희","2018",""],
+ ["김영옥","03.15","박병구","2022",""],["김정임","07.03","김성균","2023","회계"],
+ ["김진숙","10.18","정경훈","2016",""],["김혜영","10.22","이성식","2020",""],
+ ["김효민","05.18","최인섭","2025",""],["문경주","04.17 (음)","김윤직","2021",""],
+ ["박경미","05.03","정영호","2023",""],["박경진","01.21 (음)","강운규","2011","회장"],
+ ["박규선","03.13","김용범","2020","총무"],["박민주","06.18","구홍림","2024",""],
+ ["박성진","09.13","김은섭","2020",""],["박소영","10.10 (음)","전재정","2018","부회장"],
+ ["박정서","02.23","정용식","2022","중보기도"],["박지영","10.22","금경엽","2021",""],
+ ["서정아","07.11","성재우","2026",""],["송순환","09.04","김동규","2016",""],
+ ["신선미","11.07","현성민","2021",""],["안상미","08.06","최성제","2025","부총무"],
+ ["양춘옥","10.12","여경구","2020",""],["유수연","11.27","황정호","2025","서기"],
+ ["유승희","09.21","한현석","2025",""],["윤희주","02.21","김종국","2025",""],
+ ["이드보라","01.17","박동훈","2024",""],["이수연","12.05","서정훈","2019",""],
+ ["이혜경","01.03","옥순종","2026",""],["임행자","08.01","임은종","2020",""],
+ ["정영란","02.04","김기영","2016",""],["조은영","01.11","이치형","2018","부회장"],
+ ["최수정","08.10","박운호","2020",""],["한미애","10.02 (음)","문희철","2020","감사"]
+];
+
+/* 권사 : 장로 : 자녀·손주 — 괄호는 배우자, 빗금 뒤는 손주 */
+const FAMILY={
+ "공성원":"수환, 수민","김구비":"현재 (최다비 / 장다인, 재아), 연희",
+ "김묘숙":"숙영 (문동명 / 문예은, 예린), 지은 (이형진 / 이시아, 루아)",
+ "김순건":"재훈, 재은 (국동훈 / 국승우, 지우)",
+ "김영옥":"유하 (이유호 / 이루아, 로이, 라아), 광호, 민호",
+ "김정임":"천진, 연","김진숙":"순구 (이지윤 / 이도), 한나 (이원택 / 이시온, 하이)",
+ "김혜영":"정수, 근희","김효민":"혜지, 민지, 온유","문경주":"원석, 병진",
+ "박경미":"예준, 예성, 예건, 예봄","박경진":"건","박규선":"하영, 주영",
+ "박민주":"구희광 (이해솔), 구민선 (김찬수 / 연우), 구소정",
+ "박성진":"재승, 재민","박소영":"승훈 (방제연 / 전승리, 승찬, 승하), 승희",
+ "박정서":"진수 (김은하), 진우, 어진","박지영":"",
+ "서정아":"삼열, 은서, 경인, 옥토","송순환":"해든 (강성은 / 강해나, 빛나), 관욱",
+ "신선미":"주영, 주희, 주원","안상미":"규진, 규현","양춘옥":"희진, 희원",
+ "유수연":"지우","유승희":"하람 전도사 (임시진 / 정효, 민효), 하민, 하영",
+ "윤희주":"단우, 단현, 단영, 단윤","이드보라":"수현, 은성",
+ "이수연":"수지 (심태우)","이혜경":"주연, 준모",
+ "임행자":"형주 (이정연 / 단아), 지유 (김민중)","정영란":"예안, 예일, 예본",
+ "조은영":"화진 (장준호 / 장예온, 예나), 유진 (이명재 / 이정진, 정율), 의진 (김기용 / 서윤)",
+ "최수정":"무원 (김수연), 무진","한미애":"솔지 (박준영), 규화 (임현주)"
+};
+
+const MONTHS=[
+ {m:1,t:"신년하례식과 첫 월례회",tag:"월례회",
+  ev:[
+   {d:"1. 4.",c:"<strong>신년하례식</strong><span class='meta'>3층 식당 · 담임목사님 생신(1/3) 축하</span>"},
+   {d:"1. 18.",c:"<strong>1월 월례회</strong><span class='meta'>본당 4층 대회의실 · 오후 3시 30분<br>성남지방장로회 정기총회와 함께</span>",key:1,
+    roles:["대표기도 김진숙 권사","중보기도 정영란 권사","말씀 김구비 권사"]},
+   {d:"1. 24.",c:"장로과정 고시 및 자격심사<span class='meta'>선한목자교회</span>"}
+  ],b:"김구비 권사 · 이드보라 권사 · 조은영 권사 · 박경진 권사 · 이혜경 권사"},
+
+ {m:2,t:"신임 장로부인 인사",tag:"월례회",
+  ev:[
+   {d:"2. 3.",c:"상반기 화요 Zoom 기도회 개학<span class='meta'>오후 8시 30분</span>"},
+   {d:"2. 7.",c:"장로회 임원 워크샵 · 유치부 배식봉사"},
+   {d:"2. 8.",c:"성남지방장로회 안수 및 취임<span class='meta'>성남제일교회 · 안수 구홍림·박동훈 장로 / 취임 박광훈·성재우·옥순종·조현정 장로</span>"},
+   {d:"2. 15.",c:"정기 기획위원회 중보기도<span class='meta'>인도 조은영 권사</span>"},
+   {d:"2. 21.",c:"<strong>2월 월례회</strong><span class='meta'>1층 새가족실 · 오후 3시 30분<br>신임 장로부인 참석 인사 및 간증 · 저녁 식사</span>",key:1,
+    roles:["대표기도 박성진 권사","중보기도 양춘옥 권사","말씀 유경아 사모"]},
+   {d:"2. 28.",c:"성남시장로회 총회 및 소년부 배식봉사<span class='meta'>선한목자교회</span>"},
+   {d:"2. 28.",c:"상반기 단상기도 시작<span class='meta'>본당 · 오후 5시 · 기도 후 저녁 식사</span>"}
+  ],b:"박정서 권사 · 정영란 권사 · 윤희주 권사"},
+
+ {m:3,t:"장로 취임과 아카데미 개강",tag:"월례회",
+  ev:[
+   {d:"3. 1.",c:"장로 취임 및 갈렙교회 파송예배"},
+   {d:"3. 2.",c:"장로부부 춘계수련회"},
+   {d:"3. 7.",c:"단상기도 개학<span class='meta'>본당 지하 3층 · 오후 5시</span>"},
+   {d:"3. 21.",c:"<strong>3월 월례회</strong><span class='meta'>새가족실 · 오후 3시 30분</span>",key:1,
+    roles:["대표기도 이수연 권사","중보기도 박지영 권사","말씀 김미옥 전도사"]},
+   {d:"3. 28.",c:"제18기 장로아카데미 개강<span class='meta'>팀장 여경구 장로·양춘옥 권사 / 총무 박병구 장로·김영옥 권사<br>멘토가정 한현석 장로·유승희 권사, 박광훈 장로·공성원 권사, 성재우 장로·서정아 권사, 옥순종 장로·이혜경 권사</span>"}
+  ],b:"박경진 권사 · 김영옥 권사 · 박규선 권사"},
+
+ {m:4,t:"위지엠 방문",tag:"대체",
+  ev:[
+   {d:"4. 12.",c:"정기 기획위원회 중보기도<span class='meta'>인도 박소영 권사</span>"},
+   {d:"4. 18.",c:"<strong>위지엠 방문</strong> <span class='meta'>오전 10시 · 월례회 대체<br>신천 장로부인 인사 &amp; 기도회 (신천 장로부인 필참) · 교회에서 오전 9시 출발</span>",key:1,
+    roles:["대표기도 최수정 권사","중보기도 김순건 권사","말씀 박리부가 사모"]},
+   {d:"4. 18.",c:"형제교회 방문<span class='meta'>포도나무교회 · 왕정원 목사</span>"},
+   {d:"4. 19.",c:"유경아 담임사모님 생신(5/2) 축하<span class='meta'>1부 예배 후 2층 접견실 · 미국 일정으로 미리 축하</span>"},
+   {d:"4. 25.",c:"장로회 전도<span class='meta'>남한산성 · 오전 9시 · 장로부부 참석</span>"},
+   {d:"4. 26.",c:"최효열 목사 담임목사 취임 감사예배<span class='meta'>열린감리교회</span>"},
+   {d:"4월",c:"성전보수공사 금식기도<span class='meta'>개인기도를 쉬고 교회를 위한 기도에 집중</span>"}
+  ],b:"문경주 권사"},
+
+ {m:5,t:"리트릿 — 서울 시내 땅밟기",tag:"대체",
+  ev:[
+   {d:"5. 9.",c:"<strong>장로부인회 리트릿</strong> <span class='meta'>월례회 대체 · 오전 8시 30분 교회 출발<br>“거룩한 땅이 되게 하소서” | 출애굽기 3:5<br>정동제일교회 역사관 → 덕수궁 → 점심 → 로뎀 티타임</span>",key:1,
+    roles:["말씀 김묘숙 권사"]},
+   {d:"5. 11.",c:"행복플러스<span class='meta'>5/11~13 · 솔비치 삼척<br>예수와 함께 죽고 예수로 사는 가정</span>"},
+   {d:"5. 25.",c:"평신도 주일 기념 새벽기도회<span class='meta'>5/25~29 · 오전 5시 30분 · 글로리홀(6층)<br>영원한 해갈! 예수그리스도 (요 4:14)</span>"}
+  ],b:"김효민 권사 · 박경미 권사"},
+
+ {m:6,t:"형제교회 방문",tag:"대체",
+  ev:[
+   {d:"6. 14.",c:"정기 기획위원회 중보기도<span class='meta'>인도 한미애 권사</span>"},
+   {d:"6. 20.",c:"<strong>장로회와 함께 형제교회 방문</strong><span class='meta'>예안교회 · 월례회 대체</span>",key:1},
+   {d:"6. 22.",c:"장로임원수련회<span class='meta'>6/22~23 · 속초 델피노 · 선교대회 참석</span>"}
+  ],b:"김묘숙 권사 · 박민주 권사"},
+
+ {m:7,t:"방학",tag:"쉼",rest:1,ev:[],b:"김정임 권사 · 서정아 권사"},
+ {m:8,t:"방학",tag:"쉼",rest:1,
+  ev:[{d:"8. 9.",c:"정기 기획위원회 중보기도<span class='meta'>인도 박규선 권사</span>"}],
+  b:"임행자 권사 · 안상미 권사 · 최수정 권사"},
+
+ {m:9,t:"수련회를 준비하며",tag:"월례회",
+  ev:[
+   {d:"9. 5.",c:"<strong>9월 월례회</strong><span class='meta'>2층 기획위원회실(장로실) · 오후 3시 30분<br>단상기도회 후 식사 (전박사)<br>안건 — 장로부부수련회 협찬 100만원</span>",key:1,
+    roles:["대표기도 문경주 권사","말씀 신나단 목사","중보기도 박민주 권사"]},
+   {d:"9. 7.",c:"가을수련회 릴레이 금식기도 시작<span class='meta'>9/7 ~ 10/7 · 아침 7시 · 점심 12시 · 저녁 6시</span>"},
+   {d:"9. 8.",c:"하반기 화요 Zoom 기도 시작<span class='meta'>저녁 8시 30분</span>"}
+  ],b:"공성원 권사 · 송순환 권사 · 박성진 권사 · 유승희 권사"},
+
+ {m:10,t:"장로부부 가을수련회 — 제주도",tag:"대체",
+  ev:[
+   {d:"10. 8.",c:"<strong>장로부부 가을수련회</strong><span class='meta'>10/8(목) ~ 10(토) · 제주 KAL호텔 서귀포 · 월례회 대체<br>36부부 72명 외 담임목사님 내외 포함 76명<br>제주국제공항 오전 11시 30분 집결</span>",key:1},
+   {d:"10. 11.",c:"정기 기획위원회 중보기도<span class='meta'>인도 김정임 권사</span>"},
+   {d:"10. 22.",c:"제18기 장로아카데미 수료식<span class='meta'>10/22(목) ~ 23(금)</span>"}
+  ],b:"양춘옥 권사 · 한미애 권사 · 김혜영 권사 · 박지영 권사 · 박소영 권사 · 김진숙 권사"},
+
+ {m:11,t:"총회 겸 월례회",tag:"총회",
+  ev:[
+   {d:"11. 8.",c:"<strong>장로부인회 총회</strong><span class='meta'>새가족실 · 오후 3시 30분<br>은퇴하시는 김구비 권사님 · 송순환 권사님 · 박소영 권사님 말씀으로 설교 대체</span>",key:1,
+    roles:["대표기도 박경미 권사","중보기도 박민주 권사"]}
+  ],b:"신선미 권사 · 유수연 권사"},
+
+ {m:12,t:"",tag:"미정",rest:1,ev:[],b:"이수연 권사 (12.5) · 김순건 권사 (12.21)"}
+];
+
+/* ── 탭 ── */
+const tabs=[...document.querySelectorAll('.tab')];
+tabs.forEach(t=>t.addEventListener('click',()=>select(t.id.slice(2))));
+function select(key,push){
+  tabs.forEach(t=>{
+    const on=t.id==='t-'+key;
+    t.setAttribute('aria-selected',on?'true':'false');
+    document.getElementById(t.getAttribute('aria-controls')).hidden=!on;
+  });
+  if(push!==false){try{history.replaceState(null,'','#'+key);}catch(e){}}
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function fromHash(){
+  const k=(location.hash||'').replace('#','');
+  if(tabs.some(t=>t.id==='t-'+k))select(k,false);
+}
+window.addEventListener('hashchange',fromHash);
+
+/* ── 월별 렌더 ── */
+const mBox=document.getElementById('months'),mNav=document.getElementById('mnav');
+MONTHS.forEach(M=>{
+  const b=document.createElement('button');
+  b.className='mchip';b.textContent=M.m+'월';
+  b.addEventListener('click',()=>{
+    document.getElementById('m'+M.m).scrollIntoView({behavior:'smooth',block:'start'});
+    [...mNav.children].forEach(c=>c.removeAttribute('aria-current'));
+    b.setAttribute('aria-current','true');
+  });
+  mNav.appendChild(b);
+
+  const card=document.createElement('div');
+  card.className='mcard';card.id='m'+M.m;
+  let evs=M.ev.map(e=>{
+    const roles=e.roles?`<div class="roles">${e.roles.map(r=>`<span class="role">${r}</span>`).join('')}</div>`:'';
+    return `<div class="ev${e.key?' key':''}"><div class="d">${e.d}</div><div class="c">${e.c}${roles}</div></div>`;
+  }).join('');
+  if(!evs)evs=`<div style="color:var(--ink-3);font-size:13.5px;padding:4px 0">기록된 일정이 없습니다.</div>`;
+  card.innerHTML=`
+    <div class="mhead">
+      <span class="mn">${M.m}월</span>
+      <span class="mt">${M.t||''}</span>
+      <span class="tag${M.rest?' rest':''}">${M.tag}</span>
+    </div>
+    <div class="mbody">
+      ${evs}
+      ${M.b?`<div class="bdays">생일 &nbsp;<b>${M.b}</b></div>`:''}
+      <div class="album"><span class="lab">앨범</span><span>링크를 주시면 여기에 겁니다. 주요 사진도 이 자리에 들어갑니다.</span></div>
+    </div>`;
+  mBox.appendChild(card);
+});
+
+/* ── 명단 ── */
+const rb=document.querySelector('#roster tbody');
+function drawRoster(mode){
+  const rows=[...ROSTER].sort((a,b)=>
+    mode==='year'
+      ? (a[3]-b[3]) || a[0].localeCompare(b[0],'ko')
+      : a[0].localeCompare(b[0],'ko'));
+  rb.innerHTML='';
+  let prev=null;
+  rows.forEach(r=>{
+    const tr=document.createElement('tr');
+    const mark=(mode==='year'&&r[3]!==prev)?' class="yrmark"':'';
+    prev=r[3];
+    tr.innerHTML=`<td class="nm">${r[0]} 권사</td><td class="num">${r[1]}</td><td>${r[2]} 장로</td>
+      <td class="num"${mark}>${r[3]}</td><td>${r[4]?`<span class="badge">${r[4]}</span>`:''}</td>`;
+    rb.appendChild(tr);
+  });
+}
+document.querySelectorAll('.sortbtn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.sortbtn').forEach(b=>b.setAttribute('aria-pressed','false'));
+    btn.setAttribute('aria-pressed','true');
+    drawRoster(btn.dataset.sort);
+  });
+});
+drawRoster('year');
+
+/* ── 생일 ── */
+const bb=document.querySelector('#bday tbody');
+for(let m=1;m<=12;m++){
+  const names=ROSTER.filter(r=>parseInt(r[1].slice(0,2),10)===m)
+    .sort((a,b)=>a[1].localeCompare(b[1]))
+    .map(r=>`${r[0]} 권사 <span style="color:var(--ink-3);font-size:12.5px">${r[1].slice(3)}</span>`);
+  if(!names.length)continue;
+  const tr=document.createElement('tr');
+  tr.innerHTML=`<td class="nm">${m}월</td><td>${names.join(' · ')}</td>`;
+  bb.appendChild(tr);
+}
+
+/* ── 가정 ── */
+const fb=document.querySelector('#family tbody');
+ROSTER.forEach(r=>{
+  const kids=FAMILY[r[0]]||'';
+  const tr=document.createElement('tr');
+  tr.innerHTML=`<td class="nm">${r[0]}</td><td>${r[2]}</td>
+    <td style="min-width:210px">${kids||`<span style="color:var(--ink-3)">—</span>`}</td>
+    <td style="color:var(--ink-3);min-width:120px"></td>`;
+  fb.appendChild(tr);
+});
+
+fromHash();
+</script>
