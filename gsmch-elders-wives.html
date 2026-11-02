@@ -103,6 +103,11 @@ h3{font-size:15px;font-weight:600;margin:0 0 8px;}
 .mhead .mt{font-size:14.5px;font-weight:600;}
 .mhead .tag{margin-left:auto;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:3px 9px;border-radius:999px;
   background:var(--pine-wash);color:var(--pine);}
+.mhead .hbtns{display:flex;gap:6px;align-self:center}
+.mhead .rt{margin-left:auto;display:flex;align-items:center;gap:6px;align-self:center}
+.mhead .rt .tag{margin-left:0}
+.mhead .hb{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--pine);color:#fff;text-decoration:none;white-space:nowrap}
+.mhead .hb.ppt{background:var(--clay)}
 .mhead .tag.rest{background:var(--line-2);color:var(--ink-3);}
 .mbody{padding:16px 20px 18px;}
 
@@ -724,11 +729,10 @@ MONTHS.forEach(M=>{
     <div class="mhead">
       <span class="mn">${M.m}월</span>
       <span class="mt">${M.t||''}</span>
-      <span class="tag${M.rest?' rest':''}">${M.tag}</span>
+      <span class="rt">${M.tag!=='월례회'||!M.doc?`<span class="tag${M.rest?' rest':''}">${M.tag}</span>`:''}${M.doc?`<span class="hbtns"><a class="hb" href="${M.doc}" target="_blank" rel="noopener" title="${M.docl||'월례회 자료'} PDF">📄 ${M.docl?'자료집':'자료'}</a>${M.ppt?`<a class="hb ppt" href="${M.ppt}" target="_blank" rel="noopener" title="월례회 화면(PPT) PDF">🖥 PPT</a>`:''}</span>`:''}</span>
     </div>
     <div class="mbody">
       ${evs}
-      ${M.doc?`<a class="pdfbtn sm" href="${M.doc}" target="_blank" rel="noopener">📄 ${M.docl||'월례회 자료 보기'} <span>PDF</span></a>`:''}${M.ppt?` <a class="pdfbtn sm" style="background:var(--clay)" href="${M.ppt}" target="_blank" rel="noopener">🖥 월례회 화면(PPT) 보기 <span>PDF</span></a>`:''}
       ${M.b?`<div class="bdays">생일 &nbsp;<b>${M.b}</b></div>`:''}
       ${M.album?`<div class="album"><span class="lab">앨범</span><a href="${M.album}" target="_blank" rel="noopener">앨범 열기</a></div>`:''}
     </div>`;
