@@ -193,6 +193,7 @@ footer{border-top:1px solid var(--line);padding-block:20px 10px;font-size:12.5px
   <button class="tab" role="tab" id="t-month" aria-controls="p-month" aria-selected="false">월별 기록</button>
   <button class="tab" role="tab" id="t-pray" aria-controls="p-pray" aria-selected="false">기도</button>
   <button class="tab" role="tab" id="t-people" aria-controls="p-people" aria-selected="false">회원명단</button>
+  <button class="tab" role="tab" id="t-acc" aria-controls="p-acc" aria-selected="false">회계</button>
   <button class="tab" role="tab" id="t-data" aria-controls="p-data" aria-selected="false">자료</button>
 </div></div>
 
@@ -314,7 +315,7 @@ footer{border-top:1px solid var(--line);padding-block:20px 10px;font-size:12.5px
     본 감사는 선한목자교회 장로부인회의 회계장부와 은행통장 등 관계 서류를 면밀히 검토한 바, 모든 회계처리가 일반회계 원칙과 절차에 의거하여 정확히 되어 있다고 사료되어 이에 그 의견을 개진합니다.
     <div style="margin-top:6px;text-align:right">감사 위원 한미애 권사</div>
   </div>
-  <p class="sub">회비 납부 현황 · 회계보고는 「자료」 탭에 있습니다.</p>
+  <p class="sub">회비 납부 현황 · 회계보고는 「회계」 탭에 있습니다.</p>
 </section>
 
 <!-- ════════ 월별 ════════ -->
@@ -450,7 +451,8 @@ footer{border-top:1px solid var(--line);padding-block:20px 10px;font-size:12.5px
 </section>
 
 <!-- ════════ 자료 ════════ -->
-<section role="tabpanel" id="p-data" aria-labelledby="t-data" hidden>
+<!-- ════════ 회계 ════════ -->
+<section role="tabpanel" id="p-acc" aria-labelledby="t-acc" hidden>
   <h2>회계</h2>
   <p class="sub">2026년 11월 8일 총회 기준 · 회비계좌 신한은행 110-185-823186 (예금주 김정임) · 월 1만원</p>
 
@@ -513,7 +515,9 @@ footer{border-top:1px solid var(--line);padding-block:20px 10px;font-size:12.5px
       <tr style="background:var(--pine-wash)"><td class="nm">합계</td><td class="num"></td><td class="num" style="font-weight:700;color:var(--pine)">4,560,000</td></tr>
     </tbody>
   </table></div>
+</section>
 
+<section role="tabpanel" id="p-data" aria-labelledby="t-data" hidden>
   <h2>주목자 배식 봉사</h2>
   <div class="tablewrap"><table>
     <thead><tr><th>시간</th><th>장소</th><th>역할</th><th>담당</th></tr></thead>
