@@ -605,7 +605,7 @@ const MONTHS=[
    {d:"1. 24.",c:"장로과정 고시 및 자격심사<span class='meta'>선한목자교회</span>"}
   ],b:"김구비 권사 · 이드보라 권사 · 조은영 권사 · 박경진 권사 · 이혜경 권사"},
 
- {m:2,doc:"gsmch-elders-wives-2026-02.pdf",t:"신임 장로부인 인사",tag:"월례회",
+ {m:2,doc:"gsmch-elders-wives-2026-02.pdf",ppt:"gsmch-elders-wives-2026-02-ppt.pdf",t:"신임 장로부인 인사",tag:"월례회",
   ev:[
    {d:"2. 3.",c:"상반기 화요 Zoom 기도회 개학<span class='meta'>오후 8시 30분</span>"},
    {d:"2. 7.",c:"장로회 임원 워크샵 · 유치부 배식봉사"},
@@ -728,7 +728,7 @@ MONTHS.forEach(M=>{
     </div>
     <div class="mbody">
       ${evs}
-      ${M.doc?`<a class="pdfbtn sm" href="${M.doc}" target="_blank" rel="noopener">📄 ${M.docl||'월례회 자료 보기'} <span>PDF</span></a>`:''}
+      ${M.doc?`<a class="pdfbtn sm" href="${M.doc}" target="_blank" rel="noopener">📄 ${M.docl||'월례회 자료 보기'} <span>PDF</span></a>`:''}${M.ppt?` <a class="pdfbtn sm" style="background:var(--clay)" href="${M.ppt}" target="_blank" rel="noopener">🖥 월례회 화면(PPT) 보기 <span>PDF</span></a>`:''}
       ${M.b?`<div class="bdays">생일 &nbsp;<b>${M.b}</b></div>`:''}
       ${M.album?`<div class="album"><span class="lab">앨범</span><a href="${M.album}" target="_blank" rel="noopener">앨범 열기</a></div>`:''}
     </div>`;
