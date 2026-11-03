@@ -53,3 +53,23 @@ def apply_overlays(o,view,X,Y,extra=None):
         elif t=='box':
             S=(X(1)-X(0));R(o,X(it['x']),Y(it.get('y',0)+it['h']),it['w']*S,it['h']*S,it.get('color','#fff3b8'),RED,2,3);T(o,X(it['x']+it['w']/2),Y(it.get('y',0)+it['h']/2)+4,it.get('label',''),10,800,RED)
         elif t=='label': T(o,X(it['x']),Y(it.get('y',0)),it.get('label',''),it.get('size',12),800,RED)
+
+def UNIT(o,X,Yf,x,w,kind,label,HT=850,top=40,c='#8a6a1a'):
+    """하부장 한 칸. kind: door2(2문 여닫이) door1 drawer3(서랍 3단) drawer2 open1(오픈 1단) open2(오픈 2단 선반) appl(기기 매립) empty"""
+    S=X(1)-X(0); y0=Yf(top); h=(HT-top)*S
+    R(o,X(x),y0,w*S,h,'#f6efe0',INK,1.2)
+    if kind.startswith('door'):
+        n=2 if kind=='door2' else 1; dw=w/n
+        for k in range(n):
+            R(o,X(x+k*dw)+4,y0+4,dw*S-8,h-8,'#efe3cf',INK,1,2)
+            o.append(f'<line x1="{X(x+k*dw)+4}" y1="{y0+4}" x2="{X(x+(k+1)*dw)-4}" y2="{y0+h-4}" stroke="{INK}" stroke-width="0.7"/><line x1="{X(x+(k+1)*dw)-4}" y1="{y0+4}" x2="{X(x+k*dw)+4}" y2="{y0+h-4}" stroke="{INK}" stroke-width="0.7"/>')
+            o.append(f'<circle cx="{X(x+k*dw+(dw*0.85 if k==0 else dw*0.15))}" cy="{y0+h*0.45}" r="3" fill="{INK}"/>')
+    elif kind.startswith('drawer'):
+        n=int(kind[-1]); dh=h/n
+        for k in range(n):
+            R(o,X(x)+4,y0+4+k*dh,w*S-8,dh-8,'#efe3cf',INK,1,2); o.append(f'<line x1="{X(x+w*0.35)}" y1="{y0+k*dh+dh/2}" x2="{X(x+w*0.65)}" y2="{y0+k*dh+dh/2}" stroke="{INK}" stroke-width="2"/>')
+    elif kind.startswith('open'):
+        n=int(kind[-1])
+        for k in range(1,n): o.append(f'<line x1="{X(x)+3}" y1="{y0+h*k/n}" x2="{X(x+w)-3}" y2="{y0+h*k/n}" stroke="{INK}" stroke-width="2"/>')
+        R(o,X(x),y0,w*S,h,'none',INK,1.2)
+    T(o,X(x+w/2),y0+h+16,label,9.5,800,c)
