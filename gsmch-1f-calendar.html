@@ -187,6 +187,8 @@
   .row .mm{display:block;font-size:13px;color:#6b5a1e;background:rgba(255,255,255,.6);border-radius:6px;padding:2px 7px;margin-top:3px}
   .st.wt{color:#9A6414 !important;font-weight:700}
   .ugh{display:flex;align-items:baseline;gap:8px;margin:18px 0 6px;padding:7px 12px;background:#2c2a26;color:#fff;border-radius:8px;font-size:16px}.ugh span{font-size:13px;opacity:.75}.ugh{cursor:pointer;list-style:none}.ugh::-webkit-details-marker{display:none}.ugh i{margin-left:auto;font-style:normal;font-size:12px;opacity:.7}.ug:not([open]) .ugh{background:#6e6860}@media print{.ug{display:block}}
+  .sc{display:inline-block;font-size:12.5px;font-weight:700;border-radius:6px;padding:0 7px;margin-right:6px;vertical-align:2px}.sc.s카페{background:#F6E7D3;color:#8a4b12}.sc.s서점{background:#E2EFE6;color:#2f6b45}.sc.s공통{background:#ECEAE4;color:#5e5a52}
+  .usg{font-size:15px;font-weight:700;color:#55534e;margin:12px 0 4px 4px}
   .undated{background:#fff;border:1px solid var(--line);border-radius:14px;margin-top:22px;padding:6px 20px 18px}.unl{font-size:13.5px;color:var(--muted);margin:0 0 8px}
   .list .empty{color:var(--muted);padding:8px 4px}
   .row.done .wh{opacity:.6}
@@ -306,26 +308,37 @@ const big2=x=>{const n=norm(x),o=new Set();for(let i=0;i<n.length-1;i++)o.add(n.
 const sim=(a,b)=>{const A=big2(a),B=big2(b);if(!A.size||!B.size)return 0;let c=0;A.forEach(x=>{if(B.has(x))c++});return c/Math.min(A.size,B.size);};
 const md=x=>{const r=/(\d{1,2})\s*\/\s*(\d{1,2})/.exec(x||'');return r?{m:+r[1],d:+r[2]}:null;};
 const esc=x=>String(x==null?'':x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+const CATS=[['인테리어 · 공사',/상판|루버|블라인드|도어락|자물쇠|우드톤|타일|뒷문|창고 문|하자|준공/],['주문 · 결제',/메뉴판|포스|키오스크|현황판|디스플레이|사이니지|QR|잇다|PDA|태블릿|결제|온라인몰|검색대|바코드|노트북|법인폰|휴대폰|공유기|와이파이|인터넷|스피커|호출|랜/],
+ ['다회용컵',/반납함|다회용|더그리트|텀블러|컵 /],
+ ['교육',/교육|매뉴얼|숙지|봉사자/],
+ ['메뉴 · 원두',/원두|시음|메뉴|레시피|기물|커피머신|그라인더|파블로스|히즈빈스|마데톨미|앞치마/],
+ ['제작물 · 디자인',/디자인|사인|홀더|유니폼|배너|안내물|안내문|인쇄|스티커|주보/],
+ ['인테리어 · 공사',/도면|상판|문|도어락|자물쇠|블라인드|루버|바 |타일|타공|보강|전원|배선|준공|하자|의자|테이블|창고|간이주방|서비스바|우드톤|청소|가구|진입|하부장|3D|구멍|치수|선반|쓰레기/],
+ ['진열 · 도서',/도서|진열|서가|서고|재고|발주|책|카드 쓰는|신간/],
+ ];
+const catOf=(txt,it)=>{for(const [n,re] of CATS){if(re.test(txt))return n;}for(const [n,re] of CATS){if(it&&re.test(it.title))return n;}return it&&it.stream||'행정 · 운영';};
+const storeOf=(txt,it)=>(/카페/.test(txt)&&/서점/.test(txt))?'공통':/카페/.test(txt)?'카페':/서점/.test(txt)?'서점':(it&&it.group==='로뎀카페'?'카페':it&&it.group==='선지서점'?'서점':'공통');
 let TODOS=[],UNDATED=[];
 function buildTodos(){
   TODOS=[];UNDATED=[];ROWS.forEach(r=>{if(r.kind==='kev'){r.who='';r.sub=null;r.memo='';r.dn=r.dn0;r.t=r.t0;}});
   ROWS.splice(0,ROWS.length,...ROWS.filter(r=>r.kind==='kev'));
   (PLAN.items||[]).forEach(it=>(it.todo||[]).forEach(t=>{
     const who=t.who||it.owner||'',p=md(t.date);
-    const base={who,st:t.st,t:t.t,memo:t.memo||'',ctx:(it.group||'')+' · '+it.title};
+    const base={who,st:t.st,t:t.t,memo:t.memo||'',ctx:(it.group||'')+' · '+it.title,store:storeOf(t.t+' '+it.title,it),cat:catOf(t.t,it)};
     if(!p||p.m<10||p.m>12){UNDATED.push(Object.assign(base,{due:md(it.due)}));return;}
     const key=`2026-${pad(p.m)}-${pad(p.d)}`;
     let ev=null,bv=0;ROWS.forEach(r=>{if(r.kind==='kev'&&r.key===key){const v=sim(r.e[2],t.t);if(v>bv){bv=v;ev=r;}}});
     if(ev&&bv>=0.33){ev.who=ev.who||who;(ev.sub=ev.sub||[]).push(t);if(!ev.memo&&base.memo)ev.memo=base.memo;return;}
     const w=new Date(2026,p.m-1,p.d).getDay();
-    ROWS.push({m:p.m,d:p.d,w,key,dn:t.st==='done',kind:'ktd',who,st:t.st,memo:base.memo,ctx:base.ctx,t:esc(t.t)+(t.st==='wait'?' <span class="st wt">답 기다림</span>':(t.st!=='done'&&key<TODAY?' <span class="st ck">확인 필요</span>':''))});
+    ROWS.push({m:p.m,d:p.d,w,key,dn:t.st==='done',kind:'ktd',who,st:t.st,memo:base.memo,ctx:base.ctx,store:base.store,cat:base.cat,t:esc(t.t)+(t.st==='wait'?' <span class="st wt">답 기다림</span>':(t.st!=='done'&&key<TODAY?' <span class="st ck">확인 필요</span>':''))});
   }));
   ROWS.forEach(r=>{if(r.kind==='kev'&&r.sub&&r.e[4]!=='done'&&r.e[4]!=='todo'){r.dn=r.sub.every(t=>t.st==='done');
     if(!r.dn&&r.key<TODAY&&!/확인 필요/.test(r.t))r.t+=' <span class="st ck">확인 필요</span>';
     if(r.sub.some(t=>t.st==='wait')&&!r.dn)r.t+=' <span class="st wt">답 기다림</span>';}});
 }
 function rowHtml(r){
-  return `<div class="row ${r.big?'big':''} ${r.dn?'done':'todo'} ${!r.dn&&r.key<TODAY?'late':''} ${r.kind}"><span class="cb">${r.dn?'✓':''}</span><span class="d ${r.w==0?'sun':r.w==6?'sat':''}">${r.m}/${r.d} (${DOW[r.w]})</span><span class="t">${r.t}${r.who?` <b class="wh">${esc(r.who)}</b>`:''}${r.ctx&&r.kind==='ktd'?`<small class="cx">${esc(r.ctx)}</small>`:''}${r.memo&&!r.dn?`<small class="mm">${esc(r.memo)}</small>`:''}</span></div>`;
+  return `<div class="row ${r.big?'big':''} ${r.dn?'done':'todo'} ${!r.dn&&r.key<TODAY?'late':''} ${r.kind}"><span class="cb">${r.dn?'✓':''}</span><span class="d ${r.w==0?'sun':r.w==6?'sat':''}">${r.m}/${r.d} (${DOW[r.w]})</span><span class="t">${r.store?`<b class="sc s${r.store}">${r.store} · ${r.cat}</b>`:''}${r.t}${r.who?` <b class="wh">${esc(r.who)}</b>`:''}${r.ctx&&r.kind==='ktd'?`<small class="cx">${esc(r.ctx)}</small>`:''}${r.memo&&!r.dn?`<small class="mm">${esc(r.memo)}</small>`:''}</span></div>`;
 }
 function renderLists(){
   const cnt={};WHOS.forEach(w=>cnt[w]=0);
@@ -341,9 +354,9 @@ function renderLists(){
   const un=UNDATED.filter(r=>r.st!=='done'&&pick(r)).sort((a,b)=>(a.due?a.due.m*100+a.due.d:9999)-(b.due?b.due.m*100+b.due.d:9999));
   const ORD=['잇다','건축위','단장님','매니저','총무','회계'];const grp={};un.forEach(r=>{(grp[r.who]=grp[r.who]||[]).push(r);});
   const keys=Object.keys(grp).sort((a,b)=>(ORD.indexOf(a)<0?99:ORD.indexOf(a))-(ORD.indexOf(b)<0?99:ORD.indexOf(b)));
-  const SUB={'잇다':'잇다에 물어볼 것','건축위':'건축위에 확인할 것','단장님':'단장님께 여쭐 것','매니저':'매니저님과 확인할 것','총무':'총무 할 일','회계':'회계 확인'};
+  const SO={'카페':1,'서점':2,'공통':3};const SUB={'잇다':'잇다에 물어볼 것','건축위':'건축위에 확인할 것','단장님':'단장님께 여쭐 것','매니저':'매니저님과 확인할 것','총무':'총무 할 일','회계':'회계 확인'};
   document.getElementById('undated').innerHTML=`<div class="lh"><h4>날짜 정하지 않은 할 일${WHO==='전체'?'':' · '+WHO}</h4><span class="ls"><span class="k2">☐ ${un.length}</span></span></div><p class="unl">진도표에 있는데 날짜가 없는 일을 대상별로 나눴습니다. 왼쪽은 그 묶음의 마감입니다.</p>`+
-    keys.map(k=>`<details class="ug" ${WHO!=='전체'||k==='잇다'||k==='건축위'?'open':''}><summary class="ugh"><b>${esc(SUB[k]||k)}</b><span>${grp[k].length}건</span><i>펼치기 · 접기</i></summary>`+grp[k].map(r=>{const late=r.due&&new Date(2026,r.due.m-1,r.due.d)<new Date(TODAY);return `<div class="row todo ${late?'late':''}"><span class="cb"></span><span class="d">${r.due?r.due.m+'/'+r.due.d+' 마감':'—'}</span><span class="t">${esc(r.t)}${r.st==='wait'?' <span class="st wt">답 기다림</span>':''}<small class="cx">${esc(r.ctx)}</small>${r.memo?`<small class="mm">${esc(r.memo)}</small>`:''}</span></div>`}).join('')+'</details>').join('');
+    keys.map(k=>`<details class="ug" ${WHO!=='전체'||k==='잇다'||k==='건축위'?'open':''}><summary class="ugh"><b>${esc(SUB[k]||k)}</b><span>${grp[k].length}건</span><i>펼치기 · 접기</i></summary>`+grp[k].sort((a,b)=>((SO[a.store]||9)-(SO[b.store]||9))||a.cat.localeCompare(b.cat)).map((r,ix,arr)=>{const hd=(ix===0||arr[ix-1].store!==r.store||arr[ix-1].cat!==r.cat)?`<div class="usg"><b class="sc s${r.store}">${r.store}</b>${r.cat}</div>`:'';const late=r.due&&new Date(2026,r.due.m-1,r.due.d)<new Date(TODAY);return hd+`<div class="row todo ${late?'late':''}"><span class="cb"></span><span class="d">${r.due?r.due.m+'/'+r.due.d+' 마감':'—'}</span><span class="t">${esc(r.t)}${r.st==='wait'?' <span class="st wt">답 기다림</span>':''}<small class="cx">${esc(r.ctx)}</small>${r.memo?`<small class="mm">${esc(r.memo)}</small>`:''}</span></div>`}).join('')+'</details>').join('');
 }
 document.getElementById('whobar').addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b)return;WHO=b.dataset.w;
   const u=new URL(location.href);if(WHO==='전체')u.searchParams.delete('who');else u.searchParams.set('who',WHO);history.replaceState(null,'',u);renderLists();});
