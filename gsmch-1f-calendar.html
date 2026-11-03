@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>사업단 일정</title>
+<title>사업단 일정 및 체크리스트</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -137,6 +137,25 @@
   .row .t{word-break:keep-all}
   .row.big .t{color:var(--coral);font-weight:700}
   .row.past{color:var(--muted)}
+  .lh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 8px}
+  .lh h4{margin:0 !important;color:var(--ink,#2c2a26) !important;font-weight:700 !important;font-size:17px !important}
+  .ls{display:flex;gap:6px;flex-wrap:wrap}
+  .ls span{font-size:13.5px;font-weight:700;border-radius:999px;padding:2px 10px}
+  .ls .k1{background:#E6F3EA;color:#056B2C} .ls .k2{background:#FFF3B8;color:#7A5B00} .ls .k3{background:#FDE9E4;color:#B3382A}
+  .lt{margin-left:auto;font-family:inherit;font-size:13px;font-weight:600;color:#55534e;background:#fff;border:1px solid #dcd9d1;border-radius:999px;padding:4px 12px;cursor:pointer}
+  .list.only .row.done{display:none}
+  .list.only .lt{background:#2c2a26;color:#fff;border-color:#2c2a26}
+  .row{align-items:flex-start;border-radius:8px;padding:8px 10px !important;margin:3px 0;border-bottom:none !important}
+  .row .cb{flex:none;width:24px;height:24px;margin-top:2px;border:2px solid #b9b2a3;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;background:#fff}
+  .row.done{color:var(--muted)}
+  .row.done .cb{background:#07913B;border-color:#07913B}
+  .row.done .t{text-decoration:line-through;text-decoration-color:#c9c4b8}
+  .row.todo{background:#FFF6CC}
+  .row.todo .cb{border-color:#C9A227}
+  .row.late{background:#FFE9A8;box-shadow:inset 4px 0 0 #E0A800}
+  .st.ck{color:#B3382A !important;font-weight:700}
+  @media print{.lt{display:none}.row.todo{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+  @media (max-width:640px){.row{gap:8px !important;font-size:15px !important}.row .d{min-width:74px !important}.lt{margin-left:0}}
   .note{margin-top:26px;font-size:14px;color:var(--muted)}
 
   @media (max-width:640px){
@@ -163,9 +182,9 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>사업단 일정 · 10~12월</h1>
-  <p class="lead">총여선교회 사업단 일정입니다. 앞의 이름표 색으로 무슨 일인지 나눴습니다. 점선(····)은 예정, 빨간 테두리는 그날 결정할 일입니다.</p>
-  <span class="upd">업데이트 2026.11.03 21:40</span>
+  <h1>사업단 일정 및 체크리스트</h1>
+  <p class="lead">총여선교회 사업단 일정입니다. 앞의 이름표 색으로 무슨 일인지 나눴습니다. 점선(····)은 예정, 빨간 테두리는 그날 결정할 일입니다. 달력 아래 목록에서 <b>✓ 끝난 일</b>과 <span style="background:#FFF3B8;padding:0 5px;border-radius:4px">노란 바탕 · 아직 남은 일</span>을 한눈에 봅니다.</p>
+  <span class="upd">업데이트 2026.11.03 21:55</span>
 
 
   <section class="flow"><div class="fh"><b>오픈 준비 흐름</b><span>● 확정 &nbsp;○ 예정</span><button class="tbtn" onclick="saveFlow(this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div><div class="fsc"><div class="ft" id="flow"></div></div></section>
@@ -190,7 +209,7 @@ const EVENTS = [
   ["2026-11-02","pos","견적 · 발주",1],
   ["2026-11-03","cup","결정 <em>(운영위)</em>",1],
   ["2026-11-03","build","카페 상판 확인"],
-  ["2026-11-03","pos","카페 노트북 구매"],
+  ["2026-11-03","pos","카페 노트북 구매",0,"todo"],
   ["2026-11-03","reg","11/15 임시서점 휴무 결정 · 주보 안내"],
   ["2026-11-03","cup","반납함 사업단 비용 · 5대 결정"],
   ["2026-11-03","build","카페 우드톤 · 현황판 자동문 위 확정"],
@@ -233,10 +252,11 @@ for(const m of [10,11,12]){
   const first=new Date(2026,m-1,1).getDay();
   const days=new Date(2026,m,0).getDate();
   const WEEKLANES=[...Array(6)].map(()=>new Set());
+  const isDone=e=>e[4]==='done'||(e[4]!=='todo'&&e[0]<=TODAY&&e[3]!==1);
   const SLOTS=[...Array(6)].map(()=>({}));
   for(let d=1;d<=days;d++){const key=`2026-${pad(m)}-${pad(d)}`,wk=Math.floor((first+d-1)/7);
     LANES.forEach(l=>{const n=EVENTS.filter(e=>e[0]==key&&e[1]==l&&!BANDS.some(b=>b[0]==l&&key>b[1]&&key<=b[2])).length+(BANDS.some(b=>b[0]==l&&key>b[1]&&key<=b[2])?1:0);if(n)SLOTS[wk][l]=Math.max(SLOTS[wk][l]||0,n);});}
-  html+=`<section class="month" id="m${m}"><div class="mh"><b>${m}월</b><small>2026</small><span class="who">· 사업단 일정</span><button class="tbtn" onclick="saveMonth(${m},this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div><div class="grid">`;
+  html+=`<section class="month" id="m${m}"><div class="mh"><b>${m}월</b><small>2026</small><span class="who">· 사업단 일정 및 체크리스트</span><button class="tbtn" onclick="saveMonth(${m},this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div><div class="grid">`;
   DOW.forEach((d,i)=>html+=`<div class="dow ${i==0?'sun':i==6?'sat':''}">${d}</div>`);
   for(let i=0;i<first;i++) html+=`<div class="cell empty"></div>`;
   const rows=[];
@@ -255,12 +275,13 @@ for(const m of [10,11,12]){
       else evs.filter(e=>e[1]==l).forEach(e=>out.push(chip(e)));
       body+=out.join('');});
     html+=`<div class="${cls}"><span class="num">${d}</span>${body}</div>`;
-    evs.forEach(e=>rows.push({d,w,key,t:FULL(e)+(e[3]==='d'?' <span class="st dd">결정</span>':(e[3]?' <span class="st">예정</span>':'')),big:e[1]=="open",to:''}));
+    evs.forEach(e=>{const dn=isDone(e);rows.push({d,w,key,dn,t:FULL(e)+(e[3]==='d'?' <span class="st dd">결정</span>':(e[3]&&!dn?(key<TODAY?' <span class="st ck">확인 필요</span>':' <span class="st">예정</span>'):'')),big:e[1]=="open",to:''});});
   }
   const tail=(7-(first+days)%7)%7;
   for(let i=0;i<tail;i++) html+=`<div class="cell empty"></div>`;
-  html+=`</div><div class="list"><h4>${m}월 일정</h4>`;
-  rows.forEach(r=>html+=`<div class="row ${r.big?'big':''} ${r.key<TODAY?'past':''}"><span class="d ${r.w==0?'sun':r.w==6?'sat':''}">${m}/${r.d} (${DOW[r.w]})${r.to?'<br><small>'+r.to+'</small>':''}</span><span class="t">${r.t}</span></div>`);
+  const nd=rows.filter(r=>r.dn).length,nl=rows.length-nd,nw=rows.filter(r=>!r.dn&&r.key<TODAY).length;
+  html+=`</div><div class="list"><div class="lh"><h4>${m}월 체크리스트</h4><span class="ls"><span class="k1">✓ 끝남 ${nd}</span><span class="k2">☐ 남음 ${nl}</span>${nw?`<span class="k3">지난 날짜 확인 ${nw}</span>`:''}</span><button class="lt" onclick="this.closest('.list').classList.toggle('only')">남은 것만 보기</button></div>`;
+  rows.forEach(r=>html+=`<div class="row ${r.big?'big':''} ${r.dn?'done':'todo'} ${!r.dn&&r.key<TODAY?'late':''}"><span class="cb">${r.dn?'✓':''}</span><span class="d ${r.w==0?'sun':r.w==6?'sat':''}">${m}/${r.d} (${DOW[r.w]})${r.to?'<br><small>'+r.to+'</small>':''}</span><span class="t">${r.t}</span></div>`);
   html+=`</div></section>`;
 }
 document.getElementById("cal").innerHTML=html;
