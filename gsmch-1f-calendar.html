@@ -335,25 +335,27 @@ document.getElementById("cal").innerHTML=html;
 /* ── 체크리스트: 일정 + 진도표 할 일 하나로 ── */
 let PLAN={};try{PLAN=JSON.parse(document.getElementById('planData').textContent)}catch(e){}
 const WHOS=['단장님','건축위','잇다','매니저','총무','회계'];
-let WHO=new URLSearchParams(location.search).get('who')||'전체';let LT=new URLSearchParams(location.search).get('tab')||'cal';let TOP='m';let DZ=new URLSearchParams(location.search).get('cat')==='design';
+let WHO=new URLSearchParams(location.search).get('who')||'전체';let LT=new URLSearchParams(location.search).get('tab')||'cal';let TOP='m';let CAT=new URLSearchParams(location.search).get('cat')||'';if(CAT==='design')CAT='디자인 · 제작물 (BX)';WHO='전체';
+const CATORDER=['디자인 · 제작물 (BX)','도면 · 인테리어','배치','주문 시스템','교육','메뉴 · 원두','다회용컵','진열 · 도서','오픈 · 운영','행정 · 운영','백서 · 인수인계'];
 const norm=x=>x.replace(/<[^>]+>/g,'').replace(/[\s·()\[\],.\-—~→/]/g,'');
 const big2=x=>{const n=norm(x),o=new Set();for(let i=0;i<n.length-1;i++)o.add(n.slice(i,i+2));return o;};
 const sim=(a,b)=>{const A=big2(a),B=big2(b);if(!A.size||!B.size)return 0;let c=0;A.forEach(x=>{if(B.has(x))c++});return c/Math.min(A.size,B.size);};
 const md=x=>{const r=/(\d{1,2})\s*\/\s*(\d{1,2})/.exec(x||'');return r?{m:+r[1],d:+r[2]}:null;};
 const esc=x=>String(x==null?'':x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-const CATS=[['디자인 · 제작물',/디자인|네임택|라벨|POP|홀더|컵 ·|포장재|패키지|유니폼|앞치마|사인|간판|배너|스티커|안내물|안내문|화면 구성|공지 내용|메뉴판 제작|메뉴판 화면/],['인테리어 · 공사',/상판|루버|블라인드|도어락|자물쇠|우드톤|타일|뒷문|창고 문|하자|준공/],['주문 · 결제',/메뉴판|포스|키오스크|현황판|디스플레이|사이니지|QR|잇다|PDA|태블릿|결제|온라인몰|검색대|바코드|노트북|법인폰|휴대폰|공유기|와이파이|인터넷|스피커|호출|랜/],
+const CATS=[['디자인 · 제작물 (BX)',/디자인|네임택|라벨|POP|홀더|컵 ·|포장재|패키지|유니폼|앞치마|사인|간판|배너|스티커|안내물|안내문|화면 구성|공지 내용|메뉴판 제작|메뉴판 화면/],['배치',/배치|자리|위치|반입|세팅|동선|가구|선반|건조대/],['도면 · 인테리어',/상판|루버|블라인드|도어락|자물쇠|우드톤|타일|뒷문|창고 문|하자|준공/],['주문 시스템',/메뉴판|포스|키오스크|현황판|디스플레이|사이니지|QR|잇다|PDA|태블릿|결제|온라인몰|검색대|바코드|노트북|법인폰|휴대폰|공유기|와이파이|인터넷|스피커|호출|랜/],
  ['다회용컵',/반납함|다회용|더그리트|텀블러|컵 /],
  ['교육',/교육|매뉴얼|숙지|봉사자/],
  ['메뉴 · 원두',/원두|시음|메뉴|레시피|기물|커피머신|그라인더|파블로스|히즈빈스|마데톨미|앞치마/],
- ['인테리어 · 공사',/도면|상판|문|도어락|자물쇠|블라인드|루버|바 |타일|타공|보강|전원|배선|준공|하자|의자|테이블|창고|간이주방|서비스바|우드톤|청소|가구|진입|하부장|3D|구멍|치수|선반|쓰레기/],
+ ['도면 · 인테리어',/도면|상판|문|도어락|자물쇠|블라인드|루버|바 |타일|타공|보강|전원|배선|준공|하자|의자|테이블|창고|간이주방|서비스바|우드톤|청소|가구|진입|하부장|3D|구멍|치수|선반|쓰레기/],
  ['진열 · 도서',/도서|진열|서가|서고|재고|발주|책|카드 쓰는|신간/],
  ];
-const catOf=(txt,it)=>{if(it&&/^(d-|m-)/.test(it.id))return '디자인 · 제작물';for(const [n,re] of CATS){if(re.test(txt))return n;}for(const [n,re] of CATS){if(it&&re.test(it.title))return n;}const M={'교육 · 준비':'교육','교육 · 인력':'교육','공사 · 현장':'인테리어 · 공사','도면 · 자리':'인테리어 · 공사','제작물 · 사인':'디자인 · 제작물','제작물':'디자인 · 제작물','오픈':'오픈 · 운영','행정 · 매뉴얼':'행정 · 운영','백서 제작':'백서 · 인수인계','메뉴 · 기물':'메뉴 · 원두'};const st=it&&it.stream||'';return M[st]||st||'행정 · 운영';};
+const catOf=(txt,it)=>{if(it&&/^(d-|m-)/.test(it.id))return '디자인 · 제작물 (BX)';for(const [n,re] of CATS){if(re.test(txt))return n;}for(const [n,re] of CATS){if(it&&re.test(it.title))return n;}const M={'교육 · 준비':'교육','교육 · 인력':'교육','공사 · 현장':'도면 · 인테리어','도면 · 자리':'도면 · 인테리어','제작물 · 사인':'디자인 · 제작물 (BX)','제작물':'디자인 · 제작물 (BX)','오픈':'오픈 · 운영','행정 · 매뉴얼':'행정 · 운영','백서 제작':'백서 · 인수인계','메뉴 · 기물':'메뉴 · 원두'};const st=it&&it.stream||'';return M[st]||st||'행정 · 운영';};
 const storeOf=(txt,it)=>(/카페/.test(txt)&&/서점/.test(txt))?'공통':/카페|컵|홀더|메뉴판|앞치마|원두|반납함/.test(txt)?'카페':/서가|도서|책|PDA|임시서점/.test(txt)?'서점':/서점/.test(txt)?'서점':(it&&it.group==='로뎀카페'?'카페':it&&it.group==='선지서점'?'서점':'공통');
 let TODOS=[],UNDATED=[];
 function buildTodos(){
-  TODOS=[];UNDATED=[];ROWS.forEach(r=>{if(r.kind==='kev'){r.who='';r.sub=null;r.memo='';r.dn=r.dn0;r.t=r.t0;}});
+  TODOS=[];UNDATED=[];const EC={pos:'주문 시스템',cup:'다회용컵',coffee:'메뉴 · 원두',build:'도면 · 인테리어',setup:'오픈 · 운영',open:'오픈 · 운영'};
+  ROWS.forEach(r=>{if(r.kind==='kev'){r.who='';r.sub=null;r.memo='';r.dn=r.dn0;r.t=r.t0;const tx=r.e[2].replace(/<[^>]+>/g,'');r.cat=EC[r.e[1]]||catOf(tx,null);r.store=storeOf(tx,null);}});
   ROWS.splice(0,ROWS.length,...ROWS.filter(r=>r.kind==='kev'));
   (PLAN.items||[]).forEach(it=>(it.todo||[]).forEach(t=>{
     const who=t.who||it.owner||'',p=md(t.date);
@@ -373,15 +375,12 @@ function rowHtml(r){
   return `<div class="row ${r.big?'big':''} ${r.dn?'done':'todo'} ${!r.dn&&r.key<TODAY?'late':''} ${r.kind}"><span class="cb">${r.dn?'✓':''}</span><span class="d ${r.w==0?'sun':r.w==6?'sat':''}">${r.m}/${r.d} (${DOW[r.w]})</span><span class="t">${r.store?`<b class="sc s${r.store}">${r.store} · ${r.cat}</b>`:''}${r.t}${r.who?` <b class="wh">${esc(r.who)}</b>`:''}${r.ctx&&r.kind==='ktd'?`<small class="cx">${esc(r.ctx)}</small>`:''}${r.memo&&!r.dn?`<small class="mm">${esc(r.memo)}</small>`:''}</span></div>`;
 }
 function renderLists(){
-  const cnt={};WHOS.forEach(w=>cnt[w]=0);
-  let tot=0;ROWS.concat(UNDATED).forEach(r=>{if(DZ&&r.cat!=='디자인 · 제작물')return;if(!(r.dn||r.st==='done')){tot++;if(cnt[r.who]!=null)cnt[r.who]++;}});
-  document.getElementById('whobar').innerHTML=`<span class="wl">거르기</span><button class="dz ${DZ?'on':''}" data-dz="1">디자인 · 제작물만</button>`+['전체'].concat(WHOS.filter(w=>cnt[w])).map(w=>`<button class="${w===WHO?'on':''}" data-w="${w}">${w} <em>${w==='전체'?tot:cnt[w]}</em></button>`).join('');
-  const pick=r=>(WHO==='전체'||r.who===WHO)&&(!DZ||r.cat==='디자인 · 제작물');
+  const pick=r=>(!CAT||r.cat===CAT);
   for(const m of [10,11,12]){
     const rs=ROWS.filter(r=>r.m===m&&pick(r)).sort((a,b)=>a.key<b.key?-1:a.key>b.key?1:(a.kind===b.kind?0:a.kind==='kev'?-1:1));
     const nd=rs.filter(r=>r.dn).length,nl=rs.length-nd,nw=rs.filter(r=>!r.dn&&r.key<TODAY).length;
     const el=document.getElementById('list'+m);if(!el)continue;
-    el.innerHTML=`<div class="lh"><h4>${m}월 체크리스트${WHO==='전체'?'':' · '+WHO}</h4><span class="ls"><span class="k1">✓ 끝남 ${nd}</span><span class="k2">☐ 남음 ${nl}</span>${nw?`<span class="k3">지난 날짜 확인 ${nw}</span>`:''}</span><button class="lt" onclick="this.closest('.list').classList.toggle('only')">남은 것만 보기</button></div>`+(rs.length?rs.map(rowHtml).join(''):'<div class="empty">이 달에는 없습니다.</div>');
+    el.innerHTML=`<div class="lh"><h4>${m}월 체크리스트${CAT?' · '+CAT:''}</h4><span class="ls"><span class="k1">✓ 끝남 ${nd}</span><span class="k2">☐ 남음 ${nl}</span>${nw?`<span class="k3">지난 날짜 확인 ${nw}</span>`:''}</span><button class="lt" onclick="this.closest('.list').classList.toggle('only')">남은 것만 보기</button></div>`+(rs.length?rs.map(rowHtml).join(''):'<div class="empty">이 달에는 없습니다.</div>');
   }
   const un=UNDATED.filter(r=>r.st!=='done'&&pick(r)).sort((a,b)=>(a.due?a.due.m*100+a.due.d:9999)-(b.due?b.due.m*100+b.due.d:9999));
   const SO={'카페':1,'서점':2,'공통':3};
@@ -404,10 +403,13 @@ function renderLists(){
   const ud=document.getElementById('undated');
   if(LT==='cal'||LT==='month'){ud.innerHTML='';}
   else{const nm={카페:'로뎀카페',서점:'선지서점',공통:'공통',after:'오픈 뒤 (11/23 ~ 12월)'}[LT];
-    ud.innerHTML=`<div class="lh"><h4>${nm}${WHO==='전체'?'':' · '+WHO}${DZ?' · 디자인 · 제작물':''}</h4></div>`+PANE[LT];}
+    ud.innerHTML=`<div class="lh"><h4>${nm}${CAT?' · '+CAT:''}</h4></div>`+PANE[LT];}
+  /* 항목 거르기 — 지금 보는 범위 기준 숫자 */
+  const scope=(LT==='month'||LT==='cal')?ROWS.filter(r=>r.m===curM&&!r.dn):LT==='after'?UNDATED.filter(r=>r.st!=='done'&&late_(r)):UNDATED.filter(r=>r.st!=='done'&&!late_(r)&&r.store===LT);
+  const cc={};scope.forEach(r=>{cc[r.cat]=(cc[r.cat]||0)+1;});
+  document.getElementById('whobar').innerHTML=`<span class="wl">항목</span><button class="${!CAT?'on':''}" data-c="">전체 <em>${scope.length}</em></button>`+CATORDER.filter(c=>cc[c]||c===CAT).map(c=>`<button class="${CAT===c?'on':''}" data-c="${c}">${c} <em>${cc[c]||0}</em></button>`).join('');
 }
-document.getElementById('whobar').addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b)return;if(b.dataset.dz){DZ=!DZ;const u=new URL(location.href);if(DZ)u.searchParams.set('cat','design');else u.searchParams.delete('cat');history.replaceState(null,'',u);renderLists();return;}WHO=b.dataset.w;
-  const u=new URL(location.href);if(WHO==='전체')u.searchParams.delete('who');else u.searchParams.set('who',WHO);history.replaceState(null,'',u);const tt=document.getElementById('ttabs'),anc=tt.getBoundingClientRect().bottom+scrollY;renderLists();if(scrollY>anc)window.scrollTo(0,anc);});
+document.getElementById('whobar').addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b)return;CAT=b.dataset.c;const u=new URL(location.href);u.searchParams.delete('who');if(CAT)u.searchParams.set('cat',CAT);else u.searchParams.delete('cat');history.replaceState(null,'',u);const tt=document.getElementById('ttabs'),anc=tt.getBoundingClientRect().bottom+scrollY;renderLists();if(scrollY>anc)window.scrollTo(0,anc);});
 buildTodos();renderLists();
 document.getElementById('vtabs').addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b)return;LT=b.dataset.t;const tt=document.getElementById('ttabs'),anc=tt.getBoundingClientRect().bottom+scrollY;const u=new URL(location.href);if(LT==='cal')u.searchParams.delete('tab');else u.searchParams.set('tab',LT);history.replaceState(null,'',u);renderLists();if(scrollY>anc)window.scrollTo(0,anc);});
 fetch('gsmch-1f-plan.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.items){PLAN=j;buildTodos();renderLists();}}).catch(()=>{});
