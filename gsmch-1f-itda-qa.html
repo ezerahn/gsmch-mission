@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>잇다 미팅 질문표</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#2c2a26;--soft:#55534e;--mut:#8a847a;--line:#dcd9d1;--line2:#eeece6;--bg:#faf9f5;--g:#056B2C;--gl:#E6F3EA;--amber:#9A6414;--ambl:#FFF3B8;--warn:#B3382A;--blue:#3f6fb0;--bluel:#E8EEF8}
+  *{box-sizing:border-box}
+  body{margin:0;padding:16px;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans KR',sans-serif;font-size:15.5px;line-height:1.55}
+  .wrap{max-width:1000px;margin:0 auto}
+  a{color:inherit;text-decoration:none}
+  .navrow{font-size:13px;color:var(--mut);padding-bottom:8px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .navrow a{color:var(--g);font-weight:600}
+  .hrow{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-top:16px}
+  h1{font-family:'Gowun Batang',serif;font-size:28px;font-weight:700;margin:0;letter-spacing:-.6px}
+  .lead{font-size:14.5px;color:var(--soft);margin:6px 0 0}
+  .tools{display:inline-flex;gap:6px;margin-bottom:4px}
+  .tbtn{display:inline-flex;align-items:center;gap:4px;font-family:inherit;font-size:12.5px;font-weight:600;color:#55534e;background:#fff;border:1px solid #dcd9d1;border-radius:999px;padding:4px 11px;cursor:pointer}
+  .tbtn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .leg{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px;font-size:13px}
+  .leg span{border-radius:7px;padding:2px 10px;font-weight:700}
+  .leg .k{background:var(--gl);color:var(--g)}.leg .q{background:var(--ambl);color:var(--amber)}.leg .c{background:#FDE9E4;color:var(--warn)}
+  section{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .sh{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#2c2a26;color:#fff}
+  .sh h2{margin:0;font-size:19px;font-weight:800}.sh span{font-size:13px;opacity:.8}.sh .tbtn{margin-left:auto;color:#fff;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.4)}
+  .sh.cafe{background:#8a4b12}.sh.book{background:#2f6b45}
+  table{width:100%;border-collapse:collapse;table-layout:fixed}
+  th{background:#f6f4ee;font-size:13px;color:var(--soft);font-weight:700;padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+  td{padding:9px 10px;border-bottom:1px solid var(--line2);vertical-align:top;font-size:14.5px}
+  tr:last-child td{border-bottom:none}
+  td.dev{font-weight:800;font-size:15px;background:#fbfaf6;width:19%}
+  td.dev small{display:block;font-weight:500;font-size:12.5px;color:var(--mut)}
+  .k{display:block;background:var(--gl);border-left:3px solid var(--g);border-radius:0 6px 6px 0;padding:4px 8px;margin:2px 0;color:#1d4d2b}
+  .k::before{content:'알고 있음 · ';font-size:11.5px;font-weight:700;color:var(--g)}
+  .q{display:block;background:var(--ambl);border-left:3px solid #E0A800;border-radius:0 6px 6px 0;padding:4px 8px;margin:2px 0}
+  .q::before{content:'Q · ';font-weight:800;color:var(--amber)}
+  .c{display:block;background:#FDE9E4;border-left:3px solid var(--warn);border-radius:0 6px 6px 0;padding:4px 8px;margin:2px 0}
+  .c::before{content:'건축위 전달 · ';font-size:11.5px;font-weight:800;color:var(--warn)}
+  .na{color:var(--mut);font-size:13px}
+  .etc{padding:14px 16px}
+  .etc li{margin:5px 0}
+  .foot{margin-top:26px;padding-top:10px;border-top:1px solid var(--line2);font-size:12.5px;color:var(--mut);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+  @media (max-width:760px){
+    body{padding:10px;font-size:15px}
+    table,thead,tbody,tr,th,td{display:block;width:100%}
+    thead{display:none}
+    tr{border-bottom:2px solid var(--line);padding-bottom:6px}
+    td{border-bottom:none;padding:6px 12px}
+    td.dev{width:100%;padding:10px 12px 4px;background:#f6f4ee}
+    td[data-h]::before{content:attr(data-h);display:block;font-size:12px;font-weight:700;color:var(--mut);margin-bottom:2px}
+    .tbtn{font-size:11.5px;padding:3px 9px}
+  }
+  @media print{.navrow,.tools,.sh .tbtn{display:none}body{background:#fff;padding:0}section{break-inside:avoid;border:1px solid #ccc}}
+  body.shot .navrow,body.shot .tools{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="navrow"><span><a href="gsmch-1f.html">← 1층 성전보수</a> &nbsp;·&nbsp; <a href="gsmch-1f-pos.html">주문 · 결제 시스템</a></span><span>2026. 11. 4. 미팅용 · 11. 3. 작성</span></div>
+  <div class="hrow"><div><h1>잇다 미팅 질문표</h1><p class="lead">기기마다 ① 건축위에 전달할 설치 조건 ② 화면을 만드는 곳 ③ 화면 모양 ④ 우리가 미리 할 수 있는 일을 묻습니다.</p></div>
+    <span class="tools"><button class="tbtn" onclick="saveJpg('.wrap','gsmch_잇다질문표',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button><button class="tbtn" onclick="window.print()"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>인쇄</button></span></div>
+  <div class="leg"><span class="k">초록 = 이미 확인한 것</span><span class="q">노랑 = 내일 물어볼 것</span><span class="c">빨강 = 답 듣고 건축위에 전달</span></div>
+
+  <section id="s1">
+    <div class="sh cafe"><h2>로뎀카페</h2><span>포스 · 고객 화면 · 키오스크 · 현황판 · 메뉴판 · 태블릿 · 공유기</span><button class="tbtn" onclick="saveJpg('#s1','gsmch_잇다질문표_카페',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
+    <table>
+      <thead><tr><th>기기</th><th style="width:27%">① 설치 조건 (전원 · 인터넷 · 랜 · 거치)</th><th style="width:27%">② 화면을 만드는 곳 · 방식</th><th style="width:27%">③ 화면 모양 · ④ 우리가 미리 할 일</th></tr></thead>
+      <tr>
+        <td class="dev">주문현황판<small>43˝ · 출입구 방향 중앙 위 · 사이니지 스틱</small></td>
+        <td data-h="① 설치 조건"><span class="k">와이파이로 연결 · 연결선 없이 전원만 (10/21)</span><span class="q">전원 콘센트 몇 구인지 · 랜선은 정말 필요 없는지</span><span class="q">스틱은 디스플레이 HDMI에 꽂는지 · 스틱 전원(USB)은 어디서 받는지</span><span class="q">43˝ 가로 설치 확정인지 · 세로 예시도 받았는데 어느 쪽이 보기 좋은지</span><span class="c">콘센트 수 · 위치 · 거는 높이 · 보강</span></td>
+        <td data-h="② 화면 만드는 곳"><span class="k">스틱을 꽂으면 잇다POS 관리 화면에서 등록한 공지 · 이미지 · 동영상이 무선으로 자동 표시</span><span class="q">주문번호 화면과 공지 이미지가 한 화면에 같이 나오는지, 번갈아 나오는지</span><span class="q">이미지 등록은 잇다가 하는지, 사업단이 관리자 화면에서 직접 하는지 · 권한</span><span class="q">이미지 규격(가로세로 픽셀) · 파일 종류 · 동영상 길이 제한</span></td>
+        <td data-h="③ 화면 · ④ 미리 할 일"><span class="q">실제 화면 예시(가로) 캡처 받기 — 준비 중 · 픽업하세요 · 호출 번호 모양</span><span class="q">화면에 교회 로고 · 색을 넣을 수 있는지</span><span class="q">공지 이미지는 오픈 전에 우리가 만들어 두면 되는지 · 어디에 올리는지</span></td>
+      </tr>
+      <tr>
+        <td class="dev">현황판 스피커<small>호출음</small></td>
+        <td data-h="① 설치 조건"><span class="k">TV 음향 단자에 스피커 연결 (잇다 10/26) · 전원 꽂는 스피커 · 케이블은 보통 포함</span><span class="k">천장 스피커에 연결하려면 추가 공사</span><span class="q">TV 내장 스피커 소리로 충분한지 (카페 크기 129㎡)</span><span class="q">따로 스피커를 달면 선은 무엇(3.5mm · 광 · 블루투스)이고 스피커 자리에 콘센트가 필요한지</span><span class="q">잇다가 권하는 스피커 종류 · 모델</span><span class="c">스피커 자리 · 콘센트 1구 · 케이블 안 보이게</span></td>
+        <td data-h="② 화면 만드는 곳"><span class="q">호출음 소리 종류를 고를 수 있는지 · 음성("1028번 손님")인지 알림음인지</span><span class="q">소리 크기 · 끄기는 어디서 조절하는지</span></td>
+        <td data-h="③ 화면 · ④ 미리 할 일"><span class="na">—</span></td>
+      </tr>
+      <tr>
+        <td class="dev">메뉴판 3대<small>43˝ · 앞 바 위 · 가로로 나란히 (약 290cm)</small></td>
+        <td data-h="① 설치 조건"><span class="k">사이니지 스틱은 현황판용 1개 · 메뉴판 3대는 따로 (11/3)</span><span class="k">프레임 · 보강은 인테리어 업체가 함</span><span class="q">메뉴판 3대는 무엇으로 띄우는지 — USB 재생 · 스틱 추가 구매 · 다른 방식</span><span class="q">3대에 필요한 전원 · 인터넷 (USB면 전원만?)</span><span class="c">전원 3구 · 배선 숨김 · 인터넷 필요 여부</span></td>
+        <td data-h="② 화면 만드는 곳"><span class="q">메뉴판 화면(음료 45종)을 잇다가 만들어 주는지 · 포스 메뉴를 그대로 가져와 보여 주는지 · 우리가 디자인해서 이미지로 넣는지</span><span class="q">메뉴 · 가격이 바뀔 때 어디서 고치는지</span></td>
+        <td data-h="③ 화면 · ④ 미리 할 일"><span class="q">다른 카페 메뉴판 화면 예시</span><span class="q">우리가 이미지로 만들면 규격(3840×2160?)과 한 대를 둘로 나눠 6칸으로 쓰는 방법</span></td>
+      </tr>
+      <tr>
+        <td class="dev">키오스크<small>21.5˝ · 안드로이드 · 데스크형 · 쇼케이스 옆 벽면</small></td>
+        <td data-h="① 설치 조건"><span class="k">클라우드 방식 · 무선으로 됨 · 랜선 불필요</span><span class="k">데스크형이라 올려 둘 상판 필요 · 1대</span><span class="q">전원 콘센트 위치 · 카드 단말기가 키오스크에 붙어 있는지, 따로 선이 나오는지</span><span class="q">영수증 프린터가 키오스크에 들어 있는지</span><span class="c">상판 높이 · 콘센트 · QR 안내 붙일 자리</span></td>
+        <td data-h="② 화면 만드는 곳"><span class="q">키오스크 메뉴 화면 · 사진은 포스 메뉴관리에서 넣으면 자동으로 뜨는지</span><span class="q">대기 화면(손님 없을 때)에 이미지를 넣을 수 있는지 · 어디서</span></td>
+        <td data-h="③ 화면 · ④ 미리 할 일"><span class="q">키오스크 화면 예시 캡처</span><span class="q">메뉴 사진 규격 · 우리가 미리 찍어 두면 되는지</span><span class="q">텀블러 할인 · 다회용컵 선택을 키오스크에서 받을 수 있는지</span></td>
+      </tr>
+      <tr>
+        <td class="dev">포스 + 고객 화면<small>앞 바 · 고객 화면 10˝</small></td>
+        <td data-h="① 설치 조건"><span class="k">포스는 크롬 브라우저에서 돌아감 · 영수증 출력 프로그램을 켜 두어야 함</span><span class="k">포스 자리에 랜 또는 와이파이</span><span class="q">포스는 유선 랜이 더 안정적인지 · 와이파이로 충분한지</span><span class="q">포스 세트(본체 · 금전함 · 카드단말기 · 프린터 · 스캐너 · 고객화면) 콘센트 몇 구 필요한지</span><span class="c">앞 바 콘센트 수 · 랜 포트 · 금전함 자리</span></td>
+        <td data-h="② 화면 만드는 곳"><span class="k">메뉴 · 옵션 · 음성 주문 이름은 포스 메뉴관리에서 넣음 (카페 모드)</span><span class="q">고객 화면 10˝에 대기 이미지 · 로고를 넣을 수 있는지</span></td>
+        <td data-h="③ 화면 · ④ 미리 할 일"><span class="q">메뉴 등록을 11/9 교육 전에 우리가 먼저 해 둘 수 있는지 (관리자 사이트 주소 · 계정)</span><span class="q">메뉴 · 옵션 · 가격을 엑셀로 주면 잇다가 한 번에 넣어 주는지</span></td>
+      </tr>
+      <tr>
+        <td class="dev">주문관리 태블릿 2대<small>KDS · 제조대 · 잇다 앱 세팅 납품</small></td>
+        <td data-h="① 설치 조건"><span class="q">거치대 포함인지 · 뒤 바 어디에 두는지(세워 두기 · 벽걸이)</span><span class="q">전원은 상시 연결인지 · 와이파이만 되면 되는지</span><span class="c">제조대 콘센트 2구</span></td>
+        <td data-h="② 화면 만드는 곳"><span class="k">잇다가 앱 세팅해서 납품</span><span class="q">주문이 들어오면 소리가 나는지 · 어느 단계에서 현황판 번호가 바뀌는지</span></td>
+        <td data-h="③ 화면 · ④ 미리 할 일"><span class="q">태블릿 화면 예시</span></td>
+      </tr>
+      <tr>
+        <td class="dev">QR 주문 · 온라인몰<small>무상 · 온라인 결제 3.7%</small></td>
+        <td data-h="① 설치 조건"><span class="k">손님은 와이파이 또는 휴대폰 데이터로 QR 주문</span><span class="q">QR 코드는 잇다가 만들어 주는지 · 테이블마다 다른지 · 우리가 디자인에 넣어도 되는지</span></td>
+        <td data-h="② 화면 만드는 곳"><span class="q">QR 주문 · 온라인몰 화면은 어디서 만드는지 — 포스 말고 인터넷 관리자 페이지에서 사업단(총무)이 직접 할 수 있는지</span><span class="q">관리자 페이지 주소 · 계정은 언제 받는지 · 계정 여러 개(총무 · 매니저) 되는지</span><span class="q">메뉴 사진 · 상단 이미지 · 가게 소개 글을 우리가 넣는 방식인지</span></td>
+        <td data-h="③ 화면 · ④ 미리 할 일"><span class="q">손님이 보는 QR 주문 화면 예시</span><span class="q">오픈 전에 우리가 미리 만들어 놓고 11/22에 켜기만 하면 되는지</span><span class="q">QR 주문 사용법 홍보 영상은 언제 주는지 (10/27 문의)</span><span class="q">알림톡(건당 9원)은 켜고 끌 수 있는지</span></td>
+      </tr>
+      <tr>
+        <td class="dev">카페 공유기<small>장비용 1대 · 신규</small></td>
+        <td data-h="① 설치 조건"><span class="k">공유기 1대 (장비용) · 손님에겐 필요할 때 비밀번호 안내</span><span class="k">인터넷 회선은 사무국 협의 중 · 카페까지 몇 가닥 필요한지 확인 중</span><span class="q">잇다 기기 전체(포스 · 키오스크 · 태블릿 2 · 현황판 · 메뉴판?)에 회선 1개 · 공유기 1대로 충분한지</span><span class="q">공유기 자리는 어디가 좋은지 · 권하는 공유기 등급</span><span class="c">인터넷 인입 위치 · 공유기 자리 · 콘센트</span></td>
+        <td data-h="② 화면 만드는 곳"><span class="na">—</span></td>
+        <td data-h="③ 화면 · ④ 미리 할 일"><span class="na">—</span></td>
+      </tr>
+    </table>
+  </section>
+
+  <section id="s2">
+    <div class="sh book"><h2>선지서점</h2><span>포스 · 키오스크 · 외벽 디스플레이 · PDA · 도서검색 · 온라인몰</span><button class="tbtn" onclick="saveJpg('#s2','gsmch_잇다질문표_서점',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
+    <table>
+      <thead><tr><th>기기</th><th style="width:27%">① 설치 조건 (전원 · 인터넷 · 랜 · 거치)</th><th style="width:27%">② 화면을 만드는 곳 · 방식</th><th style="width:27%">③ 화면 모양 · ④ 우리가 미리 할 일</th></tr></thead>
+      <tr>
+        <td class="dev">외벽 디스플레이<small>43˝ · 세로 · USB 재생</small></td>
+        <td data-h="① 설치 조건"><span class="k">잇다 추천: 서점 외벽은 스틱 없이 USB로 재생</span><span class="q">USB 재생이면 전원만 있으면 되는지 · 인터넷 불필요 확인</span><span class="q">세로로 걸 때 화면 회전은 디스플레이 설정으로 되는지</span><span class="c">전원 1구 · 세로 거치 · 보강</span></td>
+        <td data-h="② 화면 만드는 곳"><span class="k">PC에서 USB에 복사해 디스플레이에 꽂음</span><span class="q">이미지 · 동영상 규격(세로 2160×3840?) · 파일 형식 · 여러 장 자동 넘김 설정</span></td>
+        <td data-h="③ 화면 · ④ 미리 할 일"><span class="q">신간 · 공지 화면을 우리가 디자인해 USB에 넣어 두면 되는지</span></td>
+      </tr>
+      <tr>
+        <td class="dev">키오스크<small>21.5˝ · 안드로이드 · 데스크형 · 도서검색대 옆</small></td>
+        <td data-h="① 설치 조건"><span class="k">무선 · 상판 필요</span><span class="q">도서검색 화면을 이 키오스크로 쓰는지, 검색대 기기를 따로 두는지 (미정)</span><span class="q">콘센트 · 카드 단말기 · 프린터 구성 (카페와 같은지)</span><span class="c">하부장 치수 · 환기 · 배선 구멍 · 콘센트</span></td>
+        <td data-h="② 화면 만드는 곳"><span class="q">책 검색 화면이 키오스크 기본 기능인지 · 50만 권 도서 자료와 연결되는지</span><span class="q">쉬는 시간 공지 · 큐레이션 화면을 어디서 올리는지</span></td>
+        <td data-h="③ 화면 · ④ 미리 할 일"><span class="q">서점 키오스크 화면 예시 (검색 · 결제)</span></td>
+      </tr>
+      <tr>
+        <td class="dev">포스 + 바코드 출력기<small>계산대 · 고객 화면 없음</small></td>
+        <td data-h="① 설치 조건"><span class="k">도서/문구 모드 · 발주 · 매입 · 반품까지</span><span class="k">11/4 임시서점에 먼저 설치 → 11/14 1층으로</span><span class="q">11/14 1층 이동은 잇다가 와서 다시 설치하는지, 우리가 옮겨 꽂기만 하면 되는지</span><span class="q">계산대 콘센트 수 · 랜</span><span class="c">계산대 상판 치수 · 전원 · 랜</span></td>
+        <td data-h="② 화면 만드는 곳"><span class="k">바코드 찍으면 50만 권 자료에서 책 정보가 들어옴</span><span class="q">바코드 없는 책 · 문구는 자체 바코드를 어떻게 만드는지 (책값표)</span></td>
+        <td data-h="③ 화면 · ④ 미리 할 일"><span class="q">11/4~13 임시서점에서 도서 입력을 끝내면 11/14 1층 포스에 그대로 이어지는지</span></td>
+      </tr>
+      <tr>
+        <td class="dev">PDA 앱<small>서점 법인폰 (11/4 개설)</small></td>
+        <td data-h="① 설치 조건"><span class="k">KIS MOBILE 앱 + 블루투스 카드 단말기 필요</span><span class="q">블루투스 카드 단말기가 견적에 포함인지, 따로 사는지 · 가격</span><span class="q">법인폰 개통되면 앱 설치는 누가 · 언제</span></td>
+        <td data-h="② 화면 만드는 곳"><span class="k">재고조사 · 서가 · 행사장 판매</span><span class="q">서가 위치 정보(ㄷ자 칸 번호)를 PDA에 넣을 수 있는지</span></td>
+        <td data-h="③ 화면 · ④ 미리 할 일"><span class="q">11/16 재고 조사 전에 PDA 사용법 1회 연습 가능한지</span></td>
+      </tr>
+      <tr>
+        <td class="dev">온라인몰 · 도서검색<small>무상 · 검색만, 결제는 추후</small></td>
+        <td data-h="① 설치 조건"><span class="na">—</span></td>
+        <td data-h="② 화면 만드는 곳"><span class="q">온라인몰 관리자 페이지는 카페와 같은 곳인지 · 서점 · 카페 몰이 하나인지 둘인지</span><span class="q">도서 검색만 열고 결제는 나중에 켜는 설정이 되는지</span></td>
+        <td data-h="③ 화면 · ④ 미리 할 일"><span class="q">포스에 넣은 책이 자동으로 온라인몰에 올라가는지 · 사진은 자동인지</span></td>
+      </tr>
+    </table>
+  </section>
+
+  <section id="s3">
+    <div class="sh"><h2>공통 · 일정 · 계약</h2><button class="tbtn" onclick="saveJpg('#s3','gsmch_잇다질문표_공통',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
+    <div class="etc"><ul>
+      <li><span class="k">11/4 임시서점 포스 설치 · 계약금 30% 입금 · 11/9 전체 교육 (오후 2~4시 · 2층 그레이스홀) · 11/14 오후 1층 설치 (청소 뒤) · 사이니지 스틱 선설치 가능</span></li>
+      <li><span class="q">11/14 설치 때 잇다가 몇 명 · 몇 시간 오는지 · 그날 우리가 준비할 것(전원 · 인터넷 · 상판)</span></li>
+      <li><span class="q">관리자 사이트 주소와 계정(총무 · 매니저)을 언제 받는지 — 오픈 전에 메뉴 · 온라인몰 · 공지 이미지를 미리 넣고 싶음</span></li>
+      <li><span class="q">사이니지 · 현황판 · 메뉴판 이미지 규격을 한 장으로 정리해 줄 수 있는지 (디자인 제작용)</span></li>
+      <li><span class="q">계약서 사본 · 서류(신분증 · 통장 사본 · 법인 서류 해당 여부)</span></li>
+      <li><span class="q">1년 A/S 범위 · 고장 시 연락처 · 원격 지원 방법</span></li>
+      <li><span class="q">예약 주문 화면은 언제 안내받는지 (매뉴얼에 넣을 것)</span></li>
+    </ul></div>
+  </section>
+
+  <div class="foot"><span>선한목자교회 총여선교회 사업단</span><span>1층 성전보수 사업단 PM 안상미</span></div>
+</div>
+<script>
+function saveJpg(sel,name,btn){const go=()=>{document.body.classList.add('shot');const t=btn.innerHTML;btn.textContent='저장 중…';
+  html2canvas(document.querySelector(sel),{backgroundColor:'#ffffff',scale:2,logging:false,ignoreElements:n=>n.classList&&n.classList.contains('tbtn')}).then(cv=>{cv.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name+'_2026-11-04.jpg';document.body.appendChild(a);a.click();a.remove();},'image/jpeg',0.93);}).catch(()=>alert('이미지로 저장하지 못했습니다.')).then(()=>{document.body.classList.remove('shot');btn.innerHTML=t;});};
+  if(window.html2canvas)return go();const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';s.onload=go;document.head.appendChild(s);}
+</script>
+</body>
+</html>
