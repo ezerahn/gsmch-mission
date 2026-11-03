@@ -180,12 +180,19 @@
     .tbtn svg{width:11px;height:11px}
   }
   @media print{ .back{display:none} .month{break-inside:avoid} body{background:#fff} }
+  .ptabs{display:flex;gap:8px;margin-top:16px}
+  .ptabs a{flex:1;text-align:center;font-size:20px;font-weight:800;color:#8a847a;background:#f2f0e9;border:2px solid #dcd9d1;border-radius:14px;padding:14px 10px;white-space:nowrap}
+  .ptabs a.on{box-shadow:0 2px 0 #000}
+  .ptabs{clear:both}
+  .ptabs a.on{background:#2c2a26;border-color:#2c2a26;color:#fff}
+  @media (max-width:640px){.ptabs a{font-size:16px;padding:11px 6px}}
 </style>
 </head>
 <body>
 <div class="wrap">
+  <nav class="ptabs"><a href="gsmch-1f-calendar.html" class="on">사업단 일정</a><a href="gsmch-1f-checklist.html" class="">오픈 체크리스트</a></nav>
   <h1>사업단 일정</h1>
-  <p class="lead">약속과 정해진 날짜만 둡니다 — 미팅 · 교육 · 시음 · 계약 · 입고 · 설치 · 이사 · 준공 · 오픈. 점선(····)은 예정입니다. 챙길 일은 <a class="lk" href="gsmch-1f-checklist.html">오픈 체크리스트 →</a></p>
+  <p class="lead">약속과 정해진 날짜만 둡니다 — 미팅 · 교육 · 시음 · 계약 · 입고 · 설치 · 이사 · 준공 · 오픈. 점선(····)은 예정입니다.</p>
   <span class="upd">업데이트 2026.11.03 23:00</span>
 
 
