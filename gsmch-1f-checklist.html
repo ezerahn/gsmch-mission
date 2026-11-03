@@ -70,6 +70,7 @@
   details.cat>summary::before{content:'▾';color:var(--mut);font-size:14px}
   details.cat:not([open])>summary::before{content:'▸'}
   details.cat>summary em{font-style:normal;font-size:13px;color:var(--mut);font-weight:600}
+  details.cat>summary em i{font-style:normal;font-weight:700}details.cat>summary em i.lt{color:var(--warn)}details.cat>summary em i.tw{color:var(--amber)}
   details.cat>summary::-webkit-details-marker{display:none}
   .fold{display:flex;gap:6px;margin:10px 0 0}
   .fold button{font-family:inherit;font-size:13px;color:var(--soft);background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 11px;cursor:pointer}
@@ -95,7 +96,7 @@
   <div class="navrow"><span><a href="gsmch-1f.html">← 1층 성전보수</a> &nbsp;·&nbsp; <a href="gsmch-1f-plan.html">진도표</a></span><span>업데이트 <b id="upd">—</b></span></div>
   <nav class="ptabs"><a href="gsmch-1f-calendar.html">사업단 일정</a><a href="gsmch-1f-checklist.html" class="on">오픈 체크리스트</a></nav>
   <div class="hrow"><h1>오픈 체크리스트</h1><span class="tools"><button class="tbtn" onclick="saveJpg('.wrap','gsmch_오픈체크리스트',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button><button class="tbtn" onclick="window.print()"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>인쇄</button></span></div>
-  <p class="lead">11/22 오픈 전에 챙길 일입니다. 탭을 고르고, 항목을 누르면 펼쳐집니다. 노란 바탕이 남은 일, ✓는 끝난 일입니다. 날짜가 정해진 약속은 <a href="gsmch-1f-calendar.html">사업단 일정</a>에 있습니다.</p>
+  <p class="lead">11/22 오픈 전에 챙길 일입니다. 매장 탭을 고르고, 항목을 누르면 펼쳐집니다. 날짜가 지난 일은 빨간 날짜, 이번 주 기한은 회색 날짜입니다. 노란 바탕이 남은 일, ✓는 끝난 일입니다. 날짜가 정해진 약속은 <a href="gsmch-1f-calendar.html">사업단 일정</a>에 있습니다.</p>
   <div class="sum" id="sum"></div>
   <nav class="jump" id="jump"></nav>
   <div class="fold"><button onclick="document.querySelectorAll('#'+CUR+' details.cat').forEach(d=>d.open=false)">항목 모두 접기</button><button onclick="document.querySelectorAll('#'+CUR+' details.cat').forEach(d=>d.open=true)">모두 펼치기</button></div>
@@ -137,12 +138,14 @@ function row(r){
   const when=r.date?`<span class="tag ${late?'late':'d'}">${fmt(r.date)}</span>`:(r.due?`<span class="tag ${late?'late':'d'}">~${fmt(r.due)}</span>`:'');
   return `<div class="row ${late?'late':''}"><span class="cb">${r.done?'✓':''}</span><span class="t">${when}${r.st==='wait'?'<span class="tag wt">답 기다림</span>':''}${esc(r.t)}<b class="wh">${esc(r.who)}</b><small>${esc(r.ctx)}</small>${r.memo&&!r.done?`<span class="mm">${esc(r.memo)}</span>`:''}</span></div>`;
 }
+const WE_=thisWeek()[1];
 function group(list,showStore){
   const open=list.filter(r=>!r.done),done=list.filter(r=>r.done);
   let h='';
   CATORDER.concat([...new Set(list.map(r=>r.cat))].filter(c=>!CATORDER.includes(c))).forEach(c=>{
     const o=open.filter(r=>r.cat===c),d=done.filter(r=>r.cat===c);if(!o.length&&!d.length)return;
-    h+=`<details class="cat"><summary><b>${esc(c)}</b><em>남음 ${o.length}</em></summary>`+o.sort((a,b)=>a.key<b.key?-1:1).map(r=>(showStore?`<div style="position:relative">`:'')+row(r).replace('<span class="t">','<span class="t">'+(showStore?`<span class="tag s${r.store}">${SN[r.store]}</span>`:''))+(showStore?'</div>':'')).join('');
+    const lt=o.filter(r=>r.key<TODAY).length,tw=o.filter(r=>r.key>=TODAY&&r.key<=WE_).length;
+    h+=`<details class="cat"><summary><b>${esc(c)}</b><em>남음 ${o.length}${lt?` · <i class="lt">지난 날짜 ${lt}</i>`:''}${tw?` · <i class="tw">이번 주 ${tw}</i>`:''}</em></summary>`+o.sort((a,b)=>a.key<b.key?-1:1).map(r=>(showStore?`<div style="position:relative">`:'')+row(r).replace('<span class="t">','<span class="t">'+(showStore?`<span class="tag s${r.store}">${SN[r.store]}</span>`:''))+(showStore?'</div>':'')).join('');
     if(d.length)h+=`<details class="dn"><summary>끝난 일 ${d.length}건</summary>${d.map(row).join('')}</details>`;
     h+='</details>';
   });
@@ -158,26 +161,18 @@ function render(){
   const wk=pre.filter(r=>!r.done&&r.key>=TODAY&&r.key<=WE);
   const nOpen=pre.filter(r=>!r.done).length,nDone=pre.filter(r=>r.done).length;
   document.getElementById('sum').innerHTML=`<span>오픈 전 남은 일 <b>${nOpen}</b>건</span><span class="w">지난 날짜 확인 <b>${late.length}</b></span><span class="y">이번 주 <b>${wk.length}</b></span><span>끝남 <b style="color:var(--gd)">${nDone}</b></span>`;
-  const J=[['w','#wk','이번 주'],['c','#cafe','로뎀카페'],['b','#book','선지서점'],['o','#com','공통'],['a','#after','오픈 뒤']];
+  const J=[['c','#cafe','로뎀카페'],['b','#book','선지서점'],['o','#com','공통'],['a','#after','오픈 뒤']];
   document.getElementById('jump').innerHTML=J.map(([c,h,n])=>`<a class="${c}" data-t="${h.slice(1)}" href="${h}">${n}</a>`).join('');
   const jpg=(id,nm)=>`<button class="tbtn" onclick="saveJpg('#${id}','gsmch_체크리스트_${nm}',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button>`;
   let h='';
-  h+=`<section id="wk"><div class="sh w"><h2>이번 주 꼭 할 일</h2><span>${ws.getMonth()+1}/${ws.getDate()} ~ ${we.getMonth()+1}/${we.getDate()} · 지난 날짜 ${late.length} + 이번 주 ${wk.length}</span>${jpg('wk','이번주')}</div>`;
-  const wkAll=late.concat(wk);
-  if(!wkAll.length)h+='<div class="empty">없습니다.</div>';
-  ['카페','서점','공통'].forEach(k=>{const L=wkAll.filter(r=>r.store===k);if(!L.length)return;
-    h+=`<h3 class="st s${k}">${SN[k]} <em>${L.length}건</em></h3>`;
-    CATORDER.concat([...new Set(L.map(r=>r.cat))].filter(c=>!CATORDER.includes(c))).forEach(c=>{const o=L.filter(r=>r.cat===c);if(!o.length)return;
-      h+=`<details class="cat"><summary><b>${esc(c)}</b><em>${o.length}건${o.filter(r=>r.key<TODAY).length?` · 지난 날짜 ${o.filter(r=>r.key<TODAY).length}`:''}</em></summary>`+o.sort((a,b)=>a.key<b.key?-1:1).map(row).join('')+'</details>';});});
-  h+=`</section>`;
   [['cafe','c','카페'],['book','b','서점'],['com','o','공통']].forEach(([id,c,k])=>{const L=pre.filter(r=>r.store===k);
     h+=`<section id="${id}"><div class="sh ${c}"><h2>${SN[k]}</h2><span>남음 ${L.filter(r=>!r.done).length} · 끝남 ${L.filter(r=>r.done).length}</span>${jpg(id,SN[k])}</div>${group(L,false)}</section>`;});
   h+=`<section id="after"><div class="sh a"><h2>오픈 뒤 (11/23 ~ 12월)</h2><span>남음 ${after.filter(r=>!r.done).length}</span>${jpg('after','오픈뒤')}</div>${group(after,true)}</section>`;
   document.getElementById('body').innerHTML=h;
   showTab(CUR);
 }
-let CUR=location.hash.slice(1)||'wk';
-function showTab(t){CUR=t;['wk','cafe','book','com','after'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display=id===t?'':'none';});document.querySelectorAll('#jump a').forEach(a=>a.classList.toggle('on',a.dataset.t===t));const af=document.getElementById('after');if(af&&t==='after')af.open=true;}
+let CUR=location.hash.slice(1)||'cafe';
+function showTab(t){CUR=t;['cafe','book','com','after'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display=id===t?'':'none';});document.querySelectorAll('#jump a').forEach(a=>a.classList.toggle('on',a.dataset.t===t));const af=document.getElementById('after');if(af&&t==='after')af.open=true;}
 document.getElementById('jump').addEventListener('click',ev=>{const a=ev.target.closest('a');if(!a)return;ev.preventDefault();history.replaceState(null,'','#'+a.dataset.t);showTab(a.dataset.t);});
 render();
 fetch('gsmch-1f-plan.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.items){D=j;render();}}).catch(()=>{});
