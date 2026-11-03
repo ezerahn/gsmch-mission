@@ -74,6 +74,12 @@
   details.cat>summary::-webkit-details-marker{display:none}
   .fold{display:flex;gap:6px;margin:10px 0 0}
   .fold button{font-family:inherit;font-size:13px;color:var(--soft);background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 11px;cursor:pointer}
+  .ctabs{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 6px;position:sticky;top:58px;z-index:4;background:var(--bg);padding:6px 0}
+  .ctabs button{font-family:inherit;font-size:15px;font-weight:700;color:var(--soft);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:7px 12px;cursor:pointer}
+  .ctabs button em{font-style:normal;font-size:12.5px;color:var(--mut);margin-left:4px}.ctabs button em i{font-style:normal;color:var(--warn);font-weight:800}
+  .ctabs button.on{background:#f2f0e9;border-color:#2c2a26;color:#2c2a26}
+  .cph{display:flex;align-items:baseline;gap:8px;margin:10px 0 6px 4px;font-size:17px;font-weight:800}.cph span{font-size:13px;color:var(--mut);font-weight:600}.cph i{font-style:normal;font-weight:700}.cph i.lt{color:var(--warn)}.cph i.tw{color:var(--amber)}
+  @media (max-width:640px){.ctabs{top:54px}.ctabs button{font-size:13.5px;padding:6px 10px}}
   .empty{color:var(--mut);font-size:15px;padding:8px 4px}
   .foot{margin-top:30px;padding-top:10px;border-top:1px solid var(--line2);font-size:12.5px;color:var(--mut);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
   @media (max-width:640px){
@@ -96,10 +102,9 @@
   <div class="navrow"><span><a href="gsmch-1f.html">← 1층 성전보수</a> &nbsp;·&nbsp; <a href="gsmch-1f-plan.html">진도표</a></span><span>업데이트 <b id="upd">—</b></span></div>
   <nav class="ptabs"><a href="gsmch-1f-calendar.html">사업단 일정</a><a href="gsmch-1f-checklist.html" class="on">오픈 체크리스트</a></nav>
   <div class="hrow"><h1>오픈 체크리스트</h1><span class="tools"><button class="tbtn" onclick="saveJpg('.wrap','gsmch_오픈체크리스트',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button><button class="tbtn" onclick="window.print()"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>인쇄</button></span></div>
-  <p class="lead">11/22 오픈 전에 챙길 일입니다. 매장 탭을 고르고, 항목을 누르면 펼쳐집니다. 날짜가 지난 일은 빨간 날짜, 이번 주 기한은 회색 날짜입니다. 노란 바탕이 남은 일, ✓는 끝난 일입니다. 날짜가 정해진 약속은 <a href="gsmch-1f-calendar.html">사업단 일정</a>에 있습니다.</p>
+  <p class="lead">11/22 오픈 전에 챙길 일입니다. 위 탭에서 매장을, 아래 탭에서 항목을 고릅니다. 날짜가 지난 일은 빨간 날짜, 이번 주 기한은 회색 날짜입니다. 노란 바탕이 남은 일, ✓는 끝난 일입니다. 날짜가 정해진 약속은 <a href="gsmch-1f-calendar.html">사업단 일정</a>에 있습니다.</p>
   <div class="sum" id="sum"></div>
   <nav class="jump" id="jump"></nav>
-  <div class="fold"><button onclick="document.querySelectorAll('#'+CUR+' details.cat').forEach(d=>d.open=false)">항목 모두 접기</button><button onclick="document.querySelectorAll('#'+CUR+' details.cat').forEach(d=>d.open=true)">모두 펼치기</button></div>
   <div id="body"></div>
   <div class="foot"><span>선한목자교회 총여선교회 사업단</span><span>1층 성전보수 사업단 PM 안상미</span></div>
 </div>
@@ -140,18 +145,21 @@ function row(r){
   return `<div class="row ${late?'late':''}"><span class="cb">${r.done?'✓':''}</span><span class="t">${when}${r.st==='wait'?'<span class="tag wt">답 기다림</span>':''}${esc(r.t)}<b class="wh">${esc(r.who)}</b><small>${esc(r.ctx)}</small>${r.memo&&!r.done?`<span class="mm">${esc(r.memo)}</span>`:''}</span></div>`;
 }
 const WE_=thisWeek()[1];
-function group(list,showStore){
+function group(list,showStore,sid){
   const open=list.filter(r=>!r.done),done=list.filter(r=>r.done);
-  let h='';
-  CATORDER.concat([...new Set(list.map(r=>r.cat))].filter(c=>!CATORDER.includes(c))).forEach(c=>{
-    const o=open.filter(r=>r.cat===c),d=done.filter(r=>r.cat===c);if(!o.length&&!d.length)return;
+  const cats=CATORDER.concat([...new Set(list.map(r=>r.cat))].filter(c=>!CATORDER.includes(c))).filter(c=>list.some(r=>r.cat===c));
+  if(!cats.length)return '<div class="empty">없습니다.</div>';
+  let tabs='<div class="ctabs">',panes='';
+  cats.forEach((c,ix)=>{const o=open.filter(r=>r.cat===c),d=done.filter(r=>r.cat===c);
     const lt=o.filter(r=>r.key<TODAY).length,tw=o.filter(r=>r.key>=TODAY&&r.key<=WE_).length;
-    h+=`<details class="cat"><summary><b>${esc(c)}</b><em>남음 ${o.length}${lt?` · <i class="lt">지난 날짜 ${lt}</i>`:''}${tw?` · <i class="tw">이번 주 ${tw}</i>`:''}</em></summary>`+o.sort((a,b)=>a.key<b.key?-1:1).map(r=>(showStore?`<div style="position:relative">`:'')+row(r).replace('<span class="t">','<span class="t">'+(showStore?`<span class="tag s${r.store}">${SN[r.store]}</span>`:''))+(showStore?'</div>':'')).join('');
-    if(d.length)h+=`<details class="dn"><summary>끝난 일 ${d.length}건</summary>${d.map(row).join('')}</details>`;
-    h+='</details>';
-  });
-  return h||'<div class="empty">없습니다.</div>';
+    tabs+=`<button class="${ix===0?'on':''}" data-c="${esc(c)}">${esc(c)}<em>${o.length}${lt?`<i class="lt">·${lt}</i>`:''}</em></button>`;
+    panes+=`<div class="cpane" data-c="${esc(c)}" style="${ix===0?'':'display:none'}"><div class="cph"><b>${esc(c)}</b><span>남음 ${o.length}${lt?` · <i class="lt">지난 날짜 ${lt}</i>`:''}${tw?` · <i class="tw">이번 주 ${tw}</i>`:''}</span></div>`+
+      (o.length?o.sort((a,b)=>a.key<b.key?-1:1).map(r=>row(r).replace('<span class="t">','<span class="t">'+(showStore?`<span class="tag s${r.store}">${SN[r.store]}</span>`:''))).join(''):'<div class="empty">남은 일이 없습니다.</div>')+
+      (d.length?`<details class="dn"><summary>끝난 일 ${d.length}건</summary>${d.map(row).join('')}</details>`:'')+'</div>';});
+  return tabs+'</div>'+panes;
 }
+document.addEventListener('click',ev=>{const b=ev.target.closest('.ctabs button');if(!b)return;const sec=b.closest('section');
+  sec.querySelectorAll('.ctabs button').forEach(x=>x.classList.toggle('on',x===b));sec.querySelectorAll('.cpane').forEach(p=>p.style.display=p.dataset.c===b.dataset.c?'':'none');});
 function render(){
   const T=build();
   document.getElementById('upd').textContent=D.updated||'—';
