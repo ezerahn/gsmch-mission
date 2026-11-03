@@ -189,6 +189,7 @@
   .ugh{display:flex;align-items:baseline;gap:8px;margin:18px 0 6px;padding:7px 12px;background:#2c2a26;color:#fff;border-radius:8px;font-size:16px}.ugh span{font-size:13px;opacity:.75}.ugh{cursor:pointer;list-style:none}.ugh::-webkit-details-marker{display:none}.ugh i{margin-left:auto;font-style:normal;font-size:12px;opacity:.7}.ug:not([open]) .ugh{background:#6e6860}@media print{.ug{display:block}}
   .sc{display:inline-block;font-size:12.5px;font-weight:700;border-radius:6px;padding:0 7px;margin-right:6px;vertical-align:2px}.sc.s카페{background:#F6E7D3;color:#8a4b12}.sc.s서점{background:#E2EFE6;color:#2f6b45}.sc.s공통{background:#ECEAE4;color:#5e5a52}
   .usg{font-size:15px;font-weight:700;color:#55534e;margin:12px 0 4px 4px}
+  .ugh.s카페{background:#8a4b12}.ugh.s서점{background:#2f6b45}.ugh.s공통{background:#55534e}.ug2{margin-top:22px}.ugh2{cursor:pointer;font-size:16px;font-weight:700;color:#55534e;padding:9px 12px;background:#ECEAE4;border-radius:8px;list-style:none}.ugh2 i{font-style:normal;font-size:12px;margin-left:8px;opacity:.7}
   .undated{background:#fff;border:1px solid var(--line);border-radius:14px;margin-top:22px;padding:6px 20px 18px}.unl{font-size:13.5px;color:var(--muted);margin:0 0 8px}
   .list .empty{color:var(--muted);padding:8px 4px}
   .row.done .wh{opacity:.6}
@@ -309,16 +310,15 @@ const sim=(a,b)=>{const A=big2(a),B=big2(b);if(!A.size||!B.size)return 0;let c=0
 const md=x=>{const r=/(\d{1,2})\s*\/\s*(\d{1,2})/.exec(x||'');return r?{m:+r[1],d:+r[2]}:null;};
 const esc=x=>String(x==null?'':x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-const CATS=[['인테리어 · 공사',/상판|루버|블라인드|도어락|자물쇠|우드톤|타일|뒷문|창고 문|하자|준공/],['주문 · 결제',/메뉴판|포스|키오스크|현황판|디스플레이|사이니지|QR|잇다|PDA|태블릿|결제|온라인몰|검색대|바코드|노트북|법인폰|휴대폰|공유기|와이파이|인터넷|스피커|호출|랜/],
+const CATS=[['디자인 · 제작물',/디자인|홀더|컵 ·|포장재|패키지|유니폼|앞치마|사인|간판|배너|스티커|안내물|안내문|화면 구성|공지 내용|메뉴판 제작|메뉴판 화면/],['인테리어 · 공사',/상판|루버|블라인드|도어락|자물쇠|우드톤|타일|뒷문|창고 문|하자|준공/],['주문 · 결제',/메뉴판|포스|키오스크|현황판|디스플레이|사이니지|QR|잇다|PDA|태블릿|결제|온라인몰|검색대|바코드|노트북|법인폰|휴대폰|공유기|와이파이|인터넷|스피커|호출|랜/],
  ['다회용컵',/반납함|다회용|더그리트|텀블러|컵 /],
  ['교육',/교육|매뉴얼|숙지|봉사자/],
  ['메뉴 · 원두',/원두|시음|메뉴|레시피|기물|커피머신|그라인더|파블로스|히즈빈스|마데톨미|앞치마/],
- ['제작물 · 디자인',/디자인|사인|홀더|유니폼|배너|안내물|안내문|인쇄|스티커|주보/],
  ['인테리어 · 공사',/도면|상판|문|도어락|자물쇠|블라인드|루버|바 |타일|타공|보강|전원|배선|준공|하자|의자|테이블|창고|간이주방|서비스바|우드톤|청소|가구|진입|하부장|3D|구멍|치수|선반|쓰레기/],
  ['진열 · 도서',/도서|진열|서가|서고|재고|발주|책|카드 쓰는|신간/],
  ];
-const catOf=(txt,it)=>{for(const [n,re] of CATS){if(re.test(txt))return n;}for(const [n,re] of CATS){if(it&&re.test(it.title))return n;}return it&&it.stream||'행정 · 운영';};
-const storeOf=(txt,it)=>(/카페/.test(txt)&&/서점/.test(txt))?'공통':/카페/.test(txt)?'카페':/서점/.test(txt)?'서점':(it&&it.group==='로뎀카페'?'카페':it&&it.group==='선지서점'?'서점':'공통');
+const catOf=(txt,it)=>{for(const [n,re] of CATS){if(re.test(txt))return n;}for(const [n,re] of CATS){if(it&&re.test(it.title))return n;}const M={'교육 · 준비':'교육','교육 · 인력':'교육','공사 · 현장':'인테리어 · 공사','도면 · 자리':'인테리어 · 공사','제작물 · 사인':'디자인 · 제작물','제작물':'디자인 · 제작물','오픈':'오픈 · 운영','행정 · 매뉴얼':'행정 · 운영','백서 제작':'백서 · 인수인계','메뉴 · 기물':'메뉴 · 원두'};const st=it&&it.stream||'';return M[st]||st||'행정 · 운영';};
+const storeOf=(txt,it)=>(/카페/.test(txt)&&/서점/.test(txt))?'공통':/카페|컵|홀더|메뉴판|앞치마|원두|반납함/.test(txt)?'카페':/서가|도서|책|PDA|임시서점/.test(txt)?'서점':/서점/.test(txt)?'서점':(it&&it.group==='로뎀카페'?'카페':it&&it.group==='선지서점'?'서점':'공통');
 let TODOS=[],UNDATED=[];
 function buildTodos(){
   TODOS=[];UNDATED=[];ROWS.forEach(r=>{if(r.kind==='kev'){r.who='';r.sub=null;r.memo='';r.dn=r.dn0;r.t=r.t0;}});
@@ -352,11 +352,16 @@ function renderLists(){
     el.innerHTML=`<div class="lh"><h4>${m}월 체크리스트${WHO==='전체'?'':' · '+WHO}</h4><span class="ls"><span class="k1">✓ 끝남 ${nd}</span><span class="k2">☐ 남음 ${nl}</span>${nw?`<span class="k3">지난 날짜 확인 ${nw}</span>`:''}</span><button class="lt" onclick="this.closest('.list').classList.toggle('only')">남은 것만 보기</button></div>`+(rs.length?rs.map(rowHtml).join(''):'<div class="empty">이 달에는 없습니다.</div>');
   }
   const un=UNDATED.filter(r=>r.st!=='done'&&pick(r)).sort((a,b)=>(a.due?a.due.m*100+a.due.d:9999)-(b.due?b.due.m*100+b.due.d:9999));
-  const ORD=['잇다','건축위','단장님','매니저','총무','회계'];const grp={};un.forEach(r=>{(grp[r.who]=grp[r.who]||[]).push(r);});
-  const keys=Object.keys(grp).sort((a,b)=>(ORD.indexOf(a)<0?99:ORD.indexOf(a))-(ORD.indexOf(b)<0?99:ORD.indexOf(b)));
-  const SO={'카페':1,'서점':2,'공통':3};const SUB={'잇다':'잇다에 물어볼 것','건축위':'건축위에 확인할 것','단장님':'단장님께 여쭐 것','매니저':'매니저님과 확인할 것','총무':'총무 할 일','회계':'회계 확인'};
-  document.getElementById('undated').innerHTML=`<div class="lh"><h4>날짜 정하지 않은 할 일${WHO==='전체'?'':' · '+WHO}</h4><span class="ls"><span class="k2">☐ ${un.length}</span></span></div><p class="unl">진도표에 있는데 날짜가 없는 일을 대상별로 나눴습니다. 왼쪽은 그 묶음의 마감입니다.</p>`+
-    keys.map(k=>`<details class="ug" ${WHO!=='전체'||k==='잇다'||k==='건축위'?'open':''}><summary class="ugh"><b>${esc(SUB[k]||k)}</b><span>${grp[k].length}건</span><i>펼치기 · 접기</i></summary>`+grp[k].sort((a,b)=>((SO[a.store]||9)-(SO[b.store]||9))||a.cat.localeCompare(b.cat)).map((r,ix,arr)=>{const hd=(ix===0||arr[ix-1].store!==r.store||arr[ix-1].cat!==r.cat)?`<div class="usg"><b class="sc s${r.store}">${r.store}</b>${r.cat}</div>`:'';const late=r.due&&new Date(2026,r.due.m-1,r.due.d)<new Date(TODAY);return hd+`<div class="row todo ${late?'late':''}"><span class="cb"></span><span class="d">${r.due?r.due.m+'/'+r.due.d+' 마감':'—'}</span><span class="t">${esc(r.t)}${r.st==='wait'?' <span class="st wt">답 기다림</span>':''}<small class="cx">${esc(r.ctx)}</small>${r.memo?`<small class="mm">${esc(r.memo)}</small>`:''}</span></div>`}).join('')+'</details>').join('');
+  const SO={'카페':1,'서점':2,'공통':3};
+  const late_=r=>r.due&&(r.due.m>11||(r.due.m===11&&r.due.d>22));
+  const now=un.filter(r=>!late_(r)),after=un.filter(late_);
+  const rowU=r=>{const lt=r.due&&new Date(2026,r.due.m-1,r.due.d)<new Date(TODAY);return `<div class="row todo ${lt?'late':''}"><span class="cb"></span><span class="d">${r.due?r.due.m+'/'+r.due.d+' 마감':'—'}</span><span class="t">${esc(r.t)}${r.st==='wait'?' <span class="st wt">답 기다림</span>':''} <b class="wh">${esc(r.who)}</b><small class="cx">${esc(r.ctx)}</small>${r.memo?`<small class="mm">${esc(r.memo)}</small>`:''}</span></div>`;};
+  const block=(list,openAll)=>{const st={};list.forEach(r=>{(st[r.store]=st[r.store]||[]).push(r);});
+    return Object.keys(st).sort((a,b)=>(SO[a]||9)-(SO[b]||9)).map(k=>{const L=st[k].sort((a,b)=>a.cat.localeCompare(b.cat)||((a.due?a.due.m*100+a.due.d:9999)-(b.due?b.due.m*100+b.due.d:9999)));
+      return `<details class="ug" ${openAll?'open':''}><summary class="ugh s${k}"><b>${k==='공통'?'공통':k==='카페'?'로뎀카페':'선지서점'}</b><span>${L.length}건</span><i>펼치기 · 접기</i></summary>`+
+        L.map((r,ix)=>((ix===0||L[ix-1].cat!==r.cat)?`<div class="usg">${esc(r.cat)}</div>`:'')+rowU(r)).join('')+'</details>';}).join('');};
+  document.getElementById('undated').innerHTML=`<div class="lh"><h4>날짜 정하지 않은 할 일${WHO==='전체'?'':' · '+WHO}</h4><span class="ls"><span class="k2">☐ 오픈 전 ${now.length}</span><span class="k1" style="background:#ECEAE4;color:#5e5a52">오픈 뒤 ${after.length}</span></span></div><p class="unl">매장 → 항목으로 나눴습니다. 줄 끝 이름표가 물어볼 사람입니다. 왼쪽은 그 묶음의 마감입니다.</p>`+
+    block(now,true)+(after.length?`<details class="ug2"><summary class="ugh2">오픈 뒤 (11/23 ~ 12월) · ${after.length}건 <i>펼치기 · 접기</i></summary>${block(after,false)}</details>`:'');
 }
 document.getElementById('whobar').addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b)return;WHO=b.dataset.w;
   const u=new URL(location.href);if(WHO==='전체')u.searchParams.delete('who');else u.searchParams.set('who',WHO);history.replaceState(null,'',u);renderLists();});
