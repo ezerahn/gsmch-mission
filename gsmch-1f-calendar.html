@@ -149,14 +149,19 @@
   .tbtn svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   @media print{.tbtn{display:none}}
   .list h4{font-size:15px;color:var(--muted);font-weight:500;margin:14px 0 6px}
-  .row{display:flex;gap:14px;font-size:17px;padding:8px 0;border-bottom:1px dashed var(--line2)}
-  .row:last-child{border-bottom:none}
+  .row{display:flex;gap:10px;align-items:flex-start;font-size:17px;padding:9px 12px;margin:5px 0;border-radius:10px;border:1px solid transparent}
+  .row.todo{background:#FFF6CC;border-color:#efe3a8}
+  .row.done{color:var(--muted)}.row.done .t{text-decoration:line-through;text-decoration-color:#c9c4b8}
+  .row .cb{flex:none;width:22px;height:22px;margin-top:2px;border:2px solid #C9A227;border-radius:6px;background:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:#fff}
+  .row.done .cb{background:#07913B;border-color:#07913B}
+  .row.tdy{box-shadow:inset 4px 0 0 #E0A800}
+  .list .empty{color:var(--muted);padding:8px 4px}
+  details.pastd{margin-top:14px}details.pastd summary{font-size:14px;color:var(--muted);cursor:pointer}
+  details.pastd .row{padding:5px 12px;margin:2px 0}
   .row .d{min-width:94px;font-weight:700}
   .row .d.sun{color:var(--coral)} .row .d.sat{color:var(--blue)}
   .row .t{word-break:keep-all}
   .row.big .t{color:var(--coral);font-weight:700}
-  .row.past{color:var(--muted)}
-  .row.tdy{background:#FFF6CC;border-radius:8px;padding-left:8px;margin-left:-8px}
   .list h4.wk{color:var(--text);font-weight:800;font-size:17px}.list h4 small{font-size:13px;color:var(--muted);margin-left:6px}
   .note{margin-top:26px;font-size:14px;color:var(--muted)}
 
@@ -278,11 +283,14 @@ for(const m of [10,11,12]){
   for(let i=0;i<tail;i++) html+=`<div class="cell empty"></div>`;
   const td=new Date(TODAY),ws=new Date(td);ws.setDate(td.getDate()-td.getDay());const we=new Date(ws);we.setDate(ws.getDate()+6);
   const kk=x=>`2026-${pad(x.getMonth()+1)}-${pad(x.getDate())}`,WS=kk(ws),WE=kk(we);
-  const thisW=rows.filter(r=>r.key>=WS&&r.key<=WE),rest=rows.filter(r=>!(r.key>=WS&&r.key<=WE));
-  const row=r=>`<div class="row ${r.big?'big':''} ${r.key<TODAY?'past':''} ${r.key===TODAY?'tdy':''}"><span class="d ${r.w==0?'sun':r.w==6?'sat':''}">${m}/${r.d} (${DOW[r.w]})</span><span class="t">${r.t}</span></div>`;
+  const past=rows.filter(r=>r.key<TODAY),up=rows.filter(r=>r.key>=TODAY);
+  const row=r=>`<div class="row ${r.key<TODAY?'done':'todo'} ${r.big?'big':''} ${r.key===TODAY?'tdy':''}"><span class="cb">${r.key<TODAY?'✓':''}</span><span class="d ${r.w==0?'sun':r.w==6?'sat':''}">${m}/${r.d} (${DOW[r.w]})</span><span class="t">${r.t}</span></div>`;
   html+=`</div><div class="daypop" id="dp${m}"></div><div class="list">`;
-  if(thisW.length)html+=`<h4 class="wk">이번 주 <small>${ws.getMonth()+1}/${ws.getDate()} ~ ${we.getMonth()+1}/${we.getDate()}</small></h4>`+thisW.map(row).join('')+`<h4>${m}월 나머지</h4>`;else html+=`<h4>${m}월 일정</h4>`;
-  html+=rest.length?rest.map(row).join(''):'<div class="row"><span class="t" style="color:var(--muted)">없음</span></div>';
+  const tw=up.filter(r=>r.key<=WE),rest=up.filter(r=>r.key>WE);
+  if(tw.length)html+=`<h4 class="wk">이번 주 <small>${ws.getMonth()+1}/${ws.getDate()} ~ ${we.getMonth()+1}/${we.getDate()}</small></h4>`+tw.map(row).join('');
+  if(rest.length)html+=`<h4 class="wk">${tw.length?'그 다음':m+'월 앞으로'}</h4>`+rest.map(row).join('');
+  if(!up.length)html+=`<div class="empty">앞으로 남은 일정이 없습니다.</div>`;
+  if(past.length)html+=`<details class="pastd"><summary>지난 일정 ${past.length}건</summary>${past.map(row).join('')}</details>`;
   html+=`</div></section>`;
 }
 document.getElementById("cal").innerHTML=html;
