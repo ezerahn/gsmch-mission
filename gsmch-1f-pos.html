@@ -157,13 +157,21 @@
     .box li{flex-wrap:wrap;gap:4px 8px} .box li small{order:5;flex-basis:100%;margin-top:-2px}
   }
   @media print{.tabs,.tbtn{display:none}.pane{display:block}.card{break-inside:avoid}}
+  .sto{display:flex;gap:6px;margin:10px 0 4px;flex-wrap:wrap}
+  .sto button{font-family:inherit;font-size:14px;font-weight:700;color:#55534e;background:#fff;border:1.5px solid #dcd9d1;border-radius:999px;padding:5px 14px;cursor:pointer}
+  .sto button.on{color:#fff;background:#056B2C;border-color:#056B2C}
+  .xs{display:none !important}
+  body.f1 .two{grid-template-columns:1fr}
+  @media print{.sto{display:none}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>주문 · 결제 시스템<small>선지서점 · 로뎀카페 · 잇다</small></h1>
   <p class="lead">포스 · 키오스크 · 주문현황 화면 도입의 최신 내용과 견적, 설치, 교육 · 매뉴얼을 한곳에 모았습니다.</p>
-  <span class="upd">업데이트 2026.11.03 17:05</span>
+  <span class="upd">업데이트 2026.11.03 21:50</span>
+
+  <div class="sto" id="sto"><button data-s="all" class="on">전체</button><button data-s="book">선지서점만</button><button data-s="cafe">로뎀카페만</button></div>
 
   <div class="tabs">
     <button class="tab new on" data-p="now">최신 현황</button>
@@ -176,7 +184,7 @@
   <!-- 최신 현황 -->
   <section class="pane on" id="now">
     <div class="card" id="c-dev">
-      <div class="ch"><h2>들어오는 기기 · 프로그램</h2><span class="tag c">10.29 16:50 기준</span>
+      <div class="ch"><h2>들어오는 기기 · 프로그램</h2><span class="tag c">11.03 기준</span>
         <button class="tbtn" onclick="saveJpg('c-dev','기기',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div>
       <div class="two">
         <div class="box"><b>선지서점</b>
@@ -206,23 +214,21 @@
           <li><span class="nm">고객 화면 10˝</span> <small>포스 옆 · 주문 내역 · 결제 금액</small><span class="q">1대</span></li>
           <li><span class="nm">키오스크 21.5˝</span> <small>안드로이드형 · 데스크형 거치대 · 쇼케이스 옆 벽면</small><span class="q">1대</span></li>
           <li><span class="nm">주문관리 태블릿</span> <small>KDS · 제조대 · 잇다 앱 세팅</small><span class="q">2대</span></li>
-          <li><span class="nm">사이니지 스틱</span> <small>디스플레이 화면 송출</small><span class="q">1개</span></li>
+          <li><span class="nm">사이니지 스틱</span> <small><b>주문현황판</b> 화면 송출 (메뉴판 3대는 따로)</small><span class="q">1개</span></li>
         </ul>
         <i class="sw e">사업단 별도 구매</i><ul>
-          <li><span class="nm">디스플레이 43˝ · 메뉴판</span> <small>앞 바 위 · 가로로 나란히 (약 290cm)</small><span class="q">3대</span></li>
-          <li><span class="nm">디스플레이 32˝ · 주문현황판</span> <small>주문번호 호출 · 와이파이 연결</small><span class="pill w">위치 미정</span><span class="q">1대</span></li>
+          <li><span class="nm">디스플레이 43˝ · 메뉴판</span> <small>앞 바 위 · 가로로 나란히 (약 290cm) · 스틱 없이 따로</small><span class="q">3대</span></li>
+          <li><span class="nm">디스플레이 43˝ · 주문현황판</span> <small>주문번호 호출 · 와이파이 연결 · <b>카페 출입구 자동문 위</b> (11. 3. 결정)</small><span class="q">1대</span></li>
           <li><span class="nm">업무용 노트북 + 가방</span> <small>서점과 같은 기종 · 매니저님 사무 · <b>구매 예정 · 11/14 전</b></small><span class="q">1대</span></li>
           <li><span class="nm">공유기</span> <small>카페 내부 장비 전용 · 신규</small><span class="q">1대</span></li>
         </ul>
         <i class="sw">프로그램 · 매달</i><ul>
           <li><span class="nm">포스 프로그램</span> <small>3명 기준 · 포스 + 태블릿 2대 연동</small><span class="q">1</span></li>
           <li><span class="nm">키오스크 프로그램</span><span class="q">1</span></li>
-          <li><span class="nm">사이니지 앱</span> <small>메뉴판 · 주문번호 · 공지 송출</small><span class="q">1</span></li>
+          <li><span class="nm">사이니지 앱</span> <small>주문현황판 · 주문번호 송출</small><span class="q">1</span></li>
           <li><span class="nm">QR 주문 · 온라인몰</span><span class="pill e">무상</span></li>
         </ul>
         <i class="sw w">확인 필요</i><ul>
-          <li class="ck"><b>주문현황판(32˝) 위치</b> — 결정 필요</li>
-          <li class="ck">사이니지 스틱 1개로 메뉴판 3대 · 현황판을 모두 띄우는지</li>
           <li class="ck">공유기 월 사용료 · 1층 교회 인터넷 회선 (설치 · 와이파이 칸)</li>
           <li class="ck">QR 주문 사용법 홍보영상 — 언제 준비되는지 (10.27 단장님 문의)</li>
         </ul></div>
@@ -245,11 +251,11 @@
 <figure class="dv"><div class="di"><img src="img/pos-pos-cafe.jpg" alt="포스" loading="lazy"></div><figcaption><span class="dt k">카페</span><b>포스</b><span>앞 바 주문 자리</span></figcaption></figure>
 <figure class="dv"><div class="di"><img src="img/pos-cust10.jpg" alt="고객 화면 10˝" loading="lazy"></div><figcaption><span class="dt k">카페</span><b>고객 화면 10˝</b><span>포스 옆 · 주문 · 금액</span></figcaption></figure>
 <figure class="dv"><div class="di"><img src="img/pos-kiosk-cafe.jpg" alt="키오스크 21.5˝" loading="lazy"></div><figcaption><span class="dt k">카페</span><b>키오스크 21.5˝</b><span>쇼케이스 옆 벽면</span></figcaption></figure>
-<figure class="dv"><div class="di"><img src="img/pos-board.jpg" alt="주문현황판 32˝" loading="lazy"></div><figcaption><span class="dt k">카페</span><b>주문현황판 32˝</b><span>준비 중 → 픽업하세요 · 호출</span></figcaption></figure>
+<figure class="dv"><div class="di"><img src="img/pos-board.jpg" alt="주문현황판 43˝" loading="lazy"></div><figcaption><span class="dt k">카페</span><b>주문현황판 43˝</b><span>준비 중 → 픽업하세요 · 호출</span></figcaption></figure>
 <figure class="dv"><div class="di"><img src="img/pos-qr.jpg" alt="QR 주문" loading="lazy"></div><figcaption><span class="dt k">카페</span><b>QR 주문</b><span>자리에서 휴대폰 주문 (스티커)</span></figcaption></figure>
 <figure class="dv"><div class="di"><div class="dph">사진 요청 중</div></div><figcaption><span class="dt k">카페</span><b>주문관리 태블릿 ×2</b><span>제조대 · 주문 확인 · 완료</span></figcaption></figure>
 <figure class="dv"><div class="di"><div class="dph">사진 요청 중</div></div><figcaption><span class="dt k">카페</span><b>메뉴판 43˝ ×3</b><span>앞 바 위 · 가로로 나란히</span></figcaption></figure>
-<figure class="dv"><div class="di"><div class="dph">사진 요청 중</div></div><figcaption><span class="dt k">카페</span><b>사이니지 스틱</b><span>화면 송출 장치</span></figcaption></figure>
+<figure class="dv"><div class="di"><div class="dph">사진 요청 중</div></div><figcaption><span class="dt k">카페</span><b>사이니지 스틱</b><span>주문현황판 화면 송출</span></figcaption></figure>
 </div>
       <div class="note">사진은 잇다 실제 화면과 설치 예시입니다. <b>"사진 요청 중"</b>인 기기는 잇다에 제품 사진을 받으면 넣겠습니다.</div>
     </div>
@@ -284,7 +290,7 @@
   <tr><td class="c">4</td><td><span class="tg k">카페</span></td><td>포스 세트<small>본체 · 금전함 · 카드단말기 · 영수증프린터 · 바코드 스캐너</small></td><td class="c">1</td><td class="r">1,045,000</td></tr>
   <tr><td class="c">5</td><td><span class="tg k">카페</span></td><td>키오스크 21.5˝<small>안드로이드형 · 데스크형 거치대</small></td><td class="c">1</td><td class="r">1,650,000</td></tr>
   <tr><td class="c">6</td><td><span class="tg k">카페</span></td><td>고객 화면 10˝<small>계산대 앞 · 주문 내역 · 결제 금액</small></td><td class="c">1</td><td class="r">261,800</td></tr>
-  <tr><td class="c">7</td><td><span class="tg k">카페</span></td><td>사이니지 스틱<small>디스플레이 화면 송출 장치</small></td><td class="c">1</td><td class="r">275,000</td></tr>
+  <tr><td class="c">7</td><td><span class="tg k">카페</span></td><td>사이니지 스틱<small>주문현황판 화면 송출 장치</small></td><td class="c">1</td><td class="r">275,000</td></tr>
   <tr><td class="c">8</td><td><span class="tg k">카페</span></td><td>주문관리 태블릿 (KDS)<small>제조대 · 잇다 앱 세팅 납품 · 1대 420,000 + 부가세</small></td><td class="c">2</td><td class="r">924,000</td></tr>
   <tr class="sub"><td></td><td colspan="3">로뎀카페 소계</td><td class="r">4,155,800</td></tr>
   <tr class="sum"><td></td><td colspan="3">하드웨어 합계</td><td class="r">6,930,800</td></tr>
@@ -318,7 +324,7 @@
     <li>장비 자체 결함 1년 무상 A/S</li>
     <li>약정 없음</li></ul></div>
   <div class="x"><b>제외 — 사업단 별도 구매</b><ul>
-    <li>디스플레이 — 서점 43˝ 1 · 카페 43˝ 3 · 32˝ 1</li>
+    <li>디스플레이 — 서점 43˝ 1 · 카페 43˝ 4 (메뉴판 3 · 현황판 1)</li>
     <li>업무용 노트북 · 카페 공유기</li>
     <li>PDA용 휴대폰</li>
     <li>서점 고객 화면 10˝ — 하지 않기로 함 (10. 29.)</li></ul></div>
@@ -343,7 +349,7 @@
           <td><b>데스크형</b><br><small>올려 둘 상판 필요</small></td></tr>
         <tr><td><b>사이니지 스틱</b></td>
           <td>스틱을 꽂으면 잇다POS 관리 화면에서 등록한 공지 · 큐레이션 · 이미지 · 동영상이 무선으로 자동 표시됩니다. USB로 쓰면 PC에서 USB에 복사해 디스플레이에 꽂아야 합니다.</td>
-          <td><b>카페만 스틱</b> (메뉴판 · 현황판)<br><b>서점 외벽 디스플레이는 USB</b><br><small>잇다 추천</small></td></tr>
+          <td><b>카페 주문현황판만 스틱</b><br><small>메뉴판 3대는 따로 (11. 3.)</small><br><b>서점 외벽 디스플레이는 USB</b><br><small>잇다 추천</small></td></tr>
         <tr><td><b>무선 스캐너</b></td>
           <td>손가락에 끼우는 블루투스 링 스캐너. PDA 앱과 연결해 바코드를 읽습니다. 145,000원.</td>
           <td><b>이번에는 구매 안 함</b><br><small>10.29 결정 · 필요하면 나중에 추가</small></td></tr>
@@ -454,6 +460,7 @@
         <li><span class="d">10.21</span><span><b>카페 주문현황 화면은 와이파이로 연결</b> — 연결선 없이 전원만 있으면 됩니다.</span></li>
         <li><span class="d">10.29</span><span><b>서점 고객 화면 10˝ 하지 않기로</b> — 서점 계산대에는 손님용 화면을 두지 않습니다.</span></li>
         <li><span class="d">10.29</span><span><b>카페 화면 크기</b> — 메뉴판 <b>43˝ 3대</b>(가로로 나란히) · 주문현황판 <b>32˝ 1대</b>. 현황판 위치는 아직 미정(결정 필요).</span></li>
+        <li><span class="d">11.03</span><span><b>주문현황판 43˝로 · 카페 출입구 자동문 위</b> — 32˝에서 43˝로 다시 바꿈. 위치는 건축위 디자인에 맞춰 자동문 위.</span></li>
       </ul>
     </div>
 
@@ -485,6 +492,31 @@ function saveJpg(id,name,btn){var el=document.getElementById(id);var t=btn.inner
   }).then(function(cv){cv.toBlob(function(b){var a=document.createElement('a');a.href=URL.createObjectURL(b);
     a.download='gsmch_주문결제_'+name+'.jpg';document.body.appendChild(a);a.click();a.remove();},'image/jpeg',0.93)})
   .catch(function(){alert('이미지로 저장하지 못했습니다.')}).then(function(){btn.disabled=false;btn.innerHTML=t;});});}
+</script>
+<script>
+(function(){
+  function tagRows(){
+    document.querySelectorAll('.box').forEach(function(b){b.dataset.s=b.classList.contains('k')?'cafe':'book';});
+    document.querySelectorAll('figure.dv').forEach(function(f){var t=f.querySelector('.dt');if(t)f.dataset.s=t.classList.contains('k')?'cafe':'book';});
+    document.querySelectorAll('tr').forEach(function(r){var t=r.querySelector('.tg');var x=r.textContent;
+      if(t)r.dataset.s=t.classList.contains('k')?'cafe':'book';
+      else if(/선지서점 소계/.test(x))r.dataset.s='book';else if(/로뎀카페 소계/.test(x))r.dataset.s='cafe';
+      else if(r.classList.contains('sum'))r.dataset.s='both';});
+    document.querySelectorAll('.tips li').forEach(function(l){var t=l.querySelector('.lb');if(t&&t.textContent.trim()!=='공통')l.dataset.s=t.classList.contains('k')?'cafe':'book';});
+    var w=document.getElementById('c-wifi');if(w)w.dataset.s='cafe';
+  }
+  function apply(v){
+    document.querySelectorAll('#sto button').forEach(function(b){b.classList.toggle('on',b.dataset.s===v);});
+    document.body.classList.toggle('f1',v!=='all');
+    document.querySelectorAll('[data-s]').forEach(function(e){if(e.parentNode&&e.parentNode.id==='sto')return;
+      var s=e.dataset.s;e.classList.toggle('xs',v!=='all'&&(s==='both'||(s!==v)));});
+    var h=document.querySelector('h1 small');if(h)h.textContent=v==='book'?'선지서점 · 잇다':v==='cafe'?'로뎀카페 · 잇다':'선지서점 · 로뎀카페 · 잇다';
+  }
+  tagRows();
+  var q=new URLSearchParams(location.search).get('for');var v=(q==='book'||q==='cafe')?q:'all';apply(v);
+  document.getElementById('sto').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var v=b.dataset.s;apply(v);
+    var u=new URL(location.href);if(v==='all')u.searchParams.delete('for');else u.searchParams.set('for',v);history.replaceState(null,'',u);});
+})();
 </script>
 </body>
 </html>
