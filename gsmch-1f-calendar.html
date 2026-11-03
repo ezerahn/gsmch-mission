@@ -186,6 +186,7 @@
   .row .cx{display:block;font-size:13px;color:var(--muted);margin-top:1px}
   .row .mm{display:block;font-size:13px;color:#6b5a1e;background:rgba(255,255,255,.6);border-radius:6px;padding:2px 7px;margin-top:3px}
   .st.wt{color:#9A6414 !important;font-weight:700}
+  .ugh{display:flex;align-items:baseline;gap:8px;margin:18px 0 6px;padding:7px 12px;background:#2c2a26;color:#fff;border-radius:8px;font-size:16px}.ugh span{font-size:13px;opacity:.75}.ugh{cursor:pointer;list-style:none}.ugh::-webkit-details-marker{display:none}.ugh i{margin-left:auto;font-style:normal;font-size:12px;opacity:.7}.ug:not([open]) .ugh{background:#6e6860}@media print{.ug{display:block}}
   .undated{background:#fff;border:1px solid var(--line);border-radius:14px;margin-top:22px;padding:6px 20px 18px}.unl{font-size:13.5px;color:var(--muted);margin:0 0 8px}
   .list .empty{color:var(--muted);padding:8px 4px}
   .row.done .wh{opacity:.6}
@@ -338,8 +339,11 @@ function renderLists(){
     el.innerHTML=`<div class="lh"><h4>${m}월 체크리스트${WHO==='전체'?'':' · '+WHO}</h4><span class="ls"><span class="k1">✓ 끝남 ${nd}</span><span class="k2">☐ 남음 ${nl}</span>${nw?`<span class="k3">지난 날짜 확인 ${nw}</span>`:''}</span><button class="lt" onclick="this.closest('.list').classList.toggle('only')">남은 것만 보기</button></div>`+(rs.length?rs.map(rowHtml).join(''):'<div class="empty">이 달에는 없습니다.</div>');
   }
   const un=UNDATED.filter(r=>r.st!=='done'&&pick(r)).sort((a,b)=>(a.due?a.due.m*100+a.due.d:9999)-(b.due?b.due.m*100+b.due.d:9999));
-  document.getElementById('undated').innerHTML=`<div class="lh"><h4>날짜 정하지 않은 할 일${WHO==='전체'?'':' · '+WHO}</h4><span class="ls"><span class="k2">☐ ${un.length}</span></span></div><p class="unl">진도표에 있는데 날짜가 없는 일입니다. 오른쪽은 그 묶음의 마감입니다.</p>`+
-    un.map(r=>{const late=r.due&&new Date(2026,r.due.m-1,r.due.d)<new Date(TODAY);return `<div class="row todo ${late?'late':''}"><span class="cb"></span><span class="d">${r.due?r.due.m+'/'+r.due.d+' 마감':'—'}</span><span class="t">${esc(r.t)}${r.st==='wait'?' <span class="st wt">답 기다림</span>':''} <b class="wh">${esc(r.who)}</b><small class="cx">${esc(r.ctx)}</small>${r.memo?`<small class="mm">${esc(r.memo)}</small>`:''}</span></div>`}).join('');
+  const ORD=['잇다','건축위','단장님','매니저','총무','회계'];const grp={};un.forEach(r=>{(grp[r.who]=grp[r.who]||[]).push(r);});
+  const keys=Object.keys(grp).sort((a,b)=>(ORD.indexOf(a)<0?99:ORD.indexOf(a))-(ORD.indexOf(b)<0?99:ORD.indexOf(b)));
+  const SUB={'잇다':'잇다에 물어볼 것','건축위':'건축위에 확인할 것','단장님':'단장님께 여쭐 것','매니저':'매니저님과 확인할 것','총무':'총무 할 일','회계':'회계 확인'};
+  document.getElementById('undated').innerHTML=`<div class="lh"><h4>날짜 정하지 않은 할 일${WHO==='전체'?'':' · '+WHO}</h4><span class="ls"><span class="k2">☐ ${un.length}</span></span></div><p class="unl">진도표에 있는데 날짜가 없는 일을 대상별로 나눴습니다. 왼쪽은 그 묶음의 마감입니다.</p>`+
+    keys.map(k=>`<details class="ug" ${WHO!=='전체'||k==='잇다'||k==='건축위'?'open':''}><summary class="ugh"><b>${esc(SUB[k]||k)}</b><span>${grp[k].length}건</span><i>펼치기 · 접기</i></summary>`+grp[k].map(r=>{const late=r.due&&new Date(2026,r.due.m-1,r.due.d)<new Date(TODAY);return `<div class="row todo ${late?'late':''}"><span class="cb"></span><span class="d">${r.due?r.due.m+'/'+r.due.d+' 마감':'—'}</span><span class="t">${esc(r.t)}${r.st==='wait'?' <span class="st wt">답 기다림</span>':''}<small class="cx">${esc(r.ctx)}</small>${r.memo?`<small class="mm">${esc(r.memo)}</small>`:''}</span></div>`}).join('')+'</details>').join('');
 }
 document.getElementById('whobar').addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b)return;WHO=b.dataset.w;
   const u=new URL(location.href);if(WHO==='전체')u.searchParams.delete('who');else u.searchParams.set('who',WHO);history.replaceState(null,'',u);renderLists();});
