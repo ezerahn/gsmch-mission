@@ -1,0 +1,32 @@
+{
+ "title": "로뎀카페 공간 · 기물 치수 스펙 (그림 그릴 때 기준)",
+ "updated": "2026-11-04",
+ "unit": "mm",
+ "sources": ["1층 로비 개선공사 실시설계 2026.11.03 (평면)", "카페출입구 입면도 ELE.01 REV.3 (10/09)", "카페 입면도 ELE.02 · ELE.02' REV.5 (10/21)", "카페 입면도 ELE.03 REV.4 (10/21)", "카페 입면도 ELE.04", "기물 견적 10/20 (치수만)"],
+ "height": {"total": 4263, "ceiling_band": 800, "wall": 3463, "note": "4,263 = 3,463 + 상부 800(도장 · 아치)"},
+ "front_wall_ELE01": {"total": 13616, "segments_from_lobby_left": [["패브릭 벽",1246],["벽",1610],["LED 전광판(로비 쪽 화면)",2039],["FIX 유리",1000],["자동문 3,369 + 프레임",3429],["FIX 유리",2000],["우드 필름 (끝 283 포함)",2292]], "glass_span": {"start_from_left":4896,"width":7429,"panes":"30 · 970 · 30 · 3,369(자동문) · 30 · 970 · 970 · 30 · 1,000 · 30"}, "heights": {"glass":2249,"frame":200,"louver_band":1014,"top":800}, "order_board": {"size_inch":43,"w":957,"h":553,"position":"카페 안쪽 면 · 가로 가운데 위(루버 띠 안) · 가로 설치 · 픽업존 아님","center_candidates":"유리 7,429 가운데 / 자동문 가운데 / 정면 전체 가운데 — 확인"}},
+ "front_bar_ELE02": {"total":9645,"louver_wall":2450,"bar_section":7195,"led_wall_line":253,"kiosk_recess":{"x_from_left":1092,"w":450,"h":1040,"bottom":760,"top":1800},"bar":{"height":1050,"length_plan":6295,"depth_plan":875,"depth_alt":"825(11/2 도면) · 830(회의)","front_finish":"우드 루버 □30×40 @40 · 대리석(화강석) 449","top":"우드톤 상판"},"sign_band":{"bottom":2400,"top":2850,"text":"RODEM CAFE · COFFEE TEA DESSERT · 조명박스 아크릴"},"upper_louver":{"bottom":2850,"top":3463,"h":613},"menu_boards":{"count":3,"each_w":970,"each_h":558,"total_w":2910,"bottom":1842,"top":2400,"note":"ELE.02(앞 바 위)와 ELE.02'(뒤 바 벽) 두 도면에 모두 표기 — 사용자: 뒤 바 위"}},
+ "back_bar_ELE02b": {"total":9995,"door_section":2870,"bar_section":7125,"sliding_door":{"h":2400,"w":900,"x_from_left":1000,"to":"간이주방 · 창고"},"base_cabinet":{"h":924,"depth_plan":775,"segments_left_to_right":[["싱크 쪽",285],["싱크 2문",1950],["커피머신 자리 OPEN",830],["온수 · 템핑",918],["믹서기 · 하부장",1725],["싱크",900]],"total":6608,"finish":"우드 인테리어 필름"},"shelf":{"height":1842,"finish":"우드 필름"},"menu_boards":{"total_w":2910,"bottom":1921,"top":2479},"dashed_box_right":{"w":1124,"h":1850,"note":"무엇인지 확인(냉장고?)"},"wall":"지정 타일 · 걸레받이 1.2mm 헤어라인 서스","heights":[924,605,750,1184,800]},
+ "end_wall_ELE04": {"total":9313,"segments":[["벽",1878],["갤러리 도어(스탠딩 냉난방)",805],["벽",5223],["벽",120],["갤러리 도어(스탠딩 냉난방)",1287],["끝",323]],"sofa":{"seat_h":450,"back_h":700},"louver_band":{"bottom":2863,"h":600},"door_h":2400,"wall_finish":"지정 패브릭"},
+ "window_wall_ELE03": {"total":16416,"segments":[["타일",1290],["인테리어 필름",2208],["신규 창호 (270 · 1,075 · 325)",1670],["신규 창호 (3,038 · 80 · 3,050)",6088],["신규 창호 (310 · 1,080 · 305)",1695],["우드 필름",2220],["패브릭",1245]],"window_heights":{"sill":450,"main":2400,"mullion":80,"upper":963},"blind":"없음 (11/3 단장님)"},
+ "plan": {"back_bar":{"depth":775,"length":6300,"items_top_to_bottom":["싱크(급배수, 벽에서 250)","믹서기 2","온수기 2kW","커피머신 900×700×850","템핑기 0.08kW · 넛박스","그라인더 0.5kW","싱크(급배수)"],"sink_to_sink":4638},"aisle":1150,"front_bar":{"depth":875,"length":6295,"items_top_to_bottom":["PICK UP · RETURN 하부가구","하부 제빙기 100kg","하부 냉장고 1,200×700×850 (점선: 온수기 2kW · 커피머신 — 확인)","템핑기 · 그라인더","ORDER · POS","쇼케이스"],"under":"넛박스 · 휴지통 · 연수필터"},"service_bar":{"type":"섬","gap_from_front_bar":1600,"w":700,"l":4200,"zones":"반납함 & 텀블러 세척구간(피처린서 매립형 · 급배수 · 전원) → 음료 버리는 곳 → 투입구 4 → 아이스크림 냉동고(전원)","back_sink_to_service_drain":4820,"plumbing_points":3},"kitchen":{"w":2870,"d":2300,"fridge_slot":"800×1,260 왼쪽 위","free":1120,"column":550,"opening_to_storage":"문 없이 뚫림"},"storage":{"w":1670,"d":1650,"estimate":true,"door":{"w":875,"swing":"밖으로"},"angle_shelf":"위쪽 확정"}},
+ "equipment": [
+  {"name":"커피머신 (견적) 란실리오 Classe 7 3그룹","w":990,"d":540,"h":540,"where":"뒤 바 OPEN 칸 830 — 확인","power":"220V 6kW · 정수 급수"},
+  {"name":"그라인더 체아도 E37S","w":212,"d":309,"h":557,"qty":3,"where":"앞 바 · 뒤 바","power":"220V 400W"},
+  {"name":"넉박스 거치형","w":150,"d":160,"h":130,"note":"상판 타공 없음"},
+  {"name":"쇼케이스 세경냉동 1200 사각","w":1200,"d":650,"h":1200,"where":"앞 바 출입구 쪽 끝","power":"220V"},
+  {"name":"테이블 냉장고 (기존) 1200 2도어","w":1200,"d":700,"h":800,"qty":2,"where":"앞 바 하부 · 뒤 바 하부"},
+  {"name":"4도어 냉동(장)고 그랜드우성 CWSM-1242RF","w":1260,"d":800,"h":1900,"where":"간이주방 왼쪽 위 (세로로)","power":"220V"},
+  {"name":"아이스크림 냉동고 (후보 매직 MC-460F1 수직형)","w":640,"d":565,"h":1849,"where":"서비스바 끝","note":"−18℃ 확인 · 별도 구매 · 가로형 후보 1,300×630×900"},
+  {"name":"제빙기 언더카운터 아이스트로 ICIS 105w","w":760,"d":680,"h":850,"where":"앞 바 하부 (800 칸)","power":"220V · 급배수 · 수냉"},
+  {"name":"온수기 진성 JS-1","w":243,"d":353,"h":553,"qty":2,"where":"뒤 바 · 앞 바(기존)","power":"220V 2kW · 급수"},
+  {"name":"정수 필터 에버퓨어 MH2+QL3B / MC2 트윈","w":520,"d":102,"h":645,"where":"하부"},
+  {"name":"스무디머신 티아모 MAX","w":295,"d":260,"h":530,"qty":3,"where":"뒤 바","power":"220V ×3"},
+  {"name":"메뉴판 디스플레이 43˝","w":957,"d":60,"h":553,"qty":3,"where":"뒤 바 위 상부 1,842~2,400"},
+  {"name":"주문현황판 디스플레이 43˝","w":957,"d":60,"h":553,"qty":1,"where":"정면 벽 안쪽 가운데 위"},
+  {"name":"키오스크 (벽면 매립)","w":450,"d":100,"h":1040,"where":"쇼케이스 옆 루버 벽 760~1,800"},
+  {"name":"다회용컵 반납함 (더그리트)","qty":5,"where":"1층 카페 3 · 3층 1 · 5층 1 (안)","note":"치수 확인"},
+  {"name":"텀블러 세척기 (피처린서 매립)","qty":2,"where":"서비스바","note":"2구 · 급배수"}
+ ],
+ "people_reference": {"female_160":1600,"male_175":1750,"apron":"검정"}
+}
