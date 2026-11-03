@@ -374,8 +374,8 @@ function rowHtml(r){
 }
 function renderLists(){
   const cnt={};WHOS.forEach(w=>cnt[w]=0);
-  ROWS.concat(UNDATED).forEach(r=>{if(cnt[r.who]!=null&&!(r.dn||r.st==='done'))cnt[r.who]++;});
-  document.getElementById('whobar').innerHTML=`<span class="wl">거르기</span><button class="dz ${DZ?'on':''}" data-dz="1">디자인 · 제작물만</button>`+['전체'].concat(WHOS.filter(w=>cnt[w])).map(w=>`<button class="${w===WHO?'on':''}" data-w="${w}">${w}${w==='전체'?'':` <em>${cnt[w]}</em>`}</button>`).join('');
+  let tot=0;ROWS.concat(UNDATED).forEach(r=>{if(DZ&&r.cat!=='디자인 · 제작물')return;if(!(r.dn||r.st==='done')){tot++;if(cnt[r.who]!=null)cnt[r.who]++;}});
+  document.getElementById('whobar').innerHTML=`<span class="wl">거르기</span><button class="dz ${DZ?'on':''}" data-dz="1">디자인 · 제작물만</button>`+['전체'].concat(WHOS.filter(w=>cnt[w])).map(w=>`<button class="${w===WHO?'on':''}" data-w="${w}">${w} <em>${w==='전체'?tot:cnt[w]}</em></button>`).join('');
   const pick=r=>(WHO==='전체'||r.who===WHO)&&(!DZ||r.cat==='디자인 · 제작물');
   for(const m of [10,11,12]){
     const rs=ROWS.filter(r=>r.m===m&&pick(r)).sort((a,b)=>a.key<b.key?-1:a.key>b.key?1:(a.kind===b.kind?0:a.kind==='kev'?-1:1));
