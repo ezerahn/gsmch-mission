@@ -165,7 +165,7 @@
 <div class="wrap">
   <h1>사업단 일정 · 10~12월</h1>
   <p class="lead">총여선교회 사업단 일정입니다. 앞의 이름표 색으로 무슨 일인지 나눴습니다. 점선(····)은 예정, 빨간 테두리는 그날 결정할 일입니다.</p>
-  <span class="upd">업데이트 2026.11.03 17:20</span>
+  <span class="upd">업데이트 2026.11.03 17:25</span>
 
 
   <section class="flow"><div class="fh"><b>오픈 준비 흐름</b><span>● 확정 &nbsp;○ 예정</span><button class="tbtn" onclick="saveFlow(this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>JPG</button></div><div class="fsc"><div class="ft" id="flow"></div></div></section>
@@ -194,7 +194,8 @@ const EVENTS = [
   ["2026-11-04","cup","계약 <em>(반납함 발주)</em>",1],
   ["2026-11-04","pos","서점 법인폰 신청 <em>오전 9:30까지 폰 전달 · 조은진 장로님</em>"],
   ["2026-11-04","pos","사이니지 설치 일정 소통 <em>(단장님 오전 교회 방문)</em>"],
-  ["2026-11-04","pos","임시서점 포스 설치"],
+  ["2026-11-04","pos","임시서점 포스 설치 <em>(잇다 확정)</em>"],
+  ["2026-11-04","pos","잇다 계약금 30% 입금"],
   ["2026-11-05","pos","서점 입고 <em>(임시서점)</em>",1],
   ["2026-11-08","reg","월례회 <em>9시</em>"],
   ["2026-11-09","coffee","시음 <em>오전 10시</em>"],
@@ -241,7 +242,7 @@ for(const m of [10,11,12]){
     const tx=e=>`<span class="tx ${e[3]==='d'?'dec':(e[3]?'tent':'')}">${e[2]}</span>`;
     const band=BANDS.find(b=>key>=b[1]&&key<=b[2]);
     const wk=Math.floor((first+d-1)/7);
-    const chip=e=>`<span class="ev ${e[1]} ${e[3]==='d'?'dec':(e[3]?'tent':'')}"><b class="tg">${LABEL[e[1]]}</b>${e[2].replace(/\s*<em>.*?<\/em>/g,'').replace('카페 메뉴판 위치 확정','메뉴판 위치').replace('카페 매니저 근무 시작','매니저 근무').replace('신·구 사업단 인사 모임','신·구 인사 모임').replace('사업단 사역 마무리','사역 마무리').replace('서점 · 카페 현장 셋업','현장 셋업').replace('서점 가구 미팅 ','가구 ').replace('더그리트 미팅','더그리트').replace('서점 · 카페 오픈','오픈').replace('서점 · 카페 포스 · 키오스크 설치','포스 · 키오스크 설치').replace('사이니지 설치 일정 소통','사이니지 일정').replace('지하 5층 → 1층 서점 짐 옮기기','지하5층 짐 이동').replace('임시서점 짐 싸기 → 1층 서점','임시서점 짐 싸기').replace('서점 재고 조사 · 세팅 시작','재고 조사 · 세팅')}</span>`;
+    const chip=e=>`<span class="ev ${e[1]} ${e[3]==='d'?'dec':(e[3]?'tent':'')}"><b class="tg">${LABEL[e[1]]}</b>${e[2].replace(/\s*<em>.*?<\/em>/g,'').replace('카페 메뉴판 위치 확정','메뉴판 위치').replace('카페 매니저 근무 시작','매니저 근무').replace('신·구 사업단 인사 모임','신·구 인사 모임').replace('사업단 사역 마무리','사역 마무리').replace('서점 · 카페 현장 셋업','현장 셋업').replace('서점 가구 미팅 ','가구 ').replace('더그리트 미팅','더그리트').replace('서점 · 카페 오픈','오픈').replace('잇다 계약금 30% 입금','계약금 입금').replace('서점 · 카페 포스 · 키오스크 설치','포스 · 키오스크 설치').replace('사이니지 설치 일정 소통','사이니지 일정').replace('지하 5층 → 1층 서점 짐 옮기기','지하5층 짐 이동').replace('임시서점 짐 싸기 → 1층 서점','임시서점 짐 싸기').replace('서점 재고 조사 · 세팅 시작','재고 조사 · 세팅')}</span>`;
     let body='';
     LANES.forEach(l=>{const out=[];
       const bd=band&&band[0]==l?band:null;
