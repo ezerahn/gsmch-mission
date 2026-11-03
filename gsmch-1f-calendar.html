@@ -140,16 +140,17 @@
   .note{margin-top:26px;font-size:14px;color:var(--muted)}
 
   @media (max-width:640px){
-    .ev.sp,.ev{height:6px !important;display:block}
-    h1{font-size:25px}
-    .cell{min-height:54px;padding:4px 3px}
-
-    .num{font-size:14px}
-    .ev{font-size:0;padding:0;height:6px;margin-top:4px;border:none !important;background:var(--c) !important}
-    .ev.sp{margin-left:-4px;margin-right:-4px}.ev.sp.sps{margin-left:0}.ev.sp.spe{margin-right:0}
-    .ev.tent{background:var(--cl) !important;height:7px;border:1.5px dashed var(--c) !important}
-    .ev.dec{box-shadow:0 0 0 1.5px #b3382a}
-    .ev .tg,.ev .tx{display:none}
+    .cell{min-height:64px;padding:3px 2px}
+    .ev,.ev.sp{height:auto !important;display:block;font-size:9.5px;line-height:1.25;padding:1px 2px;margin-top:2px;border-radius:3px;
+      white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-break:keep-all;
+      border:none !important;background:var(--cl) !important;color:var(--ct);border-left:2px solid var(--c) !important;letter-spacing:-.03em}
+    .ev.sp{margin-left:-2px;margin-right:-2px;border-radius:0;display:block;white-space:nowrap;overflow:visible;height:15px !important;border-left:none !important}
+    .ev.sp em{display:none}
+    .ev.sp.sps{margin-left:0;border-left:2px solid var(--c) !important}.ev.sp.spe{margin-right:0}
+    .ev.tent{border:1px dashed var(--c) !important;border-left:2px dashed var(--c) !important}
+    .ev.dec{box-shadow:inset 0 0 0 1px #b3382a}
+    .ev .tg{display:none}
+    .ev.open{background:var(--c) !important;color:#fff;font-size:10px !important;font-weight:800;padding:2px 3px}
     .cell.today .num::after{display:none}
     .cell.today{outline:2px solid var(--text);outline-offset:-2px}
     .row{font-size:16px}
@@ -233,7 +234,7 @@ for(const m of [10,11,12]){
     const tx=e=>`<span class="tx ${e[3]==='d'?'dec':(e[3]?'tent':'')}">${e[2]}</span>`;
     const band=BANDS.find(b=>key>=b[1]&&key<=b[2]);
     const wk=Math.floor((first+d-1)/7);
-    const chip=e=>`<span class="ev ${e[1]} ${e[3]==='d'?'dec':(e[3]?'tent':'')}"><b class="tg">${LABEL[e[1]]}</b>${e[2].replace(/\s*<em>.*?<\/em>/g,'').replace('카페 메뉴판 위치 확정','메뉴판 위치').replace('카페 매니저 근무 시작','매니저 근무').replace('신·구 사업단 인사 모임','신·구 인사 모임').replace('사업단 사역 마무리','사역 마무리').replace('서점 · 카페 현장 셋업','현장 셋업').replace('서점 가구 미팅 ','가구 ').replace('더그리트 미팅','더그리트')}</span>`;
+    const chip=e=>`<span class="ev ${e[1]} ${e[3]==='d'?'dec':(e[3]?'tent':'')}"><b class="tg">${LABEL[e[1]]}</b>${e[2].replace(/\s*<em>.*?<\/em>/g,'').replace('카페 메뉴판 위치 확정','메뉴판 위치').replace('카페 매니저 근무 시작','매니저 근무').replace('신·구 사업단 인사 모임','신·구 인사 모임').replace('사업단 사역 마무리','사역 마무리').replace('서점 · 카페 현장 셋업','현장 셋업').replace('서점 가구 미팅 ','가구 ').replace('더그리트 미팅','더그리트').replace('서점 · 카페 오픈','오픈')}</span>`;
     let body='';
     LANES.forEach(l=>{const out=[];
       const bd=band&&band[0]==l?band:null;
