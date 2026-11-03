@@ -182,7 +182,7 @@
   .whobar{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
   .whobar button{font-family:inherit;font-size:15px;font-weight:700;color:var(--soft);background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:6px 15px;cursor:pointer}
   .whobar button em{font-style:normal;font-size:12.5px;color:#B3382A;margin-left:2px}
-  .whobar button.on{background:#056B2C;border-color:#056B2C;color:#fff}.whobar button.on em{color:#ffe08a}
+  .whobar button.on{background:#3d4a6b;border-color:#3d4a6b;color:#fff}.whobar button.on em{color:#ffe08a}
   .row .wh{display:inline-block;font-size:12.5px;font-weight:700;color:#3d4a6b;background:#eef0f5;border-radius:6px;padding:0 7px;margin-left:4px;vertical-align:2px}
   .row .cx{display:block;font-size:13px;color:var(--muted);margin-top:1px}
   .row .mm{display:block;font-size:13px;color:#6b5a1e;background:rgba(255,255,255,.6);border-radius:6px;padding:2px 7px;margin-top:3px}
@@ -191,7 +191,7 @@
   .sc{display:inline-block;font-size:12.5px;font-weight:700;border-radius:6px;padding:0 7px;margin-right:6px;vertical-align:2px}.sc.s카페{background:#F6E7D3;color:#8a4b12}.sc.s서점{background:#E2EFE6;color:#2f6b45}.sc.s공통{background:#ECEAE4;color:#5e5a52}
   .usg{font-size:15px;font-weight:700;color:#55534e;margin:12px 0 4px 4px}
   .ugh.s카페{background:#8a4b12}.ugh.s서점{background:#2f6b45}.ugh.s공통{background:#55534e}.ug2{margin-top:22px}.ugh2{cursor:pointer;font-size:16px;font-weight:700;color:#55534e;padding:9px 12px;background:#ECEAE4;border-radius:8px;list-style:none}.ugh2 i{font-style:normal;font-size:12px;margin-left:8px;opacity:.7}
-  .whobar button.dz{border-color:#8a4b12;color:#8a4b12;margin-right:10px}.whobar button.dz.on{background:#8a4b12;color:#fff}
+  .whobar button.dz{border-style:dashed;margin-right:10px}.whobar button.dz.on{background:#3d4a6b;border-color:#3d4a6b;border-style:solid;color:#fff}
   .ltabs{display:flex;gap:6px;flex-wrap:wrap;padding:14px 20px 4px;border-top:1px solid var(--line);position:sticky;top:52px;z-index:4;background:#fff}
   .ltabs button{font-family:inherit;font-size:15px;font-weight:700;color:var(--soft);background:#f6f4ee;border:1.5px solid var(--line);border-radius:10px;padding:7px 13px;cursor:pointer}
   .ltabs button em{font-style:normal;font-size:12.5px;color:#B3382A;margin-left:3px}
@@ -203,7 +203,8 @@
   .vtabs button{font-family:inherit;font-size:16px;font-weight:800;color:var(--soft);background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:9px 15px;cursor:pointer}
   .vtabs button em{font-style:normal;font-size:13px;color:#B3382A;margin-left:3px}
   .vtabs button.on{background:#2c2a26;border-color:#2c2a26;color:#fff}.vtabs button.on em{color:#ffe08a}
-  .vtabs button.s카페.on{background:#8a4b12;border-color:#8a4b12}.vtabs button.s서점.on{background:#2f6b45;border-color:#2f6b45}
+  .vtabs button.s카페::before,.vtabs button.s서점::before,.vtabs button.s공통::before{content:'';display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:1px}
+  .vtabs button.s카페::before{background:#C07A2C}.vtabs button.s서점::before{background:#3d8a5a}.vtabs button.s공통::before{background:#9a948a}
   body[data-v="cal"] .whobar,body[data-v="cal"] .month .list,body[data-v="cal"] .undated{display:none !important}
   body[data-v="month"] .flow,body[data-v="month"] .month .grid,body[data-v="month"] .undated{display:none !important}
   body[data-v="pane"] .flow,body[data-v="pane"] .mtabs,body[data-v="pane"] #cal{display:none !important}
@@ -215,6 +216,7 @@
   @media (max-width:640px){.ttabs{gap:5px}.ttabs button{font-size:14.5px;padding:6px 12px}}
   .ttabs button.on{background:var(--text);border-color:var(--text);color:#fff}
   .mtabs{display:none !important}
+  .whobar .wl{font-size:13px;color:var(--muted);font-weight:700;align-self:center;margin-right:2px}
   .vsep{font-size:13px;color:var(--muted);font-weight:700;align-self:center;margin:0 2px 0 8px}
   body[data-v="flow"] .vtabs,body[data-v="flow"] .whobar,body[data-v="flow"] #cal,body[data-v="flow"] .undated{display:none !important}
   body:not([data-v="flow"]) .flow{display:none !important}
@@ -373,7 +375,7 @@ function rowHtml(r){
 function renderLists(){
   const cnt={};WHOS.forEach(w=>cnt[w]=0);
   ROWS.concat(UNDATED).forEach(r=>{if(cnt[r.who]!=null&&!(r.dn||r.st==='done'))cnt[r.who]++;});
-  document.getElementById('whobar').innerHTML=`<button class="dz ${DZ?'on':''}" data-dz="1">디자인 · 제작물만</button>`+['전체'].concat(WHOS.filter(w=>cnt[w])).map(w=>`<button class="${w===WHO?'on':''}" data-w="${w}">${w}${w==='전체'?'':` <em>${cnt[w]}</em>`}</button>`).join('');
+  document.getElementById('whobar').innerHTML=`<span class="wl">거르기</span><button class="dz ${DZ?'on':''}" data-dz="1">디자인 · 제작물만</button>`+['전체'].concat(WHOS.filter(w=>cnt[w])).map(w=>`<button class="${w===WHO?'on':''}" data-w="${w}">${w}${w==='전체'?'':` <em>${cnt[w]}</em>`}</button>`).join('');
   const pick=r=>(WHO==='전체'||r.who===WHO)&&(!DZ||r.cat==='디자인 · 제작물');
   for(const m of [10,11,12]){
     const rs=ROWS.filter(r=>r.m===m&&pick(r)).sort((a,b)=>a.key<b.key?-1:a.key>b.key?1:(a.kind===b.kind?0:a.kind==='kev'?-1:1));
