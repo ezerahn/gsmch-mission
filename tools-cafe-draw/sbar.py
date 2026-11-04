@@ -11,16 +11,18 @@ for x,w,lab,f in segs:
     R(o,X(x),Y(0),w*S,D*S,f,GO,1.2,0,'6 4');T(o,X(x+w/2),Y(D+60),lab,12,800,'#8a6a1a')
     DIM(o,X(x),Y(D+110),X(x+w),Y(D+110),f'{w:,}',RED,16,11)
 # 세척 2구
-R(o,X(100),Y(100),700*S,500*S,'#e8eef5',INK,1.5,8)
-for cx in (280,620): o.append(f'<circle cx="{X(cx)}" cy="{Y(350)}" r="{90*S}" fill="#fff" stroke="{INK}" stroke-width="2"/>')
+for cx in (280,620): o.append(f'<circle cx="{X(cx)}" cy="{Y(350)}" r="{110*S}" fill="#e8eef5" stroke="{INK}" stroke-width="2"/><circle cx="{X(cx)}" cy="{Y(350)}" r="{60*S}" fill="#fff" stroke="{INK}" stroke-width="1"/>')
+T(o,X(450),Y(560),'세척기 2구 (상판 매립)',9,600,MUT)
 # 음료 버림
 o.append(f'<circle cx="{X(1150)}" cy="{Y(350)}" r="{120*S}" fill="#fff" stroke="{INK}" stroke-width="2"/><circle cx="{X(1150)}" cy="{Y(350)}" r="{70*S}" fill="#cfe0f3" stroke="{INK}" stroke-width="1"/>')
 # 쓰레기 3
-for k,(lab,f) in enumerate((('일반','#e8e8e8'),('종이','#efe3cf'),('플라스틱','#dff3ee'))):
-    x=1400+100+k*570;R(o,X(x),Y(90),450*S,520*S,f,INK,1.5,8);R(o,X(x+115),Y(280),220*S,110*S,'#2b2b2b','none',0,6);T(o,X(x+225),Y(560),lab,11,800,INK)
+for k,lab in enumerate(('일반','종이','플라스틱')):
+    x=1400+100+k*570;R(o,X(x+95),Y(250),260*S,130*S,'#2b2b2b',INK,1.2,8);T(o,X(x+225),Y(470),lab,11,800,INK);T(o,X(x+225),Y(540),'(상판 구멍)',8.5,600,MUT)
+    R(o,X(x+60),Y(600),330*S,60*S,'#fff',INK,0.8,2);T(o,X(x+225),Y(645),'그림 라벨',7.5,600,MUT)
 # 더그리트 반납함 WIDE 2대 — 서비스바 끝 옆 바닥 거치 (790 × 620 × 1,100)
 for k in range(2):
-    x=L+100+k*(790+60);R(o,X(x),Y(D-620),790*S,620*S,'#2b2b2b',INK,1.5,6);R(o,X(x+200),Y(D-620+200),390*S,160*S,'#666','none',0,6);T(o,X(x+395),Y(D-620+480),'반납함 WIDE',11,800,'#fff');T(o,X(x+395),Y(D-620+560),'790 × 620',9.5,600,'#ccc')
+    x=L+100+k*(790+60);R(o,X(x),Y(D-620),790*S,620*S,'#2b2b2b',INK,1.5,6);T(o,X(x+395),Y(D-620+300),'반납함 WIDE',11,800,'#fff');T(o,X(x+395),Y(D-620+380),'790 × 620 · 윗면 막힘',9.5,600,'#ccc')
+    R(o,X(x+200),Y(D-30),390*S,30*S,'#8fd1c5','none',0,2);T(o,X(x+395),Y(D+40),'↓ 투입구는 앞면 (홀 쪽)',8.5,700,G)
 DIM(o,X(L+100),Y(D+60),X(L+100+790),Y(D+60),'790',BL,16,11);DIM(o,X(L+100+850),Y(D+60),X(L+100+850+790),Y(D+60),'790',BL,16,11);DIM(o,X(L+100+1640+60),Y(D-620),X(L+100+1640+60),Y(D),'620',BL,-10,11)
 DIM(o,X(L),Y(D+110),X(L+100+1640),Y(D+110),'반납함 2대 + 사이 60 = 1,740 (서비스바 끝에서 100)',RED,16,10)
 T(o,X(L+100+820),Y(D-680),'더그리트 반납함 WIDE 2대 — 바닥 거치 · 수거 400~450개 · 서비스바 옆 (결정)',11,800,G)
@@ -46,7 +48,7 @@ o.append(f'<image href="data:image/png;base64,{_b}" x="{X(L+100)-_w*0.06:.1f}" y
 R(o,X(L+100),Yf(HT-1100),(790*2+60)*S,1100*S,'none',RED,1.2,0,'6 4')
 T(o,X(L+100+820),Yf(HT+30),'더그리트 REUSABLE CONTAINER RETURN BOX — WIDE 2대',10,800,INK)
 DIM(o,X(L+100+1640+80),Yf(HT-1100),X(L+100+1640+80),Yf(HT),'1,100',BL,-10,11)
-T(o,X(L+100+820),Yf(HT-1180),'높이 1,100 — 서비스바 상판(미정)보다 높을 수 있음 · 투입구는 위쪽 앞면',10,700,RED)
+T(o,X(L+100+820),Yf(HT-1180),'높이 1,100 — 서비스바 상판(미정)보다 높을 수 있음 · 투입구는 앞면 위쪽(홀 쪽으로 넣음)',10,700,RED)
 for cx in (280,620): o.append(f'<ellipse cx="{X(cx)}" cy="{Yf(20)}" rx="{90*S}" ry="{12*S}" fill="#fff" stroke="{INK}" stroke-width="2"/>')
 o.append(f'<ellipse cx="{X(1150)}" cy="{Yf(20)}" rx="{120*S}" ry="{14*S}" fill="#cfe0f3" stroke="{INK}" stroke-width="2"/>')
 for k in range(3): o.append(f'<ellipse cx="{X(1725+k*570)}" cy="{Yf(20)}" rx="{110*S}" ry="{14*S}" fill="#2b2b2b" stroke="{INK}" stroke-width="1"/>')
