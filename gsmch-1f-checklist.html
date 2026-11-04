@@ -100,6 +100,11 @@
   .ptabs{clear:both}
   .ptabs a.on{background:#2c2a26;border-color:#2c2a26;color:#fff}
   @media (max-width:640px){.ptabs a{font-size:16px;padding:11px 6px}}
+
+  .row.me{background:#eaf6ee;border-color:#07913B}.row.me .cb{background:#07913B;border-color:#07913B}.row.me .cb::after{content:'✓'}
+  .row .cb{cursor:pointer}
+  .mebar{max-width:1200px;margin:8px auto 0;padding:0 16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:14px;color:#555}
+  .mebar b{color:#07913B}.mebar button{border:1px solid #bbb;background:#fff;border-radius:8px;padding:5px 10px;font-size:13px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -148,7 +153,7 @@ function thisWeek(){const td=new Date(TODAY),ws=new Date(td);ws.setDate(td.getDa
 function row(r){
   const late=!r.done&&r.key<TODAY&&r.key!=='9999';
   const when=r.date?`<span class="tag ${late?'late':'d'}">${fmt(r.date)}</span>`:(r.due?`<span class="tag ${late?'late':'d'}">~${fmt(r.due)}</span>`:'');
-  return `<div class="row ${late?'late':''}"><span class="cb">${r.done?'✓':''}</span><span class="t">${when}${r.st==='wait'?'<span class="tag wt">답 기다림</span>':''}${esc(r.t)}<b class="wh">${esc(r.who)}</b><small>${esc(r.ctx)}</small>${r.memo&&!r.done?`<span class="mm">${esc(r.memo).replace(/질문표[^·]*/,m=>`<a class="dl" href="gsmch-1f-itda-qa.html">📋 ${m.trim()} → 열기</a>`)}</span>`:''}</span></div>`;
+  return `<div class="row ${late?'late':''}" data-k="${esc(r.t)}"><span class="cb">${r.done?'✓':''}</span><span class="t">${when}${r.st==='wait'?'<span class="tag wt">답 기다림</span>':''}${esc(r.t)}<b class="wh">${esc(r.who)}</b><small>${esc(r.ctx)}</small>${r.memo&&!r.done?`<span class="mm">${esc(r.memo).replace(/질문표[^·]*/,m=>`<a class="dl" href="gsmch-1f-itda-qa.html">📋 ${m.trim()} → 열기</a>`)}</span>`:''}</span></div>`;
 }
 const WE_=thisWeek()[1];
 function group(list,showStore,sid){
@@ -165,7 +170,7 @@ function group(list,showStore,sid){
   const bl=(B.items||[]).filter(b=>b.store===sid);
   if(bl.length){const bo=bl.filter(b=>b.st!=='done'),bd=bl.filter(b=>b.st==='done');
     tabs+=`<button class="buy" data-c="구매 리스트">🛒 구매 리스트<em>${bo.length}</em></button>`;
-    const brow=b=>`<div class="row ${b.st==='done'?'bdone':''}"><span class="cb">${b.st==='done'?'✓':''}</span><span class="t"><span class="tag d">${esc(b.cat)}</span>${esc(b.name)}<b class="qty">${esc(b.qty)}</b><b class="wh">${esc(b.who)}</b><small>쓰는 곳: ${esc(b.use)}</small>${b.memo?`<span class="mm">${esc(b.memo)}</span>`:''}</span></div>`;
+    const brow=b=>`<div class="row ${b.st==='done'?'bdone':''}" data-k="B:${esc(b.name)}"><span class="cb">${b.st==='done'?'✓':''}</span><span class="t"><span class="tag d">${esc(b.cat)}</span>${esc(b.name)}<b class="qty">${esc(b.qty)}</b><b class="wh">${esc(b.who)}</b><small>쓰는 곳: ${esc(b.use)}</small>${b.memo?`<span class="mm">${esc(b.memo)}</span>`:''}</span></div>`;
     const BC=['주문 시스템','기물 · 셋팅','다회용 관련','디자인물','일회용품'].filter(c=>bl.some(x=>x.cat===c)).concat([...new Set(bl.map(x=>x.cat))].filter(c=>!['주문 시스템','기물 · 셋팅','다회용 관련','디자인물','일회용품'].includes(c)));
     let bt=`<div class="btabs"><button class="on" data-b="">전체<em>${bo.length}</em></button>`+BC.map(c=>`<button data-b="${esc(c)}">${esc(c)}<em>${bo.filter(x=>x.cat===c).length}</em></button>`).join('')+'</div>';
     panes+=`<div class="cpane" data-c="구매 리스트" style="display:none"><div class="cph"><b>구매 리스트</b><span>남음 ${bo.length} · 끝남 ${bd.length} · 사업단이 따로 사는 것</span></div>`+bt+`<div class="blist">`+bo.map(x=>brow(x).replace('<div class="row','<div data-b="'+esc(x.cat)+'" class="row')).join('')+(bd.length?`<details class="dn"><summary>산 것 ${bd.length}건</summary>${bd.map(brow).join('')}</details>`:'')+'</div></div>';}
@@ -209,6 +214,16 @@ function saveJpg(sel,name,btn){
   if(window.html2canvas)return go();
   const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';s.onload=go;document.head.appendChild(s);
 }
+</script>
+
+<script>
+// 내가 체크한 것 — 이 기기에만 저장 (캡처해서 보내면 총무가 반영)
+const MEK='gsmch1f-mychk';let ME={};try{ME=JSON.parse(localStorage.getItem(MEK)||'{}')}catch(e){ME={}}
+function applyMe(){document.querySelectorAll('.row[data-k]').forEach(el=>{el.classList.toggle('me',!!ME[el.dataset.k])});const n=Object.values(ME).filter(Boolean).length;const c=document.getElementById('mecnt');if(c)c.textContent=n}
+document.addEventListener('click',e=>{const cb=e.target.closest('.row[data-k] .cb');if(!cb)return;const el=cb.closest('.row');const k=el.dataset.k;ME[k]=!ME[k];if(!ME[k])delete ME[k];try{localStorage.setItem(MEK,JSON.stringify(ME))}catch(x){}applyMe()});
+function meReset(){if(!confirm('내가 체크한 표시를 모두 지울까요?'))return;ME={};try{localStorage.removeItem(MEK)}catch(x){}applyMe()}
+new MutationObserver(()=>applyMe()).observe(document.body,{childList:true,subtree:true});
+window.addEventListener('load',()=>{const m=document.createElement('div');m.className='mebar';m.innerHTML='☑ 칸을 누르면 <b>내가 체크한 표시</b>(초록)가 됩니다 · 이 기기에만 저장 · 체크한 것 <b id="mecnt">0</b>개 · 화면 캡처해서 보내 주시면 반영합니다 <button onclick="meReset()">내 체크 지우기</button>';const t=document.querySelector('.ptabs');(t?t.parentNode:document.body).insertBefore(m,t?t.nextSibling:document.body.firstChild);applyMe()});
 </script>
 </body>
 </html>
