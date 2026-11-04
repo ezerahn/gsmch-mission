@@ -109,6 +109,7 @@ h3{font-size:15px;font-weight:600;margin:0 0 8px;}
 .mhead .hb{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--pine);color:#fff;text-decoration:none;white-space:nowrap}
 .mhead .hb.ppt{background:var(--clay)}
 .mhead .hb.photo{background:#3d6b8f}
+.gal{margin-top:8px}.gal summary{cursor:pointer;font-size:12.5px;font-weight:600;color:#3d6b8f;display:inline-block;border:1px solid #c9d6e2;border-radius:999px;padding:2px 10px;list-style:none}.gal summary::-webkit-details-marker{display:none}.gal[open] summary{background:#eef3f8}.gg{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px;margin-top:8px}.gg img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;display:block}
 .evph{display:inline-block;margin-top:6px;font-size:12.5px;font-weight:600;color:#3d6b8f;text-decoration:none;border:1px solid #c9d6e2;border-radius:999px;padding:2px 10px}
 .mhead .tag.rest{background:var(--line-2);color:var(--ink-3);}
 .mbody{padding:16px 20px 18px;}
@@ -675,7 +676,7 @@ const MONTHS=[
    {d:"6. 14.",c:"정기 기획위원회 중보기도<span class='meta'>인도 한미애 권사</span>"},
    {d:"6. 20.",photo:"https://photos.app.goo.gl/WZi7yphKZ5GXdq7v8",c:"<strong>장로회와 함께 형제교회 방문</strong><span class='meta'>예안교회 · 월례회 대체</span>",key:1},
    {d:"6. 22.",photo:"https://photos.app.goo.gl/AVuaw1UshkPzPvEs7",c:"장로임원수련회<span class='meta'>6/22~23 · 속초 델피노 · 선교대회 참석</span>"},
-   {d:"6~10월",photo:"https://photos.app.goo.gl/qVzQ7YFzXwUimGmp6",c:"<strong>금성 심야 간식 섬김</strong><span class='meta'>금요성령집회 후 철야기도회 간식 준비 및 섬김 · 다회용 용기 180개 마련 · 15회</span>"}
+   {d:"6~10월",photo:"https://photos.app.goo.gl/qVzQ7YFzXwUimGmp6",gal:{dir:"img-gs/gs-",n:40},c:"<strong>금성 심야 간식 섬김</strong><span class='meta'>금요성령집회 후 철야기도회 간식 준비 및 섬김 · 다회용 용기 180개 마련 · 15회</span>"}
   ],b:"김묘숙 권사 · 박민주 권사"},
 
  {m:7,t:"방학",tag:"쉼",rest:1,ev:[],b:"김정임 권사 · 서정아 권사"},
@@ -743,7 +744,8 @@ MONTHS.forEach(M=>{
   let evs=M.ev.map(e=>{
     const roles=e.roles?`<div class="roles">${e.roles.map(r=>`<span class="role">${r}</span>`).join('')}</div>`:'';
     const ph=e.photo?`<a class="evph" href="${e.photo}" target="_blank" rel="noopener">📷 사진 보기</a>`:'';
-    return `<div class="ev${e.key?' key':''}"><div class="d">${e.d}</div><div class="c">${e.c}${roles}${ph}</div></div>`;
+    const gl=e.gal?`<details class="gal"><summary>🖼 섬김 사진 ${e.gal.n}장 펼치기</summary><div class="gg">${Array.from({length:e.gal.n},(_,i)=>{const n=String(i+1).padStart(2,'0');return `<a href="${e.gal.dir}${n}.jpg" target="_blank" rel="noopener"><img loading="lazy" src="${e.gal.dir}${n}-t.jpg" alt="금성 심야 간식 섬김 ${i+1}"></a>`}).join('')}</div></details>`:'';
+    return `<div class="ev${e.key?' key':''}"><div class="d">${e.d}</div><div class="c">${e.c}${roles}${ph}${gl}</div></div>`;
   }).join('');
   if(!evs)evs=`<div style="color:var(--ink-3);font-size:13.5px;padding:4px 0">기록된 일정이 없습니다.</div>`;
   card.innerHTML=`
