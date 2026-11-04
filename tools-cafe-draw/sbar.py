@@ -17,8 +17,8 @@ T(o,X(450),Y(560),'세척기 2구 (상판 매립)',9,600,MUT)
 o.append(f'<circle cx="{X(1150)}" cy="{Y(350)}" r="{120*S}" fill="#fff" stroke="{INK}" stroke-width="2"/><circle cx="{X(1150)}" cy="{Y(350)}" r="{70*S}" fill="#cfe0f3" stroke="{INK}" stroke-width="1"/>')
 # 쓰레기 3
 for k,lab in enumerate(('일반','일반','일반','플라스틱')):
-    x=1400+60+k*430;R(o,X(x+65),Y(250),230*S,130*S,'#2b2b2b',INK,1.2,8);T(o,X(x+180),Y(470),lab,11,800,INK);T(o,X(x+180),Y(540),'(상판 구멍)',8.5,600,MUT)
-    R(o,X(x+30),Y(600),300*S,60*S,'#fff',INK,0.8,2);T(o,X(x+180),Y(645),'그림 라벨',7.5,600,MUT)
+    x=1400+k*450;R(o,X(x+110),Y(250),230*S,130*S,'#2b2b2b',INK,1.2,8);T(o,X(x+225),Y(470),lab,11,800,INK);T(o,X(x+225),Y(540),'(상판 구멍)',8.5,600,MUT)
+    R(o,X(x+75),Y(600),300*S,60*S,'#fff',INK,0.8,2);T(o,X(x+225),Y(645),'그림 라벨',7.5,600,MUT)
 # 더그리트 반납함 WIDE 2대 — 서비스바 끝 옆 바닥 거치 (790 × 620 × 1,100)
 for k in range(2):
     x=L+100+k*(790+60);R(o,X(x),Y(D-620),790*S,620*S,'#2b2b2b',INK,1.5,6);T(o,X(x+395),Y(D-620+300),'반납함 WIDE',11,800,'#fff');T(o,X(x+395),Y(D-620+380),'790 × 620 · 윗면 막힘',9.5,600,'#ccc')
@@ -41,7 +41,7 @@ R(o,X(-20),Yf(0),(L+40)*S,40*S,WOOD,INK,1.5);R(o,X(0),Yf(40),L*S,(HT-40)*S,'#efe
 UNIT(o,X,Yf,0,900,'door2','수납 — 세척기 배관 · 수납',HT)
 UNIT(o,X,Yf,900,500,'open1','물통 (음료 버림)',HT);R(o,X(1000),Yf(250),300*S,500*S,'#cfe0f3',INK,1.2,8);T(o,X(1150),Yf(520),'물통',10,800,'#2a4f86')
 for k,(lab,f) in enumerate((('일반','#e8e8e8'),('일반','#e8e8e8'),('일반','#e8e8e8'),('플라스틱','#dff3ee'))):
-    x=1400+60+k*430;UNIT(o,X,Yf,1400+k*450,450,'open1','',HT);R(o,X(x),Yf(120),360*S,650*S,f,INK,1.2,8);T(o,X(x+180),Yf(450),lab,11,800,INK);T(o,X(x+180),Yf(520),'통 · 봉지',9,600,MUT)
+    x=1400+k*450;UNIT(o,X,Yf,x,450,'open1','',HT);R(o,X(x+45),Yf(120),360*S,650*S,f,INK,1.2,8);T(o,X(x+225),Yf(450),lab,11,800,INK);T(o,X(x+225),Yf(520),'통 · 봉지',9,600,MUT)
 R(o,X(3200),Yf(40),1000*S,(HT-40)*S,'#fff',INK,1.5);R(o,X(3250),Yf(80),900*S,(HT-150)*S,'#e8eef5',INK,1.2,6);T(o,X(3700),Yf(400),'아이스크림 냉동고',12,800,INK);T(o,X(3700),Yf(470),'(기종 미정 · 전원)',9.5,600,MUT)
 # 더그리트 제품 사진 (2대 나란히 · 높이 1,100 기준으로 맞춤)
 _b=base64.b64encode(open('greet.png','rb').read()).decode();_w=(790*2+60)*S;_h=1100*S*1.18
@@ -52,7 +52,7 @@ DIM(o,X(L+100+1640+80),Yf(HT-1100),X(L+100+1640+80),Yf(HT),'1,100',BL,-10,11)
 T(o,X(L+100+820),Yf(HT-1180),'높이 1,100 — 서비스바 상판(미정)보다 높을 수 있음 · 투입구는 앞면 위쪽(홀 쪽으로 넣음)',10,700,RED)
 for cx in (280,620): o.append(f'<ellipse cx="{X(cx)}" cy="{Yf(20)}" rx="{90*S}" ry="{12*S}" fill="#fff" stroke="{INK}" stroke-width="2"/>')
 o.append(f'<ellipse cx="{X(1150)}" cy="{Yf(20)}" rx="{120*S}" ry="{14*S}" fill="#cfe0f3" stroke="{INK}" stroke-width="2"/>')
-for k in range(4): o.append(f'<ellipse cx="{X(1640+k*430)}" cy="{Yf(20)}" rx="{110*S}" ry="{14*S}" fill="#2b2b2b" stroke="{INK}" stroke-width="1"/>')
+for k in range(4): o.append(f'<ellipse cx="{X(1625+k*450)}" cy="{Yf(20)}" rx="{110*S}" ry="{14*S}" fill="#2b2b2b" stroke="{INK}" stroke-width="1"/>')
 DIM(o,X(-70),Yf(0),X(-70),Yf(HT),'높이 미정',RED,10,12)
 T(o,X(L/2),Yf(HT+60),'투입구는 상판에 · 아래는 통(봉지) · 앞면은 시트지로 표시',11,700,RED)
 NOTES(o,Yf(HT)+110,[(BL,'도면(11/3): SERVICE BAR 4,200 · 앞 바에서 1,600 · 급배수 1곳(세척) · 전원 — 폭은 도면 치수 없음'),
