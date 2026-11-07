@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07 21:55",
+ "updated": "2026-11-07 21:30",
  "open": "2026-11-22",
  "weeks": [
   {
@@ -3690,6 +3690,69 @@
    "stream": "진열 · 도서",
    "group": "선지서점",
    "cat": 4
+  },
+  {
+   "id": "cafe-meet",
+   "week": "w4",
+   "area": "로뎀카페",
+   "title": "11/9 카페 회의 안건",
+   "state": "결정",
+   "due": "11/9",
+   "owner": "총무",
+   "todo": [
+    {
+     "t": "다회용컵 용기 사이즈",
+     "who": "카페",
+     "st": "todo",
+     "date": "11/9",
+     "memo": "",
+     "done": false
+    },
+    {
+     "t": "컵홀더 사이즈",
+     "who": "카페",
+     "st": "todo",
+     "date": "11/9",
+     "memo": "",
+     "done": false
+    },
+    {
+     "t": "앞치마 종류 · 수량",
+     "who": "카페",
+     "st": "todo",
+     "date": "11/9",
+     "memo": "",
+     "done": false
+    },
+    {
+     "t": "카페 메뉴 구성 · 가격",
+     "who": "카페",
+     "st": "todo",
+     "date": "11/9",
+     "memo": "",
+     "done": false
+    },
+    {
+     "t": "서비스바 필요 소품",
+     "who": "카페",
+     "st": "todo",
+     "date": "11/9",
+     "memo": "",
+     "done": false
+    },
+    {
+     "t": "오픈 이벤트 아이디어",
+     "who": "카페",
+     "st": "todo",
+     "date": "11/9",
+     "memo": "",
+     "done": false
+    }
+   ],
+   "note": "11/9 카페 회의에서 정합니다.",
+   "stream": "카페",
+   "group": "로뎀카페",
+   "cat": 8
   }
  ],
  "streams": {
