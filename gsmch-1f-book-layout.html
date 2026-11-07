@@ -334,7 +334,7 @@
   .fbn .st{font-size:11px;font-weight:600;background:#f0ece4;color:#8a7d68;border-radius:4px;padding:1px 6px}
   .fbn .ar{font-size:11px;color:#a99c86}
   @media(max-width:560px){.fband{padding:10px;gap:8px;flex-direction:column;align-items:stretch}.fband .fls{grid-template-columns:1fr}.fbn{font-size:12px;padding:6px 9px}.fbn .ar{margin-left:auto}}
-  @media print{.fband{display:none}}
+  .fband{flex-direction:column;align-items:stretch;gap:10px}.fcols{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;flex:1;min-width:0;width:100%}.fcol{display:flex;flex-direction:column;gap:6px}.fct{font-size:12.5px;font-weight:800;color:#0B5D2A;border-bottom:2px solid #0B5D2A;padding-bottom:4px;margin-bottom:2px}.fcol .fbn{white-space:normal}@media (max-width:900px){.fcols{grid-template-columns:1fr}}@media print{.fband{display:none}}
   .card .tag.fin,h3 .tag.fin{color:#D9644A!important;background:#FBE9E4!important}
   .chg{background:#fdf4f1!important;border-color:#f3d3c9!important}.chg b{color:#C2523A!important}
 </style>
@@ -372,7 +372,7 @@
     </div>
   </div>
 
-<div class="fband"><span class="fl">최종 파일</span><div class="fls"><a class="fbn" href="gsmch-1f-book-furniture.html">배치 · 가구 · 진열<span class="st">10.29 확인 중</span><span class="ar">↗</span></a><a class="fbn" href="gsmch-1f-pos.html?for=book">주문 · 결제 시스템 (잇다)<span class="st">10.29 최신</span><span class="ar">↗</span></a><a class="fbn" href="gsmch-1f-book-stock.html">재고 · 책꽂이 배치<span class="st">초안</span><span class="ar">↗</span></a><a class="fbn" href="gsmch-1f-book-promo.html">홍보 · 오픈 이벤트 · 스티커<span class="st">초안</span><span class="ar">↗</span></a></div></div>
+<div class="fband"><span class="fl">최종 파일</span><div class="fcols"><div class="fcol"><div class="fct">도면 · 배치</div><a class="fbn" href="gsmch-1f-book-furniture.html">배치 · 가구 · 진열<span class="st">10.29 확인 중</span><span class="ar">↗</span></a><a class="fbn" href="gsmch-1f-book-stock.html">재고 · 책꽂이 배치<span class="st">초안</span><span class="ar">↗</span></a></div><div class="fcol"><div class="fct">주문결제</div><a class="fbn" href="gsmch-1f-pos.html?for=book">주문 · 결제 시스템 (잇다)<span class="st">10.29 최신</span><span class="ar">↗</span></a></div><div class="fcol"><div class="fct">디자인 · 홍보물</div><a class="fbn" href="gsmch-1f-book-promo.html">홍보 · 오픈 이벤트 · 스티커<span class="st">초안</span><span class="ar">↗</span></a></div></div></div>
     <div class="tabs">
     <div class="trow"><span class="tgl">기준</span>
       <button class="tb" data-tab="1">전제 · 실측</button>
