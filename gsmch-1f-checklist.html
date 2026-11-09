@@ -219,7 +219,7 @@ function saveJpg(sel,name,btn){
 <script>
 // 내가 체크한 것 — 이 기기에만 저장 (캡처해서 보내면 총무가 반영)
 const MEK='gsmch1f-mychk';let ME={};try{ME=JSON.parse(localStorage.getItem(MEK)||'{}')}catch(e){ME={}}
-function applyMe(){document.querySelectorAll('.row[data-k]').forEach(el=>{el.classList.toggle('me',!!ME[el.dataset.k])});const n=Object.values(ME).filter(Boolean).length;const c=document.getElementById('mecnt');if(c)c.textContent=n}
+function applyMe(){document.querySelectorAll('.row[data-k]').forEach(el=>{el.classList.toggle('me',!!ME[el.dataset.k])});const n=Object.values(ME).filter(Boolean).length;const c=document.getElementById('mecnt');if(c&&c.textContent!==String(n))c.textContent=n}
 document.addEventListener('click',e=>{const cb=e.target.closest('.row[data-k] .cb');if(!cb)return;const el=cb.closest('.row');const k=el.dataset.k;ME[k]=!ME[k];if(!ME[k])delete ME[k];try{localStorage.setItem(MEK,JSON.stringify(ME))}catch(x){}applyMe()});
 function meReset(){if(!confirm('내가 체크한 표시를 모두 지울까요?'))return;ME={};try{localStorage.removeItem(MEK)}catch(x){}applyMe()}
 new MutationObserver(()=>applyMe()).observe(document.body,{childList:true,subtree:true});
