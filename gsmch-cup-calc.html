@@ -211,13 +211,19 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
 
 <div class="wrap">
   <header>
-    <p class="upd">업데이트 <b>2026-11-03 22:25</b></p>
+    <p class="upd">업데이트 <b>2026-11-12 20:30</b></p>
     <h1>로뎀카페 다회용컵 도입 검토</h1>
-    <p class="sub">비용 계산 · 업체 정보 · 미팅 질문을 한 곳에 — 2026. 10. 27. 더그리트 미팅용. 입력한 숫자와 체크는 이 기기에 남습니다. 금액은 부가세 별도.</p>
+    <p class="sub">지금 정한 내용과 비용 계산 · 업체 정보를 한 곳에 — 아래 계산기와 질문 목록은 10/27 더그리트 미팅 때 자료입니다. 입력한 숫자와 체크는 이 기기에 남습니다. 금액은 부가세 별도.</p>
   </header>
-  <div class="dec1103"><b>결정 (11. 3.)</b><ul>
-    <li>반납함은 <b>사업단이 비용 부담</b> — 환경국장님 · 사무국장님과 협의</li>
-    <li>반납함 <b>5대</b> — 자리 안: <b>1층 카페 3 · 3층 1 · 5층 1</b> <span style="color:#B3382A;font-weight:700">단장님 확인 중</span> (미팅 전 10대 · 9곳 안에서 바뀜)</li>
+  <div class="dec1103"><b>지금 정한 것 (11. 12. 기준)</b><ul>
+    <li><b>11/22(주일) 오픈과 함께 시작</b> — 매장 안은 다회용컵 · 밖으로 가져갈 때는 일회용컵 · 손님 보증금 없음</li>
+    <li>컵 크기 — 따뜻한 음료 <b>14oz</b> · 차가운 음료 <b>16oz</b> · 다회용컵에도 <b>컵홀더</b>를 끼움</li>
+    <li>세척 이용료 — <b>컵 1개 165원 (분실 개런티 없음)</b> 선택 · 다른 안은 150원(분실 개런티 1%)</li>
+    <li>운송(수거 · 배송) — <b>주 3일 · 한 달 150,000원</b> 선택 · 주 5일이면 300,000원</li>
+    <li>반납함 <b>6대 · 사업단 부담</b> — 대 3대: 1층 / 소 3대: 3층 · 5층 · 마가 · <b>11/14(토) 오전 10시 설치</b></li>
+    <li>반납함은 그대로 두고 <b>뒷면에 안내판</b>을 붙임 — 포맥스 5T 6장 · 예상 276,000원 · 11/16 ~ 17 발주</li>
+    <li>한 달 예상 <b>1,974,000원</b> (컵 8,000개 기준) — 지금 일회용보다 한 달 약 119만 원 더 듦 · 커피 500원 인상 확정</li>
+    <li><span style="color:#B3382A;font-weight:700">남은 확인</span> 반납함 실제 금액 · 첫 입고일 · 층별 정확한 자리 · 영상 촬영 날짜</li>
   </ul></div>
   <nav class="toc" id="toc"><a href="#base">기준</a><a href="#plans-h">1안 · 2안</a><a href="#cmp-h">두 안 비교</a><a href="#co">더그리트 정보</a><a href="#env">지속환경국</a><a href="#ask">물어볼 것</a><a href="#out">회의 결과</a></nav>
 
@@ -445,11 +451,11 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 (function(){
-  var KEY='rodem-cup-calc-v10';
+  var KEY='rodem-cup-calc-v11';
   var EMPTY={memo:'',cup:'',lid:30,s5:300000,s3:150000,sm:'3',bn:5,bl:0,b2:54000,b3:39000,l2:64000,l3:49000,bt:'3',lh:1,lc:''};
   var DEF={n0:8000,loss:5,dc:65,dl:35,dh:30,plans:[
-    {memo:'1안 · 기본 — 컵 150원 · 분실 1%까지 더그리트 부담, 초과분 개당 보상',cup:150,lid:30,s5:300000,s3:150000,sm:'3',bn:5,bl:0,b2:54000,b3:39000,l2:64000,l3:49000,bt:'3',lh:1,lc:700},
-    {memo:'2안 · 분실 녹임 — 컵 165원 · 분실 5%까지 단가에 포함, 초과분 청구 없음',cup:165,lid:30,s5:300000,s3:150000,sm:'3',bn:5,bl:0,b2:54000,b3:39000,l2:64000,l3:49000,bt:'3',lh:100,lc:0}]};
+    {memo:'1안 — 컵 150원 · 분실 개런티 1% (1%까지 더그리트 부담, 초과분 개당 보상)',cup:150,lid:30,s5:300000,s3:150000,sm:'3',bn:3,bl:3,b2:54000,b3:39000,l2:64000,l3:49000,bt:'3',lh:1,lc:700},
+    {memo:'2안 (선택) — 컵 165원 · 분실 개런티 없음 · 분실 보상 청구 없음',cup:165,lid:30,s5:300000,s3:150000,sm:'3',bn:3,bl:3,b2:54000,b3:39000,l2:64000,l3:49000,bt:'3',lh:100,lc:0}]};
   var st;
   try{st=JSON.parse(localStorage.getItem(KEY))||null;}catch(e){st=null;}
   if(!st||!st.plans) st=JSON.parse(JSON.stringify(DEF));
