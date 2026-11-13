@@ -211,19 +211,19 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
 
 <div class="wrap">
   <header>
-    <p class="upd">업데이트 <b>2026-11-12 20:30</b></p>
+    <p class="upd">업데이트 <b>2026-11-13 11:30</b></p>
     <h1>로뎀카페 다회용컵 도입 검토</h1>
     <p class="sub">지금 정한 내용과 비용 계산 · 업체 정보를 한 곳에 — 아래 계산기와 질문 목록은 10/27 더그리트 미팅 때 자료입니다. 입력한 숫자와 체크는 이 기기에 남습니다. 금액은 부가세 별도.</p>
   </header>
-  <div class="dec1103"><b>지금 정한 것 (11. 12. 기준)</b><ul>
+  <div class="dec1103"><b>지금 정한 것 (11. 13. 더그리트 계약 초안 기준)</b><ul>
     <li><b>11/22(주일) 오픈과 함께 시작</b> — 매장 안은 다회용컵 · 밖으로 가져갈 때는 일회용컵 · 손님 보증금 없음</li>
     <li>컵 크기 — 따뜻한 음료 <b>14oz</b> · 차가운 음료 <b>16oz</b> · 다회용컵에도 <b>컵홀더</b>를 끼움</li>
     <li>세척 이용료 — <b>컵 1개 165원 (분실 개런티 없음)</b> 선택 · 다른 안은 150원(분실 개런티 1%)</li>
-    <li>운송(수거 · 배송) — <b>주 3일 · 한 달 150,000원</b> 선택 · 주 5일이면 300,000원</li>
-    <li>반납함 <b>6대 · 사업단 부담</b> — 대 3대: 1층 / 소 3대: 3층 · 5층 · 마가 · <b>11/14(토) 오전 10시 설치</b></li>
+    <li>운송(수거 · 배송) — <b>주 2회(월 · 금) · 한 달 150,000원</b> · 정가는 300,000원</li>
+    <li>반납함 <b>6대 · 사업단 부담</b> · 한 달 소 39,000원 · 대 49,000원 (계약 2년 · 3년 약정 금액) — 대 3대: 1층 / 소 3대: 3층 · 5층 · 마가 · <b>11/14(토) 오전 10시 설치</b></li>
     <li>반납함은 그대로 두고 <b>뒷면에 안내판</b>을 붙임 — 포맥스 5T 6장 · 예상 276,000원 · 11/16 ~ 17 발주</li>
     <li>한 달 예상 <b>1,974,000원</b> (컵 8,000개 기준) — 지금 일회용보다 한 달 약 119만 원 더 듦 · 커피 500원 인상 확정</li>
-    <li><span style="color:#B3382A;font-weight:700">남은 확인</span> 반납함 실제 금액 · 첫 입고일 · 층별 정확한 자리 · 영상 촬영 날짜</li>
+    <li><span style="color:#B3382A;font-weight:700">남은 확인</span> 초안 합계(1,710,000원)에 반납함 264,000원 포함 여부 · 2027년 10원 인상 · 첫 입고일 · 층별 정확한 자리 · 영상 촬영 날짜</li>
   </ul></div>
   <nav class="toc" id="toc"><a href="#base">기준</a><a href="#plans-h">1안 · 2안</a><a href="#cmp-h">두 안 비교</a><a href="#co">더그리트 정보</a><a href="#env">지속환경국</a><a href="#ask">물어볼 것</a><a href="#out">회의 결과</a></nav>
 
@@ -473,8 +473,8 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
       '<div class="g g2"><div class="step"><span class="lab">① 컵 1개</span>'+inp('cup'+i,p.cup,'원')+'</div>'+
         '<div class="step"><span class="lab">② 뚜껑 1개<em>일회용 30원 통일</em></span>'+inp('lid'+i,p.lid,'원')+'</div></div>'+
       '<div class="step"><span class="lab">③ 수거 · 배송 월 정액<em>횟수 줄이면 금액 조정 가능</em></span>'+
-        '<div class="g g2">'+inp('s5'+i,p.s5,'원 · 주 5일')+inp('s3'+i,p.s3,'원 · 주 3일')+'</div>'+
-        '<div class="seg segs" data-i="'+i+'"><button data-s="5" class="'+(p.sm==='5'?'on':'')+'">주 5일로 계산</button><button data-s="3" class="'+(p.sm!=='5'?'on':'')+'">주 3일로 계산</button></div></div>'+
+        '<div class="g g2">'+inp('s5'+i,p.s5,'원 · 주 5일')+inp('s3'+i,p.s3,'원 · 주 2회')+'</div>'+
+        '<div class="seg segs" data-i="'+i+'"><button data-s="5" class="'+(p.sm==='5'?'on':'')+'">주 5일로 계산</button><button data-s="3" class="'+(p.sm!=='5'?'on':'')+'">주 2회로 계산</button></div></div>'+
       '<div class="step"><span class="lab">④ 반납함 렌탈 (대당 · 한 달)<em>3년 약정 금액으로 1년 계약 요청 중</em></span>'+
         '<div class="bxt"><span></span><span>대수</span><span>2년 약정 · 월</span><span>3년 약정 · 월</span>'+
           '<b>기본<i>200~250개</i></b>'+inp('bn'+i,p.bn,'대')+inp('b2'+i,p.b2,'원')+inp('b3'+i,p.b3,'원')+
@@ -502,10 +502,10 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
       var alt=use3?tot-box3+box2:tot-box2+box3;
       out.push({tot:tot,d:d,per:n?tot/n:0,alt:alt,use3:use3,sm5:p.sm==='5',fix:a+b+ship+box,lh:lh,lc:lc});
       el.innerHTML=
-        '<div class="hero"><span class="k">한 달 합계 · 수거 '+(p.sm==='5'?'주 5일':'주 3일')+' · 반납함 '+(use3?'3년':'2년')+' 약정</span><span class="v num">'+man(tot)+'<small>/ 달</small></span><span class="y num">한 잔당 '+fmt(n?tot/n:0)+'원 · 1년 '+man(tot*12)+(alt!=null?' · '+(use3?'2년':'3년')+' 약정이면 '+man(alt):'')+'</span></div>'+
+        '<div class="hero"><span class="k">한 달 합계 · 수거 '+(p.sm==='5'?'주 5일':'주 2회')+' · 반납함 '+(use3?'3년':'2년')+' 약정</span><span class="v num">'+man(tot)+'<small>/ 달</small></span><span class="y num">한 잔당 '+fmt(n?tot/n:0)+'원 · 1년 '+man(tot*12)+(alt!=null?' · '+(use3?'2년':'3년')+' 약정이면 '+man(alt):'')+'</span></div>'+
         r('① 컵',fmt(n)+'개 × '+fmt(cup)+'원',man(a),'sub')+
         r('② 뚜껑',fmt(n)+'개 × '+fmt(lid)+'원',man(b),'sub')+
-        r('③ 수거 · 배송 '+(p.sm==='5'?'주 5일':'주 3일'),'월 정액',man(ship),'sub')+
+        r('③ 수거 · 배송 '+(p.sm==='5'?'주 5일':'주 2회'),'월 정액',man(ship),'sub')+
         r('④ 반납함 2년 약정','기본 '+fmt(bn)+'대 × '+fmt(b2)+(bl?' + 큰 것 '+fmt(bl)+'대 × '+fmt(l2):''),man(box2),'sub'+(use3?'':' pick'))+
         r('④ 반납함 3년 약정','기본 '+fmt(bn)+'대 × '+fmt(b3)+(bl?' + 큰 것 '+fmt(bl)+'대 × '+fmt(l3):''),man(box3),'sub'+(use3?' pick':''))+
         r('⑤ 분실 보상',lh>=100?'청구 없음 (단가에 포함)':fmt(n)+'개 × '+lossPct+'% × '+fmt(lc)+'원',man(lost),'sub')+
@@ -516,7 +516,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--acc);outline-of
     function cell(o,f,main){if(!o)return '<td style="color:var(--mut)">—</td>';return '<td'+(main&&cnt>1&&o.tot===min?' class="bestc"':'')+'>'+f(o)+'</td>';}
     document.getElementById('cmp').innerHTML='<thead><tr><th></th>'+st.plans.map(function(p,i){return '<th>'+(i+1)+'안</th>';}).join('')+'</tr></thead><tbody>'+
       '<tr class="memo-r"><td>조건</td>'+st.plans.map(function(p){return '<td class="memo-c">'+(p.memo||'—').replace(/</g,'&lt;')+'</td>';}).join('')+'</tr>'+
-      '<tr class="main"><td>한 달 합계</td>'+out.map(function(o){return cell(o,function(o){return man(o.tot)+'<i class="yr"> '+(o.sm5?'주 5일':'주 3일')+' · '+(o.use3?'3년':'2년')+'</i>';},true);}).join('')+'</tr>'+
+      '<tr class="main"><td>한 달 합계</td>'+out.map(function(o){return cell(o,function(o){return man(o.tot)+'<i class="yr"> '+(o.sm5?'주 5일':'주 2회')+' · '+(o.use3?'3년':'2년')+'</i>';},true);}).join('')+'</tr>'+
       '<tr class="main"><td>한 잔당</td>'+out.map(function(o){return cell(o,function(o){return fmt(o.per)+'원';},true);}).join('')+'</tr>'+
       '<tr class="minor"><td>다른 약정이면</td>'+out.map(function(o){return cell(o,function(o){return man(o.alt)+' ('+(o.use3?'2년':'3년')+' 약정)';});}).join('')+'</tr>'+
       '<tr class="minor"><td>1년이면</td>'+out.map(function(o){return cell(o,function(o){return man(o.tot*12);});}).join('')+'</tr>'+
