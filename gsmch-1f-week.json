@@ -311,7 +311,13 @@
    "t": "포스 · 키오스크 설치",
    "em": "",
    "done": false,
-   "id": "k034"
+   "id": "k034",
+   "docs": [
+    [
+     "잇다",
+     "gsmch-vendor-itda.html#t3"
+    ]
+   ]
   },
   {
    "d": "2026-11-16",
@@ -319,7 +325,17 @@
    "t": "반납함 안내판 발주",
    "em": "꾸밈새 인쇄 · 최정희 실장님 010-8745-7583 · 650×350 · 790×350 각 3장",
    "done": true,
-   "id": "k035"
+   "id": "k035",
+   "docs": [
+    [
+     "제작 가이드",
+     "gsmch-1f-doc-cafe-returnbox-sign.pdf"
+    ],
+    [
+     "더그리트",
+     "gsmch-vendor-thegreet.html#t3"
+    ]
+   ]
   },
   {
    "d": "2026-11-16",
@@ -329,7 +345,13 @@
    "done": false,
    "id": "k036",
    "q": "한스데이 앞치마",
-   "url": "https://smartstore.naver.com/hansday/products/8906202548"
+   "url": "https://smartstore.naver.com/hansday/products/8906202548",
+   "docs": [
+    [
+     "회의자료 12쪽",
+     "gsmch-1f-doc-cafe-meeting2.pdf#page=12"
+    ]
+   ]
   },
   {
    "d": "2026-11-16",
@@ -347,7 +369,17 @@
    "t": "계약서 진행",
    "em": "더그리트 · 잇다",
    "done": false,
-   "id": "k038"
+   "id": "k038",
+   "docs": [
+    [
+     "더그리트",
+     "gsmch-vendor-thegreet.html#t6"
+    ],
+    [
+     "잇다",
+     "gsmch-vendor-itda.html#t6"
+    ]
+   ]
   },
   {
    "d": "2026-11-17",
@@ -381,7 +413,13 @@
    "em": "",
    "done": false,
    "id": "k042",
-   "tm": "오후"
+   "tm": "오후",
+   "docs": [
+    [
+     "커피 기물",
+     "gsmch-vendor-coffee.html"
+    ]
+   ]
   },
   {
    "d": "2026-11-20",
@@ -406,7 +444,13 @@
    "t": "포스 설치",
    "em": "",
    "done": false,
-   "id": "k045"
+   "id": "k045",
+   "docs": [
+    [
+     "잇다",
+     "gsmch-vendor-itda.html#t3"
+    ]
+   ]
   },
   {
    "d": "2026-11-21",
@@ -423,7 +467,13 @@
    "em": "다회용컵 운영 시작",
    "done": false,
    "open": true,
-   "id": "k047"
+   "id": "k047",
+   "docs": [
+    [
+     "메뉴 · 가격",
+     "gsmch-1f-doc-cafe-meeting2.pdf#page=13"
+    ]
+   ]
   },
   {
    "d": "2026-11-24",
@@ -489,7 +539,13 @@
    "t": "커피 테이스팅 → 원두 발주",
    "em": "목사님 일정 확인 후 · 원두 업체 · 기본 원두 · 디카페인",
    "done": false,
-   "id": "k055"
+   "id": "k055",
+   "docs": [
+    [
+     "시음 평가표",
+     "gsmch-1f-doc-cafe-meeting2.pdf#page=23"
+    ]
+   ]
   },
   {
    "d": "",
@@ -505,7 +561,13 @@
    "t": "제작물 입고 · 반납함 안내판 붙이기",
    "em": "",
    "done": false,
-   "id": "k057"
+   "id": "k057",
+   "docs": [
+    [
+     "제작 가이드",
+     "gsmch-1f-doc-cafe-returnbox-sign.pdf"
+    ]
+   ]
   },
   {
    "d": "",
@@ -625,5 +687,17 @@
    "q": "컵 캐리어 테이크아웃 봉투",
    "url": ""
   }
- ]
+ ],
+ "groupDocs": {
+  "카페 용품 발주": [
+   [
+    "발주 리스트",
+    "gsmch-1f-doc-cafe-order.pdf"
+   ],
+   [
+    "회의자료 18~19쪽",
+    "gsmch-1f-doc-cafe-meeting2.pdf#page=18"
+   ]
+  ]
+ }
 }
