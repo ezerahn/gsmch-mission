@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>선지서점 운영</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf8f3;--card:#fff;--line:#e6e1d7;--line2:#f0ece4;--text:#2c2a26;--muted:#8a847a;--soft:#6e6860;--g:#2f6b48;--o:#b5622d;--b:#3d6bb0;--y:#fff4c7;--ok:#1f7a3f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans KR',-apple-system,'Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:24px 16px 70px}
+.back{display:inline-block;font-size:14px;color:var(--soft);text-decoration:none;padding:7px 14px;border:1px solid var(--line);border-radius:20px;background:#fff;margin-bottom:14px}
+.kick{font-size:14px;font-weight:700;color:var(--g)}
+h1{font-size:32px;font-weight:700;letter-spacing:-.02em;margin-top:2px}
+.lead{font-size:16px;color:var(--soft);margin-top:4px}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.meta span{font-size:13.5px;font-weight:700;border-radius:8px;padding:3px 10px;background:#efece4;color:var(--soft)}
+.meta span.st{background:var(--g);color:#fff}.meta span.wait{background:#c8553d;color:#fff}
+.tabs{position:sticky;top:0;z-index:5;background:var(--bg);display:grid;grid-template-columns:repeat(6,1fr);gap:6px;padding:16px 0 10px;margin-top:8px}
+.tabs button{font:inherit;cursor:pointer;font-size:15.5px;font-weight:700;color:var(--soft);background:#f2f0e9;border:2px solid #dcd9d1;border-radius:11px;padding:9px 4px;white-space:nowrap}
+.tabs button{display:flex;flex-direction:column;align-items:center;gap:3px}.fls{display:flex;flex-direction:column;gap:2px;align-items:center}.fl{font-size:11.5px;font-weight:700;border-radius:6px;padding:0 6px;line-height:1.6;white-space:nowrap}.fl.doc{background:#fde4dc;color:#b3382a}.fl.chk{background:#fff1bf;color:#8a5a00}.fl.pic{background:#e3ecf8;color:#2f5592}.tabs button.on .fl{opacity:.95}
+.tabs button i{font-style:normal;color:#b0a99c;margin-right:4px}
+.tabs button.on{background:var(--text);border-color:var(--text);color:#fff}.tabs button.on i{color:#d8d4ca}
+.pn{display:none}.pn.on{display:block}
+.card{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:12px}
+h2{font-size:20px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+h2:before{content:"";width:5px;height:20px;background:var(--g);border-radius:2px}
+h3{font-size:16px;font-weight:700;margin:14px 0 6px}
+.sumrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sumrow div{background:#f7f5ef;border-radius:12px;padding:12px 14px}
+.sumrow small{display:block;font-size:13px;color:var(--muted);font-weight:700}
+.sumrow b{display:block;font-size:21px;font-weight:700;margin-top:2px;letter-spacing:-.01em}
+.sumrow em{display:block;font-style:normal;font-size:13px;color:var(--soft)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line2);text-align:left;vertical-align:top}
+th{background:#f4f2ec;font-size:13.5px;color:var(--soft);font-weight:700}
+td.r,th.r{text-align:right;white-space:nowrap}
+td.k{font-weight:700;white-space:nowrap;width:140px;color:var(--soft)}
+tr.tot td{font-weight:700;font-size:16.5px;border-top:2px solid var(--text);border-bottom:0}
+.ok{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--ok);border-radius:6px;padding:0 7px;margin-right:4px;vertical-align:1px}
+.calc{background:#f1f0ec;border:1.5px solid #d9d6cf;border-radius:12px;padding:14px 16px;margin-top:12px}
+.calc h3{margin-top:0}.calc h3:before{content:"★ ";color:#b08a1a}
+.note{background:#2c2a26;color:#f1eee7;border-radius:10px;padding:10px 14px;font-size:14px;margin-top:10px}
+ul.li{list-style:none}ul.li li{padding:7px 0 7px 22px;border-bottom:1px solid var(--line2);position:relative;font-size:15.5px}
+ul.li li:before{content:"";position:absolute;left:6px;top:16px;width:7px;height:7px;border-radius:50%;background:var(--g)}
+ul.li li:last-child{border-bottom:0}
+ul.li li em{font-style:normal;color:var(--muted);font-size:13.5px;margin-left:6px}
+.tl{list-style:none;border-left:3px solid #d9e4dc;margin-left:8px}
+.tl li{position:relative;padding:6px 0 10px 18px}
+.tl li:before{content:"";position:absolute;left:-8px;top:12px;width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid var(--g)}
+.tl li b{display:inline-block;min-width:74px;font-weight:700}
+.tl li.old{color:var(--muted)}.tl li.old:before{border-color:#c9c3b8}
+.tl li em{font-style:normal;color:var(--muted);font-size:13.5px;display:block}
+.files{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.file{display:flex;gap:12px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--text)}
+.file i{font-style:normal;flex:none;width:44px;height:52px;border-radius:6px;background:#f2efe7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--soft)}
+.file b{display:block;font-size:15.5px}.file small{font-size:13px;color:var(--muted)}
+.file.miss{border-style:dashed;background:transparent}.file.miss i{background:#fff4c7;color:#8a6a10}
+.todo{background:#fffaf0;border:2px solid #ecd9a6;border-radius:14px;padding:16px 20px;margin-top:22px}
+.todo h2:before{background:#c8553d}
+.todo li{list-style:none;padding:6px 0 6px 28px;position:relative;font-size:15.5px;border-bottom:1px dashed #ecdfc0}
+.todo li:last-child{border-bottom:0}
+.todo li:before{content:"";position:absolute;left:2px;top:10px;width:16px;height:16px;border:2px solid #c9a447;border-radius:4px;background:#fff}
+.todo li em{font-style:normal;color:var(--muted);font-size:13.5px;margin-left:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pill{display:inline-block;font-size:12.5px;font-weight:700;border-radius:6px;padding:0 8px;background:#e8f0ea;color:var(--g);margin-right:4px}
+a.lk{color:var(--g);font-weight:700}
+.otherv{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;background:#eef4fb;border:2px solid #3d6bb0;border-radius:12px;padding:12px 16px;margin:0 0 12px}.otherv .ov-tag{font-size:12.5px;font-weight:700;color:#fff;background:#3d6bb0;border-radius:6px;padding:1px 8px}.otherv b{font-size:18px}.otherv span{font-size:15.5px;font-weight:700}.otherv a{font-size:17px;font-weight:700;color:#1f3f78;text-decoration:none;background:#fff;border:1.5px solid #9fb6dc;border-radius:8px;padding:2px 10px}.otherv em{flex-basis:100%;font-style:normal;font-size:13px;color:var(--soft)}
+.upd{font-size:13px;color:var(--muted);margin-top:18px}
+@media(max-width:760px){.tabs{grid-template-columns:repeat(3,1fr)}.sumrow{grid-template-columns:1fr 1fr}.files,.two{grid-template-columns:1fr}h1{font-size:26px}td.k{width:auto}}
+@media print{.tabs,.back{display:none}.pn{display:block!important;page-break-inside:avoid}body{background:#fff}}
+.eqs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.eq{border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}.eq .pic{height:170px;background:#f7f5ef;display:flex;align-items:center;justify-content:center;padding:10px}.eq .pic img{max-width:100%;max-height:100%;object-fit:contain}.nopic{color:#b0a99c;font-size:13px;font-weight:700;text-align:center;line-height:1.5}.eqb{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px}.eqb b{font-size:16px}.eqb .mdl{font-size:13.5px;color:var(--soft)}.eqb .sz{font-size:12.5px;color:var(--muted);margin-top:4px}.eqb .sz em{display:block;font-style:normal;font-size:15px;font-weight:700;color:var(--text)}.eqb .sp{font-size:13px;color:var(--soft)}.lk2{align-self:flex-start;margin-top:6px;font-size:12.5px;font-weight:700;color:#3d6bb0;border:1.5px solid #c7d5ec;background:#f3f7fd;border-radius:12px;padding:0 9px;text-decoration:none}
+@media(max-width:760px){.eqs{grid-template-columns:1fr 1fr}}
+.figs{display:flex;gap:12px;margin:0 0 12px;flex-wrap:wrap}.figs figure{flex:1;min-width:160px;max-width:320px;background:#f7f5ef;border-radius:12px;padding:10px;text-align:center}.figs img{max-width:100%;max-height:220px;object-fit:contain;display:block;margin:0 auto}.figs figcaption{font-size:13px;color:var(--soft);font-weight:700;margin-top:6px}
+
+.tabs.n{grid-template-columns:repeat(var(--n),1fr)}
+.tabs button{display:flex;flex-direction:column;align-items:center;gap:3px}.fls{display:flex;flex-direction:column;gap:2px;align-items:center}.fl{font-size:11.5px;font-weight:700;border-radius:6px;padding:0 6px;line-height:1.6;white-space:nowrap}.fl.doc{background:#fde4dc;color:#b3382a}.fl.chk{background:#fff1bf;color:#8a5a00}.fl.pic{background:#e3ecf8;color:#2f5592}
+.st{display:inline-block;font-size:12px;font-weight:700;border-radius:6px;padding:0 8px;white-space:nowrap}.st.d{background:#e3f1e7;color:#1f7a3f}.st.w{background:#fff1bf;color:#8a5a00}.st.n{background:#efece4;color:#8a847a}.st.r{background:#fde4dc;color:#b3382a}
+.figs.big figure{max-width:480px}.figs.big img{max-height:520px}
+.dec{background:#e9f3ec;border:1.5px solid #b9d6c2;border-radius:12px;padding:12px 16px;margin-bottom:12px}.dec h3{margin:0 0 4px;color:#1f5e3b;font-size:15px}.dec ul{list-style:none}.dec li{padding:3px 0 3px 18px;position:relative;font-size:15.5px}.dec li:before{content:"✓";position:absolute;left:0;color:#1f7a3f;font-weight:700}
+@media(max-width:760px){.tabs.n{grid-template-columns:repeat(3,1fr)}}
+</style></head><body><div class="wrap">
+<a class="back" href="gsmch-1f.html">← 1층 성전보수 · 운영 준비</a>
+<div class="kick">운영 준비 · 서점</div><h1>선지서점 운영</h1><p class="lead">11/29(주일) 오픈 — 진열 · 도서검색대 · 입구 화면 · 재고를 정한 대로 모았습니다.</p><div class="meta"><span class="st">11/29 주일 오픈</span><span class="">11/24 재고조사</span></div>
+<div class="tabs n" id="tabs" style="--n:4"><button data-t="0" class="on"><span><i>①</i>도서 진열</span><span class="fls"><span class="fl chk">⚠ 칸 번호 결정</span></span></button><button data-t="1"><span><i>②</i>도서검색대 지도</span><span class="fls"><span class="fl pic">📷 화면 필요</span></span></button><button data-t="2"><span><i>③</i>입구 디스플레이</span><span class="fls"><span class="fl pic">📷 이미지 필요</span></span></button><button data-t="3"><span><i>④</i>재고 · 포스</span></button></div><section class="pn on"><div class="dec"><h3>정한 것</h3><ul><li>벽 이름 A · B · C · D · E면 · 가운데 진열대 F · G · H</li><li>A면 — 어린이 청소년 · 키즈 · 키즈 · 문구 · 선물 · 선물 · 도서검색대 · 키오스크</li><li>B면 — 규장 · 규장 · 두란노 · 두란노 · 생명의말씀사 외 · IVP 외 · 가정</li><li>C면 — 김다위목사님도서 · 유기성목사님도서 · 성경 · 필사성경 · 외국저자 · 출판사별</li><li>D면 — 마더와이즈 · 제자훈련 · 양육교재 · E면은 조명만</li><li>손이 닿는 4단까지 판매 · 여유분은 아래 수납 · 단 라벨은 안 함</li></ul></div><div class="card"><h2>구역 · 레터링</h2><div class="figs"><figure><a href="ops/img/book-zones.jpg" target="_blank"><img src="ops/img/book-zones.jpg" alt="구역 코드 전체" loading="lazy"></a><figcaption>구역 코드 전체</figcaption></figure><figure><a href="ops/img/book-B-lettering.jpg" target="_blank"><img src="ops/img/book-B-lettering.jpg" alt="B면 레터링" loading="lazy"></a><figcaption>B면 레터링</figcaption></figure><figure><a href="ops/img/book-C-lettering.jpg" target="_blank"><img src="ops/img/book-C-lettering.jpg" alt="C면 레터링" loading="lazy"></a><figcaption>C면 레터링</figcaption></figure></div></div><div class="card"><h2>자료</h2><div class="files"><a class="file" href="gsmch-1f-doc-book-shelf-names.pdf" target="_blank" rel="noopener"><i>PDF</i><span><b>진열대 이름 · 위치별 ↗</b><small>건축위 전달</small></span></a><a class="file" href="gsmch-1f-doc-book-lettering.pdf" target="_blank" rel="noopener"><i>PDF</i><span><b>레터링 시안 80mm ↗</b><small></small></span></a><a class="file" href="gsmch-1f-doc-book-lettering-70.pdf" target="_blank" rel="noopener"><i>PDF</i><span><b>레터링 시안 70mm ↗</b><small></small></span></a><a class="file" href="gsmch-1f-book-layout.html" target="_blank" rel="noopener"><i>HTML</i><span><b>선지서점 배치 · 운영안 ↗</b><small></small></span></a></div></div></section><section class="pn"><div class="dec"><h3>정한 것</h3><ul><li>상품 검색대는 따로 없음 — 도서검색대로 책 · 용품 다 찾기</li><li>잇다 — 상품 위치 이미지 기능 추가 예정</li></ul></div><div class="card"><h2>지도 화면</h2><p style="font-size:15px">검색하면 칸 위치(A~H면)를 그림으로 보여 줄 지도 — 잇다 기능이 들어오면 구역 코드 그림으로 만듭니다.</p><div class="figs"><figure><a href="ops/img/book-zones.jpg" target="_blank"><img src="ops/img/book-zones.jpg" alt="지도 바탕 — 구역 코드" loading="lazy"></a><figcaption>지도 바탕 — 구역 코드</figcaption></figure></div></div></section><section class="pn"><div class="dec"><h3>정한 것</h3><ul><li>외벽 디스플레이 43˝ · 세로 · USB로 화면 넣기 (사업단 구입)</li></ul></div><div class="card"><h2>화면 예시</h2><div class="figs"><figure><a href="img/pos-disp-book.jpg" target="_blank"><img src="img/pos-disp-book.jpg" alt="외벽 디스플레이 예시" loading="lazy"></a><figcaption>외벽 디스플레이 예시</figcaption></figure></div></div><div class="card"><h2>만들 화면</h2><table><tr><th>화면</th><th>내용</th><th>상태</th></tr><tr><td>오픈 안내</td><td>11/29 오픈 · 운영 시간</td><td><span class="st n">만들기</span></td></tr><tr><td>신간 · 추천</td><td>이달의 책</td><td><span class="st n">만들기</span></td></tr><tr><td>공지</td><td>행사 · 휴무</td><td><span class="st n">만들기</span></td></tr></table></div></section><section class="pn"><div class="card"><h2>일정</h2><table><tr><th>날짜</th><th>할 일</th><th>상태</th></tr><tr><td>11/20 (금)</td><td>지하 5층에서 짐 옮기기 · 오후 1시</td><td><span class="st n">예정</span></td></tr><tr><td>11/21 (토)</td><td>포스 설치</td><td><span class="st n">예정</span></td></tr><tr><td>11/24 (화)</td><td>재고조사 · 아가페</td><td><span class="st n">예정</span></td></tr><tr><td>11/25~28</td><td>정리 · 추가 발주 · 입고 · 알바 시뮬레이션 · 최종 마무리</td><td><span class="st n">날짜 미정</span></td></tr><tr><td>11/29 (주일)</td><td>선지서점 오픈</td><td><span class="st n">예정</span></td></tr></table></div><p style="font-size:14.5px;margin-top:10px">기기 · 매뉴얼 → <a class="lk" href="gsmch-vendor-itda.html#t3">주문 · 결제 · 잇다 ↗</a></p></section><div class="todo"><h2>확인할 것</h2><ul><li>제목 판에 칸 번호(A1 등)를 넣을지 — 사업단 결정</li><li>레터링 글자 크기 70 / 80mm</li><li>도서검색대 지도 화면</li><li>입구 디스플레이 화면 3가지</li><li>PDA용 휴대폰 개통</li></ul></div>
+<p class="upd">업데이트 2026. 11. 16. · 탭마다 정한 것 → 사진 · 시안 → 확인할 것 (⚠ · 📎 · 📷 표시는 보완이 필요한 탭)</p>
+</div><script>
+const B=[...document.querySelectorAll('#tabs button')],P=[...document.querySelectorAll('.pn')];
+function go(i){B.forEach((b,k)=>b.classList.toggle('on',k==i));P.forEach((p,k)=>p.classList.toggle('on',k==i));try{history.replaceState(null,'','#t'+(i+1))}catch(e){}}
+B.forEach((b,i)=>b.onclick=()=>{go(i);window.scrollTo({top:document.getElementById('tabs').offsetTop-4,behavior:'smooth'})});
+const h=location.hash.match(/#t(\d)/);if(h)go(+h[1]-1);
+</script></body></html>

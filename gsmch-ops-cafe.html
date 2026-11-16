@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>로뎀카페 운영</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf8f3;--card:#fff;--line:#e6e1d7;--line2:#f0ece4;--text:#2c2a26;--muted:#8a847a;--soft:#6e6860;--g:#2f6b48;--o:#b5622d;--b:#3d6bb0;--y:#fff4c7;--ok:#1f7a3f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans KR',-apple-system,'Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:24px 16px 70px}
+.back{display:inline-block;font-size:14px;color:var(--soft);text-decoration:none;padding:7px 14px;border:1px solid var(--line);border-radius:20px;background:#fff;margin-bottom:14px}
+.kick{font-size:14px;font-weight:700;color:var(--g)}
+h1{font-size:32px;font-weight:700;letter-spacing:-.02em;margin-top:2px}
+.lead{font-size:16px;color:var(--soft);margin-top:4px}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.meta span{font-size:13.5px;font-weight:700;border-radius:8px;padding:3px 10px;background:#efece4;color:var(--soft)}
+.meta span.st{background:var(--g);color:#fff}.meta span.wait{background:#c8553d;color:#fff}
+.tabs{position:sticky;top:0;z-index:5;background:var(--bg);display:grid;grid-template-columns:repeat(6,1fr);gap:6px;padding:16px 0 10px;margin-top:8px}
+.tabs button{font:inherit;cursor:pointer;font-size:15.5px;font-weight:700;color:var(--soft);background:#f2f0e9;border:2px solid #dcd9d1;border-radius:11px;padding:9px 4px;white-space:nowrap}
+.tabs button{display:flex;flex-direction:column;align-items:center;gap:3px}.fls{display:flex;flex-direction:column;gap:2px;align-items:center}.fl{font-size:11.5px;font-weight:700;border-radius:6px;padding:0 6px;line-height:1.6;white-space:nowrap}.fl.doc{background:#fde4dc;color:#b3382a}.fl.chk{background:#fff1bf;color:#8a5a00}.fl.pic{background:#e3ecf8;color:#2f5592}.tabs button.on .fl{opacity:.95}
+.tabs button i{font-style:normal;color:#b0a99c;margin-right:4px}
+.tabs button.on{background:var(--text);border-color:var(--text);color:#fff}.tabs button.on i{color:#d8d4ca}
+.pn{display:none}.pn.on{display:block}
+.card{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:12px}
+h2{font-size:20px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+h2:before{content:"";width:5px;height:20px;background:var(--g);border-radius:2px}
+h3{font-size:16px;font-weight:700;margin:14px 0 6px}
+.sumrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sumrow div{background:#f7f5ef;border-radius:12px;padding:12px 14px}
+.sumrow small{display:block;font-size:13px;color:var(--muted);font-weight:700}
+.sumrow b{display:block;font-size:21px;font-weight:700;margin-top:2px;letter-spacing:-.01em}
+.sumrow em{display:block;font-style:normal;font-size:13px;color:var(--soft)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line2);text-align:left;vertical-align:top}
+th{background:#f4f2ec;font-size:13.5px;color:var(--soft);font-weight:700}
+td.r,th.r{text-align:right;white-space:nowrap}
+td.k{font-weight:700;white-space:nowrap;width:140px;color:var(--soft)}
+tr.tot td{font-weight:700;font-size:16.5px;border-top:2px solid var(--text);border-bottom:0}
+.ok{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--ok);border-radius:6px;padding:0 7px;margin-right:4px;vertical-align:1px}
+.calc{background:#f1f0ec;border:1.5px solid #d9d6cf;border-radius:12px;padding:14px 16px;margin-top:12px}
+.calc h3{margin-top:0}.calc h3:before{content:"★ ";color:#b08a1a}
+.note{background:#2c2a26;color:#f1eee7;border-radius:10px;padding:10px 14px;font-size:14px;margin-top:10px}
+ul.li{list-style:none}ul.li li{padding:7px 0 7px 22px;border-bottom:1px solid var(--line2);position:relative;font-size:15.5px}
+ul.li li:before{content:"";position:absolute;left:6px;top:16px;width:7px;height:7px;border-radius:50%;background:var(--g)}
+ul.li li:last-child{border-bottom:0}
+ul.li li em{font-style:normal;color:var(--muted);font-size:13.5px;margin-left:6px}
+.tl{list-style:none;border-left:3px solid #d9e4dc;margin-left:8px}
+.tl li{position:relative;padding:6px 0 10px 18px}
+.tl li:before{content:"";position:absolute;left:-8px;top:12px;width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid var(--g)}
+.tl li b{display:inline-block;min-width:74px;font-weight:700}
+.tl li.old{color:var(--muted)}.tl li.old:before{border-color:#c9c3b8}
+.tl li em{font-style:normal;color:var(--muted);font-size:13.5px;display:block}
+.files{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.file{display:flex;gap:12px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--text)}
+.file i{font-style:normal;flex:none;width:44px;height:52px;border-radius:6px;background:#f2efe7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--soft)}
+.file b{display:block;font-size:15.5px}.file small{font-size:13px;color:var(--muted)}
+.file.miss{border-style:dashed;background:transparent}.file.miss i{background:#fff4c7;color:#8a6a10}
+.todo{background:#fffaf0;border:2px solid #ecd9a6;border-radius:14px;padding:16px 20px;margin-top:22px}
+.todo h2:before{background:#c8553d}
+.todo li{list-style:none;padding:6px 0 6px 28px;position:relative;font-size:15.5px;border-bottom:1px dashed #ecdfc0}
+.todo li:last-child{border-bottom:0}
+.todo li:before{content:"";position:absolute;left:2px;top:10px;width:16px;height:16px;border:2px solid #c9a447;border-radius:4px;background:#fff}
+.todo li em{font-style:normal;color:var(--muted);font-size:13.5px;margin-left:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pill{display:inline-block;font-size:12.5px;font-weight:700;border-radius:6px;padding:0 8px;background:#e8f0ea;color:var(--g);margin-right:4px}
+a.lk{color:var(--g);font-weight:700}
+.otherv{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;background:#eef4fb;border:2px solid #3d6bb0;border-radius:12px;padding:12px 16px;margin:0 0 12px}.otherv .ov-tag{font-size:12.5px;font-weight:700;color:#fff;background:#3d6bb0;border-radius:6px;padding:1px 8px}.otherv b{font-size:18px}.otherv span{font-size:15.5px;font-weight:700}.otherv a{font-size:17px;font-weight:700;color:#1f3f78;text-decoration:none;background:#fff;border:1.5px solid #9fb6dc;border-radius:8px;padding:2px 10px}.otherv em{flex-basis:100%;font-style:normal;font-size:13px;color:var(--soft)}
+.upd{font-size:13px;color:var(--muted);margin-top:18px}
+@media(max-width:760px){.tabs{grid-template-columns:repeat(3,1fr)}.sumrow{grid-template-columns:1fr 1fr}.files,.two{grid-template-columns:1fr}h1{font-size:26px}td.k{width:auto}}
+@media print{.tabs,.back{display:none}.pn{display:block!important;page-break-inside:avoid}body{background:#fff}}
+.eqs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.eq{border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}.eq .pic{height:170px;background:#f7f5ef;display:flex;align-items:center;justify-content:center;padding:10px}.eq .pic img{max-width:100%;max-height:100%;object-fit:contain}.nopic{color:#b0a99c;font-size:13px;font-weight:700;text-align:center;line-height:1.5}.eqb{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px}.eqb b{font-size:16px}.eqb .mdl{font-size:13.5px;color:var(--soft)}.eqb .sz{font-size:12.5px;color:var(--muted);margin-top:4px}.eqb .sz em{display:block;font-style:normal;font-size:15px;font-weight:700;color:var(--text)}.eqb .sp{font-size:13px;color:var(--soft)}.lk2{align-self:flex-start;margin-top:6px;font-size:12.5px;font-weight:700;color:#3d6bb0;border:1.5px solid #c7d5ec;background:#f3f7fd;border-radius:12px;padding:0 9px;text-decoration:none}
+@media(max-width:760px){.eqs{grid-template-columns:1fr 1fr}}
+.figs{display:flex;gap:12px;margin:0 0 12px;flex-wrap:wrap}.figs figure{flex:1;min-width:160px;max-width:320px;background:#f7f5ef;border-radius:12px;padding:10px;text-align:center}.figs img{max-width:100%;max-height:220px;object-fit:contain;display:block;margin:0 auto}.figs figcaption{font-size:13px;color:var(--soft);font-weight:700;margin-top:6px}
+
+.tabs.n{grid-template-columns:repeat(var(--n),1fr)}
+.tabs button{display:flex;flex-direction:column;align-items:center;gap:3px}.fls{display:flex;flex-direction:column;gap:2px;align-items:center}.fl{font-size:11.5px;font-weight:700;border-radius:6px;padding:0 6px;line-height:1.6;white-space:nowrap}.fl.doc{background:#fde4dc;color:#b3382a}.fl.chk{background:#fff1bf;color:#8a5a00}.fl.pic{background:#e3ecf8;color:#2f5592}
+.st{display:inline-block;font-size:12px;font-weight:700;border-radius:6px;padding:0 8px;white-space:nowrap}.st.d{background:#e3f1e7;color:#1f7a3f}.st.w{background:#fff1bf;color:#8a5a00}.st.n{background:#efece4;color:#8a847a}.st.r{background:#fde4dc;color:#b3382a}
+.figs.big figure{max-width:480px}.figs.big img{max-height:520px}
+.dec{background:#e9f3ec;border:1.5px solid #b9d6c2;border-radius:12px;padding:12px 16px;margin-bottom:12px}.dec h3{margin:0 0 4px;color:#1f5e3b;font-size:15px}.dec ul{list-style:none}.dec li{padding:3px 0 3px 18px;position:relative;font-size:15.5px}.dec li:before{content:"✓";position:absolute;left:0;color:#1f7a3f;font-weight:700}
+@media(max-width:760px){.tabs.n{grid-template-columns:repeat(3,1fr)}}
+</style></head><body><div class="wrap">
+<a class="back" href="gsmch-1f.html">← 1층 성전보수 · 운영 준비</a>
+<div class="kick">운영 준비 · 카페</div><h1>로뎀카페 운영</h1><p class="lead">11/22(주일) 오픈 — 메뉴 · 원두 · 컵 · 반납함 · 앞치마 · 화면을 정한 대로 모았습니다.</p><div class="meta"><span class="st">11/22 주일 오픈</span><span class="">2차 회의(11/13) 이후 정한 것 반영</span></div>
+<div class="tabs n" id="tabs" style="--n:6"><button data-t="0" class="on"><span><i>①</i>메뉴 · 가격</span></button><button data-t="1"><span><i>②</i>원두</span><span class="fls"><span class="fl chk">⚠ 시음 날짜</span></span></button><button data-t="2"><span><i>③</i>컵 · 컵홀더</span><span class="fls"><span class="fl chk">⚠ 2차 컵홀더</span></span></button><button data-t="3"><span><i>④</i>반납함 위치 · 운영</span><span class="fls"><span class="fl chk">⚠ 수거 담당</span></span></button><button data-t="4"><span><i>⑤</i>앞치마 · 복장</span><span class="fls"><span class="fl chk">⚠ 이너 색</span></span></button><button data-t="5"><span><i>⑥</i>화면 · 메뉴판</span><span class="fls"><span class="fl chk">⚠ 메뉴판 화면</span></span></button></div><section class="pn on"><div class="dec"><h3>정한 것</h3><ul><li>아메리카노 · 에스프레소 <b>2,500원</b> (500원 인상) · 나머지 커피는 그대로</li><li>디카페인 <b>+500원</b> — 커피 7가지 모두</li><li>샷 추가 +500원 유지 · 아이스초코 빠짐 · 진저라떼 다시 넣음 (HOT만)</li><li>새 메뉴 — 자몽에이드 3,000 · 뽀로로 음료 1,000 · 수제 레몬 생강차 2,500 · 자두자몽히비스커스티 2,500 · 바닐라 루이보스티 2,000</li><li>음료 40가지 · 메뉴마다 HOT · ICE 표시</li></ul></div><div class="card"><h2>가격표 · 비교표</h2><div class="figs big"><figure><a href="ops/img/menu-price.jpg" target="_blank"><img src="ops/img/menu-price.jpg" alt="가격표 (13쪽)" loading="lazy"></a><figcaption>가격표 (13쪽)</figcaption></figure><figure><a href="ops/img/menu-compare.jpg" target="_blank"><img src="ops/img/menu-compare.jpg" alt="기존 · 새 메뉴 비교표 (14쪽)" loading="lazy"></a><figcaption>기존 · 새 메뉴 비교표 (14쪽)</figcaption></figure></div></div><div class="card"><h2>레시피</h2><p style="font-size:15px">새 메뉴 레시피는 매니저님께 받기 · 지금 레시피 → <a class="lk" href="gsmch-1f-doc-cafe-meeting2.pdf#page=15" target="_blank">회의자료 15~16쪽 ↗</a></p></div></section><section class="pn"><div class="dec"><h3>정한 것</h3><ul><li>후보 3곳 — 파블로스(기존) · 히즈빈스 · 마데톨미</li><li>견적은 단장님 · 자료 정리는 총무</li><li>11/9 시음 1~8번 마침</li></ul></div><div class="card"><h2>다음 단계</h2><table><tr><th>순서</th><th>내용</th><th>상태</th></tr><tr><td>1</td><td>커피 테이스팅 — 원두 업체 · 기본 원두 · 디카페인 정하기</td><td><span class="st w">목사님 일정 확인 후</span></td></tr><tr><td>2</td><td>원두 발주</td><td><span class="st n">테이스팅 뒤</span></td></tr><tr><td>3</td><td>11/18 커피 머신 셋팅 · 11/21 테스트 운영</td><td><span class="st n">예정</span></td></tr></table></div><div class="card"><h2>자료</h2><div class="files"><a class="file" href="gsmch-1f-doc-cafe-meeting2.pdf#page=23" target="_blank" rel="noopener"><i>PDF</i><span><b>원두 시음 평가표 (11/9) ↗</b><small>회의자료 별첨 · 23쪽</small></span></a><a class="file" href="gsmch-vendor-coffee.html" target="_blank" rel="noopener"><i>HTML</i><span><b>커피 기물 · 제이크리 ↗</b><small>머신 · 그라인더</small></span></a></div></div></section><section class="pn"><div class="dec"><h3>정한 것</h3><ul><li>매장 안 — 다회용컵 (핫 14oz · 아이스 16oz) + 컵홀더</li><li>밖으로 — 핫: 종이컵 + 컵홀더 (3중 단열컵은 미정) · 아이스: PET 16oz + 돔 뚜껑 + 컵홀더</li><li>컵홀더 1차 소량 — 카마코 에어홀더 약 40원</li></ul></div><div class="card"><h2>사진</h2><div class="figs"><figure><a href="vendor/img/thegreet-cup14.jpg" target="_blank"><img src="vendor/img/thegreet-cup14.jpg" alt="다회용컵 14oz" loading="lazy"></a><figcaption>다회용컵 14oz</figcaption></figure><figure><a href="vendor/img/thegreet-cup16.jpg" target="_blank"><img src="vendor/img/thegreet-cup16.jpg" alt="다회용컵 16oz" loading="lazy"></a><figcaption>다회용컵 16oz</figcaption></figure></div></div><div class="card"><h2>주문 · 자료</h2><div class="files"><a class="file" href="https://www.camako.co.kr/shop/shopdetail.html?branduid=3421858&xcode=017&mcode=001&scode=&type=X&sort=manual&current_category=017&search=&GfDT=bmZ3UFU%3D" target="_blank" rel="noopener"><i>LINK</i><span><b>컵홀더 주문처 · 카마코 ↗</b><small>에어홀더 · 1차 소량</small></span></a><a class="file" href="gsmch-1f-doc-cafe-meeting2.pdf#page=8" target="_blank" rel="noopener"><i>PDF</i><span><b>컵 · 컵홀더 비교 · 발주 · 시안 ↗</b><small>회의자료 8~11쪽</small></span></a></div></div></section><section class="pn"><div class="dec"><h3>정한 것</h3><ul><li>6대 — 1층 대 3 (서비스바 옆 2 · 1대 자리 확인) · 3층 · 5층 · 마가 소 각 1</li><li>11/14 설치 · 반납함은 그대로, 안내판만 붙임 (꾸밈새 인쇄 · 11/16 주문)</li><li>수거 주 2회 (월 · 금)</li></ul></div><div class="card"><h2>사진</h2><div class="figs"><figure><a href="vendor/img/thegreet-returnbox.jpg" target="_blank"><img src="vendor/img/thegreet-returnbox.jpg" alt="반납함 소형 · 대형" loading="lazy"></a><figcaption>반납함 소형 · 대형</figcaption></figure><figure><a href="vendor/img/thegreet-sign.jpg" target="_blank"><img src="vendor/img/thegreet-sign.jpg" alt="안내판 시안" loading="lazy"></a><figcaption>안내판 시안</figcaption></figure></div></div><div class="card"><h2>운영에서 정할 것</h2><table><tr><th>할 일</th><th>누가</th><th>상태</th></tr><tr><td>3층 · 5층 · 마가 컵을 카페로 모아 오기</td><td>—</td><td><span class="st w">정하기</span></td></tr><tr><td>반납함 옆 음료 버리는 통 · 안내문</td><td>—</td><td><span class="st w">정하기</span></td></tr><tr><td>회수율 점검 (석 달)</td><td>매니저</td><td><span class="st n">오픈 뒤</span></td></tr></table></div><p style="font-size:14.5px;margin-top:10px">크기 · 계약 조건 → <a class="lk" href="gsmch-vendor-thegreet.html#t3">다회용컵 · 더그리트 ↗</a></p></section><section class="pn"><div class="dec"><h3>정한 것</h3><ul><li>한스데이 · 진한 그린 · 18,000원 · 자수 "Rodem Cafe"</li><li>11/14 자수 확인 · 11/16 발주</li></ul></div><div class="card"><h2>이너 색 비교</h2><div class="figs"><figure><a href="ops/img/apron-orig.jpg" target="_blank"><img src="ops/img/apron-orig.jpg" alt="원래 사진" loading="lazy"></a><figcaption>원래 사진</figcaption></figure><figure><a href="ops/img/apron-white.jpg" target="_blank"><img src="ops/img/apron-white.jpg" alt="이너 흰색" loading="lazy"></a><figcaption>이너 흰색</figcaption></figure><figure><a href="ops/img/apron-black.jpg" target="_blank"><img src="ops/img/apron-black.jpg" alt="이너 검정" loading="lazy"></a><figcaption>이너 검정</figcaption></figure></div></div><div class="card"><h2>주문</h2><div class="files"><a class="file" href="https://smartstore.naver.com/hansday/products/8906202548" target="_blank" rel="noopener"><i>LINK</i><span><b>한스데이 주문처 ↗</b><small>스마트스토어</small></span></a></div></div></section><section class="pn"><div class="dec"><h3>정한 것</h3><ul><li>메뉴판 — 디스플레이 43˝ × 3 · 앞 바 위 가로로 나란히 (사업단 구입)</li><li>주문현황판 — 43˝ × 1 · 출입구 방향 중앙 위 · 잇다 사이니지 스틱으로 주문번호 호출</li><li>키오스크 · 포스 메뉴 등록 — 11/21 설치 때</li></ul></div><div class="card"><h2>사진</h2><div class="figs"><figure><a href="img/pos-board.jpg" target="_blank"><img src="img/pos-board.jpg" alt="주문현황판 예시" loading="lazy"></a><figcaption>주문현황판 예시</figcaption></figure><figure><a href="img/pos-kiosk-cafe.jpg" target="_blank"><img src="img/pos-kiosk-cafe.jpg" alt="카페 키오스크" loading="lazy"></a><figcaption>카페 키오스크</figcaption></figure></div></div><div class="card"><h2>메뉴판 화면 만들기</h2><table><tr><th>화면</th><th>내용</th><th>상태</th></tr><tr><td>메뉴판 1~3</td><td>새 가격 · HOT/ICE · 디카페인 · 시즌</td><td><span class="st w">만들기</span></td></tr><tr><td>주문현황판</td><td>준비 중 → 픽업 · 번호 호출</td><td><span class="st n">잇다 설정</span></td></tr></table></div></section><div class="todo"><h2>확인할 것</h2><ul><li>커피 테이스팅 날짜 (목사님 일정)</li><li>컵홀더 2차 대량 발주 형식</li><li>층별 컵 모아 오는 사람</li><li>앞치마 이너 색 — 흰색 / 검정</li><li>메뉴판 화면 3장 — 새 가격으로</li><li>새 메뉴 레시피 받기</li></ul></div>
+<p class="upd">업데이트 2026. 11. 16. · 탭마다 정한 것 → 사진 · 시안 → 확인할 것 (⚠ · 📎 · 📷 표시는 보완이 필요한 탭)</p>
+</div><script>
+const B=[...document.querySelectorAll('#tabs button')],P=[...document.querySelectorAll('.pn')];
+function go(i){B.forEach((b,k)=>b.classList.toggle('on',k==i));P.forEach((p,k)=>p.classList.toggle('on',k==i));try{history.replaceState(null,'','#t'+(i+1))}catch(e){}}
+B.forEach((b,i)=>b.onclick=()=>{go(i);window.scrollTo({top:document.getElementById('tabs').offsetTop-4,behavior:'smooth'})});
+const h=location.hash.match(/#t(\d)/);if(h)go(+h[1]-1);
+</script></body></html>

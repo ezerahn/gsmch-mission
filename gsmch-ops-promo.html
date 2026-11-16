@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>홍보 · 오픈 이벤트</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf8f3;--card:#fff;--line:#e6e1d7;--line2:#f0ece4;--text:#2c2a26;--muted:#8a847a;--soft:#6e6860;--g:#2f6b48;--o:#b5622d;--b:#3d6bb0;--y:#fff4c7;--ok:#1f7a3f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans KR',-apple-system,'Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:24px 16px 70px}
+.back{display:inline-block;font-size:14px;color:var(--soft);text-decoration:none;padding:7px 14px;border:1px solid var(--line);border-radius:20px;background:#fff;margin-bottom:14px}
+.kick{font-size:14px;font-weight:700;color:var(--g)}
+h1{font-size:32px;font-weight:700;letter-spacing:-.02em;margin-top:2px}
+.lead{font-size:16px;color:var(--soft);margin-top:4px}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.meta span{font-size:13.5px;font-weight:700;border-radius:8px;padding:3px 10px;background:#efece4;color:var(--soft)}
+.meta span.st{background:var(--g);color:#fff}.meta span.wait{background:#c8553d;color:#fff}
+.tabs{position:sticky;top:0;z-index:5;background:var(--bg);display:grid;grid-template-columns:repeat(6,1fr);gap:6px;padding:16px 0 10px;margin-top:8px}
+.tabs button{font:inherit;cursor:pointer;font-size:15.5px;font-weight:700;color:var(--soft);background:#f2f0e9;border:2px solid #dcd9d1;border-radius:11px;padding:9px 4px;white-space:nowrap}
+.tabs button{display:flex;flex-direction:column;align-items:center;gap:3px}.fls{display:flex;flex-direction:column;gap:2px;align-items:center}.fl{font-size:11.5px;font-weight:700;border-radius:6px;padding:0 6px;line-height:1.6;white-space:nowrap}.fl.doc{background:#fde4dc;color:#b3382a}.fl.chk{background:#fff1bf;color:#8a5a00}.fl.pic{background:#e3ecf8;color:#2f5592}.tabs button.on .fl{opacity:.95}
+.tabs button i{font-style:normal;color:#b0a99c;margin-right:4px}
+.tabs button.on{background:var(--text);border-color:var(--text);color:#fff}.tabs button.on i{color:#d8d4ca}
+.pn{display:none}.pn.on{display:block}
+.card{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:12px}
+h2{font-size:20px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+h2:before{content:"";width:5px;height:20px;background:var(--g);border-radius:2px}
+h3{font-size:16px;font-weight:700;margin:14px 0 6px}
+.sumrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sumrow div{background:#f7f5ef;border-radius:12px;padding:12px 14px}
+.sumrow small{display:block;font-size:13px;color:var(--muted);font-weight:700}
+.sumrow b{display:block;font-size:21px;font-weight:700;margin-top:2px;letter-spacing:-.01em}
+.sumrow em{display:block;font-style:normal;font-size:13px;color:var(--soft)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line2);text-align:left;vertical-align:top}
+th{background:#f4f2ec;font-size:13.5px;color:var(--soft);font-weight:700}
+td.r,th.r{text-align:right;white-space:nowrap}
+td.k{font-weight:700;white-space:nowrap;width:140px;color:var(--soft)}
+tr.tot td{font-weight:700;font-size:16.5px;border-top:2px solid var(--text);border-bottom:0}
+.ok{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--ok);border-radius:6px;padding:0 7px;margin-right:4px;vertical-align:1px}
+.calc{background:#f1f0ec;border:1.5px solid #d9d6cf;border-radius:12px;padding:14px 16px;margin-top:12px}
+.calc h3{margin-top:0}.calc h3:before{content:"★ ";color:#b08a1a}
+.note{background:#2c2a26;color:#f1eee7;border-radius:10px;padding:10px 14px;font-size:14px;margin-top:10px}
+ul.li{list-style:none}ul.li li{padding:7px 0 7px 22px;border-bottom:1px solid var(--line2);position:relative;font-size:15.5px}
+ul.li li:before{content:"";position:absolute;left:6px;top:16px;width:7px;height:7px;border-radius:50%;background:var(--g)}
+ul.li li:last-child{border-bottom:0}
+ul.li li em{font-style:normal;color:var(--muted);font-size:13.5px;margin-left:6px}
+.tl{list-style:none;border-left:3px solid #d9e4dc;margin-left:8px}
+.tl li{position:relative;padding:6px 0 10px 18px}
+.tl li:before{content:"";position:absolute;left:-8px;top:12px;width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid var(--g)}
+.tl li b{display:inline-block;min-width:74px;font-weight:700}
+.tl li.old{color:var(--muted)}.tl li.old:before{border-color:#c9c3b8}
+.tl li em{font-style:normal;color:var(--muted);font-size:13.5px;display:block}
+.files{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.file{display:flex;gap:12px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--text)}
+.file i{font-style:normal;flex:none;width:44px;height:52px;border-radius:6px;background:#f2efe7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--soft)}
+.file b{display:block;font-size:15.5px}.file small{font-size:13px;color:var(--muted)}
+.file.miss{border-style:dashed;background:transparent}.file.miss i{background:#fff4c7;color:#8a6a10}
+.todo{background:#fffaf0;border:2px solid #ecd9a6;border-radius:14px;padding:16px 20px;margin-top:22px}
+.todo h2:before{background:#c8553d}
+.todo li{list-style:none;padding:6px 0 6px 28px;position:relative;font-size:15.5px;border-bottom:1px dashed #ecdfc0}
+.todo li:last-child{border-bottom:0}
+.todo li:before{content:"";position:absolute;left:2px;top:10px;width:16px;height:16px;border:2px solid #c9a447;border-radius:4px;background:#fff}
+.todo li em{font-style:normal;color:var(--muted);font-size:13.5px;margin-left:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pill{display:inline-block;font-size:12.5px;font-weight:700;border-radius:6px;padding:0 8px;background:#e8f0ea;color:var(--g);margin-right:4px}
+a.lk{color:var(--g);font-weight:700}
+.otherv{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;background:#eef4fb;border:2px solid #3d6bb0;border-radius:12px;padding:12px 16px;margin:0 0 12px}.otherv .ov-tag{font-size:12.5px;font-weight:700;color:#fff;background:#3d6bb0;border-radius:6px;padding:1px 8px}.otherv b{font-size:18px}.otherv span{font-size:15.5px;font-weight:700}.otherv a{font-size:17px;font-weight:700;color:#1f3f78;text-decoration:none;background:#fff;border:1.5px solid #9fb6dc;border-radius:8px;padding:2px 10px}.otherv em{flex-basis:100%;font-style:normal;font-size:13px;color:var(--soft)}
+.upd{font-size:13px;color:var(--muted);margin-top:18px}
+@media(max-width:760px){.tabs{grid-template-columns:repeat(3,1fr)}.sumrow{grid-template-columns:1fr 1fr}.files,.two{grid-template-columns:1fr}h1{font-size:26px}td.k{width:auto}}
+@media print{.tabs,.back{display:none}.pn{display:block!important;page-break-inside:avoid}body{background:#fff}}
+.eqs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.eq{border:1.5px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}.eq .pic{height:170px;background:#f7f5ef;display:flex;align-items:center;justify-content:center;padding:10px}.eq .pic img{max-width:100%;max-height:100%;object-fit:contain}.nopic{color:#b0a99c;font-size:13px;font-weight:700;text-align:center;line-height:1.5}.eqb{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px}.eqb b{font-size:16px}.eqb .mdl{font-size:13.5px;color:var(--soft)}.eqb .sz{font-size:12.5px;color:var(--muted);margin-top:4px}.eqb .sz em{display:block;font-style:normal;font-size:15px;font-weight:700;color:var(--text)}.eqb .sp{font-size:13px;color:var(--soft)}.lk2{align-self:flex-start;margin-top:6px;font-size:12.5px;font-weight:700;color:#3d6bb0;border:1.5px solid #c7d5ec;background:#f3f7fd;border-radius:12px;padding:0 9px;text-decoration:none}
+@media(max-width:760px){.eqs{grid-template-columns:1fr 1fr}}
+.figs{display:flex;gap:12px;margin:0 0 12px;flex-wrap:wrap}.figs figure{flex:1;min-width:160px;max-width:320px;background:#f7f5ef;border-radius:12px;padding:10px;text-align:center}.figs img{max-width:100%;max-height:220px;object-fit:contain;display:block;margin:0 auto}.figs figcaption{font-size:13px;color:var(--soft);font-weight:700;margin-top:6px}
+
+.tabs.n{grid-template-columns:repeat(var(--n),1fr)}
+.tabs button{display:flex;flex-direction:column;align-items:center;gap:3px}.fls{display:flex;flex-direction:column;gap:2px;align-items:center}.fl{font-size:11.5px;font-weight:700;border-radius:6px;padding:0 6px;line-height:1.6;white-space:nowrap}.fl.doc{background:#fde4dc;color:#b3382a}.fl.chk{background:#fff1bf;color:#8a5a00}.fl.pic{background:#e3ecf8;color:#2f5592}
+.st{display:inline-block;font-size:12px;font-weight:700;border-radius:6px;padding:0 8px;white-space:nowrap}.st.d{background:#e3f1e7;color:#1f7a3f}.st.w{background:#fff1bf;color:#8a5a00}.st.n{background:#efece4;color:#8a847a}.st.r{background:#fde4dc;color:#b3382a}
+.figs.big figure{max-width:480px}.figs.big img{max-height:520px}
+.dec{background:#e9f3ec;border:1.5px solid #b9d6c2;border-radius:12px;padding:12px 16px;margin-bottom:12px}.dec h3{margin:0 0 4px;color:#1f5e3b;font-size:15px}.dec ul{list-style:none}.dec li{padding:3px 0 3px 18px;position:relative;font-size:15.5px}.dec li:before{content:"✓";position:absolute;left:0;color:#1f7a3f;font-weight:700}
+@media(max-width:760px){.tabs.n{grid-template-columns:repeat(3,1fr)}}
+</style></head><body><div class="wrap">
+<a class="back" href="gsmch-1f.html">← 1층 성전보수 · 운영 준비</a>
+<div class="kick">운영 준비 · 서점 · 카페 공통</div><h1>홍보 · 오픈 이벤트</h1><p class="lead">오픈 알림 인쇄물과 오픈 이벤트 준비물 — 수량 · 상태 · 날짜를 한 곳에서 봅니다.</p><div class="meta"><span class="st">카페 11/22</span><span class="">서점 11/29</span></div>
+<div class="tabs n" id="tabs" style="--n:3"><button data-t="0" class="on"><span><i>①</i>홍보 인쇄물</span><span class="fls"><span class="fl chk">⚠ 삽지 다시 구성</span></span></button><button data-t="1"><span><i>②</i>오픈 이벤트</span><span class="fls"><span class="fl chk">⚠ 두 번 할지</span></span></button><button data-t="2"><span><i>③</i>화면 · 송출</span></button></div><section class="pn on"><div class="card"><h2>인쇄물</h2><table><tr><th>항목</th><th>크기 · 수량</th><th>상태</th><th>날짜</th><th>메모</th></tr><tr><td><b>주보 삽지</b></td><td>140 × 225mm · 150g 스노우지</td><td><span class="st w">시안 1차</span></td><td>11/21 주보에</td><td>앞 서점 · 뒤 카페로 잡았는데 서점이 11/29라 다시 구성</td></tr><tr><td><b>카페 QR</b></td><td>테이블 QR 아크릴</td><td><span class="st w">11/16 발주</span></td><td>11/21 전</td><td>잇다 QR 주소 받아야 함</td></tr><tr><td><b>서점 QR</b></td><td>—</td><td><span class="st n">정하기</span></td><td>—</td><td>도서검색 · 온라인몰</td></tr><tr><td><b>카드뉴스 (교구)</b></td><td>—</td><td><span class="st n">정하기</span></td><td>—</td><td>교구 밴드 공유</td></tr><tr><td><b>스티커</b></td><td>담임목사님 쿠키에 붙일 것</td><td><span class="st n">정하기</span></td><td>—</td><td>오픈 이벤트 쿠키용</td></tr></table></div><div class="card"><h2>주보 삽지 시안 (1차)</h2><div class="figs"><figure><a href="ops/img/insert-front.jpg" target="_blank"><img src="ops/img/insert-front.jpg" alt="앞면" loading="lazy"></a><figcaption>앞면</figcaption></figure><figure><a href="ops/img/insert-back.jpg" target="_blank"><img src="ops/img/insert-back.jpg" alt="뒷면" loading="lazy"></a><figcaption>뒷면</figcaption></figure></div><div class="files" style="margin-top:8px"><a class="file" href="ops/insert-draft.pdf" target="_blank" rel="noopener"><i>PDF</i><span><b>주보 삽지 시안 PDF ↗</b><small>1차 · 다시 구성 예정</small></span></a></div></div></section><section class="pn"><div class="dec"><h3>정한 것</h3><ul><li>자리 — 카페 안쪽 · 입구 반대쪽 창가 (로비는 안 됨)</li><li>강냉이 — 1인 1봉지 15g · 2kg 20,000원 기준</li><li>도우미 — 예배 때마다 4명</li></ul></div><div class="card"><h2>준비물</h2><table><tr><th>항목</th><th>수량</th><th>상태</th><th>메모</th></tr><tr><td><b>쿠키</b> — 주문하는 분께</td><td>—</td><td><span class="st n">정하기</span></td><td>업체 · 수량</td></tr><tr><td><b>스티커</b> — 담임목사님 쿠키</td><td>—</td><td><span class="st n">정하기</span></td><td>홍보 인쇄물 탭과 같은 것</td></tr><tr><td><b>강냉이</b></td><td>2,000 / 3,000 / 4,000 / 5,000봉</td><td><span class="st w">수량 정하기</span></td><td>약 41 / 61 / 81 / 103만 원</td></tr><tr><td><b>강냉이 담는 통</b></td><td>큰 통</td><td><span class="st n">정하기</span></td><td>눈에 띄게</td></tr><tr><td><b>세팅 테이블 + 테이블보</b></td><td>—</td><td><span class="st n">정하기</span></td><td>창가 자리</td></tr><tr><td><b>소품</b></td><td>—</td><td><span class="st n">정하기</span></td><td></td></tr></table></div><div class="card"><h2>자리 · 모습</h2><div class="figs"><figure><a href="ops/img/pp-plan.jpg" target="_blank"><img src="ops/img/pp-plan.jpg" alt="카페 안 창가 자리" loading="lazy"></a><figcaption>카페 안 창가 자리</figcaption></figure><figure><a href="ops/img/pp1.jpg" target="_blank"><img src="ops/img/pp1.jpg" alt="강냉이 예시" loading="lazy"></a><figcaption>강냉이 예시</figcaption></figure><figure><a href="ops/img/ppbag.jpg" target="_blank"><img src="ops/img/ppbag.jpg" alt="봉투 예시" loading="lazy"></a><figcaption>봉투 예시</figcaption></figure></div><p style="font-size:14px;margin-top:6px">계산 근거 → <a class="lk" href="gsmch-1f-doc-cafe-meeting2.pdf#page=21" target="_blank">회의자료 21~22쪽 ↗</a></p></div></section><section class="pn"><div class="card"><h2>1층 LED 송출</h2><table><tr><th>항목</th><th>내용</th></tr><tr><td>요청</td><td>멀티미디어위원회 · 업무협조전 · P1</td></tr><tr><td>송출</td><td>11/22(주일) 반복 송출</td></tr><tr><td>내용 전달</td><td>사업단 → 11/17(화)까지 · 서점 · 카페 운영 방법 · 다회용컵 안내</td></tr><tr><td>상태</td><td><span class="st w">내용 전달 전</span></td></tr></table><div class="files" style="margin-top:8px"><a class="file" href="ops/led-request.pdf" target="_blank" rel="noopener"><i>PDF</i><span><b>업무협조전 — LED 송출 요청 ↗</b><small>11/15 작성</small></span></a></div></div><div class="card"><h2>매장 화면</h2><p style="font-size:15px">카페 메뉴판 · 주문현황판 → <a class="lk" href="gsmch-ops-cafe.html#t6">로뎀카페 운영 ⑥</a> · 서점 입구 디스플레이 → <a class="lk" href="gsmch-ops-book.html#t3">선지서점 운영 ③</a></p></div></section><div class="todo"><h2>확인할 것</h2><ul><li>오픈 이벤트를 카페 11/22 · 서점 11/29 두 번 할지</li><li>주보 삽지 — 서점 11/29에 맞춰 다시 구성</li><li>LED 송출 내용 11/17까지 전달</li><li>쿠키 업체 · 수량 · 스티커 디자인</li><li>강냉이 수량</li><li>카페 QR — 잇다 QR 주소</li></ul></div>
+<p class="upd">업데이트 2026. 11. 16. · 탭마다 정한 것 → 사진 · 시안 → 확인할 것 (⚠ · 📎 · 📷 표시는 보완이 필요한 탭)</p>
+</div><script>
+const B=[...document.querySelectorAll('#tabs button')],P=[...document.querySelectorAll('.pn')];
+function go(i){B.forEach((b,k)=>b.classList.toggle('on',k==i));P.forEach((p,k)=>p.classList.toggle('on',k==i));try{history.replaceState(null,'','#t'+(i+1))}catch(e){}}
+B.forEach((b,i)=>b.onclick=()=>{go(i);window.scrollTo({top:document.getElementById('tabs').offsetTop-4,behavior:'smooth'})});
+const h=location.hash.match(/#t(\d)/);if(h)go(+h[1]-1);
+</script></body></html>
