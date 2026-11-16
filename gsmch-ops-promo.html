@@ -74,7 +74,7 @@ a.lk{color:var(--g);font-weight:700}
 .tabs.n{grid-template-columns:repeat(var(--n),1fr)}
 .tabs button{display:flex;flex-direction:column;align-items:center;gap:3px}.fls{display:flex;flex-direction:column;gap:2px;align-items:center}.fl{font-size:11.5px;font-weight:700;border-radius:6px;padding:0 6px;line-height:1.6;white-space:nowrap}.fl.doc{background:#fde4dc;color:#b3382a}.fl.chk{background:#fff1bf;color:#8a5a00}.fl.pic{background:#e3ecf8;color:#2f5592}
 .st{display:inline-block;font-size:12px;font-weight:700;border-radius:6px;padding:0 8px;white-space:nowrap}.st.d{background:#e3f1e7;color:#1f7a3f}.st.w{background:#fff1bf;color:#8a5a00}.st.n{background:#efece4;color:#8a847a}.st.r{background:#fde4dc;color:#b3382a}
-.figs.big figure{max-width:480px}.figs.big img{max-height:520px}
+.figs.big figure{max-width:100%;flex-basis:100%}.figs.big img{max-height:none;width:100%}
 .dec{background:#e9f3ec;border:1.5px solid #b9d6c2;border-radius:12px;padding:12px 16px;margin-bottom:12px}.dec h3{margin:0 0 4px;color:#1f5e3b;font-size:15px}.dec ul{list-style:none}.dec li{padding:3px 0 3px 18px;position:relative;font-size:15.5px}.dec li:before{content:"✓";position:absolute;left:0;color:#1f7a3f;font-weight:700}
 @media(max-width:760px){.tabs.n{grid-template-columns:repeat(3,1fr)}}
 .subs{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 12px;padding:8px;background:#efece4;border-radius:12px}
@@ -82,6 +82,24 @@ a.lk{color:var(--g);font-weight:700}
 .subs .sb.on{background:var(--g);border-color:var(--g);color:#fff}
 .sp{display:none}.sp.on{display:block}
 .pg{margin-top:12px}.pg summary{cursor:pointer;font-size:14px;font-weight:700;color:#3d6bb0}.pg img{width:100%;max-width:760px;border:1px solid var(--line);border-radius:8px;margin-top:8px;display:block}
+
+.ct table{width:100%;border-collapse:collapse;font-size:14.5px;margin:4px 0 10px}
+.ct th,.ct td{padding:7px 9px;border-bottom:1px solid var(--line2);text-align:left;vertical-align:top}
+.ct th{background:#f4f2ec;font-size:13px;color:var(--soft)}
+.ct h4{font-size:15.5px;margin:12px 0 4px}
+.ct td.p,.ct th.r{text-align:right;white-space:nowrap}
+.ct tr.x td{color:#a39d92;text-decoration:line-through;background:#fbf3f1}
+.ct tr.x td i{text-decoration:none}
+.ct tr.n td{background:#eef7f0;font-weight:700}.ct tr.c td{background:#fff8e4}
+.ct i.tx,.ct i.tn,.ct i.ts,.ct i.tg,.ct .nw{font-style:normal;font-size:11px;font-weight:700;border-radius:5px;padding:0 6px;margin-left:5px;vertical-align:1px}
+.ct i.tx{background:#c8553d;color:#fff}.ct i.tn,.ct .nw{background:#1f7a3f;color:#fff}.ct i.ts{background:#b08a1a;color:#fff}.ct i.tg{background:#8a847a;color:#fff}
+.ct tr.rx td{color:#a39d92;background:#fbf3f1}.ct tr.rn td{background:#eef7f0}.ct tr.rs td{background:#fff8e4}.ct tr.rg td{background:#f4f2ec}
+.ct td.hkh,.ct td.hki,.ct th.hkh{text-align:center;width:46px}.ct th.hkh.h{background:#b3382a;color:#fff}.ct th.hkh.i{background:#27467e;color:#fff}.ct td.hkh{background:#fdf0ec}.ct td.hki{background:#edf3fb}
+.ct b.ck{color:#1f7a3f;font-size:15px}.ct td.dkp,.ct th.dkh{text-align:right;color:#5b3a8a;font-weight:700}.ct th.dkh{background:#5b3a8a;color:#fff}
+.ct .h2s{font-size:16px;margin:14px 0 4px;color:var(--g)}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mb{border:2px solid #2c2a26;border-radius:10px;padding:10px 12px;background:#1f1f1f;color:#f1eee7}.mb h5{font-size:15px;margin-bottom:6px;color:#c8e63c}.mb div{display:flex;justify-content:space-between;font-size:13.5px;padding:2px 0;border-bottom:1px dashed #444}
+@media(max-width:760px){.cols2,.cols3{grid-template-columns:1fr}}
 .otherv{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;background:#eef4fb;border:2px solid #3d6bb0;border-radius:12px;padding:12px 16px;margin:0 0 12px}.otherv .ov-tag{font-size:12.5px;font-weight:700;color:#fff;background:#3d6bb0;border-radius:6px;padding:1px 8px}.otherv b{font-size:18px}.otherv span{font-size:15.5px;font-weight:700}.otherv a{font-size:17px;font-weight:700;color:#1f3f78;text-decoration:none;background:#fff;border:1.5px solid #9fb6dc;border-radius:8px;padding:2px 10px}.otherv em{flex-basis:100%;font-style:normal;font-size:13px;color:var(--soft)}</style></head><body><div class="wrap">
 <a class="back" href="gsmch-1f.html">← 1층 성전보수 · 운영 준비</a>
 <div class="kick">운영 준비 · 서점 · 카페 공통</div><h1>홍보 · 오픈 이벤트</h1><p class="lead">오픈 알림 인쇄물과 오픈 이벤트 준비물 — 수량 · 상태 · 날짜를 한 곳에서 봅니다.</p><div class="meta"><span class="st">카페 11/22</span><span class="">서점 11/29</span></div>
