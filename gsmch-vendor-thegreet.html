@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>다회용컵 · 더그리트</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf8f3;--card:#fff;--line:#e6e1d7;--line2:#f0ece4;--text:#2c2a26;--muted:#8a847a;--soft:#6e6860;--g:#2f6b48;--o:#b5622d;--b:#3d6bb0;--y:#fff4c7;--ok:#1f7a3f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans KR',-apple-system,'Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:24px 16px 70px}
+.back{display:inline-block;font-size:14px;color:var(--soft);text-decoration:none;padding:7px 14px;border:1px solid var(--line);border-radius:20px;background:#fff;margin-bottom:14px}
+.kick{font-size:14px;font-weight:700;color:var(--g)}
+h1{font-size:32px;font-weight:700;letter-spacing:-.02em;margin-top:2px}
+.lead{font-size:16px;color:var(--soft);margin-top:4px}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.meta span{font-size:13.5px;font-weight:700;border-radius:8px;padding:3px 10px;background:#efece4;color:var(--soft)}
+.meta span.st{background:var(--g);color:#fff}.meta span.wait{background:#c8553d;color:#fff}
+.tabs{position:sticky;top:0;z-index:5;background:var(--bg);display:grid;grid-template-columns:repeat(6,1fr);gap:6px;padding:16px 0 10px;margin-top:8px}
+.tabs button{font:inherit;cursor:pointer;font-size:15.5px;font-weight:700;color:var(--soft);background:#f2f0e9;border:2px solid #dcd9d1;border-radius:11px;padding:9px 4px;white-space:nowrap}
+.tabs button i{font-style:normal;color:#b0a99c;margin-right:4px}
+.tabs button.on{background:var(--text);border-color:var(--text);color:#fff}.tabs button.on i{color:#d8d4ca}
+.pn{display:none}.pn.on{display:block}
+.card{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:12px}
+h2{font-size:20px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+h2:before{content:"";width:5px;height:20px;background:var(--g);border-radius:2px}
+h3{font-size:16px;font-weight:700;margin:14px 0 6px}
+.sumrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sumrow div{background:#f7f5ef;border-radius:12px;padding:12px 14px}
+.sumrow small{display:block;font-size:13px;color:var(--muted);font-weight:700}
+.sumrow b{display:block;font-size:21px;font-weight:700;margin-top:2px;letter-spacing:-.01em}
+.sumrow em{display:block;font-style:normal;font-size:13px;color:var(--soft)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line2);text-align:left;vertical-align:top}
+th{background:#f4f2ec;font-size:13.5px;color:var(--soft);font-weight:700}
+td.r,th.r{text-align:right;white-space:nowrap}
+td.k{font-weight:700;white-space:nowrap;width:140px;color:var(--soft)}
+tr.tot td{font-weight:700;font-size:16.5px;border-top:2px solid var(--text);border-bottom:0}
+.ok{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--ok);border-radius:6px;padding:0 7px;margin-right:4px;vertical-align:1px}
+.calc{background:#f1f0ec;border:1.5px solid #d9d6cf;border-radius:12px;padding:14px 16px;margin-top:12px}
+.calc h3{margin-top:0}.calc h3:before{content:"★ ";color:#b08a1a}
+.note{background:#2c2a26;color:#f1eee7;border-radius:10px;padding:10px 14px;font-size:14px;margin-top:10px}
+ul.li{list-style:none}ul.li li{padding:7px 0 7px 22px;border-bottom:1px solid var(--line2);position:relative;font-size:15.5px}
+ul.li li:before{content:"";position:absolute;left:6px;top:16px;width:7px;height:7px;border-radius:50%;background:var(--g)}
+ul.li li:last-child{border-bottom:0}
+ul.li li em{font-style:normal;color:var(--muted);font-size:13.5px;margin-left:6px}
+.tl{list-style:none;border-left:3px solid #d9e4dc;margin-left:8px}
+.tl li{position:relative;padding:6px 0 10px 18px}
+.tl li:before{content:"";position:absolute;left:-8px;top:12px;width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid var(--g)}
+.tl li b{display:inline-block;min-width:74px;font-weight:700}
+.tl li.old{color:var(--muted)}.tl li.old:before{border-color:#c9c3b8}
+.tl li em{font-style:normal;color:var(--muted);font-size:13.5px;display:block}
+.files{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.file{display:flex;gap:12px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--text)}
+.file i{font-style:normal;flex:none;width:44px;height:52px;border-radius:6px;background:#f2efe7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--soft)}
+.file b{display:block;font-size:15.5px}.file small{font-size:13px;color:var(--muted)}
+.file.miss{border-style:dashed;background:transparent}.file.miss i{background:#fff4c7;color:#8a6a10}
+.todo{background:#fffaf0;border:2px solid #ecd9a6;border-radius:14px;padding:16px 20px;margin-top:22px}
+.todo h2:before{background:#c8553d}
+.todo li{list-style:none;padding:6px 0 6px 28px;position:relative;font-size:15.5px;border-bottom:1px dashed #ecdfc0}
+.todo li:last-child{border-bottom:0}
+.todo li:before{content:"";position:absolute;left:2px;top:10px;width:16px;height:16px;border:2px solid #c9a447;border-radius:4px;background:#fff}
+.todo li em{font-style:normal;color:var(--muted);font-size:13.5px;margin-left:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pill{display:inline-block;font-size:12.5px;font-weight:700;border-radius:6px;padding:0 8px;background:#e8f0ea;color:var(--g);margin-right:4px}
+a.lk{color:var(--g);font-weight:700}
+.upd{font-size:13px;color:var(--muted);margin-top:18px}
+@media(max-width:760px){.tabs{grid-template-columns:repeat(3,1fr)}.sumrow{grid-template-columns:1fr 1fr}.files,.two{grid-template-columns:1fr}h1{font-size:26px}td.k{width:auto}}
+@media print{.tabs,.back{display:none}.pn{display:block!important;page-break-inside:avoid}body{background:#fff}}
+</style></head><body><div class="wrap">
+<a class="back" href="gsmch-1f.html">← 1층 성전보수 · 계약 업체</a>
+<div class="kick">계약 업체 · 다회용컵 세척 · 대여</div><h1>다회용컵 · 더그리트</h1><p class="lead">로뎀카페 매장 안 음료를 다회용컵으로 — 컵 대여 · 세척 · 수거 · 반납함까지 더그리트가 맡습니다.</p><div class="meta"><span class="st">계약 진행 11/17</span><span class="">운영 시작 11/22 (카페 오픈)</span><span class="">계약 2년 · 2026. 11. ~ 2028. 10.</span><span class="">2차 회의(11/13) 기준</span></div>
+<div class="tabs" id="tabs"><button data-t="0" class="on"><i>①</i>한눈에</button><button data-t="1"><i>②</i>계약 조건</button><button data-t="2"><i>③</i>품목 · 규격</button><button data-t="3"><i>④</i>운영 방식</button><button data-t="4"><i>⑤</i>진행 기록</button><button data-t="5"><i>⑥</i>계약서 · 첨부</button></div><section class="pn on" id="p0"><div class="card"><h2>핵심 조건</h2>
+<div class="sumrow"><div><small>세척 · 이용료</small><b>컵 1개 165원</b><em>분실 추가 청구 없음</em></div><div><small>한 달 예상</small><b>1,974,000원</b><em>컵 8,000개 · 부가세 별도</em></div><div><small>운송</small><b>주 2회 · 월 · 금</b><em>한 달 150,000원</em></div><div><small>반납함</small><b>6대</b><em>대 3 · 소 3 · 사업단 부담</em></div></div>
+<ul class="li" style="margin-top:12px"><li>매장 안은 <b>다회용컵</b>, 밖으로 가져갈 때는 <b>일회용컵</b> · 손님 보증금 없음</li><li>컵 크기 — 따뜻한 음료 <b>14oz</b> · 차가운 음료 <b>16oz</b> · 다회용컵에도 컵홀더</li><li>지금 일회용보다 한 달 약 <b>119만 원</b> 더 듦 (컵홀더까지 약 223만 원 vs 일회용 약 104만 원)</li></ul></div>
+<div class="two"><div class="card"><h2>업체 · 연락처</h2><table>
+<tr><td class="k">회사</td><td>(주)더그리트 · 사업자 892-88-02405</td></tr>
+<tr><td class="k">담당자</td><td>조은수 담당자님 · 010-5247-6338 · liz610@naver.com</td></tr>
+<tr><td class="k">회사 연락처</td><td>010-9134-6584 · present@thegreet.co.kr</td></tr>
+<tr><td class="k">주문</td><td>매니저님이 앱으로 · 도착 이틀 전 오후 3시까지</td></tr>
+<tr><td class="k">정산</td><td>월 1회 · 다음 달 중순까지 입금</td></tr></table></div>
+<div class="card"><h2>다음 할 일</h2><ul class="li"><li>11/17 계약서 진행 <em>분실 추가 청구 없음 문구 확인</em></li><li>11/16 반납함 안내판 발주 <em>650×350 · 790×350 각 3장 · 완료</em></li><li>첫 주문 수량 · 첫 입고일 정하기</li><li>11/22 카페 오픈과 함께 운영 시작</li></ul></div></div></section><section class="pn" id="p1"><div class="card"><h2>한 달 비용 — 컵 8,000개 기준 · 부가세 별도</h2><table>
+<tr><th>항목</th><th>내용</th><th class="r">한 달</th></tr>
+<tr><td class="k">세척 · 이용료</td><td><span class="ok">정함</span>컵 1개 165원 × 8,000개 · 분실 개런티 없이 단가에 포함</td><td class="r">1,320,000원</td></tr>
+<tr><td class="k">뚜껑</td><td>더그리트 전용 일회용 30원 × 8,000개</td><td class="r">240,000원</td></tr>
+<tr><td class="k">운송비</td><td><span class="ok">정함</span>수거 · 배송 주 2회(월 · 금) · 정가 300,000원</td><td class="r">150,000원</td></tr>
+<tr><td class="k">반납함 6대</td><td>대 49,000원 × 3 + 소 39,000원 × 3 (약정 금액)</td><td class="r">264,000원</td></tr>
+<tr class="tot"><td>합계</td><td>한 잔에 약 247원</td><td class="r">1,974,000원</td></tr></table>
+<div class="note">비고 · 계약 2년 (2026. 11. ~ 2028. 10.) · 부가세 별도 · 지금 일회용은 한 달 약 104만 원 → 다회용컵은 컵홀더까지 약 223만 원</div></div>
+<div class="card"><h2>분실 조건</h2><ul class="li"><li><b>165원 안으로 정함</b> — 원래 185원(150원 + 분실 몫 35원)인데 담당자 안내대로 165원 적용</li><li>분실률 <b>5%를 넘어도 추가 청구 없음</b></li><li>다른 안 — 150원 · 분실 1%까지 더그리트 부담 · 넘는 컵은 개당 700원</li></ul>
+<div class="calc"><h3>계산 근거 — 분실률별 비교</h3><table><tr><th>분실률</th><th class="r">분실 컵</th><th class="r">150원 안</th><th class="r">165원 안</th><th>165원 안이면</th></tr>
+<tr><td>1%</td><td class="r">80개</td><td class="r">1,200,000원</td><td class="r">1,320,000원</td><td>12만 원 더 냄</td></tr>
+<tr><td>5%</td><td class="r">400개</td><td class="r">1,424,000원</td><td class="r">1,320,000원</td><td>10.4만 원 덜 냄</td></tr>
+<tr><td>10%</td><td class="r">800개</td><td class="r">1,704,000원</td><td class="r">1,320,000원</td><td>38.4만 원 덜 냄</td></tr></table>
+<p style="font-size:14px;color:var(--soft);margin-top:8px">150원 안 = 8,000개 × 150원 + (분실 컵 − 80개) × 700원 · 분실이 약 3%(240개)를 넘으면 165원 안이 유리</p></div>
+<p style="margin-top:12px;font-size:14.5px">숫자를 바꿔 보고 싶으면 → <a class="lk" href="gsmch-cup-calc.html">다회용컵 비용 계산기 ↗</a> <em style="font-style:normal;color:var(--muted)">(업체 만나기 전 만든 계산기 · 참고용)</em></p></div></section><section class="pn" id="p2"><div class="card"><h2>컵 — 더그리트 공용 컵</h2><table>
+<tr><th>크기</th><th>지름 × 높이</th><th>용량</th><th>쓰는 곳</th></tr>
+<tr><td><b>14oz</b></td><td>89 × 116mm</td><td>414ml</td><td><span class="ok">정함</span>따뜻한 음료</td></tr>
+<tr><td><b>16oz</b></td><td>89 × 130mm</td><td>473ml</td><td><span class="ok">정함</span>차가운 음료</td></tr>
+<tr><td style="color:var(--muted)">12oz · 21oz</td><td style="color:var(--muted)">89 × 100 · 175mm</td><td style="color:var(--muted)">355 · 650ml</td><td style="color:var(--muted)">쓰지 않음</td></tr></table>
+<ul class="li" style="margin-top:8px"><li>재질 PP · 100℃ 이상 가능 · 평균 20회 쓰고 교체</li><li>뚜껑 — 일회용 · 더그리트 전용 89mm (다른 뚜껑은 안 맞음)</li><li>컵홀더 — 꼭 필요 · 1차 소량은 기성 에어홀더 약 40원</li></ul></div>
+<div class="card"><h2>반납함 6대 — 사업단 부담 · 11/14 설치</h2><table>
+<tr><th>구분</th><th>자리</th><th>크기 (mm)</th><th>담는 양</th></tr>
+<tr><td><b>대 3대</b></td><td>1층 — 서비스바 옆 2대 · 1대는 자리 확인</td><td>790 × 620 × 1,100</td><td>400~450개</td></tr>
+<tr><td><b>소 3대</b></td><td>3층 · 5층 · 마가 각 1대</td><td>650 × 450 × 1,100</td><td>200~250개</td></tr></table>
+<ul class="li" style="margin-top:8px"><li>검정 · 들어오는 모습 그대로 (시트지 붙이지 않음)</li><li>구조 — 버튼으로 여는 문 · 안에 전용 박스와 비닐(장당 1,000원) · 전원 필요 없음</li></ul></div>
+<div class="card"><h2>반납함 안내판</h2><table>
+<tr><td class="k">크기 · 수량</td><td>650 × 350 · 790 × 350 각 3장 <em style="font-style:normal;color:var(--muted)">(11/16 단장님 주문 · 예전 안 700 높이에서 바뀜)</em></td></tr>
+<tr><td class="k">재질 · 색</td><td>포맥스 5T 무광 · 검정 바탕 흰 글자 · 연두 화살표</td></tr>
+<tr><td class="k">문구</td><td>다회용컵 전용 반납함 · 다 마신 로뎀카페 컵을 넣어 주세요 · 일회용컵 · 쓰레기는 넣지 말아 주세요</td></tr>
+<tr><td class="k">가이드</td><td><a class="lk" href="gsmch-1f-doc-cafe-returnbox-sign.pdf" target="_blank">반납함 안내판 제작 가이드 ↗</a></td></tr></table></div></section><section class="pn" id="p3"><div class="card"><h2>손님이 쓰는 방법</h2><table>
+<tr><th>상황</th><th>컵</th><th>컵홀더</th></tr>
+<tr><td><b>매장 안</b></td><td>다회용컵 · 핫 14oz · 아이스 16oz</td><td>끼움 (손이 뜨겁고 · 차갑고 젖어서)</td></tr>
+<tr><td><b>밖으로 가져갈 때 · 핫</b></td><td>일회용 종이컵</td><td>컵홀더 · 3중 단열컵은 아직 미정</td></tr>
+<tr><td><b>밖으로 가져갈 때 · 아이스</b></td><td>일회용 플라스틱컵</td><td>컵홀더</td></tr></table>
+<ul class="li" style="margin-top:8px"><li>보증금 없음 · 드림패스 앱 없이 기본형 반납함에 넣기만</li><li>다 마시면 내용물 · 얼음을 비우고 컵과 뚜껑만 반납함에</li></ul></div>
+<div class="card"><h2>매장 · 사업단이 하는 일</h2><table>
+<tr><td class="k">서비스바 흐름</td><td>텀블러 세척 2구 → 음료 버리는 곳 → 쓰레기 투입구 4 → 아이스크림 냉동고 → 반납함 2대</td></tr>
+<tr><td class="k">컵 수거</td><td>주 2회(월 · 금) · 주일에 쓴 컵은 일요일 밤 ~ 월요일 새벽 수거 · 주말 수거 불가</td></tr>
+<tr><td class="k">층별 반납함</td><td>3층 · 5층 · 마가 컵을 카페로 모아 오는 사람 정하기</td></tr>
+<tr><td class="k">주문</td><td>매니저님이 앱으로 · 주 2,000개 · 도착 이틀 전 오후 3시까지</td></tr>
+<tr><td class="k">분실 관리</td><td>석 달쯤 회수율을 보고 단가 조정 검토 · 지속환경국 협조</td></tr></table></div>
+<div class="card"><h2>안내</h2><ul class="li"><li>주보 삽지 · LED 송출 — 다회용컵 사용 안내 포함</li><li>업체 안내물 — 반납 POP · A3 포스터 (⑥ 첨부)</li></ul></div></section><section class="pn" id="p4"><div class="card"><h2>날짜별로 정한 것</h2><ul class="tl">
+<li class="old"><b>6/2</b>첫 견적 — 컵 150원 · 반납함 대당 5만 원 · 물류비 별도<em>행사용 견적 · 발주 수량대로 정산 조건</em></li>
+<li class="old"><b>10/20</b>업체 만나기 전 질문 정리 · 비용 계산기 (1안 · 2안)</li>
+<li><b>10/27</b>첫 미팅 — 공용 컵 · 뚜껑 30원 · 분실 1안(150원) · 2안(165원) · 반납함 약정 · 주 2,000개 배송</li>
+<li><b>11/3</b>반납함 사업단 부담 · 매장 안 다회용컵 + 밖은 일회용컵</li>
+<li><b>11/4</b>서비스바 구성 — 반납함 대형 2대를 서비스바 옆에</li>
+<li><b>11/10</b>컵 운영 방식 — 다회용컵 핫 · 아이스 모두 컵홀더</li>
+<li><b>11/12</b>반납함 6대 = 대 3(1층) · 소 3(3층 · 5층 · 마가) · 안내판은 반납함에 붙임 · 컵홀더 1차 소량</li>
+<li><b>11/13</b>계약 초안 받음 · 2차 회의 — 165원 · 분실 추가 청구 없음 · 운송 주 2회 15만 원 · 14oz · 16oz</li>
+<li><b>11/14</b>반납함 6대 설치 (오전 10시)</li>
+<li><b>11/16</b>반납함 안내판 발주 — 650×350 · 790×350 각 3장</li>
+<li><b>11/17</b>계약서 진행</li>
+<li><b>11/22</b>로뎀카페 오픈 · 다회용컵 운영 시작</li></ul></div></section><section class="pn" id="p5"><div class="card"><h2>계약서</h2><div class="files"><div class="file miss"><i>받기<br>전</i><span><b>계약서 — 최종본</b><small>11/17 진행 · 받으면 올림</small></span></div><div class="file miss"><i>받기<br>전</i><span><b>계약 초안</b><small>11/13 더그리트가 보냄 · 파일 받으면 올림</small></span></div></div></div>
+<div class="card"><h2>견적 · 회사 자료</h2><div class="files"><a class="file" href="vendor/thegreet-quote-20260602.pdf" target="_blank" rel="noopener"><i>PDF</i><span><b>견적서 (6/2) ↗</b><small>첫 견적 · 행사용 조건</small></span></a><a class="file" href="vendor/thegreet-profile.pdf" target="_blank" rel="noopener"><i>PDF</i><span><b>회사 소개서 ↗</b><small>2026 · 16쪽 · 세척센터 · 사례</small></span></a></div></div>
+<div class="card"><h2>안내물 · 회의 자료</h2><div class="files"><a class="file" href="vendor/thegreet-pop.pdf" target="_blank" rel="noopener"><i>PDF</i><span><b>반납 POP ↗</b><small>업체 제공 · 2쪽</small></span></a><a class="file" href="vendor/thegreet-a3.pdf" target="_blank" rel="noopener"><i>PDF</i><span><b>A3 안내 포스터 ↗</b><small>업체 제공</small></span></a><a class="file" href="gsmch-1f-doc-cafe-meeting2.pdf" target="_blank" rel="noopener"><i>PDF</i><span><b>로뎀카페 2차 회의자료 (11/13) ↗</b><small>4~7쪽 다회용컵 · 반납함 · 비용</small></span></a><a class="file" href="gsmch-1f-doc-cafe-returnbox-sign.pdf" target="_blank" rel="noopener"><i>PDF</i><span><b>반납함 안내판 제작 가이드 ↗</b><small>11/16 발주 크기 반영</small></span></a></div></div></section><div class="todo"><h2>확인할 것</h2><ul><li>계약서에 <b>분실 추가 청구 없음</b> 문구가 있는지 <em>11/17</em></li><li>계약 초안 합계(1,710,000원)에 반납함 264,000원이 들어 있는지</li><li>2027년 10원 인상 조건</li><li>첫 주문 수량 · 첫 입고일</li><li>1층 반납함 1대 자리 · 층별 컵 모아 오는 사람</li><li>반납함 안내판 붙이는 자리 (앞면 위쪽?)</li><li>16oz에 차가운 음료 얼음 · 양이 맞는지 샘플 확인</li><li>지속환경국 지원 요청 — 컵 분실 없도록</li><li>안내 영상 촬영 날짜</li></ul></div>
+<p class="upd">업데이트 2026. 11. 16. · 정리 기준: 한눈에 → 계약 조건 → 품목 · 규격 → 운영 방식 → 진행 기록 → 계약서 · 첨부 (세 업체 같은 틀)</p>
+</div><script>
+const B=[...document.querySelectorAll('#tabs button')],P=[...document.querySelectorAll('.pn')];
+function go(i){B.forEach((b,k)=>b.classList.toggle('on',k==i));P.forEach((p,k)=>p.classList.toggle('on',k==i));try{history.replaceState(null,'','#t'+(i+1))}catch(e){}}
+B.forEach((b,i)=>b.onclick=()=>{go(i);window.scrollTo({top:document.getElementById('tabs').offsetTop-4,behavior:'smooth'})});
+const h=location.hash.match(/#t(\d)/);if(h)go(+h[1]-1);
+</script></body></html>
