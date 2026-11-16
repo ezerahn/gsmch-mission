@@ -45,6 +45,8 @@ tr.und td.d{font-size:14px;color:var(--muted)}
 .i u{flex:none;width:19px;height:19px;border:2px solid #b9a65a;border-radius:5px;background:#fff;margin-top:1px;text-decoration:none;font-size:13px;line-height:15px;text-align:center;color:#fff;font-weight:700}
 .i.no{background:#fff4c7}
 .i.ok{color:#8a847a;font-weight:500}.i.ok u{background:var(--ok);border-color:var(--ok)}.i.ok u:after{content:"✓"}
+.i .tm{display:inline-block;font-style:normal;font-size:12.5px;font-weight:700;color:#fff;background:#2c2a26;border-radius:6px;padding:0 7px;margin-left:6px;vertical-align:1px;white-space:nowrap}.i.ok .tm{background:#b5afa4}
+.lnk{display:table;margin-top:3px;font-size:12px;font-weight:700;color:#6e6860;background:#fff;border:1.5px solid #dcd9d1;border-radius:12px;padding:0 9px;text-decoration:none}.lnk.go{color:#fff;background:#1f7a3f;border-color:#1f7a3f}
 .i em{display:block;font-style:normal;font-size:12.5px;font-weight:500;color:#7a746a}
 .i.op span>b{color:#c8553d}
 .grp{border:2px solid #e8d9a0;border-radius:10px;padding:6px;margin:0 0 5px;background:#fffdf3}
@@ -81,7 +83,7 @@ tr.today td.n{background:#fbf6dd}
 <div class="tabs" id="tabs"></div>
 <div class="sum"><span id="cnt"></span><div class="bar"><i id="bar"></i></div><div class="tools"><button onclick="window.print()">인쇄</button><button onclick="resetMe()" title="이 기기에서 누른 체크를 지웁니다">내 체크 지우기</button></div></div>
 <table><thead><tr class="hd"><th class="d">날짜</th><th class="s">사업단 (공통)</th><th class="b">서점</th><th class="c">카페</th><th class="n">비고</th></tr></thead><tbody id="tb"></tbody></table>
-<div class="lg"><span><i style="background:#fff4c7;border:2px solid #b9a65a"></i>아직 안 한 일</span><span><i style="background:#1f7a3f"></i>끝난 일</span><span>누른 체크는 이 기기에 저장 · 모두에게 보이는 체크는 총무가 반영</span></div>
+<div class="lg"><span>쓰는 법 — <b style="color:#2c2a26">제목</b> 옆 검정 칸은 <b style="color:#2c2a26">시간</b> · 아래 작은 글씨는 <b style="color:#2c2a26">설명</b> · 그날 확인할 것은 <b style="color:#2c2a26">비고</b></span><span><i style="background:#fff4c7;border:2px solid #b9a65a"></i>아직 안 한 일</span><span><i style="background:#1f7a3f"></i>끝난 일</span><span>누른 체크는 이 기기에 저장 · 모두에게 보이는 체크는 총무가 반영</span></div>
 </div>
 <script>
 const WEEKS=[["2026-11-01","11월","1 ~ 7","1주"],["2026-11-08","","8 ~ 14","2주"],["2026-11-15","","15 ~ 21","3주"],["2026-11-22","","22 ~ 28","4주"],["2026-11-29","","29 ~ 12/5","5주"],["2026-12-06","12월","6 ~ 12","1주"],["2026-12-13","","13 ~ 19","2주"],["2026-12-20","","20 ~ 26","3주"],["2026-12-27","","27 ~ 31","4주"]];
@@ -96,7 +98,7 @@ const isDone=o=>(o.id in ME)?ME[o.id]:o.done;
 const esc=s=>s;
 function wkOf(o){if(!o.d)return null;const d=o.d.slice(0,10);for(let i=WEEKS.length-1;i>=0;i--)if(d>=WEEKS[i][0])return i;return null}
 function curWeek(){for(let i=WEEKS.length-1;i>=0;i--)if(TODAY>=WEEKS[i][0])return i;return 0}
-function itemH(o){const dn=isDone(o);return '<div class="i '+(dn?'ok':'no')+(o.open?' op':'')+'" data-id="'+o.id+'"><u></u><span>'+(o.open?'<b>'+o.t+'</b>':o.t)+(o.em?'<em>'+o.em+'</em>':'')+'</span></div>'}
+function itemH(o){const dn=isDone(o);return '<div class="i '+(dn?'ok':'no')+(o.open?' op':'')+'" data-id="'+o.id+'"><u></u><span>'+(o.open?'<b>'+o.t+'</b>':o.t)+(o.tm?'<i class="tm">'+o.tm+'</i>':'')+(o.em?'<em>'+o.em+'</em>':'')+(o.url?'<a class="lnk go" href="'+o.url+'" target="_blank" rel="noopener">주문처 ↗</a>':(o.q?'<a class="lnk" href="https://www.coupang.com/np/search?q='+encodeURIComponent(o.q)+'" target="_blank" rel="noopener">쿠팡에서 찾기 ↗</a>':''))+'</span></div>'}
 function cellH(list){let h='',gs={};list.forEach(o=>{if(o.g){(gs[o.g]=gs[o.g]||[]).push(o)}});const seen={};
  list.forEach(o=>{if(o.g){if(seen[o.g])return;seen[o.g]=1;const L=gs[o.g],k=L.filter(isDone).length;h+='<div class="grp"><div class="gh">'+o.g+' <b class="'+(k==L.length?'all':'')+'">'+k+' / '+L.length+'</b></div>'+L.map(itemH).join('')+'</div>'}else h+=itemH(o)});return h}
 function weekItems(w){return J.items.filter(o=>wkOf(o)===w)}
@@ -126,7 +128,7 @@ function row(cls,dl,sub,dc,list,note,today){const by=c=>list.filter(o=>o.c===c);
  const td=(c,lab)=>{const L=by(c);return '<td class="c'+c+(L.length?'':' emp')+'" data-l="'+lab+'">'+cellH(L)+'</td>'};
  return '<tr class="'+cls+'"><td class="d '+dc+'">'+dl+'<small>'+sub+'</small>'+(today?'<span class="tg">오늘</span>':'')+'</td>'+td('s','사업단')+td('b','서점')+td('c','카페')+'<td class="n'+(note?'':' emp')+'" data-l="비고">'+note+'</td></tr>'}
 document.addEventListener('click',e=>{const t=e.target.closest('.tabs button');if(t){CUR=+t.dataset.w;render();return}
- const i=e.target.closest('.i[data-id]');if(i){const o=J.items.find(x=>x.id===i.dataset.id);const v=!isDone(o);if(v===o.done)delete ME[o.id];else ME[o.id]=v;try{localStorage.setItem(MEK,JSON.stringify(ME))}catch(x){}render()}});
+ if(e.target.closest('.lnk'))return;const i=e.target.closest('.i[data-id]');if(i){const o=J.items.find(x=>x.id===i.dataset.id);const v=!isDone(o);if(v===o.done)delete ME[o.id];else ME[o.id]=v;try{localStorage.setItem(MEK,JSON.stringify(ME))}catch(x){}render()}});
 function resetMe(){ME={};try{localStorage.removeItem(MEK)}catch(x){}render()}
 fetch('gsmch-1f-week.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>{J=d;
  document.getElementById('upd').textContent='업데이트 '+d.updated.replace(/-/g,'. ')+'.';
