@@ -834,20 +834,5 @@
    "url": ""
   }
  ],
- "groupDocs": {
-  "카페 용품 발주": [
-   [
-    "서비스바 · 비품",
-    "gsmch-ops-cafe.html#t5"
-   ],
-   [
-    "컵 · 컵홀더",
-    "gsmch-ops-cafe.html#t3"
-   ],
-   [
-    "발주 리스트",
-    "gsmch-1f-doc-cafe-order.pdf"
-   ]
-  ]
- }
+ "groupDocs": {}
 }
