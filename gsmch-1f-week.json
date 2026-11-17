@@ -694,7 +694,7 @@
    "d": "2026-11-18",
    "c": "c",
    "t": "커피 테이스팅",
-   "em": "일반 6 · 디카페인 3",
+   "em": "일반 6 · 디카페인 4",
    "done": false,
    "id": "k069",
    "docs": [
@@ -703,8 +703,8 @@
      "gsmch-ops-cafe.html#t2"
     ],
     [
-     "시음표 PDF",
-     "gsmch-1f-doc-cafe-bean-tasting-1118.pdf"
+     "평가표 PDF",
+     "gsmch-1f-doc-cafe-bean-eval-1118.pdf"
     ]
    ],
    "tm": "오후"
