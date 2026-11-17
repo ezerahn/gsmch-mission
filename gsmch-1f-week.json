@@ -127,7 +127,13 @@
    "em": "용인시 수지구 광교중앙로 338 광교우미 C304",
    "done": true,
    "id": "k012",
-   "tm": "오전 10시"
+   "tm": "오전 10시",
+   "docs": [
+    [
+     "원두 · 시음표",
+     "gsmch-ops-cafe.html#t2"
+    ]
+   ]
   },
   {
    "d": "2026-11-09",
@@ -314,6 +320,10 @@
    "id": "k034",
    "docs": [
     [
+     "키오스크 · 포스",
+     "gsmch-ops-cafe.html#t1"
+    ],
+    [
      "잇다",
      "gsmch-vendor-itda.html#t3"
     ]
@@ -327,6 +337,10 @@
    "done": true,
    "id": "k035",
    "docs": [
+    [
+     "반납함",
+     "gsmch-ops-cafe.html#t4"
+    ],
     [
      "제작 가이드",
      "gsmch-1f-doc-cafe-returnbox-sign.pdf"
@@ -348,8 +362,8 @@
    "url": "https://smartstore.naver.com/hansday/products/8906202548",
    "docs": [
     [
-     "회의자료 12쪽",
-     "gsmch-1f-doc-cafe-meeting2.pdf#page=12"
+     "앞치마",
+     "gsmch-ops-cafe.html#t6"
     ]
    ]
   },
@@ -361,7 +375,13 @@
    "done": false,
    "id": "k037",
    "q": "QR 아크릴 스탠드",
-   "url": ""
+   "url": "",
+   "docs": [
+    [
+     "QR",
+     "gsmch-ops-promo.html"
+    ]
+   ]
   },
   {
    "d": "2026-11-17",
@@ -471,7 +491,7 @@
    "docs": [
     [
      "메뉴 · 가격",
-     "gsmch-1f-doc-cafe-meeting2.pdf#page=13"
+     "gsmch-ops-cafe.html#t1"
     ]
    ]
   },
@@ -542,8 +562,8 @@
    "id": "k055",
    "docs": [
     [
-     "시음 평가표",
-     "gsmch-1f-doc-cafe-meeting2.pdf#page=23"
+     "원두 · 시음표",
+     "gsmch-ops-cafe.html#t2"
     ]
    ]
   },
@@ -563,6 +583,10 @@
    "done": false,
    "id": "k057",
    "docs": [
+    [
+     "반납함",
+     "gsmch-ops-cafe.html#t4"
+    ],
     [
      "제작 가이드",
      "gsmch-1f-doc-cafe-returnbox-sign.pdf"
@@ -586,7 +610,13 @@
    "g": "카페 용품 발주",
    "id": "k059",
    "q": "에어홀더 컵홀더",
-   "url": "https://www.camako.co.kr/shop/shopdetail.html?branduid=3421858&xcode=017&mcode=001&scode=&type=X&sort=manual&current_category=017&search=&GfDT=bmZ3UFU%3D"
+   "url": "https://www.camako.co.kr/shop/shopdetail.html?branduid=3421858&xcode=017&mcode=001&scode=&type=X&sort=manual&current_category=017&search=&GfDT=bmZ3UFU%3D",
+   "docs": [
+    [
+     "컵 · 컵홀더",
+     "gsmch-ops-cafe.html#t3"
+    ]
+   ]
   },
   {
    "d": "2026-11-16",
@@ -597,7 +627,13 @@
    "g": "카페 용품 발주",
    "id": "k060",
    "q": "PET 아이스컵 16oz 돔뚜껑",
-   "url": ""
+   "url": "",
+   "docs": [
+    [
+     "컵 · 컵홀더",
+     "gsmch-ops-cafe.html#t3"
+    ]
+   ]
   },
   {
    "d": "2026-11-16",
@@ -608,7 +644,13 @@
    "g": "카페 용품 발주",
    "id": "k061",
    "q": "3중 단열컵 핫뚜껑",
-   "url": ""
+   "url": "",
+   "docs": [
+    [
+     "컵 · 컵홀더",
+     "gsmch-ops-cafe.html#t3"
+    ]
+   ]
   },
   {
    "d": "2026-11-16",
@@ -691,12 +733,16 @@
  "groupDocs": {
   "카페 용품 발주": [
    [
-    "발주 리스트",
-    "gsmch-1f-doc-cafe-order.pdf"
+    "서비스바 · 비품",
+    "gsmch-ops-cafe.html#t5"
    ],
    [
-    "회의자료 18~19쪽",
-    "gsmch-1f-doc-cafe-meeting2.pdf#page=18"
+    "컵 · 컵홀더",
+    "gsmch-ops-cafe.html#t3"
+   ],
+   [
+    "발주 리스트",
+    "gsmch-1f-doc-cafe-order.pdf"
    ]
   ]
  }
