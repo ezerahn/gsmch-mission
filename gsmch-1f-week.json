@@ -17,7 +17,6 @@
  "notes": {
   "2026-11-16": "반납함 안내판 붙이는 자리 단장님께 확인",
   "2026-11-17": "잇다 계약서는 체크 필요",
-  "2026-11-18": "커피 시음 날짜는 목사님 일정 확인 후",
   "2026-11-21": "카페 · 서점 포스 함께 설치 · 내일 카페 오픈",
   "2026-11-28": "내일 서점 오픈"
  },
@@ -418,6 +417,22 @@
    "id": "k040"
   },
   {
+   "d": "2026-11-17",
+   "c": "c",
+   "t": "컵홀더 1차 소량 발주",
+   "em": "카마코 에어홀더 · 약 40원",
+   "done": false,
+   "id": "k059",
+   "q": "에어홀더 컵홀더",
+   "url": "https://www.camako.co.kr/shop/shopdetail.html?branduid=3421858&xcode=017&mcode=001&scode=&type=X&sort=manual&current_category=017&search=&GfDT=bmZ3UFU%3D",
+   "docs": [
+    [
+     "컵 · 컵홀더",
+     "gsmch-ops-cafe.html#t3"
+    ]
+   ]
+  },
+  {
    "d": "2026-11-18",
    "c": "s",
    "t": "준공 청소",
@@ -556,17 +571,14 @@
   {
    "d": "2026-11-18",
    "c": "c",
-   "t": "컵홀더 1차 소량",
+   "t": "커피 테이스팅",
    "em": "원두 업체 · 기본 원두 · 디카페인 정하기",
    "done": false,
-   "g": "카페 용품 발주",
-   "id": "k059",
-   "q": "에어홀더 컵홀더",
-   "url": "https://www.camako.co.kr/shop/shopdetail.html?branduid=3421858&xcode=017&mcode=001&scode=&type=X&sort=manual&current_category=017&search=&GfDT=bmZ3UFU%3D",
+   "id": "k069",
    "docs": [
     [
-     "컵 · 컵홀더",
-     "gsmch-ops-cafe.html#t3"
+     "원두 · 시음표",
+     "gsmch-ops-cafe.html#t2"
     ]
    ],
    "tm": "오후"
@@ -729,20 +741,6 @@
    "id": "k068",
    "q": "컵 캐리어 테이크아웃 봉투",
    "url": ""
-  },
-  {
-   "d": "",
-   "c": "c",
-   "t": "커피 테이스팅",
-   "em": "목사님 일정 확인 후",
-   "done": false,
-   "id": "k059",
-   "docs": [
-    [
-     "원두 · 시음표",
-     "gsmch-ops-cafe.html#t2"
-    ]
-   ]
   }
  ],
  "groupDocs": {
