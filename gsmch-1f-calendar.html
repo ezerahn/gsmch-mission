@@ -83,7 +83,7 @@ tr.today td.n{background:#fbf6dd}
 <span class="upd" id="upd"></span>
 <div class="open" id="open"></div>
 <div class="tabs" id="tabs"></div>
-<div class="sum"><span id="cnt"></span><div class="bar"><i id="bar"></i></div><div class="tools"><button onclick="window.print()">인쇄</button><button onclick="resetMe()" title="이 기기에서 누른 체크를 지웁니다">내 체크 지우기</button></div></div>
+<div class="sum"><span id="cnt"></span><div class="bar"><i id="bar"></i></div><div class="tools"><button onclick="saveImg(this)">🖼 이미지로 저장</button><button onclick="window.print()">인쇄</button><button onclick="resetMe()" title="이 기기에서 누른 체크를 지웁니다">내 체크 지우기</button></div></div>
 <table><thead><tr class="hd"><th class="d">날짜</th><th class="s">사업단 (공통)</th><th class="b">서점</th><th class="c">카페</th><th class="n">비고</th></tr></thead><tbody id="tb"></tbody></table>
 <div class="lg"><span>쓰는 법 — <b style="color:#2c2a26">제목</b> 옆 검정 칸은 <b style="color:#2c2a26">시간</b> · 아래 작은 글씨는 <b style="color:#2c2a26">설명</b> · 그날 확인할 것은 <b style="color:#2c2a26">비고</b></span><span><i style="background:#fff4c7;border:2px solid #b9a65a"></i>아직 안 한 일</span><span><i style="background:#1f7a3f"></i>끝난 일</span><span>누른 체크는 이 기기에 저장 · 모두에게 보이는 체크는 총무가 반영</span></div>
 </div>
@@ -129,6 +129,14 @@ function render(){
 function row(cls,dl,sub,dc,list,note,today){const by=c=>list.filter(o=>o.c===c);
  const td=(c,lab)=>{const L=by(c);return '<td class="c'+c+(L.length?'':' emp')+'" data-l="'+lab+'">'+cellH(L)+'</td>'};
  return '<tr class="'+cls+'"><td class="d '+dc+'">'+dl+'<small>'+sub+'</small>'+(today?'<span class="tg">오늘</span>':'')+'</td>'+td('s','사업단')+td('b','서점')+td('c','카페')+'<td class="n'+(note?'':' emp')+'" data-l="비고">'+note+'</td></tr>'}
+function saveImg(btn){const go=()=>{const t0=btn.textContent;btn.textContent='만드는 중…';btn.disabled=true;
+ const box=document.createElement('div');box.style.cssText='position:absolute;left:-99999px;top:0;width:1240px;background:#faf8f3;padding:28px 30px;box-sizing:border-box';
+ const lab=WEEKS[CUR],m=(lab[0].slice(5,7)==='10'?'11':(+lab[0].slice(5,7)))+'월 '+lab[2];
+ box.innerHTML='<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px"><b style="font-size:26px">사업단 일정 · '+m+'</b><span style="font-size:13px;color:#777">선한목자교회 총여선교회 사업단 · '+(document.querySelector('.upd')?document.querySelector('.upd').textContent:'')+'</span></div>';
+ ['#open','table'].forEach(q=>{const e=document.querySelector(q);if(e){const c=e.cloneNode(true);c.style.marginBottom='12px';box.appendChild(c)}});
+ box.querySelectorAll('.lnk,.gt').forEach(e=>e.remove());document.body.appendChild(box);
+ html2canvas(box,{scale:2,backgroundColor:'#faf8f3',useCORS:true}).then(cv=>{const a=document.createElement('a');a.download='gsmch_사업단일정_'+lab[2].replace(/\s|\//g,'').replace('~','-')+'.jpg';cv.toBlob(bl=>{a.href=URL.createObjectURL(bl);document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)},'image/jpeg',.9)}).catch(e=>alert('이미지를 만들지 못했습니다')).finally(()=>{box.remove();btn.textContent=t0;btn.disabled=false})};
+ if(window.html2canvas)go();else{const sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';sc.onload=go;sc.onerror=()=>alert('이미지 도구를 불러오지 못했습니다');document.head.appendChild(sc)}}
 let FOLD={};try{FOLD=JSON.parse(localStorage.getItem('gsmch-week-fold')||'{}')}catch(e){}
 document.addEventListener('click',e=>{const gt=e.target.closest('.gt');if(gt){FOLD[gt.dataset.g]=!FOLD[gt.dataset.g];try{localStorage.setItem('gsmch-week-fold',JSON.stringify(FOLD))}catch(e){}render();return}const t=e.target.closest('.tabs button');if(t){CUR=+t.dataset.w;render();return}
  if(e.target.closest('.lnk'))return;const i=e.target.closest('.i[data-id]');if(i){const o=J.items.find(x=>x.id===i.dataset.id);const v=!isDone(o);if(v===o.done)delete ME[o.id];else ME[o.id]=v;try{localStorage.setItem(MEK,JSON.stringify(ME))}catch(x){}render()}});
