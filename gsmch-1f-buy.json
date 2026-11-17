@@ -19,7 +19,7 @@
    "shop": "쿠팡 (에이치에스씨엔씨)",
    "amt": 197880,
    "pay": "",
-   "who": "",
+   "who": "총무",
    "rc": "",
    "memo": "150 × 50 × 210cm · 4단 · 화이트 · 일반택배 11/20 도착 예정",
    "url": "https://link.coupang.com/a/iHl1G1yg8q/?style=kakao_existing_ui"
@@ -31,7 +31,7 @@
    "shop": "쿠팡 로켓배송",
    "amt": 68200,
    "pay": "",
-   "who": "",
+   "who": "총무",
    "rc": "",
    "memo": "120 × 30 × 210cm · 5단 · 화이트 · 로켓배송 11/16 도착",
    "url": "https://link.coupang.com/a/iHmGLbzqTY"
@@ -43,10 +43,22 @@
    "shop": "쿠팡 로켓배송",
    "amt": 140420,
    "pay": "",
-   "who": "",
+   "who": "총무",
    "rc": "",
    "memo": "120 × 40 × 210cm · 5단 · 화이트 · 로켓배송 11/16 도착",
    "url": "https://link.coupang.com/a/iHmNr2gvKK"
+  },
+  {
+   "d": "2026-11-15",
+   "c": "b",
+   "t": "쇼핑백 거치대 (이동식 타공판)",
+   "shop": "쿠팡 판매자로켓",
+   "amt": 81900,
+   "pay": "",
+   "who": "총무",
+   "rc": "",
+   "memo": "Seraphvo · 화이트 160 × 60cm · 후크 30개 포함 · 11/16 도착 · 후크는 추가 구매 예정",
+   "url": "https://link.coupang.com/a/iHr9snA9Js/?style=kakao_existing_ui"
   },
   {
    "d": "2026-11-16",
@@ -82,18 +94,6 @@
    "rc": "",
    "memo": "구매 예정 · 투명 특대형 리빙박스",
    "url": "https://link.coupang.com/a/iJTrF4tu9I"
-  },
-  {
-   "d": "",
-   "c": "b",
-   "t": "쇼핑백 거치대 (이동식 타공판)",
-   "shop": "쿠팡",
-   "amt": null,
-   "pay": "",
-   "who": "",
-   "rc": "",
-   "memo": "높이 160 × 60cm · 화이트 · 후크 30개 포함 · 1층 선지서점으로 배송 · 구매 날짜 · 금액 확인",
-   "url": "https://link.coupang.com/a/iHr9snA9Js/?style=kakao_existing_ui"
   }
  ]
 }
