@@ -18,7 +18,7 @@ h1{font-size:30px;font-weight:700;letter-spacing:-.02em}
 .open div{flex:1;border-radius:14px;padding:13px 18px;color:#fff;font-size:20px;font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .open small{font-size:14px;font-weight:500;opacity:.9}
 .open .c{background:var(--c)}.open .b{background:var(--b)}
-.tabs{display:grid;grid-template-columns:repeat(9,1fr);gap:6px}
+.tabs{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
 .tabs button{position:relative;font:inherit;cursor:pointer;text-align:center;font-size:16px;font-weight:700;color:var(--soft);background:#f2f0e9;border:2px solid #dcd9d1;border-radius:11px;padding:20px 4px 8px;white-space:nowrap}
 .tabs button i{position:absolute;left:8px;top:4px;font-style:normal;font-size:11px;color:#9a948a;font-weight:700}
 .tabs button small{display:block;font-size:11.5px;font-weight:500;color:#9a948a;margin-top:1px}
@@ -88,7 +88,7 @@ tr.today td.n{background:#fbf6dd}
 <div class="lg"><span>쓰는 법 — <b style="color:#2c2a26">제목</b> 옆 검정 칸은 <b style="color:#2c2a26">시간</b> · 아래 작은 글씨는 <b style="color:#2c2a26">설명</b> · 그날 확인할 것은 <b style="color:#2c2a26">비고</b></span><span><i style="background:#fff4c7;border:2px solid #b9a65a"></i>아직 안 한 일</span><span><i style="background:#1f7a3f"></i>끝난 일</span><span>누른 체크는 이 기기에 저장 · 모두에게 보이는 체크는 총무가 반영</span></div>
 </div>
 <script>
-const WEEKS=[["2026-11-01","11월","1 ~ 7","1주"],["2026-11-08","","8 ~ 14","2주"],["2026-11-15","","15 ~ 21","3주"],["2026-11-22","","22 ~ 28","4주"],["2026-11-29","","29 ~ 12/5","5주"],["2026-12-06","12월","6 ~ 12","1주"],["2026-12-13","","13 ~ 19","2주"],["2026-12-20","","20 ~ 26","3주"],["2026-12-27","","27 ~ 31","4주"]];
+const WEEKS=[["2026-10-26","11월","~ 1","1주"],["2026-11-02","","2 ~ 8","2주"],["2026-11-09","","9 ~ 15","3주"],["2026-11-16","","16 ~ 22","4주"],["2026-11-23","","23 ~ 29","5주"],["2026-11-30","12월","11/30 ~ 6","1주"],["2026-12-07","","7 ~ 13","2주"],["2026-12-14","","14 ~ 20","3주"],["2026-12-21","","21 ~ 27","4주"],["2026-12-28","","28 ~ 31","5주"]];
 const DOW=["주일","월","화","수","목","금","토"];
 const MEK="gsmch-week-me";let ME={};try{ME=JSON.parse(localStorage.getItem(MEK)||"{}")}catch(e){ME={}}
 let J=null,CUR=null;
@@ -112,10 +112,10 @@ function render(){
   return '<button class="'+[i===w?'on':'',all&&i<cw+1?'done':'',op?'op':'',i===5?'m12':''].join(' ')+'" data-w="'+i+'">'+(x[1]?'<i>'+x[1]+'</i>':'')+x[2]+'<small>'+(op&&i===cw?'이번 주 · '+lab:lab)+'</small></button>'}).join('');
  // rows
  let rows='',L=weekItems(w);
- for(let k=0;k<7;k++){const d=add(start,k);if(d>"2026-12-31")break;const dd=new Date(d+"T00:00:00");
+ for(let k=0;k<7;k++){const d=add(start,k);if(d>"2026-12-31")break;if(d<"2026-11-01")continue;const dd=new Date(d+"T00:00:00"),wd=dd.getDay();
   const day=J.items.filter(o=>o.d===d);const note=J.notes[d]||'';
   const cls=[d===TODAY?'today':'',d<TODAY?'past':''].join(' ');
-  rows+=row(cls,(dd.getMonth()+1)+'/'+dd.getDate(),DOW[k],k===0?'sun':(k===6?'sat':''),day,note,d===TODAY)}
+  rows+=row(cls,(dd.getMonth()+1)+'/'+dd.getDate(),DOW[wd],wd===0?'sun':(wd===6?'sat':''),day,note,d===TODAY)}
  // ranges (예: 11/25~28)
  const rg={};L.filter(o=>o.d.includes('~')).forEach(o=>{(rg[o.d]=rg[o.d]||[]).push(o)});
  Object.keys(rg).forEach(r=>{const a=r.split('~');const m=+a[0].slice(5,7),d1=+a[0].slice(8,10);rows+=row('und',m+'/'+d1+'~'+a[1],'날짜 미정','',rg[r],'')});
