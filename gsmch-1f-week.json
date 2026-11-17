@@ -433,7 +433,7 @@
    "em": "",
    "done": false,
    "id": "k042",
-   "tm": "오후",
+   "tm": "오전",
    "docs": [
     [
      "커피 기물",
@@ -556,8 +556,26 @@
   {
    "d": "2026-11-18",
    "c": "c",
+   "t": "컵홀더 1차 소량",
+   "em": "원두 업체 · 기본 원두 · 디카페인 정하기",
+   "done": false,
+   "g": "카페 용품 발주",
+   "id": "k059",
+   "q": "에어홀더 컵홀더",
+   "url": "https://www.camako.co.kr/shop/shopdetail.html?branduid=3421858&xcode=017&mcode=001&scode=&type=X&sort=manual&current_category=017&search=&GfDT=bmZ3UFU%3D",
+   "docs": [
+    [
+     "컵 · 컵홀더",
+     "gsmch-ops-cafe.html#t3"
+    ]
+   ],
+   "tm": "오후"
+  },
+  {
+   "d": "2026-11-18",
+   "c": "c",
    "t": "원두 발주",
-   "em": "원두 업체 · 기본 원두 · 디카페인",
+   "em": "테이스팅 뒤",
    "done": false,
    "id": "k055",
    "docs": [
@@ -600,23 +618,6 @@
    "em": "",
    "done": false,
    "id": "k058"
-  },
-  {
-   "d": "2026-11-17",
-   "c": "c",
-   "t": "컵홀더 1차 소량",
-   "em": "카마코 에어홀더 · 약 40원",
-   "done": false,
-   "g": "카페 용품 발주",
-   "id": "k059",
-   "q": "에어홀더 컵홀더",
-   "url": "https://www.camako.co.kr/shop/shopdetail.html?branduid=3421858&xcode=017&mcode=001&scode=&type=X&sort=manual&current_category=017&search=&GfDT=bmZ3UFU%3D",
-   "docs": [
-    [
-     "컵 · 컵홀더",
-     "gsmch-ops-cafe.html#t3"
-    ]
-   ]
   },
   {
    "d": "2026-11-17",
