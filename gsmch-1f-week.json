@@ -351,22 +351,6 @@
    ]
   },
   {
-   "d": "2026-11-16",
-   "c": "c",
-   "t": "앞치마 발주",
-   "em": "한스데이 · 진한 그린 · 18,000원",
-   "done": false,
-   "id": "k036",
-   "q": "한스데이 앞치마",
-   "url": "https://smartstore.naver.com/hansday/products/8906202548",
-   "docs": [
-    [
-     "앞치마",
-     "gsmch-ops-cafe.html#t6"
-    ]
-   ]
-  },
-  {
    "d": "",
    "c": "c",
    "t": "QR 아크릴 발주",
@@ -435,6 +419,22 @@
    "em": "",
    "done": false,
    "id": "k040"
+  },
+  {
+   "d": "2026-11-17",
+   "c": "c",
+   "t": "앞치마 발주",
+   "em": "한스데이 · 진한 그린 · 18,000원 · 자수 · 이너 색 아직 미정",
+   "done": false,
+   "id": "k036",
+   "q": "한스데이 앞치마",
+   "url": "https://smartstore.naver.com/hansday/products/8906202548",
+   "docs": [
+    [
+     "앞치마",
+     "gsmch-ops-cafe.html#t6"
+    ]
+   ]
   },
   {
    "d": "2026-11-17",
