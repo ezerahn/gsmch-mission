@@ -9,7 +9,7 @@
 :root{--bg:#faf8f3;--text:#2c2a26;--muted:#8a847a;--soft:#6e6860;--line:#ece8de;--s:#5b574f;--b:#3d6bb0;--c:#b5622d;--ok:#1f7a3f}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'IBM Plex Sans KR',-apple-system,'Apple SD Gothic Neo',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;-webkit-font-smoothing:antialiased}
-.wrap{max-width:1180px;margin:0 auto;padding:24px 16px 60px}
+.wrap{max-width:1400px;margin:0 auto;padding:24px 16px 60px}
 .back{display:inline-block;font-size:14px;color:var(--soft);text-decoration:none;padding:7px 14px;border:1px solid #e6e1d7;border-radius:20px;background:#fff;margin-bottom:12px}
 h1{font-size:30px;font-weight:700;letter-spacing:-.02em}
 .lead{font-size:16px;color:var(--soft);margin-top:4px}
@@ -33,7 +33,7 @@ h1{font-size:30px;font-weight:700;letter-spacing:-.02em}
 .tools button{font:inherit;font-size:13.5px;font-weight:700;color:var(--soft);background:#fff;border:1.5px solid #dcd9d1;border-radius:18px;padding:5px 12px;cursor:pointer}
 table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1.5px solid #dcd9d1;border-radius:14px;overflow:hidden;table-layout:fixed}
 th{font-size:15px;font-weight:700;padding:10px 12px;text-align:left;color:#fff}
-th.d{background:var(--text);width:96px}th.s{background:var(--s)}th.b{background:var(--b)}th.c{background:var(--c);width:34%}th.n{background:#8a847a;width:190px}
+th.d{background:var(--text);width:84px}th.s{background:var(--s);width:29%}th.b{background:var(--b)}th.c{background:var(--c);width:31%}th.n{background:#8a847a;width:150px}.i{word-break:keep-all;padding:5px 8px;margin:0 0 4px;line-height:1.35}.i>span{flex:1;min-width:0}.i .sub{display:flex;flex-wrap:wrap;align-items:center;gap:2px 6px}.i .sub:empty{display:none}.i .sub em{display:inline}.i .sub .dl{margin:0}.i .lnk{font-size:11.5px;padding:0 7px}
 td{vertical-align:top;padding:8px 9px;border-top:1.5px solid var(--line);border-left:1.5px solid var(--line);font-size:15px}
 td.d{border-left:0;font-weight:700;font-size:18px;white-space:nowrap}td.d small{display:block;font-size:13px;color:var(--muted);font-weight:500}
 td.d.sun{color:#c8553d}td.d.sat{color:var(--b)}
@@ -100,7 +100,7 @@ const isDone=o=>(o.id in ME)?ME[o.id]:o.done;
 const esc=s=>s;
 function wkOf(o){if(!o.d)return null;const d=o.d.slice(0,10);for(let i=WEEKS.length-1;i>=0;i--)if(d>=WEEKS[i][0])return i;return null}
 function curWeek(){for(let i=WEEKS.length-1;i>=0;i--)if(TODAY>=WEEKS[i][0])return i;return 0}
-function itemH(o){const dn=isDone(o);return '<div class="i '+(dn?'ok':'no')+(o.open?' op':'')+'" data-id="'+o.id+'"><u></u><span>'+(o.open?'<b>'+o.t+'</b>':o.t)+(o.tm?'<i class="tm">'+o.tm+'</i>':'')+(o.em?'<em>'+o.em+'</em>':'')+(function(){let L=(o.docs||[]).map(d=>'<a class="lnk doc" href="'+d[1]+'" target="_blank" rel="noopener">📄 '+d[0]+'</a>');if(o.url)L.push('<a class="lnk go" href="'+o.url+'" target="_blank" rel="noopener">주문처 ↗</a>');else if(o.q)L.push('<a class="lnk" href="https://www.coupang.com/np/search?q='+encodeURIComponent(o.q)+'" target="_blank" rel="noopener">쿠팡에서 찾기 ↗</a>');return L.length?'<span class="dl">'+L.join('')+'</span>':''})()+'</span></div>'}
+function itemH(o){const dn=isDone(o);return '<div class="i '+(dn?'ok':'no')+(o.open?' op':'')+'" data-id="'+o.id+'"><u></u><span>'+(o.open?'<b>'+o.t+'</b>':o.t)+(o.tm?'<i class="tm">'+o.tm+'</i>':'')+'<span class="sub">'+(o.em?'<em>'+o.em+'</em>':'')+(function(){let L=(o.docs||[]).map(d=>'<a class="lnk doc" href="'+d[1]+'" target="_blank" rel="noopener">📄 '+d[0]+'</a>');if(o.url)L.push('<a class="lnk go" href="'+o.url+'" target="_blank" rel="noopener">주문처 ↗</a>');else if(o.q)L.push('<a class="lnk" href="https://www.coupang.com/np/search?q='+encodeURIComponent(o.q)+'" target="_blank" rel="noopener">쿠팡에서 찾기 ↗</a>');return L.length?'<span class="dl">'+L.join('')+'</span>':''})()+'</span></span></div>'}
 function cellH(list){let h='',gs={};list.forEach(o=>{if(o.g){(gs[o.g]=gs[o.g]||[]).push(o)}});const seen={};
  list.forEach(o=>{if(o.g){if(seen[o.g])return;seen[o.g]=1;const L=gs[o.g],k=L.filter(isDone).length;const gd=(J.groupDocs||{})[o.g]||[];const fd=FOLD[o.g];h+='<div class="grp'+(fd?' fold':'')+'"><div class="gh"><span><button class="gt" data-g="'+o.g+'" aria-label="접기 · 펴기">'+(fd?'▸':'▾')+'</button>'+o.g+gd.map(d=>' <a class="lnk doc" style="display:inline-block;margin:0 0 0 4px" href="'+d[1]+'" target="_blank" rel="noopener">📄 '+d[0]+'</a>').join('')+'</span><b class="'+(k==L.length?'all':'')+'">'+k+' / '+L.length+'</b></div><div class="gb">'+L.map(itemH).join('')+'</div></div>'}else h+=itemH(o)});return h}
 function weekItems(w){return J.items.filter(o=>wkOf(o)===w)}
@@ -130,7 +130,7 @@ function row(cls,dl,sub,dc,list,note,today){const by=c=>list.filter(o=>o.c===c);
  const td=(c,lab)=>{const L=by(c);return '<td class="c'+c+(L.length?'':' emp')+'" data-l="'+lab+'">'+cellH(L)+'</td>'};
  return '<tr class="'+cls+'"><td class="d '+dc+'">'+dl+'<small>'+sub+'</small>'+(today?'<span class="tg">오늘</span>':'')+'</td>'+td('s','사업단')+td('b','서점')+td('c','카페')+'<td class="n'+(note?'':' emp')+'" data-l="비고">'+note+'</td></tr>'}
 function saveImg(btn){const go=()=>{const t0=btn.textContent;btn.textContent='만드는 중…';btn.disabled=true;
- const box=document.createElement('div');box.style.cssText='position:absolute;left:-99999px;top:0;width:1240px;background:#faf8f3;padding:28px 30px;box-sizing:border-box';
+ const box=document.createElement('div');box.style.cssText='position:absolute;left:-99999px;top:0;width:1400px;background:#faf8f3;padding:28px 30px;box-sizing:border-box';
  const lab=WEEKS[CUR],m=(lab[0].slice(5,7)==='10'?'11':(+lab[0].slice(5,7)))+'월 '+lab[2];
  box.innerHTML='<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px"><b style="font-size:26px">사업단 일정 · '+m+'</b><span style="font-size:13px;color:#777">선한목자교회 총여선교회 사업단 · '+(document.querySelector('.upd')?document.querySelector('.upd').textContent:'')+'</span></div>';
  ['#open','table'].forEach(q=>{const e=document.querySelector(q);if(e){const c=e.cloneNode(true);c.style.marginBottom='12px';box.appendChild(c)}});
