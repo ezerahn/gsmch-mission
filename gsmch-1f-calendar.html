@@ -51,6 +51,7 @@ tr.und td.d{font-size:14px;color:var(--muted)}
 .i em{display:block;font-style:normal;font-size:12.5px;font-weight:500;color:#7a746a}
 .i.op span>b{color:#c8553d}
 .grp{border:2px solid #e8d9a0;border-radius:10px;padding:6px;margin:0 0 5px;background:#fffdf3}
+.grp.fold .gb{display:none}.grp.fold .gh{padding-bottom:2px}.gt{font:inherit;font-size:15px;border:0;background:#f3e6b8;border-radius:6px;width:26px;height:24px;margin-right:6px;cursor:pointer;color:#7a5a12}
 .gh{font-size:15px;font-weight:700;padding:2px 4px 6px;display:flex;justify-content:space-between;align-items:center}
 .gh b{white-space:nowrap;flex:none;margin-left:6px;font-size:13px;color:#9a6414;background:#fbeec4;border-radius:6px;padding:0 8px}.gh b.all{color:#fff;background:var(--ok)}
 .grp .i{font-size:14px;padding:4px 7px;margin-bottom:3px}.grp .i u{width:17px;height:17px;line-height:13px}
@@ -101,7 +102,7 @@ function wkOf(o){if(!o.d)return null;const d=o.d.slice(0,10);for(let i=WEEKS.len
 function curWeek(){for(let i=WEEKS.length-1;i>=0;i--)if(TODAY>=WEEKS[i][0])return i;return 0}
 function itemH(o){const dn=isDone(o);return '<div class="i '+(dn?'ok':'no')+(o.open?' op':'')+'" data-id="'+o.id+'"><u></u><span>'+(o.open?'<b>'+o.t+'</b>':o.t)+(o.tm?'<i class="tm">'+o.tm+'</i>':'')+(o.em?'<em>'+o.em+'</em>':'')+(function(){let L=(o.docs||[]).map(d=>'<a class="lnk doc" href="'+d[1]+'" target="_blank" rel="noopener">📄 '+d[0]+'</a>');if(o.url)L.push('<a class="lnk go" href="'+o.url+'" target="_blank" rel="noopener">주문처 ↗</a>');else if(o.q)L.push('<a class="lnk" href="https://www.coupang.com/np/search?q='+encodeURIComponent(o.q)+'" target="_blank" rel="noopener">쿠팡에서 찾기 ↗</a>');return L.length?'<span class="dl">'+L.join('')+'</span>':''})()+'</span></div>'}
 function cellH(list){let h='',gs={};list.forEach(o=>{if(o.g){(gs[o.g]=gs[o.g]||[]).push(o)}});const seen={};
- list.forEach(o=>{if(o.g){if(seen[o.g])return;seen[o.g]=1;const L=gs[o.g],k=L.filter(isDone).length;const gd=(J.groupDocs||{})[o.g]||[];h+='<div class="grp"><div class="gh"><span>'+o.g+gd.map(d=>' <a class="lnk doc" style="display:inline-block;margin:0 0 0 4px" href="'+d[1]+'" target="_blank" rel="noopener">📄 '+d[0]+'</a>').join('')+'</span><b class="'+(k==L.length?'all':'')+'">'+k+' / '+L.length+'</b></div>'+L.map(itemH).join('')+'</div>'}else h+=itemH(o)});return h}
+ list.forEach(o=>{if(o.g){if(seen[o.g])return;seen[o.g]=1;const L=gs[o.g],k=L.filter(isDone).length;const gd=(J.groupDocs||{})[o.g]||[];const fd=FOLD[o.g];h+='<div class="grp'+(fd?' fold':'')+'"><div class="gh"><span><button class="gt" data-g="'+o.g+'" aria-label="접기 · 펴기">'+(fd?'▸':'▾')+'</button>'+o.g+gd.map(d=>' <a class="lnk doc" style="display:inline-block;margin:0 0 0 4px" href="'+d[1]+'" target="_blank" rel="noopener">📄 '+d[0]+'</a>').join('')+'</span><b class="'+(k==L.length?'all':'')+'">'+k+' / '+L.length+'</b></div><div class="gb">'+L.map(itemH).join('')+'</div></div>'}else h+=itemH(o)});return h}
 function weekItems(w){return J.items.filter(o=>wkOf(o)===w)}
 function render(){
  const w=CUR,start=WEEKS[w][0],cw=curWeek();
@@ -128,7 +129,8 @@ function render(){
 function row(cls,dl,sub,dc,list,note,today){const by=c=>list.filter(o=>o.c===c);
  const td=(c,lab)=>{const L=by(c);return '<td class="c'+c+(L.length?'':' emp')+'" data-l="'+lab+'">'+cellH(L)+'</td>'};
  return '<tr class="'+cls+'"><td class="d '+dc+'">'+dl+'<small>'+sub+'</small>'+(today?'<span class="tg">오늘</span>':'')+'</td>'+td('s','사업단')+td('b','서점')+td('c','카페')+'<td class="n'+(note?'':' emp')+'" data-l="비고">'+note+'</td></tr>'}
-document.addEventListener('click',e=>{const t=e.target.closest('.tabs button');if(t){CUR=+t.dataset.w;render();return}
+let FOLD={};try{FOLD=JSON.parse(localStorage.getItem('gsmch-week-fold')||'{}')}catch(e){}
+document.addEventListener('click',e=>{const gt=e.target.closest('.gt');if(gt){FOLD[gt.dataset.g]=!FOLD[gt.dataset.g];try{localStorage.setItem('gsmch-week-fold',JSON.stringify(FOLD))}catch(e){}render();return}const t=e.target.closest('.tabs button');if(t){CUR=+t.dataset.w;render();return}
  if(e.target.closest('.lnk'))return;const i=e.target.closest('.i[data-id]');if(i){const o=J.items.find(x=>x.id===i.dataset.id);const v=!isDone(o);if(v===o.done)delete ME[o.id];else ME[o.id]=v;try{localStorage.setItem(MEK,JSON.stringify(ME))}catch(x){}render()}});
 function resetMe(){ME={};try{localStorage.removeItem(MEK)}catch(x){}render()}
 fetch('gsmch-1f-week.json?v='+Date.now(),{cache:'no-store'}).then(r=>r.json()).then(d=>{J=d;
