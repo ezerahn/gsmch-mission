@@ -457,40 +457,6 @@
    ]
   },
   {
-   "d": "2026-11-17",
-   "c": "c",
-   "t": "컵홀더 1차 소량",
-   "em": "카마코 에어홀더 · 약 40원",
-   "done": false,
-   "id": "k059",
-   "q": "에어홀더 컵홀더",
-   "url": "https://www.camako.co.kr/shop/shopdetail.html?branduid=3421858&xcode=017&mcode=001&scode=&type=X&sort=manual&current_category=017&search=&GfDT=bmZ3UFU%3D",
-   "docs": [
-    [
-     "컵 · 컵홀더",
-     "gsmch-ops-cafe.html#t3"
-    ]
-   ],
-   "g": "카페 용품 발주"
-  },
-  {
-   "d": "2026-11-17",
-   "c": "c",
-   "t": "따뜻한 음료 포장컵",
-   "em": "종이컵 + 홀더 또는 3중 단열컵 · 핫 뚜껑",
-   "done": false,
-   "g": "카페 용품 발주",
-   "id": "k061",
-   "q": "3중 단열컵 핫뚜껑",
-   "url": "",
-   "docs": [
-    [
-     "컵 · 컵홀더",
-     "gsmch-ops-cafe.html#t3"
-    ]
-   ]
-  },
-  {
    "d": "2026-11-18",
    "c": "s",
    "t": "준공 청소",
@@ -554,6 +520,15 @@
      "gsmch-ops-cafe.html#t4"
     ]
    ]
+  },
+  {
+   "d": "2026-11-18",
+   "c": "c",
+   "t": "지하 5층 일회용품 재고 파악",
+   "em": "남은 수량 보고 카페 용품 발주",
+   "done": false,
+   "id": "k078",
+   "tm": "오전"
   },
   {
    "d": "2026-11-18",
@@ -748,6 +723,40 @@
    "em": "",
    "done": false,
    "id": "k058"
+  },
+  {
+   "d": "2026-11-18",
+   "c": "c",
+   "t": "컵홀더 1차 소량",
+   "em": "카마코 에어홀더 · 약 40원",
+   "done": false,
+   "id": "k059",
+   "q": "에어홀더 컵홀더",
+   "url": "https://www.camako.co.kr/shop/shopdetail.html?branduid=3421858&xcode=017&mcode=001&scode=&type=X&sort=manual&current_category=017&search=&GfDT=bmZ3UFU%3D",
+   "docs": [
+    [
+     "컵 · 컵홀더",
+     "gsmch-ops-cafe.html#t3"
+    ]
+   ],
+   "g": "카페 용품 발주"
+  },
+  {
+   "d": "2026-11-18",
+   "c": "c",
+   "t": "따뜻한 음료 포장컵",
+   "em": "종이컵 + 홀더 또는 3중 단열컵 · 핫 뚜껑",
+   "done": false,
+   "g": "카페 용품 발주",
+   "id": "k061",
+   "q": "3중 단열컵 핫뚜껑",
+   "url": "",
+   "docs": [
+    [
+     "컵 · 컵홀더",
+     "gsmch-ops-cafe.html#t3"
+    ]
+   ]
   },
   {
    "d": "2026-11-18",
