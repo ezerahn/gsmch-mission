@@ -694,13 +694,17 @@
    "d": "2026-11-18",
    "c": "c",
    "t": "커피 테이스팅",
-   "em": "원두 업체 · 기본 원두 · 디카페인 정하기",
+   "em": "일반 6 · 디카페인 3",
    "done": false,
    "id": "k069",
    "docs": [
     [
      "원두 · 시음표",
      "gsmch-ops-cafe.html#t2"
+    ],
+    [
+     "시음표 PDF",
+     "gsmch-1f-doc-cafe-bean-tasting-1118.pdf"
     ]
    ],
    "tm": "오후"
