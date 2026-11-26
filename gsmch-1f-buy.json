@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17",
+ "updated": "2026-11-26",
  "items": [
   {
    "k": "once",
@@ -12,7 +12,9 @@
    "memo": "RANCILIO CLASSE 7 USB 3GR · 블랙",
    "d": "2026-10-20",
    "url": "",
-   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf"
+   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -25,7 +27,9 @@
    "memo": "CEADO E37S · 블랙",
    "d": "2026-10-20",
    "url": "",
-   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf"
+   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -38,7 +42,9 @@
    "memo": "PUCK-0 · 설치 포함",
    "d": "2026-10-20",
    "url": "",
-   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf"
+   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -51,7 +57,9 @@
    "memo": "매립형",
    "d": "2026-10-20",
    "url": "",
-   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf"
+   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -64,7 +72,9 @@
    "memo": "진성 JS-1 · 실버 · 자동",
    "d": "2026-10-20",
    "url": "",
-   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf"
+   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -77,7 +87,9 @@
    "memo": "부성 B126-4RFOS-E · 냉동 2 / 냉장 2칸",
    "d": "2026-10-20",
    "url": "",
-   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf"
+   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -90,7 +102,9 @@
    "memo": "아이스트로 105W · 수냉식 100kg",
    "d": "2026-10-20",
    "url": "",
-   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf"
+   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -103,7 +117,9 @@
    "memo": "IM-350 · 저장고 160kg",
    "d": "2026-10-20",
    "url": "",
-   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf"
+   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -116,7 +132,9 @@
    "memo": "부성 900 · 간냉식",
    "d": "2026-10-20",
    "url": "",
-   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf"
+   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -129,7 +147,9 @@
    "memo": "프로파인",
    "d": "2026-10-20",
    "url": "",
-   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf"
+   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -142,7 +162,9 @@
    "memo": "CLARO SWISS 250S + 170F · 계약서에 두 필터 합쳐 352,000원",
    "d": "2026-10-20",
    "url": "",
-   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf"
+   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -155,7 +177,9 @@
    "memo": "170F · 금액은 연수 필터 줄에 포함",
    "d": "2026-10-20",
    "url": "",
-   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf"
+   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -168,7 +192,9 @@
    "memo": "세경 1200 · 뒷문형",
    "d": "2026-10-20",
    "url": "",
-   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf"
+   "doc": "gsmch-1f-doc-cafe-equip-compare.pdf",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -181,7 +207,9 @@
    "memo": "본체 · 금전함 · 카드단말기 · 영수증프린터 · 바코드 스캐너",
    "d": "2026-10-21",
    "url": "",
-   "doc": "gsmch-vendor-itda.html"
+   "doc": "gsmch-vendor-itda.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -194,7 +222,9 @@
    "memo": "안드로이드 · 데스크형",
    "d": "2026-10-21",
    "url": "",
-   "doc": "gsmch-vendor-itda.html"
+   "doc": "gsmch-vendor-itda.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -207,7 +237,9 @@
    "memo": "",
    "d": "2026-10-21",
    "url": "",
-   "doc": "gsmch-vendor-itda.html"
+   "doc": "gsmch-vendor-itda.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -220,7 +252,9 @@
    "memo": "본체 · 금전함 · 카드단말기 · 영수증프린터 · 바코드 스캐너",
    "d": "2026-10-21",
    "url": "",
-   "doc": "gsmch-vendor-itda.html"
+   "doc": "gsmch-vendor-itda.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -233,7 +267,9 @@
    "memo": "안드로이드 · 데스크형",
    "d": "2026-10-21",
    "url": "",
-   "doc": "gsmch-vendor-itda.html"
+   "doc": "gsmch-vendor-itda.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -246,7 +282,9 @@
    "memo": "포스 옆 · 주문 내역 · 결제 금액",
    "d": "2026-10-21",
    "url": "",
-   "doc": "gsmch-vendor-itda.html"
+   "doc": "gsmch-vendor-itda.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -259,7 +297,9 @@
    "memo": "주문현황판용",
    "d": "2026-10-21",
    "url": "",
-   "doc": "gsmch-vendor-itda.html"
+   "doc": "gsmch-vendor-itda.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -272,7 +312,9 @@
    "memo": "KDS",
    "d": "2026-10-21",
    "url": "",
-   "doc": "gsmch-vendor-itda.html"
+   "doc": "gsmch-vendor-itda.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -285,7 +327,9 @@
    "memo": "사업단 구입 · 구매처 · 금액 확인",
    "d": "",
    "url": "",
-   "doc": ""
+   "doc": "",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -298,7 +342,9 @@
    "memo": "150 × 50 × 210cm · 4단 · 화이트 · 11/20 도착 예정",
    "d": "2026-11-15",
    "url": "https://link.coupang.com/a/iHl1G1yg8q/?style=kakao_existing_ui",
-   "doc": ""
+   "doc": "",
+   "pay": "입금 완료",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -311,7 +357,9 @@
    "memo": "120 × 30 × 210cm · 5단 · 화이트",
    "d": "2026-11-15",
    "url": "https://link.coupang.com/a/iHmGLbzqTY",
-   "doc": ""
+   "doc": "",
+   "pay": "입금 완료",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -324,7 +372,9 @@
    "memo": "120 × 40 × 210cm · 5단 · 화이트",
    "d": "2026-11-15",
    "url": "https://link.coupang.com/a/iHmNr2gvKK",
-   "doc": ""
+   "doc": "",
+   "pay": "입금 완료",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -337,7 +387,9 @@
    "memo": "화이트 160 × 60cm · 후크 30개 포함 · 후크 추가 구매 예정",
    "d": "2026-11-15",
    "url": "https://link.coupang.com/a/iHr9snA9Js/?style=kakao_existing_ui",
-   "doc": ""
+   "doc": "",
+   "pay": "입금 완료",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -350,7 +402,24 @@
    "memo": "앞치마 180,000 + 자수 30,000 · 11/19 도착 예정",
    "d": "2026-11-17",
    "url": "https://smartstore.naver.com/hansday/products/8906202548",
-   "doc": "gsmch-ops-cafe.html#t6"
+   "doc": "gsmch-ops-cafe.html#t6",
+   "pay": "입금 완료",
+   "tax": "확인"
+  },
+  {
+   "k": "once",
+   "c": "c",
+   "cat": "가구 · 비품",
+   "t": "창 가림막 (블라인드)",
+   "shop": "",
+   "amt": null,
+   "st": "예정",
+   "d": "",
+   "memo": "창틀 가운데 위쪽만 · 원단 고르는 중",
+   "doc": "",
+   "url": "",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -363,7 +432,9 @@
    "memo": "포맥스 650×350 · 790×350 각 3장 · 단장님 주문 · 금액 확인",
    "d": "2026-11-16",
    "url": "",
-   "doc": ""
+   "doc": "",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -376,7 +447,24 @@
    "memo": "투명 특대형 리빙박스 · 오픈 이벤트",
    "d": "",
    "url": "https://link.coupang.com/a/iJTrF4tu9I",
-   "doc": ""
+   "doc": "",
+   "pay": "확인",
+   "tax": "확인"
+  },
+  {
+   "k": "once",
+   "c": "c",
+   "cat": "인쇄 · 홍보",
+   "t": "매장 사이니지 15장",
+   "shop": "꾸민새네트워크",
+   "amt": null,
+   "st": "예정",
+   "d": "",
+   "memo": "검정 포멕스 + 무광 스티커 · 14종 15장 · 견적 받기 전",
+   "doc": "",
+   "url": "",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -389,7 +477,9 @@
    "memo": "11/17 · 11/18 발주 · 결제 뒤 금액 넣기",
    "d": "",
    "url": "",
-   "doc": "gsmch-1f-calendar.html"
+   "doc": "gsmch-1f-calendar.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "once",
@@ -402,7 +492,9 @@
    "memo": "11/18 테이스팅 뒤 발주",
    "d": "",
    "url": "",
-   "doc": "gsmch-ops-cafe.html#t2"
+   "doc": "gsmch-ops-cafe.html#t2",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "month",
@@ -415,7 +507,9 @@
    "memo": "컵 1개 165원 × 8,000개 + 부가세",
    "d": "",
    "url": "",
-   "doc": "gsmch-vendor-thegreet.html"
+   "doc": "gsmch-vendor-thegreet.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "month",
@@ -428,7 +522,9 @@
    "memo": "전용 일회용 30원 × 8,000개 + 부가세",
    "d": "",
    "url": "",
-   "doc": "gsmch-vendor-thegreet.html"
+   "doc": "gsmch-vendor-thegreet.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "month",
@@ -441,7 +537,9 @@
    "memo": "수거 · 배송 주 2회 (월 · 금) 150,000 + 부가세",
    "d": "",
    "url": "",
-   "doc": "gsmch-vendor-thegreet.html"
+   "doc": "gsmch-vendor-thegreet.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "month",
@@ -454,7 +552,9 @@
    "memo": "대 49,000 × 3 + 소 39,000 × 3 = 264,000 + 부가세",
    "d": "",
    "url": "",
-   "doc": "gsmch-vendor-thegreet.html"
+   "doc": "gsmch-vendor-thegreet.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "month",
@@ -467,7 +567,9 @@
    "memo": "",
    "d": "",
    "url": "",
-   "doc": "gsmch-vendor-itda.html"
+   "doc": "gsmch-vendor-itda.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "month",
@@ -480,7 +582,9 @@
    "memo": "QR 주문 · 온라인몰 · 도서검색대는 무상",
    "d": "",
    "url": "",
-   "doc": "gsmch-vendor-itda.html"
+   "doc": "gsmch-vendor-itda.html",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "month",
@@ -493,7 +597,9 @@
    "memo": "업체가 렌트로 셋팅 · 렌트료 있는지 확인",
    "d": "",
    "url": "",
-   "doc": ""
+   "doc": "",
+   "pay": "확인",
+   "tax": "확인"
   },
   {
    "k": "month",
@@ -506,7 +612,9 @@
    "memo": "사무국 확인 중",
    "d": "",
    "url": "",
-   "doc": ""
+   "doc": "",
+   "pay": "확인",
+   "tax": "확인"
   }
  ]
 }
